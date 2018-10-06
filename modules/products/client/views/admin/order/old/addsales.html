@@ -1,0 +1,602 @@
+<style>.btn23{
+    float: right;
+    }
+.page-wrapper{
+   padding-top: 0px;
+     
+}
+
+.order-details-box{
+  font-size: 12px;
+  border: 1px solid  #e6e2e2;
+  margin: 10px 10px 10px 10px;
+}
+.order-details-box label{
+  font-size: 12px;
+}
+.table-responsive
+{
+	overflow-x: auto !important;
+}
+
+@media only screen and (max-width: 1000px) {
+	.vtabs .tabs-vertical {
+    width: 100%  !important;
+}
+}
+.center-align{
+  text-align: center;
+}
+.order-details-box [type="checkbox"] + label {
+   
+    line-height: 36px;
+   
+}
+</style>
+
+<style type="text/css" id="treeview4-style"> .treeview .list-group-item{cursor:pointer}.treeview span.indent{margin-left:10px;margin-right:10px}.treeview span.icon{width:12px;margin-right:5px}.treeview .node-disabled{color:silver;cursor:not-allowed}.node-treeview4{color:#428bca;}.node-treeview4:not(.node-disabled):hover{background-color:rgba(0, 0, 0, 0.05);} </style>
+   <script src="/admin/assets/plugins/bootstrap-treeview-master/dist/bootstrap-treeview.min.js"></script>
+    <script src="/admin/assets/plugins/bootstrap-treeview-master/dist/bootstrap-treeview-init.js"></script>
+     <link href="/admin/assets/plugins/multiselect/css/multi-select.css" rel="stylesheet" type="text/css" />
+      <link href="/admin/assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+<!-- 
+                ///////////////////////////////////////////////////////////////////////////////////// -->
+
+
+    <div class="page-wrapper" >
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+              
+                
+          
+          <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Order #100000020 | Aug 7, 2018 3:41:05 AM</h4>
+                                <div class="col-lg-12">
+                     
+                                <!-- <h4 class="card-title">Vertical Tab</h4>
+                                <h6 class="card-subtitle">Use default tab with class <code>vtabs &amp; tabs-vertical</code></h6> -->
+                                <!-- Nav tabs -->
+
+                                  <form class=" m-t-40">  
+                                 
+                                 
+                                 
+                              
+                                <div class="vtabs" style="display:block !important">
+                                    <ul class="nav nav-tabs tabs-vertical col-lg-2 col-md-12" role="tablist">
+                                       
+                                        <li class="nav-item"> <a class="nav-link active show" data-toggle="tab" href="#content" role="tab" aria-selected="false"> <span class="hidden-xs-down">Details</span></a> </li>
+                                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#meta_data" role="tab" aria-selected="false"> <span class="hidden-xs-down">Invoices</span></a> </li>
+                                         <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#navigation" role="tab" aria-selected="false"> <span class="hidden-xs-down">Credit Memos</span></a> </li>
+                                         
+                                         <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#extrafieldgroup" role="tab" aria-selected="false"> <span class="hidden-xs-down">Shipments</span></a> </li>
+                                         
+                                         <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#products" role="tab" aria-selected="false"> <span class="hidden-xs-down">Comments History</span></a> </li>
+                                         
+                                          <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#logs" role="tab" aria-selected="false"> <span class="hidden-xs-down">Transactions</span></a> </li>
+                                    </ul>
+                                    <!-- Tab panes -->
+                                    
+                                    <div class="tab-content col-lg-10 col-md-12">
+                                        
+                                        <div class="tab-pane active show" id="content" role="tabpanel">
+                                            <div class="btn23">
+                                       
+                                        <a href="/product/category"><button type="button"  class="btn waves-effect waves-light btn-sm btn-info"> Back </button></a>
+                                        
+                                        <a href="/sales/addinvoice"><button type="button"  class="btn waves-effect waves-light btn-sm btn-info"> Invoice </button></a>
+                                        <button type="button"  class="btn waves-effect waves-light btn-sm btn-info"> Reset  </button>
+                                  </div> 
+                                  <div class="clearfix"></div>
+                                        <!--   <div class="form-group">
+                                                    <label class="control-label">First Name</label>
+                                                    <input type="text" id="firstName" class="form-control" placeholder="John doe">
+                                                    <small class="form-control-feedback"> This is inline help </small> </div> -->
+                                            <div class="p-20 row">
+                                               <!-- Order Information -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Order # 100000020(the order confirmation email was sent)</span>
+                                             </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Order date </div>
+                                                  <div class="col-lg-7  p-0">Aug 7,2018 3:41:05 AM</div>
+
+                                               </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Order status </div>
+                                                   <div class="col-lg-7 p-0">Processing</div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Purchased From </div>
+                                                   <div class="col-lg-7 p-0">Zshoper 
+                                                      Country name
+                                                      English
+                                                  </div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Placed from IP </div>
+                                                   <div class="col-lg-7 p-0">123.258.125.369</div>
+
+                                               </div>
+                                             </div>
+                                             </div>   
+                                                  <!-- Account Information -->
+                                              <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Account Information</span>
+                                             </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Customer Name </div>
+                                                  <div class="col-lg-7  p-0">Shihab</div>
+
+                                               </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Email </div>
+                                                   <div class="col-lg-7 p-0">shihab@yahoo.com</div>
+
+                                               </div>
+                                                <div>
+                                                 <div class="col-lg-5 p-0">Mob </div>
+                                                   <div class="col-lg-7 p-0">1234567890</div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Customer Group </div>
+                                                   <div class="col-lg-7 p-0">Customer
+                                                  </div>
+
+                                               </div>
+                                               
+
+                                             </div>
+                                           </div>
+                                             <!-- Billing information -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Billing Address</span>
+                                             </div>
+                                               
+                                               <div class="col-lg-12 p-0">Shihab up</div>
+                                               <div class="col-lg-12 p-0">Uruniyan house </div>
+                                               <div class="col-lg-12 p-0">Panayi </div>
+                                               <div class="col-lg-12 p-0">Anakkayam Po </div>
+                                               <div class="col-lg-12 p-0">Malappuram Dt </div>
+                                               <div class="col-lg-12 p-0">Kerala, India </div>
+                                               <div class="col-lg-12 p-0">676509 </div>
+
+                                              
+                                               
+
+                                             </div>
+                                           </div>
+                                               <!-- Shipping information -->
+                                              <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Shipping Address</span>
+                                             </div>
+                                               
+                                               <div class="col-lg-12 p-0">Shihab up</div>
+                                               <div class="col-lg-12 p-0">Logiprompt</div>
+                                               <div class="col-lg-12 p-0">Kundara </div>
+                                               <div class="col-lg-12 p-0">Kundara Po </div>
+                                               <div class="col-lg-12 p-0">Kollam Dt </div>
+                                               <div class="col-lg-12 p-0">Kerala, India </div>
+                                               <div class="col-lg-12 p-0">12456 </div>
+
+                                             </div>
+                                           </div>
+                                            <!-- Payment information -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Payment Information</span>
+                                             </div>
+                                               <div class="col-lg-12 p-0">Credit/Debit Card  </div>
+                                               <div class="col-lg-12  p-0">Order was placed using INR</div>
+
+                                             </div>
+                                           </div>
+                                             <!-- Shipping & handling information -->
+                                              <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span>Shipping and handling information</span>
+                                             </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Shipper</div>
+                                                  <div class="col-lg-7  p-0">India post</div>
+
+                                               </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Delivery type </div>
+                                                 <div class="col-lg-7 p-0">Paid</div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Shipping rate </div>
+                                                   <div class="col-lg-7 p-0">RS 10.00
+                                                  </div>
+                                               </div>
+                                              
+
+                                             </div>
+                                           </div>
+                                           
+                                        
+                                    </div>
+<div class="clearfix"></div>
+                                    <div class="col-lg-12">
+                                       
+                                        <div class="table-responsive m-t-20">
+
+
+
+                                        <table id="example24" class="example24 display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                        <thead>
+                                        <tr>
+                                              <th>Sl</th>
+                                              <th>Product name</th>
+                                              <th>Price </th>
+                                              <th>Qty</th>
+                                              <th>Qty to invoice</th>
+                                              <th>Sub total</th>
+                                              <th>Tax amount</th>
+                                              <th>Discount amount</th>
+                                              <th>Row total</th>
+                                        </tr>
+                                                </thead>
+                                                <tbody>
+                                                  <tr>
+                                                      
+                                                    <td>1</td>
+                                                    <td>Iris prop mobile</td>
+                                                    <td>RS 1000.00</td>
+                                                    <td>Ordered 2</td>
+                                                    <td>
+                                                     <select>
+                                                      <option>1</option>
+                                                      <option selected>2</option>  
+                                                    </select>
+                                                    </td>
+                                                   
+                                                    <td>RS 2000.00</td>  
+                                                    <td>RS 50.00</td> 
+                                                    <td>RS 0.00</td>
+                                                    <td>RS 2050.00</td>    
+                                                    </tr>
+
+                                                    <tr>
+                                                      
+                                                    <td>2</td>
+                                                    <td>Mobile charger</td>
+                                                    <td>RS 500.00</td>
+                                                    <td>
+                                                      <div>Ordered 2</div>
+                                                      <div>Invoiced 1</div>
+                                                      <div>Refund 1</div>
+                                                    </td>
+                                                    <td>
+                                                     <select>
+                                                      <option selected>1</option>
+                                                      <option>2</option>  
+                                                    </select>
+                                                    </td>
+                                                   
+                                                    <td>RS 500.00</td>  
+                                                    <td>RS 50.00</td> 
+                                                    <td>RS 0.00</td>
+                                                    <td>RS 550.00</td>    
+                                                    </tr>
+
+
+                                        </tbody>
+                                        </table>
+                                        </div>
+                                        <div class="col-lg-12 center-align">
+                                        <input type="button" name="updateqty" id="updateqty" class="btn waves-effect waves-light btn-sm btn-info" value="Update QTY">
+                                      </div>
+                                      </div>
+                                        <!-- Comments -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                           
+                                               <div class="col-lg-12 m-b-10 p-0">
+                                                  <div class="col-lg-5 p-0">Invoice Comments </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 <textarea class="form-control"  type="text" ></textarea>
+                                                  </div>
+                                               </div>
+                                               
+                                               
+                                               
+                                             </div>
+                                           </div>
+                                             <!-- Payment information -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Order Totals</span>
+                                             </div>
+                                            <div class="col-lg-12  p-0">
+                                                  <div class="col-lg-5 p-0">
+                                                  Sub Total
+                                                  
+                                               </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 RS 2,500.00
+                                                  </div>
+                                               </div>
+                                               <div class="col-lg-12 p-0 m-t-10">Taxes</div>
+                                               <div class="col-lg-12  p-0">
+                                                  <div class="col-lg-5 p-0">
+                                                   CST
+                                                  
+                                               </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 RS 10.00
+                                                  </div>
+                                               </div>
+                                               <div class="col-lg-12  p-0">
+                                                  <div class="col-lg-5 p-0">
+                                                 GST
+                                                  
+                                               </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 RS 60.00
+                                                  </div>
+                                               </div>
+                                               <div class="col-lg-12  p-0">
+                                                  <div class="col-lg-5 p-0">
+                                                  ABC
+                                                  
+                                               </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 RS 30.00
+                                                  </div>
+                                               </div>
+                                                <div class="col-lg-12  p-0 m-t-10">
+                                                  <div class="col-lg-5 p-0">
+                                                  Discount amount
+                                                  
+                                               </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 RS 0.00
+                                                  </div>
+                                               </div>
+                                                <div class="col-lg-12  p-0 m-t-10">
+                                                  <div class="col-lg-5 p-0">
+                                                  Grand Total
+                                                  
+                                               </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 RS 2,600.00
+                                                  </div>
+                                               </div>
+                                                 <div class="col-lg-12 p-0"><input type="checkbox" name="" id="notifyemail"><label for="notifyemail">Notify customer by email </label> </div>
+
+                                                 <div class="col-lg-12 p-0"><input type="checkbox" name="" id="addcomments"><label for="addcomments">Add comments </label> </div>
+                                                 <div class="col-lg-12 m-t-10">
+                                        <input type="button" name="updateqty" id="updateqty" class="float-right btn waves-effect waves-light btn-sm btn-info" value="Submit invoice">
+                                      </div>
+                                             </div>
+                                           </div>
+                                   </div>
+                                         <div class="tab-pane" id="meta_data" role="tabpanel">
+                                            <div class="p-20">
+                                               
+                                                    <div class="form-group m-b-10">
+                                                      <label for="input1"> Meta description</label>
+                                                        <textarea class="form-control cat" id="desc" type="text" ng-model="formdata.desc" ></textarea>
+                                                      
+                                                      
+                                                    </div>
+
+                                                    <div class="form-group m-b-10">
+                                                          <label for="input1"> Meta keywords</label>
+                                                          <textarea class="form-control cat" id="key" type="text" ng-model="formdata.key" ></textarea>
+                                                                                                                                                                
+                                                    </div> 
+                                
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane p-20" id="navigation" role="tabpanel">
+                                            
+                                                <div class="form-group m-b-10">
+                                                  <label for="input1"> URL KEY</label>
+                                                        <input type="text" class="form-control cat" id="name"  ng-model="formdata.category" >
+                                                      
+                                                    </div>
+
+                                                    <div class="form-group m-b-10">
+                                                       <label for="input1"> Display in menu link</label>
+                                                      
+                        
+                                                                   <select class="form-control filter-option" name="menu" id="menu" ng-model="formdata.menu">
+                                                                   <option class="filter-option-inner" value="0">choose</option><option class="filter-option-inner" value="1">Yes</option><option class="filter-option-inner" value="2">No</option>
+                                                                 </select>
+                                                     </div>
+                                                     
+                                                      <div class="form-group m-b-10">
+                                                       <label for="input1"> Display in sidebar</label>
+                                                        
+                        
+                                                                   <select class="form-control filter-option" name="sidebar" id="sidebar" ng-model="formdata.sidebar">
+                                                                   <option class="filter-option-inner" value="0">choose</option><option class="filter-option-inner" value="1">Yes</option><option class="filter-option-inner" value="2">No</option>
+                                                                 </select>
+
+                                                     </div>
+
+
+
+                                        </div>
+                                         <div class="tab-pane p-20" id="logs" role="tabpanel">
+                                            
+                                                <div class="row  m-b-40 ">
+                                                    <div class="col-lg-4">     
+                                                        <label class="" for="cd">Created date :</label>
+                                                    </div>  <div class="col-lg-4">
+                              						<label class="" name="cd" id="cd">4 may 2019</label>                                                   </div> 
+                                                   
+                                                </div>
+                                                    
+										 <div class="row m-b-40 lgs">
+                                          <div class="col-lg-4">     
+                                                    <label class="" for="cd">Created date :</label>
+                                                </div>  
+                                         		<div class="col-lg-4">
+                              						<label class="" name="cd" id="cd">4 may 2019</label>        </div> 
+                                               
+ </div> 
+                 								<div class="row m-b-40 lgs">
+                                 <div class="col-lg-4">     
+                                                    <label class="" for="cd">Created date :</label>
+                                                </div>  
+                                                 <div class="col-lg-4">
+                              						<label class="" name="cd" id="cd">4 may 2019</label>         </div> 
+                                               
+ 												</div>                                  
+ 											<div class="row m-b-40 lgs">
+                                               <div class="col-lg-4">
+                                                <label for="input1"> modified By :</label>
+                                               </div>  
+                                               <div class="col-lg-4">
+                                                <label class="" name="mb" id="cb">4 may 2018</label>
+                                               </div>
+                                              	          
+                                                
+ 											</div>           
+                                                       
+
+                                        </div>
+
+
+							<div class="tab-pane p-20" id="extrafieldgroup" role="tabpanel">
+                                            
+                                                
+
+                                                    <div class="form-group m-b-10">
+                                                       <label for="input1">Extra field group</label>
+                                                           <!-- <textarea class="form-control cat" id="extra" type="text" ng-model="formdata.desc" rows="5"></textarea>-->
+                                                           
+                                                           <select class="selectpicker form-control" multiple data-style="form-control btn-info">
+                                            <option>Eletronics</option>
+                                            
+                                        </select>
+
+                                                     </div>
+
+
+
+                                        </div>
+                                        
+        <div class="tab-pane " id="products" role="tabpanel">
+        <div class="p-20">
+
+
+        <div class="form-group m-b-10">
+            <div class="row">
+
+
+                    <div class="col-lg-12">
+                            
+                            
+                        <div class="table-responsive m-t-20">
+
+
+
+                            <table id="example24" class="example24 display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr><th><input type="checkbox" id="checkAll" class="checkAll" ng-model="checkalltxt" ng-click="chkall()"   />
+                                        <label for="checkAll"></label></th>
+                                                        <th>Sl</th>
+                                                        <th>Product name</th>
+                                                        <th>SKU </th>
+                                                        <th>Available Qty</th>
+                                                        <th>Price</th>
+                                                         </tr>
+                                                          </thead>
+                                                          <tbody>
+                                                        <tr >
+                                                       <td> <input type="checkbox" id="basic_checkbox_{{$index+1}}"  class="rowtxtchk" value="{{$index+1}}" ng-click="addchkval(val.cat_id)" />
+                                                         <label for="basic_checkbox_{{$index+1}}"></label></td>
+                                                       <td>1</td>
+                                                          <td>Shirt 007 </td>
+                                                          <td>12345</td>
+                                                          <td>25</td>
+                                                          <td>1000.00</td>
+                                                          
+                                                      </tr>
+                                                                      
+                                                                       
+                                                                 </tbody>
+                                                           </table>
+                                                       </div>
+                                                  </div>
+                                        </div>  
+
+                                        </div>
+                                                                
+                                                  
+
+
+                                        </div>
+                                        </div>
+
+
+                                        </div>
+
+
+                                        </div>
+
+
+
+
+                            </form>
+                            
+                    </div>
+                              <!-- 
+                                <form class="floating-labels m-t-40">
+                                    <div class="form-group m-b-40">
+                                        <input type="text" class="form-control cat" id="name" type="text" ng-model="formdata.category" >
+                                      
+                                        <span class="bar"></span>
+                                        <label for="input1"> category</label>
+                                    </div> <div class="form-group m-b-40 btn23">
+                                    <button type="button" ng-click="insCategory()" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Submit </button>
+                               </div>
+                                </form> -->
+                            </div>
+                        </div>
+                        
+                    </div>
+                   
+                     
+                </div>   
+                </div>
+            </div>
+
+            <!-- modal -->
+         
+  <!-- modal -->
+  <script>
+     setTimeout(function(){
+  $('.selectpicker').selectpicker({style: 'btn-default',
+  size: 4});
+}, 1000)
+
+  </script>

@@ -1,0 +1,2970 @@
+<style>.btn23{
+    float: right;
+    }
+.page-wrapper{
+   padding-top: 0px;
+     
+}
+
+.order-details-box{
+  font-size: 12px;
+  border: 1px solid  #e6e2e2;
+  margin: 10px 10px 10px 10px;
+}
+.order-details-box label{
+  font-size: 12px;
+}
+
+
+@media only screen and (max-width: 1000px) {
+	.vtabs .tabs-vertical {
+    width: 100%  !important;
+}
+}
+
+.table-responsive .table td,.table-responsive .table th {
+    font-size: 11px;
+}
+.trans-comments{
+      font-size: 12px;
+}
+.center-align{
+  text-align: center;
+}
+.order-details-box [type="checkbox"] + label {
+   
+    line-height: 36px;
+   
+}
+.label-font label{
+  font-size: 12px !important;
+      line-height: 36px;
+}
+.label-font [type="radio"] + label{
+   line-height: 15px !important;
+}
+.weightcalcbtn{
+    height: 30px;
+    background: #398bf7;
+    padding: 3px 8px;
+    font-size: 12px;
+}
+
+</style>
+
+<style type="text/css" id="treeview4-style"> .treeview .list-group-item{cursor:pointer}.treeview span.indent{margin-left:10px;margin-right:10px}.treeview span.icon{width:12px;margin-right:5px}.treeview .node-disabled{color:silver;cursor:not-allowed}.node-treeview4{color:#428bca;}.node-treeview4:not(.node-disabled):hover{background-color:rgba(0, 0, 0, 0.05);} </style>
+   <script src="/admin/assets/plugins/bootstrap-treeview-master/dist/bootstrap-treeview.min.js"></script>
+    <script src="/admin/assets/plugins/bootstrap-treeview-master/dist/bootstrap-treeview-init.js"></script>
+     <link href="/admin/assets/plugins/multiselect/css/multi-select.css" rel="stylesheet" type="text/css" />
+      <link href="/admin/assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+<!-- 
+                ///////////////////////////////////////////////////////////////////////////////////// -->
+
+
+    <div class="page-wrapper" >
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+              
+                
+          
+          <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Order #100000020 | Aug 7, 2018 3:41:05 AM</h4>
+                                <div class="col-lg-12">
+                     
+                                <!-- <h4 class="card-title">Vertical Tab</h4>
+                                <h6 class="card-subtitle">Use default tab with class <code>vtabs &amp; tabs-vertical</code></h6> -->
+                                <!-- Nav tabs -->
+
+                                  <form class=" m-t-40">  
+                                 
+                                 
+                                 
+                              
+                                <div class="vtabs" style="display:block !important">
+                                    <ul class="nav nav-tabs tabs-vertical col-lg-2 col-md-12" role="tablist">
+                                       
+                                        <li class="nav-item"> <a class="nav-link active show" data-toggle="tab" href="#details" role="tab" aria-selected="false"> <span class="hidden-xs-down">Details</span></a> </li>
+                                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#invoices" role="tab" aria-selected="false"> <span class="hidden-xs-down">Invoices</span></a> </li>
+                                         <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#creditmemos" role="tab" aria-selected="false"> <span class="hidden-xs-down">Credit Memos</span></a> </li>
+                                         
+                                         <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#shipments" role="tab" aria-selected="false"> <span class="hidden-xs-down">Shipments</span></a> </li>
+                                         
+                                         <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#commhistory" role="tab" aria-selected="false"> <span class="hidden-xs-down">Comments History </span></a> </li>
+                                         
+                                          <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#transactions" role="tab" aria-selected="false"> <span class="hidden-xs-down">Transactions</span></a> </li>
+                                    </ul>
+                                    <!-- Tab panes -->
+                                    
+                                    <div class="tab-content col-lg-10 col-md-12">
+                                        
+                                        <div class="tab-pane active show" id="details" role="tabpanel">
+                                            <div class="btn23">
+                                       
+                                        <a href="/sales/order"><button type="button"  class="btn waves-effect waves-light btn-sm btn-default"> Back </button></a>
+                                      <a href="/product/category"><button type="button"  class="btn waves-effect waves-light btn-sm btn-default"> Cancel </button></a>
+                                     <button type="button"  class="btn waves-effect waves-light btn-sm btn-default" ng-click="getMyTab('orderhold')"> Hold </button>
+                                       <button type="button"  class="btn waves-effect waves-light btn-sm btn-default" ng-click="getMyTab('orderinvoice')" > Invoice </button>
+                                        <button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm  btn-default"> Send email</button>
+                                  </div> 
+                                  <div class="clearfix"></div>
+                                        <!--   <div class="form-group">
+                                                    <label class="control-label">First Name</label>
+                                                    <input type="text" id="firstName" class="form-control" placeholder="John doe">
+                                                    <small class="form-control-feedback"> This is inline help </small> </div> -->
+                                            <div class="p-20 row">
+                                               <!-- Order Information -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Order # 100000020(the order confirmation email was sent)</span>
+                                             </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Order date </div>
+                                                  <div class="col-lg-7  p-0">Aug 7,2018 3:41:05 AM</div>
+
+                                               </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Order status </div>
+                                                   <div class="col-lg-7 p-0">Pending</div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Purchased From </div>
+                                                   <div class="col-lg-7 p-0">Zshoper 
+                                                      Country name
+                                                      English
+                                                  </div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Placed from IP </div>
+                                                   <div class="col-lg-7 p-0">123.258.125.369</div>
+
+                                               </div>
+                                             </div>
+                                             </div>   
+                                                  <!-- Account Information -->
+                                              <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Account Information</span>
+                                             </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Customer Name </div>
+                                                  <div class="col-lg-7  p-0">Shihab</div>
+
+                                               </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Email </div>
+                                                   <div class="col-lg-7 p-0">shihab@yahoo.com</div>
+
+                                               </div>
+                                                <div>
+                                                 <div class="col-lg-5 p-0">Mob </div>
+                                                   <div class="col-lg-7 p-0">1234567890</div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Customer Group </div>
+                                                   <div class="col-lg-7 p-0">Customer
+                                                  </div>
+
+                                               </div>
+                                               
+
+                                             </div>
+                                           </div>
+                                             <!-- Billing information -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Billing Address</span>
+                                             </div>
+                                               
+                                               <div class="col-lg-12 p-0">Shihab up</div>
+                                               <div class="col-lg-12 p-0">Uruniyan house </div>
+                                               <div class="col-lg-12 p-0">Panayi </div>
+                                               <div class="col-lg-12 p-0">Anakkayam Po </div>
+                                               <div class="col-lg-12 p-0">Malappuram Dt </div>
+                                               <div class="col-lg-12 p-0">Kerala, India </div>
+                                               <div class="col-lg-12 p-0">676509 </div>
+
+                                              
+                                               
+
+                                             </div>
+                                           </div>
+                                               <!-- Shipping information -->
+                                              <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Shipping Address</span>
+                                             </div>
+                                               
+                                               <div class="col-lg-12 p-0">Shihab up</div>
+                                               <div class="col-lg-12 p-0">Logiprompt</div>
+                                               <div class="col-lg-12 p-0">Kundara </div>
+                                               <div class="col-lg-12 p-0">Kundara Po </div>
+                                               <div class="col-lg-12 p-0">Kollam Dt </div>
+                                               <div class="col-lg-12 p-0">Kerala, India </div>
+                                               <div class="col-lg-12 p-0">12456 </div>
+
+                                             </div>
+                                           </div>
+                                            <!-- Payment information -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Payment Information</span>
+                                             </div>
+                                               <div class="col-lg-12 p-0">Credit/Debit Card  </div>
+                                               <div class="col-lg-12  p-0">Order was placed using INR</div>
+
+                                             </div>
+                                           </div>
+                                             <!-- Shipping & handling information -->
+                                              <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span>Shipping and handling information</span>
+                                             </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Shipper</div>
+                                                  <div class="col-lg-7  p-0">India post</div>
+
+                                               </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Delivery type </div>
+                                                 <div class="col-lg-7 p-0">Paid</div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Shipping rate </div>
+                                                   <div class="col-lg-7 p-0">RS 10.00
+                                                  </div>
+                                               </div>
+                                              
+
+                                             </div>
+                                           </div>
+                                           
+                                        
+                                    </div>
+<div class="clearfix"></div>
+                                    <div class="col-lg-12 order-details-table">
+                                       
+                                        <div class="table-responsive m-t-20">
+
+
+
+                                        <table id="example24" class="example24 display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                        <thead>
+                                        <tr>
+                                              <th>Sl</th>
+                                              <th>Product<br>name</th>
+                                               <th>Item<br>status </th>
+                                              <th>Price </th>
+                                              <th>Qty</th>
+                                             
+                                              <th>Sub<br>total</th>
+                                              <th>Tax<br>amount</th>
+                                              <th>Discount<br>amount</th>
+                                              <th>Row<br>total</th>
+                                        </tr>
+                                                </thead>
+                                                <tbody>
+                                                  <tr>
+                                                      
+                                                    <td>1</td>
+                                                    <td>Iris prop mobile</td>
+                                                    <td>Ordered</td>
+                                                    <td>RS 1000.00</td>
+                                                    
+                                                    <td>
+                                                      Ordered 2
+
+                                                    </td>  
+                                                    <td>RS 2000.00</td>  
+                                                    <td>RS 50.00</td> 
+                                                    <td>RS 0.00</td>
+                                                    <td>RS 2050.00</td>    
+                                                    </tr>
+
+                                                    <tr>
+                                                      
+                                                    <td>2</td>
+                                                    <td>Mobile charger</td>
+                                                    <td>Invoiced</td>
+                                                    <td>RS 500.00</td>
+                                                    
+                                                    <td>
+                                                      Ordered 2<br>
+                                                      Invoiced 1<br>
+                                                      Refund 1<br>
+
+                                                    </td>  
+                                                    <td>RS 1000.00</td>  
+                                                    <td>RS 50.00</td> 
+                                                    <td>RS 0.00</td>
+                                                    <td>RS 1050.00</td>    
+                                                    </tr>
+
+
+                                        </tbody>
+                                        </table>
+                                        </div>
+                                      </div>
+                                        <!-- Comments -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <h6> Comments history</h6>
+                                               <span>Add comments</span>
+                                             </div>
+                                             <div class="col-lg-12 m-b-10 p-0">
+                                                  <div class="col-lg-5 p-0">Status </div>
+                                                   <div class="col-lg-7 p-0">
+                                                    <select  class="form-control">
+                                                     <option>Pending</option>
+                                                   </select>
+                                                  </div>
+                                               </div>
+                                               <div class="col-lg-12 m-b-10 p-0">
+                                                  <div class="col-lg-5 p-0">Comments </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 <textarea class="form-control"  type="text" ></textarea>
+                                                  </div>
+                                               </div>
+                                                <div class="col-lg-12 m-b-10 p-0">
+                                                  <div class="col-lg-5 p-0"><input type="checkbox" name="" id="notifyemail"><label for="notifyemail">Notify customer by email </label> </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 <input type="button" value="Submit Comments" name="" class="btn waves-effect waves-light btn-sm btn-info">
+                                                  </div>
+                                               </div>
+                                               <div class="col-lg-12 p-0 m-t-10">
+                                                 <div>
+                                                   Aug 16,2018 7:40:02 Order Processing
+                                                 </div>
+                                                 <div>
+                                                  Customer not verified
+                                                 </div>
+                                               </div>
+                                               <div class="col-lg-12 p-0 m-t-10">
+                                                 <div>
+                                                   Aug 16,2018 7:37:57 Order Pending
+                                                 </div>
+                                                 <div>
+                                                  Customer Notified
+                                                 </div>
+                                               </div>
+                                             </div>
+                                           </div>
+                                             <!-- Payment information -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Order Totals</span>
+                                             </div>
+                                            <div class="col-lg-12  p-0">
+                                                  <div class="col-lg-5 p-0">
+                                                  Grand Total
+                                                  
+                                               </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 RS 3,100.00
+                                                  </div>
+                                               </div>
+                                               <div class="col-lg-12  p-0">
+                                                  <div class="col-lg-5 p-0">
+                                                   Total Paid
+                                                  
+                                               </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 RS 1050.00
+                                                  </div>
+                                               </div>
+                                               <div class="col-lg-12  p-0">
+                                                  <div class="col-lg-5 p-0">
+                                                 Refunded
+                                                  
+                                               </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 RS 500.00
+                                                  </div>
+                                               </div>
+                                               <div class="col-lg-12  p-0">
+                                                  <div class="col-lg-5 p-0">
+                                                  Due
+                                                  
+                                               </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 RS 0.00
+                                                  </div>
+                                               </div>
+
+                                             </div>
+                                           </div>
+                                   </div>
+                                         <div class="tab-pane" id="invoices" role="tabpanel">
+                                          <div class="btn23">
+                                       
+                                        <a href="/sales/order"><button type="button" class="btn waves-effect waves-light btn-sm btn-default"> Back </button></a>
+                                         <button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm  btn-default"> Send email</button>
+                                     <button type="button" class="btn waves-effect waves-light btn-sm btn-default" ng-click="getMyTab('ordercreditmemo')"> Credit memo </button>
+                                     <button type="button" class="btn waves-effect waves-light btn-sm btn-default" ng-click="getMyTab('ordership')"> Ship </button>
+                                       
+                                       
+                                  </div>
+                                  <div class="clearfix"></div>
+                                            <div class="p-20">
+
+
+                <div class="form-group m-b-10">
+                <div class="row">
+                <div class="col-lg-12">
+                <div class="table-responsive m-t-20">
+                    <table id="example24" class="example24 display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                                <th>Sl</th>
+                                                <th>Invoice<br>Number</th>
+                                                <th>Invoice<br>date</th>
+                                                <th>Bill<br>to<br>name</th>
+                                                <th>Payment<br>method</th>
+                                                <th>Payment<br>status</th>
+                                                <th>Amount</th>
+                                                <th>Action</th>
+                                                 </tr>
+                                                  </thead>
+                                                  <tbody>
+                                                <tr >
+                                              
+                                               <td>1</td>
+                                                  <td>1000001 </td>
+                                                  <td>Aug 16 2018 7:40:01 AM </td>
+                                                  <td>Shihab</td>
+                                                  <td>Credit/Debit card</td>
+                                                  <td>Paid</td>
+                                                  <td>RS 1000.00</td>
+                                                  <td><a class="btn waves-effect waves-light btn-sm btn-info" href="javascript:void(0);" ng-click="getMyTab('orderafterinvoiced')">
+                                                View
+                                              </a>
+                                                                                          
+                                              
+                                              </td>
+                                              </tr>
+                                                              
+                                                               
+                                                         </tbody>
+                                                   </table>
+                                               </div>
+                                                </div>
+                                                </div>  
+
+                                                </div>
+                                             </div>
+                                         </div>
+                                  <div class="tab-pane p-20" id="creditmemos" role="tabpanel">
+                                      
+                                  <div class="btn23">
+                                 
+                                  <a href="/sales/order"><button type="button" class="btn waves-effect waves-light btn-sm btn-default"> Back </button></a>
+                                 
+                                </div>
+                            <div class="clearfix"></div>
+                                           
+                          <div class="form-group m-b-10">
+                          <div class="row">
+                          <div class="col-lg-12">
+                          <div class="table-responsive m-t-20">
+                              <table id="example24" class="example24 display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                  <thead>
+                                      <tr>
+                                                          <th>Credit<br>memo<br>number</th>
+                                                          <th>Credit<br>memo<br>date</th>
+                                                          <th>Bill<br>to<br>name</th>
+                                                          <th>Payment<br>method</th>
+                                                          <th>Payment<br>status</th>
+                                                          <th>Amount</th>
+                                                          <th>Action</th>
+                                                           </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                          <tr >
+                                                     
+                                                            <td>1000001 </td>
+                                                            <td>Aug 16 2018 7:40:01 AM </td>
+                                                            <td>Shihab</td>
+                                                            <td>Credit/Debit card</td>
+                                                            <td>Paid</td>
+                                                            <td>RS 1600.00</td>
+                                                            <td><a class="btn waves-effect waves-light btn-sm btn-info" href="javascript:void(0);" ng-click="getMyTab('creditmemoissued')">
+                                                          View
+                                                        </a>
+                                                                                                    
+                                                        
+                                                        </td>
+                                                        </tr>
+                                                                        
+                                                                         
+                                                                   </tbody>
+                                                             </table>
+                                                         </div>
+                                                          </div>
+                                                          </div>  
+
+                                                         
+                                             </div> 
+
+                                                    
+                                                     
+                                                      
+
+
+
+                                        </div>
+                                         
+
+
+							<div class="tab-pane p-20" id="shipments" role="tabpanel">
+                                            
+                     
+                            <div class="clearfix"></div>
+                                           
+                          <div class="form-group m-b-10">
+                          <div class="row">
+                          <div class="col-lg-12">
+                          <div class="table-responsive m-t-20">
+                              <table id="example24" class="example24 display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                  <thead>
+                                      <tr>
+                                                        
+                                                          <th>Shipment<br>number</th>
+                                                          <th>Shipment<br>date</th>
+                                                          <th>Ship<br>to<br>name</th>
+                                                          <th>Payment<br>method</th>
+                                                          <th>Payment<br>status</th>
+                                                          <th>Amount</th>
+                                                          <th>Action</th>
+                                                           </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                          <tr >
+                                                         
+                                                       
+                                                            <td>1000001 </td>
+                                                            <td>Aug 16 2018 7:40:01 AM </td>
+                                                            <td>Shihab</td>
+                                                            <td>Credit/Debit card</td>
+                                                            <td>Paid</td>
+                                                            <td>RS 1000.00</td>
+                                                            <td><a class="btn waves-effect waves-light btn-sm btn-info" href="javascript:void(0);" ng-click="getMyTab('shipaftershipment')">
+                                                          View
+                                                        </a>
+                                                                                                    
+                                                        
+                                                        </td>
+                                                        </tr>
+                                                                        
+                                                                         
+                                                                   </tbody>
+                                                             </table>
+                                                         </div>
+                                                          </div>
+                                                          </div>  
+
+                                                         
+                                             </div>
+
+
+
+                                        </div>
+               <div class="tab-pane " id="commhistory" role="tabpanel">
+                <div class="trans-comments">
+                    <div class="col-lg-12 p-0 m-t-10">
+                       <div> Aug 16,2018 7:30:02 AM Pending </div>
+                       <div>Customer notified</div>
+                     </div>
+                     <div class="col-lg-12 p-0 m-t-10">
+                       <div> Aug 16,2018 7:40:02 AM Invoice #10000001 created </div>
+                       <div>Customer not notified</div>
+                     </div>
+                     <div class="col-lg-12 p-0 m-t-10">
+                       <div> Aug 16,2018 7:40:03 AM Processing </div>
+                       <div>Customer Not Notified</div>
+                     </div>
+                     <div class="col-lg-12 p-0 m-t-10">
+                       <div> Aug 16,2018 9:20:03 AM On Hold </div>
+                       <div>Customer Notification Not Applicable</div>
+                     </div>
+                     <div class="col-lg-12 p-0 m-t-10">
+                       <div> Aug 16,2018 9:22:03 AM Processing </div>
+                       <div>Customer Notification Not Applicable</div>
+                     </div>
+                     <div class="col-lg-12 p-0 m-t-10">
+                       <div> Aug 16,2018 11:20:03 PM Credit memo  #10000001 Created</div>
+                       <div>Customer Not Notified</div>
+                     </div>
+                     <div class="col-lg-12 p-0 m-t-10">
+                       <div> Aug 16,2018 11:23:02 PM Invoice #10000007 created </div>
+                       <div>Customer Not Notified</div>
+                     </div>
+                      <div class="col-lg-12 p-0 m-t-10">
+                       <div> Aug 16,2018 1:23:17 PM Shipment #10000005 created </div>
+                       <div>Customer Not Notified</div>
+                     </div>
+                  </div>
+                  </div>                    
+        <div class="tab-pane " id="transactions" role="tabpanel">
+        
+                            <div class="clearfix"></div>
+                                           
+                          <div class="form-group m-b-10">
+                          <div class="row m-t-20">
+                          <div class="col-lg-12">
+                          <div class="table-responsive">
+                              <table id="example24" class="example24 display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                  <thead>
+                                    <tr>
+                                                       
+                                                          <th>Transaction ID</th>
+                                                          <th>Transaction<br>date</th>
+                                                          <th>Transaction<br>type</th>
+                                                          <th>Order<br>number</th>
+                                                          <th>Invoice<br>number</th>
+                                                          <th>Credit<br>memo<br>number</th>
+                                                          <th>Payment<br>method</th>
+                                                          <th>Amount</th>
+                                                          <th>Closed<br>status</th>
+                                                          <th>Action</th>
+                                                           </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                          <tr >
+                                                       
+                                                         
+                                                            <td>1000001 </td>
+                                                            <td>Aug 16 2018 7:40:01 AM </td>
+                                                            <td>Payment</td>
+                                                            <td>10000001</td>
+                                                             <td>10000001</td>
+                                                            <td></td>
+                                                            <td>Credit/Debit card</td>
+                                                            <td>RS 1600.00</td>
+                                                            <td>No</td>
+                                                            <td><a class="btn waves-effect waves-light btn-sm btn-info" href="javascript:void(0);" ng-click="getMyTab('transactionsrefundentry')">
+                                                                Modify
+                                                              </a>
+                                                            
+                                                              </td>
+                                                        </tr>
+                                                        <tr >
+                                                        
+                                                       
+                                                            <td>1000001 </td>
+                                                            <td>Aug 16 2018 7:40:01 AM </td>
+                                                            <td>Refund</td>
+                                                            <td>10000001</td>
+                                                             <td>10000001</td>
+                                                            <td>1000001</td>
+                                                            <td>Credit/Debit card</td>
+                                                            <td>RS 1600.00</td>
+                                                            <td>No</td>
+                                                            <td><a class="btn waves-effect waves-light btn-sm btn-info" href="javascript:void(0);" ng-click="getMyTab('transactionsrefundentry')">
+                                                          Modify
+                                                        </a>
+                                                      
+                                                        </td>
+                                                        </tr>
+                                                         </tbody>               
+                                                     
+                                                     </table>
+                                                     </div>
+                                                 </div>
+                                                  </div>
+                                                  </div>  
+
+                                                         
+                                             </div>
+                                       
+                        <!-- orderinvoice -->
+
+                        <div class="tab-pane p-20 " id="orderinvoice" role="tabpanel">
+                                            <div class="btn23">
+                                       
+                                       <button type="button"  class="btn waves-effect waves-light btn-sm btn-default" ng-click="getMyTab('details')"> Back </button>
+                                      
+                                        <a href="/sales/addinvoice"><button type="button"  class="btn waves-effect waves-light btn-sm btn-info"> Invoice </button></a>
+                                        <button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm  btn-default"> Reset</button>
+                                  </div> 
+                                  <div class="clearfix"></div>
+                                        <!--   <div class="form-group">
+                                                    <label class="control-label">First Name</label>
+                                                    <input type="text" id="firstName" class="form-control" placeholder="John doe">
+                                                    <small class="form-control-feedback"> This is inline help </small> </div> -->
+                                            <div class="p-20 row">
+                                               <!-- Order Information -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Order # 100000020(the order confirmation email was sent)</span>
+                                             </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Order date </div>
+                                                  <div class="col-lg-7  p-0">Aug 7,2018 3:41:05 AM</div>
+
+                                               </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Order status </div>
+                                                   <div class="col-lg-7 p-0">ONHOLD</div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Purchased From </div>
+                                                   <div class="col-lg-7 p-0">Zshoper 
+                                                      Country name
+                                                      English
+                                                  </div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Placed from IP </div>
+                                                   <div class="col-lg-7 p-0">123.258.125.369</div>
+
+                                               </div>
+                                             </div>
+                                             </div>   
+                                                  <!-- Account Information -->
+                                              <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Account Information</span>
+                                             </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Customer Name </div>
+                                                  <div class="col-lg-7  p-0">Shihab</div>
+
+                                               </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Email </div>
+                                                   <div class="col-lg-7 p-0">shihab@yahoo.com</div>
+
+                                               </div>
+                                                <div>
+                                                 <div class="col-lg-5 p-0">Mob </div>
+                                                   <div class="col-lg-7 p-0">1234567890</div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Customer Group </div>
+                                                   <div class="col-lg-7 p-0">Customer
+                                                  </div>
+
+                                               </div>
+                                               
+
+                                             </div>
+                                           </div>
+                                             <!-- Billing information -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Billing Address</span>
+                                             </div>
+                                               
+                                               <div class="col-lg-12 p-0">Shihab up</div>
+                                               <div class="col-lg-12 p-0">Uruniyan house </div>
+                                               <div class="col-lg-12 p-0">Panayi </div>
+                                               <div class="col-lg-12 p-0">Anakkayam Po </div>
+                                               <div class="col-lg-12 p-0">Malappuram Dt </div>
+                                               <div class="col-lg-12 p-0">Kerala, India </div>
+                                               <div class="col-lg-12 p-0">676509 </div>
+
+                                              
+                                               
+
+                                             </div>
+                                           </div>
+                                               <!-- Shipping information -->
+                                              <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Shipping Address</span>
+                                             </div>
+                                               
+                                               <div class="col-lg-12 p-0">Shihab up</div>
+                                               <div class="col-lg-12 p-0">Logiprompt</div>
+                                               <div class="col-lg-12 p-0">Kundara </div>
+                                               <div class="col-lg-12 p-0">Kundara Po </div>
+                                               <div class="col-lg-12 p-0">Kollam Dt </div>
+                                               <div class="col-lg-12 p-0">Kerala, India </div>
+                                               <div class="col-lg-12 p-0">12456 </div>
+
+                                             </div>
+                                           </div>
+                                            <!-- Payment information -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Payment Information</span>
+                                             </div>
+                                               <div class="col-lg-12 p-0">Credit/Debit Card  </div>
+                                               <div class="col-lg-12  p-0">Order was placed using INR</div>
+
+                                             </div>
+                                           </div>
+                                             <!-- Shipping & handling information -->
+                                              <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span>Shipping and handling information</span>
+                                             </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Shipper</div>
+                                                  <div class="col-lg-7  p-0">India post</div>
+
+                                               </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Delivery type </div>
+                                                 <div class="col-lg-7 p-0">Paid</div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Shipping rate </div>
+                                                   <div class="col-lg-7 p-0">RS 10.00
+                                                  </div>
+                                               </div>
+                                              
+
+                                             </div>
+                                           </div>
+                                           
+                                        
+                                    </div>
+<div class="clearfix"></div>
+                                    <div class="col-lg-12 order-details-table">
+                                       
+                                        <div class="table-responsive m-t-20">
+
+
+
+                                        <table id="example24" class="example24 display nowrap table table-hover table-striped table-bordered " cellspacing="0" width="100%">
+                                        <thead>
+                                        <tr>
+                                              <th>Sl</th>
+                                              <th>Product<br>name</th>
+                                              <th>Price </th>
+                                              <th>Qty</th>
+                                              <th>Qty<br>to<br>invoice</th>
+                                             
+                                              <th>Sub<br>total</th>
+                                              <th>Tax<br>amount</th>
+                                              <th>Discount<br>amount</th>
+                                              <th>Row<br>total</th>
+                                        </tr>
+                                                </thead>
+                                                <tbody>
+                                                  <tr>
+                                                      
+                                                    <td>1</td>
+                                                    <td>Iris prop mobile</td>
+                                                    <td>RS 1000.00</td>
+                                                    <td>Ordered 2</td>
+                                                    <td>
+                                                     <select>
+                                                      <option>1</option>
+                                                      <option selected="">2</option>  
+                                                    </select>
+                                                    </td>
+                                                     
+                                                    <td>RS 2000.00</td>  
+                                                    <td>RS 50.00</td> 
+                                                    <td>RS 0.00</td>
+                                                    <td>RS 2050.00</td>    
+                                                    </tr>
+                                                    <tr>
+                                                      
+                                                    <td>1</td>
+                                                    <td>Mobile charger</td>
+                                                    <td>RS 500.00</td>
+                                                    <td>
+                                                      Ordered 2<br>
+                                                      Invoiced 2<br>
+                                                      Refund 2
+
+                                                    </td>
+                                                    <td>
+                                                     <select>
+                                                      <option selected="">1</option>
+                                                      <option>2</option>  
+                                                    </select>
+                                                    </td>
+                                                     
+                                                    <td>RS 500.00</td>  
+                                                    <td>RS 50.00</td> 
+                                                    <td>RS 0.00</td>
+                                                    <td>RS 550.00</td>    
+                                                    </tr>
+
+
+                                        </tbody>
+                                        </table>
+                                        </div>
+                                       <div class="col-lg-12 center-align">
+                                        <input type="button" name="updateqty" id="updateqty" class="btn waves-effect waves-light btn-sm btn-info" value="Update QTY">
+                                      </div>
+                                      </div>
+                                        <!-- Comments -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                           
+                                               <div class="col-lg-12 m-b-10 p-0">
+                                                  <div class="col-lg-5 p-0">Invoice Comments </div>
+                                                   <div class="col-lg-12 p-0">
+                                                 <textarea class="form-control"  type="text" ></textarea>
+                                                  </div>
+                                               </div>
+                                               
+                                               
+                                               
+                                             </div>
+                                           </div>
+                                             <!-- Payment information -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Order Totals</span>
+                                             </div>
+                                            <div class="col-lg-12  p-0">
+                                                  <div class="col-lg-5 p-0">
+                                                  Sub Total
+                                                  
+                                               </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 RS 2,500.00
+                                                  </div>
+                                               </div>
+                                               <div class="col-lg-12 p-0 m-t-10">Taxes</div>
+                                               <div class="col-lg-12  p-0">
+                                                  <div class="col-lg-5 p-0">
+                                                   CST
+                                                  
+                                               </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 RS 10.00
+                                                  </div>
+                                               </div>
+                                               <div class="col-lg-12  p-0">
+                                                  <div class="col-lg-5 p-0">
+                                                 GST
+                                                  
+                                               </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 RS 60.00
+                                                  </div>
+                                               </div>
+                                               <div class="col-lg-12  p-0">
+                                                  <div class="col-lg-5 p-0">
+                                                  ABC
+                                                  
+                                               </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 RS 30.00
+                                                  </div>
+                                               </div>
+                                                <div class="col-lg-12  p-0 m-t-10">
+                                                  <div class="col-lg-5 p-0">
+                                                  Discount amount
+                                                  
+                                               </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 RS 0.00
+                                                  </div>
+                                               </div>
+                                                <div class="col-lg-12  p-0 m-t-10">
+                                                  <div class="col-lg-5 p-0">
+                                                  Grand Total
+                                                  
+                                               </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 RS 2,600.00
+                                                  </div>
+                                               </div>
+                                                 <div class="col-lg-12 p-0"><input type="checkbox" name="" id="notifyemail3"><label for="notifyemail3">Notify customer by email </label> </div>
+
+                                                 <div class="col-lg-12 p-0"><input type="checkbox" name="" id="addcomments1"><label for="addcomments1">Add comments </label> </div>
+                                                 <div class="col-lg-12 m-t-10">
+                                        <input type="button" name="updateqty" id="updateqty" class="float-right btn waves-effect waves-light btn-sm btn-info" value="Submit invoice">
+                                      </div>
+                                             </div>
+                                           </div>    
+                                           </div>
+
+                                           <!-- order hold -->
+                                           <div class="tab-pane  show" id="orderhold" role="tabpanel">
+                                            <div class="btn23">
+                                       
+                                       <button type="button"  class="btn waves-effect waves-light btn-sm btn-default" ng-click="getMyTab('details')" > Back </button>
+                                     
+                                      <button type="button"  class="btn waves-effect waves-light btn-sm btn-info" ng-click="getMyTab('orderunhold')"> Hold </button>
+                                        
+                                  </div> 
+                                  <div class="clearfix"></div>
+                                        <!--   <div class="form-group">
+                                                    <label class="control-label">First Name</label>
+                                                    <input type="text" id="firstName" class="form-control" placeholder="John doe">
+                                                    <small class="form-control-feedback"> This is inline help </small> </div> -->
+                                            
+<div class="clearfix"></div>
+                                    
+                                      <div class="col-lg-6 m-b-10 p-0 m-t-10 label-font">
+                                                  
+                                                   <div class="col-lg-12 p-0 ">
+                                                 <textarea class="form-control" type="text" id="editor1"></textarea>
+                                                  </div>
+                                               <div class="col-lg-12 p-0"><input type="checkbox" name="" id="defaultemail"><label for="defaultemail">Use default email content </label> </div><div class="col-lg-12 p-0"><input type="checkbox" name="" id="notifyemail1"><label for="notifyemail1">Notify customer by email </label> </div><div class="col-lg-12 p-0">
+                                                 <input type="button" value="Submit " name="" class="float-right btn waves-effect waves-light btn-sm btn-info">
+                                                  </div></div>
+                                             
+                                   </div>
+                                   
+                                   
+                                   <div class="tab-pane" id="orderunhold" role="tabpanel">
+                                          <div class="btn23 btn-top">
+                                   
+                                          <a href="/sales/order"><button type="button"  class="btn waves-effect waves-light btn-sm btn-default"> Back </button></a>
+                                        <!-- <a href="/product/category"><button type="button"  class="btn waves-effect waves-light btn-sm btn-default"> Cancel </button></a> -->
+                                      <button type="button" class="btn waves-effect waves-light btn-sm btn-default" ng-click="getMyTab('orderhold')">Un Hold </button>
+                                         <!-- <button type="button"  class="btn waves-effect waves-light btn-sm btn-info" ng-click="getMyTab('orderinvoice')" > Invoice </button> -->
+                                          <button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm  btn-default"> Send email</button>
+                                    </div> 
+                                    <!--   <div class="form-group">
+                                                <label class="control-label">First Name</label>
+                                                <input type="text" id="firstName" class="form-control" placeholder="John doe">
+                                                <small class="form-control-feedback"> This is inline help </small> </div> -->
+                                        <div class="p-20 row">
+                                           <!-- Order Information -->
+                                         <div class="col-lg-6  ">
+                                         <div class="col-lg-12 order-details-box p-10">
+                                          <div class="m-b-10">
+                                           <span> Order # 100000020(the order confirmation email was sent)</span>
+                                         </div>
+                                           <div>
+                                             <div class="col-lg-5 p-0">Order date </div>
+                                              <div class="col-lg-7  p-0">Aug 7,2018 3:41:05 AM</div>
+
+                                           </div>
+                                           <div>
+                                             <div class="col-lg-5 p-0">Order status </div>
+                                               <div class="col-lg-7 p-0">ON HOLD</div>
+
+                                           </div>
+                                           <div>
+                                              <div class="col-lg-5 p-0">Purchased From </div>
+                                               <div class="col-lg-7 p-0">Zshoper 
+                                                  Country name
+                                                  English
+                                              </div>
+
+                                           </div>
+                                           <div>
+                                              <div class="col-lg-5 p-0">Placed from IP </div>
+                                               <div class="col-lg-7 p-0">123.258.125.369</div>
+
+                                           </div>
+                                         </div>
+                                         </div>   
+                                              <!-- Account Information -->
+                                          <div class="col-lg-6  ">
+                                         <div class="col-lg-12 order-details-box p-10">
+                                          <div class="m-b-10">
+                                           <span> Account Information</span>
+                                         </div>
+                                           <div>
+                                             <div class="col-lg-5 p-0">Customer Name </div>
+                                              <div class="col-lg-7  p-0">Shihab ss up</div>
+
+                                           </div>
+                                           <div>
+                                             <div class="col-lg-5 p-0">Email </div>
+                                               <div class="col-lg-7 p-0">shihabup@yahoo.com</div>
+
+                                           </div>
+                                            <div>
+                                             <div class="col-lg-5 p-0">Mob </div>
+                                               <div class="col-lg-7 p-0">1234567890</div>
+
+                                           </div>
+                                           <div>
+                                              <div class="col-lg-5 p-0">Customer Group </div>
+                                               <div class="col-lg-7 p-0">Customer
+                                              </div>
+
+                                           </div>
+
+                                           
+
+                                         </div>
+                                       </div>
+                                         <!-- Billing information -->
+                                         <div class="col-lg-6  ">
+                                         <div class="col-lg-12 order-details-box p-10">
+                                          <div class="m-b-10">
+                                           <span> Billing Address</span>
+                                         </div>
+                                           
+                                           <div class="col-lg-12 p-0">Shihab up</div>
+                                           <div class="col-lg-12 p-0">Uruniyan house </div>
+                                           <div class="col-lg-12 p-0">Panayi </div>
+                                           <div class="col-lg-12 p-0">Anakkayam Po </div>
+                                           <div class="col-lg-12 p-0">Malappuram Dt </div>
+                                           <div class="col-lg-12 p-0">Kerala, India </div>
+                                           <div class="col-lg-12 p-0">676509 </div>
+
+                                          
+                                           
+
+                                         </div>
+                                       </div>
+                                           <!-- Shipping information -->
+                                          <div class="col-lg-6  ">
+                                         <div class="col-lg-12 order-details-box p-10">
+                                          <div class="m-b-10">
+                                           <span> Shipping Address</span>
+                                         </div>
+                                           
+                                           <div class="col-lg-12 p-0">Shihab up</div>
+                                           <div class="col-lg-12 p-0">Logiprompt</div>
+                                           <div class="col-lg-12 p-0">Kundara </div>
+                                           <div class="col-lg-12 p-0">Kundara Po </div>
+                                           <div class="col-lg-12 p-0">Kollam Dt </div>
+                                           <div class="col-lg-12 p-0">Kerala, India </div>
+                                           <div class="col-lg-12 p-0">12456 </div>
+
+                                         </div>
+                                       </div>
+                                        <!-- Payment information -->
+                                         <div class="col-lg-6  ">
+                                         <div class="col-lg-12 order-details-box p-10">
+                                          <div class="m-b-10">
+                                           <span> Payment Information</span>
+                                         </div>
+                                           <div class="col-lg-12 p-0">Credit/Debit Card  </div>
+                                           <div class="col-lg-12  p-0">Order was placed using INR</div>
+
+                                         </div>
+                                       </div>
+                                         <!-- Shipping & handling information -->
+                                          <div class="col-lg-6  ">
+                                         <div class="col-lg-12 order-details-box p-10">
+                                          <div class="m-b-10">
+                                           <span>Shipping and handling information</span>
+                                         </div>
+                                           <div>
+                                             <div class="col-lg-5 p-0">Shipper</div>
+                                              <div class="col-lg-7  p-0">India post</div>
+
+                                           </div>
+                                           <div>
+                                             <div class="col-lg-5 p-0">Delivery type </div>
+                                             <div class="col-lg-7 p-0">Paid</div>
+
+                                           </div>
+                                           <div>
+                                              <div class="col-lg-5 p-0">Shipping rate </div>
+                                               <div class="col-lg-7 p-0">RS 10.00
+                                              </div>
+                                           </div>
+                                          
+
+                                         </div>
+                                       </div>
+                                       
+                                    
+                                </div>
+<div class="clearfix"></div>
+                                <div class="col-lg-12 order-details-table">
+                                   
+                                    <div class="table-responsive m-t-20">
+
+
+
+                                    <table id="example24" class="example24 display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                    <thead>
+                                    <tr>
+                                          <th>Sl</th>
+                                          <th>Product<br>name</th>
+                                           <th>Item<br>status </th>
+                                          <th>Price </th>
+                                          <th>Qty</th>
+                                         
+                                          <th>Sub<br>total</th>
+                                          <th>Tax<br>amount</th>
+                                          <th>Discount<br>amount</th>
+                                          <th>Row<br>total</th>
+                                    </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr>
+                                                  
+                                                <td>1</td>
+                                                <td>Iris prop mobile</td>
+                                                <td>Ordered</td>
+                                                <td>RS 1000.00</td>
+                                                
+                                                <td>
+                                                  Ordered 2
+
+                                                </td>  
+                                                <td>RS 2000.00</td>  
+                                                <td>RS 50.00</td> 
+                                                <td>RS 0.00</td>
+                                                <td>RS 2050.00</td>    
+                                                </tr>
+
+                                                <tr>
+                                                  
+                                                <td>2</td>
+                                                <td>Mobile charger</td>
+                                                <td>Invoiced</td>
+                                                <td>RS 500.00</td>
+                                                
+                                                <td>
+                                                  Ordered 2<br>
+                                                  Invoiced 1<br>
+                                                  Refund 1<br>
+
+                                                </td>  
+                                                <td>RS 1000.00</td>  
+                                                <td>RS 50.00</td> 
+                                                <td>RS 0.00</td>
+                                                <td>RS 1050.00</td>    
+                                                </tr>
+
+
+                                    </tbody>
+                                    </table>
+                                    </div>
+                                  </div>
+                                    <!-- Comments -->
+                                    
+                                         <div class="col-lg-6  ">
+                                         <div class="col-lg-12 order-details-box p-10">
+                                          <div class="m-b-10">
+                                           <h6> Comments history</h6>
+                                           <span>Add comments</span>
+                                         </div>
+                                         <div class="col-lg-12 m-b-10 p-0">
+                                              <div class="col-lg-5 p-0">Status </div>
+                                               <div class="col-lg-7 p-0">
+                                                <select  class="form-control">
+                                                 <option>Pending</option>
+                                               </select>
+                                              </div>
+                                           </div>
+                                           <div class="col-lg-12 m-b-10 p-0">
+                                              <div class="col-lg-5 p-0">Comments </div>
+                                               <div class="col-lg-7 p-0">
+                                             <textarea class="form-control"  type="text" ></textarea>
+                                              </div>
+                                           </div>
+                                            <div class=" m-b-10 p-0">
+                                            <div class="col-lg-12 row">
+                                              <div class="col-lg-5 p-0"><input type="checkbox" name="" id="notifyemail"><label for="notifyemail">Notify customer by email </label> </div>
+                                               <div class="col-lg-6 p-0">
+                                             <input type="button" value="Submit Comments" name="" class="btn waves-effect waves-light btn-sm btn-info">
+                                              </div>
+                                           </div>
+                                           </div>
+                                           <div class="col-lg-12 p-0 m-t-10">
+                                             <div>
+                                               Aug 16,2018 7:40:02 Order Processing
+                                             </div>
+                                             <div>
+                                              Customer not verified
+                                             </div>
+                                           </div>
+                                           <div class="col-lg-12 p-0 m-t-10">
+                                             <div>
+                                               Aug 16,2018 7:37:57 Order Pending
+                                             </div>
+                                             <div>
+                                              Customer Notified
+                                             </div>
+                                           </div>
+                                         </div>
+                                       </div>
+                                         <!-- Payment information -->
+                                         <div class="col-lg-6  ">
+                                         <div class="col-lg-12 order-details-box p-10">
+                                          <div class="m-b-10">
+                                           <span> Order Totals</span>
+                                         </div>
+                                        <div class="col-lg-12  p-0">
+                                              <div class="col-lg-5 p-0">
+                                              Grand Total
+                                              
+                                           </div>
+                                               <div class="col-lg-7 p-0">
+                                             RS 3,100.00
+                                              </div>
+                                           </div>
+                                           <div class="col-lg-12  p-0">
+                                              <div class="col-lg-5 p-0">
+                                               Total Paid
+                                              
+                                           </div>
+                                               <div class="col-lg-7 p-0">
+                                             RS 1050.00
+                                              </div>
+                                           </div>
+                                           <div class="col-lg-12  p-0">
+                                              <div class="col-lg-5 p-0">
+                                            Total Refunded
+                                              
+                                           </div>
+                                               <div class="col-lg-7 p-0">
+                                             RS 0.00
+                                              </div>
+                                           </div>
+                                           <div class="col-lg-12  p-0">
+                                              <div class="col-lg-5 p-0">
+                                             Total Due
+                                              
+                                           </div>
+                                               <div class="col-lg-7 p-0">
+                                             RS 0.00
+                                              </div>
+                                           </div>
+
+                                         </div>
+                                       </div>
+                                       
+                                      
+                               </div>
+                                   <!-- order credit memo -->
+
+
+                                   <div class="tab-pane p-20 " id="ordercreditmemo" role="tabpanel">
+                                            <div class="btn23">
+                                       
+                                       <button type="button" class="btn waves-effect waves-light btn-sm btn-default" ng-click="getMyTab('invoices')"> Back </button>
+                                      
+                                       <button type="button" class="btn waves-effect waves-light btn-sm btn-info"> Credit memo </button>
+                                        <button type="button" class="btn waves-effect waves-light btn-sm  btn-default"> Print</button>
+                                        <button type="button"  class="btn waves-effect waves-light btn-sm  btn-default"> Reset</button>
+                                  </div> 
+                                  <div class="clearfix"></div>
+                                        <!--   <div class="form-group">
+                                                    <label class="control-label">First Name</label>
+                                                    <input type="text" id="firstName" class="form-control" placeholder="John doe">
+                                                    <small class="form-control-feedback"> This is inline help </small> </div> -->
+                                            <div class="p-20 row">
+                                               <!-- Order Information -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Order # 100000020(the order confirmation email was sent)</span>
+                                             </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Order date </div>
+                                                  <div class="col-lg-7  p-0">Aug 7,2018 3:41:05 AM</div>
+
+                                               </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Order status </div>
+                                                   <div class="col-lg-7 p-0">ONHOLD</div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Purchased From </div>
+                                                   <div class="col-lg-7 p-0">Zshoper 
+                                                      Country name
+                                                      English
+                                                  </div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Placed from IP </div>
+                                                   <div class="col-lg-7 p-0">123.258.125.369</div>
+
+                                               </div>
+                                             </div>
+                                             </div>   
+                                                  <!-- Account Information -->
+                                              <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Account Information</span>
+                                             </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Customer Name </div>
+                                                  <div class="col-lg-7  p-0">Shihab</div>
+
+                                               </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Email </div>
+                                                   <div class="col-lg-7 p-0">shihab@yahoo.com</div>
+
+                                               </div>
+                                                <div>
+                                                 <div class="col-lg-5 p-0">Mob </div>
+                                                   <div class="col-lg-7 p-0">1234567890</div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Customer Group </div>
+                                                   <div class="col-lg-7 p-0">Customer
+                                                  </div>
+
+                                               </div>
+                                               
+
+                                             </div>
+                                           </div>
+                                             <!-- Billing information -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Billing Address</span>
+                                             </div>
+                                               
+                                               <div class="col-lg-12 p-0">Shihab up</div>
+                                               <div class="col-lg-12 p-0">Uruniyan house </div>
+                                               <div class="col-lg-12 p-0">Panayi </div>
+                                               <div class="col-lg-12 p-0">Anakkayam Po </div>
+                                               <div class="col-lg-12 p-0">Malappuram Dt </div>
+                                               <div class="col-lg-12 p-0">Kerala, India </div>
+                                               <div class="col-lg-12 p-0">676509 </div>
+
+                                              
+                                               
+
+                                             </div>
+                                           </div>
+                                               <!-- Shipping information -->
+                                              <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Shipping Address</span>
+                                             </div>
+                                               
+                                               <div class="col-lg-12 p-0">Shihab up</div>
+                                               <div class="col-lg-12 p-0">Logiprompt</div>
+                                               <div class="col-lg-12 p-0">Kundara </div>
+                                               <div class="col-lg-12 p-0">Kundara Po </div>
+                                               <div class="col-lg-12 p-0">Kollam Dt </div>
+                                               <div class="col-lg-12 p-0">Kerala, India </div>
+                                               <div class="col-lg-12 p-0">12456 </div>
+
+                                             </div>
+                                           </div>
+                                            <!-- Payment information -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Payment Information</span>
+                                             </div>
+                                               <div class="col-lg-12 p-0">Credit/Debit Card  </div>
+                                               <div class="col-lg-12  p-0">Order was placed using INR</div>
+
+                                             </div>
+                                           </div>
+                                             <!-- Shipping & handling information -->
+                                              <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span>Shipping and handling information</span>
+                                             </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Shipper</div>
+                                                  <div class="col-lg-7  p-0">India post</div>
+
+                                               </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Delivery type </div>
+                                                 <div class="col-lg-7 p-0">Paid</div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Shipping rate </div>
+                                                   <div class="col-lg-7 p-0">RS 10.00
+                                                  </div>
+                                               </div>
+                                              
+
+                                             </div>
+                                           </div>
+                                           
+                                        
+                                    </div>
+<div class="clearfix"></div>
+                                    <div class="col-lg-12 order-details-table">
+                                       
+                                        <div class="table-responsive m-t-20">
+
+
+
+                                        <table id="example24" class="example24 display nowrap table table-hover table-striped table-bordered " cellspacing="0" width="100%">
+                                        <thead>
+                                        <tr>
+                                             
+                                              <th>Product<br>name</th>
+                                              <th>Price </th>
+                                              <th>Qty</th>
+                                              <th>Qty<br>to<br>returned</th>
+                                              <th>Return<br>to<br>stock</th>
+                                              <th>Sub<br>total</th>
+                                              <th>Tax<br>amount</th>
+                                              <th>Discount<br>amount</th>
+                                              <th>Row<br>total</th>
+                                        </tr>
+                                                </thead>
+                                                <tbody>
+                                                  <tr>
+                                                      
+                                                   
+                                                    <td>Iris prop mobile</td>
+                                                    <td>RS 1000.00</td>
+                                                    <td>Ordered 2</td>
+                                                    <td>
+                                                     <select>
+                                                      <option value="1">1</option>
+                                                      <option selected="" value="2">2</option>  
+                                                    </select>
+                                                    </td>
+                                                     <td><input type="checkbox" name="" id="ck1">
+                                                      <label for="ck1"></label>
+                                                     </td>
+                                                     
+                                                    <td>RS 2000.00</td>  
+                                                    <td>RS 50.00</td> 
+                                                    <td>RS 0.00</td>
+                                                    <td>RS 2050.00</td>    
+                                                    </tr>
+                                                    <tr>
+                                                      
+                                                   
+                                                    <td>Mobile charger</td>
+                                                    <td>RS 500.00</td>
+                                                    <td>
+                                                      Ordered 2<br>
+                                                      Invoiced 1<br>
+                                                     
+
+                                                    </td>
+                                                    <td>
+                                                     <select>
+                                                      <option selected="" value="1">1</option>
+                                                      <option value="2">2</option>  
+                                                    </select>
+                                                    </td>
+                                                     <td><input type="checkbox" name="" id="ck2"><label for="ck2"></label>
+                                                     </td>
+                                                    <td>RS 500.00</td>  
+                                                    <td>RS 50.00</td> 
+                                                    <td>RS 0.00</td>
+                                                    <td>RS 550.00</td>    
+                                                    </tr>
+
+
+                                        </tbody>
+                                        </table>
+                                        </div>
+                                       <div class="col-lg-12 center-align">
+                                        <input type="button" name="updateqty" id="updateqty" class="btn waves-effect waves-light btn-sm btn-info" value="Update QTY">
+                                      </div>
+                                      </div>
+                                        <!-- Comments -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                           
+                                               <div class="col-lg-12 m-b-10 p-0">
+                                                  <div class="col-lg-12 p-0">Credit memo Comments </div>
+                                                   <div class="col-lg-12 p-0">
+                                                 <textarea class="form-control" type="text"></textarea>
+                                                  </div>
+                                               </div>
+                                               
+                                               
+                                               
+                                             </div>
+                                           </div>
+                                             <!-- Payment information -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Refund Totals</span>
+                                             </div>
+                                            <div class="col-lg-12  p-0">
+                                                  <div class="col-lg-5 p-0">
+                                                  Sub Total
+                                                  
+                                               </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 RS 2,500.00
+                                                  </div>
+                                               </div>
+                                               <div class="col-lg-12 p-0 m-t-10">Taxes</div>
+                                               <div class="col-lg-12  p-0">
+                                                  <div class="col-lg-5 p-0">
+                                                   CST
+                                                  
+                                               </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 RS 10.00
+                                                  </div>
+                                               </div>
+                                               <div class="col-lg-12  p-0">
+                                                  <div class="col-lg-5 p-0">
+                                                 GST
+                                                  
+                                               </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 RS 60.00
+                                                  </div>
+                                               </div>
+                                               <div class="col-lg-12  p-0">
+                                                  <div class="col-lg-5 p-0">
+                                                  ABC
+                                                  
+                                               </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 RS 30.00
+                                                  </div>
+                                               </div>
+                                                <div class="col-lg-12  p-0 m-t-10">
+                                                  <div class="col-lg-5 p-0">
+                                                  Discount amount
+                                                  
+                                               </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 RS 0.00
+                                                  </div>
+                                               </div>
+                                               <div class="col-lg-12  p-0 m-t-10">
+                                                  <div class="col-lg-5 p-0">
+                                                 Adjustment fee
+                                                  
+                                               </div>
+                                                   <div class="col-lg-7 p-0">
+                                               <input type="text" class="form-control" name="">
+                                                  </div>
+                                               </div>
+                                                <div class="col-lg-12  p-0 m-t-10">
+                                                  <div class="col-lg-5 p-0">
+                                                  Grand Total
+                                                  
+                                               </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 RS 2,600.00
+                                                  </div>
+                                               </div>
+                                                 <div class="col-lg-12 p-0"><input type="checkbox" name="" id="notifyemail1"><label for="notifyemail1">Notify customer by email </label> </div>
+
+                                                 <div class="col-lg-12 p-0"><input type="checkbox" name="" id="addcomments1"><label for="addcomments1">Add comments </label> </div>
+                                                 <div class="col-lg-12 m-t-10">
+                                        <input type="button" name="updateqty" id="updateqty" class="float-right btn waves-effect waves-light btn-sm btn-info" value="Refund offline">
+                                      </div>
+                                             </div>
+                                           </div>    
+                                           </div>
+
+                                           <!-- order ship -->
+                                           <div class="tab-pane p-20 " id="ordership" role="tabpanel">
+                                            <div class="btn23">
+                                       
+                                       <button type="button" class="btn waves-effect waves-light btn-sm btn-default" ng-click="getMyTab('invoices')"> Back </button>
+                                      
+                                       <button type="button" class="btn waves-effect waves-light btn-sm btn-info"> Ship </button>
+                                        <button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm  btn-default"> Reset</button>
+                                  </div> 
+                                  <div class="clearfix"></div>
+                                        <!--   <div class="form-group">
+                                                    <label class="control-label">First Name</label>
+                                                    <input type="text" id="firstName" class="form-control" placeholder="John doe">
+                                                    <small class="form-control-feedback"> This is inline help </small> </div> -->
+                                            <div class="p-20 row">
+                                               <!-- Order Information -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Order # 100000020(the order confirmation email was sent)</span>
+                                             </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Order date </div>
+                                                  <div class="col-lg-7  p-0">Aug 7,2018 3:41:05 AM</div>
+
+                                               </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Order status </div>
+                                                   <div class="col-lg-7 p-0">Processing</div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Purchased From </div>
+                                                   <div class="col-lg-7 p-0">Zshoper 
+                                                      Country name
+                                                      English
+                                                  </div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Placed from IP </div>
+                                                   <div class="col-lg-7 p-0">123.258.125.369</div>
+
+                                               </div>
+                                             </div>
+                                             </div>   
+                                                  <!-- Account Information -->
+                                              <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Account Information</span>
+                                             </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Customer Name </div>
+                                                  <div class="col-lg-7  p-0">Shihab</div>
+
+                                               </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Email </div>
+                                                   <div class="col-lg-7 p-0">shihab@yahoo.com</div>
+
+                                               </div>
+                                                <div>
+                                                 <div class="col-lg-5 p-0">Mob </div>
+                                                   <div class="col-lg-7 p-0">1234567890</div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Customer Group </div>
+                                                   <div class="col-lg-7 p-0">Customer
+                                                  </div>
+
+                                               </div>
+                                               
+
+                                             </div>
+                                           </div>
+                                             <!-- Billing information -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Billing Address</span>
+                                             </div>
+                                               
+                                               <div class="col-lg-12 p-0">Shihab up</div>
+                                               <div class="col-lg-12 p-0">Uruniyan house </div>
+                                               <div class="col-lg-12 p-0">Panayi </div>
+                                               <div class="col-lg-12 p-0">Anakkayam Po </div>
+                                               <div class="col-lg-12 p-0">Malappuram Dt </div>
+                                               <div class="col-lg-12 p-0">Kerala, India </div>
+                                               <div class="col-lg-12 p-0">676509 </div>
+
+                                              
+                                               
+
+                                             </div>
+                                           </div>
+                                               <!-- Shipping information -->
+                                              <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Shipping Address</span>
+                                             </div>
+                                               
+                                               <div class="col-lg-12 p-0">Shihab up</div>
+                                               <div class="col-lg-12 p-0">Logiprompt</div>
+                                               <div class="col-lg-12 p-0">Kundara </div>
+                                               <div class="col-lg-12 p-0">Kundara Po </div>
+                                               <div class="col-lg-12 p-0">Kollam Dt </div>
+                                               <div class="col-lg-12 p-0">Kerala, India </div>
+                                               <div class="col-lg-12 p-0">12456 </div>
+
+                                             </div>
+                                           </div>
+                                            <!-- Payment information -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Payment Information</span>
+                                             </div>
+                                               <div class="col-lg-12 p-0">Credit/Debit Card  </div>
+                                               <div class="col-lg-12  p-0">Order was placed using INR</div>
+
+                                             </div>
+                                           </div>
+                                             <!-- Shipping & handling information -->
+                                              <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span>Shipping and handling information</span>
+                                             </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Shipper</div>
+                                                  <div class="col-lg-7  p-0">India post</div>
+
+                                               </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Delivery type </div>
+                                                 <div class="col-lg-7 p-0">Paid</div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Shipping rate </div>
+                                                   <div class="col-lg-7 p-0">RS 10.00
+                                                  </div>
+                                               </div>
+                                               <div class="col-lg-12 p-0 label-font">
+                                                 <input type="checkbox" name="" id="createship" value="1" ng-model="createshipping">
+                                                 <label for="createship">Create shipping</label>
+                                               </div>
+
+                                               <div ng-if="createshipping=='1'" class="label-font col-lg-12 p-0">
+                                                  <div class="col-lg-5 p-0 ">
+                                                    <input type="radio"  id="proweight" ng-model="weightsettings"  value="1"><label for="proweight" ng-click="wsetting(1)" >
+                                                      Product Weight
+                                                    </label>
+                                                  </div>
+                                                   <div class="col-lg-7 p-0">
+                                                    <input type="radio"  id="boxdimen" ng-model="weightsettings"  value="2" ng-click="wsetting(2)"><label for="boxdimen">
+                                                      Packing box dimensional weight
+                                                    </label>
+                                                  </div>
+                                               </div>
+                                               
+                                              
+                                      <div  ng-if="weightsettings=='2'">
+                                        <div class="  col-lg-2">
+                                              <div class=" m-b-10"> 
+                                                     <label for="input1"> length</label>
+                                                        <input type="text" class="" id="name" style="height: 25px;width: 30px;">
+                                                      
+                                                    </div>
+                                           </div>
+                                           <div class="  col-lg-2 ">
+                                              <div class=" m-b-10"> 
+                                                     <label for="input1"> Width</label>
+                                                        <input type="text" class="" id="name" ng-model="formdata.category"  style="height: 25px;width: 30px;">
+                                                      
+                                                    </div>
+                                           </div>
+                                            <div class="  col-lg-2">
+                                              <div class=" m-b-10"> 
+                                                     <label for="input1"> Height</label>
+                                                        <input type="text" class="" id="name"   style="height: 25px;width: 30px;">
+                                                      
+                                                    </div>
+                                           </div>
+                                           <div class=" col-lg-3">
+                                              <div class=" m-t-20"> 
+                                                    
+                                                        <input type="button" class="btn btn-info weightcalcbtn" id="name" value="calculate" >
+                                                      
+                                                    </div>
+                                           </div>
+                                         </div>
+                                           <div class=" col-lg-12">
+                                           weight: 1.00 KG</div>
+                                            <div class=" col-lg-12 m-t-10"> <input type="button" class="btn waves-effect waves-light btn-sm btn-info" id="name" value="calculate shipping rate" ></div>
+                                            <div class="label-font col-lg-12 p-0 m-t-10">
+                                                  <div class="col-lg-12 p-0 ">
+                                                    <input type="radio" name="shipset" id="proweight"><label for="proweight">
+                                                      same day-130 INR
+                                                    </label>
+                                                  </div>
+                                                   <div class="col-lg-12 p-0">
+                                                    <input type="radio" name="shipset" id="boxdimen" ><label for="boxdimen">
+                                                      Threedays- 50 INR
+                                                    </label>
+                                                  </div>
+                                               </div>
+                                               <div class=" col-lg-12"> <input type="button" class="btn waves-effect waves-light btn-sm btn-info" id="name" value="calculate shipping waybill" ></div>
+                                               <div class="label-font col-lg-12 p-0 m-t-10">
+                                                  <div class="col-lg-5 p-0 ">
+                                                   Add tracking number
+                                                  </div>
+                                                   <div class="col-lg-7 p-0">
+                                                    <input class="form-control" type="text" name="shipset"  >
+                                                  </div>
+                                               </div>
+                                             </div>
+                                           </div>
+                                           
+                                        
+                                    </div>
+<div class="clearfix"></div>
+                                    <div class="col-lg-12 order-details-table">
+                                       
+                                        <div class="table-responsive m-t-20">
+
+
+
+                                        <table id="example24" class="example24 display nowrap table table-hover table-striped table-bordered " cellspacing="0" width="100%">
+                                        <thead>
+                                        <tr>
+                                              
+                                              <th>Product<br>name</th>
+                                              <th>Price </th>
+                                              <th>Qty</th>
+                                              <th>Qty to ship</th>
+                                             
+                                            
+                                        </tr>
+                                                </thead>
+                                                <tbody>
+                                                  <tr>
+                                                      
+                                                   
+                                                    <td>Iris prop mobile</td>
+                                                    <td>RS 1000.00</td>
+                                                    <td>Ordered 2</td>
+                                                    <td>
+                                                    <input type="text" readonly="" name="" value="0"  style="    width: 25px;">
+                                                    </td>
+                                                    </tr>
+                                                    <tr>
+                                                      
+                                                   
+                                                    <td>Mobile charger</td>
+                                                    <td>RS 500.00</td>
+                                                    <td>
+                                                      Ordered 2<br>
+                                                      Invoiced 1
+
+                                                    </td>
+                                                    <td>
+                                                    <input type="text" readonly="" name="" value="1" style="    width: 25px;">
+                                                    </td>
+                                                    </tr>
+
+
+                                        </tbody>
+                                        </table>
+                                        </div>
+                                       <div class="col-lg-12 center-align">
+                                        <input type="button" name="updateqty" id="updateqty" class="btn waves-effect waves-light btn-sm btn-info" value="Update QTY">
+                                      </div>
+                                      </div>
+                                        <!-- Comments -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                           
+                                               <div class="col-lg-12 m-b-10 p-0">
+                                                  <div class="col-lg-5 p-0">Shipment Comments </div>
+                                                   <div class="col-lg-12 p-0">
+                                                 <textarea class="form-control" type="text"></textarea>
+                                                  </div>
+                                               </div>
+                                               
+                                               
+                                               
+                                             </div>
+                                           </div>
+                                             <!-- Payment information -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                             
+                                                 <div class="col-lg-12 p-0"><input type="checkbox" name="" id="notifyemail3"><label for="notifyemail3">Notify customer by email </label> </div>
+
+                                                 <div class="col-lg-12 p-0"><input type="checkbox" name="chk3" id="addcomments3"><label for="addcomments3">Add comments </label> </div>
+                                                 <div class="col-lg-12 m-t-10">
+                                        <input type="button" name="updateqty" id="updateqty" class="float-right btn waves-effect waves-light btn-sm btn-info" value="Submit shipment">
+                                      </div>
+                                             </div>
+                                           </div>    
+                                           </div>
+
+                                           <!-- order after invoiced -->
+
+
+                                           <div class="tab-pane p-20 " id="orderafterinvoiced" role="tabpanel">
+                                            <div class="btn23">
+                                       
+                                       <button type="button" class="btn waves-effect waves-light btn-sm btn-default" ng-click="getMyTab('invoices')"> Back </button>
+                                      
+                                       
+                                         <button type="button"  class="btn waves-effect waves-light btn-sm  btn-default"> Send email</button>
+                                     <button type="button" class="btn waves-effect waves-light btn-sm btn-default" ng-click="getMyTab('ordercreditmemo')"> Credit memo </button>
+                                     <button type="button" class="btn waves-effect waves-light btn-sm btn-default" ng-click="getMyTab('ordership')"> Ship </button>
+                                  </div> 
+                                  <div class="clearfix"></div>
+                                        <!--   <div class="form-group">
+                                                    <label class="control-label">First Name</label>
+                                                    <input type="text" id="firstName" class="form-control" placeholder="John doe">
+                                                    <small class="form-control-feedback"> This is inline help </small> </div> -->
+                                            <div class="p-20 row">
+                                               <!-- Order Information -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Order # 100000020(the order confirmation email was sent)</span>
+                                             </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Order date </div>
+                                                  <div class="col-lg-7  p-0">Aug 7,2018 3:41:05 AM</div>
+
+                                               </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Order status </div>
+                                                   <div class="col-lg-7 p-0">ONHOLD</div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Purchased From </div>
+                                                   <div class="col-lg-7 p-0">Zshoper 
+                                                      Country name
+                                                      English
+                                                  </div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Placed from IP </div>
+                                                   <div class="col-lg-7 p-0">123.258.125.369</div>
+
+                                               </div>
+                                             </div>
+                                             </div>   
+                                                  <!-- Account Information -->
+                                              <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Account Information</span>
+                                             </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Customer Name </div>
+                                                  <div class="col-lg-7  p-0">Shihab</div>
+
+                                               </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Email </div>
+                                                   <div class="col-lg-7 p-0">shihab@yahoo.com</div>
+
+                                               </div>
+                                                <div>
+                                                 <div class="col-lg-5 p-0">Mob </div>
+                                                   <div class="col-lg-7 p-0">1234567890</div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Customer Group </div>
+                                                   <div class="col-lg-7 p-0">Customer
+                                                  </div>
+
+                                               </div>
+                                               
+
+                                             </div>
+                                           </div>
+                                             <!-- Billing information -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Billing Address</span>
+                                             </div>
+                                               
+                                               <div class="col-lg-12 p-0">Shihab up</div>
+                                               <div class="col-lg-12 p-0">Uruniyan house </div>
+                                               <div class="col-lg-12 p-0">Panayi </div>
+                                               <div class="col-lg-12 p-0">Anakkayam Po </div>
+                                               <div class="col-lg-12 p-0">Malappuram Dt </div>
+                                               <div class="col-lg-12 p-0">Kerala, India </div>
+                                               <div class="col-lg-12 p-0">676509 </div>
+
+                                              
+                                               
+
+                                             </div>
+                                           </div>
+                                               <!-- Shipping information -->
+                                              <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Shipping Address</span>
+                                             </div>
+                                               
+                                               <div class="col-lg-12 p-0">Shihab up</div>
+                                               <div class="col-lg-12 p-0">Logiprompt</div>
+                                               <div class="col-lg-12 p-0">Kundara </div>
+                                               <div class="col-lg-12 p-0">Kundara Po </div>
+                                               <div class="col-lg-12 p-0">Kollam Dt </div>
+                                               <div class="col-lg-12 p-0">Kerala, India </div>
+                                               <div class="col-lg-12 p-0">12456 </div>
+
+                                             </div>
+                                           </div>
+                                            <!-- Payment information -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Payment Information</span>
+                                             </div>
+                                               <div class="col-lg-12 p-0">Credit/Debit Card  </div>
+                                               <div class="col-lg-12  p-0">Order was placed using INR</div>
+
+                                             </div>
+                                           </div>
+                                             <!-- Shipping & handling information -->
+                                              <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span>Shipping and handling information</span>
+                                             </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Shipper</div>
+                                                  <div class="col-lg-7  p-0">India post</div>
+
+                                               </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Delivery type </div>
+                                                 <div class="col-lg-7 p-0">Paid</div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Shipping rate </div>
+                                                   <div class="col-lg-7 p-0">RS 10.00
+                                                  </div>
+                                               </div>
+                                              
+
+                                             </div>
+                                           </div>
+                                           
+                                        
+                                    </div>
+<div class="clearfix"></div>
+                                    <div class="col-lg-12 order-details-table">
+                                       
+                                        <div class="table-responsive m-t-20">
+
+
+
+                                        <table id="example24" class="example24 display nowrap table table-hover table-striped table-bordered " cellspacing="0" width="100%">
+                                        <thead>
+                                        <tr>
+                                             
+                                              <th>Product<br>name</th>
+                                              <th>Price </th>
+                                              <th>Qty</th>
+                                              <th>Qty<br>invoiced</th>
+                                             
+                                              <th>Sub<br>total</th>
+                                              <th>Tax<br>amount</th>
+                                              <th>Discount<br>amount</th>
+                                              <th>Row<br>total</th>
+                                        </tr>
+                                                </thead>
+                                                <tbody>
+                                                  <tr>
+                                                      
+                                                   
+                                                    <td>Iris prop mobile</td>
+                                                    <td>RS 1000.00</td>
+                                                    <td>Ordered 2</td>
+                                                    <td>
+                                                     <select>
+                                                      <option value="1">1</option>
+                                                      <option selected="" value="2">2</option>  
+                                                    </select>
+                                                    </td>
+                                                     
+                                                    <td>RS 2000.00</td>  
+                                                    <td>RS 50.00</td> 
+                                                    <td>RS 0.00</td>
+                                                    <td>RS 2050.00</td>    
+                                                    </tr>
+                                                    <tr>
+                                                      
+                                                   
+                                                    <td>Mobile charger</td>
+                                                    <td>RS 500.00</td>
+                                                    <td>
+                                                      Ordered 2<br>
+                                                      Invoiced 1
+                                                     
+
+                                                    </td>
+                                                    <td>
+                                                     <select>
+                                                      <option selected="" value="1">1</option>
+                                                      <option value="2">2</option>  
+                                                    </select>
+                                                    </td>
+                                                     
+                                                    <td>RS 500.00</td>  
+                                                    <td>RS 50.00</td> 
+                                                    <td>RS 0.00</td>
+                                                    <td>RS 550.00</td>    
+                                                    </tr>
+
+
+                                        </tbody>
+                                        </table>
+                                        </div>
+                                     
+                                      </div>
+                                        <!-- Comments -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                           
+                                               <div class="col-lg-12 m-b-10 p-0">
+                                                  <div class="col-lg-5 p-0">Invoice Comments </div>
+                                                   <div class="col-lg-12 p-0">
+                                                 <textarea class="form-control" type="text"></textarea>
+                                                  </div>
+                                               </div>
+                                                 <div class="col-lg-12 p-0"><input type="checkbox" name="" id="notifyemail8"><label for="notifyemail8">Notify customer by email </label> </div>
+
+                                                 <div class="col-lg-12 p-0"><input type="checkbox" name="" id="addcomments8"><label for="addcomments8">Add comments </label> </div>
+                                                 <div class="col-lg-12 m-t-10">
+                                        <input type="button" name="updateqty" id="updateqty" class="float-right btn waves-effect waves-light btn-sm btn-info" value="Submit comment">
+                                      </div>
+                                               
+                                               
+                                             </div>
+                                           </div>
+                                             <!-- Payment information -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Order Totals</span>
+                                             </div>
+                                            <div class="col-lg-12  p-0">
+                                                  <div class="col-lg-5 p-0">
+                                                  Sub Total
+                                                  
+                                               </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 RS 2,500.00
+                                                  </div>
+                                               </div>
+                                               <div class="col-lg-12 p-0 m-t-10">Taxes</div>
+                                               <div class="col-lg-12  p-0">
+                                                  <div class="col-lg-5 p-0">
+                                                   CST
+                                                  
+                                               </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 RS 10.00
+                                                  </div>
+                                               </div>
+                                               <div class="col-lg-12  p-0">
+                                                  <div class="col-lg-5 p-0">
+                                                 GST
+                                                  
+                                               </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 RS 60.00
+                                                  </div>
+                                               </div>
+                                               <div class="col-lg-12  p-0">
+                                                  <div class="col-lg-5 p-0">
+                                                  ABC
+                                                  
+                                               </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 RS 30.00
+                                                  </div>
+                                               </div>
+                                                <div class="col-lg-12  p-0 m-t-10">
+                                                  <div class="col-lg-5 p-0">
+                                                  Discount amount
+                                                  
+                                               </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 RS 0.00
+                                                  </div>
+                                               </div>
+                                                <div class="col-lg-12  p-0 m-t-10">
+                                                  <div class="col-lg-5 p-0">
+                                                  Grand Total
+                                                  
+                                               </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 RS 2,600.00
+                                                  </div>
+                                               </div>
+                                               
+                                             </div>
+                                           </div>    
+                                           </div>
+                                           <!-- credit memo after issued -->
+
+                                           <div class="tab-pane p-20 " id="creditmemoissued" role="tabpanel">
+                                            <div class="btn23">
+                                       
+                                       <button type="button" class="btn waves-effect waves-light btn-sm btn-default" ng-click="getMyTab('creditmemos')"> Back </button>
+                                      
+                                       
+                                         <button type="button" class="btn waves-effect waves-light btn-sm  btn-info"> Credit memo</button>
+                                     <button type="button" class="btn waves-effect waves-light btn-sm btn-default" > Print </button>
+                                     <button type="button" class="btn waves-effect waves-light btn-sm btn-default" > Reset </button>
+                                  </div> 
+                                  <div class="clearfix"></div>
+                                        <!--   <div class="form-group">
+                                                    <label class="control-label">First Name</label>
+                                                    <input type="text" id="firstName" class="form-control" placeholder="John doe">
+                                                    <small class="form-control-feedback"> This is inline help </small> </div> -->
+                                            <div class="p-20 row">
+                                               <!-- Order Information -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Order # 100000020(the order confirmation email was sent)</span>
+                                             </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Order date </div>
+                                                  <div class="col-lg-7  p-0">Aug 7,2018 3:41:05 AM</div>
+
+                                               </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Order status </div>
+                                                   <div class="col-lg-7 p-0">ONHOLD</div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Purchased From </div>
+                                                   <div class="col-lg-7 p-0">Zshoper 
+                                                      Country name
+                                                      English
+                                                  </div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Placed from IP </div>
+                                                   <div class="col-lg-7 p-0">123.258.125.369</div>
+
+                                               </div>
+                                             </div>
+                                             </div>   
+                                                  <!-- Account Information -->
+                                              <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Account Information</span>
+                                             </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Customer Name </div>
+                                                  <div class="col-lg-7  p-0">Shihab</div>
+
+                                               </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Email </div>
+                                                   <div class="col-lg-7 p-0">shihab@yahoo.com</div>
+
+                                               </div>
+                                                <div>
+                                                 <div class="col-lg-5 p-0">Mob </div>
+                                                   <div class="col-lg-7 p-0">1234567890</div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Customer Group </div>
+                                                   <div class="col-lg-7 p-0">Customer
+                                                  </div>
+
+                                               </div>
+                                               
+
+                                             </div>
+                                           </div>
+                                             <!-- Billing information -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Billing Address</span>
+                                             </div>
+                                               
+                                               <div class="col-lg-12 p-0">Shihab up</div>
+                                               <div class="col-lg-12 p-0">Uruniyan house </div>
+                                               <div class="col-lg-12 p-0">Panayi </div>
+                                               <div class="col-lg-12 p-0">Anakkayam Po </div>
+                                               <div class="col-lg-12 p-0">Malappuram Dt </div>
+                                               <div class="col-lg-12 p-0">Kerala, India </div>
+                                               <div class="col-lg-12 p-0">676509 </div>
+
+                                              
+                                               
+
+                                             </div>
+                                           </div>
+                                               <!-- Shipping information -->
+                                              <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Shipping Address</span>
+                                             </div>
+                                               
+                                               <div class="col-lg-12 p-0">Shihab up</div>
+                                               <div class="col-lg-12 p-0">Logiprompt</div>
+                                               <div class="col-lg-12 p-0">Kundara </div>
+                                               <div class="col-lg-12 p-0">Kundara Po </div>
+                                               <div class="col-lg-12 p-0">Kollam Dt </div>
+                                               <div class="col-lg-12 p-0">Kerala, India </div>
+                                               <div class="col-lg-12 p-0">12456 </div>
+
+                                             </div>
+                                           </div>
+                                            <!-- Payment information -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Payment Information</span>
+                                             </div>
+                                               <div class="col-lg-12 p-0">Credit/Debit Card  </div>
+                                               <div class="col-lg-12  p-0">Order was placed using INR</div>
+
+                                             </div>
+                                           </div>
+                                             <!-- Shipping & handling information -->
+                                              <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span>Shipping and handling information</span>
+                                             </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Shipper</div>
+                                                  <div class="col-lg-7  p-0">India post</div>
+
+                                               </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Delivery type </div>
+                                                 <div class="col-lg-7 p-0">Paid</div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Shipping rate </div>
+                                                   <div class="col-lg-7 p-0">RS 10.00
+                                                  </div>
+                                               </div>
+                                              
+
+                                             </div>
+                                           </div>
+                                           
+                                        
+                                    </div>
+<div class="clearfix"></div>
+                                    <div class="col-lg-12 order-details-table">
+                                        <div class="col-lg-12 p-0"><h5>Items refunded</h5></div>
+                                        <div class="table-responsive m-t-20">
+
+
+
+                                        <table id="example24" class="example24 display nowrap table table-hover table-striped table-bordered " cellspacing="0" width="100%">
+                                        <thead>
+                                        <tr>
+                                             
+                                              <th>Product<br>name</th>
+                                              <th>Price </th>
+                                              <th>Qty</th>
+                                              <th>Qty<br>invoiced</th>
+                                             
+                                              <th>Sub<br>total</th>
+                                              <th>Tax<br>amount</th>
+                                              <th>Discount<br>amount</th>
+                                              <th>Row<br>total</th>
+                                        </tr>
+                                                </thead>
+                                                <tbody>
+                                                  <tr>
+                                                      
+                                                   
+                                                    <td>Iris prop mobile</td>
+                                                    <td>RS 1000.00</td>
+                                                    <td>Ordered 2</td>
+                                                    <td> 1</td>
+                                                     
+                                                    <td>RS 1000.00</td>  
+                                                    <td>RS 50.00</td> 
+                                                    <td>RS 0.00</td>
+                                                    <td>RS 1050.00</td>    
+                                                    </tr>
+                                                    <tr>
+                                                      
+                                                   
+                                                    <td>Mobile charger</td>
+                                                    <td>RS 500.00</td>
+                                                    <td>
+                                                      Ordered 2<br>
+                                                      Invoiced 1
+                                                     
+
+                                                    </td>
+                                                    <td>1 </td>
+                                                     
+                                                    <td>RS 500.00</td>  
+                                                    <td>RS 50.00</td> 
+                                                    <td>RS 0.00</td>
+                                                    <td>RS 550.00</td>    
+                                                    </tr>
+
+
+                                        </tbody>
+                                        </table>
+                                        </div>
+                                     
+                                      </div>
+                                        <!-- Comments -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                           
+                                               <div class="col-lg-12 m-b-10 p-0">
+                                                  <div class="col-lg-5 p-0">Credit memo Comments </div>
+                                                   <div class="col-lg-12 p-0">
+                                                 <textarea class="form-control" type="text"></textarea>
+                                                  </div>
+                                               </div>
+                                                 <div class="col-lg-12 p-0"><input type="checkbox" name="" id="notifyemailf"><label for="notifyemailf">Notify customer by email </label> </div>
+
+                                                 <div class="col-lg-12 p-0"><input type="checkbox" name="" id="addcommentsf"><label for="addcommentsf">Add comments </label> </div>
+                                                 <div class="col-lg-12 m-t-10">
+                                        <input type="button" name="updateqty" id="updateqty" class="float-right btn waves-effect waves-light btn-sm btn-info" value="Submit comments">
+                                      </div>
+                                               
+                                               
+                                             </div>
+                                           </div>
+                                             <!-- Payment information -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Refund Totals</span>
+                                             </div>
+                                            <div class="col-lg-12  p-0">
+                                                  <div class="col-lg-5 p-0">
+                                                  Sub Total
+                                                  
+                                               </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 RS 1,500.00
+                                                  </div>
+                                               </div>
+                                               <div class="col-lg-12 p-0 m-t-10">Taxes</div>
+                                               <div class="col-lg-12  p-0">
+                                                  <div class="col-lg-5 p-0">
+                                                   CST
+                                                  
+                                               </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 RS 10.00
+                                                  </div>
+                                               </div>
+                                               <div class="col-lg-12  p-0">
+                                                  <div class="col-lg-5 p-0">
+                                                 GST
+                                                  
+                                               </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 RS 60.00
+                                                  </div>
+                                               </div>
+                                               <div class="col-lg-12  p-0">
+                                                  <div class="col-lg-5 p-0">
+                                                  ABC
+                                                  
+                                               </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 RS 30.00
+                                                  </div>
+                                               </div>
+                                                <div class="col-lg-12  p-0 m-t-10">
+                                                  <div class="col-lg-5 p-0">
+                                                  Discount amount
+                                                  
+                                               </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 RS 0.00
+                                                  </div>
+                                               </div>
+                                                <div class="col-lg-12  p-0 m-t-10">
+                                                  <div class="col-lg-5 p-0">
+                                                 Adjustment fee
+                                                  
+                                               </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 RS 0.00
+                                                  </div>
+                                               </div>
+                                                <div class="col-lg-12  p-0 m-t-10">
+                                                  <div class="col-lg-5 p-0">
+                                                  Grand Total
+                                                  
+                                               </div>
+                                                   <div class="col-lg-7 p-0">
+                                                 RS 1,600.00
+                                                  </div>
+                                               </div>
+                                               
+                                             </div>
+                                           </div>    
+                                           </div>
+                                           <!-- ship after shipment  -->
+                                           <div class="tab-pane p-20 " id="shipaftershipment" role="tabpanel">
+                                            <div class="btn23">
+                                       
+                                     <a href="/sales/order">  <button type="button" class="btn waves-effect waves-light btn-sm btn-default" ng-click="getMyTab('shipments')"> Back </button></a>
+                                       <button type="button" class="btn waves-effect waves-light btn-sm  btn-info"> Ship</button>
+                                   
+                                     <button type="button" class="btn waves-effect waves-light btn-sm btn-default" > Reset </button>
+                                  </div> 
+                                  <div class="clearfix"></div>
+                                        <!--   <div class="form-group">
+                                                    <label class="control-label">First Name</label>
+                                                    <input type="text" id="firstName" class="form-control" placeholder="John doe">
+                                                    <small class="form-control-feedback"> This is inline help </small> </div> -->
+                                            <div class="p-20 row">
+                                               <!-- Order Information -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Order # 100000020(the order confirmation email was sent)</span>
+                                             </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Order date </div>
+                                                  <div class="col-lg-7  p-0">Aug 7,2018 3:41:05 AM</div>
+
+                                               </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Order status </div>
+                                                   <div class="col-lg-7 p-0">ONHOLD</div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Purchased From </div>
+                                                   <div class="col-lg-7 p-0">Zshoper 
+                                                      Country name
+                                                      English
+                                                  </div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Placed from IP </div>
+                                                   <div class="col-lg-7 p-0">123.258.125.369</div>
+
+                                               </div>
+                                             </div>
+                                             </div>   
+                                                  <!-- Account Information -->
+                                              <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Account Information</span>
+                                             </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Customer Name </div>
+                                                  <div class="col-lg-7  p-0">Shihab</div>
+
+                                               </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Email </div>
+                                                   <div class="col-lg-7 p-0">shihab@yahoo.com</div>
+
+                                               </div>
+                                                <div>
+                                                 <div class="col-lg-5 p-0">Mob </div>
+                                                   <div class="col-lg-7 p-0">1234567890</div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Customer Group </div>
+                                                   <div class="col-lg-7 p-0">Customer
+                                                  </div>
+
+                                               </div>
+                                               
+
+                                             </div>
+                                           </div>
+                                             <!-- Billing information -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Billing Address</span>
+                                             </div>
+                                               
+                                               <div class="col-lg-12 p-0">Shihab up</div>
+                                               <div class="col-lg-12 p-0">Uruniyan house </div>
+                                               <div class="col-lg-12 p-0">Panayi </div>
+                                               <div class="col-lg-12 p-0">Anakkayam Po </div>
+                                               <div class="col-lg-12 p-0">Malappuram Dt </div>
+                                               <div class="col-lg-12 p-0">Kerala, India </div>
+                                               <div class="col-lg-12 p-0">676509 </div>
+
+                                              
+                                               
+
+                                             </div>
+                                           </div>
+                                               <!-- Shipping information -->
+                                              <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Shipping Address</span>
+                                             </div>
+                                               
+                                               <div class="col-lg-12 p-0">Shihab up</div>
+                                               <div class="col-lg-12 p-0">Logiprompt</div>
+                                               <div class="col-lg-12 p-0">Kundara </div>
+                                               <div class="col-lg-12 p-0">Kundara Po </div>
+                                               <div class="col-lg-12 p-0">Kollam Dt </div>
+                                               <div class="col-lg-12 p-0">Kerala, India </div>
+                                               <div class="col-lg-12 p-0">12456 </div>
+
+                                             </div>
+                                           </div>
+                                            <!-- Payment information -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span> Payment Information</span>
+                                             </div>
+                                               <div class="col-lg-12 p-0">Credit/Debit Card  </div>
+                                               <div class="col-lg-12  p-0">Order was placed using INR</div>
+
+                                             </div>
+                                           </div>
+                                             <!-- Shipping & handling information -->
+                                              <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                              <div class="m-b-10">
+                                               <span>Shipping and handling information</span>
+                                             </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Shipper</div>
+                                                  <div class="col-lg-7  p-0">India post</div>
+
+                                               </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Delivery type </div>
+                                                 <div class="col-lg-7 p-0">Paid</div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Shipping rate </div>
+                                                   <div class="col-lg-7 p-0">RS 10.00
+                                                  </div>
+                                               </div>
+                                               <div class="col-lg-12 p-0"><a href="">View shipping label</a></div>
+                                                <div>
+                                                  <div class="col-lg-5 p-0">Add tracking number</div>
+                                                   <div class="col-lg-7 p-0">123456789
+                                                  </div>
+                                               </div>
+                                             </div>
+                                           </div>
+                                           
+                                        
+                                    </div>
+<div class="clearfix"></div>
+                                    <div class="col-lg-12 order-details-table">
+                                        <div class="col-lg-12 p-0"><h5>Items Shipped</h5></div>
+                                        <div class="table-responsive m-t-20">
+
+
+
+                                        <table id="example24" class="example24 display nowrap table table-hover table-striped table-bordered " cellspacing="0" width="100%">
+                                        <thead>
+                                        <tr>
+                                             
+                                              <th>Product<br>name</th>
+                                              <th>Price </th>
+                                              <th>Qty</th>
+                                              <th>Qty<br>shipped</th>
+                                             
+                                              
+                                        </tr>
+                                                </thead>
+                                                <tbody>
+                                                  <tr>
+                                                      
+                                                   
+                                                    <td>Iris prop mobile</td>
+                                                    <td>RS 1000.00</td>
+                                                    <td>Ordered 2</td>
+                                                    <td> 2</td>
+                                                    </tr>
+                                                    <tr>
+                                                      
+                                                   
+                                                    <td>Mobile charger</td>
+                                                    <td>RS 500.00</td>
+                                                    <td>
+                                                      Ordered 2<br>
+                                                      Invoiced 1
+                                                     </td>
+                                                    <td>1 </td>
+                                                    </tr>
+
+
+                                        </tbody>
+                                        </table>
+                                        </div>
+                                     
+                                      </div>
+                                        <!-- Comments -->
+                                             <div class="col-lg-6  ">
+                                             <div class="col-lg-12 order-details-box p-10">
+                                           
+                                               <div class="col-lg-12 m-b-10 p-0">
+                                                  <div class="col-lg-5 p-0">Shipping Comments </div>
+                                                   <div class="col-lg-12 p-0">
+                                                 <textarea class="form-control" type="text"></textarea>
+                                                  </div>
+                                               </div>
+                                                 <div class="col-lg-12 p-0"><input type="checkbox" name="" id="notifyemailg"><label for="notifyemailg">Notify customer by email </label> </div>
+
+                                                 <div class="col-lg-12 p-0"><input type="checkbox" name="" id="addcommentsg"><label for="addcommentsg">Add comments </label> </div>
+                                                 <div class="col-lg-12 m-t-10">
+                                        <input type="button" name="updateqty" id="updateqty" class="float-right btn waves-effect waves-light btn-sm btn-info" value="Submit comments">
+                                      </div>
+                                               
+                                               
+                                             </div>
+                                           </div>
+                                            
+                                                 
+                                           </div>
+                                           <!--transactions refund entry  -->
+
+                                           <div class="tab-pane p-20 " id="transactionsrefundentry" role="tabpanel">
+                                             
+                                 
+                                      
+
+                                    
+                                        <!-- Comments -->
+                                             <div class="col-lg-12  ">
+                                             <div class="col-lg-12  p-10">
+                                              
+
+                                               <div class="col-lg-12 m-b-10 p-0">
+                                                  <div class="col-lg-5 p-0">Transaction ID</div>
+                                                   <div class="col-lg-7 p-0">
+                                                 <input  class="form-control" type="text">
+                                                  </div>
+                                               </div>
+                                                 <div class="col-lg-12 m-b-10 p-0">
+                                                  <div class="col-lg-5 p-0">Transaction Date</div>
+                                                   <div class="col-lg-7 p-0">
+                                                  <div class="input-group">
+                                                        <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy">
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text"><i class="icon-calender"></i></span>
+                                                        </div>
+                                                    </div>
+                                                  </div>
+                                               </div>
+
+                                                 <div class="col-lg-12 m-t-10">
+                                        <input type="button" name="updateqty" id="updateqty" class="float-right btn waves-effect waves-light btn-sm btn-info" value="Update">
+                                      </div>
+                                               
+                                               
+                                             </div>
+                                           </div>
+                                            
+                                                 
+                                           </div>
+                                           <!--  -->
+
+                                        </div>
+
+
+                                        </div>
+
+
+
+
+                            </form>
+                            
+                    </div>
+                              <!-- 
+                                <form class="floating-labels m-t-40">
+                                    <div class="form-group m-b-40">
+                                        <input type="text" class="form-control cat" id="name" type="text" ng-model="formdata.category" >
+                                      
+                                        <span class="bar"></span>
+                                        <label for="input1"> category</label>
+                                    </div> <div class="form-group m-b-40 btn23">
+                                    <button type="button" ng-click="insCategory()" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Submit </button>
+                               </div>
+                                </form> -->
+                            </div>
+                        </div>
+                        
+                    </div>
+                   
+                     
+                </div>   
+                </div>
+            </div>
+
+         <link href="/admin/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+ <script src="/admin/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+  <script>
+    $('.mydatepicker, #datepicker').datepicker();
+        $('#datepicker-autoclose').datepicker({
+            autoclose: true,
+            todayHighlight: true
+        });
+     setTimeout(function(){
+  $('.selectpicker').selectpicker({style: 'btn-default',
+  size: 4});
+
+}, 1000)
+ $(document).ready(function() {
+     
+    $('.example24').DataTable({
+        responsive: true,
+		dom: 'Bfrtip',
+        lengthMenu: [
+            [ 10, 25, 50, -1 ],
+            [ '10 rows', '25 rows', '50 rows', 'Show all' ]
+        ],
+         buttons: [
+		 'pageLength',
+          //'csv',
+//            {
+//                text: 'Send payment request',
+//                 className: 'add-action',
+//               
+//            },
+			//  {
+            //     text: 'Edit',
+            //      className: 'edit-action',
+               
+            // },
+          
+            //  {
+            //     text: 'Delete',
+            //      className: 'delete-action',
+            //     // action: function ( e, dt, node, config ) {
+            //     //     alert( 'Button activated' );
+            //     // }
+            // },
+           
+            
+            
+
+        ]
+        
+    });
+
+     });
+	 CKEDITOR.replace( 'editor1', {
+                fullPage: true,
+                allowedContent: true,
+                extraPlugins: 'wysiwygarea'
+        });
+
+  </script>

@@ -205,7 +205,25 @@ form label {
                                     <li><a href="index4.html">Modern</a></li>
                                 </ul> -->
                             </li>
-                             
+                            <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                                <!-- <i class="mdi mdi-book-open-variant"></i> -->
+                                <span class="hide-menu">Products</span></a>
+                                <ul aria-expanded="false" class="collapse">
+                                     <li><a href="/product/category">Category</a></li>
+                                      <li><a href="/product/extrafield">Extra Fields</a></li>
+                                       <li><a href="/product/product">Product</a></li>
+                                    <li >
+                                        <a class="has-arrow " href="#" aria-expanded="flase">Tax Groups</a>
+                                        <ul aria-expanded="true" class="collapse " style="">
+                                            <li><a href="/product/taxgroups">Tax Groups</a></li>
+                                            <li><a href="/product/taxpayments">Tax Payments</a></li>
+
+                                        </ul>
+                                    </li>
+                                    <li><a href="/product/shippingpayments">Shipping Payments</a></li>
+                                     <li><a href="/product/businesstypelist">Business types</a></li>
+                                </ul>
+                            </li>
                                  
                            <li ng-repeat="item in vm.menu.items | orderBy: 'position'"  ng-switch="item.type"  ui-sref-active="active" class="{{item.class}}" uib-dropdown="item.type === 'dropdown'"> 
 

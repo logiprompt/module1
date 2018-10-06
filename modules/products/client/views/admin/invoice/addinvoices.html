@@ -1,0 +1,457 @@
+<style>.btn23{
+    float: right;
+    }
+.page-wrapper{
+   padding-top: 0px;
+     
+}
+
+.order-details-box{
+  font-size: 12px;
+  border: 1px solid  #e6e2e2;
+  margin: 10px 10px 10px 10px;
+}
+</style>
+
+<style type="text/css" id="treeview4-style"> .treeview .list-group-item{cursor:pointer}.treeview span.indent{margin-left:10px;margin-right:10px}.treeview span.icon{width:12px;margin-right:5px}.treeview .node-disabled{color:silver;cursor:not-allowed}.node-treeview4{color:#428bca;}.node-treeview4:not(.node-disabled):hover{background-color:rgba(0, 0, 0, 0.05);} </style>
+   <script src="/admin/assets/plugins/bootstrap-treeview-master/dist/bootstrap-treeview.min.js"></script>
+    <script src="/admin/assets/plugins/bootstrap-treeview-master/dist/bootstrap-treeview-init.js"></script>
+     <link href="/admin/assets/plugins/multiselect/css/multi-select.css" rel="stylesheet" type="text/css" />
+      <link href="/admin/assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+<!-- 
+                ///////////////////////////////////////////////////////////////////////////////////// -->
+
+
+    <div class="page-wrapper" >
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <!-- <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                        <h4 class="text-themecolor">Dashboard 1</h4>
+                    </div>
+                    <div class="col-md-7 align-self-center text-right">
+                        <div class="d-flex justify-content-end align-items-center">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                                <li class="breadcrumb-item active">Dashboard 1</li>
+                            </ol>
+                            
+                        </div>
+                    </div>
+                </div> -->
+                
+          
+          <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Order #100000020 | Aug 7, 2018 3:41:05 AM</h4>
+                                <div class="col-lg-12">
+                     
+                                <!-- <h4 class="card-title">Vertical Tab</h4>
+                                <h6 class="card-subtitle">Use default tab with class <code>vtabs &amp; tabs-vertical</code></h6> -->
+                                <!-- Nav tabs -->
+
+                                  <form class="">  
+                                 
+                                   <div class="form-group m-b-10 btn23">
+                                       
+                                        
+                                        <a href="/product/category"><button type="button"  class="btn waves-effect waves-light btn-sm btn-default"> Cancel </button></a>
+                                        <button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
+                                  </div> 
+                                 
+                              
+                                <div class="vtabs">
+                                    <ul class="nav nav-tabs tabs-vertical" role="tablist">
+                                       
+                                        <li class="nav-item"> <a class="nav-link active show" data-toggle="tab" href="#content" role="tab" aria-selected="false"> <span class="hidden-xs-down">Details</span></a> </li>
+                                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#meta_data" role="tab" aria-selected="false"> <span class="hidden-xs-down">Invoices</span></a> </li>
+                                         <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#navigation" role="tab" aria-selected="false"> <span class="hidden-xs-down">Credit Memos</span></a> </li>
+                                         
+                                         <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#extrafieldgroup" role="tab" aria-selected="false"> <span class="hidden-xs-down">Shipments</span></a> </li>
+                                         
+                                         <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#products" role="tab" aria-selected="false"> <span class="hidden-xs-down">Comments History</span></a> </li>
+                                         
+                                          <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#logs" role="tab" aria-selected="false"> <span class="hidden-xs-down">Transactions</span></a> </li>
+                                    </ul>
+                                    <!-- Tab panes -->
+                                    
+                                    <div class="tab-content col-lg-12">
+                                        
+                                        <div class="tab-pane active show" id="content" role="tabpanel">
+                                        <!--   <div class="form-group">
+                                                    <label class="control-label">First Name</label>
+                                                    <input type="text" id="firstName" class="form-control" placeholder="John doe">
+                                                    <small class="form-control-feedback"> This is inline help </small> </div> -->
+                                            <div class="p-20 row">
+                                               
+                                             <div class="col-lg-5 order-details-box p-10 ">
+                                              <div class="m-b-10">
+                                               <span> Order # 100000020(the order confirmation email was sent)</span>
+                                             </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Order date </div>
+                                                  <div class="col-lg-7  p-0">Aug 7,2018 3:41:05 AM</div>
+
+                                               </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Order status </div>
+                                                   <div class="col-lg-7 p-0">Processing</div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Purchased From </div>
+                                                   <div class="col-lg-7 p-0">Zshoper 
+                                                      Country name
+                                                      English
+                                                  </div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Placed from IP </div>
+                                                   <div class="col-lg-7 p-0">123.258.125.369</div>
+
+                                               </div>
+
+                                             </div>        
+                                             <div class="col-lg-5 order-details-box p-10 ">
+                                              <div class="m-b-10">
+                                               <span> Order # 100000020(the order confirmation email was sent)</span>
+                                             </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Order date </div>
+                                                  <div class="col-lg-7  p-0">Aug 7,2018 3:41:05 AM</div>
+
+                                               </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Order status </div>
+                                                   <div class="col-lg-7 p-0">Processing</div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Purchased From </div>
+                                                   <div class="col-lg-7 p-0">Zshoper 
+                                                      Country name
+                                                      English
+                                                  </div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Placed from IP </div>
+                                                   <div class="col-lg-7 p-0">123.258.125.369</div>
+
+                                               </div>
+
+                                             </div><div class="col-lg-5 order-details-box p-10 m-r-10  m-l-10">
+                                              <div class="m-b-10">
+                                               <span> Order # 100000020(the order confirmation email was sent)</span>
+                                             </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Order date </div>
+                                                  <div class="col-lg-7  p-0">Aug 7,2018 3:41:05 AM</div>
+
+                                               </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Order status </div>
+                                                   <div class="col-lg-7 p-0">Processing</div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Purchased From </div>
+                                                   <div class="col-lg-7 p-0">Zshoper 
+                                                      Country name
+                                                      English
+                                                  </div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Placed from IP </div>
+                                                   <div class="col-lg-7 p-0">123.258.125.369</div>
+
+                                               </div>
+
+                                             </div><div class="col-lg-5 order-details-box p-10 m-r-10  m-l-10">
+                                              <div class="m-b-10">
+                                               <span> Order # 100000020(the order confirmation email was sent)</span>
+                                             </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Order date </div>
+                                                  <div class="col-lg-7  p-0">Aug 7,2018 3:41:05 AM</div>
+
+                                               </div>
+                                               <div>
+                                                 <div class="col-lg-5 p-0">Order status </div>
+                                                   <div class="col-lg-7 p-0">Processing</div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Purchased From </div>
+                                                   <div class="col-lg-7 p-0">Zshoper 
+                                                      Country name
+                                                      English
+                                                  </div>
+
+                                               </div>
+                                               <div>
+                                                  <div class="col-lg-5 p-0">Placed from IP </div>
+                                                   <div class="col-lg-7 p-0">123.258.125.369</div>
+
+                                               </div>
+
+                                             </div>
+                                            <!-- <div class="col-lg-5 order-details-box p-10 m-r-10  m-l-10">
+                                              <div class="m-b-10">
+                                               <span> Order # 100000020(the order confirmation email was sent)</span>
+                                             </div>
+                                               <div>
+                                                 <span>Order date : </span>
+                                                  <span>Aug 7,2018 3:41:05 AM</span>
+
+                                               </div>
+                                               <div>
+                                                 <span>Order status : </span>
+                                                  <span>Processing</span>
+
+                                               </div>
+                                               <div>
+                                                 <span>Purchased From : </span>
+                                                  <span>Zshoper 
+                                                      Country name
+                                                      English
+                                                  </span>
+
+                                               </div>
+                                               <div>
+                                                 <span>Placed from IP : </span>
+                                                  <span>123.258.125.369</span>
+
+                                               </div>
+
+                                             </div> -->
+
+                                              
+
+
+                                                   
+                                                            
+                                                          
+                                                          
+                                                          
+
+
+
+                                                          
+                                
+                                            </div>
+                                        </div>
+                                         <div class="tab-pane" id="meta_data" role="tabpanel">
+                                            <div class="p-20">
+                                               
+                                                    <div class="form-group m-b-10">
+                                                      <label for="input1"> Meta description</label>
+                                                        <textarea class="form-control cat" id="desc" type="text" ng-model="formdata.desc" ></textarea>
+                                                      
+                                                      
+                                                    </div>
+
+                                                    <div class="form-group m-b-10">
+                                                          <label for="input1"> Meta keywords</label>
+                                                          <textarea class="form-control cat" id="key" type="text" ng-model="formdata.key" ></textarea>
+                                                                                                                                                                
+                                                    </div> 
+                                
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane p-20" id="navigation" role="tabpanel">
+                                            
+                                                <div class="form-group m-b-10">
+                                                  <label for="input1"> URL KEY</label>
+                                                        <input type="text" class="form-control cat" id="name"  ng-model="formdata.category" >
+                                                      
+                                                    </div>
+
+                                                    <div class="form-group m-b-10">
+                                                       <label for="input1"> Display in menu link</label>
+                                                      
+                        
+                                                                   <select class="form-control filter-option" name="menu" id="menu" ng-model="formdata.menu">
+                                                                   <option class="filter-option-inner" value="0">choose</option><option class="filter-option-inner" value="1">Yes</option><option class="filter-option-inner" value="2">No</option>
+                                                                 </select>
+                                                     </div>
+                                                     
+                                                      <div class="form-group m-b-10">
+                                                       <label for="input1"> Display in sidebar</label>
+                                                        
+                        
+                                                                   <select class="form-control filter-option" name="sidebar" id="sidebar" ng-model="formdata.sidebar">
+                                                                   <option class="filter-option-inner" value="0">choose</option><option class="filter-option-inner" value="1">Yes</option><option class="filter-option-inner" value="2">No</option>
+                                                                 </select>
+
+                                                     </div>
+
+
+
+                                        </div>
+                                         <div class="tab-pane p-20" id="logs" role="tabpanel">
+                                            
+                                                <div class="row  m-b-40 ">
+                                                    <div class="col-lg-4">     
+                                                        <label class="" for="cd">Created date :</label>
+                                                    </div>  <div class="col-lg-4">
+                              						<label class="" name="cd" id="cd">4 may 2019</label>                                                   </div> 
+                                                   
+                                                </div>
+                                                    
+										 <div class="row m-b-40 lgs">
+                                          <div class="col-lg-4">     
+                                                    <label class="" for="cd">Created date :</label>
+                                                </div>  
+                                         		<div class="col-lg-4">
+                              						<label class="" name="cd" id="cd">4 may 2019</label>        </div> 
+                                               
+ </div> 
+                 								<div class="row m-b-40 lgs">
+                                 <div class="col-lg-4">     
+                                                    <label class="" for="cd">Created date :</label>
+                                                </div>  
+                                                 <div class="col-lg-4">
+                              						<label class="" name="cd" id="cd">4 may 2019</label>         </div> 
+                                               
+ 												</div>                                  
+ 											<div class="row m-b-40 lgs">
+                                               <div class="col-lg-4">
+                                                <label for="input1"> modified By :</label>
+                                               </div>  
+                                               <div class="col-lg-4">
+                                                <label class="" name="mb" id="cb">4 may 2018</label>
+                                               </div>
+                                              	          
+                                                
+ 											</div>           
+                                                       
+
+                                        </div>
+
+
+							<div class="tab-pane p-20" id="extrafieldgroup" role="tabpanel">
+                                            
+                                                
+
+                                                    <div class="form-group m-b-10">
+                                                       <label for="input1">Extra field group</label>
+                                                           <!-- <textarea class="form-control cat" id="extra" type="text" ng-model="formdata.desc" rows="5"></textarea>-->
+                                                           
+                                                           <select class="selectpicker form-control" multiple data-style="form-control btn-info">
+                                            <option>Eletronics</option>
+                                            
+                                        </select>
+
+                                                     </div>
+
+
+
+                                        </div>
+                                        
+        <div class="tab-pane " id="products" role="tabpanel">
+        <div class="p-20">
+
+
+        <div class="form-group m-b-10">
+            <div class="row">
+
+
+                    <div class="col-lg-12">
+                            <a class="btn waves-effect waves-light btn-sm btn-info" href="">Select All</a>
+                            <a class="btn waves-effect waves-light btn-sm btn-info" href="">UnSelect All</a>
+                            
+                        <div class="table-responsive m-t-20">
+
+
+
+                            <table id="example24" class="example24 display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr><th><input type="checkbox" id="checkAll" class="checkAll" ng-model="checkalltxt" ng-click="chkall()"   />
+                                        <label for="checkAll"></label></th>
+                                                                                                                                                                <th>Sl</th>
+                                                                                                                                                                <th>Product name</th>
+                                                                                                                                                                <th>SKU </th>
+                                                                                                                                                                <th>Available Qty</th>
+                                                                                                                                                                <th>Price</th>
+                                                  </tr>
+                                                                                                                                                        </thead>
+                                             <tbody>
+                                                                                                                                                        <tr >
+                                                                                                                                 <td> <input type="checkbox" id="basic_checkbox_{{$index+1}}"  class="rowtxtchk" value="{{$index+1}}" ng-click="addchkval(val.cat_id)" />
+                                <label for="basic_checkbox_{{$index+1}}"></label></td>
+                                                                                                                                 <td>1</td>
+                                                                                                                                    <td>Shirt 007 </td>
+                                                                                                                                    <td>12345</td>
+                                                                                                                                    <td>25</td>
+                                                                                                                                    <td>1000.00</td>
+                                                                                                                                    
+                                                                                                                                </tr>
+                                                                                                          
+                                                                                                           
+                         </tbody>
+                                  </table>
+                                       </div>
+                                           </div>
+                                               </div>  
+                                                             
+                                                 </div>
+                                                                                                    
+                                                                                      
+      
+                                        
+                                                    </div>
+                                                </div>
+                                   
+                                   
+                                </div>
+                                        
+ 
+                                    </div>
+
+                                   
+                                   
+
+                            </form>
+                            
+                    </div>
+                              <!-- 
+                                <form class="floating-labels m-t-40">
+                                    <div class="form-group m-b-40">
+                                        <input type="text" class="form-control cat" id="name" type="text" ng-model="formdata.category" >
+                                      
+                                        <span class="bar"></span>
+                                        <label for="input1"> category</label>
+                                    </div> <div class="form-group m-b-40 btn23">
+                                    <button type="button" ng-click="insCategory()" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Submit </button>
+                               </div>
+                                </form> -->
+                            </div>
+                        </div>
+                        
+                    </div>
+                   
+                     
+                </div>   
+                </div>
+            </div>
+
+            <!-- modal -->
+         
+  <!-- modal -->
+  <script>
+     setTimeout(function(){
+  $('.selectpicker').selectpicker({style: 'btn-default',
+  size: 4});
+}, 1000)
+
+  </script>

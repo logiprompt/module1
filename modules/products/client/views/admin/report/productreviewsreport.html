@@ -1,0 +1,218 @@
+ 
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+    <!-- START MAIN -->
+
+
+    <style>
+         
+      
+     .btn23{
+    float: right;
+    }   
+    .cat{
+      color: rgba(10, 10, 10, 0.5) !important;
+      background-color: #ffffff;
+      }
+      .cat:hover,.cat:active{
+      color: rgba(10, 10, 10, 0.5) !important;
+      background-color: #ffffff !important;
+      }
+
+
+       .show>.cat.dropdown-toggle {
+    color: #fff;
+    background-color: #ffffff;
+    border-bottom:2px solid #fb9678;
+}
+.tblimg{
+width: 70px;
+    height: 52px;
+}
+        </style>
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <!-- <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                        <h4 class="text-themecolor">Dashboard 1</h4>
+                    </div>
+                    <div class="col-md-7 align-self-center text-right">
+                        <div class="d-flex justify-content-end align-items-center">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                                <li class="breadcrumb-item active">Dashboard 1</li>
+                            </ol>
+                            <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</button>
+                        </div>
+                    </div>
+                </div> -->
+                
+          
+          <div class="row">
+                    
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Products reviews</h4>
+                                <!-- <h6 class="card-subtitle">Export data to Copy, CSV, Excel, PDF & Print</h6> -->
+                                <div class="row">
+                                       <div class="form-group col-md-3 m-b-10">
+                                              <label for="input1"> Country</label>
+                                                 <select class="form-control filter-option" name="status" id="status" >
+                                                     <option  value="0" selected>Choose </option>
+                                                     <option value="1" class="">India</option>   
+                                                 </select>
+                                        </div>
+                                         <div class="form-group col-md-3 m-b-10">
+                                              <label for="input1"> Language</label>
+                                                 <select class="form-control filter-option" name="status" id="status" >
+                                                     <option  value="0" selected>Choose </option>
+                                                     <option value="1" class="">Hindi</option>
+                                                     <option value="1" class="">English</option>  
+                                                     <option value="1" class="">Malayalam</option> 
+                                                 </select>
+                                        </div>
+                                          <div class="form-group col-md-3 m-b-10">
+                                          <div class="form-group  m-t-30">
+                                       <div class="input-group">
+                                          <input type="button" class="btn waves-effect waves-light btn-sm btn-info "  value="Show report">
+                                        </div>
+                                     </div>
+                                   </div>
+                               </div>
+                                         
+                           
+                          
+                                <div class="table-responsive m-t-20">
+
+
+                                    <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                               
+                                               
+                                                <th>Product <br>name</th>
+                                                <th>SKU</th>
+                                                <th>No of <br>reviews</th>
+                                                <th>Approved<br>reviews</th>
+                                                <th>Pending<br>reviews</th>
+                                                <th>Rejected<br>reviews</th>
+                                                <th>Last<br>reviewed in</th>
+                                                <th>Action</th>
+                                               
+                                            </tr>
+                                        </thead>
+                                       
+                                        <tbody>
+                                       
+                                            <tr >
+                                               
+                                                <td>Watch</td>
+
+                                                <td>123456 </td>
+                                                
+                                                <td>10</td>
+                                                <td>8</td>
+                                                <td>1</td>
+                                                <td>1</td>
+                                                <td>Aug 15th 2018</td>
+                                                <td><input type="button" class="btn waves-effect waves-light btn-sm btn-info " value="Frontend view">
+                                                  <input type="button" class="btn waves-effect waves-light btn-sm btn-info " value="Backend view"></td>
+                                            </tr>
+                                          
+                                            
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                            <th>Total</th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                           
+                                           
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                     
+                    </div>
+
+
+                </div>   
+             
+             
+        
+                   
+               
+             
+                
+                
+                
+                
+                </div></div>
+                 
+              </div>  
+           
+              
+              
+              
+              
+              </div></div>
+             
+              <link href="/admin/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+              <script src="/admin/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+
+<script>
+
+$('.mydatepicker, #datepicker').datepicker();
+        $('#datepicker-autoclose').datepicker({
+            autoclose: true,
+            todayHighlight: true
+        });
+
+
+    $(document).ready(function() {
+        $(".checkAll").change(function () {
+        
+    $(" input:checkbox").prop('checked', $(this).prop("checked"));
+   
+});
+        $(".rowtxtchk").change(function () {
+console.log(111);
+                $(".checkAll").prop('checked', false);
+        })
+    });
+
+
+    $(document).ready(function() {
+        
+    $('#example23').DataTable({
+        responsive: true,
+        dom: 'Bfrtip',
+        lengthMenu: [
+            [ 10, 25, 50, -1 ],
+            [ '10 rows', '25 rows', '50 rows', 'Show all' ]
+        ],
+         buttons: [
+		 'pageLength',
+         'csv',
+        ]
+    });
+
+     });
+
+   
+</script>

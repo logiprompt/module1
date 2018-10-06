@@ -1,0 +1,180 @@
+<style>.btn23{
+    float: right;
+    }
+.page-wrapper{
+   padding-top: 0px;
+     
+}
+
+.order-details-box{
+  font-size: 12px;
+  border: 1px solid  #e6e2e2;
+  margin: 10px 10px 10px 10px;
+}
+.order-details-box label{
+  font-size: 12px;
+}
+
+
+@media only screen and (max-width: 1000px) {
+	.vtabs .tabs-vertical {
+    width: 100%  !important;
+}
+}
+
+.table-responsive .table td,.table-responsive .table th {
+    font-size: 11px;
+}
+.trans-comments{
+      font-size: 12px;
+}
+.center-align{
+  text-align: center;
+}
+.order-details-box [type="checkbox"] + label {
+   
+    line-height: 36px;
+   
+}
+.label-font label{
+  font-size: 12px !important;
+      line-height: 36px;
+}
+.label-font [type="radio"] + label{
+   line-height: 15px !important;
+}
+.weightcalcbtn{
+    height: 30px;
+    background: #398bf7;
+    padding: 3px 8px;
+    font-size: 12px;
+}
+
+</style>
+
+<style type="text/css" id="treeview4-style"> .treeview .list-group-item{cursor:pointer}.treeview span.indent{margin-left:10px;margin-right:10px}.treeview span.icon{width:12px;margin-right:5px}.treeview .node-disabled{color:silver;cursor:not-allowed}.node-treeview4{color:#428bca;}.node-treeview4:not(.node-disabled):hover{background-color:rgba(0, 0, 0, 0.05);} </style>
+   <script src="/admin/assets/plugins/bootstrap-treeview-master/dist/bootstrap-treeview.min.js"></script>
+    <script src="/admin/assets/plugins/bootstrap-treeview-master/dist/bootstrap-treeview-init.js"></script>
+     <link href="/admin/assets/plugins/multiselect/css/multi-select.css" rel="stylesheet" type="text/css" />
+      <link href="/admin/assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+<!-- 
+                ///////////////////////////////////////////////////////////////////////////////////// -->
+
+
+   <div class="page-wrapper" >
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+              
+          
+          <div class="row">
+                   
+                    
+                     <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">All Credit memos</h4>
+                                       
+                                        <div class="table-responsive m-t-20">
+                              <table id="example24" class="example24 display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                  <thead>
+                                      <tr>
+                                                          <th>Credit<br>memo<br>number</th>
+                                                          <th>Credit<br>memo<br>date</th>
+                                                          <th>Bill<br>to<br>name</th>
+                                                          <th>Payment<br>method</th>
+                                                          <th>Payment<br>status</th>
+                                                          <th>Amount</th>
+                                                          <th>Action</th>
+                                                           </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                          <tr >
+                                                     
+                                                            <td>1000001 </td>
+                                                            <td>Aug 16 2018 7:40:01 AM </td>
+                                                            <td>Shihab</td>
+                                                            <td>Credit/Debit card</td>
+                                                            <td>Paid</td>
+                                                            <td>RS 1600.00</td>
+                                                            <td><a class="btn waves-effect waves-light btn-sm btn-info" href="javascript:void(0);" ng-click="getMyTab('creditmemoissued')">
+                                                          View
+                                                        </a>
+                                                                                                    
+                                                        
+                                                        </td>
+                                                        </tr>
+                                                                        
+                                                                         
+                                                                   </tbody>
+                                                             </table>
+                                                         </div>
+                                                          </div>
+                                                          </div>  
+ </div> 
+                                        </div>
+                                        </div>
+                                        </div>
+                            
+                  
+
+         <link href="/admin/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+ <script src="/admin/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+  <script>
+    $('.mydatepicker, #datepicker').datepicker();
+        $('#datepicker-autoclose').datepicker({
+            autoclose: true,
+            todayHighlight: true
+        });
+     setTimeout(function(){
+  $('.selectpicker').selectpicker({style: 'btn-default',
+  size: 4});
+
+}, 1000)
+ $(document).ready(function() {
+     
+    $('.example24').DataTable({
+        responsive: true,
+		dom: 'Bfrtip',
+        lengthMenu: [
+            [ 10, 25, 50, -1 ],
+            [ '10 rows', '25 rows', '50 rows', 'Show all' ]
+        ],
+         buttons: [
+		 'pageLength',
+          //'csv',
+//            {
+//                text: 'Send payment request',
+//                 className: 'add-action',
+//               
+//            },
+			//  {
+            //     text: 'Edit',
+            //      className: 'edit-action',
+               
+            // },
+          
+            //  {
+            //     text: 'Delete',
+            //      className: 'delete-action',
+            //     // action: function ( e, dt, node, config ) {
+            //     //     alert( 'Button activated' );
+            //     // }
+            // },
+           
+            
+            
+
+        ]
+        
+    });
+
+     });
+	 CKEDITOR.replace( 'editor1', {
+                fullPage: true,
+                allowedContent: true,
+                extraPlugins: 'wysiwygarea'
+        });
+
+  </script>
