@@ -1,0 +1,222 @@
+<style>.btn23{
+    float: right;
+    }
+.page-wrapper{
+   padding-top: 0px;
+     
+}
+
+ 
+
+</style>
+
+<!-- 
+                ///////////////////////////////////////////////////////////////////////////////////// -->
+
+
+    <div class="page-wrapper" >
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <!-- <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                        <h4 class="text-themecolor">Dashboard 1</h4>
+                    </div>
+                    <div class="col-md-7 align-self-center text-right">
+                        <div class="d-flex justify-content-end align-items-center">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                                <li class="breadcrumb-item active">Dashboard 1</li>
+                            </ol>
+                            
+                        </div>
+                    </div>
+                </div> -->
+                
+          
+          <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Location State(Edit) ID 1</h4>
+                                <div class="col-lg-12">
+                     
+                                <!-- <h4 class="card-title">Vertical Tab</h4>
+                                <h6 class="card-subtitle">Use default tab with class <code>vtabs &amp; tabs-vertical</code></h6> -->
+                                <!-- Nav tabs -->
+
+                                  <form class="">  
+                                 
+                                   <div class="form-group m-b-10 btn23">
+                                       
+                                         <button type="button" ng-click="updateState()" class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
+                               
+                                        <a href="/settings/statelist"><button type="button"  class="btn waves-effect waves-light btn-sm btn-default"> Cancel </button></a>
+                                          </div> 
+                                 
+                              
+                                <div class="vtabs">
+                                    <ul class="nav nav-tabs tabs-vertical" role="tablist">
+
+                                       <li class="nav-item"> <a class="nav-link tcat" data-toggle="tab" href="#home" role="tab" aria-selected="true"><span class="hidden-xs-down">Business Country :
+                                       <select class="form-control filter-option " name="status" id="status" >
+                                            <option class="filter-option-inner"  value="0">choose</option>
+                                             <option value="1" class="filter-option-inner" selected="selected">India</option>   
+                                       </select>
+                                              </span> </a> 
+                                          </li>
+
+                <li class="nav-item"> <a class="nav-link tcat" data-toggle="tab" href="#home" role="tab" aria-selected="true"><span class="hidden-xs-down">Language :
+               <select class="form-control filter-option " name="status" id="status" >
+                    <option class="filter-option-inner" selected value="0">choose</option>
+                     <option value="1" class="filter-option-inner" selected="selected">Hindi</option>   
+               </select>
+                      </span> </a> 
+                  </li> <li class="nav-item"> <a class="nav-link active show" data-toggle="tab" href="#general" role="tab" aria-selected="false"> <span class="hidden-xs-down">General</span></a> </li>
+                   <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#logs" role="tab" aria-selected="false"> <span class="hidden-xs-down">Logs</span></a> </li>
+                                                </ul>
+                                    <!-- Tab panes -->
+                                    
+                                    <div class="tab-content col-lg-12">
+                                        
+                                        <div class="tab-pane active show" id="general" role="tabpanel">
+                                        <!--   <div class="form-group">
+                                                    <label class="control-label">First Name</label>
+                                                    <input type="text" id="firstName" class="form-control" placeholder="John doe">
+                                                    <small class="form-control-feedback"> This is inline help </small> </div> -->
+                                            <div class="p-20">
+                                                    <div class="col-md-9">
+                                                    <div class="form-group m-b-10"> 
+                                                     <label for="input1"> Country Name</label>
+                                                        <select class="form-control filter-option" name="country" id="country" >
+                                                                       <option class="filter-option-inner" value="0">choose</option>
+                                                                       
+                                                                       <option  class="filter-option-inner" ng-repeat="val in list" value="{{val.country_id}}" ng-if="val.country_id==formdata.country" selected="selected" >{{val.country}}</option>
+                                                                       <option ng-repeat="val in list" ng-if="val.country_id!=formdata.country" value="{{val.country_id}}">{{val.country}}</option>
+                                                                   
+                                                  </select>
+                                                      
+                                                    </div> 
+                                                </div> 
+                                                 <div class="col-md-3">
+                                                   <div class="form-group has-danger defcheck">
+                                                       <input name="shortchk" type="checkbox" id="chk1" class="filled-in chk-col-light-blue" ><label class="lbl" for="chk1">Default</label>
+                                               </div>
+                                           </div>
+
+                                                 <div class="col-md-9">
+                                                    <div class="form-group m-b-10"> 
+                                                     <label for="input1"> State Name</label>
+                                                        <input type="text" class="form-control cat" id="state"  ng-model="formdata.state" >
+                                                      
+                                                    </div> 
+                                                </div> 
+
+                                                <div class="col-md-3">
+                                                   <div class="form-group has-danger defcheck">
+                                                       <input name="shortchk" type="checkbox" id="chk2" class="filled-in chk-col-light-blue" ><label class="lbl" for="chk2">Default</label>
+                                               </div>
+                                           </div>
+
+                                                    <div class="col-md-9">
+                                                    <div class="form-group m-b-10">
+                                                        <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
+                                                        <label for="input1"> Status</label>
+                                                               <select class="form-control filter-option" name="status" id="status" >
+                                                               <option class="filter-option-inner" value="0">choose</option>
+
+                                                            <option selected value="1" class="">Enabled</option>   
+                                                            <option value="2" class="">Disabled</option>   
+
+                                            
+                                          </select>
+                                        </div>
+                                    </div> 
+
+                                    <div class="col-md-3">
+                                       <div class="form-group has-danger defcheck"> 
+                                           <input name="shortchk1" checked type="checkbox" id="chk3" class="filled-in chk-col-light-blue" ><label class="lbl" for="chk3">Default</label>
+                                   </div>
+                               </div>
+
+                                 </div>
+
+                             </div>
+
+
+                             <div class="tab-pane p-20  show" id="logs" role="tabpanel">
+                                            
+                                            <div class="row  m-b-40 ">
+                                                <div class="col-lg-6">     
+                                                    <label class="" for="cd">Created date :</label>
+                                                </div>  <div class="col-lg-6">
+                                                  <label class="" name="cd" id="cd">4 may 2019</label>                                                   </div> 
+                                               
+                                            </div>
+                                                
+                                     <div class="row m-b-40 lgs">
+                                      <div class="col-lg-6">     
+                                                <label class="" for="cd">Created date :</label>
+                                            </div>  
+                                             <div class="col-lg-6">
+                                                  <label class="" name="cd" id="cd">4 may 2019</label>        </div> 
+                                           
+</div> 
+                                             <div class="row m-b-40 lgs">
+                             <div class="col-lg-6">     
+                                                <label class="" for="cd">Created date :</label>
+                                            </div>  
+                                             <div class="col-lg-6">
+                                                  <label class="" name="cd" id="cd">4 may 2019</label>         </div> 
+                                           
+                                             </div>                                  
+                                         <div class="row m-b-40 lgs">
+                                           <div class="col-lg-6">
+                                            <label for="input1"> modified By :</label>
+                                           </div>  
+                                           <div class="col-lg-6">
+                                            <label class="" name="mb" id="cb">4 may 2018</label>
+                                           </div>
+                                        </div>           
+                                                   
+
+                                    </div>
+
+
+                                </div>
+
+                                        
+ 
+                                    </div>
+
+                                   
+                                   
+
+                            </form>
+                            
+                    </div>
+                              
+                            </div>
+                        </div>
+                        
+                    </div>
+                   
+                     
+                </div>   
+                </div>
+            </div>
+
+            <!-- modal -->
+         
+  <!-- modal -->
+  <script>
+     setTimeout(function(){
+  $('.selectpicker').selectpicker({style: 'btn-default',
+  size: 4});
+}, 1000)
+
+  </script>

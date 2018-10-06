@@ -1,0 +1,362 @@
+<style>
+.btn23{
+    float: right;
+    }
+.page-wrapper{
+   padding-top: 0px;
+     
+}
+
+.file_input_hidden {
+            font-size: 20px;
+            position: absolute;
+            /* right: 0px; */
+            width: 100%;
+            top: 0px;
+            bottom: 0;
+            cursor: pointer;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            -ms-filter: "alpha(opacity=0)";
+            -khtml-opacity: 0;
+            -moz-opacity: 0;
+        }
+        .file_wrap .iconw {
+            border-radius: 0 5px 5px 0;
+            border-right: 1px solid #01bdd6;
+            bottom: -1px;
+            right: -1px;
+            position: absolute;
+            top: -1px;
+            width: 100px;
+            padding: 10px 0 10px 0;
+            background: #01bdd6;
+            text-align: center;
+            cursor: pointer;
+            color: #fff;
+        }
+        .file_wrap .write_textbox {
+            bottom: 0;
+            left: 0;
+            position: absolute;
+            right: 102px;
+            top: 0;
+        }
+        .file_wrap input[type="text"] {
+            background: none repeat scroll 0 0 transparent;
+            border: medium none;
+            color: #333333;
+            font-size: 16px;
+            height: 29px;
+            line-height: 28px;
+            outline: medium none;
+            padding: 4px;
+            width: 98%;
+        }
+        .file_wrap {
+            border: 1px solid #CCC;
+            border-radius: 4px;
+            height: 37px;
+            position: relative;
+        }
+            
+           .imgup
+         {    border: 1px solid #e9ecef;
+            width: 35%;
+            margin-bottom: 35px;
+         } 
+         /* .lgs1{
+         width: 28%;
+    float: left;
+} */
+         .lblfor
+         {
+                /* margin-right: 40%; */
+    width: 65%;
+         }
+         .lblval
+         {margin-left: 70%;
+    width: 55%;
+         }
+
+         .bord
+        {
+border-top: 1px solid #333333;
+        }
+      /* .bootstrap-select{
+            width: inherit !important;
+        }*/
+     
+        .fa{
+    text-rendering: optimizeLegibility !important;
+}
+                .aplus
+                {
+                    float: right;
+                }
+                </style>
+
+<style type="text/css" id="treeview4-style"> .treeview .list-group-item{cursor:pointer}.treeview span.indent{margin-left:10px;margin-right:10px}.treeview span.icon{width:12px;margin-right:5px}.treeview .node-disabled{color:silver;cursor:not-allowed}.node-treeview4{color:#428bca;}.node-treeview4:not(.node-disabled):hover{background-color:rgba(0, 0, 0, 0.05);} </style>
+   <script src="/admin/assets/plugins/bootstrap-treeview-master/dist/bootstrap-treeview.min.js"></script>
+    <script src="/admin/assets/plugins/bootstrap-treeview-master/dist/bootstrap-treeview-init.js"></script>
+<!--  ///////////////////////////////////////////////////////////////////////////////////// -->
+
+                                <div class="page-wrapper" >
+                                <!-- ============================================================== -->
+                                <!-- Container fluid  -->
+                                <!-- ============================================================== -->
+                                <div class="container-fluid">
+                                <!-- ============================================================== -->
+                                <!-- Bread crumb and right sidebar toggle -->
+                                <!-- ============================================================== -->
+                              
+                                <div class="row">
+                                <div class="col-lg-12">
+                                <div class="card">
+                                <div class="card-body">
+                                <h4 class="card-title">Cart</h4>
+                                <div class="col-lg-12">
+
+                                <!-- <h4 class="card-title">Vertical Tab</h4>
+                                <h6 class="card-subtitle">Use default tab with class <code>vtabs &amp; tabs-vertical</code></h6> -->
+                                <!-- Nav tabs -->
+
+                                <form class="">  
+
+                                <div class="form-group m-b-10 btn23">
+
+                                <a href="/product/extrafield" ><button type="button" class="btn waves-effect waves-light btn-sm btn-default"> Cancel </button> </a>
+                                <button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
+                                </div> 
+
+
+                                <div class="vtabs">
+                                <ul class="nav nav-tabs tabs-vertical" role="tablist">
+                                        <li class="nav-item"> <a class="nav-link tcat" data-toggle="tab" href="#home" role="tab" aria-selected="true"><span class="hidden-xs-down"> Country
+                                                <select class="form-control filter-option " name="status" id="status" >
+                                                     <option class="filter-option-inner" value="0">choose</option>
+                                                      <option value="1" class="">India</option>
+                                                      <option value="2" class="">UAE</option>  
+                                                </select>
+                                                       </span> </a> 
+                                                   </li>
+                                <li class="nav-item"> <a class="nav-link tcat active show" data-toggle="tab" href="#type" role="tab" aria-selected="true"><span class="hidden-xs-down">General</span> </a> </li>
+
+                                </ul>
+                                <!-- Tab panes -->
+
+                                <div class="tab-content col-lg-12">
+                        
+                                    <div class="tab-pane active show" id="type" role="tabpanel">
+                                <!--   <div class="form-group">
+                                <label class="control-label">First Name</label>
+                                <input type="text" id="firstName" class="form-control" placeholder="John doe">
+                                <small class="form-control-feedback"> This is inline help </small> </div> -->
+                                <div class="p-20">
+                                        
+                <div class="form-group m-b-10">
+                        
+                        <div id="accordian-3">
+                                <div class="">
+                                <a class="col-lg-12 card-header text-decoration-none" id="heading11">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                <h5 class="m-b-0">Minum Order Amount</h5>
+                                </button><i class="fa fa-plus aplus"></i>
+                                </a>
+                                <div id="collapse1" class="collapse show" aria-labelledby="heading11" data-parent="#accordian-3">
+                                <div class="card-body">
+                             
+                                <div class="form-group m-b-10">
+                                <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
+                                <label for="input1"> Status</label>
+                                <select class="form-control filter-option" name="status" id="status">
+                                <option selected class="filter-option-inner" value="0">Enable</option>
+
+                                <option value="1" class="">Numerics</option>  
+                                <option value="2" class="">Alphabatical</option>  
+
+                                </select> 
+                                </div>   
+                                
+                                <div class="form-group m-b-10">
+                                        <label for="input1"> Minum order amount</label>
+                                        <input type="text" class="form-control cat" id="status" >
+                                </div> 
+
+                                <div class="form-group m-b-10">
+
+                                <label for="input1"> Error message</label>
+                             <textarea class="form-control cat"></textarea> 
+                                </div> 
+                               </div>
+                                </div>
+                                </div>
+
+                                <div class="">
+                                        <a class="col-lg-12 card-header text-decoration-none" id="heading11">
+                                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                        <h5 class="m-b-0">Sort Ordering</h5>
+                                        </button><i class="fa fa-plus aplus"></i>
+                                        </a>
+                                        <div id="collapse1" class="collapse show" aria-labelledby="heading11" data-parent="#accordian-3">
+                                        <div class="card-body">
+                                     
+                                        <div class="form-group m-b-10">
+                                        
+                                        <label for="input1"> Sub total</label>
+                                       <input type="text" class="form-control cat" id="status" value="5" >
+                                        </div>   
+                                        
+                                        <div class="form-group m-b-10">
+                                                <label for="input1"> Discount</label>
+                                                <input type="text" class="form-control cat" id="status" value="10">
+                                        </div> 
+        
+                                        <div class="form-group m-b-10">
+        
+                                        <label for="input1"> Shipping</label>
+                                        <input type="text" class="form-control cat" id="status" value="15">
+                                        </div> 
+                                        <div class="form-group m-b-10">
+        
+                                                <label for="input1"> Tax</label>
+                                                <input type="text" class="form-control cat" id="status" value="20">
+                                                </div> 
+
+                                                <div class="form-group m-b-10">
+        
+                                                        <label for="input1"> Grand Total</label>
+                                                        <input type="text" class="form-control cat" id="status" value="25">
+                                                        </div> 
+
+
+
+                                       </div>
+                                        </div>
+                                        </div>
+
+                        
+                        </div>
+                        </div>
+
+
+
+
+
+
+                                </div> 
+
+                                </div>
+
+                         <div class="tab-pane" id="f_end" role="tabpanel">
+                                        <div class="p-20">
+                                        
+                                                            <div class="form-group m-b-10">
+                                                                 
+                                                                    <div id="accordian-3">
+                                                                        
+                                                                        <div class="">
+                                                                            <a class="col-lg-12 card-header" id="heading22">
+                                                                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse2" aria-expanded="true" aria-controls="collapse2">
+                                                                                    <h5 class="m-b-0">Promotion Banner</h5>
+                                                                                </button><i class="fa fa-plus aplus"></i>
+                                                                            </a>
+                                                                            <div id="collapse2" class="collapse show" aria-labelledby="heading22" data-parent="#accordian-3">
+                                                                                <div class="card-body">
+                                                                                        <div class="form-group m-b-10">
+                                                                                                <div class="col-lg-4 m-t-30">       
+                                                                                                <label for="input1"> Normal size</label>
+                                                                                              </div>
+                                                                                              <div class="col-lg-4 m-t-10">  
+                                                                                                    <label for="input1"> Width</label>
+                                                                                                <input type="text" class="form-control cat" id="status">
+                                                                                                </div> 
+                                                                                            <div class="col-lg-4 m-t-10">  
+                                                                                                    <label for="input1"> height</label>
+                                                                                                <input type="text" class="form-control cat" id="status">
+                                                                                                </div> 
+                                                                                            </div>
+                                                                                            
+                                                                                            <div class="form-group m-b-10">
+                                                                                                    <div class="col-lg-4 m-t-30">       
+                                                                                                    <label for="input1"> Thumbnail size</label>
+                                                                                                  </div>
+                                                                                                  <div class="col-lg-4 m-t-10">  
+                                                                                                        <label for="input1"> Width</label>
+                                                                                                    <input type="text" class="form-control cat" id="status">
+                                                                                                    </div> 
+                                                                                                <div class="col-lg-4 m-t-10" >  
+                                                                                                        <label for="input1"> height</label>
+                                                                                                    <input type="text" class="form-control cat" id="status">
+                                                                                                    </div> 
+                                                                                                </div>
+                                                                                            
+                                                                                                <div class="form-group m-b-10 ">
+                                                                                                <div class="col-lg-4 col-sm-12 m-t-20"> 
+                                                                                                        <label for="input1"> Available types</label>
+                                                                        
+                                                                                                        </div> 
+                                                                                                        <div class="col-lg-8 col-sm-12 m-t-10"> 
+                                                                                                                <div class="col-lg-12 col-sm-12"> 
+                                                                                                                <input name="shortchk" type="checkbox" checked id="chk1" class="filled-in chk-col-light-blue" ><label class="lbl" for="chk1">Jpeg</label>
+                                                                                                               </div>
+                                                                                                               <div class="col-lg-12 col-sm-12"> 
+                                                                                                                <input name="shortchk" type="checkbox" checked id="chk2" class="filled-in chk-col-light-blue" ><label class="lbl" for="chk2">Jpg</label>
+                                                                                                        </div> 
+                                                                                                        <div class="col-lg-12 col-sm-12"> 
+                                                                                                                <input name="shortchk" type="checkbox" checked id="chk3" class="filled-in chk-col-light-blue" ><label class="lbl" for="chk3">Png</label>
+                                                                                                        </div> 
+                                                                                                    </div>
+                                                                                            </div>
+                                                                                            
+                                                                                            
+                                                                                            </div>
+                                                                            </div>
+                                                                        </div>
+                                                                   
+                                                                    </div>
+                                                                </div>
+
+
+
+
+
+
+                                            </div> 
+
+                                            </div>
+
+                                            </div>
+                                            </div>
+                                            </div>
+                                            </div>
+
+                                            </form>
+
+                                            </div>
+                                            <!-- 
+                                            <form class="floating-labels m-t-40">
+                                            <div class="form-group m-b-40">
+                                            <input type="text" class="form-control cat" id="name" type="text" ng-model="formdata.category" >
+
+                                            <span class="bar"></span>
+                                            <label for="input1"> category</label>
+                                            </div> <div class="form-group m-b-40 btn23">
+                                            <button type="button" ng-click="insCategory()" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Submit </button>
+                                            </div>
+                                            </form> -->
+                                            </div>
+                                            </div>
+
+                                            </div>
+
+
+                                            </div>   
+                                            </div>
+                                            </div>
+
+                                            <!-- modal -->
+
+                                            <!-- modal -->
+  
+  

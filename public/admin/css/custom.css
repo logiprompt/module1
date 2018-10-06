@@ -1,0 +1,210 @@
+.col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
+float:left;
+display:block;
+}
+
+.input-group>.custom-file, .input-group>.custom-select, .input-group>.form-control {
+	width:83%;
+	float:left;
+}
+.dataTables_wrapper .dataTables_filter input {
+    margin-left: 0px !important;
+}
+.input-group-text {
+display: -ms-flexbox;
+display: flex;
+-ms-flex-align: center;
+align-items: center;
+padding: .175rem 0.25rem !important;
+margin-bottom: 0;
+font-size: 1rem;
+font-weight: 400;
+line-height: 1.5;
+color: #495057;
+text-align: center;
+white-space: nowrap;
+background-color: #E9ECEF;
+border: 1px solid #CED4DA;
+border-radius: .25rem;
+display: block;
+}
+.dropdown, .dropleft, .dropright, .dropup {
+float: left;
+display: block;
+}
+.navbar-expand-md .navbar-nav {
+	float:right;
+}
+.topbar .top-navbar .navbar-header .navbar-brand {
+	float:left;
+}
+.bord {
+    display: block;
+    float: left;
+    width: 100%;
+}
+.page-wrapper {
+display: block;
+float: left;
+width: 100%;
+}
+.card {
+display: block;
+float: left;
+width: 100%;
+}
+
+.card-body {
+
+float: left;
+display: block;
+width:100%;
+}
+.page-titles {
+display: block;
+float: left;
+width: 100%;
+}
+.customtab2 li {
+float: left;
+}
+.tabs-vertical li {
+width:100%;
+}
+.tab-content>.active {
+    display: block;
+    float: left;
+    width: 100%;
+}
+.vtabs {
+	width:100%;
+}
+.dataTables_wrapper {
+float: left;
+width: 100%;
+}
+.sidebar-nav > ul > li > a.active {
+    
+   background:none; 
+ 
+}
+.updateship
+{
+	top:35px;
+}
+.vtabs .tabs-vertical {
+    width: 200px  !important;
+}
+@media only screen and (min-width:1000px) {
+.align-self-center {
+float: left;
+}
+}
+@media only screen and (max-width: 600px) {
+	.updateship
+{
+	top:0px;
+}
+	.customtab2 li {
+float: left;
+width:100%;
+}
+    .vtabs .tabs-vertical {
+       display: block !important;
+    }
+    .vtabs .tab-content {
+        display: block !important;
+        padding:0px;
+    }
+    .vtabs .tabs-vertical {
+    width: 100%  !important;}
+    .hidden-xs-down {
+    display: block !important; }
+
+.p-20 {padding: 0px !important;}
+.defcheck
+{
+	/*margin-top:-16px;*/
+}
+.table-responsive
+{
+	overflow-x: hidden !important;
+}
+.btn23
+{
+	width:100%;
+	text-align:right;
+	float:none !important;
+}
+.vtabs{display: block !important;}
+.user-dtls {
+    width: 100% !important;}
+}
+@media only screen and (min-width: 600px) {
+.defcheck
+{
+	margin-top:38px;
+}
+.table-responsive
+{
+	overflow-x: hidden !important;
+}
+}
+
+
+    .validationErr{
+	
+border-bottom:1px solid #F00 !important;	
+	}.tabvalidationErr{
+        background: #F00; 
+	
+border:1px solid #F00 !important;	
+	}
+
+    #main-wrapper{
+ 
+       overflow: visible;
+}
+.page-wrapper{
+        padding-top: 0px;
+    }
+	.table thead th {
+    vertical-align: middle;
+    border-bottom: 2px solid #dee2e6;
+}
+.table td, .table th {
+    padding: 3px;
+    vertical-align: middle;
+    border-top: 1px solid #dee2e6;
+	padding-left:10px;
+}
+[type="checkbox"] + label:before, [type="checkbox"]:not(.filled-in) + label:after {
+    content: '';
+    position: absolute;
+    top: 9px;
+}
+.table thead th {
+   
+    font-size: 14px;
+}
+.table td, .table th {
+   
+    font-size: 14px;
+}
+form label {
+    font-size: 14px;
+}
+.treeview .list-group-item {
+    
+    font-size: 13px;
+}
+.hidden-xs-down
+{
+	font-size: 14px;
+}
+.bootstrap-select .btn-default {
+    background: #ffffff;
+    border: 1px solid #ced4da;
+    color: #67757c !important;
+        
+    }

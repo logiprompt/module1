@@ -1,0 +1,13 @@
+
+        {{!< layout}}
+<!-- <section ui-view="header"></section> -->
+{{#contentFor 'header'}}
+ <section ui-view="header"></section>
+{{/contentFor}}
+{{#contentFor 'content'}}
+
+  <section ui-view="content" style="clear: both;"></section>
+{{/contentFor}}
+{{#contentFor 'footer'}}
+ <section ui-view="footer"></section>
+{{/contentFor}}

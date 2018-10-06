@@ -1,0 +1,170 @@
+<!-- <div class="container" ng-controller="HeaderController as vm">
+  <div class="navbar-header">
+    <button class="navbar-toggle" type="button" ng-click="vm.isCollapsed = !vm.isCollapsed">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a ui-sref="home" class="navbar-brand">MEAN.JS</a>
+  </div>
+  <nav class="navbar-collapse" uib-collapse="!vm.isCollapsed" role="navigation">
+    <ul class="nav navbar-nav" ng-if="vm.menu.shouldRender(vm.authentication.user);">
+      <li ng-repeat="item in vm.menu.items | orderBy: 'position'" ng-if="item.shouldRender(vm.authentication.user);" ng-switch="item.type" ng-class="{ dropdown: item.type === 'dropdown' }" ui-sref-active="active" class="{{item.class}}" uib-dropdown="item.type === 'dropdown'">
+        <a ng-switch-when="dropdown" class="dropdown-toggle" uib-dropdown-toggle role="button">{{::item.title}}&nbsp;<span class="caret"></span></a>
+        <ul ng-switch-when="dropdown" class="dropdown-menu">
+          <li ng-repeat="subitem in item.items | orderBy: 'position'" ng-if="subitem.shouldRender(vm.authentication.user);">
+            <a ui-sref="{{subitem.state}}({{subitem.params}})" ng-bind="subitem.title"></a>
+          </li>
+        </ul>
+        <a ng-switch-default ui-sref="{{item.state}}" ng-bind="item.title"></a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right" ng-hide="vm.authentication.user">
+      <li ui-sref-active="active">
+        <a ui-sref="authentication.signup">Sign Up</a>
+      </li>
+      <li class="divider-vertical"></li>
+      <li ui-sref-active="active">
+        <a ui-sref="authentication.signin">Sign In</a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right" ng-show="vm.authentication.user">
+      <li class="dropdown" uib-dropdown>
+        <a class="dropdown-toggle user-header-dropdown-toggle" uib-dropdown-toggle role="button">
+          <img ng-src="{{vm.authentication.user.profileImageURL}}" alt="{{vm.authentication.user.displayName}}" class="header-profile-image" />
+          <span ng-bind="vm.authentication.user.displayName"></span> <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+          <li ui-sref-active="active" ng-repeat="item in vm.accountMenu.items">
+            <a ui-sref="{{item.state}}" ng-bind="item.title"></a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="/api/auth/signout" target="_self">Signout</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</div>
+ -->
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- zshoper The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>zShoper</title>
+<!--zshoper Bootstrap CSS -->
+<link href="/assets/bootstrap/css/bootstrap.min.css" type="text/html" rel="stylesheet">
+<!--v Font Awesome CSS-->
+<link href="/assets/font-awesome/css/font-awesome.min.css"  type="text/html" rel="stylesheet">
+<!--zshoper Linear icons CSS-->
+<link href="/assets/linearicons/css/icon-font.min.css"  type="text/html" rel="stylesheet">
+<!--zshoper Animate CSS -->
+<link href="/assets/animate/animate.css" rel="stylesheet"  type="text/html">
+<!-- zshoper CSS -->
+<link href="/assets/css/ionicons.min.css" rel="stylesheet"  type="text/html">
+<link href="/assets/css/magnific-popup.css" rel="stylesheet"  type="text/html">
+<!--zshoper Owl Carousel -->
+<link href="/assets/owl-carousel/css/owl.carousel.css" rel="stylesheet"  type="text/html">
+<link href="/assets/owl-carousel/css/owl.theme.css" rel="stylesheet"  type="text/html">
+<!--zshoper Custom CSS -->
+<link href="/assets/css/style.css" rel="stylesheet"  type="text/html">
+<link rel="stylesheet" href="/assets/css/fas.css"  type="text/html">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous"  type="text/html">
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"  type="text/html">
+
+<style>
+@media screen and (max-width: 768px) and (min-width: 480px){
+.reg_bx {
+    
+    display: block !important ;}}
+</style>
+</head>
+<body>
+<!--zshoper Pre Loader -->
+<div id="loader"></div>
+<!-- zshoperHeader -->
+<header id="home" class="welcome-hero-area">
+<div class="header-top-area">
+<div class="container">
+<div class="row">
+<div class="col-md-4 col-sm-12">
+<!--zshoper START LOGO -->
+<div class="logo"> <a href="index.html"><img src="/assets/images/logo.png" alt="zshoper"></a> </div>
+<div class="contact-button hidden-xs hidden-sm"><i class="fa fa-mobile"></i> +91 9061010342</div>
+<!--zshoper END LOGO -->
+</div>
+<div class="col-md-8 col-sm-12 nav-fixed">
+<div class="top-info-block text-right hidden-xs">
+<ul>
+<li> <i class="fa fa-map-marker"></i>
+<p>GS2 Heavenly Plaza,Suite No.786
+ <span>Kakkanad, Cochin</span> </p>
+</li>
+<li> <i class="fa fa-phone"></i>
+<p> +97 1569253929<span>+91 9061010342</span> </p>
+</li>
+<li><a href="<?php echo SITE_PATH?>userlogin/index/<?php echo 'login';?>"><button type="button" class="btn btn-primary btn-sm clor-button contact">login</button></a></li>
+<li> <a href="<?php echo SITE_PATH?>userlogin/index/<?php echo 'register';?>"><button type="button" class="btn btn-secondary btn-sm clor-button2 contact2" value="2">Register</button></a>
+
+
+</li>
+</ul>
+</div>
+<div class="nav-bar fadeInDown">
+<!--zshoper START MAIN MENU -->
+<nav class="navbar navbar-default">
+<div class="container">
+<!--zshoper Brand and toggle get grouped for better mobile display -->
+<div class="navbar-header">
+<div class="reg_bx">
+<?php
+if(empty($userid))
+{ ?>
+<a href="<?php echo SITE_PATH?>userlogin/index/<?php echo 'login';?>"><button type="button" class="btn btn-primary btn-sm clor-button contact">login</button></a>
+<a href="<?php echo SITE_PATH?>userlogin/index/<?php echo 'register';?>"><button type="button" class="btn btn-secondary btn-sm clor-button2 contact2">Register</button></a>
+<?php } elseif(!empty($user)) { ?>
+
+<a href="<?php echo USER_PATH;?>home/dashboard"><?php echo ' Hi&nbsp'.$this->session->userdata('username'); ?></a>
+ <?php } 
+elseif(!empty($admin))
+{?>
+<a href="<?php echo SITE_PATH;?>admin/home"><?php  echo ' Hi&nbsp'.$this->session->userdata('username'); ?></a>
+<?php }?>
+</div>
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+<!--zshoper Logo --> </div>
+<!--zshoper Collect the nav links, forms, and other content for toggling -->
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+<ul class="nav navbar-nav">
+<li><a class="smoth-scroll" href="#home">Home</a></li>
+<li><a class="smoth-scroll" href="#services">Services</a></li>
+<li><a class="smoth-scroll" href="#aboutus">About Us</a></li>
+<li><a class="smoth-scroll" href="#testimonials">Testimonials</a></li>
+<li><a class="smoth-scroll" href="#portfolio">Our Products</a></li>
+<li><a class="smoth-scroll" href="#contactus">Contact Us</a></li>
+</ul>
+</div>
+
+</div>
+<!-- /.navbar-collapse zshoper-->
+</nav>
+<!-- END MAIN MENU zshoper-->
+</div>
+</div>
+</div>
+</div>
+</div>
