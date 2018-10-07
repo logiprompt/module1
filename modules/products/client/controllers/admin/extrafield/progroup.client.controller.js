@@ -3,10 +3,12 @@
   angular
     .module('core')
     .controller('ProgroupController', ProgroupController);
-    ProgroupController.$inject = ['$scope','$http','$state','$stateParams'];
-  function ProgroupController ($scope, $http, $state) {
+    ProgroupController.$inject = ['$scope','$http','$state','$stateParams','extrafieldService'];
+  function ProgroupController ($scope, $http, $state, extrafieldService) {
    //alert(); 
    $scope.formdata = {};
+   $scope.status = "0";
+   $scope.extrafieldService = extrafieldService;
 
 /////////////////////defaultLang//////////
  
@@ -40,7 +42,17 @@
 
                     return error;          
             }
+	/*
+	 * Function : addExtrafieldGroup
+	 * Description : Add extra field group details
+	 * Owner : prabin
+	 */
+	  $scope.addExtrafieldGroup = function(){
 
+		  $scope.extrafieldService.addExtraFieldGroup($scope.formdata);
+
+		  
+	  }
 ///////////////////////////////////////////////////////////////////////
 
    
