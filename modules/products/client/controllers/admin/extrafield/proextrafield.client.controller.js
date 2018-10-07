@@ -3,16 +3,33 @@
   angular
     .module('core')
     .controller('ProextrafieldController', ProextrafieldController);
-    ProextrafieldController.$inject = ['$scope','$http','$state','$stateParams'];
-  function ProextrafieldController ($scope, $http, $state) {
+    ProextrafieldController.$inject = ['$scope','$http','$state','$stateParams','ProductsService','extrafieldService'];
+  function ProextrafieldController ($scope, $http, $state, $stateParams, ProductsService, extrafieldService) {
    //alert(); 
    $scope.formdata = {};
-
+   $scope.extrafieldService = extrafieldService;
+  
+   /*
+    * Function : getExtraFieldGroups
+    * description : Get all extra field groups
+    * Owner : Prabin
+    */
+   
+	   $scope.extrafieldService.getExtraFieldGroup().then(function(result){
+		   if(result.statusText = "OK"){
+			   $scope.extrafieldGroups = result.data;
+			  }else{
+				  
+			  }
+	   });
+   
+   
+   
 /////////////////////defaultLang//////////
   
 $scope.formdata.catlang='0';
 $scope.formdata.extra='0';
- 
+
 $scope.values = [{id: 'choice1'}];
 //$scope.choices.length	
   // console.log($scope.choices.length);

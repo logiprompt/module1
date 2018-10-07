@@ -29,7 +29,7 @@
                      <div class="col-lg-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title">All Extrafield </h4>
+                                        <h4 class="card-title">All Extrafield Groups</h4>
                                        
                                         <div class="table-responsive m-t-10">
                                             <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
@@ -37,8 +37,7 @@
                                                     <tr><th><input type="checkbox" id="checkAll" class="checkAll" ng-model="checkalltxt" ng-click="chkall()"   />
                                     <label for="checkAll"></label></th>
                                                         <th>Sl</th>
-                                                        <th>Field name </th>
-                                                        <th>Field type </th>
+                                                        <th>Group name </th>
                                                          <th>Created By </th>
                                                           <th>Created Date </th>
                                                            <th>Status </th>
@@ -71,25 +70,26 @@
                                                                 </button>
                                                                 </td>
                                                     </tr> -->
-                                                <tr>
+                                                <tr ng-repeat="extrafieldGroup in extrafieldGroups" >
                                                         <td>
                                                                 <input type="checkbox" id="basic_checkbox_{{$index+1}}"  class="rowtxtchk" value="{{$index+1}}" ng-click="addchkval(1)" />
                                        <label for="basic_checkbox_{{$index+1}}"></label>
                                                            </td>
-                                                    <td>1</td>
-                                                    <td>Text title</td>
-                                                    <td>Text box</td>
+                                                    <td>{{$index + 1}}</td>
+                                                    <td>{{extrafieldGroup.groupname}}</td>
                                                     <td>admin</td>
-                                                    <td>25-06-2018</td>
-                                                    <td>enabled</td> 
+                                                    <td>{{extrafieldGroup.created | date:'MM/dd/yyyy'}}</td>
+                                                    <td><span ng-if="extrafieldGroup.status">Enable</span>
+                                                    <span ng-if="!extrafieldGroup.status">Disabled</span>
+                                                    </td> 
                                                     <td><a class="btn waves-effect waves-light btn-sm btn-info" href="/product/addextrafield">
                                                             Add field
                                                           </a>
-                                                    <a class="btn waves-effect waves-light btn-sm btn-info" href="/product/editextrafield/1">
+                                                    <a class="btn waves-effect waves-light btn-sm btn-info" href="/product/editextrafield/{{extrafieldGroup._id}}">
                                                             Edit
                                                           </a>
                                                                                                       
-                                                            <button class="btn waves-effect waves-light btn-sm btn-danger"  ng-click="del(1)" rel=""  >
+                                                            <button class="btn waves-effect waves-light btn-sm btn-danger"  ng-click="del(extrafieldGroup._id)" rel=""  >
                                                              Delete
                                                             </button></td>
                                                 </tr>

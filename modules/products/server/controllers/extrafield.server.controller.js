@@ -36,8 +36,8 @@ exports.list = function(request, response) {
 	//console.log(req.body);
 	//console.log(req.body);
 	
-	Extrafield.find({"groupname":"Electronics"}).exec(function (error, items) {
-		  console.log(items);
+	Extrafield.find().exec(function (error, items) {
+
 		        if (error) {
 		  		  console.log(error);
 		          response.status(500).send(error);

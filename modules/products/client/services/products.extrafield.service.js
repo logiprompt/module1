@@ -3,24 +3,46 @@
   'use strict';
 
   angular
-    .module('products')
-    .factory('extrafieldService', extrafieldService);
+  .module('products')
+  .service('extrafieldService', extrafieldService);
 
-  extrafieldService.$inject = ['$resource'];
-
-  function extrafieldService($resource) {
+extrafieldService.$inject = ['$resource','$http'];
+  function extrafieldService($resource,$http) {
     
 	  
-	 var extraFieldGroup = { };
+	 var extraFieldGroup = {};
 	  
-	 
+	 /*
+	  * Function : addExtraFieldGroup
+	  * Description : add extra field group details
+	  * owner : prabin
+	  */
 	 extraFieldGroup.addExtraFieldGroup = function(data){
 		  
-		  return data;
-	  }
+		return $http({
+	           url: '/api/extrafieldgroups/create',
+	           method: "POST",
+	           data:data
+	       });
+	   }
+	 
+	 /*
+	  * Function : getExtraFieldGroups
+	  * Description : add extra field group details
+	  * owner : prabin
+	  */
+	 extraFieldGroup.getExtraFieldGroup = function(){
+		  
+		 return $http({
+		        url: '/api/extrafieldgroups',
+		        method: "GET"
+		    });
+		}
 	 
 	 return extraFieldGroup;
 	  
 	 
   }
+  
+
 }());
