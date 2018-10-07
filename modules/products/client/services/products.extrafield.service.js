@@ -51,6 +51,28 @@ extrafieldService.$inject = ['$resource','$http'];
 		    });
 		}
 	 
+	 /*
+	  * Function : getExtraFieldGroupById
+	  * Description : get one extra field group details by id
+	  * owner : prabin
+	  */
+	 extraFieldGroup.getExtraFieldGroupById = function(groupId){
+		 return $http({
+		        url: '/api/extrafieldgroups/'+groupId,
+		        method: "GET"
+		    });
+	 }
+	 
+	 /*
+	  * 
+	  */
+	 extraFieldGroup.updateExtrafieldGroup = function(groupId,data){
+		 return $http({
+		        url: '/api/extrafieldgroups/'+groupId,
+		        method: "PUT",
+		        data:data
+		    });
+	 }
 	 return extraFieldGroup;
 	  
 	 

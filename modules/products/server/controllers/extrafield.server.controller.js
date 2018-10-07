@@ -67,6 +67,32 @@ var path = require('path'),
 	      });
 	};
 	
+	/*
+	 * Update Extrafield Group
+	 */
+	exports.updateExtrafieldGroup = function(request, response){
+		var groupId = request.params.groupId;
+
+		  Extrafield.findById(request.params.groupId).exec(function (error, item) {
+			  if (error) {
+			        response.status(500).send(error);
+			        return;
+			      }
+			  
+			  if (item) {
+				  	item.groupname = request.body.groupname;
+			        item.description = request.body.status;
+			        
+			        item.save();
+
+			        response.json(item);
+			        return;
+			      }
+
+		  })
+	}
+	
+	
 	/**
 	 * Delete Extra field group by ID
 	 */

@@ -16,7 +16,8 @@ module.exports = function(app) {
   
   app.route('/api/extrafieldgroups/:groupId')
   .get(extrafield.getById)
-  .delete(extrafield.delete);
+  .delete(extrafield.delete)
+  .put(extrafield.updateExtrafieldGroup);
   
 	
    //app.route('/api/extrafieldgroups').all(req, res)
