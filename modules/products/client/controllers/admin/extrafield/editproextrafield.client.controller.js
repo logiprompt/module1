@@ -51,6 +51,7 @@
 			 * Owner : Prabin
 			 */
 			 $scope.updateExtraFieleGroup = function(){
+				 if($scope.formdata.$valid){
 		  	var data = {		  			 
 		 				"groupname":$scope.groupName,
 		 				"status" :$scope.status
@@ -63,7 +64,13 @@
 					  }
 			   });
 			 }
+			 }
 
+			 
+			 
+			 
+			 
+			 
         $scope.rmerrorclass=function(){
                 angular.element(document.querySelectorAll('.validationErr')).removeClass('validationErr');
                 }
