@@ -13,7 +13,7 @@ var ExtrafieldSchema = new Schema({
   groupname: {
     type: String,
     default: '',
-    required: 'Please fill Product name',
+    required: 'Please fill group name',
     trim: true
   },
   status :{

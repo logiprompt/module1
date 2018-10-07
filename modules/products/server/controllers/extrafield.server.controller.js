@@ -9,11 +9,12 @@ var path = require('path'),
   
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   _ = require('lodash');
-console.log(Extrafield);
-/**
+
+  /**
  * Create a Extrafield Group
  */
 exports.create = function(req, res) {
+  console.log(req.body)
   var extrafield = new Extrafield(req.body);
   extrafield.user = req.user;
 

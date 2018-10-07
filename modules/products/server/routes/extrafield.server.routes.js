@@ -10,7 +10,11 @@ module.exports = function(app) {
   // extrafield Group Routes
 	
 	app.route('/api/extrafieldgroups')
-	.get(extrafield.list);
+  .get(extrafield.list);
+  
+  app.route('/api/extrafieldgroups/create').post(extrafield.create);
+  
+  
 	
    //app.route('/api/extrafieldgroups').all(req, res)
      //.get(extrafield.list)
