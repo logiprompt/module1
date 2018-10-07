@@ -8,23 +8,38 @@
    //alert(); 
    $scope.formdata = {};
    $scope.extrafieldService = extrafieldService;
+   
   
    /*
     * Function : getExtraFieldGroups
     * description : Get all extra field groups
     * Owner : Prabin
     */
-   
-	   $scope.extrafieldService.getExtraFieldGroup().then(function(result){
-		   if(result.statusText = "OK"){
-			   $scope.extrafieldGroups = result.data;
-			  }else{
-				  
-			  }
-	   });
-   
-   
-   
+   	$scope.getExtraFieldGroup = function(){
+   		$scope.extrafieldService.getExtraFieldGroup().then(function(result){
+ 		   if(result.statusText = "OK"){
+ 			   $scope.extrafieldGroups = result.data;
+ 			  }else{
+ 				  
+ 			  }
+ 	   });
+   	}
+   	$scope.getExtraFieldGroup();
+	  /*
+	   * FUnction :
+	   * Description :
+	   * Owner :
+	   * 
+	   */
+	   $scope.deleteExtraFieldGroup = function(groupId){
+		   $scope.extrafieldService.deleteExtraFieldGroup(groupId).then(function(result){
+			   if(result.statusText = "OK"){
+				   $scope.getExtraFieldGroup();
+				  }else{
+					  
+				  }
+		   });
+	   }
 /////////////////////defaultLang//////////
   
 $scope.formdata.catlang='0';

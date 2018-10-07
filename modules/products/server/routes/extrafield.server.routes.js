@@ -14,6 +14,9 @@ module.exports = function(app) {
   
   app.route('/api/extrafieldgroups/create').post(extrafield.create);
   
+  app.route('/api/extrafieldgroups/:groupId')
+  .get(extrafield.getById)
+  .delete(extrafield.delete);
   
 	
    //app.route('/api/extrafieldgroups').all(req, res)

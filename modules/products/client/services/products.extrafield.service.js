@@ -28,7 +28,7 @@ extrafieldService.$inject = ['$resource','$http'];
 	 
 	 /*
 	  * Function : getExtraFieldGroups
-	  * Description : add extra field group details
+	  * Description : get ALl extra field group details
 	  * owner : prabin
 	  */
 	 extraFieldGroup.getExtraFieldGroup = function(){
@@ -36,6 +36,18 @@ extrafieldService.$inject = ['$resource','$http'];
 		 return $http({
 		        url: '/api/extrafieldgroups',
 		        method: "GET"
+		    });
+		}
+	 
+	 /*
+	  * Function : getExtraFieldGroups
+	  * Description : Delete extra field group details by id
+	  * owner : prabin
+	  */
+	 extraFieldGroup.deleteExtraFieldGroup = function(groupId){		  
+		 return $http({
+		        url: '/api/extrafieldgroups/'+groupId,
+		        method: "DELETE"
 		    });
 		}
 	 

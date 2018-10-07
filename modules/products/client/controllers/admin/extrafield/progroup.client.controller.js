@@ -58,10 +58,10 @@
 		
 		  $scope.ProductsService.addExtraFieldGroup(data).then(function(result){
 			  if(result.statusText = "OK"){
-				  swal("Sccess!", "Successfully added Country!", "success");  
+				  swal("Sccess!", "Successfully added Extra Field Group!", "success");  
 				  $state.go('extrafield');
 			  }else{
-				  swal("error!", "Country already exist!", "error");
+				  swal("error!", "Extra Field Group already exist!", "error");
 			  }
 			  
 		  })
