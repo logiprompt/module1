@@ -6,7 +6,7 @@
 var path = require('path'),
   mongoose = require('mongoose'),
   Extrafield = mongoose.model('extrafieldGroup'),
-  
+  Field = mongoose.model('extrafield'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   _ = require('lodash');
 
@@ -29,6 +29,25 @@ var path = require('path'),
 	  });
 	};
 
+	/*
+	 * Create Extra field
+	 */
+	
+	exports.createField = function(req, res){
+		console.log(req.body)
+		  var extrafield = new Field(req.body);
+		  extrafield.user = req.user;
+		
+		  extrafield.save(function(err) {
+		    if (err) {
+		      return res.status(400).send({
+		        message: errorHandler.getErrorMessage(err)
+		      });
+		    } else {
+		      res.jsonp(extrafield);
+		    }
+		  });
+	}
 	/**
 	 * List of Extrafield group
 	 */
@@ -49,7 +68,23 @@ var path = require('path'),
 	
 	};
 	
+	/*
+	 * List extra fields 
+	 */
+	exports.listField = function(request, response) {
+		//console.log(req.body);
+		//console.log(req.body);
+		
+		Field.find().exec(function (error, items) {
 	
+			  if (error) {
+				  console.log(error);
+			      response.status(500).send(error);
+			      return;
+			    }
+			    response.json(items);
+			});
+	}
 	/**
 	 * Get Extra field group by ID
 	 */

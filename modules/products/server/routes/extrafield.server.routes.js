@@ -19,6 +19,16 @@ module.exports = function(app) {
   .delete(extrafield.delete)
   .put(extrafield.updateExtrafieldGroup);
   
+  
+  app.route('/api/extrafield').get(extrafield.listField);
+  app.route('/api/extrafield/create').post(extrafield.createField);
+  /*
+  app.route('/api/extrafield/:fieldId')
+  .get(extrafield.getFieldById)
+  .delete(extrafield.deleteField)
+  .put(extrafield.updatefield); */
+  
+  
 	
    //app.route('/api/extrafieldgroups').all(req, res)
      //.get(extrafield.list)

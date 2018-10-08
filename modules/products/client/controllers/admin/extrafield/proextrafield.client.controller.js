@@ -6,7 +6,8 @@
     ProextrafieldController.$inject = ['$scope','$http','$state','$stateParams','ProductsService','extrafieldService'];
   function ProextrafieldController ($scope, $http, $state, $stateParams, ProductsService, extrafieldService) {
    //alert(); 
-   $scope.formdata = {};
+	  $scope.formdata = {};
+   $scope.textfieldform = {};
    $scope.extrafieldService = extrafieldService;
    
   
@@ -25,21 +26,73 @@
  	   });
    	}
    	$scope.getExtraFieldGroup();
-	  /*
-	   * FUnction :
-	   * Description :
-	   * Owner :
-	   * 
+   	
+   	/*
+	   * Function : getExtraFieldGroupById
+	   * description : Get one extra field group by groupid
+	   * Owner : Prabin
 	   */
-	   $scope.deleteExtraFieldGroup = function(groupId){
-		   $scope.extrafieldService.deleteExtraFieldGroup(groupId).then(function(result){
+	  	$scope.getExtraFieldGroupById = function(groupId){
+	  		$scope.extrafieldService.getExtraFieldGroupById(groupId).then(function(result){
 			   if(result.statusText = "OK"){
-				   $scope.getExtraFieldGroup();
+				   $scope.extrafieldGroup = result.data;
+				   $scope.groupName = $scope.extrafieldGroup.groupname;
+				   $scope.status = $scope.extrafieldGroup.status.toString();
+				   
 				  }else{
 					  
 				  }
 		   });
+	  	}
+	  	$scope.getExtraFieldGroupById($stateParams.id);
+	  	
+	  	
+	  /*
+	   * FUnction : deleteExtraFieldGroup
+	   * Description : delete extra field group by id
+	   * Owner : prain
+	   * 
+	   */
+	   $scope.deleteExtraFieldGroup = function(groupId){
+		   
+		   
+		   swal({
+               title: 'Are you sure?',
+               text: "You want to delete this Extrafield Group!",
+               type: 'warning',
+               showCancelButton: false,
+               confirmButtonColor: '#3085d6',
+               cancelButtonColor: '#d33',
+               confirmButtonText: 'Yes, delete it!'
+             }).then((result) => {
+            	 if(result){
+            	 $scope.extrafieldService.deleteExtraFieldGroup(groupId).then(function(result){
+      			   if(result.statusText = "OK"){
+      				 swal(
+      	                     'Deleted!',
+      	                     'Group name has been deleted.',
+      	                     'success'
+      	                   )
+      				   $scope.getExtraFieldGroup();
+      				  }else{
+      					  
+      				  }
+      		   })
+             }
+             })
+		  
 	   }
+	   
+	   
+	   /*
+	    * Function: addExtrafield_textbox
+	    * Desvription : Add Extra field TEXT BOX
+	    * Owner : prabin
+	    */
+	   $scope.addExtrafield_textbox = function(){
+		   
+	   }
+	   
 /////////////////////defaultLang//////////
   
 $scope.formdata.catlang='0';
