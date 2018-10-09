@@ -64,7 +64,7 @@ extrafieldService.$inject = ['$resource','$http'];
 	 }
 	 
 	 /*
-	  * 
+	  * Update Extra field Group by Id
 	  */
 	 extraFieldGroup.updateExtrafieldGroup = function(groupId,data){
 		 return $http({
@@ -73,6 +73,29 @@ extrafieldService.$inject = ['$resource','$http'];
 		        data:data
 		    });
 	 }
+	 
+	 /*
+	  * Create Extra field
+	  */
+	 extraFieldGroup.createExtraField = function(data){
+		 return $http({
+	           url: '/api/extrafield/create',
+	           method: "POST",
+	           data:data
+	       });
+	 }
+	 
+	 
+	 /*
+	  * List Extra fields
+	  */
+	 extraFieldGroup.getExtraField = function(groupid){
+		 return $http({
+		        url: '/api/extrafield',
+		        method: "GET"
+		    });
+	 }
+	 
 	 return extraFieldGroup;
 	  
 	 

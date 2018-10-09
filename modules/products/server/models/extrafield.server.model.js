@@ -55,6 +55,27 @@ var ExtrafieldSchema = new Schema({
   label :{
 	type: String
   },
+  size :{
+	type: String
+  },
+  classname :{
+	type: String
+  },
+  style :{
+	type: String  
+  },
+  defvalue :{
+	type: String 
+  },
+  type:{
+	type: String  
+  },
+  FEvisibility:{
+	  type: String    
+  },
+  position:{
+	  type: String  	  
+  },
   created: {
     type: Date,
     default: Date.now

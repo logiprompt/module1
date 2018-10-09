@@ -44,7 +44,10 @@
 				  }
 		   });
 	  	}
-	  	$scope.getExtraFieldGroupById($stateParams.id);
+	  	if($stateParams.groupid){
+	  		$scope.getExtraFieldGroupById($stateParams.groupid);
+	  	}
+	  	
 	  	
 	  	
 	  /*
@@ -83,6 +86,25 @@
 		  
 	   }
 	   
+	   /*
+	    * function : get all extrafields bu group id
+	    * Description : list all extrafields by group
+	    * owner : prabin
+	    */
+	   $scope.getExtrafields = function(groupId){
+		   $scope.extrafieldService.getExtraField(groupId).then(function(result){
+			   if(result.statusText = "OK"){
+				   $scope.extrafields = result.data;				   
+				   
+				  }else{
+					  
+				  }
+		   });
+	   }
+	   if($stateParams.groupid){
+		   $scope.getExtrafields($stateParams.groupid);
+	   }
+	   
 	   
 	   /*
 	    * Function: addExtrafield_textbox
@@ -90,7 +112,52 @@
 	    * Owner : prabin
 	    */
 	   $scope.addExtrafield_textbox = function(){
+		   var textboxObj = {};
 		   
+		   if($scope.extrafieldform_textbox.$valid){
+			   //console.log($scope.extrafieldform_textbox);
+			   textboxObj.groupid = $stateParams.groupid ;
+			   textboxObj.status = $scope.textbox_status ? $scope.textbox_status : '';
+			   textboxObj.name = $scope.textbox_name;
+			   textboxObj.label = $scope.textbox_label;
+			   textboxObj.size = $scope.textbox_size ? $scope.textbox_size : '';
+			   textboxObj.classname = $scope.textbox_class ? $scope.textbox_class : '';
+			   textboxObj.style = $scope.textbox_style ? $scope.textbox_style :'';
+			   textboxObj.defvalue = $scope.textbox_defvalue ? $scope.textbox_defvalue : '';
+			   textboxObj.type = $scope.textbox_type ? $scope.textbox_type : '';
+			   textboxObj.FEvisibility = $scope.textbox_FEvisibility ? $scope.textbox_FEvisibility : '';
+			   textboxObj.position = $scope.textbox_position ? $scope.textbox_position : '';
+			   
+			   $scope.extrafieldService.createExtraField(textboxObj).then(function(result){
+				   if(result.statusText = "OK"){
+	      				 swal( 'Created!',
+	      	                     'New field created.',
+	      	                     'success'
+	      	                   )
+	      	                   
+	      	                   //clear form 
+	      	                   $scope.textbox_label = '';
+	      				$scope.textbox_name = '';
+	      				$scope.textbox_size = '';
+	      				$scope.textbox_class = '';
+	      				$scope.textbox_style = '';
+	      				$scope.textbox_defvalue = '';
+	      				$scope.textbox_type = '';
+	      				$scope.textbox_FEvisibility = '';
+	      				$scope.textbox_position = '';
+	      				$scope.textbox_status = '';
+	      				$scope.extrafieldform_textbox.$submitted = false;
+	      	                   
+	      				   $scope.getExtrafields($stateParams.groupid);
+	      				 $('.nav-link.tcat').click();
+	      				  }else{
+	      					swal( 'error!',
+		      	                   'Error while creating new field ! Please try again later.',
+		      	                   'error'
+		      	                )
+	      				  }
+			   })
+		   }
 	   }
 	   
 /////////////////////defaultLang//////////

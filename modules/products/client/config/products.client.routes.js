@@ -186,7 +186,7 @@ var adminfooter={
   } 
 })
    .state('proaddextrafield', {
-  url: '/product/addextrafield/:id',
+  url: '/product/addextrafield/:groupid',
  // controllerAs: 'vm',
   views:{
     header:adminheader,
