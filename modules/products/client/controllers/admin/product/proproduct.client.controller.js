@@ -1,7 +1,7 @@
 (function () {
   'use strict';
   angular
-    .module('core')
+    .module('products')
     .controller('ProProductController', ProProductController);
     ProProductController.$inject = ['$scope','$http','$state','$stateParams'];
   function ProProductController ($scope, $http, $state) {

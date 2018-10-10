@@ -130,7 +130,7 @@
                                                 <tbody>
                                                    <tr ng-repeat="val in userlist">
                                                         <td><!-- {{$index+1}} -->
-                                                             <input type="checkbox" id="basic_checkbox_{{$index+1}}"  class="rowtxtchk" value="{{val._id}}" ng-click="addchkval(val._id)" />
+                                                             <input type="checkbox" id="basic_checkbox_{{$index+1}}"  class="rowtxtchk" value="{{val.adminuser_id}}" ng-click="addchkval(val.adminuser_id)" />
                                     <label for="basic_checkbox_{{$index+1}}"></label>
                                     {{$index+1}}</td>
                                                         <td>{{val.uname}}</td>
@@ -142,16 +142,13 @@
                                                        
                                                          <td><span ng-if="val.status==1">Active</span><span ng-if="val.status==2">Inactive</span></td>
                                                         <td style="width:20% !important;"> 
-                                                           <a class="btn waves-effect waves-light btn-sm btn-info" href="/usermanagement/editadminuserlist/{{val._id}}">
+                                                           <a class="btn waves-effect waves-light btn-sm btn-info" href="/usermanagement/editadminuserlist/{{val.adminuser_id}}">
                                                                 Edit
                                                               </a>
-                                                             
-                                                             <button class="btn waves-effect waves-light btn-sm btn-danger"  ng-click="del(val._id)" rel=""  >
+                                                             <button class="btn waves-effect waves-light btn-sm btn-danger"  ng-click="del(val.adminuser_id)" rel=""  >
                                                                  Delete
                                                                 </button>
-                                                             <a class="btn waves-effect waves-light btn-sm btn-default" href="/usermanagement/mngadminuserlist/{{val._id}}">
-                                                                Manage
-                                                              </a>
+                                                            
                                                                                                           
                                                                
                                                                 </td>

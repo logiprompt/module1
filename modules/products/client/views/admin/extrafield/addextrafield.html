@@ -132,25 +132,24 @@ border-top: 1px solid #333333;
                                 <div class="col-lg-12">
                                 <div class="card">
                                 <div class="card-body">
-                                <h4 class="card-title">Extra field group (Add)</h4>
+                                <h4 class="card-title">Extra field (Add)</h4>
                                 <div class="col-lg-12">
 
                                 <!-- <h4 class="card-title">Vertical Tab</h4>
                                 <h6 class="card-subtitle">Use default tab with class <code>vtabs &amp; tabs-vertical</code></h6> -->
                                 <!-- Nav tabs -->
 
-                                <form class="">  
+                                <!-- <form name="extrafieldform" ng-submit="addExtrafields()" novalidate>  -->
 
-                                <div class="form-group m-b-10 btn23">
+                                <!-- <div class="form-group m-b-10 btn23">
                                 <button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm btn-danger"> Delete </button> 
                                 <a href="/product/extrafield" ><button type="button" class="btn waves-effect waves-light btn-sm btn-default"> Cancel </button> </a>
                                 <button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
-                                </div> 
-
-
+                                </div> -->
+                                
                                 <div class="vtabs">
                                 <ul class="nav nav-tabs tabs-vertical" role="tablist">
-                                <li class="nav-item"> <a class="nav-link tcat" data-toggle="tab" href="#home" role="tab" aria-selected="true"><span class="hidden-xs-down">Object</span> </a> </li>
+                                <!-- <li class="nav-item"> <a class="nav-link tcat" data-toggle="tab" href="#home" role="tab" aria-selected="true"><span class="hidden-xs-down">Object</span> </a> </li> -->
                                 <li class="nav-item"> <a class="nav-link tcat active show" data-toggle="tab" href="#ex_field" role="tab" aria-selected="true"><span class="hidden-xs-down">Extra field</span> </a> </li>
                                 <li class="nav-item"> <a class="nav-link " data-toggle="tab" href="#t_box" role="tab" aria-selected="false"> <span class="hidden-xs-down">Text box</span></a> </li>
                                 <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#t_area" role="tab" aria-selected="false"> <span class="hidden-xs-down">Text area</span></a> </li>
@@ -174,127 +173,91 @@ border-top: 1px solid #333333;
                                 <small class="form-control-feedback"> This is inline help </small> </div> -->
                                 <div class="p-20 ">
                                 <div class="row">
+                                <div class="col-lg-12 col-sm-12"> 
+                                <!-- <input type="text" class="form-control cat" id="name"  ng-model="formdata.category" value="Group name" readonly> -->
+                                <label><b>Group name : {{groupName}}</b></label>
+                                </div> 
+                                </div>
+                                <div class="row" style="    border-bottom: 1px solid;margin-bottom: 15px;">
                                 <div class="col-lg-6 col-sm-12"> 
-                                <label for="input1"> Extra field group</label>
+                                <label for="input1"> Fields Name</label>
 
                                 </div> 
                                 <div class="col-lg-6 col-sm-12"> 
                                 <!-- <input type="text" class="form-control cat" id="name"  ng-model="formdata.category" value="Group name" readonly> -->
-                                <label>Group name</label>
+                                <label>Field Type</label>
                                 </div> 
-
+</hr></br>
                                <!--  <div class="col-lg-2 col-sm-12"> 
 
                                 </div> --> </div>
-                                <div class="row">                                      
-                                <div class="col-lg-5 col-sm-12">
+                                <div class="row" ng-repeat="field in extrafields">                                      
+                                <div class="col-lg-6 col-sm-12">
                                 <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
-                                <label for="input1"> Origin</label>
+                                <label for="input1"> {{field.label}}</label>
                                 </div> 
-                                <div class="form-group col-lg-5 col-sm-12"> 
-                                <select class="form-control filter-option" name="status" id="status">
-                                <option class="filter-option-inner" value="0">choose</option>
-                                <option value="1" class=""></option>  
-                                </select> 
+                                <div class="form-group col-lg-4 col-sm-12"> 
+                                <label for="input1"> {{field.type}}</label>
+                                
                                 </div>
                                 <div class="col-lg-2 col-sm-12"> 
                                 <i class="fa fa-paint-brush"></i> &nbsp;<i class="fa fa-trash"></i>     
                                 </div> </div>
 
-
-                                <div class="row">                                      
-                                <div class=" col-lg-5 col-sm-12">
-                                <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
-                                <label for="input1"> Brand</label>
-                                </div> 
-                                <div class="form-group col-lg-5 col-sm-12"> 
-                                <select class="form-control filter-option" name="status" id="status">
-                                <option class="filter-option-inner" value="0">choose</option>
-                                <option value="1" class=""></option>  
-                                </select> 
-                                </div>
-                                <div class="form-group col-lg-2 col-sm-12"> 
-                                <i class="fa fa-paint-brush"></i> &nbsp;<i class="fa fa-trash"></i>     
-                                </div> </div>
-
-
-                                <div class="row">                                      
-                                <div class="form-group col-lg-5 col-sm-12">
-                                <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
-                                <label for="input1"> Model</label>
-                                </div> 
-                                <div class="form-group col-lg-5 col-sm-12"> 
-                                <input type="text" class="form-control cat" id="status">
-                                </div>
-                                <div class="col-lg-2 col-sm-12"> 
-                                <i class="fa fa-paint-brush"></i> &nbsp;<i class="fa fa-trash"></i>     
-                                </div> </div>
-                                <div class="row">                                      
-                                <div class="form-group col-lg-5 col-sm-12">
-                                <label for="input1"> Color</label>
-                                </div> 
-                                <div class="form-group col-lg-5 col-sm-12"> 
-                                <!-- <textarea class="form-control cat" id="status"   >Red, Green, Yellow
-                                </textarea> -->
-                                <select class="selectpicker" multiple data-style="form-control btn-default">
-                                <option>Red</option>
-                                <option>Green</option>
-                                <option>Yellow</option>
-                                </select>
-                                </div>
-                                <div class="col-lg-2 col-sm-12"> 
-                                <i class="fa fa-paint-brush"></i> &nbsp;<i class="fa fa-trash"></i>     
-                                </div> </div>
                                 </div>
 
                                 </div>
 
 
+                                
+                               
 
-
-
-
-
+								
+								
                                 <div class="tab-pane" id="t_box" role="tabpanel">
-
+                                <!-- Start textbox form -->
+								<form name="extrafieldform_textbox" ng-submit="addExtrafield_textbox()" novalidate>
+								 <div class="form-group m-b-40 btn23">
+                                <a href="/product/addextrafield"><button type="button" class="btn waves-effect waves-light btn-sm btn-default"> Cancel </button> </a>
+                                <button type="submit" class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
+                                </div>
                                 <div class="p-20">
-
+								
                                 <div class="m-b-10"> 
                                 <label for="input1"> Label</label>
-                                <input type="text" class="form-control cat" id="name" >
+                                <input type="text" class="form-control cat" id="textbox_label"                                
+                                name="textbox_label"  ng-required=true  ng-model="textbox_label" ng-class="{ 'validationErr' : extrafieldform_textbox.$submitted && !extrafieldform_textbox.textbox_label.$valid}" >
 
                                 </div> 
 
                                 <div class="m-b-10"> 
                                 <label for="input1"> Text box name</label>
-                                <input type="text" class="form-control cat" id="name" >
+                                <input type="text" class="form-control cat" id="textbox_name" 
+                                 name="textbox_name"  ng-required=true  ng-model="textbox_name" ng-class="{ 'validationErr' : extrafieldform_textbox.$submitted && !extrafieldform_textbox.textbox_name.$valid}">
 
                                 </div> 
                                 <div class="m-b-10"> 
                                 <label for="input1">Size</label>
-                                <input type="text" class="form-control cat" id="name">
+                                <input type="text" class="form-control cat" id="textbox_size" name="textbox_size" ng-model="textbox_size">
 
                                 </div> 
                                 <div class="m-b-10"> 
                                 <label for="input1">Class</label>
-                                <input type="text" class="form-control cat" id="name">
+                                <input type="text" class="form-control cat" id="textbox_class" name="textbox_class" ng-model="textbox_class">
 
                                 </div> 
                                 <div class="m-b-10"> 
                                 <label for="input1">Style</label>
-                                <textarea class="form-control cat" id="name" ></textarea>
+                                <textarea class="form-control cat" id="textbox_style" name="textbox_style" ng-model="textbox_style"></textarea>
 
                                 </div> 
                                 <div class="m-b-10"> 
                                 <label for="input1">Default value</label>
-                                <input type="text" class="form-control cat" id="name">
+                                <input type="text" class="form-control cat" id="textbox_defvalue" name="textbox_defvalue" ng-model="textbox_defvalue">
 
                                 </div> 
-
-
-
-                                <div class="m-b-10">
-                                <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
+                               <!--  <div class="m-b-10">
+                                
                                 <label for="input1"> Values required</label>
                                 <select class="form-control filter-option" name="status" id="status">
                                 <option class="filter-option-inner" value="0">choose</option>
@@ -303,53 +266,44 @@ border-top: 1px solid #333333;
                                 <option value="2" class="">No</option>  
 
                                 </select> 
-                                </div>
+                                </div>  -->
 
 
                                 <div class="m-b-10">
 
                                 <label for="input1"> Data types</label>      
-                                </div>    <div class="m-b-10">
+                                </div>    <div class="m-b-10" ng-init="textbox_type = 'text'">
 
-                                <input name="group1" type="radio" id="rad_3" checked />
+                                <input name="textbox_type" type="radio" id="rad_3" checked ng-model="textbox_type" value="text"/>
                                 <label for="rad_3">Text</label>
 
-                                <input name="group1" type="radio" id="rad_1"  />
+                                <input name="textbox_type" type="radio" id="rad_1" ng-model="textbox_type" value="number" />
                                 <label for="rad_1">Numeric</label>
+                                <input name="textbox_type" type="radio" id="rad_1" ng-model="textbox_type" value="email" />
+                                <label for="rad_1">Email</label>
+                                <input name="textbox_type" type="radio" id="rad_1" ng-model="textbox_type" value="date" />
+                                <label for="rad_1">Date</label>
                                 <span class="bar"></span>
 
                                 </div> 
 
 
-                                <div class="form-group m-b-10">
-                                <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
-                                <label for="input1"> Unique value</label>
-                                <select class="form-control filter-option" name="status" id="status">
-                                <option class="filter-option-inner" value="0">choose</option>
-
-                                <option value="1" class="">Yes</option>  
-                                <option value="2" class="">No</option>  
-
-                                </select> 
-                                </div>
-
-                                <div class="form-group m-b-10">
-                                <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
+                                <div class="form-group m-b-10">                                
                                 <label for="input1"> Frontend visibility</label>
-                                <select class="form-control filter-option" name="status" id="status">
-                                <option class="filter-option-inner" value="0">choose</option>
-
+                                <select class="form-control filter-option" name="textbox_FEvisibility" id="status" ng-model="textbox_FEvisibility">                                
                                 <option value="1" class="">Yes</option>  
-                                <option value="2" class="">No</option>  
+                                <option value="" class="">No</option>  
 
                                 </select> 
                                 </div>
+                                
                                 <div class="m-b-10"> 
                                 <label for="input1">Position</label>
-                                <input type="text" class="form-control cat" id="name">
-
+                                <input type="text" class="form-control cat" id="name" name="textbox_position" ng-model="textbox_position">
                                 </div> 
-                                <div class="m-b-10"> 
+                                
+                                
+                               <!--  <div class="m-b-10"> 
                                 <label for="input1">Global view</label>
 
                                 <select class="selectpicker form-control" multiple data-style="form-control btn-default">
@@ -358,27 +312,28 @@ border-top: 1px solid #333333;
                                 <option>UAE</option>
                                 </select>
 
-                                </div> 
+                                </div>  -->
 
                                 <div class="m-b-10">
 
                                 <label for="input1"> Status</label>
-                                <select class="form-control filter-option" name="status" id="status">
-                                <option class="filter-option-inner" value="0">choose</option>
-
+                                <select class="form-control filter-option" name="textbox_status" id="status" ng-model="textbox_status">                                
                                 <option value="1" class="">Enabled</option>  
-                                <option value="2" class="">Disabled</option>  
+                                <option value="" class="">Disabled</option>  
 
                                 </select> 
                                 </div>
 
                                 <div class="form-group m-b-40 btn23">
                                 <a href="/product/addextrafield"><button type="button" class="btn waves-effect waves-light btn-sm btn-default"> Cancel </button> </a>
-                                <button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
+                                <button type="submit" class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
                                 </div> 
 
                                 </div>
+                                </form>
+                                <!-- End textbox form -->
                                 </div>
+                                   
 
 
 
@@ -1553,7 +1508,7 @@ border-top: 1px solid #333333;
                                             </div>
                                             </div>
 
-                                            </form>
+                                            <!--  </form> -->
 
                                             </div>
                                             <!-- 

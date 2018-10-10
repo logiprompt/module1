@@ -9,53 +9,41 @@ var mongoose = require('mongoose'),
 /**
  * Newpost Schema
  */
-var AdminuserrollSchema = new Schema({
-  adminuserroll_id: {
-    type: Number,
-    default: Date.now
-  },
+var AdminUserRoleSchema = new Schema({
 
-  roll: {
+  accessList: {
     type: String,
     default: '',
-    required: 'Please enter user name ',
+    required: 'Please enter role name ',
     trim: true
   },
-
- userid: {
+  userId: {
     type: String,
-    default:'',
-    required: 'Please enter first name'
+    default: ''
   },
-
-  created: {
+  alt: {
+    type: String
+  },
+  createdDateTime: {
     type: Date,
     default: Date.now
   },
 
-  modified: {
+  modifiedDateTime: {
     type: Date,
     default: Date.now
   },
 
-  created_user: {
-    type: String,
-   
+  createdUser: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
   },
 
-  modified_user: {
-    type: String,
-   
-  },
-
-  created_ip: {
-    type: String,
-  },
-
-  modified_ip: {
-    type: String, 
+  modifiedUser: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
   }
 
 });
 
-module.exports=mongoose.model('Sys_adminuserroll', AdminuserrollSchema);
+module.exports = mongoose.model('Sys_adminUserRole', AdminUserRoleSchema);

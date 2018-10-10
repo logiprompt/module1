@@ -11,8 +11,8 @@
       addMenu: addMenu,
       addMenuItem: addMenuItem,
       addSubMenuItem: addSubMenuItem,
-	  addSubMenuItemToSubMenu: addSubMenuItemToSubMenu,
-	  addSubMenuItemToSubMenus:addSubMenuItemToSubMenus,
+      addSubMenuItemToSubMenu: addSubMenuItemToSubMenu,
+      addSubMenuItemToSubMenus: addSubMenuItemToSubMenus,
       defaultRoles: ['user', 'admin'],
       getMenu: getMenu,
       menus: {},
@@ -43,7 +43,7 @@
 
     // Add menu item object
     function addMenuItem(menuId, options) {
-		
+
       // Validate that the menu exists
       service.validateMenuExistence(menuId);
 
@@ -75,10 +75,10 @@
     // Add submenu item object
     function addSubMenuItem(menuId, parentItemState, options) {
       options = options || {};
-	
+
       // Validate that the menu exists
       service.validateMenuExistence(menuId);
-console.log(service.menus[menuId].items);
+      //console.log(service.menus[menuId].items);
       // Search for menu item
       service.menus[menuId].items.filter(function (item) {
         return item.state === parentItemState;
@@ -88,64 +88,64 @@ console.log(service.menus[menuId].items);
           state: options.state || '',
           params: options.params || {},
           roles: ((options.roles === null || typeof options.roles === 'undefined') ? item.roles : options.roles),
-		  class:options.class || '',
+          class: options.class || '',
           position: options.position || 0,
           shouldRender: shouldRender,
-		   items: []
+          items: []
         });
       });
 
       // Return the menu object
       return service.menus[menuId];
     }
-	
-	function addSubMenuItemToSubMenus (menuId, parentItemState, options) {
-        options = options || {};
-        service.validateMenuExistence(menuId);
-		 
-        for (var itemIndex in service.menus[menuId].items) {
-			//alert(service.menus[menuId].items[itemIndex].items[0].state);
-            if (service.menus[menuId].items[itemIndex].items[0].state === parentItemState) {
-                // Push new submenu item
-                var newSubMenuItem = {
-                    title: options.title || '',
-                    state: options.state || '',
-                    disabled: options.disabled || false,
-                    roles: ((options.roles === null || typeof options.roles === 'undefined') ? service.menus[menuId].items[itemIndex].roles : options.roles),
-                    position: options.position || 0,
-                    shouldRender: shouldRender,
-                    items: []
-                };
-				//alert(JSON.stringify(service.menus[menuId].items[1].items[0].items));
-                service.menus[menuId].items[1].items[0].items.push(newSubMenuItem);
-                service.menus[menuId].items[newSubMenuItem.state] = newSubMenuItem;
-            }
+
+    function addSubMenuItemToSubMenus(menuId, parentItemState, options) {
+      options = options || {};
+      service.validateMenuExistence(menuId);
+
+      for (var itemIndex in service.menus[menuId].items) {
+        //alert(service.menus[menuId].items[itemIndex].items[0].state);
+        if (service.menus[menuId].items[itemIndex].items[0].state === parentItemState) {
+          // Push new submenu item
+          var newSubMenuItem = {
+            title: options.title || '',
+            state: options.state || '',
+            disabled: options.disabled || false,
+            roles: ((options.roles === null || typeof options.roles === 'undefined') ? service.menus[menuId].items[itemIndex].roles : options.roles),
+            position: options.position || 0,
+            shouldRender: shouldRender,
+            items: []
+          };
+          //alert(JSON.stringify(service.menus[menuId].items[1].items[0].items));
+          service.menus[menuId].items[1].items[0].items.push(newSubMenuItem);
+          service.menus[menuId].items[newSubMenuItem.state] = newSubMenuItem;
         }
-		 
-        return service.menus[menuId];
+      }
+
+      return service.menus[menuId];
     };
-	
-	
- function addSubMenuItemToSubMenu (menuId, parentItemState, options) {
-        options = options || {};
-        service.validateMenuExistence(menuId);
-        for (var itemIndex in service.menus[menuId].menuHash) {
-            if (service.menus[menuId].menuHash[itemIndex].state === parentItemState) {
-                // Push new submenu item
-                var newSubMenuItem = {
-                    title: options.title || '',
-                    state: options.state || '',
-                    disabled: options.disabled || false,
-                    roles: ((options.roles === null || typeof options.roles === 'undefined') ? service.menus[menuId].menuHash[itemIndex].roles : options.roles),
-                    position: options.position || 0,
-                    shouldRender: shouldRender,
-                    items: []
-                };
-                service.menus[menuId].menuHash[itemIndex].items.push(newSubMenuItem);
-                service.menus[menuId].menuHash[newSubMenuItem.state] = newSubMenuItem;
-            }
+
+
+    function addSubMenuItemToSubMenu(menuId, parentItemState, options) {
+      options = options || {};
+      service.validateMenuExistence(menuId);
+      for (var itemIndex in service.menus[menuId].menuHash) {
+        if (service.menus[menuId].menuHash[itemIndex].state === parentItemState) {
+          // Push new submenu item
+          var newSubMenuItem = {
+            title: options.title || '',
+            state: options.state || '',
+            disabled: options.disabled || false,
+            roles: ((options.roles === null || typeof options.roles === 'undefined') ? service.menus[menuId].menuHash[itemIndex].roles : options.roles),
+            position: options.position || 0,
+            shouldRender: shouldRender,
+            items: []
+          };
+          service.menus[menuId].menuHash[itemIndex].items.push(newSubMenuItem);
+          service.menus[menuId].menuHash[newSubMenuItem.state] = newSubMenuItem;
         }
-        return service.menus[menuId];
+      }
+      return service.menus[menuId];
     };
     // Get the menu object by menu id
     function getMenu(menuId) {

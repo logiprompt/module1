@@ -129,6 +129,21 @@ var adminfooter={
 
 
 
+.state('usermanagementmngadminuserlist', {
+  url: '/usermanagement/mngadminuserlist/:id',
+ // controllerAs: 'vm',
+  views:{
+    header:adminheader,
+    content: { 
+     templateUrl: '/modules/core/client/views/admin/usermanagement/adminuser/adminusermng.html',
+    controller: 'Usermanagementadminusers',
+    controllerAs: 'vm',
+    },
+     footer:adminfooter
+  } 
+})
+
+
 
 
 
@@ -390,7 +405,53 @@ var adminfooter={
      footer:adminfooter
   } 
 })
+////////////////////////currency///////////////////////////////
+.state('generalcurrencylist', {
+  url: '/settings/generalcurrencylist',
+ // controllerAs: 'vm',
+  views:{
+    header:adminheader,
+    content: { 
+     templateUrl: '/modules/core/client/views/admin/settings/general/currency/currencylist.html',
+    controller: 'Currencylist',
+    controllerAs: 'vm',
+    },
+     footer:adminfooter
+  } 
+})
 
+
+
+.state('generalcurrencyadd', {
+  url: '/settings/generalcurrencyadd',
+ // controllerAs: 'vm',
+  views:{
+    header:adminheader,
+    content: { 
+     templateUrl: '/modules/core/client/views/admin/settings/general/currency/currencyadd.html',
+    controller: 'Currencylist',
+    controllerAs: 'vm',
+    },
+     footer:adminfooter
+  } 
+})
+
+
+.state('generalcurrencyedit', {
+  url: '/settings/generalcurrencyedit/:id',
+ // controllerAs: 'vm',
+  views:{
+    header:adminheader,
+    content: { 
+     templateUrl: '/modules/core/client/views/admin/settings/general/currency/currencyedit.html',
+    controller: 'Generalcurrencylist',
+    controllerAs: 'vm',
+    },
+     footer:adminfooter
+  } 
+})
+
+//////////////////////////////////////currency end/////////////
 
 
 ///////////////////////////////////////settings end///////////////////////////////////////////
@@ -494,6 +555,22 @@ var adminfooter={
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////menu/////////////////////////////////////////////////////////
+
+.state('settingsmenuadd', {
+  url: '/settings/settingsmenuadd',
+ // controllerAs: 'vm',
+  views:{
+    header:adminheader,
+    content: { 
+     templateUrl: '/modules/core/client/views/admin/settings/menu/addsettingsmenu.html',
+    controller: 'Settingsmenu',
+    controllerAs: 'vm',
+    },
+     footer:adminfooter
+  } 
+})
+//////////////////////////////////////////////////////////////////////////////
 
 
 

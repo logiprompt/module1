@@ -1,12 +1,14 @@
 (function () {
   'use strict';
   angular
-    .module('core')
+    .module('products')
     .controller('ProgroupController', ProgroupController);
-    ProgroupController.$inject = ['$scope','$http','$state','$stateParams'];
-  function ProgroupController ($scope, $http, $state) {
+    ProgroupController.$inject = ['$scope','$http','$state','$stateParams','extrafieldService','ProductsService'];
+  function ProgroupController ($scope, $http, $state, extrafieldService,ProductsService) {
    //alert(); 
    $scope.formdata = {};
+   $scope.status = "0";
+   $scope.ProductsService = ProductsService;
 
 /////////////////////defaultLang//////////
  
@@ -40,7 +42,32 @@
 
                     return error;          
             }
-
+                
+                
+	/*
+	 * Function : addExtrafieldGroup
+	 * Description : Add extra field group details
+	 * Owner : prabin
+	 */
+	  $scope.addExtrafieldGroup = function(){
+		if($scope.formdata.$valid){
+		var data = {
+				"groupname":$scope.groupName,
+				"status" :$scope.status
+			  }
+		
+		  $scope.ProductsService.addExtraFieldGroup(data).then(function(result){
+			  if(result.statusText = "OK"){
+				  swal("Sccess!", "Successfully added Extra Field Group!", "success");  
+				  $state.go('extrafield');
+			  }else{
+				  swal("error!", "Extra Field Group already exist!", "error");
+			  }
+			  
+		  })
+		}
+			
+	  }
 ///////////////////////////////////////////////////////////////////////
 
    
@@ -52,7 +79,7 @@
 
  function getActionBtns(){
 
-
+/*
  $scope.addpage  = document.querySelectorAll(".add-action");
  $scope.addpage[0].addEventListener("click", $scope.newpage, false);
 
@@ -61,7 +88,7 @@
 
  var delpage= document.querySelectorAll(".delete-action");
  delpage[0].addEventListener("click", $scope.delpage, false);
-
+*/
 
 
  }

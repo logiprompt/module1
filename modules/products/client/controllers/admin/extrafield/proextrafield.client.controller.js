@@ -3,16 +3,168 @@
   angular
     .module('core')
     .controller('ProextrafieldController', ProextrafieldController);
-    ProextrafieldController.$inject = ['$scope','$http','$state','$stateParams'];
-  function ProextrafieldController ($scope, $http, $state) {
+    ProextrafieldController.$inject = ['$scope','$http','$state','$stateParams','ProductsService','extrafieldService'];
+  function ProextrafieldController ($scope, $http, $state, $stateParams, ProductsService, extrafieldService) {
    //alert(); 
-   $scope.formdata = {};
-
+	  $scope.formdata = {};
+   $scope.textfieldform = {};
+   $scope.extrafieldService = extrafieldService;
+   
+  
+   /*
+    * Function : getExtraFieldGroups
+    * description : Get all extra field groups
+    * Owner : Prabin
+    */
+   	$scope.getExtraFieldGroup = function(){
+   		$scope.extrafieldService.getExtraFieldGroup().then(function(result){
+ 		   if(result.statusText = "OK"){
+ 			   $scope.extrafieldGroups = result.data;
+ 			  }else{
+ 				  
+ 			  }
+ 	   });
+   	}
+   	$scope.getExtraFieldGroup();
+   	
+   	/*
+	   * Function : getExtraFieldGroupById
+	   * description : Get one extra field group by groupid
+	   * Owner : Prabin
+	   */
+	  	$scope.getExtraFieldGroupById = function(groupId){
+	  		$scope.extrafieldService.getExtraFieldGroupById(groupId).then(function(result){
+			   if(result.statusText = "OK"){
+				   $scope.extrafieldGroup = result.data;
+				   $scope.groupName = $scope.extrafieldGroup.groupname;
+				   $scope.status = $scope.extrafieldGroup.status.toString();
+				   
+				  }else{
+					  
+				  }
+		   });
+	  	}
+	  	if($stateParams.groupid){
+	  		$scope.getExtraFieldGroupById($stateParams.groupid);
+	  	}
+	  	
+	  	
+	  	
+	  /*
+	   * FUnction : deleteExtraFieldGroup
+	   * Description : delete extra field group by id
+	   * Owner : prain
+	   * 
+	   */
+	   $scope.deleteExtraFieldGroup = function(groupId){
+		   
+		   
+		   swal({
+               title: 'Are you sure?',
+               text: "You want to delete this Extrafield Group!",
+               type: 'warning',
+               showCancelButton: false,
+               confirmButtonColor: '#3085d6',
+               cancelButtonColor: '#d33',
+               confirmButtonText: 'Yes, delete it!'
+             }).then((result) => {
+            	 if(result){
+            	 $scope.extrafieldService.deleteExtraFieldGroup(groupId).then(function(result){
+      			   if(result.statusText = "OK"){
+      				 swal(
+      	                     'Deleted!',
+      	                     'Group name has been deleted.',
+      	                     'success'
+      	                   )
+      				   $scope.getExtraFieldGroup();
+      				  }else{
+      					  
+      				  }
+      		   })
+             }
+             })
+		  
+	   }
+	   
+	   /*
+	    * function : get all extrafields bu group id
+	    * Description : list all extrafields by group
+	    * owner : prabin
+	    */
+	   $scope.getExtrafields = function(groupId){
+		   $scope.extrafieldService.getExtraField(groupId).then(function(result){
+			   if(result.statusText = "OK"){
+				   $scope.extrafields = result.data;				   
+				   
+				  }else{
+					  
+				  }
+		   });
+	   }
+	   if($stateParams.groupid){
+		   $scope.getExtrafields($stateParams.groupid);
+	   }
+	   
+	   
+	   /*
+	    * Function: addExtrafield_textbox
+	    * Desvription : Add Extra field TEXT BOX
+	    * Owner : prabin
+	    */
+	   $scope.addExtrafield_textbox = function(){
+		   var textboxObj = {};
+		   
+		   if($scope.extrafieldform_textbox.$valid){
+			   //console.log($scope.extrafieldform_textbox);
+			   textboxObj.groupid = $stateParams.groupid ;
+			   textboxObj.status = $scope.textbox_status ? $scope.textbox_status : '';
+			   textboxObj.name = $scope.textbox_name;
+			   textboxObj.label = $scope.textbox_label;
+			   textboxObj.size = $scope.textbox_size ? $scope.textbox_size : '';
+			   textboxObj.classname = $scope.textbox_class ? $scope.textbox_class : '';
+			   textboxObj.style = $scope.textbox_style ? $scope.textbox_style :'';
+			   textboxObj.defvalue = $scope.textbox_defvalue ? $scope.textbox_defvalue : '';
+			   textboxObj.type = $scope.textbox_type ? $scope.textbox_type : '';
+			   textboxObj.FEvisibility = $scope.textbox_FEvisibility ? $scope.textbox_FEvisibility : '';
+			   textboxObj.position = $scope.textbox_position ? $scope.textbox_position : '';
+			   
+			   $scope.extrafieldService.createExtraField(textboxObj).then(function(result){
+				   if(result.statusText = "OK"){
+	      				 swal( 'Created!',
+	      	                     'New field created.',
+	      	                     'success'
+	      	                   )
+	      	                   
+	      	                   //clear form 
+	      	                   $scope.textbox_label = '';
+	      				$scope.textbox_name = '';
+	      				$scope.textbox_size = '';
+	      				$scope.textbox_class = '';
+	      				$scope.textbox_style = '';
+	      				$scope.textbox_defvalue = '';
+	      				$scope.textbox_type = '';
+	      				$scope.textbox_FEvisibility = '';
+	      				$scope.textbox_position = '';
+	      				$scope.textbox_status = '';
+	      				$scope.extrafieldform_textbox.$submitted = false;
+	      	                   
+	      				   $scope.getExtrafields($stateParams.groupid);
+	      				 $('.nav-link.tcat').click();
+	      				  }else{
+	      					swal( 'error!',
+		      	                   'Error while creating new field ! Please try again later.',
+		      	                   'error'
+		      	                )
+	      				  }
+			   })
+		   }
+	   }
+	   
 /////////////////////defaultLang//////////
   
 $scope.formdata.catlang='0';
 $scope.formdata.extra='0';
- 
+
 $scope.values = [{id: 'choice1'}];
 //$scope.choices.length	
   // console.log($scope.choices.length);
