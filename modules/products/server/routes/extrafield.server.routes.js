@@ -20,7 +20,7 @@ module.exports = function(app) {
   .put(extrafield.updateExtrafieldGroup);
   
   
-  app.route('/api/extrafield').get(extrafield.listField);
+  app.route('/api/extrafield/:groupId').get(extrafield.listField);
   app.route('/api/extrafield/create').post(extrafield.createField);
   /*
   app.route('/api/extrafield/:fieldId')

@@ -91,7 +91,7 @@ extrafieldService.$inject = ['$resource','$http'];
 	  */
 	 extraFieldGroup.getExtraField = function(groupid){
 		 return $http({
-		        url: '/api/extrafield',
+		        url: '/api/extrafield/'+groupid,
 		        method: "GET"
 		    });
 	 }

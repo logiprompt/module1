@@ -75,7 +75,7 @@ var path = require('path'),
 		//console.log(req.body);
 		//console.log(req.body);
 		
-		Field.find().exec(function (error, items) {
+		Field.find({'groupid':request.params.groupId}).exec(function (error, items) {
 	
 			  if (error) {
 				  console.log(error);
