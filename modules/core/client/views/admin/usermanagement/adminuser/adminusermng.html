@@ -1,4 +1,5 @@
-<style>.btn23{
+<style>
+.btn23{
     float: right;
     }
 .page-wrapper{
@@ -7,6 +8,10 @@
 }.cntimg {
     width: 35px;
     height: 30px;
+}
+.btns
+{    font-size: 13px !important;
+    line-height: 1.6em;
 }
 </style>
 
@@ -29,72 +34,58 @@
                      <div class="col-lg-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title">All Extrafield Groups</h4>
+                                        <h4 class="card-title">Admin Manage Users List </h4>
                                        
                                         <div class="table-responsive m-t-10">
                                             <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                                                 <thead>
-                                                    <tr><th><input type="checkbox" id="checkAll" class="checkAll" ng-model="checkalltxt" ng-click="chkall()"   />
-                                    <label for="checkAll"></label></th>
-                                                        <th>Sl</th>
-                                                        <th>Group name </th>
-                                                         <th>Created By </th>
-                                                          <th>Created Date </th>
-                                                           <th>Status </th>
+                                                    <tr>
+                                                        <th><input type="checkbox" id="checkAll" class="checkAll" ng-model="checkalltxt" ng-click="chkall()"   />
+                                    <label for="checkAll"></label>ID#</th>
+                                                        <th>User<br> Name</th>
+                                                        <th>First<br> Name</th>
+                                                        <th>Last<br> Name</th>
+                                                        <th>Email</th>
+                                                        <th>Created<br> Date </th>
+                                                        <th>Modified<br> Date </th>
+                                                        <th>Status</th>
                                                         <th>Action</th>
-                                                        
                                                     </tr>
                                                 </thead>
                                                 
                                                 <tbody>
-                                                   <!-- <tr ng-repeat="val in list">
-                                                        <td>
-                                                             <input type="checkbox" id="basic_checkbox_{{$index+1}}"  class="rowtxtchk" value="{{$index+1}}" ng-click="addchkval(val.cat_id)" />
+                                                   <tr ng-repeat="val in userlist">
+                                                        <td><!-- {{$index+1}} -->
+                                                             <input type="checkbox" id="basic_checkbox_{{$index+1}}"  class="rowtxtchk" value="{{val.adminuser_id}}" ng-click="addchkval(val.adminuser_id)" />
                                     <label for="basic_checkbox_{{$index+1}}"></label>
-                                                        </td>
-                                                        <td>{{$index+1}}</td>
-                                                        <td><img class="cntimg" src="/uploads/file-1534158180451.png"></td>
-                                                        <td>{{val.category}}</td>
-                                                        <td>Admin</td>
-                                                        <td>09-08-2018</td>
-                                                         <td>Enabled</td>
+                                    {{$index+1}}</td>
+                                                        <td>{{val.uname}}</td>
+                                                        <td>{{val.fname}}</td>
+                                                        <td>{{val.lname}}</td>
+                                                        <td>{{val.email}}</td>
+                                                        <td>{{val.created}}</td>
+                                                        <td>{{val.modified}}</td>
+                                                       
+                                                         <td><span ng-if="val.status==1">Active</span><span ng-if="val.status==2">Inactive</span></td>
                                                         <td style="width:20% !important;"> 
-                                                           
-                                                            
-                                                            <a class="btn waves-effect waves-light btn-sm btn-info" href="/editprocat/{{val.cat_id}}">
+                                                           <a class="btn waves-effect waves-light btn-sm btn-info" href="/usermanagement/editadminuserlist/{{val.adminuser_id}}">
                                                                 Edit
                                                               </a>
-                                                                                                          
-                                                                <button class="btn waves-effect waves-light btn-sm btn-danger"  ng-click="del(val.cat_id)" rel=""  >
+                                                              <a class="btn waves-effect waves-light btn-sm btn-info" href="/usermanagement/mngadminuserlist/">
+                                                                Edit
+                                                              </a>
+                                                             <button class="btn waves-effect waves-light btn-sm btn-danger"  ng-click="del(val.adminuser_id)" rel=""  >
                                                                  Delete
                                                                 </button>
+                                                             <a class="btn waves-effect waves-light btn-sm btn-default" href="/usermanagement/mngadminuserlist/">
+                                                                Manage
+                                                              </a>
+                                                                                                          
+                                                               
                                                                 </td>
-                                                    </tr> -->
-                                                <tr ng-repeat="extrafieldGroup in extrafieldGroups" >
-                                                        <td>
-                                                                <input type="checkbox" id="basic_checkbox_{{$index+1}}"  class="rowtxtchk" value="{{$index+1}}" ng-click="addchkval(1)" />
-                                       <label for="basic_checkbox_{{$index+1}}"></label>
-                                                           </td>
-                                                    <td>{{$index + 1}}</td>
-                                                    <td>{{extrafieldGroup.groupname}}</td>
-                                                    <td>admin</td>
-                                                    <td>{{extrafieldGroup.created | date:'MM/dd/yyyy'}}</td>
-                                                    <td><span ng-if="extrafieldGroup.status">Enable</span>
-                                                    <span ng-if="!extrafieldGroup.status">Disabled</span>
-                                                    </td> 
-                                                    <td><a class="btn waves-effect waves-light btn-sm btn-info" href="/product/addextrafield/{{extrafieldGroup._id}}">
-                                                            Add field
-                                                          </a>
-                                                    <a class="btn waves-effect waves-light btn-sm btn-info" href="/product/editextrafield/{{extrafieldGroup._id}}">
-                                                            Edit
-                                                          </a>
-                                                                                                      
-                                                            <button class="btn waves-effect waves-light btn-sm btn-danger"  ng-click="deleteExtraFieldGroup(extrafieldGroup._id)" rel=""  >
-                                                             Delete
-                                                            </button></td>
-                                                </tr>
-                                                    
+                                                    </tr>
 
+                                                      
                                                     
                                                 </tbody>
                                             </table>
@@ -143,7 +134,7 @@
                                     </div>
 
                                  
-                                     <div class="form-group m-b-40">
+                                     <div class="form-group m-b-40 btn23">
                                     <button type="button" ng-click="insCategoryLang()" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Submit </button>
                                   </div> 
                                 </form>

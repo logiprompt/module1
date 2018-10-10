@@ -8,7 +8,7 @@ var validator = require('validator'),
   // Country = mongoose.model('Country'),
   Adminuser = mongoose.model('Sys_adminuser'),
   Adminuserlog = mongoose.model('Sys_adminuserlogin'),
-  Adminuserroll = mongoose.model('Sys_adminuserroll'),
+  Adminuserrole = mongoose.model('Sys_adminUserRole'),
   custom=require('./custom'),
   config = require(path.resolve('./config/config'));
 
@@ -76,7 +76,8 @@ exports.renderNotFound = function (req, res) {
 exports.insadminuser = function(req, res) {
 
   var newAdminuser = new Adminuser(req.body);
- var newAdminuserlog = new Adminuserlog(req.body);
+ var newAdminuserlog = new Adminuserlog(req.body); 
+ var newAdminuserrole = new Adminuserrole(req.body);
   var picpath="";
   var today=Date.now();
   var storage = multer.diskStorage({
@@ -122,8 +123,9 @@ else{
             newAdminuser.modified_user=req.body.username;
             newAdminuser.created_ip=req.body.ip;
             newAdminuser.modified_ip=req.body.ip;
-            newAdminuser.save(function(err) { 
-                    if (err) throw err;
+            newAdminuser.save(function(err) 
+            { 
+              if (err) throw err;
             });
 
 
@@ -140,11 +142,15 @@ else{
             newAdminuserlog.save(function(err) { 
                     if (err) throw err;
             });
-
-
-
-
-            
+            //console.log(req.body)
+            newAdminuserrole.accessList = req.body.role;
+            //newAdminuserrole.userId = req.body.desc;
+            ///newAdminuserrole.createdUser=req.body.username;
+            //newAdminuserrole.modifiedUser=req.body.username;
+            newAdminuserrole.save(function(err) 
+            { 
+                if (err) throw err;
+            });  
           }); 
 
   res.json({
@@ -186,9 +192,23 @@ res.json({
 };
 /////////////////////////////////////////////////////////////
 exports.delAdminusers = function(req, res) {
-
-  
-  Adminuser.deleteOne({adminuser_id:req.body.id}).exec(function (err, data) {
+Adminuser.deleteOne({_id:req.body.id}).exec(function (err, data) {
+              if (err) throw err;
+         
+          res.json({
+                     status: 1,
+                   
+                 });	
+         });
+         Adminuserlog.deleteOne({_id:req.body.id}).exec(function (err, data) {
+              if (err) throw err;
+         
+          res.json({
+                     status: 1,
+                   
+                 });	
+         });
+         Adminuserrole.deleteOne({_id:req.body.id}).exec(function (err, data) {
               if (err) throw err;
          
           res.json({
@@ -207,7 +227,7 @@ exports.delAdminusers = function(req, res) {
 exports.delcheckedAdminusers = function(req, res) {
 
   
-  Adminuser.deleteMany({adminuser_id:{'$in': req.body.id}}).exec(function (err, data) {
+  Adminuser.deleteMany({_id:{'$in': req.body.id}}).exec(function (err, data) {
              if (err) throw err;
         
 				 res.json({
@@ -216,8 +236,31 @@ exports.delcheckedAdminusers = function(req, res) {
                 });	
 				
 			
-				});
+        });
+        
+        Adminuserlog.deleteMany({_id:{'$in': req.body.id}}).exec(function (err, data) {
+             if (err) throw err;
+        
+				 res.json({
+                    status: 1,
+                  
+                });	
+				
+			
+        });
 
+        Adminuserrole.deleteMany({_id:{'$in': req.body.id}}).exec(function (err, data) {
+             if (err) throw err;
+        
+				 res.json({
+                    status: 1,
+                  
+                });	
+				
+			
+        });
+        
+        
 };
 
 

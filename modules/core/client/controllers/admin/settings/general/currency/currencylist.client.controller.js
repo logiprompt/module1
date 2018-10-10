@@ -7,14 +7,23 @@
 
 
 
-    Currencylist.$inject = ['$scope','$http','$state','$stateParams', 'Upload'];
+    Currencylist.$inject = ['$scope','$http','$state','$stateParams', 'Upload','currencyService','CoreService'];
 
-  function Currencylist ($scope, $http, $state, $stateParams, Upload) {
+  function Currencylist ($scope, $http, $state, $stateParams, Upload,currencyService,CoreService) {
 
   $scope.formdata = {};
-  $scope.formdata.status ='0';
- /////////////////////select/////////////////////////////
+   $scope.status = "0";
+   $scope.username= localStorage.getItem('username');
+   $scope.CoreService = CoreService;
+   $scope.currencyService = currencyService;
 
+ /////////////////////select/////////////////////////////
+////////////////////////ip fetch//////////////////////////////
+
+$http.get("https://ipinfo.io/").then(function (response) {
+  $scope.ip = response.data.ip;
+  
+  });
  ///////////////////////////////////////////////////////
 
  
@@ -52,31 +61,53 @@ $scope.choices = [{id: 'choice1'}];
          }
       
  };
-
- function readFile(ev) {
-
-  if (this.files && this.files[0]) {
-  var FR= new FileReader();
-  FR.onload = function(e) {
-    document.getElementById("imgfiles").src= e.target.result;
-   ev.target.parentNode.parentNode.parentNode.childNodes[3].childNodes[1].childNodes[1]=e.target.result;
-    //document.getElementById("b64").innerHTML = e.target.result;
-  };       
-  FR.readAsDataURL( this.files[0] );
-  }
- }
- if(document.getElementById("imgfile")!=null){
-   document.getElementById("imgfile").addEventListener("change", readFile, false); 
- }
-
-$scope.iconw=function(){
-
-        document.getElementById('imgfile').click();
+ ///////////////////list /////////////////////
+ /*
+	 * Function : getCurrency
+	 * Description : get Currency details
+	 * Owner : 
+	 */
+  $scope.getcurrency = function(){
+    $scope.currencyService.getcurrency().then(function(result){
+     if(result.statusText = "OK"){
+       $scope.currencydata = result.data;
+      }else{
         
-             }
-
-            // $(document).find('#myTable').DataTable();
-
+      }
+   });
+  }
+  $scope.getcurrency();
+ //////////////////////////////////
+/*
+	 * Function : addcurrency
+	 * Description : Add Currency details
+	 * Owner : 
+	 */
+  $scope.addcurrency = function(){
+		if($scope.formdata.$valid){
+		var data = {
+        "currency":$scope.currency,
+        "shortname":$scope.shortname,
+        "symbol":$scope.symbol,
+        "username":$scope.username,
+        "ip":$scope.ip,
+				"status" :$scope.status
+        }
+        console.log(data);
+		
+		  $scope.currencyService.addcurrency(data).then(function(result){
+			  if(result.statusText = "OK"){
+				  swal("Success!", "Successfully added Currency!", "success");  
+				  $state.go('generalcurrencylist');
+			  }else{
+				  swal("error!", "Currency already exist!", "error");
+			  }
+			  
+		  })
+		}
+			
+	  }
+///////////////////////////////////////////////////////////////////////
 
 
 
