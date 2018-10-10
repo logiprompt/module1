@@ -7,7 +7,7 @@
  var currency = require('../controllers/currency.server.controller');
 
 module.exports = function(app) {
-  // extrafield Group Routes
+  // Currency Group Routes
 	
 	app.route('/api/currency')
   .get(currency.list);
