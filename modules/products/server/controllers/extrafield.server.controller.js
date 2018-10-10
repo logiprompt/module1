@@ -162,4 +162,36 @@ var path = require('path'),
 		};
 
 
+		/*
+		 * Delete Extra field
+		 */
+		exports.deletefield = function(request, response) {
+			var groupId = request.params.fieldId;
+
+			  Field.findById(request.params.fieldId).exec(function (error, item) {
+		      
+		      if (error) {
+		        response.status(500).send(error);
+		        return;
+		      }
+
+		      if (item) {
+		        item.remove(function (error) {
+
+		          if (error) {
+		            response.status(500).send(error);
+		            return;
+		          }
+
+		          response.status(200).json({
+		            'message': 'Extrafield was removed.'
+		          });
+		        });
+		      } else {
+		        response.status(404).json({
+		          message: 'Extrafield with id ' + fieldId + ' was not found.'
+		        });
+		      }
+		    });
+		}
 

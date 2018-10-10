@@ -76,6 +76,18 @@ var ExtrafieldSchema = new Schema({
   position:{
 	  type: String  	  
   },
+  required:{
+	  type: String  	  
+  },
+  cols:{
+	  type:String
+  },
+  rows:{
+	  type:String
+  },
+  values:{
+	  
+  },
   created: {
     type: Date,
     default: Date.now

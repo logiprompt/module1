@@ -96,6 +96,16 @@ extrafieldService.$inject = ['$resource','$http'];
 		    });
 	 }
 	 
+	 /*
+	  * delete Extra fields by id
+	  */
+	 extraFieldGroup.deleteExtraField = function(fieldid){
+		 return $http({
+		        url: '/api/extrafield/'+fieldid,
+		        method: "DELETE"
+		    });
+	 }
+	 
 	 return extraFieldGroup;
 	  
 	 

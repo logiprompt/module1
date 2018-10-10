@@ -107,28 +107,32 @@
 	   
 	   
 	   /*
-	    * Function: addExtrafield_textbox
-	    * Desvription : Add Extra field TEXT BOX
+	    * Function: addExtrafield_extrafield
+	    * Desvription : Add Extra field TEXT BOX textarea etc
 	    * Owner : prabin
 	    */
-	   $scope.addExtrafield_textbox = function(){
-		   var textboxObj = {};
+	   $scope.addExtrafield_extrafield = function(type){
+		   var extrafieldObj = {};
 		   
-		   if($scope.extrafieldform_textbox.$valid){
+		   if($scope.extrafieldform_extrafield.$valid){
 			   //console.log($scope.extrafieldform_textbox);
-			   textboxObj.groupid = $stateParams.groupid ;
-			   textboxObj.status = $scope.textbox_status ? $scope.textbox_status : '';
-			   textboxObj.name = $scope.textbox_name;
-			   textboxObj.label = $scope.textbox_label;
-			   textboxObj.size = $scope.textbox_size ? $scope.textbox_size : '';
-			   textboxObj.classname = $scope.textbox_class ? $scope.textbox_class : '';
-			   textboxObj.style = $scope.textbox_style ? $scope.textbox_style :'';
-			   textboxObj.defvalue = $scope.textbox_defvalue ? $scope.textbox_defvalue : '';
-			   textboxObj.type = $scope.textbox_type ? $scope.textbox_type : '';
-			   textboxObj.FEvisibility = $scope.textbox_FEvisibility ? $scope.textbox_FEvisibility : '';
-			   textboxObj.position = $scope.textbox_position ? $scope.textbox_position : '';
+			   extrafieldObj.groupid = $stateParams.groupid ;
+			   extrafieldObj.status = $scope.extrafield_status ? $scope.extrafield_status : '';
+			   extrafieldObj.name = $scope.extrafield_name;
+			   extrafieldObj.label = $scope.extrafield_label;
+			   extrafieldObj.size = $scope.extrafield_size ? $scope.extrafield_size : '';
+			   extrafieldObj.classname = $scope.extrafield_class ? $scope.extrafield_class : '';
+			   extrafieldObj.style = $scope.extrafield_style ? $scope.extrafield_style :'';
+			   extrafieldObj.defvalue = $scope.extrafield_defvalue ? $scope.extrafield_defvalue : '';
+			   extrafieldObj.type = $scope.extrafield_type ? $scope.extrafield_type : type;
+			   extrafieldObj.FEvisibility = $scope.extrafield_FEvisibility ? $scope.extrafield_FEvisibility : '';
+			   extrafieldObj.position = $scope.extrafield_position ? $scope.extrafield_position : '';
+			   extrafieldObj.required = $scope.extrafield_required ? $scope.extrafield_required : '';
+			   extrafieldObj.required = $scope.extrafield_cols;
+			   extrafieldObj.required = $scope.extrafield_rows;
+			   extrafieldObj.values = $scope.values;
 			   
-			   $scope.extrafieldService.createExtraField(textboxObj).then(function(result){
+			   $scope.extrafieldService.createExtraField(extrafieldObj).then(function(result){
 				   if(result.statusText = "OK"){
 	      				 swal( 'Created!',
 	      	                     'New field created.',
@@ -136,17 +140,21 @@
 	      	                   )
 	      	                   
 	      	                   //clear form 
-	      	                   $scope.textbox_label = '';
-	      				$scope.textbox_name = '';
-	      				$scope.textbox_size = '';
-	      				$scope.textbox_class = '';
-	      				$scope.textbox_style = '';
-	      				$scope.textbox_defvalue = '';
-	      				$scope.textbox_type = '';
-	      				$scope.textbox_FEvisibility = '';
-	      				$scope.textbox_position = '';
-	      				$scope.textbox_status = '';
-	      				$scope.extrafieldform_textbox.$submitted = false;
+	      	            $scope.extrafield_label = '';
+	      				$scope.extrafield_name = '';
+	      				$scope.extrafield_size = '';
+	      				$scope.extrafield_class = '';
+	      				$scope.extrafield_style = '';
+	      				$scope.extrafield_defvalue = '';
+	      				$scope.extrafield_type = '';
+	      				$scope.extrafield_FEvisibility = '';
+	      				$scope.extrafield_position = '';
+	      				$scope.extrafield_status = '';
+	      				$scope.extrafield_required = '';
+	      				$scope.extrafield_cols = '';
+	      				$scope.extrafield_rows = '';
+	      				 $scope.values = [{id: '1'}];
+	      				$scope.extrafieldform_extrafield.$submitted = false;
 	      	                   
 	      				   $scope.getExtrafields($stateParams.groupid);
 	      				 $('.nav-link.tcat').click();
@@ -160,17 +168,50 @@
 		   }
 	   }
 	   
+	   /*
+	    * Function : delete field
+	    * description : deleted field from group
+	    * Owner : prabin
+	    */
+	   
+	   $scope.deleteField = function(fieldid){
+		   
+		   swal({
+               title: 'Are you sure?',
+               text: "You want to delete this field!",
+               type: 'warning',
+               showCancelButton: false,
+               confirmButtonColor: '#3085d6',
+               cancelButtonColor: '#d33',
+               confirmButtonText: 'Yes, delete it!'
+             }).then((result) => {
+            	 if(result){
+            	 $scope.extrafieldService.deleteExtraField(fieldid).then(function(result){
+      			   if(result.statusText = "OK"){
+      				 swal(
+      	                     'Deleted!',
+      	                     'Field has been deleted.',
+      	                     'success'
+      	                   )
+      	                 $scope.getExtrafields($stateParams.groupid);
+      				  }else{
+      					  
+      				  }
+      		   })
+             }
+             })
+	   }
 /////////////////////defaultLang//////////
   
 $scope.formdata.catlang='0';
 $scope.formdata.extra='0';
 
-$scope.values = [{id: 'choice1'}];
+$scope.values = [{id: '1'}];
 //$scope.choices.length	
   // console.log($scope.choices.length);
  $scope.addNewChoice = function() {
        var newItemNo = $scope.values.length+1;
-       $scope.values.push({'id':'values'+newItemNo});
+       $scope.values.push({'id':newItemNo});
        //console.log($scope.choices.length);
  };
        
@@ -181,55 +222,7 @@ $scope.values = [{id: 'choice1'}];
        //console.log($scope.choices.length);
  };
 
-$scope.values1 = [{id: 'choice1'}];
-//$scope.choices.length	
-  // console.log($scope.choices.length);
- $scope.addNewValues = function() {
-       var newItemNo1 = $scope.values1.length+1;
-       $scope.values1.push({'id':'values1'+newItemNo1});
-       //console.log($scope.choices.length);
- };
-       
- $scope.removeValues = function(val) {
-         if($scope.values1.length>1){
-       $scope.values1.splice(val,1);
-         }
-       //console.log($scope.choices.length);
- };
 
-$scope.values2 = [{id: 'choice1'}];
-//$scope.choices.length	
-  // console.log($scope.choices.length);
- $scope.addNewSltlist = function() {
-       var newItemNo2 = $scope.values2.length+1;
-       $scope.values2.push({'id':'values2'+newItemNo2});
-       //console.log($scope.choices.length);
- };
-       
- $scope.removeSltlist = function(val) {
-         if($scope.values2.length>1){
-       $scope.values2.splice(val,1);
-         }
-       //console.log($scope.choices.length);
- };
-
-$scope.values3 = [{id: 'choice1'}];
-//$scope.choices.length	
-  // console.log($scope.choices.length);
- $scope.addNewCheck = function() {
-       var newItemNo3 = $scope.values3.length+1;
-       $scope.values3.push({'id':'values3'+newItemNo3});
-       //console.log($scope.choices.length);
- };
-       
- $scope.removeCheck = function(val) {
-         if($scope.values3.length>1){
-       $scope.values3.splice(val,1);
-         }
-       //console.log($scope.choices.length);
- };
- 
- 
 
 
 
