@@ -23,6 +23,7 @@ module.exports = function(app) {
   app.route('/api/extrafield/:groupId').get(extrafield.listField);
   app.route('/api/extrafield/create').post(extrafield.createField);
   app.route('/api/extrafield/:fieldId').delete(extrafield.deletefield);
+  app.route('/api/extrafield/:fieldId').put(extrafield.updatefield);
   /*
   app.route('/api/extrafield/:fieldId')
   .get(extrafield.getFieldById)

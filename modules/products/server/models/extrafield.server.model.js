@@ -34,6 +34,8 @@ var ExtrafieldGroupSchema = new Schema({
   updatedUser: {
     type: String,
     ref: 'User'
+  },
+  olang :{	  
   }
 });
 
@@ -103,6 +105,8 @@ var ExtrafieldSchema = new Schema({
   updatedUser: {
     type: String,
     ref: 'User'
+  },
+  olang :{	  
   }
 });
 mongoose.model('extrafieldGroup', ExtrafieldGroupSchema);

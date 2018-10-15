@@ -106,6 +106,17 @@ extrafieldService.$inject = ['$resource','$http'];
 		    });
 	 }
 	 
+	 /*
+	  * Update Extra field by Id
+	  */
+	 extraFieldGroup.updateExtrafield = function(fieldId,data){
+		 return $http({
+		        url: '/api/extrafield/'+fieldId,
+		        method: "PUT",
+		        data:data
+		    });
+	 }
+	 
 	 return extraFieldGroup;
 	  
 	 

@@ -198,7 +198,7 @@ var adminfooter={
      footer:adminfooter
   } 
 })
-     .state('editproextrafield', {
+ .state('editproextrafield', {
   url: '/product/editextrafield/:id',
  //controllerAs: 'vm',
   views:{
