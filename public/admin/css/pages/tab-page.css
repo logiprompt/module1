@@ -67,3 +67,7 @@ Vertical tabs
   .customtab2 li a.nav-link:hover {
     color: #ffffff;
     background: #398bf7; }
+    
+    .displaynone{
+    display:none !important;
+    }
