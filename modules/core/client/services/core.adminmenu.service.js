@@ -46,7 +46,7 @@
 		 */
 		menu.deletemenu = function (groupId) {
 			return $http({
-				url: '/api/menu/' + groupId,
+				url: '/api/admin-menu/' + groupId,
 				method: "DELETE"
 			});
 		}
@@ -58,7 +58,7 @@
 		 */
 		menu.getmenuById = function (groupId) {
 			return $http({
-				url: '/api/menu/' + groupId,
+				url: '/api/admin-menu/' + groupId,
 				method: "GET"
 			});
 		}
@@ -66,11 +66,12 @@
 		/*
 		 * 
 		 */
-		menu.updatemenu = function (groupId, data) {
+		menu.updateMenu = function (data1) {
+			console.log(data1);
 			return $http({
-				url: '/api/menus/' + groupId,
+				url: '/api/admin-menu/updateMenu',
 				method: "PUT",
-				data: data
+				data: data1
 			});
 		}
 		return menu;

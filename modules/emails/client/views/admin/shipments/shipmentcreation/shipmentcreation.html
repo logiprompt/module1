@@ -1,0 +1,248 @@
+<style>.btn23{
+    float: right;
+    }
+.page-wrapper{
+   padding-top: 0px;
+     
+}.cntimg {
+    width: 35px;
+    height: 30px;
+}
+.btns
+{   font-size: 13px !important;
+    line-height: 1.6em;
+}
+</style>
+
+
+
+<!-- 
+                ///////////////////////////////////////////////////////////////////////////////////// -->
+
+
+    <div class="page-wrapper" >
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+              
+          
+          <div class="row">
+                   
+                    
+                     <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Shipment creation template list </h4>
+                                       
+                                        <div class="table-responsive m-t-10">
+                                        
+                                        <div class="row">
+                                                        <div class="form-group col-md-3 m-b-10">
+                                                                <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
+                                                                <label for="input1"> Country</label>
+                                                                       <select class="form-control filter-option" name="status" id="status" ng-model="formdata.status">
+                                                                       <option class="filter-option-inner" value="0">choose</option>
+        
+                                                                   <option value="1" class="">India</option>   
+                                                                   <option value="2" class="">USA</option>                
+                                                    
+                                                  </select>
+                                                </div>
+                                                <div class="form-group col-md-3 m-b-10">
+                                                        <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
+                                                        <label for="input1"> Language</label>
+                                                               <select class="form-control filter-option" name="status" id="status" ng-model="formdata.status">
+                                                               <option  class="filter-option-inner" value="0">choose</option>
+                                                    <option value="1" class="">Hindi</option> 
+                                                           <option value="2" class="">English</option>   
+                                                          
+                                            
+                                          </select>
+                                        </div>
+                                        <div class="col-md-3 m-t-30 ">
+                                            <button type="button" ng-click="ins" class="btn waves-effect waves-light btn-sm btn-info btns"> Submit </button>
+                                        </div>
+                                    </div>
+                                            <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th><input type="checkbox" id="checkAll" class="checkAll" ng-model="checkalltxt" ng-click="chkall()"   />
+                                    <label for="checkAll"></label>ID#</th>
+                                                        <th>Template<br> Name</th>
+                                                        <th>Created<br> Date </th>
+                                                        <th>Modified<br> Date </th>
+                                                        <th>Status</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                
+                                                <tbody>
+                                                   <tr >
+                                                        <td><!-- {{$index+1}} -->
+                                                             <input type="checkbox" id="basic_checkbox_1"  class="rowtxtchk" value="1" ng-click="addchkval(1)" />
+                                    <label for="basic_checkbox_1"></label>
+                                                        1</td>
+                                                        <td>Registration mail 2</td>
+                                                        <td>Aug 15 2018</td>
+                                                        <td>Aug 15 2018</td>
+                                                       
+                                                         <td>Active</td>
+                                                        <td style="width:20% !important;"> 
+                                                           <a class="btn waves-effect waves-light btn-sm btn-info" href="/email/editshipmentcreation/1">
+                                                                Edit
+                                                              </a>
+                                                             <button class="btn waves-effect waves-light btn-sm btn-danger"  ng-click="del(1)" rel=""  >
+                                                                 Delete
+                                                                </button>
+                                                            
+                                                                                                          
+                                                               
+                                                                </td>
+                                                    </tr>
+
+                                                      <tr >
+                                                        <td><!-- {{$index+1}} -->
+                                                             <input type="checkbox" id="basic_checkbox_2"  class="rowtxtchk" value="2" ng-click="addchkval(2)" />
+                                    <label for="basic_checkbox_2"></label>
+                                                        2</td>
+                                                        <td>Registration mail 1</td>
+                                                        <td>Aug 15 2018</td>
+                                                        <td>Aug 15 2018</td>
+                                                       
+                                                         <td>DE Active</td>
+                                                        <td style="width:20% !important;"> 
+                                                           <a class="btn waves-effect waves-light btn-sm btn-info" href="/email/editshipmentcreation/2">
+                                                                Edit
+                                                              </a>
+                                                             <button class="btn waves-effect waves-light btn-sm btn-danger"  ng-click="del(1)" rel=""  >
+                                                                 Delete
+                                                                </button>
+                                                           
+                                                                                                          
+                                                               
+                                                                </td>
+                                                    </tr>
+                                                    
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                    </div>
+                </div>   
+                </div>
+            </div>
+
+            <!-- modal -->
+         <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Add Language</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+        <div class="row">
+         <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <!-- <h4 class="card-title">Category</h4> -->
+                                <!--<h6 class="card-subtitle">Just add <code>floating-labels</code> class to the form.</h6>-->
+                                <form class="floating-labels ng-pristine ng-valid">
+                                       <div class="form-group m-b-40 ">
+                                            <label for="input1">Language</label>
+                                           
+                                                <!-- <select class="select2 m-b-10 select2-multiple" style="width: 100%" multiple="multiple" data-placeholder="Choose"> -->
+                                                 <select class=" form-control catlang"   ng-model="formdata.catlang">
+                                                    <option value="0" disabled>Select Language</option>
+                                                    <option ng-repeat="val in listlang" value="{{val.shortcode}}">{{val.language}}</option>
+                                              </select>
+                                            </div>
+                                    <div class="form-group m-b-40">
+                                        <input type="text" class="form-control categorylang ng-pristine ng-untouched ng-valid ng-empty" id="name" ng-model="formdata.categorylang">
+                                      
+                                        <span class="bar"></span>
+                                        <label for="input1"> category</label>
+                                    </div>
+
+                                 
+                                     <div class="form-group m-b-40 btn23">
+                                    <button type="button" ng-click="insCategoryLang()" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Submit </button>
+                                  </div> 
+                                </form>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+        <!--   <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <!-- modal -->
+
+  <script>
+    $(document).ready(function() {
+        $(".checkAll").change(function () {
+        
+    $(" input:checkbox").prop('checked', $(this).prop("checked"));
+   
+});
+        $(".rowtxtchk").change(function () {
+console.log(111);
+                $(".checkAll").prop('checked', false);
+        })
+    });
+
+
+    $(document).ready(function() {
+        
+    $('#example23').DataTable({
+        responsive: true,
+        dom: 'Bfrtip',
+        lengthMenu: [
+            [ 10, 25, 50, -1 ],
+            [ '10 rows', '25 rows', '50 rows', 'Show all' ]
+        ],
+         buttons: [
+		 'pageLength',
+         'csv',
+            {
+                text: 'Add',
+                 className: 'add-action',
+               
+            },
+            {
+                text: 'Edit',
+                 className: 'edit-action',
+                // action: function ( e, dt, node, config ) {
+                //     alert( 'Button activated' );
+                // }
+            },
+             {
+                text: 'Delete',
+                 className: 'delete-action',
+                // action: function ( e, dt, node, config ) {
+                //     alert( 'Button activated' );
+                // }
+            },
+            
+
+        ]
+    });
+
+     });
+
+   
+</script>

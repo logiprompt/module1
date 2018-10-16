@@ -11,7 +11,9 @@ module.exports = function (app) {
   app.route('/api/admin-menu/getMenuList').post(adminMenu.getList);
 
   app.route('/api/admin-menu/create').post(adminMenu.create);
-  app.route('/api/admin-menu/addSubMenu').post(adminMenu.addSubMenu);
+  app.route('/api/admin-menu/addSubMenu')
+  .post(adminMenu.addSubMenu);
+  app.route('/api/admin-menu/updateMenu').put(adminMenu.updateMenu);
 
   // app.route('/api/menu/:groupId')
   // .get(menu.getById)

@@ -444,7 +444,7 @@ var adminfooter={
     header:adminheader,
     content: { 
      templateUrl: '/modules/core/client/views/admin/settings/general/currency/currencyedit.html',
-    controller: 'Generalcurrencylist',
+    controller: 'Currencyedit',
     controllerAs: 'vm',
     },
      footer:adminfooter

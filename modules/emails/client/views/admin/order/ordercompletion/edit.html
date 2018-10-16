@@ -1,0 +1,475 @@
+<style>.btn23{
+    float: right;
+    }
+.page-wrapper{
+   padding-top: 0px;
+     
+}
+.defcheck{
+	margin-top: 13px;
+}
+.file_input_hidden {
+            font-size: 20px;
+            position: absolute;
+            /* right: 0px; */
+            width: 100%;
+            top: 0px;
+            bottom: 0;
+            cursor: pointer;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            -ms-filter: "alpha(opacity=0)";
+            -khtml-opacity: 0;
+            -moz-opacity: 0;
+        }
+        .file_wrap .iconw {
+            border-radius: 0 5px 5px 0;
+            border-right: 1px solid #01bdd6;
+            bottom: -1px;
+            right: -1px;
+            position: absolute;
+            top: -1px;
+            width: 100px;
+            padding: 10px 0 10px 0;
+            background: #01bdd6;
+            text-align: center;
+            cursor: pointer;
+            color: #fff;
+        }
+        .file_wrap .write_textbox {
+            bottom: 0;
+            left: 0;
+            position: absolute;
+            right: 102px;
+            top: 0;
+        }
+        .file_wrap input[type="text"] {
+            background: none repeat scroll 0 0 transparent;
+            border: medium none;
+            color: #333333;
+            font-size: 16px;
+            height: 29px;
+            line-height: 28px;
+            outline: medium none;
+            padding: 4px;
+            width: 98%;
+        }
+        .file_wrap {
+            border: 1px solid #CCC;
+            border-radius: 4px;
+            height: 37px;
+            position: relative;
+        }
+            
+               
+        .imgup
+        {    border: 1px solid #e9ecef;
+           width: 100%;
+           /* margin-bottom: 35px; */
+        } 
+
+.lgs1{
+        width: 28%;
+   float: left;
+}
+.lblfor
+{
+   /*width:60%;*/
+   margin-right: 40%;
+} 
+.lblval
+{
+   margin-left: 64%;
+width:60%;
+}
+.left-detls{
+   width:30%;
+   float:left;
+   }
+.right-detls{
+   width:30%;
+   float:left;
+}
+
+
+
+.el-card-item .el-overlay-1 {
+           width: 100%;
+           overflow: hidden;
+           position: relative;
+           text-align: center;
+           cursor: default;
+       }
+      .el-card-item .el-overlay-1:hover .el-overlay {
+   opacity: 1;
+   filter: alpha(opacity=100);
+   -webkit-transform: translateZ(0);
+   -ms-transform: translateZ(0);
+   transform: translateZ(0);
+}
+
+    .el-card-item {
+   position: relative;
+   /* padding-bottom: 25px; 
+   margin-bottom: 15px;*/
+}
+.el-card-item .el-overlay-1 .el-info > li a:hover {
+   background: #398bf7;
+   border-color: #398bf7;
+}
+.el-card-item .el-overlay {
+   width: 100%;
+   height: 100%;
+   position: absolute;
+   overflow: hidden;
+   top: 0;
+   left: 0;
+   opacity: 0;
+   background-color: rgba(0, 0, 0, 0.7);
+   -webkit-transition: all .4s ease-in-out;
+   -o-transition: all .4s ease-in-out;
+   transition: all .4s ease-in-out;
+}
+
+.el-card-item .el-overlay-1:hover img {
+   -ms-transform: scale(1.2) translateZ(0);
+   -webkit-transform: scale(1.2) translateZ(0);
+   /* transform: scale(1.2) translateZ(0); */
+}
+
+.el-card-item .el-overlay-1 .el-info {
+   text-decoration: none;
+   display: inline-block;
+   text-transform: uppercase;
+   color: #ffffff;
+   background-color: transparent;
+   filter: alpha(opacity=0);
+   -webkit-transition: all .2s ease-in-out;
+   -o-transition: all .2s ease-in-out;
+   transition: all .2s ease-in-out;
+   padding: 0;
+   margin: auto;
+   position: absolute;
+   top: 50%;
+   left: 0;
+   right: 0;
+   transform: translateY(-50%) translateZ(0);
+   -webkit-transform: translateY(-50%) translateZ(0);
+   -ms-transform: translateY(-50%) translateZ(0);
+}
+.el-card-item .el-overlay-1 .el-info > li {
+   list-style: none;
+   display: inline-block;
+   margin: 0 3px;
+}
+.lbl {
+    margin-top: 20px;
+}
+</style>
+
+<style type="text/css" id="treeview4-style"> .treeview .list-group-item{cursor:pointer}.treeview span.indent{margin-left:10px;margin-right:10px}.treeview span.icon{width:12px;margin-right:5px}.treeview .node-disabled{color:silver;cursor:not-allowed}.node-treeview4{color:#428bca;}.node-treeview4:not(.node-disabled):hover{background-color:rgba(0, 0, 0, 0.05);} </style>
+   <script src="/admin/assets/plugins/bootstrap-treeview-master/dist/bootstrap-treeview.min.js"></script>
+    <script src="/admin/assets/plugins/bootstrap-treeview-master/dist/bootstrap-treeview-init.js"></script>
+      <link href="/admin/assets/plugins/multiselect/css/multi-select.css" rel="stylesheet" type="text/css" />
+      <link href="/admin/assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+<!-- 
+                ///////////////////////////////////////////////////////////////////////////////////// -->
+
+
+    <div class="page-wrapper" >
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <!-- <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                        <h4 class="text-themecolor">Dashboard 1</h4>
+                    </div>
+                    <div class="col-md-7 align-self-center text-right">
+                        <div class="d-flex justify-content-end align-items-center">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                                <li class="breadcrumb-item active">Dashboard 1</li>
+                            </ol>
+                            
+                        </div>
+                    </div>
+                </div> -->
+                
+          
+          <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Order completion template (Edit) ID 1</h4>
+                                <div class="col-lg-12">
+                     
+                                <!-- <h4 class="card-title">Vertical Tab</h4>
+                                <h6 class="card-subtitle">Use default tab with class <code>vtabs &amp; tabs-vertical</code></h6> -->
+                                <!-- Nav tabs -->
+
+                                  <form class="">  
+                                 
+                                 
+                              
+                                <div class="vtabs">
+                                    <ul class="nav nav-tabs tabs-vertical" role="tablist">
+                        <li class="nav-item"> <a class="nav-link tcat" data-toggle="tab" href="#home" role="tab" aria-selected="true"><span class="hidden-xs-down">Country :
+                                       <select class="form-control filter-option " name="status" id="status" >
+                                            <option class="filter-option-inner" value="0">choose</option>
+                                             <option value="1" class=""></option>   
+                                       </select>
+                                              </span> </a> 
+                                          </li>
+
+                <li class="nav-item"> <a class="nav-link tcat" data-toggle="tab" href="#home" role="tab" aria-selected="true"><span class="hidden-xs-down">Language :
+               <select class="form-control filter-option " name="status" id="status" >
+                    <option class="filter-option-inner" value="0">choose</option>
+                     <option value="1" class=""></option>   
+               </select>
+                      </span> </a> 
+                  </li>
+                                        <li class="nav-item"> <a class="nav-link active show" data-toggle="tab" href="#content" role="tab" aria-selected="false"> <span class="hidden-xs-down">Content</span></a> </li>
+                                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#logs" role="tab" aria-selected="false"> <span class="hidden-xs-down">Logs</span></a> </li>
+                                              </ul>
+                                    <!-- Tab panes -->
+                                    
+                                    <div class="tab-content col-lg-12">
+                                        
+                                        <div class="tab-pane active show" id="content" role="tabpanel">
+                                                <div class="form-group m-b-10 btn23">
+                                       
+                                                        <button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
+                                                     <a href="/email/ordercompletion"><button type="button"  class="btn waves-effect waves-light btn-sm btn-default"> Cancel </button></a> 
+                                                    
+                                                       <button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm btn-danger"> Delete </button> 
+                                                </div> 
+                                               
+                                        <!--   <div class="form-group">
+                                                    <label class="control-label">First Name</label>
+                                                    <input type="text" id="firstName" class="form-control" placeholder="John doe">
+                                                    <small class="form-control-feedback"> This is inline help </small> </div> -->
+                                            <div class="row p-20">
+                                               <div class="col-md-9">
+                                                <div class="form-group m-b-10">
+                                                    <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
+                                                    <label for="input1"> Name</label>
+                                                    <input type="text" class="form-control cat" id="name"  ng-model="formdata.category" >
+                                    </div>
+                                                    </div> 
+
+                                             <div class="col-md-3">
+                                                <div class="form-group has-danger defcheck">
+                                                    <input name="shortchk" type="checkbox" id="chk1" class="filled-in chk-col-light-blue" ><label class="lbl" for="chk1">Default</label>
+                                            </div>
+                                        </div>
+                                         <div class="col-md-9">
+                                            <div class="form-group m-b-10"> 
+                                                <label for="input1"> Subject</label>
+                                                   <input type="text" class="form-control cat" id="name"  ng-model="formdata.category" >
+                                                 
+                                               </div> 
+
+                                      </div>
+                                       <div class="col-md-3">
+                                                <div class="form-group has-danger defcheck">
+                                                    <input name="shortchk" type="checkbox" id="chk2" class="filled-in chk-col-light-blue" ><label class="lbl" for="chk2">Default</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-9">
+                                                          
+                                            <div class="form-group m-b-10"> 
+                                                <label for="input1"> Content</label>
+                                                <textarea class="form-control cat" id="desc" type="text" ng-model="formdata.desc" ></textarea>
+                                                 
+                                               </div> 
+                                                        
+                                                            </div>
+                                                                            
+                                        <div class="col-md-3">
+                                                <div class="form-group has-danger defcheck">
+                                                    <input name="shortchk" type="checkbox" id="chk3" class="filled-in chk-col-light-blue" ><label class="lbl" for="chk3">Default</label>
+                                            </div>
+                                        </div>  
+                                        
+                                        
+                                          <div class="col-md-9">
+                                            <div class="form-group m-b-10"> 
+                                                <label for="input1"> Custom styles</label>
+                                                <textarea class="form-control cat" id="desc" type="text" ng-model="formdata.desc" ></textarea>
+                                                 
+                                               </div>   
+                                                  
+                                                </div>
+                                <div class="col-md-3">
+                                                <div class="form-group has-danger defcheck">
+                                                    <input name="shortchk" type="checkbox" id="chk5" class="filled-in chk-col-light-blue" ><label class="lbl" for="chk5">Default</label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-9">
+                                            <div class="form-group m-b-10">
+                                                <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
+                                                <label for="input1"> Status</label>
+                                                       <select class="form-control filter-option" name="status" id="status" >
+                                                       <option class="filter-option-inner" value="0">choose</option>
+
+                                                   <option value="1" class="">Active</option>  
+                                                   <option value="2" class="">De active</option> 
+
+                                    
+                                  </select>
+                                </div>
+                                                </div>
+                                <div class="col-md-3">
+                                                <div class="form-group has-danger defcheck">
+                                                    <input name="shortchk" type="checkbox" id="chk8" class="filled-in chk-col-light-blue" ><label class="lbl" for="chk8">Default</label>
+                                            </div>
+                                        </div>
+                                            </div>
+                                        </div>
+                                      
+                                        <div class="tab-pane p-20" id="report" role="tabpanel">
+                                                <div class="row  m-b-40">
+                                                  <div class="col-lg-12"> 
+                                                        <div class="form-group m-b-10 btn23">
+                                                  
+                                                                <a href="/newsletters/newsletters"><button type="button"  class="btn waves-effect waves-light btn-sm btn-default"> Back </button></a>
+                                                                <button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
+                                                                <button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm btn-primary"> Send </button>
+                                                                <a href="/newsletters/newsletters"><button type="button"  class="btn waves-effect waves-light btn-sm btn-default"> Cancel </button></a>
+                                                                </div></div>
+                                                          </div> 
+                                                        <div class="row  m-b-40 lgs">
+                                                            <div class="col-lg-6">     
+                                                                <label class="" for="cd">Number of subscribers </label>
+                                                            </div>  <div class="col-lg-2">
+                                                              <label class="" name="cd" id="cd">100</label>                                                   </div> 
+                                                           
+                                                       
+                                                        <div class="col-md-4">
+                                                                <div class="has-danger">
+                                                                    <input name="shortchk" type="checkbox" id="chk9" class="filled-in chk-col-light-blue" ><label class="" for="chk9">Default</label>
+                                                            </div>
+                                                        </div> </div>
+                                                            
+                                                 <div class="row m-b-40 lgs">
+                                                  <div class="col-lg-6">     
+                                                            <label class="" for="cd">Total send </label>
+                                                        </div>  
+                                                         <div class="col-lg-2">
+                                                              <label class="" name="cd" id="cd">75</label>    
+                                                                </div> 
+                                                                <div class="col-md-4">
+                                                                        <div class="has-danger">
+                                                                            <input name="shortchk" type="checkbox" id="chk10" class="filled-in chk-col-light-blue" ><label class="" for="chk10">Default</label>
+                                                                    </div>
+                                                                </div>
+                                             </div> 
+                                                         <div class="row m-b-40 lgs">
+                                         <div class="col-lg-6">     
+                                                            <label class="" for="cd">Total received </label>
+                                                        </div>  
+                                                         <div class="col-lg-2">
+                                                              <label class="" name="cd" id="cd">50</label>         </div> 
+                                                              <div class="col-md-4">
+                                                                    <div class="has-danger">
+                                                                        <input name="shortchk" type="checkbox" id="chk11" class="filled-in chk-col-light-blue" ><label class="" for="chk11">Default</label>
+                                                                </div>
+                                                            </div>
+                                                         </div>                                  
+                                                     <div class="row m-b-40 lgs">
+                                                       <div class="col-lg-6">
+                                                        <label for="input1">Total viewed </label>
+                                                       </div>  
+                                                       <div class="col-lg-2">
+                                                        <label class="" name="mb" id="cb">40</label>
+                                                       </div>
+                                                       <div class="col-md-4">
+                                                            <div class="has-danger">
+                                                                <input name="shortchk" type="checkbox" id="chk12" class="filled-in chk-col-light-blue" ><label class="" for="chk12">Default</label>
+                                                        </div>
+                                                    </div>             
+                                                        
+                                                     </div>   
+                                                           <div class="row m-b-40 lgs">
+                                                       <div class="col-lg-6">
+                                                        <label for="input1">Status </label>
+                                                       </div>  
+                                                       <div class="col-lg-2">
+                                                        <label class="" name="mb" id="cb">Progressing</label>
+                                                       </div>
+                                                       <div class="col-md-4">
+                                                            <div class="has-danger">
+                                                                <input name="shortchk" type="checkbox" id="chk13" class="filled-in chk-col-light-blue" ><label class="" for="chk13">Default</label>
+                                                        </div>
+                                                    </div>             
+                                                        
+                                                     </div>       
+                                                     <div class="row m-b-40 lgs">
+                                                     <div class="col-md-6">
+                                                            
+                                                                  <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
+                                                                  <label for="input1"> Status</label>
+                                                                         <select class="form-control filter-option" name="status" id="status">
+                                                                         <option class="filter-option-inner" value="0">choose</option>
+        
+                                                                     <option value="1" class=""></option> </select>  </div>
+        
+                                                                   
+                                                    
+                                                  
+                                  <div class="col-md-2">
+                                                  <div class="form-group has-danger defcheck">
+                                                      <input name="shortchk" type="checkbox" checked id="chk14" class="filled-in chk-col-light-blue" ><label class="lbl" for="chk14">Default</label>
+                                              </div>
+                                          </div>
+                                          <div class="col-md-4">
+                                                <div class="form-group has-danger defcheck">
+                                                    <input name="shortchk" type="checkbox" id="chk15" class="filled-in chk-col-light-blue" ><label class="lbl" for="chk15">Default</label>
+                                            </div>
+                                        </div></div>
+                                                </div>
+                                        
+                                    </div>
+
+                                   
+                                </div>
+
+                            </form>
+                            
+                    </div>
+                              <!-- 
+                                <form class="floating-labels m-t-40">
+                                    <div class="form-group m-b-40">
+                                        <input type="text" class="form-control cat" id="name" type="text" ng-model="formdata.category" >
+                                      
+                                        <span class="bar"></span>
+                                        <label for="input1"> category</label>
+                                    </div> <div class="form-group m-b-40 btn23">
+                                    <button type="button" ng-click="insCategory()" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Submit </button>
+                               </div>
+                                </form> -->
+                            </div>
+                        </div>
+                        
+                    </div>
+                   
+                     
+                </div>   
+                </div>
+            </div>
+
+            <!-- modal -->
+         
+  <!-- modal -->  
+  <script>
+   setTimeout(function(){
+  $('.selectpicker').selectpicker({style: 'btn-default',
+  size: 4});
+   },1000)
+  </script>

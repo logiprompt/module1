@@ -14,8 +14,8 @@
 	  
 	 /*
 	  * Function : addcurrency
-	  * Description : add extra field group details
-	  * owner : prabin
+	  * Description : add currency details
+	  * owner : jeeja
 	  */
 	 currency.addcurrency = function(data){
 		 
@@ -26,49 +26,67 @@
 	       });
 	   }
 	 
-	 /*
-	  * Function : getcurrencys
-	  * Description : get ALl currency details
-	  * owner : prabin
-	  */
-	 currency.getcurrency = function(){
-		  console.log(12);
-		 return $http({
-		        url: '/api/currency',
-		        method: "GET"
-		    });
-		}
 	 
-	 /*
-	  * Function : getcurrencys
-	  * Description : Delete extra field group details by id
-	  * owner : prabin
+
+ /*
+	  * Function : getExtraFieldGroups
+	  * Description : get All currency details
+	  * owner : jeeja
 	  */
-	 currency.deletecurrency = function(groupId){		  
+	 currency.getCurrency = function(){
+		  
+		return $http({
+			   url: '/api/currency/getCurrency',
+			   method: "POST"
+		   });
+	   }
+	
+
+	 /*
+	  * Function : delCurrency
+	  * Description : Delete currency details by id
+	  * owner : jeeja
+	  */
+	 currency.delCurrency = function(currencyId){		  
 		 return $http({
-		        url: '/api/currency/'+groupId,
+		        url: '/api/currency/'+currencyId,
 		        method: "DELETE"
 		    });
 		}
 	 
+
+		 /*
+	  * Function : delCheckedCurrency
+	  * Description : Delete currency details by ids
+	  * owner : jeeja
+	  */
+	 currency.delCheckedCurrency = function(currencyId){
+		 console.log(12);		  
+		return $http({
+			   url: '/api/currency/delCheckedCurrency/'+currencyId,
+			   method: "DELETE"
+		   });
+	   }
+	
 	 /*
 	  * Function : getcurrencyById
-	  * Description : get one extra field group details by id
-	  * owner : prabin
+	  * Description : get one currency details by id
+	  * owner : jeeja
 	  */
-	 currency.getcurrencyById = function(groupId){
-		 return $http({
-		        url: '/api/currency/'+groupId,
-		        method: "GET"
-		    });
-	 }
+	 currency.getCurrencyById = function(currencyId){
+		return $http({
+			   url: '/api/currency/'+currencyId,
+			   method: "POST"
+		   });
+	}
+	
 	 
 	 /*
 	  * 
 	  */
-	 currency.updatecurrency = function(groupId,data){
+	 currency.updateCurrency = function(currencyId,data){
 		 return $http({
-		        url: '/api/currencys/'+groupId,
+		        url: '/api/currency/'+currencyId,
 		        method: "PUT",
 		        data:data
 		    });

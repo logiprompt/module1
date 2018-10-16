@@ -91,8 +91,29 @@ extrafieldService.$inject = ['$resource','$http'];
 	  */
 	 extraFieldGroup.getExtraField = function(groupid){
 		 return $http({
-		        url: '/api/extrafield',
+		        url: '/api/extrafield/'+groupid,
 		        method: "GET"
+		    });
+	 }
+	 
+	 /*
+	  * delete Extra fields by id
+	  */
+	 extraFieldGroup.deleteExtraField = function(fieldid){
+		 return $http({
+		        url: '/api/extrafield/'+fieldid,
+		        method: "DELETE"
+		    });
+	 }
+	 
+	 /*
+	  * Update Extra field by Id
+	  */
+	 extraFieldGroup.updateExtrafield = function(fieldId,data){
+		 return $http({
+		        url: '/api/extrafield/'+fieldId,
+		        method: "PUT",
+		        data:data
 		    });
 	 }
 	 

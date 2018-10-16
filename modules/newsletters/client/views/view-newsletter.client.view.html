@@ -1,0 +1,26 @@
+<section>
+  <div class="page-header">
+    <h1 ng-bind="vm.newsletter.name"></h1>
+  </div>
+  <div class="pull-right"
+       ng-show="vm.newsletter.isCurrentUserOwner">
+    <a class="btn btn-primary"
+       ui-sref="newsletters.edit({ newsletterId: vm.newsletter._id })">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <small>
+    <em class="text-muted">
+      Posted on
+      <span ng-bind="vm.newsletter.created | date:'mediumDate'"></span>
+      by
+      <span ng-if="vm.newsletter.user"
+            ng-bind="vm.newsletter.user.displayName"></span>
+      <span ng-if="!vm.newsletter.user">Deleted User</span>
+    </em>
+  </small>
+  <p class="lead" ng-bind="vm.newsletter.content"></p>
+</section>

@@ -9,9 +9,27 @@
    $scope.formdata = {};
 
 
-$scope.producttype='1';
+	/*
+	 * Pre define product static values
+	 */
+	$scope.product_type = "1";
+	$scope.product_featured = "0";
+	$scope.product_status = "1";
+	$scope.product_displayinmenu = "0"
+	$scope.product_qtyoutofstockstatus_def = true;
+	$scope.product_minqtyallowed_def = true;
+	$scope.product_maxqtyallowed_def = true;
+	$scope.product_notifylowqty_def = true;
+	$scope.product_stockavailable = "1";
+	$scope.product_images = [];
 
 
+	/*
+	 * Add product
+	 */
+	$scope.saveProduct = function(){
+		console.log($scope.productForm);
+	}
 
    $scope.showreview=function(){
     

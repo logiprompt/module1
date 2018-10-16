@@ -1,0 +1,302 @@
+<style>.btn23{
+    float: right;
+    }
+.page-wrapper{
+   padding-top: 0px;
+     
+}
+
+.file_input_hidden {
+            font-size: 20px;
+            position: absolute;
+            /* right: 0px; */
+            width: 100%;
+            top: 0px;
+            bottom: 0;
+            cursor: pointer;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            -ms-filter: "alpha(opacity=0)";
+            -khtml-opacity: 0;
+            -moz-opacity: 0;
+        }
+        .file_wrap .iconw {
+            border-radius: 0 5px 5px 0;
+            border-right: 1px solid #01bdd6;
+            bottom: -1px;
+            right: -1px;
+            position: absolute;
+            top: -1px;
+            width: 100px;
+            padding: 10px 0 10px 0;
+            background: #01bdd6;
+            text-align: center;
+            cursor: pointer;
+            color: #fff;
+        }
+        .file_wrap .write_textbox {
+            bottom: 0;
+            left: 0;
+            position: absolute;
+            right: 102px;
+            top: 0;
+        }
+        .file_wrap input[type="text"] {
+            background: none repeat scroll 0 0 transparent;
+            border: medium none;
+            color: #333333;
+            font-size: 16px;
+            height: 29px;
+            line-height: 28px;
+            outline: medium none;
+            padding: 4px;
+            width: 98%;
+        }
+        .file_wrap {
+            border: 1px solid #CCC;
+            border-radius: 4px;
+            height: 37px;
+            position: relative;
+        }
+            
+        .imgup
+        {    border: 1px solid #e9ecef;
+           width: 100%;
+           /* margin-bottom: 35px; */
+        } 
+
+.lgs1{
+        width: 28%;
+   float: left;
+}
+.lblfor
+{
+   /*width:60%;*/
+   margin-right: 40%;
+} 
+.lblval
+{
+   margin-left: 64%;
+width:60%;
+}
+.left-detls{
+   width:30%;
+   float:left;
+   }
+.right-detls{
+   width:30%;
+   float:left;
+}
+
+
+
+</style>
+
+<style type="text/css" id="treeview4-style"> .treeview .list-group-item{cursor:pointer}.treeview span.indent{margin-left:10px;margin-right:10px}.treeview span.icon{width:12px;margin-right:5px}.treeview .node-disabled{color:silver;cursor:not-allowed}.node-treeview4{color:#428bca;}.node-treeview4:not(.node-disabled):hover{background-color:rgba(0, 0, 0, 0.05);} </style>
+   <script src="/admin/assets/plugins/bootstrap-treeview-master/dist/bootstrap-treeview.min.js"></script>
+    <script src="/admin/assets/plugins/bootstrap-treeview-master/dist/bootstrap-treeview-init.js"></script>
+     <link href="/admin/assets/plugins/multiselect/css/multi-select.css" rel="stylesheet" type="text/css" />
+      <link href="/admin/assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+<!-- 
+                ///////////////////////////////////////////////////////////////////////////////////// -->
+
+
+    <div class="page-wrapper" >
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <!-- <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                        <h4 class="text-themecolor">Dashboard 1</h4>
+                    </div>
+                    <div class="col-md-7 align-self-center text-right">
+                        <div class="d-flex justify-content-end align-items-center">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                                <li class="breadcrumb-item active">Dashboard 1</li>
+                            </ol>
+                            
+                        </div>
+                    </div>
+                </div> -->
+                
+          
+          <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Newsletter Templates (Edit) ID 1</h4>
+                                <div class="col-lg-12">
+                     
+                                <!-- <h4 class="card-title">Vertical Tab</h4>
+                                <h6 class="card-subtitle">Use default tab with class <code>vtabs &amp; tabs-vertical</code></h6> -->
+                                <!-- Nav tabs -->
+
+                                  <form class="">  
+                                 
+                                 
+                                 
+                              
+                                <div class="vtabs">
+                                    <ul class="nav nav-tabs tabs-vertical" role="tablist"> <li class="nav-item"> <a class="nav-link tcat" data-toggle="tab" href="#home" role="tab" aria-selected="true"><span class="hidden-xs-down">Country :
+                                        <select class="form-control filter-option " name="status" id="status" >
+                                             <option class="filter-option-inner" selected value="0">choose</option>
+                                              <option value="1" class="">India</option>   
+                                        </select>
+                                               </span> </a> 
+                                           </li>
+ 
+                 <li class="nav-item"> <a class="nav-link tcat" data-toggle="tab" href="#home" role="tab" aria-selected="true"><span class="hidden-xs-down">Language :
+                <select class="form-control filter-option " name="status" id="status" >
+                     <option class="filter-option-inner" selected value="0">choose</option>
+                      <option value="1" class="">Hindi</option>   
+                </select>
+                       </span> </a> 
+                   </li><li class="nav-item"> <a class="nav-link active show" data-toggle="tab" href="#content" role="tab" aria-selected="false"> <span class="hidden-xs-down">Content</span></a> </li>
+                                            </ul>
+                                    <!-- Tab panes -->
+                                    
+                                    <div class="tab-content col-lg-12">
+                                       <div class="tab-pane active show" id="content" role="tabpanel">  
+                                             
+                                        <!--   <div class="form-group">
+                                                    <label class="control-label">First Name</label>
+                                                    <input type="text" id="firstName" class="form-control" placeholder="John doe">
+                                                    <small class="form-control-feedback"> This is inline help </small> </div> -->
+                                            <div class="p-20">
+                                               
+                                                    <div class="form-group m-b-10"> 
+                                                     <label for="input1"> Template name</label>
+                                                        <input type="text" class="form-control cat" id="name" >
+                                                      
+                                                    </div> 
+                                                    <div class="form-group m-b-10"> 
+                                                        <label for="input1"> Template Subject</label>
+                                                           <input type="text" class="form-control cat" id="name" >
+                                                         
+                                                       </div> 
+                                                       <div class="form-group m-b-10"> 
+                                                        <label for="input1"> Sender name</label>
+                                                           <input type="text" class="form-control cat" id="name" >
+                                                         
+                                                       </div> 
+                                                       <div class="form-group m-b-10"> 
+                                                        <label for="input1"> Sender email </label>
+                                                           <input type="text" class="form-control cat" id="name" >
+                                                         
+                                                       </div> 
+
+                                                       <div class="form-group m-b-10">
+                                                        <label for="input1">Content</label>
+                                                          <textarea class="form-control cat" id="desc" type="text" ng-model="formdata.desc" ></textarea>
+                                                        
+                                                        
+                                                      </div> 
+                                                      
+                                                 <!--<div class="form_group m-b-10">
+                                                        
+                                                           
+                                                            <label for="first_name" id="labelimg">Thumbnail</label>
+                                                            
+                                                            <div class="fluid left_c_input file_wrap m-b-10">
+                                                                 <div class="write_textbox"> 
+                                                                      <input  type="text" readonly placeholder="No file selected" class="txtFilepath" style="border:none !important;"  name="name{{$index}}">                                       
+                                                                  </div>
+                                                                 <div class="iconw" ng-click="iconw()"><i class="fa fa-download"></i>Upload</div>
+                                                                 <input  type="file" id="imgfile" name="imgfile{{$index}}"  class="file_input_hidden img" ng-model="imgss" ngf-select  />                        
+                                                                     </div>       
+                                                          
+                                                          </div>-->
+                                <!--<div class="col-lg-3 col-md-6 imgprev">
+                                                                <div class="card">
+                                                                    <div class="el-card-item">
+                                                                        <div class="el-card-avatar el-overlay-1 imageup"> <img src="/uploads/dummy.jpg" alt="user" id="imgfiles"  class="imgup"/>
+                                                                           
+                                                                               
+                                                                               
+                                                                            
+                                                                        </div>
+                                                                    
+                                                                    </div>
+                                                                </div>
+                                                            </div>-->
+                               <!--<div class="form_group m-b-10" style="clear:both;">
+                                                        
+                                                           
+                                                            <label for="first_name" id="labelimg">Attachment</label>
+                                                            
+                                                            <div class="fluid left_c_input file_wrap m-b-10">
+                                                                 <div class="write_textbox"> 
+                                                                      <input  type="text" readonly placeholder="No file selected" class="txtFilepath" style="border:none !important;"  name="name{{$index}}">                                       
+                                                                  </div>
+                                                                 <div class="iconw" ng-click="iconw()"><i class="fa fa-download"></i>Upload</div>
+                                                                 <input  type="file" id="imgfile" name="imgfile{{$index}}"  class="file_input_hidden img" ng-model="imgss" ngf-select  />                        
+                                                                     </div>       
+                                                          
+                                                          </div>--> 
+                                                    <div class="form-group m-b-10">
+                                                            <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
+                                                            <label for="input1"> Status</label>
+                                                                   <select class="form-control filter-option" name="status" id="status" >
+                                                                   <option class="filter-option-inner" selected value="0">choose</option>
+
+                                                               
+
+                                                
+                                              </select>
+                                            </div>
+
+                                
+                                            </div>
+                                        </div> 
+                                         
+                                      
+                                  
+                                </div>
+                                        
+ 
+                                    </div>
+
+                                   
+                                   
+
+                            </form>
+                            
+                    </div>
+                              
+                            </div>
+                        </div>
+                        
+                    </div>
+                   
+                     
+                </div>   
+                </div>
+            </div>
+
+            <!-- modal -->
+         
+  <!-- modal -->
+ <!-- <script>
+     setTimeout(function(){
+  $('.selectpicker').selectpicker({style: 'btn-default',
+  size: 4});
+}, 1000)
+
+  </script>-->
+   <script>
+     setTimeout(function(){
+  $('.selectpicker').selectpicker({style: 'btn-default',
+  size: 4});
+}, 1000)
+      CKEDITOR.replace( 'desc', {
+                fullPage: true,
+                allowedContent: true,
+                extraPlugins: 'wysiwygarea'
+        });
+             
+  </script>

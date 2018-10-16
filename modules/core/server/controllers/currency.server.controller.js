@@ -90,12 +90,12 @@ var path = require('path'),
 	
 	
 	/**
-	 * Get Extra field group by ID
+	 * Get currency by ID
 	 */
 
 	exports.getById = function(request, response) {
 	
-		Currency.findById(request.params.groupId).exec(function (error, items) {
+		Currency.findById(request.params.currencyId).exec(function (error, items) {
 	
 	        if (error) {
 	  		  console.log(error);
@@ -107,21 +107,22 @@ var path = require('path'),
 	};
 	
 	/*
-	 * Update Extrafield Group
+	 * Update currency
 	 */
 	exports.updateCurrency= function(request, response){
-		var groupId = request.params.groupId;
+		var currencyId = request.params.currencyId;
 
-		Currency.findById(request.params.groupId).exec(function (error, item) {
+		Currency.findById(request.params.currencyId).exec(function (error, item) {
 			  if (error) {
 			        response.status(500).send(error);
 			        return;
 			      }
 			  
 			  if (item) {
-				  	item.groupname = request.body.groupname;
-			        item.description = request.body.status;
-			        
+				  	item.currency = request.body.currency;
+			        item.shortname = request.body.shortname;
+			        item.symbol = request.body.symbol;
+			        item.status = request.body.status;
 			        item.save();
 
 			        response.json(item);
@@ -133,12 +134,12 @@ var path = require('path'),
 	
 	
 	/**
-	 * Delete Extra field group by ID
+	 * Delete currency by ID
 	 */
 	exports.delete = function(request, response) {
-		  var groupId = request.params.groupId;
+		  var currencyId = request.params.currencyId;
 
-			Currency.findById(request.params.groupId).exec(function (error, item) {
+			Currency.findById(request.params.currencyId).exec(function (error, item) {
 		      
 		      if (error) {
 		        response.status(500).send(error);
@@ -154,15 +155,35 @@ var path = require('path'),
 		          }
 
 		          response.status(200).json({
-		            'message': 'Currency group was removed.'
+		            'message': 'Currency was removed.'
 		          });
 		        });
 		      } else {
 		        response.status(404).json({
-		          message: 'Currency with id ' + groupId + ' was not found.'
+		          message: 'Currency with id ' + currencyId + ' was not found.'
 		        });
 		      }
 		    });
+		};
+
+		/** 
+		*Delete currency by IDs
+		*
+		**/
+		exports.delCheckedCurrency = function(request, response) {
+		
+			var arr = request.params.currencyId.split(',');
+			console.log(arr);
+			Currency.deleteMany({_id:{'$in':arr}}).exec(function (err, data) {
+								 if (err) throw err;
+								 response.json({
+												status: 1,
+									});	
+						
+					
+						});
+
+
 		};
 
 

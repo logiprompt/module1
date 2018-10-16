@@ -75,7 +75,7 @@ var path = require('path'),
 		//console.log(req.body);
 		//console.log(req.body);
 		
-		Field.find().exec(function (error, items) {
+		Field.find({'groupid':request.params.groupId}).exec(function (error, items) {
 	
 			  if (error) {
 				  console.log(error);
@@ -127,9 +127,48 @@ var path = require('path'),
 		  })
 	}
 	
+	/*
+	 * Update Extra field
+	 */
+	exports.updatefield = function(request, response){
+		var fieldId = request.params.fieldId;
+
+		  Field.findById(request.params.fieldId).exec(function (error, item) {
+			  if (error) {
+			        response.status(500).send(error);
+			        return;
+			      }
+			  
+			  if (item) {
+				  item.groupid = request.body.groupid ;
+				  item.status = request.body.status ? request.body.status : '';
+				  item.name = request.body.name  ? request.body.name : '';
+				  item.label = request.body.label  ? request.body.label : '';
+				  item.size = request.body.size  ? request.body.size : '';
+				  item.classname = request.body.class ? request.body.class : '';
+				  item.style =request.body.style ? request.body.style : '';
+				  item.defvalue = request.body.defvalue ? request.body.defvalue : '';
+				  item.type = request.body.type ? request.body.type : '';
+				  item.FEvisibility = request.body.FEvisibility ? request.body.FEvisibility : '';
+				  item.position = request.body.position ? request.body.position : '';
+				  item.required = request.body.required ? request.body.required : '';
+				  item.cols = request.body.cols ? request.body.cols : '';
+				  item.rows = request.body.rows ? request.body.rows : '';
+				  item.values = request.body.values ? request.body.values : '';
+				  item.olang= request.body.olang;
+			        
+			        item.save();
+
+			        response.json(item);
+			        return;
+			      }
+
+		  })
+	}
+	
 	
 	/**
-	 * Delete Extra field group by ID
+	 * Delete Extrafieldgroup by ID
 	 */
 	exports.delete = function(request, response) {
 		  var groupId = request.params.groupId;
@@ -162,4 +201,36 @@ var path = require('path'),
 		};
 
 
+		/*
+		 * Delete Extra field
+		 */
+		exports.deletefield = function(request, response) {
+			var groupId = request.params.fieldId;
+
+			  Field.findById(request.params.fieldId).exec(function (error, item) {
+		      
+		      if (error) {
+		        response.status(500).send(error);
+		        return;
+		      }
+
+		      if (item) {
+		        item.remove(function (error) {
+
+		          if (error) {
+		            response.status(500).send(error);
+		            return;
+		          }
+
+		          response.status(200).json({
+		            'message': 'Extrafield was removed.'
+		          });
+		        });
+		      } else {
+		        response.status(404).json({
+		          message: 'Extrafield with id ' + fieldId + ' was not found.'
+		        });
+		      }
+		    });
+		}
 

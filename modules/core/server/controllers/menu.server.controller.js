@@ -36,17 +36,12 @@ exports.addSubMenu = function(req, res) {
                 message: errorHandler.getErrorMessage(err)
             });
         } else { 
-            AdminMenu.update({_id:adminMenuData.parentID},{
-        $set:{"hasChild" :true}
-    },function(err) { 
-                       if (err) throw err;
-               });
 
             res.jsonp(adminMenuData);
         }
     });
 
-   
+
 
 
 
@@ -56,7 +51,7 @@ exports.addSubMenu = function(req, res) {
  * List of currencies
  */
 exports.getList = function(request, response) {
-    console.log(68074);
+    //console.log(68074);
     AdminMenu.find().exec(function(error, items) {
 
         if (error) {
@@ -64,7 +59,7 @@ exports.getList = function(request, response) {
               message: errorHandler.getErrorMessage(error)
             });
           } else {
-            console.log(items);
+            //console.log(items);
            response.jsonp(items);
           }
 
@@ -86,7 +81,7 @@ exports.getById = function(request, response) {
     .lean()
     .exec(function(error, items) {
         if (error) {
-            console.log(error);
+           // console.log(error);
             response.status(500).send(error);
             return;
         }
@@ -94,6 +89,48 @@ exports.getById = function(request, response) {
     });
 };
 
+/*
+	 * Update currency
+	 */
+	exports.updateMenu= function(request, response){
+		
+        console.log(request.body);
+		AdminMenu.findById(request.body.parentID).exec(function (error, item) {
+			  if (error) {
+			        response.status(500).send(error);
+			        return;
+			      }
+			  
+			  if (item) {
 
+                AdminMenu.find({parentID:request.body.parentID}).exec(function(error, res) {
+
+                    if (error) {
+                        return response.status(400).send({
+                          message: errorHandler.getErrorMessage(error)
+                        });
+                      } else {
+                        //console.log(items);
+                       var ids=res[0].id; console.log(ids);
+                       
+                       item.hasChild = request.body.hasChild;
+                       item.childIDs.push(ids);
+                      
+			        item.save();
+                   
+                      }
+            
+            
+                        
+                });
+  
+                      
+
+			        response.json(item);
+			        return;
+			      }
+
+		  })
+	}
 
 

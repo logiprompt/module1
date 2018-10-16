@@ -180,10 +180,10 @@ width: 70px;
                                 <h6 class="card-subtitle">Use default tab with class <code>vtabs &amp; tabs-vertical</code></h6> -->
                                 <!-- Nav tabs -->
 
-                                  <form class="">  
+                                  <form class="" name="productForm" ng-submit="saveProduct()" novalidate>  
                                  
                                    <div class="form-group m-b-10 btn23">
-                                    <button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
+                                    <button type="submit" class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
                                 
                                         <a href="/product/product"><button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm btn-default"> Cancel </button> </a>
                                      </div> 
@@ -194,15 +194,19 @@ width: 70px;
                                         <li class="nav-item"> <a class="nav-link tcat" data-toggle="tab" href="#home" role="tab" aria-selected="true"><span class="hidden-xs-down">Language : default</span> </a> </li>
                                         <li class="nav-item"> <a class="nav-link active show" data-toggle="tab" href="#ptype" role="tab" aria-selected="false"> <span class="hidden-xs-down">Product Type</span></a> </li>
                                         
-                                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#content" role="tab" aria-selected="false"> <span class="hidden-xs-down">Content</span></a> </li>
+                                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#content" role="tab" aria-selected="false"
+                                        ng-class="{ 'validationErr' : productForm.$submitted && !productForm.product_name.$valid || productForm.$submitted && !productForm.product_shortdec.$valid}"> <span class="hidden-xs-down">Content</span></a> </li>
                                         <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#category" role="tab" aria-selected="false"> <span class="hidden-xs-down">Category</span></a> </li>
                                          <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#meta" role="tab" aria-selected="false"> <span class="hidden-xs-down">Meta Data</span></a> </li>
-                                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#navigation" role="tab" aria-selected="false"> <span class="hidden-xs-down">Navigation</span></a> </li>
-                                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#price" role="tab" aria-selected="false"> <span class="hidden-xs-down">Pricing</span></a> </li>
+                                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#navigation" role="tab" aria-selected="false"
+                                        ng-class="{ 'validationErr' : productForm.$submitted && !productForm.product_slug.$valid}"> <span class="hidden-xs-down">Navigation</span></a> </li>
+                                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#price" role="tab" aria-selected="false"
+                                         ng-class="{ 'validationErr' : productForm.$submitted && !productForm.product_price.$valid}" > <span class="hidden-xs-down">Pricing</span></a> </li>
                                        
                                         <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#inventory" role="tab" aria-selected="false"> <span class="hidden-xs-down">Inventory</span></a> </li>
                                         <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#extra" role="tab" aria-selected="false"> <span class="hidden-xs-down">Extra field group name</span></a> </li>
-                                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#images" role="tab" aria-selected="false"> <span class="hidden-xs-down">Images</span></a> </li>
+                                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#images" role="tab" aria-selected="false"
+                                         ng-class="{ 'validationErr' : productForm.$submitted && product_images.length == 0}" > <span class="hidden-xs-down">Images</span></a> </li>
                                         <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#related" role="tab" aria-selected="false"> <span class="hidden-xs-down">Related products</span></a> </li>
                                         <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#upsells" role="tab" aria-selected="false"> <span class="hidden-xs-down">UP-sells</span></a> </li>
                                         <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#crosssells" role="tab" aria-selected="false"> <span class="hidden-xs-down">Cross-sells</span></a> </li>
@@ -233,10 +237,8 @@ width: 70px;
                                                        
                                                             <div class="form-group m-b-10">
                                                                          <label for="status">Product Type</label>
-                                                                           <select class="form-control filter-option" name="pdttype" id="pdttype" ng-model="producttype" >
-                                                                           <option class="filter-option-inner" value="0">choose</option>
-    
-                                                                                              <option selected value="1" class="filter-option-inner">Simple </option>
+                                                                           <select class="form-control filter-option" name="product_type" id="product_type" ng-model="product_type" >
+                                                                           <option selected value="1" class="filter-option-inner">Simple </option>
                                                                                               <option value="2">Bundled </option>
                                                                                               <option value="3">Configurable </option>
                                                                                               </select>
@@ -246,101 +248,15 @@ width: 70px;
                                                     </div>
                                                 </div>
 
-                                        <!--<div class="tab-pane " id="content" role="tabpanel">
-                                            <div class="p-20">
-                                               
-                                                    <div class="form-group m-b-10">
-                                                        <span class="bar"></span>
-                                                        <label for="input1"> Product name</label>
-                                                        <input type="text" class="form-control cat" id="name" ng-model="formdata.category" >
-                                                      
-                                                        
-                                                    </div> 
-                                                    <div class="pdtcontentcheck" ng-if="producttype==1 || producttype==2">
-                                            <div class="form-group m-b-10">
-                                                    <span class="bar"></span>
-                                                    <label for="input1"> Short description</label>
-                                                    <textarea class="form-control cat" id="name" type="text" ng-model="formdata.wer" ></textarea>
-                                                        
-                                                    </div> 
-                                                    <div class="form-group m-b-10">
-                                                            <span class="bar"></span>
-                                                            <label for="input1">  Description</label>
-                                                            <textarea class="form-control cat" id="name" type="text" ng-model="formdata.wer" ></textarea>
-                                                                
-                                                            </div>                
-                                                            <div class="form-group m-b-10">
-                                                                    <span class="bar"></span>
-                                                                    <label for="input1"> SKU </label>
-                                                                    <input type="text" class="form-control cat" id="name" ng-model="formdata.category" >
-                                                                  
-                                                                    
-                                                                </div> 
-
-
-                                                                <div class="form-group m-b-10">
-                                                                        <span class="bar"></span>
-                                                                           <label for="input1"> Weight </label>
-                                                                       <input type="text" class="form-control cat" id="name" ng-model="formdata.category" >
-                                                                                       </div>
-
-                                                                                       <div class="form-group m-b-10">
-                                                                                            <span class="bar"></span>
-                                                                                            <label for="input1"> Product as new from date </label>
-<div class=" example ">
-                                                                                            <div class="input-group">
-                                                                                         <input type="text" class="form-control myspdatepicker" placeholder="mm/dd/yyyy">
-                                                                                                <div class="input-group-append">
-                                                                                                    <span class="input-group-text"><i class="icon-calender"></i></span>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                             </div>
-                                                                             <div class="form-group m-b-10">
-                                                                                    <span class="bar"></span>
-                                                                                    <label for="input1"> Product as new end date </label>
-                                                                               <div class=" example ">
-                                                                                    <div class="input-group">
-                                                                                            <input type="text" class="form-control myspdatepicker" placeholder="mm/dd/yyyy">
-                                                                                                          <div class="input-group-append">
-                                                                                                              <span class="input-group-text"><i class="icon-calender"></i></span>
-                                                                                                          </div>
-                                                                                                      </div>
-                                                                                </div>
-                                                                     </div>       
-                                                                     <div class="form-group m-b-10">
-                                                                            <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >  <span class="bar"></span>
-                                                              <label for="status">Featured</label>
-                                                                                   <select class="form-control filter-option" name="status" id="status" ng-model="formdata.status">
-                                                                                   <option class="filter-option-inner" value="0">choose</option>
-            
-                                                                                                      <option value="1" class="filter-option-inner">Yes</option>
-                                                                                                      <option value="2">No</option>
-                                                                                                      </select>
-                                                                                                       
-                                                                       </div>
-                                                                       <div class="form-group m-b-10">
-                                                                            <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >  <span class="bar"></span>
-                                                              <label for="status">Status</label>
-                                                                                   <select class="form-control filter-option" name="status" id="status" ng-model="formdata.status">
-                                                                                   <option class="filter-option-inner" value="0">choose</option>
-            
-                                                                                                      <option value="1" class="filter-option-inner">Disable</option>
-                                                                                                      <option value="2">Enable</option>
-                                                                                                      </select>
-                                                                                                       
-                                                                       </div>           
-                                                       
-                                </div>
-                                            </div>
-                                        </div>-->
+                                        
                                         <div class="tab-pane show" id="content" role="tabpanel">
                                                 <div class="p-20">
                                                    
                                                           <div class="form-group m-b-10">
                                                         <span class="bar"></span>
                                                         <label for="input1"> Product name</label>
-                                                        <input type="text" class="form-control cat" id="name" ng-model="formdata.category" >
+                                                        <input type="text" class="form-control cat" name="product_name" id="product_name" ng-model="product_name" 
+                                                        ng-class="{ 'validationErr' : productForm.$submitted && !productForm.product_name.$valid}" ng-required="true">
                                                       
                                                         
                                                     </div>  
@@ -349,51 +265,41 @@ width: 70px;
                                                      <div class="form-group m-b-10">
                                                     <span class="bar"></span>
                                                     <label for="input1"> Short description</label>
-                                                    <textarea class="form-control cat" id="name" type="text" ng-model="formdata.wer" ></textarea>
+                                                    <textarea class="form-control cat" id="product_shortdec" name="product_shortdec" type="text" ng-model="product_shortdec"                                                     
+                                                    ng-class="{ 'validationErr' : productForm.$submitted && !productForm.product_shortdec.$valid}" ng-required="true"></textarea>
                                                         
                                                     </div> 
-                                                    
-                                                    
-                                                    
-                                                    
                                                     
                                                      <div class="form-group m-b-10">
                                                             <span class="bar"></span>
                                                             <label for="input1">  Description</label>
-                                                            <textarea class="form-control cat" id="name" type="text" ng-model="formdata.wer" ></textarea>
+                                                            <textarea class="form-control cat" name="product_desc" id="product_desc" type="text" ng-model="product_desc" ></textarea>
                                                                 
                                                             </div> 
                                                             
                                                             <div class="form-group m-b-10">
                                                                     <span class="bar"></span>
                                                                     <label for="input1"> SKU </label>
-                                                                    <input type="text" class="form-control cat" id="name" ng-model="formdata.category" >
+                                                                    <input type="text" class="form-control cat" name="product_sku" id="product_sku" ng-model="product_sku" >
                                                                   
                                                                     
                                                                 </div> 
                                                                  <div class="form-group m-b-10">
                                                                         <span class="bar"></span>
                                                                            <label for="input1"> Weight </label>
-                                                                       <input type="text" class="form-control cat" id="name" ng-model="formdata.category" >
+                                                                       <input type="text" class="form-control cat" id="product_weight" name="product_weight" ng-model="product_weight" >
                                                                                        </div>
-                                                                                       
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
+                                                                       
                                                     </div>
                                                     <!--pdtcontentcheck ends-->
     
-                                                  
-
                                                        <div class="form-group m-b-10">
                                                                            <span class="bar"></span>
                                                                                       <label for="input1"> Product as new from date </label>
                 <div class=" example ">
                       <div class="input-group">
-                          <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy">
+                          <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy" 
+                          name="product_fromdate" id="product_fromdate" ng-model="product_fromdate">
                                         <div class="input-group-append">
                                             <span class="input-group-text"><i class="icon-calender"></i></span>
                                         </div>
@@ -405,7 +311,7 @@ width: 70px;
                                     <label for="input1">Product as new end date  </label>
                                <div class=" example ">
                                     <div class="input-group">
-                                        <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy">
+                                        <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy" name="product_enddate" id="product_enddate" ng-model="product_enddate">
                                         <div class="input-group-append">
                                             <span class="input-group-text"><i class="icon-calender"></i></span>
                                         </div>
@@ -415,38 +321,26 @@ width: 70px;
                                <div class="form-group m-b-10">
                                                                             <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >--> <span class="bar"></span>
                                                               <label for="status">Featured</label>
-                                                                                   <select class="form-control filter-option" name="status" id="status">
-                                                                                   <option class="filter-option-inner" value="0">choose</option>
-            
-                                                                                                      <option value="1" class="filter-option-inner">Yes</option>
-                                                                                                      <option value="2">No</option>
-                                                                                                      </select>
+                                                                                   <select class="form-control filter-option" ng-model="product_featured" name="product_featured" id="product_featured">
+                                                                                   <option value="0">No</option>
+                                                                                   <option value="1" class="filter-option-inner">Yes</option>
+                                                                                    </select>
                                                                                                        
                                                                        </div>                   
                                    <div class="form-group m-b-10">
                                                                             <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >--> <span class="bar"></span>
                                                               <label for="status">Status</label>
-                                                                                   <select class="form-control filter-option" name="status" id="status">
-                                                                                   <option class="filter-option-inner" value="0">choose</option>
-            
-                                                                                                      <option value="1" class="filter-option-inner">Disable</option>
-                                                                                                      <option value="2">Enable</option>
+                                                                                   <select class="form-control filter-option" ng-model="product_status" name="product_status" id="product_status">
+                                                                                                      <option value="0" class="filter-option-inner">Disable</option>
+                                                                                                      <option value="1">Enable</option>
                                                                                                       </select>
                                                                                                        
                                                                        </div>    
                                    
-                                   
-                                   
-                                   
-                                    
-  
                                     
                                                 </div>
                                             </div>
 
-
-
-                                        
                                         <div class="tab-pane" id="category" role="tabpanel">
                                             <div class="p-20">
                                                
@@ -473,6 +367,8 @@ width: 70px;
                                                     position: absolute;
                                                     top: 0px !important;
                                                 }</style>
+                                                
+                                                
                                               <div class="form-group m-b-10">
                                                     <label for="input1">Configurable Fields</label> 
                                                        <div class="col-md-12">
@@ -544,12 +440,12 @@ width: 70px;
                                             
                                                 <div class="form-group m-b-10">
                                                     <label>Meta Description</label>
-                                    				<textarea class="form-control" rows="5"></textarea>      
+                                    				<textarea class="form-control" rows="5" name="product_metadesc" id="product_metadesc" ng-model="product_metadesc"></textarea>      
                                                 </div>
 
                                                 <div class="form-group m-b-10">
                                                     <label>Meta Keywords</label>
-                                    				<textarea class="form-control" rows="5"></textarea>        
+                                    				<textarea class="form-control" rows="5" name="product_metakey" id="product_metakey" ng-model="product_metakey"></textarea>        
                                                 </div>
 
                                         </div>
@@ -558,25 +454,25 @@ width: 70px;
                                                 <div class="form-group m-b-10">
                                                          <span class="bar"></span>
                                                         <label for="input1"> Slug</label>
-                                                        <input type="text" class="form-control cat" id="name" ng-model="formdata.category" >
+                                                        <input type="text" class="form-control cat" ng-required="true" id="product_slug" name="product_slug" ng-model="product_slug" 
+                                                        ng-class="{ 'validationErr' : productForm.$submitted && !productForm.product_slug.$valid}" >
                                                       
                                                        
                                                     </div>
                                                     <div class="form-group m-b-10">
                                                          <span class="bar"></span>
                                                         <label for="input1"> URL KEY</label>
-                                                        <input type="text" class="form-control cat" id="name" ng-model="formdata.category" >
+                                                        <input type="text" class="form-control cat" id="product_urlkey" name="product_urlkey" ng-model="product_urlkey" >
                                                       
                                                        
                                                     </div>
                                                     <div class="form-group m-b-10">
                                                                             <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >--> <span class="bar"></span>
                                                               <label for="status">Display in menu</label>
-                                                                                   <select class="form-control filter-option" name="status" id="status" ng-model="formdata.status">
-                                                                                   <option class="filter-option-inner" value="0">choose</option>
-            
-                                                                                                      <option value="1" class="filter-option-inner">Disable</option>
-                                                                                                      <option value="2">Enable</option>
+                                                                                   <select class="form-control filter-option" name="product_displayinmenu" id="product_displayinmenu" ng-model="product_displayinmenu">
+                                                                                   
+                                                                                                      <option value="0" class="filter-option-inner">Disable</option>
+                                                                                                      <option value="1">Enable</option>
                                                                                                       </select>
                                                                                                        
                                                                        </div>
@@ -584,13 +480,14 @@ width: 70px;
                                         </div>
 
 
-             <div class="tab-pane show" id="price" role="tabpanel">
+             							<div class="tab-pane show" id="price" role="tabpanel">
                                                 <div class="p-20">
                                                    
                                                         <div class="form-group m-b-10">
                                                             <span class="bar"></span>
                                                             <label for="input1"> Price </label>
-                                                            <input type="text" class="form-control cat" id="name" ng-model="formdata.category" >
+                                                            <input type="text" class="form-control cat" id="product_price" name="product_price" ng-model="product_price" ng-required="true"
+                                                            ng-class="{ 'validationErr' : productForm.$submitted && !productForm.product_price.$valid}" >
                                                           
                                                             
                                                         </div> 
@@ -598,7 +495,7 @@ width: 70px;
                                                 <div class="form-group m-b-10">
                                                         <span class="bar"></span>
                                                         <label for="input1"> Special price</label>
-                                                        <input type="text" class="form-control cat" id="name" ng-model="formdata.category" >
+                                                        <input type="text" class="form-control cat" id="product_specialprice" name="product_specialprice" ng-model="product_specialprice" >
                                                          <label class="lblsize">*  Special Price is active only when lower than the Actual Price  </label>   
                                                         </div> 
 
@@ -607,7 +504,7 @@ width: 70px;
                                                                                       <label for="input1"> Special price start date </label>
                 <div class=" example ">
                       <div class="input-group">
-                          <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy">
+                          <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy" name="product_splpricestartdate" id="product_splpricestartdate" ng-model="product_splpricestartdate">
                                         <div class="input-group-append">
                                             <span class="input-group-text"><i class="icon-calender"></i></span>
                                         </div>
@@ -616,10 +513,10 @@ width: 70px;
                             </div>
                              <div class="form-group m-b-10">
                                     <span class="bar"></span>
-                                    <label for="input1">Special price start date  </label>
+                                    <label for="input1">Special price end date  </label>
                                <div class=" example ">
                                     <div class="input-group">
-                                        <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy">
+                                        <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy" name="product_splpriceenddate" id="product_splpriceenddate" ng-model="product_splpriceenddate">
                                         <div class="input-group-append">
                                             <span class="input-group-text"><i class="icon-calender"></i></span>
                                         </div>
@@ -632,14 +529,14 @@ width: 70px;
                                     <div class="form-group m-b-10">
                                             <span class="bar"></span>
                                             <label for="input1"> Qty </label>
-                                            <input type="text" class="form-control cat" id="name" ng-model="formdata.category" >
+                                            <input type="text" class="form-control cat" name="product_groupqty" id="product_groupqty" ng-model="product_groupqty" >
                                           
                                             
                                         </div>    
                                         <div class="form-group m-b-10">
                                                 <span class="bar"></span>
                                                 <label for="input1"> Price </label>
-                                                <input type="text" class="form-control cat" id="name" ng-model="formdata.category" >
+                                                <input type="text" class="form-control cat" name="product_groupprice" id="product_groupprice" ng-model="product_groupprice" >
                                               
                                                 
                                             </div>    
@@ -699,60 +596,55 @@ width: 70px;
                                                 </div>
                                             </div>
 
-                                            <div class="tab-pane p-20" id="inventory" role="tabpanel">
+                                         <div class="tab-pane p-20" id="inventory" role="tabpanel">
                                             
                                                     <div class="form-group m-b-10">
                                                              <span class="bar"></span>
                                                             <label for="input1"> Quantity </label>
-                                                            <input type="text" class="form-control cat" id="name" ng-model="formdata.category" >
+                                                            <input type="text" class="form-control cat" name="product_qty" id="product_qty" ng-model="product_qty" >
                                                           
                                                            
                                                         </div>
                                                         <div class="form-group m-b-10">
                                                                 <span class="bar"></span>
                                                                <label for="input1"> Qty for item's Status to Become Out of Stock </label>
-                                                               <input type="text" readonly="readonly" value="0" class="form-control cat" id="name"  >
-                                                               <input name="shortchk" checked type="checkbox" id="chk1" class="filled-in chk-col-light-blue" ><label class="lblsize" for="chk1">use default settings</label>
+                                                               <input type="text" readonly="readonly" value="0" class="form-control cat" name="product_qtyoutofstockstatus" id="product_qtyoutofstockstatus" ng-model="product_qtyoutofstockstatus" >
+                                                               <input checked type="checkbox" name="product_qtyoutofstockstatus_def" id="product_qtyoutofstockstatus_def" class="filled-in chk-col-light-blue" ng-model="product_qtyoutofstockstatus_def"><label class="lblsize" for="chk1" >use default settings</label>
                                         
                                                               
                                                            </div>   
                                                            <div class="form-group m-b-10">
                                                                 <span class="bar"></span>
                                                                <label for="input1">Minimum Qty allowed in shopping cart</label>
-                                                               <input type="text" readonly="readonly" value="1" class="form-control cat" id="name"  >
-                                                               <input name="shortchk" checked type="checkbox" id="chk2" class="filled-in chk-col-light-blue" ><label class="lblsize" for="chk2">use default settings</label>
+                                                               <input type="text" readonly="readonly" value="1" class="form-control cat" name="product_minqtyallowed" id="product_minqtyallowed"  ng-model="product_minqtyallowed">
+                                                               <input name="product_minqtyallowed_def" checked type="checkbox" id="product_minqtyallowed_def" class="filled-in chk-col-light-blue" ng-model="product_minqtyallowed_def"><label class="lblsize" for="chk2">use default settings</label>
                                         
                                                               
                                                            </div> 
                                                            <div class="form-group m-b-10">
                                                                 <span class="bar"></span>
                                                                <label for="input1">Maximum Qty allowed in shopping cart</label>
-                                                               <input type="text" readonly="readonly" value="25" class="form-control cat" id="name"  >
-                                                               <input name="shortchk" checked type="checkbox" id="chk3" class="filled-in chk-col-light-blue" ><label class="lblsize" for="chk3">use default settings</label>
+                                                               <input type="text" readonly="readonly" value="25" class="form-control cat" name="product_maxqtyallowed" id="product_maxqtyallowed"  ng-model="product_maxqtyallowed">
+                                                               <input name="product_maxqtyallowed_def" checked type="checkbox" id="product_maxqtyallowed_def" class="filled-in chk-col-light-blue" ng-model="product_maxqtyallowed_def"><label class="lblsize" for="chk3">use default settings</label>
                                         
                                                               
                                                            </div> 
                                                            <div class="form-group m-b-10">
                                                                 <span class="bar"></span>
                                                                <label for="input1">Notify for Quantity below</label>
-                                                               <input type="text" readonly="readonly" value="5" class="form-control cat" id="name"  >
-                                                               <input name="shortchk" checked type="checkbox" id="chk4" class="filled-in chk-col-light-blue" ><label class="lblsize" for="chk4">use default settings</label>
+                                                               <input type="text" readonly="readonly" value="5" class="form-control cat" id="product_notifylowqty"  name="product_notifylowqty" ng-model="product_notifylowqty">
+                                                               <input name="product_notifylowqty_def" checked type="checkbox" id="product_notifylowqty_def" class="filled-in chk-col-light-blue" ng-model="product_notifylowqty_def"><label class="lblsize" for="chk4">use default settings</label>
                                         
                                                               
                                                            </div> 
                                                            <div class="form-group m-b-10">
                                                                 <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >--> <span class="bar"></span>
                                                   <label for="status">Stock Availability</label>
-                                                                       <select class="form-control filter-option" name="status" id="status" >
-                                                                       <option class="filter-option-inner" selected="selected" value="0">choose</option>
-
-                                                                                          <option value="1" class="filter-option-inner">In stock</option>
-                                                                                          <option value="2">Out OF Stock</option>
-                                                                                          </select>
-                                                                                           
+                                                                       <select class="form-control filter-option" name="product_stockavailable" id="product_stockavailable" ng-model="product_stockavailable" >
+                                                                      <option value="1" class="filter-option-inner">In stock</option>
+                                                                       <option value="0">Out OF Stock</option>
+                                                                       </select>         
                                                            </div>
-
-    
                                             </div>
 
                                             
@@ -771,7 +663,7 @@ width: 70px;
                                                                     <input  type="text" readonly placeholder="" class="txtFilepath" style="border:none !important;"  name="name{{$index}}">                                       
                                                                 </div>
                                                                 <div class="iconw" ng-click="iconw()"><i class="fa fa-download"></i>Upload</div>
-                                                                <input  type="file" id="imgfile"  name="imgfile{{$index}}"  class="file_input_hidden img" ng-model="imgss" ngf-select  />                        
+                                                                <input  type="file" id="product_images"  name="imgfile{{$index}}"  class="file_input_hidden img" name="product_images" ng-model="product_images" ngf-select  />                        
                                                                     </div>       
                                                         
                                                         
@@ -784,7 +676,7 @@ width: 70px;
                                                 <div class="form-group m-b-10">
                                                     <span class="bar"></span>
                                                     <label for="input1"> Title </label>
-                                                    <input type="text" class="form-control cat" id="name" ng-model="formdata.category" >
+                                                    <input type="text" class="form-control cat" name="product_imagetitle" id=""product_imagetitle"" ng-model="product_imagetitle" >
                                                     
                                                     
                                                 </div> 
@@ -792,7 +684,7 @@ width: 70px;
                                                     <div class="form-group m-b-10">
                                                             <span class="bar"></span>
                                                             <label for="input1"> Alt </label>
-                                                            <input type="text" class="form-control cat" id="name" ng-model="formdata.category" >
+                                                            <input type="text" class="form-control cat" name="product_imagealt" id="product_imagealt" ng-model="product_imagealt" >
                                                              </div> 
                                                              <div class="form-group m-b-10">
                                                                     <span class="bar"></span>
@@ -863,9 +755,22 @@ width: 70px;
                                                     </div>
                                                 </div>
 
+					<div class="tab-pane show" id="extra" role="tabpanel">
+					<div class="p-20">
+
+
+                    <div class="form-group m-b-10">
+                    
+                    
+                    <div class="row">
+                    </div>
+                    </div>
+                    </div>
+					</div>
                     <div class="tab-pane show" id="bundle" role="tabpanel">
                     <div class="p-20">
 
+					Extrafields Dynamic value comes here inprogress
 
                     <div class="form-group m-b-10">
                     <div class="row">

@@ -106,6 +106,10 @@ if($scope.check==1){
       }
         $scope.adminMenuService.addMenu(data).then(function (result) {
           if (result.statusText = "OK") {
+
+
+
+            
             swal("Success!", "Successfully added menu!", "success");
             $state.reload();
           } else {
@@ -113,6 +117,20 @@ if($scope.check==1){
           }
 
         })
+        var data1 = {
+          "parentID": $scope.formdata.menu,
+          "hasChild": true
+        }
+        console.log(data1);
+        $scope.adminMenuService.updateMenu(data1).then(function(result){
+          console.log(result);
+          if(result.statusText = "OK"){
+            //swal("Sccess!", "Successfully updated Extra Field Group!", "success"); 
+            $state.go('settingsmenuadd');
+           }
+        });
+
+
       }
    
   

@@ -67,16 +67,18 @@ $scope.choices = [{id: 'choice1'}];
 	 * Description : get Currency details
 	 * Owner : 
 	 */
-  $scope.getcurrency = function(){
-    $scope.currencyService.getcurrency().then(function(result){
+
+  $scope.getCurrency = function(){
+    console.log(0);
+    $scope.currencyService.getCurrency().then(function(result){
      if(result.statusText = "OK"){
-       $scope.currencydata = result.data;
+       $scope.currencylist = result.data;
       }else{
         
       }
    });
   }
-  $scope.getcurrency();
+  $scope.getCurrency();
  //////////////////////////////////
 /*
 	 * Function : addcurrency
@@ -106,7 +108,43 @@ $scope.choices = [{id: 'choice1'}];
 		  })
 		}
 			
-	  }
+    }
+    
+    /*
+	   * FUnction : delCurrency
+	   * Description : delete currency by id
+	   * Owner : prain
+	   * 
+	   */
+    $scope.delCurrency = function(currencyId){
+		   
+		   
+      swal({
+              title: 'Are you sure?',
+              text: "You want to delete this currency!",
+              type: 'warning',
+              showCancelButton: false,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+              if(result){
+              $scope.currencyService.delCurrency(currencyId).then(function(result){
+              if(result.statusText = "OK"){
+              swal(
+                            'Deleted!',
+                            'Currency has been deleted.',
+                            'success'
+                          )
+                $scope.getCurrency();
+               }else{
+                 
+               }
+            })
+            }
+            })
+     
+    }
 ///////////////////////////////////////////////////////////////////////
 
 
@@ -139,8 +177,8 @@ $scope.editpage[0].removeAttribute("href");
 }
 $scope.addchkval=function(linkid){
   var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-console.log(linkid)
-console.log(checkedValue[0])
+//console.log(linkid)
+//console.log(checkedValue[0])
   if(checkedValue.length>1){
   $scope.editpage[0].removeAttribute("href");
   }
@@ -173,10 +211,38 @@ $scope.delpage=function(){
  
   //$state.go('addlanguage');
   var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-console.log(checkedValue)
+//console.log(checkedValue)
   for(var i=0;i<checkedValue.length;i++){
     $scope.chkValue.push(checkedValue[i].value);
   }
+var currencyId=$scope.chkValue;
+console.log(currencyId);
+  swal({
+    title: 'Are you sure?',
+    text: "You want to delete checked items!",
+    type: 'warning',
+    showCancelButton: false,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+  }).then((result) => {
+    if(result){
+    $scope.currencyService.delCheckedCurrency(currencyId).then(function(result){
+    if(result.statusText = "OK"){
+    swal(
+                  'Deleted!',
+                  'Currency has been deleted.',
+                  'success'
+                )
+      $scope.getCurrency();
+     }else{
+       
+     }
+  })
+  }
+  })
+
+
  
 }
 setTimeout(getActionBtns, 1500);         
