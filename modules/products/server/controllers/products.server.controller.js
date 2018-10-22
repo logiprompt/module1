@@ -5,28 +5,16 @@
  */
 var path = require('path'),
   mongoose = require('mongoose'),
-  multer = require('multer'),
   Product = mongoose.model('Product'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   _ = require('lodash');
 
-var storage = multer.diskStorage({
-	destination:function(req,file,cb){
-		console.log(file);
-		cb(null,'./uploads');
-	},
-	filename:function(req,file,cb){
-		console.log(file);
-		cb(null,new date().toISOString()+file.originalname);
-	}
-});
-var upload = multer({storage:storage}).single('product_images');
 /**
  * Create a Product
  */
 exports.create = function(req, res) {
-	//upload.single('product_images');
-	console.log(req.file);
+	
+  
   var product = new Product(req.body);
   product.user = req.user;
   product.save(function(err) {

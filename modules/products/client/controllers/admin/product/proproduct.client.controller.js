@@ -118,9 +118,33 @@
 	/*
 	 * Add product
 	 */
+      $scope.product_imageList = [];
+      $scope.uploadFiles = function(file, errFiles) {    	  
+    	  $scope.image = file;
+      }
+      $scope.save = function(){
+    	 $scope.img = {'product_title':'',
+    			 'product_alt':'',
+    			 'ngfBlobUrl':'',
+    			 'ngfHeight':'',
+    			 'ngfWidth':''    			 
+    			 };
+    	 $scope.img.product_title = $scope.product_imagetitle;
+    	 $scope.img.product_alt = $scope.product_imagealt;
+    	 $scope.img.ngfBlobUrl = $scope.image.$ngfBlobUrl;
+    	 $scope.img.ngfHeight =$scope.image.$ngfHeight;
+    	 $scope.img.ngfWidth = $scope.image.$ngfHeight;
+    	 
+    	  $scope.product_imageList.push($scope.img);
+    	 // $scope.product_imageList[$scope.product_imageList.length]['ngfHeight'] =$scope.image.$ngfHeight;
+    	  //$scope.product_imageList[$scope.product_imageList.length]['ngfWidth'] = $scope.image.$ngfHeight;
+    	  $scope.product_imagetitle = "";
+    	  $scope.product_imagealt = "";
+    	  $scope.image = "";
+    	  //console.log( $scope.product_imageList);
+      }
 	$scope.saveProduct = function(){
-		console.log($scope.productForm);
-		//if($scope.productForm.$valid){
+		if($scope.productForm.$valid){
 		productformData.product_name = $scope.product_name;
 		productformData.product_sku = $scope.product_sku;
 		productformData.product_type = $scope.product_type;
@@ -151,8 +175,7 @@
 		productformData.product_notifylowqty_def = $scope.product_notifylowqty_def;
 		productformData.product_stockavailable = $scope.product_stockavailable;
 		productformData.product_extrafield = $scope.extraFieldGroup;
-		productformData.product_images = $scope.product_images;
-		
+		productformData.product_images = $scope.product_imageList;
 		productformData.product_tags = $scope.product_tags;
 		productformData.product_taxablestatus = $scope.product_taxablestatus;
 		productformData.product_taxgroup = $scope.product_taxgroup;
@@ -162,7 +185,7 @@
 		productformData.product_abc_def = $scope.product_abc_def;
 		productformData.product_freeshipping = $scope.product_freeshipping;
 		productformData.olang = {};
-		//}
+		
 		
 		$scope.ProductsService.addProduct(productformData).then(function(result){
 			   if(result.statusText = "OK"){
@@ -170,12 +193,13 @@
     				 swal( 'Added!',
     	                     'New produce added.',
     	                     'success'
-    	                   )
+    	                   );
     	                   
-    	            $scate.go('/product/product');
+    	            $state.go('proproduct');
 			   }
 		});
 	console.log(productformData);
+		}
 	}
 
 	

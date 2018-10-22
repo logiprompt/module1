@@ -116,7 +116,7 @@ width: 70px;
                                             <tr ng-repeat="product in productsList">
                                                 <td><input type="checkbox" id="basic_checkbox_{{$index+1}}"  class="rowtxtchk" value="{{$index+1}}" ng-click="addchkval(1)" />
                                     <label for="basic_checkbox_{{$index+1}}"></label>{{$index+1}}</td>
-                                    <td><img class="tblimg" src="/uploads/dummy.jpg"></td>
+                                    <td><img class="tblimg" src="{{product.product_images[0].ngfBlobUrl}}"></td>
                                     <td>{{product.product_name}}</td>
                                                 <td>{{product.product_price}}</td>
                                                 <td>{{product.product_stockavailable}}</td>

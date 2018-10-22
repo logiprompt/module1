@@ -273,7 +273,7 @@ width: 70px;
                                                     
                                                      
                                                     <!--pdtcontentcheck starts-->
-                                                    <div class="pdtcontentcheck" ng-if="producttype==1 || producttype==2">
+                                                    <div class="pdtcontentcheck" >
                                                      <div class="form-group m-b-10">
                                                     <span class="bar"></span>
                                                     <label for="input1"> Short description</label>
@@ -393,9 +393,6 @@ width: 70px;
                                                 </div>
                                             </div> 
                                         
-                                        
-                                        
-                              
                                         <div class="tab-pane p-20" id="meta" role="tabpanel">
                                             
                                                 <div class="form-group m-b-10">
@@ -622,15 +619,21 @@ width: 70px;
                                                                 <div class="write_textbox"> 
                                                                     <input  type="text" readonly placeholder="" class="txtFilepath" style="border:none !important;"  name="name{{$index}}">                                       
                                                                 </div>
+                                                                
                                                                 <div class="iconw" ng-click="iconw()"><i class="fa fa-download"></i>Upload</div>
-                                                                <input  type="file" id="product_images"  name="imgfile{{$index}}"  class="file_input_hidden img" name="product_images" ng-model="product_images" ngf-select  />                        
+                                                                
+                                                                <input  type="file" id="product_images"  name="product_images"  class="file_input_hidden img" ng-model="product_images" ngf-select="uploadFiles($file, $invalidFiles)"
+          accept="image/*" ngf-max-height="1000" ngf-max-size="1MB"  />                        
                                                                     </div>       
                                                         
                                                         
                                                         
                                                     
                                                         </div>
-
+							<div class="form-group m-b-10"  ng-if="image.$ngfBlobUrl">
+							<span class="bar"></span>
+							<img src="{{image.$ngfBlobUrl}}" style="width:150px;">
+							</div>
 
 
                                                 <div class="form-group m-b-10">
@@ -676,20 +679,20 @@ width: 70px;
                                                                        </thead>
                                                                        
                                                                        <tbody>
-                                                                          <tr >
+                                                                          <tr ng-repeat="imageadded in product_imageList" >
                                                                                <td><!-- {{$index+1}} -->
                                                                                     <input type="checkbox" id="basic_checkbox_{{$index+1}}"  class="rowtxtchk" value="{{$index+1}}" ng-click="addchkval(val.cat_id)" />
                                                            <label for="basic_checkbox_{{$index+1}}"></label>
                                                                                </td>
                                                                                <td>{{$index+1}}</td>
-                                                                               <td><img class="cntimg" src="/uploads/file-1534158180451.png"></td>
-                                                                               <td>Title</td>
-                                                                               <td>Alt</td>
+                                                                               <td><img class="cntimg" src="{{imageadded.ngfBlobUrl}}"></td>
+                                                                               <td>{{imageadded.product_title}}</td>
+                                                                               <td>{{imageadded.product_alt}}</td>
                                                                               
                                                                                <td style="width:20% !important;"> 
                                                                                   
                                                                                    
-                                                                                   <a class="btn waves-effect waves-light btn-sm btn-info" href="/cms/editcat/{{val.cat_id}}">
+                                                                                   <a class="btn waves-effect waves-light btn-sm btn-info" href="javascript:void(0)">
                                                                                        Edit
                                                                                      </a>
                                                                                                                                  
