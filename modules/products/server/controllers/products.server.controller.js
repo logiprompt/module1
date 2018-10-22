@@ -5,24 +5,37 @@
  */
 var path = require('path'),
   mongoose = require('mongoose'),
+  multer = require('multer'),
   Product = mongoose.model('Product'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   _ = require('lodash');
 
+var storage = multer.diskStorage({
+	destination:function(req,file,cb){
+		console.log(file);
+		cb(null,'./uploads');
+	},
+	filename:function(req,file,cb){
+		console.log(file);
+		cb(null,new date().toISOString()+file.originalname);
+	}
+});
+var upload = multer({storage:storage}).single('product_images');
 /**
  * Create a Product
  */
 exports.create = function(req, res) {
+	//upload.single('product_images');
+	console.log(req.file);
   var product = new Product(req.body);
   product.user = req.user;
-
   product.save(function(err) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.jsonp(product);
+      res.json(product);
     }
   });
 };
@@ -63,8 +76,8 @@ exports.update = function(req, res) {
 /**
  * Delete an Product
  */
-exports.delete = function(req, res) {
-  var product = req.product;
+exports.deleteproduct = function(req, response) {
+  /*var product = req.product;
 
   product.remove(function(err) {
     if (err) {
@@ -73,6 +86,34 @@ exports.delete = function(req, res) {
       });
     } else {
       res.jsonp(product);
+    }
+  });*/
+	var productId = req.params.productId;
+
+	Product.findById(productId).exec(function (error, item) {
+    
+    if (error) {
+      response.status(500).send(error);
+      return;
+    }
+
+    if (item) {
+      item.remove(function (error) {
+
+        if (error) {
+          response.status(500).send(error);
+          return;
+        }
+
+        response.status(200).json({
+          'message': 'Product was removed.'
+        });
+        
+      });
+    } else {
+      response.status(404).json({
+        message: 'Product with id ' + productId + ' was not found.'
+      });
     }
   });
 };

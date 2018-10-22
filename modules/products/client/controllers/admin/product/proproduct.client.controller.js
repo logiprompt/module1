@@ -3,11 +3,11 @@
   angular
     .module('products')
     .controller('ProProductController', ProProductController);
-    ProProductController.$inject = ['$scope','$http','$state','$stateParams'];
-  function ProProductController ($scope, $http, $state) {
+    ProProductController.$inject = ['$scope','$http','$state','$stateParams','productcategoryService','extrafieldService','ProductsService'];
+  function ProProductController ($scope, $http, $state,$stateParams,productcategoryService,extrafieldService,ProductsService) {
   
    $scope.formdata = {};
-
+   $scope.extrafieldService = extrafieldService;
 
 	/*
 	 * Pre define product static values
@@ -21,16 +21,167 @@
 	$scope.product_maxqtyallowed_def = true;
 	$scope.product_notifylowqty_def = true;
 	$scope.product_stockavailable = "1";
+	$scope.product_taxablestatus = "0";
+	$scope.product_taxgroup = "1";
+	$scope.product_freeshipping = "0"
 	$scope.product_images = [];
+	var productformData = {};
+	
+	$scope.ProductsService = ProductsService;
 
+	/*
+	 * Get Category List
+	 */
+	
+	 $scope.productcategoryService = productcategoryService;
 
+      $scope.productcategoryService.getCategoryItems().then(function (result) {
+        $scope.categoryLists = result.data;
+        console.log($scope.categoryLists);
+      });
+      
+    /*
+     * Get Extra field Group and fields
+     */
+      var extrafield = new Array();
+      $scope.extrafieldService.getExtraFieldGroup().then(function(result){
+		   if(result.statusText = "OK"){
+			   $scope.extrafieldGroups = result.data;			   
+			   
+			   angular.forEach($scope.extrafieldGroups, function(value, item){
+				   $scope.extrafieldService.getExtraField(value._id).then(function(fieldsresult){
+					   if(fieldsresult.statusText = "OK"){
+						   var data = {
+								   'group':value,
+								   'field':fieldsresult.data
+						   }
+						   extrafield.push(data);
+						   
+						  }
+				   })
+				   $scope.extraFieldGroup = extrafield;
+				   console.log($scope.extraFieldGroup);
+				   
+			   })
+			   
+		   }
+			  });
+      
+      
+   /*
+    * LIst 
+    * Products
+    */
+      $scope.getAllProducts = function(){
+      $scope.ProductsService.listProduct().then(function(result){
+		   if(result.statusText = "OK"){
+			   
+				$scope.productsList =  result.data;
+				console.log($scope.productsList);
+		   }
+	});
+      }
+      
+      $scope.getAllProducts();
+	
+      /*
+       * Delete product by ID
+       */
+      $scope.deleteProduct = function(id){
+    	  
+    	  swal({
+              title: 'Are you sure?',
+              text: "You want to delete this Product!",
+              type: 'warning',
+              showCancelButton: false,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+           	 if(result){
+           		$scope.ProductsService.deleteProduct(id).then(function(result){
+     			   if(result.statusText = "OK"){
+     				 swal(
+     	                     'Deleted!',
+     	                     'Product has been deleted.',
+     	                     'success'
+     	                   )
+     				   $scope.getAllProducts();
+     				  }else{
+     					  
+     				  }
+     		   })
+            }
+            })
+      }
+      
 	/*
 	 * Add product
 	 */
 	$scope.saveProduct = function(){
 		console.log($scope.productForm);
+		//if($scope.productForm.$valid){
+		productformData.product_name = $scope.product_name;
+		productformData.product_sku = $scope.product_sku;
+		productformData.product_type = $scope.product_type;
+		productformData.product_fromdate = $scope.product_fromdate;
+		productformData.product_enddate = $scope.product_enddate;
+		productformData.product_featured = $scope.product_featured;
+		productformData.product_status = $scope.product_status;
+		productformData.product_category = $scope.product_category;
+		productformData.product_metadesc = $scope.product_metadesc;
+		productformData.product_metakey = $scope.product_metakey;
+		productformData.product_slug = $scope.product_slug;
+		productformData.product_urlkey = $scope.product_urlkey;
+		productformData.product_displayinmenu = $scope.product_displayinmenu;
+		productformData.product_price = $scope.product_price;
+		productformData.product_specialprice =	$scope.product_specialprice;
+		productformData.product_splpricestartdate = $scope.product_splpricestartdate;
+		productformData.product_splpriceenddate = $scope.product_splpriceenddate;
+		productformData.product_groupqty = $scope.product_groupqty;
+		productformData.product_groupprice = $scope.product_groupprice;
+		productformData.product_qty = $scope.product_qty;
+		productformData.product_qtyoutofstockstatus = $scope.product_qtyoutofstockstatus;
+		productformData.product_qtyoutofstockstatus_def=$scope.product_qtyoutofstockstatus_def;
+		productformData.product_minqtyallowed = $scope.product_minqtyallowed;
+		productformData.product_minqtyallowed_def = $scope.product_minqtyallowed_def;
+		productformData.product_maxqtyallowed = $scope.product_maxqtyallowed;
+		productformData.product_maxqtyallowed_def = $scope.product_maxqtyallowed_def;
+		productformData.product_notifylowqty = $scope.product_notifylowqty;
+		productformData.product_notifylowqty_def = $scope.product_notifylowqty_def;
+		productformData.product_stockavailable = $scope.product_stockavailable;
+		productformData.product_extrafield = $scope.extraFieldGroup;
+		productformData.product_images = $scope.product_images;
+		
+		productformData.product_tags = $scope.product_tags;
+		productformData.product_taxablestatus = $scope.product_taxablestatus;
+		productformData.product_taxgroup = $scope.product_taxgroup;
+		productformData.product_cst = $scope.product_cst;
+		productformData.product_cst_def = $scope.product_cst_def;
+		productformData.product_abc = $scope.product_abc;
+		productformData.product_abc_def = $scope.product_abc_def;
+		productformData.product_freeshipping = $scope.product_freeshipping;
+		productformData.olang = {};
+		//}
+		
+		$scope.ProductsService.addProduct(productformData).then(function(result){
+			   if(result.statusText = "OK"){
+				   
+    				 swal( 'Added!',
+    	                     'New produce added.',
+    	                     'success'
+    	                   )
+    	                   
+    	            $scate.go('/product/product');
+			   }
+		});
+	console.log(productformData);
 	}
 
+	
+	
+	
+	
    $scope.showreview=function(){
     
 document.getElementById("treview").style.display = "none";

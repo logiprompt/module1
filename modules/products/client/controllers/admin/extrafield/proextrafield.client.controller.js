@@ -21,8 +21,6 @@
    		$scope.extrafieldService.getExtraFieldGroup().then(function(result){
  		   if(result.statusText = "OK"){
  			   $scope.extrafieldGroups = result.data;
- 			  }else{
- 				  
  			  }
  	   });
    	}
@@ -96,10 +94,7 @@
 	   $scope.getExtrafields = function(groupId){
 		   $scope.extrafieldService.getExtraField(groupId).then(function(result){
 			   if(result.statusText = "OK"){
-				   $scope.extrafields = result.data;				   
-				   
-				  }else{
-					  
+				   $scope.extrafields = result.data;
 				  }
 		   });
 	   }
