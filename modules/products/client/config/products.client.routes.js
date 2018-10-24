@@ -82,8 +82,8 @@ var adminfooter={
   views:{
     header:adminheader,
     content: { 
-     templateUrl: '/modules/products/client/views/admin/product/edit.html',
-    controller: 'EditProductController',
+     templateUrl: '/modules/products/client/views/admin/product/addproduct.html',
+    controller: 'ProProductController',
     controllerAs: 'vm',
     },
      footer:adminfooter

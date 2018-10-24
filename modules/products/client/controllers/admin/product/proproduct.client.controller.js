@@ -12,6 +12,7 @@
 	/*
 	 * Pre define product static values
 	 */
+   if(!$stateParams.id){
 	$scope.product_type = "1";
 	$scope.product_featured = "0";
 	$scope.product_status = "1";
@@ -25,7 +26,9 @@
 	$scope.product_taxgroup = "1";
 	$scope.product_freeshipping = "0"
 	$scope.product_images = [];
+   }
 	var productformData = {};
+	
 	
 	$scope.ProductsService = ProductsService;
 
@@ -34,16 +37,15 @@
 	 */
 	
 	 $scope.productcategoryService = productcategoryService;
-
       $scope.productcategoryService.getCategoryItems().then(function (result) {
         $scope.categoryLists = result.data;
         console.log($scope.categoryLists);
       });
-      
     /*
      * Get Extra field Group and fields
      */
       var extrafield = new Array();
+      if(!$stateParams.id){
       $scope.extrafieldService.getExtraFieldGroup().then(function(result){
 		   if(result.statusText = "OK"){
 			   $scope.extrafieldGroups = result.data;			   
@@ -66,6 +68,7 @@
 			   
 		   }
 			  });
+      }
       
       
    /*
@@ -81,9 +84,65 @@
 		   }
 	});
       }
-      
+      if(!$stateParams.id){
       $scope.getAllProducts();
+      }
 	
+      /*
+       * LIst Products by id
+       */
+         $scope.getProductsById = function(id){
+         $scope.ProductsService.listProductById(id).then(function(result){
+   		   if(result.statusText = "OK"){
+  					console.log(result.data);
+   				$scope.product_name = result.data.product_name;
+   				$scope.product_sku = result.data.product_sku;
+   				$scope.product_type = result.data.product_type;
+   			    $scope.product_fromdate = result.data.product_fromdate;
+   				$scope.product_enddate = result.data.product_enddate;
+   				$scope.product_featured = result.data.product_featured;
+   				$scope.product_status = result.data.product_status;
+   				$scope.product_category = result.data.product_category;
+   				$scope.product_metadesc = result.data.product_metadesc;
+   				$scope.product_metakey = result.data.product_metakey;
+   				$scope.product_slug = result.data.product_slug;
+   				$scope.product_urlkey = result.data.product_urlkey;
+   				$scope.product_displayinmenu = result.data.product_displayinmenu;
+   				$scope.product_price = result.data.product_price;
+   				$scope.product_specialprice = result.data.product_specialprice;
+   				$scope.product_splpricestartdate = result.data.product_splpricestartdate;
+   				$scope.product_splpriceenddate = result.data.product_splpriceenddate;
+   				$scope.product_groupqty = result.data.product_groupqty;
+   				$scope.product_groupprice = result.data.product_groupprice;
+   				$scope.product_qty = result.data.product_qty;
+   				$scope.product_qtyoutofstockstatus = result.data.product_qtyoutofstockstatus;
+   				$scope.product_qtyoutofstockstatus_def = result.data.product_qtyoutofstockstatus_def;
+   				$scope.product_minqtyallowed = result.data.product_minqtyallowed;
+   				$scope.product_minqtyallowed_def = result.data.product_minqtyallowed_def;
+   				$scope.product_maxqtyallowed = result.data.product_maxqtyallowed;
+   				$scope.product_maxqtyallowed_def = result.data.product_maxqtyallowed_def;
+   				$scope.product_notifylowqty = result.data.product_notifylowqty;
+   				$scope.product_notifylowqty_def = result.data.product_notifylowqty_def;
+   				$scope.product_stockavailable = result.data.product_stockavailable;
+   				$scope.extraFieldGroup = result.data.product_extrafield;
+   				$scope.product_imageList = result.data.product_images ? result.data.product_images : [];
+   				$scope.product_tags = result.data.product_tags;
+   				$scope.product_taxablestatus = result.data.product_taxablestatus;
+   				$scope.product_taxgroup = result.data.product_taxgroup;
+   				$scope.product_cst = result.data.product_cst;
+   				$scope.product_cst_def = result.data.product_cst_def;
+   				$scope.product_abc = result.data.product_abc;
+   				$scope.product_abc_def = result.data.product_abc_def;
+   				$scope.product_freeshipping = result.data.product_freeshipping;
+   				$scope.olang = result.data.olang;
+   				
+   		   }
+         	});
+         }
+         if($stateParams.id){
+             $scope.getProductsById($stateParams.id);
+             }
+      
       /*
        * Delete product by ID
        */
@@ -121,6 +180,7 @@
       $scope.product_imageList = [];
       $scope.uploadFiles = function(file, errFiles) {    	  
     	  $scope.image = file;
+    	  console.log($scope.product_images);
       }
       $scope.save = function(){
     	 $scope.img = {'product_title':'',
@@ -186,18 +246,31 @@
 		productformData.product_freeshipping = $scope.product_freeshipping;
 		productformData.olang = {};
 		
-		
+		if($stateParams.id){			
+			$scope.ProductsService.updateProductById($stateParams.id,productformData).then(function(result){
+				   if(result.statusText = "OK"){
+					   
+	    				 swal( 'Updated!',
+	    	                     'Updated product.',
+	    	                     'success'
+	    	                   );
+	    	                   
+	    	            $state.go('proproduct');
+				   }
+			});
+		}else{
 		$scope.ProductsService.addProduct(productformData).then(function(result){
 			   if(result.statusText = "OK"){
 				   
     				 swal( 'Added!',
-    	                     'New produce added.',
+    	                     'New product added.',
     	                     'success'
     	                   );
     	                   
     	            $state.go('proproduct');
 			   }
 		});
+		}
 	console.log(productformData);
 		}
 	}

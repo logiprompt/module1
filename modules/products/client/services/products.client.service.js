@@ -41,7 +41,7 @@
 	  
 	  /*
 		  * Function : listproducts
-		  * Description : add new products
+		  * Description : List products
 		  * owner : prabin
 		  */
 	  
@@ -52,6 +52,33 @@
 	       });
 	  }
 	  
+	  
+	  /*
+		  * Function : listproductsById
+		  * Description : List products
+		  * owner : prabin
+		  */
+	  
+	  products.listProductById = function(productId){
+		  return $http({
+	           url: '/api/products/'+productId,
+	           method: "GET"
+	       });
+	  }
+	  
+	  /*
+		  * Function : listproductsById
+		  * Description : List products
+		  * owner : prabin
+		  */
+	  
+	  products.updateProductById = function(productId,data){
+		  return $http({
+	           url: '/api/products/'+productId,
+	           method: "PUT",
+	           data:data
+	       });
+	  }
 	  return products;
 	  
   }
