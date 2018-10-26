@@ -73,6 +73,9 @@
 		  */
 	  
 	  products.updateProductById = function(productId,data){
+		  
+		  data = JSON.parse(angular.toJson(data));
+		  
 		  return $http({
 	           url: '/api/products/'+productId,
 	           method: "PUT",

@@ -101,7 +101,8 @@ exports.updateProducts = function(request, response){
 				item.product_freeshipping = request.body.product_freeshipping;
 				item.olang = request.body.olang;
 		       
-				
+				console.log("=============================");
+				console.log(item);
 				item.save();
 
 		        response.json(item);
