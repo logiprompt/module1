@@ -1,0 +1,178 @@
+ 
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+    <!-- START MAIN -->
+
+
+    <style>
+        .file_input_hidden {
+        font-size: 20px;
+        position: absolute;
+        /* right: 0px; */
+        width: 100%;
+        top: 0px;
+        bottom: 0;
+        cursor: pointer;
+        opacity: 0;
+        filter: alpha(opacity=0);
+        -ms-filter: "alpha(opacity=0)";
+        -khtml-opacity: 0;
+        -moz-opacity: 0;
+    }
+    .file_wrap .iconw {
+        border-radius: 0 5px 5px 0;
+        border-right: 1px solid #01bdd6;
+        bottom: -1px;
+        right: -1px;
+        position: absolute;
+        top: -1px;
+        width: 100px;
+        padding: 10px 0 10px 0;
+        background: #01bdd6;
+        text-align: center;
+        cursor: pointer;
+        color: #fff;
+    }
+    .file_wrap .write_textbox {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 102px;
+        top: 0;
+    }
+    .file_wrap input[type="text"] {
+        background: none repeat scroll 0 0 transparent;
+        border: medium none;
+        color: #333333;
+        font-size: 16px;
+        height: 29px;
+        line-height: 28px;
+        outline: medium none;
+        padding: 4px;
+        width: 98%;
+    }
+    .file_wrap {
+        border: 1px solid #CCC;
+        border-radius: 4px;
+        height: 37px;
+        position: relative;
+    }
+        .btn23{
+      float: right;
+      }
+      .imgup
+         {
+            width: 35%;
+            margin-bottom:10px;
+         } 
+      </style>
+      
+      <div class="page-wrapper">
+           
+              <div class="container-fluid">
+                 
+          <div class="row">
+                            <div class="col-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Plugins</h4>
+                                        <form class="floating-labels m-t-40" enctype="multipart/form-data">
+                                            <div class="form-group m-b-40">
+                                                <input type="text" class="form-control title" id="name" type="text" ng-model="formdata.title" >
+                                                <span class="bar"></span>
+                                                <label for="input1"> Title</label>
+                                            </div> 
+                                            
+                                       
+                                        <div>
+                                          <div class="form-group">
+                                      <div class="row">
+                                        <div class="col s6">
+                                         <label for="first_name" id="labelimg">Uploads file</label>
+                                          
+                                              <br><br>   <div class="fluid left_c_input file_wrap">
+                                              <div class="write_textbox"> 
+                                                    <input type="text" readonly placeholder="No file selected" class="txtFilepath" style="border:none !important;"  name="name{{$index}}">                                       
+                                                </div>
+                                              <div class="iconw" ng-click="iconw()"><i class="fa fa-download"></i>Upload Image</div>
+                                              <input type="file" id="imgfile" style="display: none" name="imgfile{{$index}}"  class="file_input_hidden" ng-model="imgss" ngf-select  />                        
+                                                  </div>       
+                                        
+                                        </div>
+                                          <div class="col s3 imgprev">
+                                          <div class="imageup" >
+                                          <img src="/uploads/dummy.jpg" id="imgfiles" class="imgup"/>
+                                          
+                                          </div>
+                                          </div>
+              
+                                       
+                                          
+                                        </div>
+                                    
+                                        </div></div>
+                                         <div class="form-group m-b-40 btn23">
+                                            <button type="button" ng-click="addPlugin()" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Submit </button>
+                                      </div> </form>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                          
+                            <div class="col-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h4 class="card-title">All Plugins </h4>
+                                                <!-- <h6 class="card-subtitle">Export data to Copy, CSV, Excel, PDF & Print</h6> -->
+                                                <div class="table-responsive m-t-40">
+                                                    <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Sl</th>
+                                                                <th>Plugins</th>
+                                                                <th>Action</th>
+                                                                
+                                                            </tr>
+                                                        </thead>
+                                                        
+                                                        <tbody>
+                                                          <tr ng-repeat="val in list">
+                                                                <td>{{$index+1}}</td>
+                                                                <td>{{val.title}}</td>
+                                                                
+                                                                <td style="width:20% !important;"> 
+                                                                    <a class="btn waves-effect waves-light btn-info" href="/cms/editplugin/{{val.plugin_id}}">
+                                                                        Edit
+                                                                      </a>
+                                                                                                                  
+                                                                                                <button class="btndlt btn waves-effect waves-light btn-danger"  ng-click="del(val.plugin_id)" rel=""  >
+                                                                                                Delete
+                                                                                                </button>
+                                                                                                </td>
+                                                            </tr>
+                                                          
+                                                            
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                            
+                            </div>
+    
+    
+              </div>   
+               
+               
+          
+                     
+                 
+               
+                  
+                  
+                  
+                  
+                  </div></div>
+    
+                  <!-- <script>$('select2').selectpicker();</script> -->
