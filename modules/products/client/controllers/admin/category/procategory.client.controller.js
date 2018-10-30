@@ -2,13 +2,14 @@
   'use strict';
   angular
     .module('core')
-    .controller('ProCategoryController', ProCategoryController);
-  ProCategoryController.$inject = ['$scope', '$http', '$state', '$location', 'productcategoryService'];
-  function ProCategoryController($scope, $http, $state, $location, productcategoryService) {
+    .controller('ProCategoryController', ProCategoryController)
+  ProCategoryController.$inject = ['$scope', '$http', '$state', '$location', 'productcategoryService', 'extrafieldService'];
+  function ProCategoryController($scope, $http, $state, $location, productcategoryService, extrafieldService) {
     $scope.formdata = {};
     $scope.productcategoryService = productcategoryService;
+    $scope.extrafieldService = extrafieldService;
 
-    
+
     /*
          * Function : getCategoryItems
          * description : Get all category items for the list
@@ -37,6 +38,7 @@
 
     $scope.addNewCategory = function () {
       $scope.formdata.level = $scope.category;
+      $scope.formdata.extrafieldGroup = $scope.selectedExtrafieldGroup;
       $scope.productcategoryService.addCategory($scope.formdata).then(function (result) {
         $location.path('/product/category');
       })
@@ -46,10 +48,23 @@
       $scope.formdata.category = $scope.formdata.subcategory
       $scope.formdata.parentId = $scope.selectedCategoryId;
       $scope.formdata.level = $scope.category;
+      $scope.formdata.extrafieldGroup = $scope.selectedExtrafieldGroup;
       $scope.productcategoryService.addSubCategory($scope.formdata).then(function (result) {
         $location.path('/product/category');
       })
     }
+
+    /*
+       * Function : getextrafieldGroupItems
+       * description : Get all extrafield group items
+       */
+    $scope.getExtrafieldGroupItems = function () {
+      $scope.extrafieldService.getExtraFieldGroup().then(function(result){
+        $scope.extrafieldGroupItems = result['data'];
+      })
+    }
+    $scope.getExtrafieldGroupItems();
+
 
     /*
         * Function : deleteCategory

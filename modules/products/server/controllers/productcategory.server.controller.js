@@ -9,6 +9,7 @@ var path = require('path'),
 
 /* add new category */
 exports.addCategory = function (req, res, next) {
+    console.log(req.body)
     productCategory.create(req.body, function (err, post) {
         if (err) {
             return res.status(400).send({
@@ -20,7 +21,7 @@ exports.addCategory = function (req, res, next) {
     });
 }
 
-/* add new category */
+/* add sub category */
 exports.addSubCategory = function (req, res, next) {
     productCategory.create(req.body, function (err, post) {
         if (err) {
@@ -61,7 +62,7 @@ exports.deleteCategory = function (req, res, next) {
 
 /* get all category items */
 exports.getCategoryItems = function (req, res, next) {
-    productCategory.find({ level: '1', isdeleted: false }).sort('-created').exec(function (err, data) {
+    productCategory.find({ level: '1', isdeleted: false }).populate('childIDs').populate('extrafieldGroup').sort('-created').exec(function (err, data) {
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
@@ -74,7 +75,8 @@ exports.getCategoryItems = function (req, res, next) {
 
 /* get category details */
 exports.getCategoryDetails = function (req, res, next) {
-    productCategory.findById(req.params.categoryId).exec(function (err, data) {
+    productCategory.findById(req.params.categoryId).populate({ 'path': 'extrafieldGroup', model: 'extrafieldGroup' }).populate({ path: 'childIDs', model: 'productcategory', populate: { path: 'extrafieldGroup', model: 'extrafieldGroup' } }).exec(function (err, data) {
+        console.log(data)
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
@@ -89,10 +91,11 @@ exports.getCategoryDetails = function (req, res, next) {
 exports.updateCategory = function (req, res, next) {
     productCategory.findByIdAndUpdate(req.body._id, {
         $set: {
-            "modified":req.body.modified,
-            "category":req.body.category,
-            "description":req.body.description,
-            "status":req.body.status
+            "modified": Date.now(),
+            "category": req.body.category,
+            "description": req.body.description,
+            "status": req.body.status,
+            "extrafieldGroup": req.body.extrafieldGroup
         }
     }, function (err, data) {
         if (err) {

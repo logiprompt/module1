@@ -518,10 +518,9 @@
 
                                             <div class="form-group m-b-10">
                                                 <label for="input1">Extra field group</label>
+                                                {{selectedExtrafieldGroup}}
                                                 <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
-                                                <select class="selectpicker form-control" multiple data-style="form-control btn-info">
-                                                    <option>Eletronics</option>
-
+                                                <select multiselectDropdown class="selectpicker form-control" multiple data-style="form-control btn-info" ng-model="selectedExtrafieldGroup" ng-options="item._id as item.groupname for item in extrafieldGroupItems track by item.groupname">
                                                 </select>
 
                                             </div>

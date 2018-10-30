@@ -7,33 +7,62 @@
 
 
 
-  EditProCategoryController.$inject = ['$scope', '$http', '$state', '$stateParams', '$location', 'productcategoryService'];
+  EditProCategoryController.$inject = ['$scope', '$http', '$state', '$stateParams', '$location', 'productcategoryService', 'extrafieldService'];
 
-  function EditProCategoryController($scope, $http, $state, $stateParams, $location, productcategoryService) {
+  function EditProCategoryController($scope, $http, $state, $stateParams, $location, productcategoryService, extrafieldService) {
     //var vm = this;
 
     $scope.formdata = {};
     $scope.productcategoryService = productcategoryService;
+    $scope.extrafieldService = extrafieldService;
+
+    /*
+       * Function : getCategoryDEtails
+       * description : Get category items
+       */
 
     $scope.getCategoryDetails = function () {
       $scope.productcategoryService.getCategoryDetails($stateParams.id).then(function (result) {
         $scope.formdata = result.data;
+        $scope.selectedExtrafieldGroup = result['data']['_id']
       })
     }
 
     $scope.getCategoryDetails();
 
+    /*
+       * Function : updateCategory
+       */
+
     $scope.updateCategory = function () {
+      console.log($scope.selectedExtrafieldGroup)
+      $scope.formdata.extrafieldGroup = $scope.selectedExtrafieldGroup;
       $scope.productcategoryService.updateCategory($scope.formdata).then(function (result) {
         $location.path('/product/category');
       })
     }
 
-    $scope.deleteCategory = function(){
+
+    /*
+       * Function : updateCategory
+       */
+
+    $scope.deleteCategory = function () {
       $scope.productcategoryService.deleteCategory($stateParams.id).then(function (result) {
         $location.path('/product/category');
       })
     }
+
+    /*
+       * Function : getextrafieldGroupItems
+       * description : Get all extrafield group items
+       */
+    $scope.getExtrafieldGroupItems = function () {
+      $scope.extrafieldService.getExtraFieldGroup().then(function (result) {
+        $scope.extrafieldGroupItems = result['data'];
+      })
+    }
+    $scope.getExtrafieldGroupItems();
 
 
     // ///////////////////select 0ne/////////////////////////////////

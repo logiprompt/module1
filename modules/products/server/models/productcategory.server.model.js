@@ -21,7 +21,8 @@ var ProductCategorySchema = new Schema({
   created_user: { type: String, default: 'Admin' },
   modified_user: { type: String, },
   hasChild: { type: Boolean,default: 0  },
-  childIDs: { type: [Schema.ObjectId] },
+  childIDs: { type: [Schema.ObjectId], ref: 'productcategory' },
+  extrafieldGroup: { type: [Schema.ObjectId], ref: 'extrafieldGroup' },
   OLang: {}
 
 });
