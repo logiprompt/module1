@@ -6,15 +6,39 @@
     .module('cms')
     .factory('CmsService', CmsService);
 
-  CmsService.$inject = ['$resource'];
+  CmsService.$inject = ['$resource','$http'];
+  function CmsService($resource,$http) {
+  var cms = {};
+  
+	 /*
+	  * Function : addPost
+	  * Description : add new post
+	  * owner : prabin
+	  */
+cms.addPost = function(data){
+		  
+		return $http({
+	           url: '/api/cms/post',
+	           method: "POST",
+	           data:data
+	       });
+	   }
 
-  function CmsService($resource) {
-    return $resource('api/cms/:cmId', {
-      cmId: '@_id'
-    }, {
-      update: {
-        method: 'PUT'
-      }
+cms.listPost = function(){
+	  
+	return $http({
+           url: '/api/cms/post',
+           method: "GET"
+       });
+   }
+
+cms.delete_post = function(id){
+	return $http({
+        url: '/api/cms/post/'+id,
+        method: "DELETE"
     });
+}
+
+return cms;
   }
 }());

@@ -10,11 +10,20 @@ var mongoose = require('mongoose'),
  * Cm Schema
  */
 var CmSchema = new Schema({
-  name: {
+  post_title: {
     type: String,
     default: '',
-    required: 'Please fill Cm name',
+    required: 'Please fill post title',
     trim: true
+  },
+  post_content:{
+	  type: String
+  },
+  post_type:{
+	  type: String
+  },
+  post_status:{
+	  type: String
   },
   created: {
     type: Date,
@@ -23,7 +32,15 @@ var CmSchema = new Schema({
   user: {
     type: Schema.ObjectId,
     ref: 'User'
-  }
+  },
+  updated: {
+	    type: Date,
+	    default: Date.now
+	  },
+	  updateduser: {
+	    type: Schema.ObjectId,
+	    ref: 'User'
+	  }
 });
 
 mongoose.model('Cm', CmSchema);

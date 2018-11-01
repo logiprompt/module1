@@ -609,7 +609,7 @@ width: 70px;
 
                                 <div class="tab-pane show" id="images" role="tabpanel">
                                         <div class="p-20">
-                                            
+                                            <div ng-repeat="image in product_images track by $index">
                                                 <div class="form_group m-b-10">
                                             
                                                 
@@ -622,24 +622,23 @@ width: 70px;
                                                                 
                                                                 <div class="iconw" ng-click="iconw()"><i class="fa fa-download"></i>Upload</div>
                                                                 
-                                                                <input  type="file" id="product_images"  name="product_images"  class="file_input_hidden img" ng-model="product_images" ngf-select="uploadFiles($file, $invalidFiles)"
-          accept="image/*" ngf-max-height="1000" ngf-max-size="1MB"  base-sixty-four-input />                        
+                                                                <input  type="file" id="product_images"  name="product_images" ng-model="product_images[$index]" class="file_input_hidden img" ngf-select="uploadFiles($file, $invalidFiles)"
+          accept="image/*" ngf-max-height="1000" ngf-max-size="1MB"  />                        
                                                                     </div>       
                                                         
-                                                        
-                                                        
-                                                    
                                                         </div>
-							<div class="form-group m-b-10"  ng-if="image.$ngfBlobUrl">
+                                                        
+                                                  
+							<div class="form-group m-b-10"  ng-if="product_images[$index].$ngfBlobUrl">
 							<span class="bar"></span>
-							<img src="{{image.$ngfBlobUrl}}" style="width:150px;">
+							<img src="{{product_images[$index].$ngfBlobUrl}}" style="width:150px;">							
 							</div>
 
 
                                                 <div class="form-group m-b-10">
                                                     <span class="bar"></span>
                                                     <label for="input1"> Title </label>
-                                                    <input type="text" class="form-control cat" name="product_imagetitle" id=""product_imagetitle"" ng-model="product_imagetitle" >
+                                                    <input type="text" class="form-control cat" name="product_imagetitle" id=""product_imagetitle""  >
                                                     
                                                     
                                                 </div> 
@@ -647,15 +646,20 @@ width: 70px;
                                                     <div class="form-group m-b-10">
                                                             <span class="bar"></span>
                                                             <label for="input1"> Alt </label>
-                                                            <input type="text" class="form-control cat" name="product_imagealt" id="product_imagealt" ng-model="product_imagealt" >
+                                                            <input type="text" class="form-control cat" name="product_imagealt" id="product_imagealt" >
                                                              </div> 
-                                                             <div class="form-group m-b-10">
+                                                         
+                                                         
+                                                          
+                                                          </div>  
+                                                          
+                                                               <div class="form-group m-b-10">
                                                                     <span class="bar"></span>
-                                                                   
-                                                                    <button type="button" ng-click="save()" class="btn waves-effect waves-light btn-sm btn-info">Save</button>
+                                                                   {{product_imagetitle}}
+                                                                   {{product_imagealt}}
+                                                                    <button type="button" ng-click="save()" class="btn waves-effect waves-light btn-sm btn-info">Add New Image</button>
                                              </div> 
-                                                             
-                             <div class="form-group m-b-10">
+                            <div class="form-group m-b-10">
                                     <div class="row">
 
 
@@ -665,7 +669,7 @@ width: 70px;
                        
                        
                        
-                                                                   <table id="example24" class="example24 display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                                                 <!--  <table id="example24" class="example24 display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                                                                        <thead>
                                                                            <tr><th><input type="checkbox" id="checkAll" class="checkAll" ng-model="checkalltxt" ng-click="chkall()"   />
                                                            <label for="checkAll"></label></th>
@@ -680,12 +684,13 @@ width: 70px;
                                                                        
                                                                        <tbody>
                                                                           <tr ng-repeat="imageadded in product_imageList" >
-                                                                               <td><!-- {{$index+1}} -->
+                                                                               <td>
                                                                                     <input type="checkbox" id="basic_checkbox_{{$index+1}}"  class="rowtxtchk" value="{{$index+1}}" ng-click="addchkval(val.cat_id)" />
                                                            <label for="basic_checkbox_{{$index+1}}"></label>
                                                                                </td>
                                                                                <td>{{$index+1}}</td>
-                                                                               <td><img class="cntimg" src="{{imageadded.ngfBlobUrl}}"></td>
+                                                                               <td><img class="cntimg" src="{{imageadded.ngfBlobUrl}}">
+                                                                               </td>
                                                                                <td>{{imageadded.product_title}}</td>
                                                                                <td>{{imageadded.product_alt}}</td>
                                                                               
@@ -704,14 +709,13 @@ width: 70px;
                                                                           
                                                                            
                                                                        </tbody>
-                                                                   </table>
+                                                                   </table> -->
                                                                </div>
                                                          
                                            </div>
                                        </div>  
                              
-                                </div>
-                                                                                                    
+                                </div>                                              
                                                                                       
       
                                         

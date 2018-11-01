@@ -9,13 +9,17 @@ var path = require('path'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   _ = require('lodash');
 
+
+
 /**
  * Create a Product
  */
 exports.create = function(req, res) {
 	
-  
-  var product = new Product(req.body);
+	console.log(req.body);
+	console.log(req.files);
+	console.log(req);
+ /* var product = new Product(req.body);
   product.user = req.user;
   product.save(function(err) {
     if (err) {
@@ -25,7 +29,7 @@ exports.create = function(req, res) {
     } else {
       res.json(product);
     }
-  });
+  });*/
 };
 
 
@@ -101,8 +105,6 @@ exports.updateProducts = function(request, response){
 				item.product_freeshipping = request.body.product_freeshipping;
 				item.olang = request.body.olang;
 		       
-				console.log("=============================");
-				console.log(item);
 				item.save();
 
 		        response.json(item);

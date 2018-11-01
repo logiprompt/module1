@@ -27,6 +27,32 @@ exports.create = function(req, res) {
   });
 };
 
+exports.deletepost = function(req, res){
+	var id = req.params.id;
+
+	Cm.findById(id).exec(function (error, item) {
+	    
+	    if (error) {
+	      response.status(500).send(error);
+	      return;
+	    }
+
+	    if (item) {
+	    	// var cm = item;
+
+	    	 item.remove(function(err) {
+	    	    if (err) {
+	    	      return res.status(400).send({
+	    	        message: errorHandler.getErrorMessage(err)
+	    	      });
+	    	    } else {
+	    	      res.jsonp(item);
+	    	    }
+	    	  });
+	    	
+	    }
+	    });
+}
 /**
  * Show the current Cm
  */

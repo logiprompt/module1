@@ -26,7 +26,10 @@
 	$scope.product_taxgroup = "1";
 	$scope.product_freeshipping = "0"
 	$scope.product_images = [];
+   }else{
+	   $scope.product_images = []; 
    }
+   $scope.newimage = ''
 	var productformData = {};
 	
 	
@@ -178,12 +181,17 @@
 	 * Add product
 	 */
       $scope.product_imageList = [];
-      $scope.uploadFiles = function(file, errFiles) {    	  
+      var formfileData = new FormData();
+      $scope.uploadFiles = function(file, errFiles) { 
+    	  console.log(file);
+    	  formfileData.append(file);
     	  $scope.image = file;
+    	  formfileData.append(file)
     	  console.log($scope.product_images);
       }
       $scope.save = function(){
-    	 $scope.img = {'product_title':'',
+    	  $scope.product_images.push($scope.newimage);
+    	/* $scope.img = {'product_title':'',
     			 'product_alt':'',
     			 'ngfBlobUrl':'',
     			 'ngfHeight':'',
@@ -196,12 +204,10 @@
     	 $scope.img.ngfWidth = $scope.image.$ngfHeight;
     	 
     	  $scope.product_imageList.push($scope.img);
-    	 // $scope.product_imageList[$scope.product_imageList.length]['ngfHeight'] =$scope.image.$ngfHeight;
-    	  //$scope.product_imageList[$scope.product_imageList.length]['ngfWidth'] = $scope.image.$ngfHeight;
     	  $scope.product_imagetitle = "";
     	  $scope.product_imagealt = "";
-    	  $scope.image = "";
-    	  //console.log( $scope.product_imageList);
+    	  $scope.image = "";*/
+    	 
       }
 	$scope.saveProduct = function(){
 		if($scope.productForm.$valid){
@@ -235,7 +241,7 @@
 		productformData.product_notifylowqty_def = $scope.product_notifylowqty_def;
 		productformData.product_stockavailable = $scope.product_stockavailable;
 		productformData.product_extrafield = $scope.extraFieldGroup;
-		productformData.product_images = $scope.product_imageList;
+		productformData.product_images = formfileData;//$scope.product_imageList;
 		productformData.product_tags = $scope.product_tags;
 		productformData.product_taxablestatus = $scope.product_taxablestatus;
 		productformData.product_taxgroup = $scope.product_taxgroup;
