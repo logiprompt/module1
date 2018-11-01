@@ -24,7 +24,7 @@
 			return $http({
 		           url: '/api/products',
 		           method: "POST",
-		           data:data
+		           data:data		           
 		       });
 		   }
 	  

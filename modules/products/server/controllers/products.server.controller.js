@@ -18,8 +18,8 @@ exports.create = function(req, res) {
 	
 	console.log(req.body);
 	console.log(req.files);
-	console.log(req);
- /* var product = new Product(req.body);
+	console.log(req.file)
+  var product = new Product(req.body);
   product.user = req.user;
   product.save(function(err) {
     if (err) {
@@ -29,7 +29,7 @@ exports.create = function(req, res) {
     } else {
       res.json(product);
     }
-  });*/
+  });
 };
 
 

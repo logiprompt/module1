@@ -184,9 +184,10 @@
       var formfileData = new FormData();
       $scope.uploadFiles = function(file, errFiles) { 
     	  console.log(file);
-    	  formfileData.append(file);
+    	  console.log($scope.product_images);
+    	  formfileData.append('file',file);
     	  $scope.image = file;
-    	  formfileData.append(file)
+    	 // formfileData.append(file)
     	  console.log($scope.product_images);
       }
       $scope.save = function(){
