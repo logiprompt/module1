@@ -10,6 +10,7 @@
    $scope.textfieldform = {};
    $scope.extrafieldService = extrafieldService;
    $scope.editExtrafield = false;
+   $scope.extrafield_tb_type = 'text';
    
   
    /*
@@ -220,7 +221,7 @@
 				   extrafieldObj.classname = $scope.extrafield_tb_class ? $scope.extrafield_tb_class : '';
 				   extrafieldObj.style = $scope.extrafield_tb_style ? $scope.extrafield_tb_style :'';
 				   extrafieldObj.defvalue = $scope.extrafield_tb_defvalue ? $scope.extrafield_tb_defvalue : '';
-				   extrafieldObj.type = $scope.extrafield_tb_type ? $scope.extrafield_tb_type : type;
+				   extrafieldObj.type = $scope.extrafield_tb_type ? $scope.extrafield_tb_type : 'text';
 				   extrafieldObj.FEvisibility = $scope.extrafield_tb_FEvisibility ? $scope.extrafield_tb_FEvisibility : '';
 				   extrafieldObj.position = $scope.extrafield_tb_position ? $scope.extrafield_tb_position : '';
 				   extrafieldObj.required = $scope.extrafield_tb_required ? $scope.extrafield_tb_required : '';
@@ -358,7 +359,7 @@
  				$scope.extrafield_tb_class = '';
  				$scope.extrafield_tb_style = '';
  				$scope.extrafield_tb_defvalue = '';
- 				$scope.extrafield_tb_type = '';
+ 				$scope.extrafield_tb_type = 'text';
  				$scope.extrafield_tb_FEvisibility = '';
  				$scope.extrafield_tb_position = '';
  				$scope.extrafield_tb_status = '';
