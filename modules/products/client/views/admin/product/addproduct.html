@@ -237,7 +237,7 @@ width: 70px;
                                                        
                                                             <div class="form-group m-b-10">
                                                                          <label for="status">Product Type</label>
-                                                                           <select class="form-control filter-option" name="product_type" id="product_type" ng-model="product_type" >
+                                                                           <select class="form-control filter-option" name="product_type" id="product_type" ng-model="product_type" ng-disabled="{{edit_product}}">
                                                                            <option selected value="1" class="filter-option-inner">Simple </option>
                                                                                               <option value="2">Bundled </option>
                                                                                               <option value="3">Configurable </option>
@@ -256,7 +256,7 @@ width: 70px;
                                                         <span class="bar"></span>
                                                         <label for="input1"> Product name</label>
                                                         <input type="text" class="form-control cat" name="product_name" id="product_name" ng-model="product_name" 
-                                                        ng-class="{ 'validationErr' : productForm.$submitted && !productForm.product_name.$valid}" ng-required="true">
+                                                        ng-class="{ 'validationErr' : productForm.$submitted && !productForm.product_name.$valid}" ng-required="true" ng-change="generateSlgURL()">
                                                       
                                                         
                                                     </div> 
@@ -778,7 +778,7 @@ width: 70px;
                                             <span class="bar"></span>
                                             <label for="input1"> {{fields.label}} </label>
                                             </br>
-                                            <select name="extrafieldvalues" ng-model="fields.productValues">
+                                            <select name="extrafieldvalues" class="form-control" ng-model="fields.productValues">
                                             <option ng-repeat="value in fields.values" value="value.extrafield_dd_value">{{value.extrafield_dd_label}}</option>
                                             </select>
                                             

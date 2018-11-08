@@ -273,7 +273,7 @@ width: 70px;
                                                     <div class="form-group m-b-10">
                                                         <span class="bar"></span>
                                                         <label for="input1"> Title</label>
-                                                        <input type="text" class="form-control cat" id="name" name="post_title" ng-model="postformdata.post_title" ng-class="{ 'validationErr' : postform.$submitted && !postform.post_title.$valid}" ng-required=true>
+                                                        <input type="text" class="form-control cat" id="name" name="post_title" ng-model="postformdata.post_title" ng-class="{ 'validationErr' : postform.$submitted && !postform.post_title.$valid}" ng-required=true ng-change="generateSlgURL()">
                                                       
                                                         
                                                     </div> 

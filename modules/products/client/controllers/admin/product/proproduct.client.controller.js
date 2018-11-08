@@ -26,7 +26,9 @@
 	$scope.product_taxgroup = "1";
 	$scope.product_freeshipping = "0"
 	$scope.product_images = [];
+	$scope.edit_product = false;
    }else{
+	   $scope.edit_product = true;
 	   $scope.product_images = []; 
    }
    $scope.newimage = ''
@@ -146,6 +148,12 @@
              $scope.getProductsById($stateParams.id);
              }
       
+         
+         $scope.generateSlgURL = function(){
+        	 var replaceSpacesText = $scope.product_name;
+        	 $scope.product_slug = replaceSpacesText.split(" ").join("_").toLowerCase();
+        	 $scope.product_urlkey = "product/"+$scope.product_slug+"_"+Number(new Date())+".html"
+         }
       /*
        * Delete product by ID
        */
