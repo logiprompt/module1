@@ -1,0 +1,313 @@
+(function () {
+  'use strict';
+
+  angular
+    .module('core')
+    .controller('Manageusermanagementrole', Manageusermanagementrole);
+
+
+
+    Manageusermanagementrole.$inject = ['$scope', '$http', '$state', '$stateParams', 'Upload', 'adminMenuService'];
+
+  function Manageusermanagementrole($scope, $http, $state, $stateParams, Upload, adminMenuService) {
+
+    var vm = this;
+    $scope.formdata = {};
+    $scope.check = 1;
+    $scope.username = localStorage.getItem('username');
+    $scope.adminMenuService = adminMenuService;
+ /**
+  * Function : getmenu
+       * Description : get menu details
+       * Owner : jeeja
+  * 
+  **/
+    $scope.getMenuList = function () {
+      $scope.adminMenuService.getMenuList().then(function(data){
+         if(data.statusText = "OK"){
+        $scope.menuList = data.data;
+        //console.log( $scope.menuList);
+         }
+         else{}
+      })
+    };
+    
+ $scope.getMenuList();
+
+
+    $scope.setasDefault = function (id) {
+
+      $http({
+        url: '/api/admin/setasDefault1',
+        method: "POST",
+        data: { 'id': id }
+      })
+        .then(function (response) {
+          $state.reload();
+          // success
+        },
+          function (response) { // optional
+            // failed
+          });
+
+    }
+
+    /////////////////////////////////////////////////////////////////////////
+
+    $scope.choices = [{ id: 'choice1' }];
+    //$scope.choices.length	
+
+    $scope.addNewChoice = function () {
+      var newItemNo = $scope.choices.length + 1;
+      $scope.choices.push({ 'id': 'choice' + newItemNo });
+
+    };
+
+    $scope.removeChoice = function (val) {
+      if ($scope.choices.length > 1) {
+        $scope.choices.splice(val, 1);
+      }
+
+    };
+
+
+
+
+    //////////////////////////////////
+    /*
+       * Function : addmenu
+       * Description : Add menu details
+       * Owner : jeeja
+       */
+
+    $scope.addacl = function () {
+
+      $scope.chkroleValue = [];
+      var checkedroleValue = document.querySelectorAll('.rowrolechk:checked');
+      for (var i = 0; i < checkedroleValue.length; i++) {
+        $scope.chkroleValue.push(checkedroleValue[i].value);
+      }
+      $scope.formdata.role = $scope.chkroleValue;
+    
+      if ($scope.formmenu.$valid) {
+        var data = $scope.formdata;
+        $scope.adminMenuService.addMenu(data).then(function (result) {
+          if (result.statusText = "OK") {
+
+
+
+            
+            swal("Success!", "Successfully added menu!", "success");
+            $state.reload();
+          } else {
+            swal("error!", "menu already exist!", "error");
+          }
+
+        })
+        var data1 = {
+          "parentID": $scope.formdata.menu,
+          "hasChild": true
+        }
+       // console.log(data1);
+        $scope.adminMenuService.updateMenu(data1).then(function(result){
+         // console.log(result);
+          if(result.statusText = "OK"){
+            //swal("Sccess!", "Successfully updated Extra Field Group!", "success"); 
+            $state.go('settingsmenulist');
+           }
+        });
+
+
+      }
+   
+  
+
+    }
+    ///////////////////////////////////////////////////////////////////////
+
+
+    function readFile(ev) {
+
+      if (this.files && this.files[0]) {
+        var FR = new FileReader();
+        FR.onload = function (e) {
+          document.getElementById("imgfiles").src = e.target.result;
+        };
+        FR.readAsDataURL(this.files[0]);
+      }
+    }
+    if (document.getElementById("imgfile") != null) {
+      document.getElementById("imgfile").addEventListener("change", readFile, false);
+    }
+
+    $scope.iconw = function () {
+
+      document.getElementById('imgfile').click();
+
+    }
+
+    // $(document).find('#myTable').DataTable();
+
+    $scope.rmerrorclass=function(){
+      angular.element(document.querySelectorAll('.validationErr')).removeClass('validationErr');
+      angular.element(document.querySelectorAll('.tabvalidationErr')).removeClass('tabvalidationErr');
+      }
+      $scope.adderrorclass=function(cls){
+      angular.element(document.querySelector(cls)).addClass('validationErr');
+      }
+      $scope.taberrorclass=function(cls){
+        angular.element(document.querySelector(cls)).addClass('tabvalidationErr');
+        }
+
+
+        $scope.validation = function () {
+          var error = 0;
+          $scope.rmerrorclass();
+    
+          if ($scope.formdata.uname == 0 || angular.isUndefined($scope.formdata.uname)) {
+            $scope.adderrorclass(".uname");
+            $scope.taberrorclass(".tcat");
+            error = 1;
+    
+          }
+          if ($scope.formdata.fname == '' || angular.isUndefined($scope.formdata.fname)) {
+            $scope.adderrorclass(".fname");
+            $scope.taberrorclass(".tcat");
+            error = 2;
+    
+          }
+          if ($scope.formdata.lname == '' || angular.isUndefined($scope.formdata.lname)) {
+            $scope.adderrorclass(".lname");
+            $scope.taberrorclass(".tcat");
+            error = 3;
+    
+          }
+          if ($scope.formdata.email == '' || angular.isUndefined($scope.formdata.email)) {
+            $scope.adderrorclass(".email");
+            $scope.taberrorclass(".tcat");
+            error = 4;
+          }
+          if ($scope.imgss == '' || angular.isUndefined($scope.imgss)) {
+            $scope.adderrorclass(".write_textbox");
+            $scope.taberrorclass(".tcat");
+            error = 4;
+          }
+    
+          if ($scope.formdata.status == 0 || angular.isUndefined($scope.formdata.status)) {
+            $scope.adderrorclass(".status");
+            $scope.taberrorclass(".tcat");
+            error = 4;
+    
+          }
+    
+    
+          if ($scope.formdata.cadminpassword == '' || angular.isUndefined($scope.formdata.cadminpassword)) {
+            $scope.adderrorclass(".cadminpassword");
+            $scope.taberrorclass(".login");
+            error = 5;
+          }
+    
+          if ($scope.formdata.password == '' || angular.isUndefined($scope.formdata.password)) {
+            $scope.adderrorclass(".password");
+            $scope.taberrorclass(".login");
+            error = 6;
+          }
+    
+          if ($scope.formdata.cpassword == '' || angular.isUndefined($scope.formdata.cpassword)) {
+            $scope.adderrorclass(".cpassword");
+            $scope.taberrorclass(".login");
+            error = 5;
+          }
+    
+          if ($scope.formdata.role == '' || angular.isUndefined($scope.formdata.role)) {
+            $scope.adderrorclass(".rowrollchk");
+            $scope.taberrorclass(".roll");
+            error = 6;
+          }
+    
+    
+          return error;
+    
+    
+    
+        }
+
+    function getActionBtns() {
+
+
+      $scope.addpage = document.querySelectorAll(".add-action");
+      $scope.addpage[0].addEventListener("click", $scope.newpage, false);
+
+      $scope.editpage = document.querySelectorAll(".edit-action");
+      $scope.editpage[0].addEventListener("click", $scope.editpages, false);
+
+      var delpage = document.querySelectorAll(".delete-action");
+      delpage[0].addEventListener("click", $scope.delpage, false);
+
+      var bus = document.querySelectorAll(".business-action");
+      bus[0].addEventListener("click", $scope.insbus, false);
+
+
+
+    }
+
+    $scope.insbus = function () {
+      $("#myModal").modal();
+    }
+    $scope.chkall = function () {
+      $scope.editpage[0].removeAttribute("href");
+
+    }
+    $scope.addchkval = function (linkid) {
+      var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
+      console.log(linkid)
+      console.log(checkedValue[0])
+      if (checkedValue.length > 1) {
+        $scope.editpage[0].removeAttribute("href");
+      }
+      else {
+
+        $scope.editpage[0].setAttribute("href", "/settings/editmenu/" + linkid);
+      }
+
+    }
+    $scope.chk = {};
+
+    $scope.newpage = function () {
+      $state.go('settingsmenuadd');
+    }
+    $scope.editpages = function () {
+      var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
+      if (checkedValue.length > 0) {
+        console.log($scope.editpage[0].getAttribute("href"));
+        if ($scope.editpage[0].getAttribute("href")) {
+          document.location = $scope.editpage[0].getAttribute("href");
+        }
+      }
+
+    }
+    $scope.chkValue = [];
+
+
+    $scope.delpage = function () {
+      $scope.chkValue = [];
+
+      //$state.go('addlanguage');
+      var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
+      console.log(checkedValue)
+      for (var i = 0; i < checkedValue.length; i++) {
+        $scope.chkValue.push(checkedValue[i].value);
+      }
+
+    }
+    setTimeout(getActionBtns, 1500);
+
+
+  }
+
+
+
+
+
+
+}());

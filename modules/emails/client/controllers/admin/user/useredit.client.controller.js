@@ -67,13 +67,14 @@ $scope.choices = [{id: 'choice1'}];
  /*
 	 * Function : getUserById
 	 * Description : get User details
-	 * Owner : jeejja
+	 *
 	 */
 
   $scope.getUserById = function(userId){
     console.log(0);
     $scope.userregService.getUserById(userId).then(function(result){
-     if(result.statusText = "OK"){console.log(1);
+     if(result.statusText = "OK"){
+       console.log(1);
 console.log(result);
        $scope.userdetails = result.data;
 $scope.name = $scope.userdetails.name;
@@ -99,26 +100,27 @@ $scope.status = $scope.userdetails.status;
 	 */
 
       $scope.updateUser = function(){
-        if($scope.formdata.$valid){
+        console.log(110);
+        if($scope.formdata.$valid && $scope.status!=0){
        var data = {		  			 
             "name":$scope.name,
             "subject":$scope.subject,
             "content":$scope.content,
             "custom":$scope.custom,
-            "status" :$scope.status
+            "status" :$scope.status,
+            "userId":$stateParams.id
             }
        console.log(data);
        $scope.userregService.updateUser($stateParams.id,data).then(function(result){
           if(result.statusText = "OK"){
             swal("Success!", "Successfully updated User", "success"); 
-           // $state.reload();
+            $state.reload();
            }
         });
       }
       }
 
 ///////////////////////////////////////////////////////////////////////
-
 
 
  function getActionBtns(){
@@ -187,7 +189,32 @@ console.log(checkedValue)
   for(var i=0;i<checkedValue.length;i++){
     $scope.chkValue.push(checkedValue[i].value);
   }
- 
+  var userId=$scope.chkValue;
+console.log(userId);
+  swal({
+    title: 'Are you sure?',
+    text: "You want to delete checked items!",
+    type: 'warning',
+    showCancelButton: false,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+  }).then((result) => {
+    if(result){
+    $scope.userregService.delCheckedUser(userId).then(function(result){
+    if(result.statusText = "OK"){
+    swal(
+                  'Deleted!',
+                  'User has been deleted.',
+                  'success'
+                )
+      $scope.getUser();
+     }else{
+       
+     }
+  })
+  }
+  })
 }
 setTimeout(getActionBtns, 1500);         
 

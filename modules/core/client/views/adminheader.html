@@ -131,6 +131,15 @@ form label {
                         </ul>
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
+                        
+                         <div class="form-group col-md-2 m-b-10">
+                       
+                                               <select ng-change="setLang()" ng-model="languages" class="form-control " name="languages" id="languages" >
+                                               <option   class="filter-option-inner " value="0" label="choose language" selected="selected" ></option>
+	                                           <option  class="filter-option-inner" ng-repeat="langval in langlist" value="{{langval.language_id}}">{{langval.language}}</option>      
+                                            
+                                          </select>
+                                          </div>
                         <!-- ============================================================== -->
                         <ul class="navbar-nav my-lg-0">
                           
@@ -205,6 +214,23 @@ form label {
                                     <li><a href="index4.html">Modern</a></li>
                                 </ul> -->
                             </li>
+                            <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                                <!-- <i class="mdi mdi-book-open-variant"></i> -->
+                                <span class="hide-menu">CMS</span></a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <li >
+                                        <a class="has-arrow " href="#" aria-expanded="flase">Blog</a>
+                                        <ul aria-expanded="true" class="collapse " style="">
+                                            <li><a href="/cms/category">Category</a></li>
+                                            <li><a href="/cms/post">Post</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="/cms/page">Page</a></li>
+                                  <!--   <li><a href="/report/orderreport">Plugins</a></li> -->
+                                </ul>
+                            </li>
+
+
                             <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
                                 <!-- <i class="mdi mdi-book-open-variant"></i> -->
                                 <span class="hide-menu">Products</span></a>
@@ -348,9 +374,9 @@ form label {
                                       <li>
                                         <a class="has-arrow " href="#" aria-expanded="flase">CMS</a>
                                         <ul aria-expanded="true" class="collapse " style="">
-                                            <li><a href="/cms/category">Category</a></li>
-                                            <li><a href="/cms/post">Post</a></li>
-                                            <li><a href="/cms/page">Page</a></li>
+                                            <li><a href="/settings/cmscategory">Category</a></li>
+                                            <li><a href="/settings/cmspost">Post</a></li>
+                                            <li><a href="#">Page</a></li>
                                             
                                         </ul>
                                     </li>
@@ -359,7 +385,7 @@ form label {
                                         
                                     </li>
                                      <li >
-                                        <a class="" href="/settings/settingsmenuadd" aria-expanded="flase">Menu</a>
+                                        <a class="" href="/settings/menulist" aria-expanded="flase">Menu</a>
                                         
                                     </li>
                                      <li >

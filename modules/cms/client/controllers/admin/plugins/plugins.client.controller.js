@@ -13,23 +13,6 @@
 
   $scope.formdata = {};
  /////////////////////select/////////////////////////////
- $http({
-        url: '/api/admin/selectPlugin',
-        method: "POST",
-        
-    })
-    .then(function(response) {
-      $scope.list=response.data.data;
-            // success
-    }, 
-    function(response) { // optional
-            // failed
-    });
-     $scope.iconw=function(){
-document.getElementById('imgfile').click();
-
-     }
-    
 
 
  ///////////////////////insert////////////////////////////

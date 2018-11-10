@@ -58,17 +58,7 @@ $scope.values1 = [{id: 'choice1'}];
  };
 
  /////////////////////select/////////////////////////////
- $http({
-        url: '/api/admin/selectCategory',
-        method: "POST",       
-    })
-    .then(function(response) {
-      $scope.list=response.data.data;
-            // success
-    }, 
-    function(response) { // optional
-            // failed
-    });
+ 
 
  ///////////////////////insert////////////////////////////
  $scope.insCategory=function(){

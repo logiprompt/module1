@@ -3,9 +3,11 @@
 
   angular
     .module('core')
-    .factory('menuService', menuService);
+    .factory('menuService', menuService)
+.service('menuService', menuService);
 
   function menuService() {
+    var lang = {};
     var shouldRender;
     var service = {
       addMenu: addMenu,
@@ -15,6 +17,7 @@
       addSubMenuItemToSubMenus: addSubMenuItemToSubMenus,
       defaultRoles: ['user', 'admin'],
       getMenu: getMenu,
+     // getGenlang: getGenlang,
       menus: {},
       removeMenu: removeMenu,
       removeMenuItem: removeMenuItem,
@@ -228,5 +231,19 @@
       }
       return true;
     }
+
+
+
+    lang.getGenLang = function(){
+		  
+      return $http({
+           url: '/api/language/getGenLang',
+           method: "POST"
+         });
+       }
+
+
+       return lang;
+
   }
 }());

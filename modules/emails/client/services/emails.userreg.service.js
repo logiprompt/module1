@@ -3,7 +3,7 @@
   'use strict';
 
   angular
-  .module('core')
+  .module('emails')
   .service('userregService', userregService);
 
   userregService.$inject = ['$resource','$http'];
@@ -45,25 +45,30 @@
 	 /*
 	  * Function : deleteUser
 	  * Description : Delete user details by id
-	  * owner : prabin
+	  * 
 	  */
-	 userreg.delUser = function(userId){		  
+	 userreg.delUser = function(userId){
+		 	console.log(13);	  
 		 return $http({
-		        url: '/api/userreg/delUser/'+userId,
-		        method: "DELETE"
-		    });
+		        url: '/api/userreg/',
+				method: "DELETE",
+				params:{'userId':userId}
+				
+			});
+			console.log(params);
 		}
 
 			 /*
 	  * Function : delCheckedUser
 	  * Description : Delete details by ids
-	  * owner : jeeja
+	  * 
 	  */
 	 userreg.delCheckedUser = function(userId){
 		console.log(12);		  
 	   return $http({
-			  url: '/api/userreg/delCheckedUser/'+userId,
-			  method: "DELETE"
+			  url: '/api/userreg/delCheckedUser/',
+			  method: "DELETE",
+			  params:{'userId':userId}
 		  });
 	  }
    
@@ -71,7 +76,7 @@
 	 /*
 	  * Function : getUserById
 	  * Description : get one user details by id
-	  * owner : jeeja
+	  * 
 	  */
 	 userreg.getUserById = function(userId){
 		 return $http({
@@ -86,8 +91,8 @@
 	 userreg.updateUser = function(userId,data){
 		 console.log(userId);
 		 return $http({
-		        url: '/api/userreg/updateUser/'+userId,
-		        method: "POST",
+		        url: '/api/userreg',
+				method: "PUT",
 		        data:data
 		    });
 	 }

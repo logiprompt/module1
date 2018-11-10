@@ -1,6 +1,44 @@
 (function () {
   'use strict';
 
+
+  angular
+    .module('core')
+  .config(function ($httpProvider, $windowProvider) {
+          
+          var $window = $windowProvider.$get();
+
+          $httpProvider.interceptors.push(function ($q, $injector, $log) {
+              var $rootScope = $injector.get('$rootScope');
+              return {
+                  responseError: function (rejection) {
+                      if (rejection.status === 401) {
+                          var $state = $injector.get('$state');
+
+                          $state.go('app.login');
+                      }
+                      return $q.reject(rejection);
+                  },
+                  request: function (config) {
+                      config.headers['language'] = $window.localStorage.getItem('language');
+                      return config;
+                  },
+                  response: function (response) {
+                      var language = response.config.headers["language"];
+                      if (language !== undefined && language !== null) {
+                          $window.localStorage.setItem('language', language);
+                      }
+                      return response;
+                  }
+              };
+          });
+      });
+
+
+
+
+
+
   angular
     .module('core.routes')
     .config(routeConfig);
@@ -185,6 +223,20 @@ var adminfooter={
     content: { 
      templateUrl: '/modules/core/client/views/admin/usermanagement/roleandprivilege/editrolprivilege.html',
     controller: 'Editusermanagementrole',
+    controllerAs: 'vm',
+    },
+     footer:adminfooter
+  } 
+})
+
+.state('usermanagementmanageroleprivilege', {
+  url: '/usermanagement/manageroleprivilege/:id',
+ // controllerAs: 'vm',
+  views:{
+    header:adminheader,
+    content: { 
+     templateUrl: '/modules/core/client/views/admin/usermanagement/roleandprivilege/managerolprivilege.html',
+    controller: 'Manageusermanagementrole',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -556,15 +608,42 @@ var adminfooter={
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////menu/////////////////////////////////////////////////////////
+.state('settingsmenulist', {
+  url: '/settings/menulist',
+ // controllerAs: 'vm',
+  views:{
+    header:adminheader,
+    content: { 
+     templateUrl: '/modules/core/client/views/admin/settings/menu/menu.html',
+    controller: 'Settingsmenu',
+    controllerAs: 'vm',
+    },
+     footer:adminfooter
+  } 
+})
 
 .state('settingsmenuadd', {
-  url: '/settings/settingsmenuadd',
+  url: '/settings/menucreation',
  // controllerAs: 'vm',
   views:{
     header:adminheader,
     content: { 
      templateUrl: '/modules/core/client/views/admin/settings/menu/addsettingsmenu.html',
     controller: 'Settingsmenu',
+    controllerAs: 'vm',
+    },
+     footer:adminfooter
+  } 
+})
+
+.state('settingsmenuedit', {
+  url: '/settings/editmenu/:id',
+ // controllerAs: 'vm',
+  views:{
+    header:adminheader,
+    content: { 
+     templateUrl: '/modules/core/client/views/admin/settings/menu/editsettingsmenu.html',
+    controller: 'Editsettingsmenu',
     controllerAs: 'vm',
     },
      footer:adminfooter

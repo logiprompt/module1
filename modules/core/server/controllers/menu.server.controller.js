@@ -6,12 +6,14 @@
 var path = require('path'),
     mongoose = require('mongoose'),
     AdminMenu = mongoose.model('Sys_adminMenu'),
+    Genlang = mongoose.model('Sys_genlanguage'),
     errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
 /**
 * Create  Admin menu 
 */
 exports.create = function(req, res) {
+console.log(req.header['language']);
     var adminMenuData = req.body;
     AdminMenu.create(adminMenuData,function(err) {
         if (err) {
@@ -62,12 +64,29 @@ exports.getList = function(request, response) {
             //console.log(items);
            response.jsonp(items);
           }
-
-
-
-
             
     });
+
+};
+
+
+exports.getLang = function(request, response) {
+    console.log(68074);
+    Genlang.find().exec(function(error, items) {
+
+        if (error) 
+        {
+            return response.status(400).send({
+              message: errorHandler.getErrorMessage(error)
+            });
+        }
+        else 
+        {
+            //console.log(items);
+           response.jsonp(items);
+        }
+            
+});
 
 
 };

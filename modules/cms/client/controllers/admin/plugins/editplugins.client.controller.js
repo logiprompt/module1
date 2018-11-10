@@ -43,19 +43,7 @@ $scope.iconw=function(){
              }
 
 /////////////////////select/////////////////////////////
-$http({
-        url: '/api/admin/selectPlugin',
-        method: "POST",
-        
-    })
-    .then(function(response) {
-      $scope.list=response.data.data;
-            // success
-    }, 
-    function(response) { // optional
-            // failed
-    });
-    
+
  ///////////////////////insert////////////////////////////
  $scope.updatePlugins=function(){
 

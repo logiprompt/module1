@@ -12,15 +12,22 @@ module.exports = function(app) {
     .get(userforgot.list)
     .post(userforgot.create);
 
-  app.route('/api/userforgot/:userId').all()
-    .get(userforgot.read)
-    .put(userforgot.update)
-    .delete(userforgot.delete);
-    
-    app.route('/api/userforgot/delCheckedUserForget/:userId').all()
+//app.route('/api/userforgot/:userId').all()
+
+    //.get(userforgot.read)    
+    //.post(userforgot.update)
+   // .delete(userforgot.delete);
+
+    console.log(userforgot);
+  app.route('/api/userforgot/delCheckedUserForgot').all()
     .delete(userforgot.delCheckedUser);
+
   // Finish by binding the Email middleware
- app.param('userId', userforgot.userByID);
+  app.route('/api/userforgotbyid').all()
+  .get(userforgot.reads) 
+  .put(userforgot.update) 
+  .delete(userforgot.delete);
+ // app.param(':userId', userforgot.userByIDs);
 
 
 

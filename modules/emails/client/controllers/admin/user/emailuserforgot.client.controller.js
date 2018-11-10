@@ -116,7 +116,7 @@ $scope.setasDefault=function(id){
                             'User has been deleted.',
                             'success'
                           )
-                $scope.getUser();
+              $state.reload();
                }else{
                  
                }
@@ -158,7 +158,7 @@ console.log(checkedValue[0])
   }
   else{
 
-    $scope.editpage[0].setAttribute("href", "/email/edituserreg/"+linkid);
+    $scope.editpage[0].setAttribute("href", "/email/editforgetpass/"+linkid);
   }
 
 }
@@ -209,7 +209,8 @@ console.log(userId);
                   'User has been deleted.',
                   'success'
                 )
-      $scope.getUser();
+                $state.reload();
+    //  $scope.getUser();
      }else{
        
      }

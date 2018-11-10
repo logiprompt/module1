@@ -3,7 +3,7 @@
   'use strict';
 
   angular
-  .module('core')
+  .module('emails')
   .service('userforgotService', userforgotService);
 
   userforgotService.$inject = ['$resource','$http'];
@@ -45,10 +45,11 @@
 	  * Description : Delete UserForget details by id
 	  * owner : prabin
 	  */
-	 userforgot.deleteUserForgot = function(userId){		  
+	 userforgot.delUserForgot = function(userId){		  
 		 return $http({
-		        url: '/api/userforgot/'+userId,
-		        method: "DELETE"
+			url: '/api/userforgotbyid',
+				method: "DELETE",
+				params:{'userId':userId}
 		    });
 		}
 
@@ -57,11 +58,12 @@
 	  * Description : Delete details by ids
 	  * owner : jeeja
 	  */
-	 userforgot.delCheckedUserForgot= function(userId){
-		console.log(12);		  
+	 userforgot.delCheckedUserForget= function(userId){
+		console.log(userId);		  
 	   return $http({
-			  url: '/api/userforgot/delCheckedUserForgot/'+userId,
-			  method: "DELETE"
+			  url: '/api/userforgot/delCheckedUserForgot',
+			  method: "DELETE",
+			  params:{'userId':userId}
 		  });
 	  }
    
@@ -69,23 +71,35 @@
 	 /*
 	  * Function : getUserForgetById
 	  * Description : get one UserForget details by id
-	  * owner : jeeja
+	
 	  */
-	 userforgot.getUserForgotById = function(userId){
-		 return $http({
-		        url: '/api/userforgot/'+userId,
-		        method: "GET"
-		    });
-	 }
+
+	  
+	//  userforgot.getUserForgotById = function(userId){
+	// 	 return $http({
+	// 	        url: '/api/userforgotid',
+	// 			method: "GET",
+	// 			params:{userId:userId}
+	// 	    });
+	//  }
+
 	 
+	 userforgot.getUserForgotById = function(userId){
+		 console.log(userId);
+		return $http({
+			   url: '/api/userforgotbyid',
+			   method: "GET",
+			   params:{'userId':userId}
+		   });
+	}
 	 /*
 	  * 
 	  */
 	 userforgot.updateUserForgot = function(userId,data){
 		 console.log(userId);
 		 return $http({
-		        url: '/api/userforgot/'+userId,
-		        method: "PUT",
+		        url: '/api/userforgotbyid',
+		        method: "PUT", 
 		        data:data
 		    });
 	 }

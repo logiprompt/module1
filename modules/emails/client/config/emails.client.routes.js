@@ -149,7 +149,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/order/creation/edit.html',
-    controller: 'OrdercreationController',
+    controller: 'Emailordercreationedit',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -178,7 +178,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/order/paymentfailure/addpaymentfailure.html',
-    controller: 'OrderpaymentfailureController',
+    controller: 'AddpaymentfailureController',
     controllerAs: 'vm',
     },
      footer:adminfooter

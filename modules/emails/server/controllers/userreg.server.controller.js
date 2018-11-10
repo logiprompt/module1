@@ -73,9 +73,9 @@ exports.userByID = function(request, response) {
 	 * Delete currency by ID
 	 */
 	exports.delete = function(request, response) {
-        var userId = request.params.userId;
+        var userId = request.query.userId;
          console.log(userId);
-        Userreg.findById(request.params.userId).exec(function (error, item) {
+        Userreg.findById(userId).exec(function (error, item) {
             
             if (error) {
               response.status(500).send(error);
@@ -106,9 +106,9 @@ exports.userByID = function(request, response) {
 	 * Update currency
 	 */
 	exports.updateUser= function(request, response){
-		var userId = request.params.userId;
-console.log(request.params.userId);
-		Userreg.findById(request.params.userId).exec(function (error, item) {
+        var userId = request.body.userId;
+        
+		Userreg.findById(userId).exec(function (error, item) {
 			  if (error) {
 			        response.status(500).send(error);
 			        return;
@@ -121,7 +121,7 @@ console.log(request.params.userId);
                     item.custom = request.body.custom;
 			        item.status = request.body.status;
 			        item.save();
-                    console.log(item);
+                
 			        response.json(item);
 			        return;
 			      }
@@ -136,8 +136,9 @@ console.log(request.params.userId);
       **/
       exports.delCheckedUser = function(request, response) {
       
-          var arr = request.params.userId.split(',');
-          console.log(arr);
+          //var arr = request.query.userId.split(',');
+          var arr = request.query.userId;
+          //console.log(arr);
           Userreg.deleteMany({_id:{'$in':arr}}).exec(function (err, data) {
                                if (err) throw err;
                                response.json({

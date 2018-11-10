@@ -241,12 +241,12 @@ width: 70px;
                                 <h6 class="card-subtitle">Use default tab with class <code>vtabs &amp; tabs-vertical</code></h6> -->
                                 <!-- Nav tabs -->
 
-                                  <form class="" name="postform" ng-submit="addpost()" novalidate enctype="multipart/form-data">  
+                                  <form class="">  
                                  
                                    <div class="form-group m-b-10 btn23 btn-top">
-                                    <button type="submit" class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
+                                    <button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
                                 
-                                        <a href="/cms/post"><button type="button" class="btn waves-effect waves-light btn-sm btn-default"> Cancel </button> </a>
+                                        <a href="/cms/post"><button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm btn-default"> Cancel </button> </a>
                                      </div> 
                                  
                               
@@ -273,7 +273,7 @@ width: 70px;
                                                     <div class="form-group m-b-10">
                                                         <span class="bar"></span>
                                                         <label for="input1"> Title</label>
-                                                        <input type="text" class="form-control cat" id="name" name="post_title" ng-model="postformdata.post_title" ng-class="{ 'validationErr' : postform.$submitted && !postform.post_title.$valid}" ng-required=true ng-change="generateSlgURL()">
+                                                        <input type="text" class="form-control cat" id="name" >
                                                       
                                                         
                                                     </div> 
@@ -281,7 +281,7 @@ width: 70px;
                                             <div class="form-group m-b-10">
                                                     <span class="bar"></span>
                                                     <label for="input1"> Content</label>
-                                                    <textarea class="form-control cat" id="editor1" type="text" ng-model="postformdata.post_content" name="post_content" ></textarea>
+                                                    <textarea class="form-control cat" id="editor1" type="text" ng-model="formdata.wer" ></textarea>
                                                         
                                                     </div> 
 
@@ -292,11 +292,11 @@ width: 70px;
                                             </div>
                     <!--<label class="custom-control custom-radio" for="radio1">
                     <input id="radio1" name="radio" type="radio" class="custom-control-input">-->
-                     <input name="post_type" type="radio" id="radio_1" value="image" ng-model="postformdata.post_type" checked />
+                     <input name="group1" type="radio" id="radio_1" value="1" ng-model="check" checked />
                      <label for="radio_1">Images</label>
-                     <input name="post_type" type="radio" id="radio_2" value="video" ng-model="postformdata.post_type" />
+                     <input name="group1" type="radio" id="radio_2" value="2" ng-model="check" />
                      <label for="radio_2">Videos</label>
-                     <input name="post_type" type="radio" id="radio_3" value="text" ng-model="postformdata.post_type" />
+                     <input name="group1" type="radio" id="radio_3" value="3" ng-model="check" />
                      <label for="radio_3">Text</label>
                 
               
@@ -304,7 +304,7 @@ width: 70px;
                                                          
   </div> 
 
-<div class="mimgs" ng-if="postformdata.post_type=='image'">
+<div class="mimgs" ng-if="check==1">
 <div class="rd_vid2"  data-ng-repeat="choice in choices">
         <div class="form_group">
                 <div class="row">
@@ -316,7 +316,7 @@ width: 70px;
                              <input  type="text" readonly placeholder="No file selected" class="txtFilepath" style="border:none !important;"  name="name{{$index}}">                                       
                          </div>
                         <div class="iconw" ng-click="iconw()"><i class="fa fa-download"></i>Upload</div>
-                        <input  type="file" id="imgfile" data-value="imgup_{{$index}}" name="imgfile{{$index}}"  class="file_input_hidden img imgupfile" ng-model="postformdata.post_image" ngf-select  />                        
+                        <input  type="file" id="imgfile" data-value="imgup_{{$index}}" name="imgfile{{$index}}"  class="file_input_hidden img imgupfile" ng-model="imgss" ngf-select  />                        
                             </div>       
                    </div>
                    <div class="col-lg-3 col-sm-4" style="margin-top: 28px;">
@@ -358,13 +358,13 @@ width: 70px;
      </div>
      </div>
 
-     <div class="mvideos" ng-if="postformdata.post_type=='video'" >
+     <div class="mvideos" ng-if="check==2" >
                                                           <div  class="rd_vid" data-ng-repeat="vdo in postvideos">
                                                                 <div class="form_group">
                                                              <div class="row">
                                                                 <div class="col-lg-9 col-sm-8">
                                                                 <label for="first_name" id="labelimg">Post Videos</label>
-                                                               <input type="text" class="form-control" name="post_video" ng-model="postformdata.post_video">
+                                                               <input type="text" class="form-control" name="">
                                                                     
                                                                 </div>
                                                                 <div class="col-lg-3 col-sm-4" style="margin-top: 28px;">
@@ -389,11 +389,11 @@ width: 70px;
                             </div>
 
 
-                            <div class="mtext" ng-if="postformdata.post_type=='text'" >
+                            <div class="mtext" ng-if="check==3" >
                                     <div  class="rd_vid" data-ng-repeat="choice in choices">
                                           <div class="form_group">
                                        <label for="first_name" id="labelimg">Post Text</label>
-                                            <textarea class="form-control cat" id="editor1" type="text" ng-model="postformdata.post_text" ></textarea>
+                                            <textarea class="form-control cat" id="editor1" type="text" ng-model="formdata.wer" ></textarea>
                                           <!-- <div class="col-lg-9 col-sm-8">
                                           
                                           <br><br>
@@ -431,7 +431,9 @@ width: 70px;
                                                           <div class="form-group m-b-40">
                                                                 <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >--> <span class="bar"></span>
                                                   <label for="status">Status</label>
-                                                                       <select class="form-control filter-option" name="status" id="status" ng-model="postformdata.post_status">
+                                                                       <select class="form-control filter-option" name="status" id="status" ng-model="formdata.status">
+                                                                       <option class="filter-option-inner" value="0">choose</option>
+
                                                                                           <option value="1" class="filter-option-inner">Disable</option>
                                                                                           <option value="2">Enable</option>
                                                                                           </select>
@@ -450,11 +452,7 @@ width: 70px;
                                                
                                                     <div class="form-group m-b-10">
                                                       <label for="input1">Category</label>    
-                                                      <select multiple name="post_category" ng-model="postformdata.post_category">
-                                                      <option value="1">Category1</option>
-                                                      <option value="2">category2</option>
-                                                      </select>
-                                                        <!--  <div id="treeview2" class=""></div>-->
+                                                         <div id="treeview2" class=""></div>
                                             
                                           </div>
                                 
@@ -469,14 +467,14 @@ width: 70px;
                                             <div class="p-20">
                                                
                                                     <div class="form-group m-b-40">
-                                                        <textarea class="form-control cat" id="post_metadesc" name="post_metadesc" type="text" ng-model="postformdata.post_metadesc" ></textarea>
+                                                        <textarea class="form-control cat" id="name" type="text" ng-model="formdata.wer" ></textarea>
                                                       
                                                         <span class="bar"></span>
                                                         <label for="input1"> Meta description</label>
                                                     </div>
 
                                                     <div class="form-group m-b-40">
-                                                        <textarea class="form-control cat" id="post_metakey" name="post_metakey" type="text" ng-model="postformdata.post_metakey" ></textarea>
+                                                        <textarea class="form-control cat" id="name" type="text" ng-model="formdata.asd" ></textarea>
                                                       
                                                         <span class="bar"></span>
                                                         <label for="input1"> Meta keywords</label>
@@ -488,12 +486,12 @@ width: 70px;
                                             
                                                 <div class="form-group m-b-40">
                                                     <label>Meta Description</label>
-                                    				<textarea class="form-control" rows="5" id="post_metadesc" name="post_metadesc" ng-model="postformdata.post_metadesc"></textarea>      
+                                    				<textarea class="form-control" rows="5"></textarea>      
                                                 </div>
 
                                                 <div class="form-group m-b-40">
                                                     <label>Meta Keywords</label>
-                                    				<textarea class="form-control" rows="5" id="post_metakey" name="post_metakey" ng-model="postformdata.post_metakey"></textarea>        
+                                    				<textarea class="form-control" rows="5"></textarea>        
                                                 </div>
 
                                         </div>
@@ -501,14 +499,14 @@ width: 70px;
                                             <div class="form-group m-b-40">
                                                          <span class="bar"></span>
                                                         <label for="input1">Slug</label>
-                                                        <input type="text" class="form-control cat" id="post_slug" name="post_slug" ng-model="postformdata.post_slug" >
+                                                        <input type="text" class="form-control cat" id="name" >
                                                       
                                                        
                                                     </div>
                                                 <div class="form-group m-b-40">
                                                          <span class="bar"></span>
                                                         <label for="input1"> URL KEY</label>
-                                                        <input type="text" class="form-control cat" id="post_urlkey" name="post_urlkey" ng-model="postformdata.post_urlkey" >
+                                                        <input type="text" class="form-control cat" id="name" >
                                                       
                                                        
                                                     </div>
@@ -516,7 +514,8 @@ width: 70px;
                                                     <div class="form-group m-b-40">
                                                             <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >--> <span class="bar"></span>
                                              <label for="status">Display in Menu</label>
-                                                                   <select class="form-control filter-option" name="post_displayinmenu" id="post_displayinmenu" ng-model="postformdata.post_displayinmenu">
+                                                                   <select class="form-control filter-option" name="status" id="status" ng-model="formdata.status">
+                                                                   <option class="filter-option-inner" value="0">choose</option>
 
                                                                                       <option value="1" class="filter-option-inner">Yes</option>
                                                                                       <option value="2">No</option>

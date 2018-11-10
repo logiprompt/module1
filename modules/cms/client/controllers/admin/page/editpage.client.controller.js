@@ -14,31 +14,7 @@
  
   $scope.formdata = {};
 ///////////////////select 0ne/////////////////////////////////
-if($stateParams.id){
 
-        var val={'id':$stateParams.id};
-
- $http({
-        url: '/api/admin/editpage',
-        method: "POST",
-        data:val
-    })
-    .then(function(response) {
-
-     $scope.data= response.data.data;
-  //console.log($scope.data);
-      $scope.formdata.title=response.data.data.pagename;
-       $scope.formdata.content=response.data.data.description;
-       $scope.formdata.meta=response.data.data.metatag;
-      //$scope.formdata.title=response.data.data.pagename;
-      $scope.formdata.id=response.data.data._id;
-      
-    }, 
-    function(response) { // optional
-            // failed
-    });
-
-}
 
 
 // CKEDITOR.replace( 'editor1', {
@@ -48,19 +24,7 @@ if($stateParams.id){
 // });
 
 /////////////////////select/////////////////////////////
-$http({
-        url: '/api/admin/selectPage',
-        method: "POST",
-        
-    })
-    .then(function(response) {
-      $scope.list=response.data.data;
-            // success
-    }, 
-    function(response) { // optional
-            // failed
-    });
-    
+
  ///////////////////////insert////////////////////////////
  $scope.updatePage=function(){
 

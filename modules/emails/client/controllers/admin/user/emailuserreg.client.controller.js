@@ -12,9 +12,11 @@
   function EmailuserregController ($scope, $http, $state, $stateParams, Upload,userregService) {
 
   $scope.formdata = {};
-  $scope.formdata.status ='0';
+  $scope.status ='0';
   $scope.userregService = userregService;
  /////////////////////select/////////////////////////////
+
+ 
 
 ///////////////////////////////////////////////////////
        
@@ -80,7 +82,7 @@ console.log(result.data);
 	 * Owner : jeeja
 	 */
   $scope.addUser = function(){
-		if($scope.formdata.$valid){
+		if($scope.formdata.$valid && $scope.status!=0){
 		var data = {
         "name":$scope.name,
         "subject":$scope.subject,
@@ -108,7 +110,7 @@ console.log(result.data);
 /*
 	   * FUnction : delUser
 	   * Description : delete user id
-	   * Owner :jeeja
+	   *
 	   * 
 	   */
     $scope.delUser = function(userId){

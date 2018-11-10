@@ -66,7 +66,10 @@
                                                         <td>{{val.modified}}</td>
                                                        
                                                          <td ng-if="val.rolestatus==1">Enabled</td><td ng-if="val.rolestatus==2">Disabled</td>
-                                                        <td style="width:20% !important;"> 
+                                                        <td style="width:20% !important;">
+                                                                <a class="btn waves-effect waves-light btn-sm btn-info" href="/usermanagement/manageroleprivilege/{{val.role_id}}">
+                                                                    Manage
+                                                                  </a> 
                                                            <a class="btn waves-effect waves-light btn-sm btn-info" href="/usermanagement/editroleprivilege/{{val.role_id}}">
                                                                 Edit
                                                               </a>

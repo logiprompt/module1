@@ -14,41 +14,10 @@
  
   $scope.formdata = {};
 ///////////////////select 0ne/////////////////////////////////
-if($stateParams.id){
-
-        var val={'id':$stateParams.id};
-
- $http({
-        url: '/api/admin/editcat',
-        method: "POST",
-        data:val
-    })
-    .then(function(response) {
-    
-      $scope.formdata.category=response.data.data.category;
-      $scope.formdata.id=response.data.data.cat_id;
-      
-    }, 
-    function(response) { // optional
-            // failed
-    });
-
-}
 
 
 /////////////////////select/////////////////////////////
-$http({
-        url: '/api/admin/selectCategory',
-        method: "POST",
-        
-    })
-    .then(function(response) {
-      $scope.list=response.data.data;
-            // success
-    }, 
-    function(response) { // optional
-            // failed
-    });
+
     
  ///////////////////////insert////////////////////////////
  $scope.updatecat=function(){

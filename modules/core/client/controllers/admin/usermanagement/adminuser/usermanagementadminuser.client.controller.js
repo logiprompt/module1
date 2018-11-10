@@ -177,7 +177,7 @@
           //$state.reload();
           if (response.data.data == 0) {
             swal("Sccess!", "Successfully added !", "success");
-            //$state.reload();
+            $state.reload();
           }
           else if (response.data.data == 1) {
             swal("error!", "Already exist!", "error");

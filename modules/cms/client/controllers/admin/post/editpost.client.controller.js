@@ -22,29 +22,29 @@
 ///////////////////select 0ne/////////////////////////////////
 
 
-        var val={'id':$stateParams.id};
+//         var val={'id':$stateParams.id};
        
- $http({
-        url: '/api/admin/editpost',
-        method: "POST",
-        data:val
-    })
-    .then(function(response) {
-      $scope.view=response.data.data;
+//  $http({
+//         url: '/api/admin/editpost',
+//         method: "POST",
+//         data:val
+//     })
+//     .then(function(response) {
+//       $scope.view=response.data.data;
       
-      $scope.formdata.id=response.data.data._id;
-      $scope.formdata.post=response.data.data.post;
-      $scope.formdata.content=response.data.data.description;
-     //$scope.formdata.id=response.data.data.postimg;
-      $scope.formdata.cats=response.data.data.category.split(",");
+//       $scope.formdata.id=response.data.data._id;
+//       $scope.formdata.post=response.data.data.post;
+//       $scope.formdata.content=response.data.data.description;
+//      //$scope.formdata.id=response.data.data.postimg;
+//       $scope.formdata.cats=response.data.data.category.split(",");
     
-      $scope.formdata.meta=response.data.data.metatag;
+//       $scope.formdata.meta=response.data.data.metatag;
 
 
-    }, 
-    function(response) { // optional
-            // failed
-    });
+//     }, 
+//     function(response) { // optional
+//             // failed
+//     });
 
 
 
@@ -68,32 +68,7 @@
  }
 
 /////////////////////select/////////////////////////////
-$http({
-  url: '/api/admin/allPost',
-  method: "POST",
-  
-})
-.then(function(response) {
-$scope.listpost=response.data.data;
-     
 
-
-}, 
-function(response) { // optional
-      // failed
-});
-$http({
-        url: '/api/admin/selectCategory',
-        method: "POST",
-        
-    })
-    .then(function(response) {
-      $scope.list=response.data.data;
-            // success
-    }, 
-    function(response) { // optional
-            // failed
-    });
     ///////////////delte////////////
     $scope.deletez=function(id){
        

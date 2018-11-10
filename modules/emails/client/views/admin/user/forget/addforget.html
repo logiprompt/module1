@@ -272,12 +272,12 @@
                                                 <div class="form-group m-b-10">
                                                     <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
                                                     <label for="input1"> Name</label>
-                                                    <input type="text" class="form-control name" id="name" ng-model="name"
+                                                    <input type="text" class="form-control name" name="name" id="name" ng-model="name"
                                                         ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.name.$valid}">
                                                 </div>
                                                 <div class="form-group m-b-10">
                                                     <label for="input1"> Subject</label>
-                                                    <input type="text" class="form-control subject" id="subject"
+                                                    <input type="text" class="form-control subject" name="subject" id="subject"
                                                         ng-model="subject" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.subject.$valid}">
 
                                                 </div>
@@ -285,7 +285,7 @@
 
                                                 <div class="form-group m-b-10">
                                                     <label for="input1"> Content</label>
-                                                    <textarea class="form-control content" id="content" ng-model="content"
+                                                    <textarea class="form-control content" id="content" name="content" ng-model="content"
                                                         ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.content.$valid}"></textarea>
 
                                                 </div>
@@ -301,7 +301,7 @@
                                                     <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
                                                     <label for="input1"> Status</label>
                                                     <select class="form-control filter-option" name="status" id="status"
-                                                        ng-model="status" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.status.$valid}">
+                                                        ng-model="status" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && (!formdata.status.$valid || status==0 )}">
                                                         <option class="filter-option-inner" value="0">choose</option>
 
                                                         <option value="1" class="">Active</option>

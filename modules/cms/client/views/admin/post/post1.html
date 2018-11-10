@@ -1,0 +1,272 @@
+ 
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+    <!-- START MAIN -->
+
+
+    <style>
+        .file_input_hidden {
+        font-size: 20px;
+        position: absolute;
+        /* right: 0px; */
+        width: 100%;
+        top: 0px;
+        bottom: 0;
+        cursor: pointer;
+        opacity: 0;
+        filter: alpha(opacity=0);
+        -ms-filter: "alpha(opacity=0)";
+        -khtml-opacity: 0;
+        -moz-opacity: 0;
+    }
+    .file_wrap .iconw {
+        border-radius: 0 5px 5px 0;
+        border-right: 1px solid #01bdd6;
+        bottom: -1px;
+        right: -1px;
+        position: absolute;
+        top: -1px;
+        width: 100px;
+        padding: 10px 0 10px 0;
+        background: #01bdd6;
+        text-align: center;
+        cursor: pointer;
+        color: #fff;
+    }
+    .file_wrap .write_textbox {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 102px;
+        top: 0;
+    }
+    .file_wrap input[type="text"] {
+        background: none repeat scroll 0 0 transparent;
+        border: medium none;
+        color: #333333;
+        font-size: 16px;
+        height: 29px;
+        line-height: 28px;
+        outline: medium none;
+        padding: 4px;
+        width: 98%;
+    }
+    .file_wrap {
+        border: 1px solid #CCC;
+        border-radius: 4px;
+        height: 37px;
+        position: relative;
+    }
+        
+       .imgup
+     {
+        width: 35%;
+        margin-bottom:10px;
+     } 
+     .btn23{
+    float: right;
+    }   
+    .cat{
+      color: rgba(10, 10, 10, 0.5) !important;
+      background-color: #ffffff;
+      }
+      .cat:hover,.cat:active{
+      color: rgba(10, 10, 10, 0.5) !important;
+      background-color: #ffffff !important;
+      }
+
+
+       .show>.cat.dropdown-toggle {
+    color: #fff;
+    background-color: #ffffff;
+    border-bottom:2px solid #fb9678;
+}
+.btns
+{   font-size: 13px !important;
+    line-height: 1.6em;
+}
+        </style>
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <!-- <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                        <h4 class="text-themecolor">Dashboard 1</h4>
+                    </div>
+                    <div class="col-md-7 align-self-center text-right">
+                        <div class="d-flex justify-content-end align-items-center">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                                <li class="breadcrumb-item active">Dashboard 1</li>
+                            </ol>
+                            <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</button>
+                        </div>
+                    </div>
+                </div> -->
+                
+          
+          <div class="row">
+                    
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">All Posts</h4>
+                                <!-- <h6 class="card-subtitle">Export data to Copy, CSV, Excel, PDF & Print</h6> -->
+                                <div class="table-responsive m-t-10">
+
+                                        <div class="row">
+                                                <div class="form-group col-md-3 m-b-10">
+                                                        <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
+                                                        <label for="input1"> Country</label>
+                                                               <select class="form-control filter-option" name="status" id="status" >
+                                                               <option class="filter-option-inner" selected value="0">choose</option>
+
+                                                           <option value="1" class="">India</option>   
+                                                           <option value="2" class="">USA</option>                
+                                            
+                                          </select>
+                                        </div>
+                                        <div class="form-group col-md-3 m-b-10">
+                                                <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
+                                                <label for="input1"> Language</label>
+                                                       <select class="form-control filter-option" name="status" id="status" >
+                                                       <option  class="filter-option-inner" selected value="0">choose</option>
+                                            <option value="1" class="">Hindi</option> 
+                                                   <option value="2" class="">English</option>   
+                                                  
+                                    
+                                  </select>
+                                </div>
+                                <div class="col-md-3 m-t-30">
+                                    <button type="button" ng-click="ins" class="btn waves-effect waves-light btn-sm btn-info btns"> Submit </button>
+                                </div>
+                            </div>
+
+                                    <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th><input type="checkbox" id="checkAll" class="checkAll" ng-model="checkalltxt" ng-click="chkall()"   />
+                                    <label for="checkAll"></label></th>
+                                                <th>Title</th>
+                                                <th>Created By</th>
+                                                <th>Created Date</th>
+                                               <th>Status</th>
+                                               <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                       
+                                        <tbody>
+                                         
+                                           
+                                            <tr ng-repeat="post in postLists">
+                                                <td><input type="checkbox" id="basic_checkbox_{{$index+1}}"  class="rowtxtchk" value="{{$index+1}}" ng-click="addchkval(1)" />
+                                    <label for="basic_checkbox_{{$index+1}}"></label></td>
+                                                 <td>{{post.post_title}}</td>
+                                                <td>{{post.user}}</td>
+                                                <td>{{post.created | date:'MM/dd/yyyy'}}</td>
+                                                <td><span ng-if="post.status == '1'">Enable</span><span ng-if="post.status == '0'">Disable</span></td>
+                                                <td style="width:20% !important;"> 
+                                                        <a class="btn waves-effect waves-light btn-sm btn-info" href="#">
+                                                            View
+                                                          </a>
+                                                                                                                     <a class="btn waves-effect waves-light btn-sm btn-info" href="/cms/editpost/1">
+                                                            Modify
+                                                          </a>                                         
+                                                        <button class="btn waves-effect waves-light btn-sm btn-danger"  ng-click="delete_post(post._id)" rel=""  >
+                                                            Delete
+                                                        </button>
+                                                        </td>
+                                                
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    
+                     
+                    </div>
+
+
+                </div>   
+             
+             
+        
+                   
+               
+             
+                
+                
+                
+                
+                </div></div>
+                 
+              </div>  
+           
+              
+              
+              
+              
+              </div></div>
+             
+
+
+<script>
+    $(document).ready(function() {
+        $(".checkAll").change(function () {
+        
+    $(" input:checkbox").prop('checked', $(this).prop("checked"));
+   
+});
+        $(".rowtxtchk").change(function () {
+console.log(111);
+                $(".checkAll").prop('checked', false);
+        })
+    });
+
+
+    $(document).ready(function() {
+       
+    $('#example23').DataTable({
+        responsive: true,
+        dom: 'Bfrtip',
+        lengthMenu: [
+            [ 10, 25, 50, -1 ],
+            [ '10 rows', '25 rows', '50 rows', 'Show all' ]
+        ],
+         buttons: [
+		 'pageLength',
+         'csv',
+            {
+                text: 'Add',
+                 className: 'add-action',
+               
+            },
+            {
+                text: 'Edit',
+                 className: 'edit-action',
+                // action: function ( e, dt, node, config ) {
+                //     alert( 'Button activated' );
+                // }
+            },
+             {
+                text: 'Delete',
+                 className: 'delete-action',
+                // action: function ( e, dt, node, config ) {
+                //     alert( 'Button activated' );
+                // }
+            },
+            
+
+        ]
+    });
+
+     });
+
+   
+</script>

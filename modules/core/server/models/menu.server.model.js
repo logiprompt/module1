@@ -31,6 +31,16 @@ var AdminMenuSchema = new Schema({
     default:'',
     required: 'Please enter alt '
   },
+  urlslug: {
+    type: String,
+    default:'',
+    required: 'Please enter url '
+  },
+  path: {
+    type: String,
+    default:'',
+    required: 'Please enter path '
+  },
   created: {
     type: Date,
     default: Date.now

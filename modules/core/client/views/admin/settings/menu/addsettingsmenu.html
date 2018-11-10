@@ -1,5 +1,4 @@
 <style>
-    
     .btn23 {
         float: right;
     }
@@ -160,7 +159,7 @@
 
                                 <div class="form-group m-b-10 btn23">
 
-                                    <a href="/settings/settingsmenuadd">
+                                    <a href="/settings/menulist">
                                         <button type="button" class="btn waves-effect waves-light btn-sm btn-default"> Cancel </button>
                                     </a>
                                     <button type="submit" ng-click="addmenu()" class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
@@ -207,12 +206,12 @@
                                                     <label for="menu2">Sub menu</label>
                                                 </div>
 
-                                                <div  class="form-group m-b-10" ng-if="check==1">
+                                                <div class="form-group m-b-10" ng-if="check==1">
 
                                                     <label for="input1">Menu</label>
-                                                    <input type="text"  class="form-control" name="menu" id="menu" ng-model="formdata.menu" ng-required="true" ng-class="{ 'validationErr' : formmenu.$submitted && !formmenu.formdata.menu.$valid}">
+                                                    <input type="text" class="form-control" name="menu" id="menu" ng-model="formdata.menu" ng-required="true" ng-class="{ 'validationErr' : formmenu.$submitted && !formmenu.formdata.menu.$valid}">
                                                 </div>
-                                            
+
 
                                                 <div class="" ng-if="check==2">
                                                     <div class="form-group m-b-10">
@@ -236,7 +235,7 @@
 
                                                     </div>
 
-                                                </div>                                        
+                                                </div>
                                                 <div class="form-group m-b-10">
 
                                                     <label for="input1">Description</label>
@@ -248,7 +247,16 @@
                                                     <input type="text" class="form-control " name="alt" id="alt" ng-model="formdata.alt" ng-required="true" ng-class="{ 'validationErr' : formmenu.$submitted && !formmenu.formdata.alt.$valid}">
                                                 </div>
 
+                                                <div class="form-group m-b-10">
 
+                                                    <label for="input1">Url_slug</label>
+                                                    <input type="text" class="form-control " name="urlslug" id="urlslug" ng-model="formdata.urlslug" ng-required="true" ng-class="{ 'validationErr' : formmenu.$submitted && !formmenu.formdata.urlslug.$valid}">
+                                                </div>
+                                                <div class="form-group m-b-10">
+
+                                                    <label for="input1">Path</label>
+                                                    <input type="text" class="form-control " name="path" id="path" ng-model="formdata.path" ng-required="true" ng-class="{ 'validationErr' : formmenu.$submitted && !formmenu.formdata.path.$valid}">
+                                                </div>
 
 
                                             </div>

@@ -26,6 +26,7 @@
       $scope.adminMenuService.getMenuList().then(function(data){
          if(data.statusText = "OK"){
         $scope.menuList = data.data;
+        //console.log( $scope.menuList);
          }
          else{}
       })
@@ -89,7 +90,9 @@ if($scope.check==1){
           "description": $scope.formdata.desc,
           "level": 1,
           "hasChild": false,
-          "alt": $scope.formdata.alt
+          "alt": $scope.formdata.alt,
+          "urlslug": $scope.formdata.urlslug,
+          "path": $scope.formdata.path
         }
       }
       else if($scope.check==2)
@@ -100,9 +103,11 @@ if($scope.check==1){
           "description": $scope.formdata.desc,
           "level": 2,
           "hasChild": false,
-          "alt": $scope.formdata.alt
+          "alt": $scope.formdata.alt,
+          "urlslug": $scope.formdata.urlslug,
+          "path": $scope.formdata.path
         }
-        console.log(data);
+        //console.log(data);
       }
         $scope.adminMenuService.addMenu(data).then(function (result) {
           if (result.statusText = "OK") {
@@ -121,12 +126,12 @@ if($scope.check==1){
           "parentID": $scope.formdata.menu,
           "hasChild": true
         }
-        console.log(data1);
+       // console.log(data1);
         $scope.adminMenuService.updateMenu(data1).then(function(result){
-          console.log(result);
+         // console.log(result);
           if(result.statusText = "OK"){
             //swal("Sccess!", "Successfully updated Extra Field Group!", "success"); 
-            $state.go('settingsmenuadd');
+            $state.go('settingsmenulist');
            }
         });
 
@@ -208,14 +213,14 @@ if($scope.check==1){
       }
       else {
 
-        $scope.editpage[0].setAttribute("href", "/settings/countryedit/" + linkid);
+        $scope.editpage[0].setAttribute("href", "/settings/editmenu/" + linkid);
       }
 
     }
     $scope.chk = {};
 
     $scope.newpage = function () {
-      $state.go('countryadd');
+      $state.go('settingsmenuadd');
     }
     $scope.editpages = function () {
       var checkedValue = document.querySelectorAll('.rowtxtchk:checked');

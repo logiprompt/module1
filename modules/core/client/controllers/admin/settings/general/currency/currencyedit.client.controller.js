@@ -111,7 +111,7 @@ console.log(result);
        
         $scope.currencyService.updateCurrency($stateParams.id,data).then(function(result){
           if(result.statusText = "OK"){
-            swal("Sccess!", "Successfully updated Extra Field Group!", "success"); 
+            swal("Success!", "Successfully updated Extra Field Group!", "success"); 
             $state.go('generalcurrencylist');
            }
         });

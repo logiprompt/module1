@@ -1,0 +1,355 @@
+<style>
+    .btn23 {
+        float: right;
+    }
+
+    .page-wrapper {
+        padding-top: 0px;
+
+    }
+
+    .file_input_hidden {
+        font-size: 20px;
+        position: absolute;
+        /* right: 0px; */
+        width: 100%;
+        top: 0px;
+        bottom: 0;
+        cursor: pointer;
+        opacity: 0;
+        filter: alpha(opacity=0);
+        -ms-filter: "alpha(opacity=0)";
+        -khtml-opacity: 0;
+        -moz-opacity: 0;
+    }
+
+    .file_wrap .iconw {
+        border-radius: 0 5px 5px 0;
+        border-right: 1px solid #01bdd6;
+        bottom: -1px;
+        right: -1px;
+        position: absolute;
+        top: -1px;
+        width: 100px;
+        padding: 10px 0 10px 0;
+        background: #01bdd6;
+        text-align: center;
+        cursor: pointer;
+        color: #fff;
+    }
+
+    .file_wrap .write_textbox {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 102px;
+        top: 0;
+    }
+
+    .file_wrap input[type="text"] {
+        background: none repeat scroll 0 0 transparent;
+        border: medium none;
+        color: #333333;
+        font-size: 16px;
+        height: 29px;
+        line-height: 28px;
+        outline: medium none;
+        padding: 4px;
+        width: 98%;
+    }
+
+    .file_wrap {
+        border: 1px solid #CCC;
+        border-radius: 4px;
+        height: 37px;
+        position: relative;
+    }
+
+    .imgup {
+        border: 1px solid #e9ecef;
+        width: 100%;
+        /* margin-bottom: 35px; */
+    }
+
+    .lgs1 {
+        width: 28%;
+        float: left;
+    }
+
+    .lblfor {
+        /*width:60%;*/
+        margin-right: 40%;
+    }
+
+    .lblval {
+        margin-left: 64%;
+        width: 60%;
+    }
+
+    .left-detls {
+        width: 30%;
+        float: left;
+    }
+
+    .right-detls {
+        width: 30%;
+        float: left;
+    }
+
+    .el-card-item .el-overlay-1 {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        text-align: center;
+        cursor: default;
+    }
+
+    .el-card-item .el-overlay-1:hover .el-overlay {
+        opacity: 1;
+        filter: alpha(opacity=100);
+        -webkit-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+
+    .el-card-item {
+        position: relative;
+        /* padding-bottom: 25px; 
+            margin-bottom: 15px;*/
+    }
+
+    .el-card-item .el-overlay-1 .el-info>li a:hover {
+        background: #398bf7;
+        border-color: #398bf7;
+    }
+
+    .el-card-item .el-overlay {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        overflow: hidden;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        -webkit-transition: all .4s ease-in-out;
+        -o-transition: all .4s ease-in-out;
+        transition: all .4s ease-in-out;
+    }
+
+    .el-card-item .el-overlay-1:hover img {
+        -ms-transform: scale(1.2) translateZ(0);
+        -webkit-transform: scale(1.2) translateZ(0);
+        /* transform: scale(1.2) translateZ(0); */
+    }
+
+    .el-card-item .el-overlay-1 .el-info {
+        text-decoration: none;
+        display: inline-block;
+        text-transform: uppercase;
+        color: #ffffff;
+        background-color: transparent;
+        filter: alpha(opacity=0);
+        -webkit-transition: all .2s ease-in-out;
+        -o-transition: all .2s ease-in-out;
+        transition: all .2s ease-in-out;
+        padding: 0;
+        margin: auto;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        transform: translateY(-50%) translateZ(0);
+        -webkit-transform: translateY(-50%) translateZ(0);
+        -ms-transform: translateY(-50%) translateZ(0);
+    }
+
+    .el-card-item .el-overlay-1 .el-info>li {
+        list-style: none;
+        display: inline-block;
+        margin: 0 3px;
+    }
+
+    .btncenter {
+        text-align: center;
+    }
+
+    .bord {
+        border-top: 1px solid #333333;
+    }
+
+    .lblsize {
+        font-size: 14px !important;
+    }
+
+    .btns {
+        font-size: 13px !important;
+        line-height: 1.6em;
+    }
+
+    .div-width {
+        width: 32.6% !important;
+    }
+</style>
+
+<style type="text/css" id="treeview4-style">
+    .treeview .list-group-item {
+        cursor: pointer
+    }
+
+    .treeview span.indent {
+        margin-left: 10px;
+        margin-right: 10px
+    }
+
+    .treeview span.icon {
+        width: 12px;
+        margin-right: 5px
+    }
+
+    .treeview .node-disabled {
+        color: silver;
+        cursor: not-allowed
+    }
+
+    .node-treeview4 {
+        color: #428bca;
+    }
+
+    .node-treeview4:not(.node-disabled):hover {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+</style>
+<script src="/admin/assets/plugins/bootstrap-treeview-master/dist/bootstrap-treeview.min.js"></script>
+<script src="/admin/assets/plugins/bootstrap-treeview-master/dist/bootstrap-treeview-init.js"></script>
+<link href="/admin/assets/plugins/multiselect/css/multi-select.css" rel="stylesheet" type="text/css" />
+<link href="/admin/assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+<!-- 
+            ///////////////////////////////////////////////////////////////////////////////////// -->
+
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Role and privileges (ACL)</h4>
+                        <div class="col-lg-12">
+
+                            <!-- <h4 class="card-title">Vertical Tab</h4>
+            <h6 class="card-subtitle">Use default tab with class <code>vtabs &amp; tabs-vertical</code></h6> -->
+                            <!-- Nav tabs -->
+
+                            <form class="" name="frmacl" id="frmacl">
+
+                                <div class="form-group m-b-10 btn23">
+
+
+                                    <a href="usermanagement/roleandprivilage"><button type="button" class="btn waves-effect waves-light btn-sm btn-default">
+                                            Cancel </button></a>
+                                    <button type="button" ng-click="addacl()" class="btn waves-effect waves-light btn-sm btn-info">
+                                        Save </button>
+                                </div>
+
+                                <div class="vtabs">
+                                    <ul class="nav nav-tabs tabs-vertical" role="tablist">
+                                        <li class="nav-item "> <a class="nav-link" data-toggle="tab" href="#home" role="tab"
+                                                aria-selected="true"><span class="hidden-xs-down">Language : default</span>
+                                            </a> </li>
+                                        <li class="nav-item "> <a class="nav-link tcat active show" data-toggle="tab"
+                                                href="#content" role="tab" aria-selected="false"> <span class="hidden-xs-down">Modules</span></a>
+                                        </li>
+                                        <li class="nav-item "> <a class="nav-link tcat" data-toggle="tab" href="#role"
+                                                role="tab" aria-selected="false"> <span class="hidden-xs-down">Menu
+                                                 </span></a> </li>
+                                       
+                                      
+                                        
+                                    </ul>
+                                    <!-- Tab panes -->
+
+                                    <div class="tab-content col-lg-12">
+                                                                   
+                                       
+                                  
+                                        <div class="tab-pane p-20" id="role" role="tabpanel">
+                                            <div class="row p-20">
+                                                <div class="col-lg-12">
+                                                    <div class="form-group m-b-10">
+                                                        <span class="bar"></span>
+                                                        <div class="col-lg-4 div-width">
+                                                            <label for="input1">Menu </label>
+                                                        </div>
+                                                        <div class="row" ng-repeat="roleval in menuList">
+                                                            <div ng-if="$index+1!=1" class="col-lg-4"></div>
+                                                            <div class="col-lg-8">
+                                                                <input name="shortchk" type="checkbox" name="checkboxrole[]"
+                                                                    id="checkbox_{{$index+1}}" class="filled-in chk-col-light-blue rowrolechk"
+                                                                    value="{{roleval._id}}"><label class="lblsize"
+                                                                    for="checkbox_{{$index+1}}">{{roleval.menu}}</label>
+                                                            </div>
+                                                        </div>
+</div>
+</div>
+</div>
+
+                                        </div>
+                                   
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal -->
+<!-- modal -->
+<script>
+    setTimeout(function () {
+        $('.selectpicker').selectpicker({});
+    }, 1000)
+</script>
+<script>
+    $(document).ready(function () {
+        $('#example23').DataTable({
+            responsive: true,
+            dom: '',
+            // lengthMenu: [
+            //     [ 10, 25, 50, -1 ],
+            //     [ '10 rows', '25 rows', '50 rows', 'Show all' ]
+            // ],
+            //  buttons: [
+            //  'pageLength',
+            //  'csv',
+            //     {
+            //         text: 'Add',
+            //          className: 'add-action',
+            //     },
+            //     {
+            //         text: 'Edit',
+            //          className: 'edit-action',
+            //         // action: function ( e, dt, node, config ) {
+            //         //     alert( 'Button activated' );
+            //         // }
+            //     },
+            //      {
+            //         text: 'Delete',
+            //          className: 'delete-action',
+            //         // action: function ( e, dt, node, config ) {
+            //         //     alert( 'Button activated' );
+            //         // }
+            //     },
+            // ]
+        });
+    });
+</script>

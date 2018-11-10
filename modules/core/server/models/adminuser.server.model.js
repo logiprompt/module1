@@ -10,10 +10,10 @@ var mongoose = require('mongoose'),
  * Newpost Schema
  */
 var AdminuserSchema = new Schema({
-  adminuser_id: {
-    type: Number,
-    default: Date.now
-  },
+  // adminuser_id: {
+  //   type: Number,
+  //   default: Date.now
+  // },
 
   uname: {
     type: String,
@@ -42,6 +42,12 @@ var AdminuserSchema = new Schema({
     type: String,
     default:'',
     required: 'Please enter flag'
+  },
+
+  accessList: {
+    type: [Schema.Types.ObjectId],
+    required: 'Please enter role name ',
+    ref:'Sys_roleprivilege'
   },
 
   status: {

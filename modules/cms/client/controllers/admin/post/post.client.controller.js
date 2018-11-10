@@ -13,7 +13,6 @@
 	  $scope.postformdata = {};
 	  $scope.choices = ["0"];
 	  $scope.postvideos = ["0"];
-	  $scope.postformdata.post_displayinmenu = 1;
 	  
 	  $scope.addNewChoice = function(index){
 		  $scope.choices.push(index);
@@ -30,8 +29,6 @@
 	  }
 	  
 	  $scope.addpost = function(){
-		 $scope.postformdata.post_content = CKEDITOR.instances.editor1.getData().replace(/^.*?<body[^>]*>(.*?)<\/body>.*?$/i,"$1");;
-
 		  console.log( $scope.postformdata);
 		  
 		  CmsService.addPost($scope.postformdata).then(function(result){
@@ -50,13 +47,88 @@
    				  }
 		  })
 	  }
+
 	  
-	  
-	  $scope.generateSlgURL = function(){
-     	 var replaceSpacesText = $scope.postformdata.post_title;
-     	 $scope.postformdata.post_slug = replaceSpacesText.split(" ").join("_").toLowerCase();
-     	 $scope.postformdata.post_urlkey = "cms/post/"+$scope.postformdata.post_slug+"_"+Number(new Date())+".html"
-      }
+
+ function getActionBtns(){
+
+
+	$scope.addpage  = document.querySelectorAll(".add-action");
+	$scope.addpage[0].addEventListener("click", $scope.newpage, false);
+   
+	$scope.editpage= document.querySelectorAll(".edit-action");
+	$scope.editpage[0].addEventListener("click", $scope.editpages, false);
+   
+	var delpage= document.querySelectorAll(".delete-action");
+	delpage[0].addEventListener("click", $scope.delpage, false);
+   
+   
+   
+	}
+   $scope.chkall=function(){
+   $scope.editpage[0].removeAttribute("href");
+	
+   }
+   $scope.addchkval=function(linkid){
+	 var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
+   
+	 if(checkedValue.length>1){
+	 $scope.editpage[0].removeAttribute("href");
+	 }
+	 else{
+   
+	   $scope.editpage[0].setAttribute("href", "/cms/editpost/"+linkid);
+	 }
+   
+   }
+   $scope.chk={};
+   
+   $scope.newpage=function(){
+	 $state.go('addpost');
+   }
+   $scope.editpages=function(){
+	 console.log($scope.editpage[0].getAttribute("href"));
+	   var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
+	 if(checkedValue.length>0){
+   if($scope.editpage[0].getAttribute("href")){
+   document.location=$scope.editpage[0].getAttribute("href");
+   }
+	}
+	
+   }
+   $scope.chkValue=[];
+   
+   $scope.producttype='1';
+   
+   
+   
+	  $scope.showreview=function(){
+	   
+   document.getElementById("treview").style.display = "none";
+   
+   document.getElementById("detailreview").style.display = "block";
+   
+   }
+	$scope.viewrev=function(){
+	   
+   document.getElementById("detailreview").style.display = "none";
+   
+   document.getElementById("treview").style.display = "block";
+   
+   }
+   $scope.delpage=function(){
+	 $scope.chkValue=[];
+	 //$state.go('addlanguage');
+	 var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
+   console.log(checkedValue)
+	 for(var i=0;i<checkedValue.length;i++){
+	   $scope.chkValue.push(checkedValue[i].value);
+	 }
+	
+   }
+   setTimeout(getActionBtns, 1500);
+   
+	
 	  
 	  $scope.listPost = function(){
 		  CmsService.listPost().then(function(result){

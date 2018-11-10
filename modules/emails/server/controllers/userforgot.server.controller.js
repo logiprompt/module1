@@ -12,6 +12,7 @@ var path = require('path'),
 * Create  Admin menu 
 */
 exports.create = function(req, res) {
+
     var userDetails = req.body;
     console.log(userDetails);
     Userforgot.create(userDetails,function(err) {
@@ -32,7 +33,8 @@ exports.create = function(req, res) {
  * List of users
  */
 exports.list = function(request, response) {
-   
+    console.log(919191919191919);
+  console.log(request.headers['language']);
     Userforgot.find().exec(function(error, items) {
 
         if (error) {
@@ -45,12 +47,40 @@ exports.list = function(request, response) {
           } 
     });
 };
-exports.read = function(req, res) {};
-/**
- * Get User by ID
- */
 
-exports.userByID = function(request, response) {
+
+
+
+
+
+exports.reads= function(request, response) 
+{ 
+  console.log(request);
+    
+
+    Userforgot.findById(request.query.userId)
+    .lean()
+    .exec(function(error, items) {
+        if (error) {
+            console.log(error);
+            response.status(500).send(error);
+            return;
+        }
+        else{
+        response.jsonp(items);
+        }
+    });
+
+};
+
+// /**
+//  * Get User by ID
+//  */
+
+exports.userByIDs = function(request, response) 
+{
+    console.log(request);
+    console.log(90909090909090)
     Userforgot.findById(request.params.userId)
     .lean()
     .exec(function(error, items) {
@@ -59,7 +89,7 @@ exports.userByID = function(request, response) {
             response.status(500).send(error);
             return;
         }
-        response.json(items);
+        response.jsonp(items);
     });
 };
 
@@ -67,9 +97,9 @@ exports.userByID = function(request, response) {
 	 * Delete currency by ID
 	 */
 	exports.delete = function(request, response) {
-        var userId = request.params.userId;
+        var userId = request.query.userId;
          console.log(userId);
-        Userforgot.findById(request.params.userId).exec(function (error, item) {
+        Userforgot.findById(userId).exec(function (error, item) {
             
             if (error) {
               response.status(500).send(error);
@@ -100,9 +130,11 @@ exports.userByID = function(request, response) {
 	 * Update currency
 	 */
 	exports.update= function(request, response){
-		var userId = request.params.userId;
+    console.log(request)
+        var userId = request.body.userId;
+        console.log(userId);
 
-		Userforgot.findById(request.params.userId).exec(function (error, item) {
+		Userforgot.findById(userId).exec(function (error, item) {
 			  if (error) {
 			        response.status(500).send(error);
 			        return;
@@ -130,7 +162,7 @@ exports.userByID = function(request, response) {
       **/
       exports.delCheckedUser = function(request, response) {
       
-          var arr = request.params.userId.split(',');
+          var arr = request.query.userId;
           console.log(arr);
           Userforgot.deleteMany({_id:{'$in':arr}}).exec(function (err, data) {
                                if (err) throw err;

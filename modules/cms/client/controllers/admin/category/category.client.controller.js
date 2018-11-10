@@ -36,19 +36,7 @@ function(response) { // optional
 });
  
  /////////////////////select/////////////////////////////
- $http({
-        url: '/api/admin/selectCategory',
-        method: "POST",       
-    })
-    .then(function(response) {
-      $scope.list=response.data.data;
-	  
-	  
-           
-    }, 
-    function(response) { // optional
-            // failed
-    });
+ 
 
  ///////////////////////insert////////////////////////////
  $scope.insCategory=function(){

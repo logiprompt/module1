@@ -17,6 +17,7 @@ var CmSchema = new Schema({
     trim: true
   },
   post_content:{
+	  type: String
   },
   post_type:{
 	  type: String

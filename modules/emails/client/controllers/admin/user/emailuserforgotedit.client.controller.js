@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('core')
+    .module('emails')
     .controller('Emailuserforgotedit', Emailuserforgotedit);
 
 
@@ -11,7 +11,7 @@
 
   function Emailuserforgotedit ($scope, $http, $state, $stateParams, Upload,userforgotService) {
 
-  $scope.formdata = {};
+   //$scope.formdata = {};
    $scope.status = "0";
    $scope.username= localStorage.getItem('username');
    $scope.userforgotService = userforgotService;
@@ -60,33 +60,96 @@ $scope.choices = [{id: 'choice1'}];
          }
       
  };
- ///////////////////list /////////////////////
+
+//////////////////////////////////////////////////////////////////////////
+
+$scope.delUserForgot = function(userId){
+		   
+		   
+  swal({
+          title: 'Are you sure?',
+          text: "You want to delete this user!",
+          type: 'warning',
+          showCancelButton: false,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if(result){
+          $scope.userforgotService.delUserForgot(userId).then(function(result){
+          if(result.statusText = "OK"){
+          swal(
+                        'Deleted!',
+                        'User has been deleted.',
+                        'success'
+                      )
+          $state.go('emailforgetpass');
+           }else{
+             
+           }
+        })
+        }
+        })
+ 
+}
+
+
+/////////////////////////////////////////////////////////////////////
+ ///////////////////User Forgot By Id /////////////////////
+
  /*
 	 * Function : getUserForgotById
 	 * Description : get User Forgot details
 	 * Owner : jeeja
-	 */
+*/
 
-  $scope.getUserForgotById = function(userId){
+console.log( $scope.userforgotService);
+  $scope.getUserForgotById = function(userId)
+  {
     console.log(0);
-    $scope.userforgotService.getUserForgotById(userId).then(function(result){
-     if(result.statusText = "OK"){
-       console.log(1);
-console.log(result);
-       $scope.userdetails = result.data;
-$scope.name = $scope.userdetails.name;
-$scope.subject = $scope.userdetails.subject;
-$scope.content = $scope.userdetails.content;
-$scope.custom = $scope.userdetails.custom;
-$scope.status = $scope.userdetails.status;
+      $scope.userforgotService.getUserForgotById(userId).then(function(result)
+      {
+          console.log(userId);
+          if(result.statusText = "OK")
+          {
+            console.log(result);
+            $scope.userdetails = result.data;
+            $scope.name = $scope.userdetails.name;
+            $scope.subject = $scope.userdetails.subject;
+            $scope.content = $scope.userdetails.content;
+            $scope.custom = $scope.userdetails.custom;
+            $scope.status = $scope.userdetails.status.toString();
 
-
-      }else{
-        
-      }
-   });
+          }
+          else
+          {
+            
+          }
+      });
   }
   $scope.getUserForgotById($stateParams.id);
+
+
+
+  // $http({
+  //   url: '/api/userforgot/'+$stateParams.id,
+  //   method: "GET",
+    
+  // })
+  // .then(function(result) {
+  //   console.log(result);
+  // $scope.langlist=result.data;
+  //       // success
+  //    //console.log( $scope.counlist)  
+  //       //console.log(5464564564);
+  // }, 
+  // function(response) { // optional
+  //       // failed
+  // });
+
+
+
+
  //////////////////////////////////
   /*
 	 *
@@ -97,13 +160,15 @@ $scope.status = $scope.userdetails.status;
 	 */
 
       $scope.updateUserForgot = function(){
-        if($scope.formdata.$valid){
+        console.log($scope.formdata);
+        if($scope.formdata.$valid && $scope.status!=0){
        var data = {		  			 
             "name":$scope.name,
             "subject":$scope.subject,
             "content":$scope.content,
             "custom":$scope.custom,
-            "status" :$scope.status
+            "status" :$scope.status,
+            "userId":$stateParams.id
             }
        
         $scope.userforgotService.updateUserForgot($stateParams.id,data).then(function(result){
