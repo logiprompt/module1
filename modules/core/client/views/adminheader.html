@@ -136,7 +136,7 @@ form label {
                        
                                                <select ng-change="setLang()" ng-model="languages" class="form-control " name="languages" id="languages" >
                                                <option   class="filter-option-inner " value="0" label="choose language" selected="selected" ></option>
-	                                           <option  class="filter-option-inner" ng-repeat="langval in langlist" value="{{langval.language_id}}">{{langval.language}}</option>      
+	                                           <option  class="filter-option-inner" ng-repeat="langval in langlist" value="{{langval.extension}}">{{langval.language}}</option>      
                                             
                                           </select>
                                           </div>

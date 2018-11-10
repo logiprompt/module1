@@ -11,8 +11,8 @@ var mongoose = require('mongoose'),
  */
 var GenerallanguageSchema = new Schema({
   language_id: {
-    type: Number,
-    default: Date.now
+    type: String,
+
   },
   
   language: {

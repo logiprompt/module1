@@ -10,10 +10,10 @@ var mongoose = require('mongoose'),
  * Newpost Schema
  */
 var AdminuserloginSchema = new Schema({
-  adminuserlog_id: {
-    type: Number,
-    default: Date.now
-  },
+  //   adminuserlog_id: {
+  //   type: Number,
+  //   default: Date.now
+  //    },
 
   cadminpass: {
     type: String,

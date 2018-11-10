@@ -204,7 +204,7 @@ width:60%;
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Share with users template (Edit) ID 1</h4>
+                                <h4 class="card-title">Admin users list (Edit) ID 1</h4>
                                 <div class="col-lg-12">
                      
                                 <!-- <h4 class="card-title">Vertical Tab</h4>
@@ -216,6 +216,8 @@ width:60%;
                                  
                               
                                 <div class="vtabs">
+
+                                    
 
                                         <ul class="nav nav-tabs tabs-vertical" role="tablist">
                                                 <li class="nav-item"> <a class="nav-link tcat" data-toggle="tab" href="#home" role="tab" aria-selected="true"><span class="hidden-xs-down">Country :
@@ -265,17 +267,20 @@ width:60%;
                                         <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#logs" role="tab" aria-selected="false"> <span class="hidden-xs-down">Logs</span></a> </li>
                                               </ul> -->
                                     <!-- Tab panes -->
-                                    
+                                    <div class="form-group m-b-10 btn23">
+
+
+                                            <a href="/usermanagement/adminuserlist"><button type="button" class="btn waves-effect waves-light btn-sm btn-default">
+                                                    Cancel </button></a>
+                                            <button type="button" ng-click="insadminuser()" class="btn waves-effect waves-light btn-sm btn-info">
+                                                Save </button>
+                                        </div>
                                     <div class="tab-content col-lg-12">
+
+                                        
                                         
                                         <div class="tab-pane active show" id="content" role="tabpanel">
-                                                <div class="form-group m-b-10 btn23">
-                                       
-                                                    <button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
-                                                    <a href="/email/shareusers"><button type="button"  class="btn waves-effect waves-light btn-sm btn-default"> Cancel </button></a> 
-                                                    
-                                                       <button type="button" ng-click="updateadminuser()" class="btn waves-effect waves-light btn-sm btn-danger"> Delete </button> 
-                                                </div> 
+                                               
                                                
                                         <!--   <div class="form-group">
                                                     <label class="control-label">First Name</label>
@@ -285,7 +290,7 @@ width:60%;
                                                <div class="col-md-9">
                                                 <div class="form-group m-b-10">
                                                     <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
-                                                    <label for="input1"> Name</label>
+                                                    <label for="input1"> User name</label>
                                                     <input type="text" class="form-control uname" id="uname" name="uname"
                                                         ng-model="formdata.uname">
                                     </div>
@@ -341,7 +346,7 @@ width:60%;
                                             </div>
                                         </div>
                                         
-
+                                        <div class="col-md-9">
                                         <div class="form_group m-b-0">
                                             <label for="first_name" id="labelimg">profile image</label>
                                             <div class="fluid left_c_input file_wrap m-b-10">
@@ -358,7 +363,7 @@ width:60%;
                                                     <div class="card">
                                                         <div class="el-card-item">
                                                             <div class="el-card-avatar el-overlay-1 imageup">
-                                                                <img src="/uploads/dummy.jpg" alt="user" id="imgfiles"
+                                                                <img src="{{userdetails.profileimage}}" alt="user" id="imgfiles"
                                                                     class="imgup">
                                                                 <div class="el-overlay">
                                                                     <ul class="el-info">
@@ -377,6 +382,7 @@ width:60%;
                                                 </div>
                                             </div>
                                         </div>
+                                        </div>
                                         <div class="col-md-3">
                                             <div class="form-group has-danger defcheck">
                                                 <input name="shortchk" type="checkbox" id="chk5" class="filled-in chk-col-light-blue" ><label class="lbl" for="chk5">Default</label>
@@ -390,8 +396,8 @@ width:60%;
                                                 <select class="form-control filter-option status" name="status" id="status"
                                                 ng-model="formdata.status">
                                                 <option class="filter-option-inner" value="0">choose</option>
-                                                <option value="1" class="">Active</option>
-                                                <option value="2" class="">Inactive</option>
+                                                <option ng-selected="formdata.status==1" value="1" class="">Active</option>
+                                                <option ng-selected="formdata.status==2" value="2" class="">Inactive</option>
                                             </select>
                                     
                                   </select>
@@ -509,111 +515,273 @@ width:60%;
                                             </div>
                                         </div>
 
+                                        <div class="tab-pane" id="storeallo" role="tabpanel">
+                                        <div class="p-20">
+                                            <div class="form-group m-b-10">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <!-- <a class="btn waves-effect waves-light btn-sm btn-info" href="/cms/editcat/{{1}}">Select All</a>
+        <a class="btn waves-effect waves-light btn-sm btn-info" href="/cms/editcat/{{1}}">UnSelect All</a>
+        -->
+                                                        <div class="table-responsive m-t-20">
+                                                            <div class="row">
+                                                                <div class="form-group col-md-3 m-b-10">
+                                                                    <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
+                                                                    <label for="input1"> Country</label>
+                                                                    <select class="form-control filter-option" name="strcountry"
+                                                                        id="strcountry" ng-model="formdata.strcountry">
+                                                                        <option class="filter-option-inner" value="0">choose</option>
+                                                                        <option class="filter-option-inner"
+                                                                            ng-repeat="val in list" value="{{val.country_id}}">{{val.country}}</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group col-md-3 m-b-10">
+                                                                    <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
+                                                                    <label for="input1"> State</label>
+                                                                    <select class="form-control filter-option" name="status"
+                                                                        id="status" ng-model="formdata.status">
+                                                                        <option class="filter-option-inner" value="0">choose</option>
+                                                                        <option class="filter-option-inner"
+                                                                            ng-repeat="val in state" value="{{val.state_id}}">{{val.state}}</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <button type="button" ng-click="ins" class="btn waves-effect waves-light btn-sm btn-info btns">
+                                                                        Filter </button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-3 m-t-30 ">
+                                                                <label for="input1"><b> Pick store allocation</b></label>
+                                                            </div>
+                                                            <table id="example23" class="example23 display nowrap table table-hover table-striped table-bordered"
+                                                                cellspacing="0" width="100%">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th><input type="checkbox" id="checkAll"
+                                                                                class="checkAll" ng-model="checkalltxt"
+                                                                                ng-click="chkall()" />
+                                                                            <label for="checkAll"></label>ID</th>
+                                                                        <th>Store Name</th>
+                                                                        <th>Country</th>
+                                                                        <th> State</th>
+                                                                        <th>Action</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td> <input type="checkbox" id="basic_checkbox_{{$index+1}}"
+                                                                                class="rowtxtchk" value="{{$index+1}}"
+                                                                                ng-click="addchkval(val.cat_id)" />
+                                                                            <label for="basic_checkbox_{{$index+1}}"></label>1</td>
+                                                                        <td>Zshopper - manjeri</td>
+                                                                        <td>India </td>
+                                                                        <td>kerala</td>
+                                                                        <td style="width:20% !important;">
+                                                                            <a class="btn waves-effect waves-light btn-sm btn-info"
+                                                                                href="#">
+                                                                                Add
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group m-t-20">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <!-- <a class="btn waves-effect waves-light btn-sm btn-info" href="/cms/editcat/{{1}}">Select All</a>
+        <a class="btn waves-effect waves-light btn-sm btn-info" href="/cms/editcat/{{1}}">UnSelect All</a>
+        -->
+                                                        <div class="table-responsive m-t-20">
+                                                            <div class="col-md-3 m-t-30 ">
+                                                                <label for="input1"><b> Allocated store</b> </label>
+                                                            </div>
+                                                            <table id="example23" class="example23 display nowrap table table-hover table-striped table-bordered"
+                                                                cellspacing="0" width="100%">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th><input type="checkbox" id="checkAll"
+                                                                                class="checkAll" ng-model="checkalltxt"
+                                                                                ng-click="chkall()" />
+                                                                            <label for="checkAll"></label>ID</th>
+                                                                        <th>Store Name</th>
+                                                                        <th>Country</th>
+                                                                        <th> State</th>
+                                                                        <th>Action</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td> <input type="checkbox" id="basic_checkbox_{{$index+1}}"
+                                                                                class="rowtxtchk" value="{{$index+1}}"
+                                                                                ng-click="addchkval(val.cat_id)" />
+                                                                            <label for="basic_checkbox_{{$index+1}}"></label>1</td>
+                                                                        <td>Zshopper - manjeri</td>
+                                                                        <td>India </td>
+                                                                        <td>kerala</td>
+                                                                        <td style="width:20% !important;">
+                                                                            <a class="btn waves-effect waves-light btn-sm btn-info"
+                                                                                href="#">
+                                                                                Remove
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="tab-pane" id="share" role="tabpanel">
+                                    <div class="p-20">
+                                        <div class="form-group m-b-10">
+                                            <label for="input1">Share Status</label>
+                                            <select class="form-control filter-option" name="status" id="status"
+                                                ng-model="formdata.status">
+                                                <option class="filter-option-inner" value="0">choose</option>
+                                                <option value="1" class="">choose</option>
+                                                <option value="1" class="">Yes</option>
+                                                <option value="1" class="">No</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group m-b-10">
+                                            <label for="input1">Country </label>
+                                            <select class="selectpicker form-control" multiple data-style="form-control btn-default">
+                                                <option class="filter-option-inner" ng-repeat="val in list"
+                                                    value="{{val.country_id}}">{{val.country}}</option>
+                                            </select>
+                                        </div>
+                                        <label class="m-t-40" for="input1 "><b>Profit Ratio</b> </label>
+                                        <div class="bord m-t-10">
+                                            <div class="form-group m-b-10">
+                                                <span class="bar"></span>
+                                                <label for="input1"> India </label>
+                                                <input type="text" class="form-control cat" id="name" ng-model="formdata.category">
+                                            </div>
+                                            <div class="form-group m-b-10">
+                                                <span class="bar"></span>
+                                                <label for="input1"> UAE </label>
+                                                <input type="text" class="form-control cat" id="name" ng-model="formdata.category">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="tab-pane " id="login" role="tabpanel">
+                                <!--   <div class="form-group">
+<label class="control-label">First Name</label>
+<input type="text" id="firstName" class="form-control" placeholder="John doe">
+<small class="form-control-feedback"> This is inline help </small> </div> -->
+                                <div class="p-20">
+                                    <div class="form-group m-b-10">
+                                        <label for="input1"> Current admin password </label>
+                                        <input type="password" class="form-control cadminpassword" name="cadminpassword"
+                                            id="cadminpassword" ng-model="formdata.cadminpassword">
+                                    </div>
+                                    <div class="form-group m-b-10">
+                                        <label for="input1"> Password </label>
+                                        <input type="password" class="form-control password" id="password" name="password"
+                                            ng-model="formdata.password">
+                                    </div>
+                                    <div class="form-group m-b-10">
+                                        <label for="input1"> Password Confirmation </label>
+                                        <input type="password" class="form-control cpassword" id="cpassword"
+                                            ng-model="formdata.cpassword">
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="tab-pane p-20" id="role" role="tabpanel">
+                            <div class="row p-20">
+                                <div class="col-lg-12">
+                                    <div class="form-group m-b-10">
+                                        <span class="bar"></span>
+                                        <div class="col-lg-4 div-width">
+                                            <label for="input1"> Role name </label>
+                                        </div>
+                                        <div class="row" >
+                                            <!-- <div ng-if="$index+1!=1" class="col-lg-4"></div> -->
+                                            <div class="col-lg-8">
+
+                                                    <select class="form-control filter-option role" name="role" id="role"
+                                                    ng-model="formdata.role">
+                                                    <option class="filter-option-inner" value="0">choose</option>
+                                                    <option ng-repeat="roleval in role" ng-selected="formdata.role==roleval._id" value="{{roleval._id}}" class="">{{roleval.name}}</option>
+                                                    
+                                                </select>
+
+                                                <!-- <input name="shortchk" type="checkbox" name="checkboxrole[]"
+                                                    id="checkbox_{{$index+1}}" class="filled-in chk-col-light-blue rowrolechk"
+                                                    value="{{roleval._id}}"><label class="lblsize"
+                                                    for="checkbox_{{$index+1}}">{{roleval.name}}</label> -->
+                                            </div>
+                                        </div>
+</div>
+</div>
+</div>
+<!-- <div class="row p-20">
+<div class="col-lg-12">
+<div class="form-group m-b-10">
+
+                                        <div class="row  m-b-40 ">
+                                            <div class="col-lg-4">
+                                                <label for="input1"> Description </label>
+                                            </div>
+                                            <div class="col-lg-8">
+                                                <textarea rows="4" class="form-control desc" id="desc"
+                                                    name="desc" ng-model="formdata.desc"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+
 
 
 
                                       
-                                        <div class="tab-pane p-20" id="report" role="tabpanel">
-                                                <div class="row  m-b-40">
-                                                  <div class="col-lg-12"> 
-                                                        <div class="form-group m-b-10 btn23">
-                                                  
-                                                                <a href="/newsletters/newsletters"><button type="button"  class="btn waves-effect waves-light btn-sm btn-default"> Back </button></a>
-                                                                <button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
-                                                                <button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm btn-primary"> Send </button>
-                                                                <a href="/newsletters/newsletters"><button type="button"  class="btn waves-effect waves-light btn-sm btn-default"> Cancel </button></a>
-                                                                </div></div>
-                                                          </div> 
-                                                        <div class="row  m-b-40 lgs">
-                                                            <div class="col-lg-6">     
-                                                                <label class="" for="cd">Number of subscribers </label>
-                                                            </div>  <div class="col-lg-2">
-                                                              <label class="" name="cd" id="cd">100</label>                                                   </div> 
-                                                           
-                                                       
-                                                        <div class="col-md-4">
-                                                                <div class="has-danger">
-                                                                    <input name="shortchk" type="checkbox" id="chk9" class="filled-in chk-col-light-blue" ><label class="" for="chk9">Default</label>
-                                                            </div>
-                                                        </div> </div>
-                                                            
-                                                 <div class="row m-b-40 lgs">
-                                                  <div class="col-lg-6">     
-                                                            <label class="" for="cd">Total send </label>
-                                                        </div>  
-                                                         <div class="col-lg-2">
-                                                              <label class="" name="cd" id="cd">75</label>    
-                                                                </div> 
-                                                                <div class="col-md-4">
-                                                                        <div class="has-danger">
-                                                                            <input name="shortchk" type="checkbox" id="chk10" class="filled-in chk-col-light-blue" ><label class="" for="chk10">Default</label>
-                                                                    </div>
-                                                                </div>
-                                             </div> 
-                                                         <div class="row m-b-40 lgs">
-                                         <div class="col-lg-6">     
-                                                            <label class="" for="cd">Total received </label>
-                                                        </div>  
-                                                         <div class="col-lg-2">
-                                                              <label class="" name="cd" id="cd">50</label>         </div> 
-                                                              <div class="col-md-4">
-                                                                    <div class="has-danger">
-                                                                        <input name="shortchk" type="checkbox" id="chk11" class="filled-in chk-col-light-blue" ><label class="" for="chk11">Default</label>
-                                                                </div>
-                                                            </div>
-                                                         </div>                                  
-                                                     <div class="row m-b-40 lgs">
-                                                       <div class="col-lg-6">
-                                                        <label for="input1">Total viewed </label>
-                                                       </div>  
-                                                       <div class="col-lg-2">
-                                                        <label class="" name="mb" id="cb">40</label>
-                                                       </div>
-                                                       <div class="col-md-4">
-                                                            <div class="has-danger">
-                                                                <input name="shortchk" type="checkbox" id="chk12" class="filled-in chk-col-light-blue" ><label class="" for="chk12">Default</label>
-                                                        </div>
-                                                    </div>             
-                                                        
-                                                     </div>   
-                                                           <div class="row m-b-40 lgs">
-                                                       <div class="col-lg-6">
-                                                        <label for="input1">Status </label>
-                                                       </div>  
-                                                       <div class="col-lg-2">
-                                                        <label class="" name="mb" id="cb">Progressing</label>
-                                                       </div>
-                                                       <div class="col-md-4">
-                                                            <div class="has-danger">
-                                                                <input name="shortchk" type="checkbox" id="chk13" class="filled-in chk-col-light-blue" ><label class="" for="chk13">Default</label>
-                                                        </div>
-                                                    </div>             
-                                                        
-                                                     </div>       
-                                                     <div class="row m-b-40 lgs">
-                                                     <div class="col-md-6">
-                                                            
-                                                                  <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
-                                                                  <label for="input1"> Status</label>
-                                                                         <select class="form-control filter-option" name="status" id="status">
-                                                                         <option class="filter-option-inner" value="0">choose</option>
-        
-                                                                     <option value="1" class=""></option> </select>  </div>
-        
-                                                                   
-                                                    
-                                                  
-                                  <div class="col-md-2">
-                                                  <div class="form-group has-danger defcheck">
-                                                      <input name="shortchk" type="checkbox" checked id="chk14" class="filled-in chk-col-light-blue" ><label class="lbl" for="chk14">Default</label>
-                                              </div>
-                                          </div>
-                                          <div class="col-md-4">
-                                                <div class="form-group has-danger defcheck">
-                                                    <input name="shortchk" type="checkbox" id="chk15" class="filled-in chk-col-light-blue" ><label class="lbl" for="chk15">Default</label>
-                                            </div>
-                                        </div></div>
+                                        <div class="tab-pane p-20" id="logs" role="tabpanel">
+                                                <div class="row  m-b-40 ">
+                                                    <div class="col-lg-6">
+                                                        <label class="" for="cd">Created date :</label>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <label class="" name="cd" id="cd">4 may 2019</label> </div>
                                                 </div>
+                                                <div class="row m-b-40 lgs">
+                                                    <div class="col-lg-6">
+                                                        <label class="" for="cd">Created by :</label>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <label class="" name="cd" id="cd">Shihab</label> </div>
+                                                </div>
+                                                <div class="row m-b-40 lgs">
+                                                    <div class="col-lg-6">
+                                                        <label class="" for="cd">Modified date :</label>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <label class="" name="cd" id="cd">4 may 2019</label> </div>
+                                                </div>
+                                                <div class="row m-b-40 lgs">
+                                                    <div class="col-lg-6">
+                                                        <label for="input1"> modified By :</label>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <label class="" name="mb" id="cb">Ajmal</label>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         
                                     </div>
 

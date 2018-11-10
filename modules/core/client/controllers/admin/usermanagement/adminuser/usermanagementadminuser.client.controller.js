@@ -13,6 +13,7 @@
 
     $scope.formdata = {};
     $scope.formdata.status = '0';
+    $scope.formdata.role = '0';
     $scope.formdata.country = '0';
     $scope.formdata.state = '0';
     $scope.formdata.district = '0';
@@ -157,12 +158,12 @@
 
     $scope.insadminuser = function () {
 
-      $scope.chkroleValue = [];
-      var checkedroleValue = document.querySelectorAll('.rowrolechk:checked');
-      for (var i = 0; i < checkedroleValue.length; i++) {
-        $scope.chkroleValue.push(checkedroleValue[i].value);
-      }
-      $scope.formdata.role = $scope.chkroleValue;
+      // $scope.chkroleValue = [];
+      // var checkedroleValue = document.querySelectorAll('.rowrolechk:checked');
+      // for (var i = 0; i < checkedroleValue.length; i++) {
+      //   $scope.chkroleValue.push(checkedroleValue[i].value);
+      // }
+      // $scope.formdata.role = $scope.chkroleValue;
       if ($scope.validation() == 0) {
 
 
@@ -257,11 +258,18 @@
         error = 5;
       }
 
-      if ($scope.formdata.role == '' || angular.isUndefined($scope.formdata.role)) {
-        $scope.adderrorclass(".rowrollchk");
+      if ($scope.formdata.role == 0 || angular.isUndefined($scope.formdata.role)) {
+        $scope.adderrorclass(".role");
         $scope.taberrorclass(".roll");
         error = 6;
+
       }
+
+      // if ($scope.formdata.role == '' || angular.isUndefined($scope.formdata.role)) {
+      //   $scope.adderrorclass(".rowrollchk");
+      //   $scope.taberrorclass(".roll");
+      //   error = 6;
+      // }
 
 
       return error;

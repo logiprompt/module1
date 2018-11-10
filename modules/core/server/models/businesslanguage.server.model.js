@@ -11,8 +11,7 @@ var mongoose = require('mongoose'),
  */
 var BusinesslanguageSchema = new Schema({
   businesslang_id: {
-    type: Number,
-    default: Date.now
+    type: String
   },
   blangcountry: {
     type: String,

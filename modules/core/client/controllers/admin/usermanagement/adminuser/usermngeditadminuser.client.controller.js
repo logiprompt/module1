@@ -7,16 +7,18 @@
 
 
 
-    Usermngeditadminuser.$inject = ['$scope', '$http', '$state', '$stateParams', 'Upload'];
+    Usermngeditadminuser.$inject = ['$scope', '$http', '$state', '$stateParams', 'Upload','userMngAdminUserService'];
 
-  function Usermngeditadminuser($scope, $http, $state, $stateParams, Upload) {
+  function Usermngeditadminuser($scope, $http, $state, $stateParams, Upload,userMngAdminUserService) {
 
     $scope.formdata = {};
     $scope.formdata.status = '0';
+    //$scope.formdata.role = '0';
     $scope.formdata.country = '0';
     $scope.formdata.state = '0';
     $scope.formdata.district = '0';
     $scope.formdata.username = localStorage.getItem('username');
+    $scope.userMngAdminUserService = userMngAdminUserService;
     /////////fetch ip///////////////
     $http.get("https://ipinfo.io/").then(function (response) {
       $scope.formdata.ip = response.data.ip;
@@ -84,18 +86,61 @@
         });
     ////////////////////////////////////////////////////////////////
     //////////////////////////load users list////////////////////////////////
-    $http({
-      url: '/api/admin/selectAdminusers',
-      method: "POST",
+    // $http({
+    //   url: '/api/admin/selectAdminusers',
+    //   method: "POST",
 
-    })
-      .then(function (response) {
-        $scope.userlist = response.data.data;
-        // success
-      },
-        function (response) { // optional
-          // failed
-        });
+    // })
+    //   .then(function (response) {
+    //     $scope.userlist = response.data.data;
+    //     // success
+    //   },
+    //     function (response) { // optional
+    //       // failed
+    //     });
+
+
+
+    $scope.getAdminUserById = function (userId) {
+      console.log(0);
+      $scope.userMngAdminUserService.getAdminUserById(userId).then(function (result) {
+        console.log(userId);
+        if (result.statusText = "OK") 
+        {
+          console.log(result);
+          $scope.userdetails = result.data.data1;
+          $scope.userdetails2 = result.data.data2;
+$scope.formdata.uname = $scope.userdetails.uname;
+          $scope.formdata.fname = $scope.userdetails.fname;
+$scope.formdata.lname = $scope.userdetails.lname;
+
+$scope.formdata.email = $scope.userdetails.email;
+
+           $scope.formdata.status = $scope.userdetails.status;
+ $scope.formdata.role = $scope.userdetails.accessList;
+
+
+ $scope.formdata.cadminpassword = $scope.userdetails2.uname;
+// $scope.formdata.password = $scope.userdetails.uname;
+// $scope.formdata.cpassword = $scope.userdetails.uname;
+
+          // $scope.name = $scope.userdetails.name;
+          // $scope.subject = $scope.userdetails.subject;
+          // $scope.content = $scope.userdetails.content;
+          // $scope.custom = $scope.userdetails.custom;
+          // $scope.status = $scope.userdetails.status.toString();
+
+        }
+        else {
+
+        }
+      });
+    }
+    $scope.getAdminUserById($stateParams.id);
+
+
+
+
     $scope.changestate = function () {
       var changeid = { 'id': $scope.formdata.state };
       console.log(changeid);
@@ -155,38 +200,69 @@
     ///////////////////////////////////insert ////////////////////////////////////////////////////
 
 
-    $scope.insadminuser = function () {
+    //$scope.updateAdminUser = function () {
 
-      $scope.chkroleValue = [];
-      var checkedroleValue = document.querySelectorAll('.rowrolechk:checked');
-      for (var i = 0; i < checkedroleValue.length; i++) {
-        $scope.chkroleValue.push(checkedroleValue[i].value);
-      }
-      $scope.formdata.role = $scope.chkroleValue;
-      if ($scope.validation() == 0) {
+      // $scope.chkroleValue = [];
+      // var checkedroleValue = document.querySelectorAll('.rowrolechk:checked');
+      // for (var i = 0; i < checkedroleValue.length; i++) {
+      //   $scope.chkroleValue.push(checkedroleValue[i].value);
+      // }
+      // $scope.formdata.role = $scope.chkroleValue;
+      
+        //if ($scope.validation() == 0) {
+        //  var data = $scope.formdata;
+        //  console.log(data);
+        //  Upload.upload({
+        //   url: '/api/admin/updateadminuser',
+        //   data: data,
+        //   file: $scope.imgss
+        //   }).then(function (response) {
+        //   console.log(response);
+        //   //$state.reload();
+        //   if (response.data.data == 0) {
+        //     swal("Sccess!", "Successfully added !", "success");
+        //     $state.reload();
+        //   }
+        //   else if (response.data.data == 1) {
+        //     swal("error!", "Already exist!", "error");
+        //     //$state.reload();
+        //    }
+        //  });
+
+        $scope.updateUser = function(){
+          console.log(110);
+         if ($scope.validation() == 0) {
+
+          //    Upload.upload({
+          //     url: '/api/admin/updateadminuser',
+          //     data: data,
+          //     //file: $scope.imgss
+          //     })
+
+         var data = {		  			 
+              "uname":$scope.formdata.uname,
+              "fname":$scope.formdata.subject,
+              "lname":$scope.formdata.content,
+              "email":$scope.formdata.custom,
+              "status" :$scope.formdata.status,
+              "accessList" :$scope.formdata.role,
+              "userId":$stateParams.id
+              }
+         console.log(data);
+         $scope.userMngAdminUserService.updateUser($stateParams.id,data).then(function(result){
+            if(result.statusText = "OK"){
+              swal("Success!", "Successfully updated User", "success"); 
+              $state.reload();
+             }
+          });
+        }
+        }
 
 
-        var data = $scope.formdata;
-        console.log(data);
-        Upload.upload({
-          url: '/api/admin/insadminuser',
-          data: data,
-          file: $scope.imgss
-        }).then(function (response) {
-          console.log(response);
-          //$state.reload();
-          if (response.data.data == 0) {
-            swal("Sccess!", "Successfully added !", "success");
-            $state.reload();
-          }
-          else if (response.data.data == 1) {
-            swal("error!", "Already exist!", "error");
-            //$state.reload();
-          }
-        });
-      }
+        
+     // }
 
-    }
+    // }
 
 
     $scope.rmerrorclass = function () {

@@ -443,7 +443,7 @@
                                                                             <td> <input type="checkbox" id="basic_checkbox_{{$index+1}}"
                                                                                     class="rowtxtchk" value="{{$index+1}}"
                                                                                     ng-click="addchkval(val.cat_id)" />
-                                                                                <label for="basic_checkbox_{{$index+1}}"></label>1</td>
+                                                                                <label for="basic_checkbox_1"></label>1</td>
                                                                             <td>India </td>
                                                                             <td>kerala</td>
                                                                             <td>malappuram</td>
@@ -654,13 +654,21 @@
                                                         <div class="col-lg-4 div-width">
                                                             <label for="input1"> Role name </label>
                                                         </div>
-                                                        <div class="row" ng-repeat="roleval in role">
-                                                            <div ng-if="$index+1!=1" class="col-lg-4"></div>
+                                                        <div class="row" >
+                                                            <!-- <div ng-if="$index+1!=1" class="col-lg-4"></div> -->
                                                             <div class="col-lg-8">
-                                                                <input name="shortchk" type="checkbox" name="checkboxrole[]"
+
+                                                                    <select class="form-control filter-option role" name="role" id="role"
+                                                                    ng-model="formdata.role">
+                                                                    <option class="filter-option-inner" value="0">choose</option>
+                                                                    <option ng-repeat="roleval in role" value="{{roleval._id}}" class="">{{roleval.name}}</option>
+                                                                    
+                                                                </select>
+
+                                                                <!-- <input name="shortchk" type="checkbox" name="checkboxrole[]"
                                                                     id="checkbox_{{$index+1}}" class="filled-in chk-col-light-blue rowrolechk"
                                                                     value="{{roleval._id}}"><label class="lblsize"
-                                                                    for="checkbox_{{$index+1}}">{{roleval.name}}</label>
+                                                                    for="checkbox_{{$index+1}}">{{roleval.name}}</label> -->
                                                             </div>
                                                         </div>
 </div>

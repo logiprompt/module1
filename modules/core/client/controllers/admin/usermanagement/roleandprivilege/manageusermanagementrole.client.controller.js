@@ -7,15 +7,16 @@
 
 
 
-    Manageusermanagementrole.$inject = ['$scope', '$http', '$state', '$stateParams', 'Upload', 'adminMenuService'];
+    Manageusermanagementrole.$inject = ['$scope', '$http', '$state', '$stateParams', 'Upload', 'adminMenuService','aclService'];
 
-  function Manageusermanagementrole($scope, $http, $state, $stateParams, Upload, adminMenuService) {
+  function Manageusermanagementrole($scope, $http, $state, $stateParams, Upload, adminMenuService,aclService) {
 
     var vm = this;
     $scope.formdata = {};
     $scope.check = 1;
     $scope.username = localStorage.getItem('username');
     $scope.adminMenuService = adminMenuService;
+    $scope.aclService = aclService;
  /**
   * Function : getmenu
        * Description : get menu details
@@ -88,41 +89,59 @@
         $scope.chkroleValue.push(checkedroleValue[i].value);
       }
       $scope.formdata.role = $scope.chkroleValue;
+     
     
-      if ($scope.formmenu.$valid) {
-        var data = $scope.formdata;
-        $scope.adminMenuService.addMenu(data).then(function (result) {
+      if ($scope.validation() == 0) {
+         var data = {
+                     "menuIDs": $scope.formdata.role,
+                     "userID":$stateParams.id
+                     }
+       // var data = $scope.formdata;
+        //console.log(data);
+        $scope.aclService.addAcl(data).then(function (result) {
+        //  console.log(result.statusText);
           if (result.statusText = "OK") {
-
-
-
             
-            swal("Success!", "Successfully added menu!", "success");
-            $state.reload();
+            swal("Success!", "Successfully added!", "success");
+            //$state.reload();
+            $state.go('usermanagementrole');
           } else {
-            swal("error!", "menu already exist!", "error");
+            swal("error!", "Already exist!", "error");
           }
 
         })
-        var data1 = {
-          "parentID": $scope.formdata.menu,
-          "hasChild": true
-        }
-       // console.log(data1);
-        $scope.adminMenuService.updateMenu(data1).then(function(result){
-         // console.log(result);
-          if(result.statusText = "OK"){
-            //swal("Sccess!", "Successfully updated Extra Field Group!", "success"); 
-            $state.go('settingsmenulist');
-           }
-        });
+       
+       
+      }
+      else{
 
+        swal("Error!", "You have not selected any menu!");
 
       }
    
   
 
     }
+
+
+    $scope.getAclList = function(userID){
+      console.log(userID);
+      $scope.aclService.getAclList(userID).then(function(result){
+       if(result.statusText = "OK"){
+         $scope.acllist = result.data;
+ 
+        //  $scope.extrafieldGroup = result.data;
+        // 	   $scope.groupName = $scope.extrafieldGroup.groupname;
+        //      $scope.status = $scope.extrafieldGroup.status.toString();
+            
+  console.log(result);
+        }else{
+          
+        }
+     });
+    }
+
+    $scope.getAclList($stateParams.id);
     ///////////////////////////////////////////////////////////////////////
 
 
@@ -164,60 +183,6 @@
           var error = 0;
           $scope.rmerrorclass();
     
-          if ($scope.formdata.uname == 0 || angular.isUndefined($scope.formdata.uname)) {
-            $scope.adderrorclass(".uname");
-            $scope.taberrorclass(".tcat");
-            error = 1;
-    
-          }
-          if ($scope.formdata.fname == '' || angular.isUndefined($scope.formdata.fname)) {
-            $scope.adderrorclass(".fname");
-            $scope.taberrorclass(".tcat");
-            error = 2;
-    
-          }
-          if ($scope.formdata.lname == '' || angular.isUndefined($scope.formdata.lname)) {
-            $scope.adderrorclass(".lname");
-            $scope.taberrorclass(".tcat");
-            error = 3;
-    
-          }
-          if ($scope.formdata.email == '' || angular.isUndefined($scope.formdata.email)) {
-            $scope.adderrorclass(".email");
-            $scope.taberrorclass(".tcat");
-            error = 4;
-          }
-          if ($scope.imgss == '' || angular.isUndefined($scope.imgss)) {
-            $scope.adderrorclass(".write_textbox");
-            $scope.taberrorclass(".tcat");
-            error = 4;
-          }
-    
-          if ($scope.formdata.status == 0 || angular.isUndefined($scope.formdata.status)) {
-            $scope.adderrorclass(".status");
-            $scope.taberrorclass(".tcat");
-            error = 4;
-    
-          }
-    
-    
-          if ($scope.formdata.cadminpassword == '' || angular.isUndefined($scope.formdata.cadminpassword)) {
-            $scope.adderrorclass(".cadminpassword");
-            $scope.taberrorclass(".login");
-            error = 5;
-          }
-    
-          if ($scope.formdata.password == '' || angular.isUndefined($scope.formdata.password)) {
-            $scope.adderrorclass(".password");
-            $scope.taberrorclass(".login");
-            error = 6;
-          }
-    
-          if ($scope.formdata.cpassword == '' || angular.isUndefined($scope.formdata.cpassword)) {
-            $scope.adderrorclass(".cpassword");
-            $scope.taberrorclass(".login");
-            error = 5;
-          }
     
           if ($scope.formdata.role == '' || angular.isUndefined($scope.formdata.role)) {
             $scope.adderrorclass(".rowrollchk");

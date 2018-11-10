@@ -55,7 +55,9 @@ var UserForgotSchema = new Schema({
     type: String,
    
   },
-  olang :{	  
+  oLang :{	  
+    type:Object,
+    default:{}
   }
 
 });

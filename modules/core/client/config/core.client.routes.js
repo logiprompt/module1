@@ -157,7 +157,7 @@ var adminfooter={
     header:adminheader,
     content: { 
      templateUrl: '/modules/core/client/views/admin/usermanagement/adminuser/edit.html',
-    controller: 'Usermanagementadminuser',
+    controller: 'Usermngeditadminuser',
     controllerAs: 'vm',
     },
      footer:adminfooter
