@@ -5,6 +5,7 @@
  */
 var path = require('path'),
     mongoose = require('mongoose'),
+    custom=require('./custom'),
     Acl = mongoose.model('Sys_acl'),
     Genlang = mongoose.model('Sys_genlanguage'),
     errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
@@ -14,8 +15,12 @@ var path = require('path'),
 */
 exports.create = function(req, res) {
 //console.log(req.header['language']);
+
+var exist2=Promise.resolve(custom.fieldexist('Sys_acl','userID',req.body.userID));
+exist2.then(function(value2) {
+  if(value2==0){
     var aclData = req.body;
-    console.log(req.body);
+   // console.log(req.body);
     Acl.create(aclData,function(err) {
         if (err) {
             return res.status(400).send({
@@ -25,6 +30,41 @@ exports.create = function(req, res) {
             res.jsonp(aclData);
         }
     });
+}
+else{
+    Acl.find({userID:req.body.userID}).exec(function (error, item) {
+        if (error) {
+          res.status(500).send(error);
+              return;
+            }
+        //console.log(item);
+        if (item) {
+
+
+            Acl.update({userID:req.body.userID},
+                {
+                $set:{"menuIDs" : req.body.menuIDs,
+                "modified" : Date.now()}
+            },function(err) { 
+                               if (err) throw err;
+                       });
+           
+             res.json({
+                  data:1
+                   });
+
+
+            //console.log(8888)
+          // item.menuIDs = req.body.menuIDs;
+          // item.modified = Date.now();
+        //   item.save();
+        //   res.json(item);
+              return;
+            }
+
+    })
+}
+})
 
 };
 
@@ -51,35 +91,16 @@ exports.getList = function(request, response) {
 };
 
 
-exports.getLang = function(request, response) {
-    console.log(68074);
-    Genlang.find().exec(function(error, items) {
 
-        if (error) 
-        {
-            return response.status(400).send({
-              message: errorHandler.getErrorMessage(error)
-            });
-        }
-        else 
-        {
-            //console.log(items);
-           response.jsonp(items);
-        }
-            
-});
-
-
-};
 
 /**
- * Get Extra field group by ID
+ * Get acl by ID
  */
 
 exports.getAclList = function(request, response) {
     console.log(90);
-    //console.log(request.params.aclId);
-    Acl.findById(request.query.userID)
+    console.log(request.query.userID);
+    Acl.find({userID:request.query.userID})
     .lean()
     .exec(function(error, items) {
         if (error) {
@@ -87,52 +108,10 @@ exports.getAclList = function(request, response) {
             response.status(500).send(error);
             return;
         }
+      //  console.log(items);
         response.json(items);
     });
 };
 
-/*
-	 * Update currency
-	 */
-	exports.updateMenu= function(request, response){
-		
-       // console.log(request.body);
-		Acl.findById(request.body.parentID).exec(function (error, item) {
-			  if (error) {
-			        response.status(500).send(error);
-			        return;
-			      }
-			  
-			  if (item) {
-
-                AdminMenu.find({parentID:request.body.parentID}).exec(function(error, res) {
-
-                    if (error) {
-                        return response.status(400).send({
-                          message: errorHandler.getErrorMessage(error)
-                        });
-                      } else {
-                        //console.log(items);
-                       var ids=res[0].id; console.log(ids);
-                       
-                       item.hasChild = request.body.hasChild;
-                       item.childIDs.push(ids);
-                      
-			        item.save();
-                   
-                      }
-            
-            
-                        
-                });
-  
-                      
-
-			        response.json(item);
-			        return;
-			      }
-
-		  })
-	}
 
 

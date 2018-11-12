@@ -28,45 +28,8 @@
 	 
 	 
 
- /*
-	  * Function : getExtraFieldGroups
-	  * Description : get All acl details
-	  
-	  */
-	 acl.getacl = function(){
-		  
-		return $http({
-			   url: '/api/acl/getacl',
-			   method: "POST"
-		   });
-	   }
-	
 
-	 /*
-	  * Function : delacl
-	  * Description : Delete acl details by id
 	
-	  */
-	 acl.delacl = function(aclId){		  
-		 return $http({
-		        url: '/api/acl/'+aclId,
-		        method: "DELETE"
-		    });
-		}
-	 
-
-		 /*
-	  * Function : delCheckedacl
-	  * Description : Delete acl details by ids
-	  
-	  */
-	 acl.delCheckedacl = function(aclId){
-		 console.log(12);		  
-		return $http({
-			   url: '/api/acl/delCheckedacl/'+aclId,
-			   method: "DELETE"
-		   });
-	   }
 	
 	 /*
 	  * Function : getaclById
@@ -82,16 +45,7 @@
 	}
 	
 	 
-	 /*
-	  * 
-	  */
-	 acl.updateacl = function(aclId,data){
-		 return $http({
-		        url: '/api/acl/'+aclId,
-		        method: "PUT",
-		        data:data
-		    });
-	 }
+	
 	 return acl;
 	  
 	 

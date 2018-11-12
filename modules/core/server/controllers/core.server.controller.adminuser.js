@@ -129,7 +129,7 @@ exports.insadminuser = function (req, res) {
 
 
             newAdminuserlog.cadminpass = req.body.cadminpassword;
-            //newAdminuserlog.adminuserlog_id = value;
+            newAdminuserlog.adminuserlog_id = newAdminuser._id;
             newAdminuserlog.password = req.body.password;
             newAdminuserlog.cpassword = req.body.cpassword;
             newAdminuserlog.created = today;
@@ -179,7 +179,7 @@ exports.reads = function (request, response) {
   Adminuser.findById(request.query.userId)
     .lean()
     .exec(function (error, items) {
-      Adminuserlog.findById(request.query.userId)
+      Adminuserlog.find({adminuserlog_id:request.query.userId})
         .lean()
         .exec(function (error, items2) {
           if (error) 
@@ -286,27 +286,66 @@ exports.delcheckedAdminusers = function (req, res) {
 ////////////////////////////////////////////////////////////////////////////////////////
 
 
-exports.updateCurrency = function (request, response) {
-  var currencyId = request.params.currencyId;
+exports.updateAdminUser = function (request, response) {
 
-  Currency.findById(request.params.currencyId).exec(function (error, item) {
+  Adminuser.findById(request.body.userId).exec(function (error, item) {
+
     if (error) {
       response.status(500).send(error);
       return;
     }
 
     if (item) {
-      item.currency = request.body.currency;
-      item.shortname = request.body.shortname;
-      item.symbol = request.body.symbol;
+      item.uname = request.body.uname;
+      item.fname = request.body.fname;
+      item.lname = request.body.lname;
+      item.email = request.body.email;
       item.status = request.body.status;
+      item.accessList = request.body.accessList;
+       item.modified =Date.now();
       item.save();
-
       response.json(item);
+      //return;
+    }
+  })
+
+
+
+  Adminuserlog.find({adminuserlog_id:request.body.userId}).exec(function (error, items) {
+
+    if (error) {
+      response.status(500).send(error);
+      return;
+    }
+
+    if (items) {
+
+
+
+      Adminuserlog.update({adminuserlog_id:request.body.userId},
+        {
+        $set:{"password" : request.body.password,
+        "cadminpass" : request.body.cadminpassword,
+        "cpassword" : request.body.cpassword,
+        "modified" : Date.now()}
+    },function(err) { 
+                       if (err) throw err;
+               });
+   
+     res.json({
+          data:1
+           });
+
       return;
     }
 
   })
+
+
+
+
+
+
 }
 
 

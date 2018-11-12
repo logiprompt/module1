@@ -25,8 +25,9 @@
   **/
     $scope.getMenuList = function () {
       $scope.adminMenuService.getMenuList().then(function(data){
-         if(data.statusText = "OK"){
-        $scope.menuList = data.data;
+         if(data.statusText = "OK")
+         {
+           $scope.menuList = data.data;
         //console.log( $scope.menuList);
          }
          else{}
@@ -76,9 +77,9 @@
 
     //////////////////////////////////
     /*
-       * Function : addmenu
-       * Description : Add menu details
-       * Owner : jeeja
+       * Function : addacl
+       * Description : Add acl details
+       *
        */
 
     $scope.addacl = function () {
@@ -89,7 +90,7 @@
         $scope.chkroleValue.push(checkedroleValue[i].value);
       }
       $scope.formdata.role = $scope.chkroleValue;
-     
+  // console.log($scope.formdata.role);  
     
       if ($scope.validation() == 0) {
          var data = {
@@ -97,7 +98,7 @@
                      "userID":$stateParams.id
                      }
        // var data = $scope.formdata;
-        //console.log(data);
+       // console.log(data);
         $scope.aclService.addAcl(data).then(function (result) {
         //  console.log(result.statusText);
           if (result.statusText = "OK") {
@@ -125,16 +126,16 @@
 
 
     $scope.getAclList = function(userID){
-      console.log(userID);
+     // console.log(userID);
       $scope.aclService.getAclList(userID).then(function(result){
        if(result.statusText = "OK"){
-         $scope.acllist = result.data;
+         $scope.acllist = result.data[0].menuIDs;
  
         //  $scope.extrafieldGroup = result.data;
         // 	   $scope.groupName = $scope.extrafieldGroup.groupname;
         //      $scope.status = $scope.extrafieldGroup.status.toString();
             
-  console.log(result);
+  //console.log($scope.acllist);
         }else{
           
         }
@@ -225,8 +226,8 @@
     }
     $scope.addchkval = function (linkid) {
       var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-      console.log(linkid)
-      console.log(checkedValue[0])
+     // console.log(linkid)
+     // console.log(checkedValue[0])
       if (checkedValue.length > 1) {
         $scope.editpage[0].removeAttribute("href");
       }
@@ -244,7 +245,7 @@
     $scope.editpages = function () {
       var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
       if (checkedValue.length > 0) {
-        console.log($scope.editpage[0].getAttribute("href"));
+       // console.log($scope.editpage[0].getAttribute("href"));
         if ($scope.editpage[0].getAttribute("href")) {
           document.location = $scope.editpage[0].getAttribute("href");
         }
@@ -259,7 +260,7 @@
 
       //$state.go('addlanguage');
       var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-      console.log(checkedValue)
+     // console.log(checkedValue)
       for (var i = 0; i < checkedValue.length; i++) {
         $scope.chkValue.push(checkedValue[i].value);
       }

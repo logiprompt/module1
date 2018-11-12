@@ -14,8 +14,8 @@ module.exports = function(app) {
   //app.route('/api/adminuser/update').post(adminuser.create);
   
  app.route('/api/admin/selectAdminuser')
-  .post(adminuser.reads);
- //.put(adminuser.updateUser);
+  .post(adminuser.reads)
+ .put(adminuser.updateAdminUser);
 
   //console.log(13);
   //app.route('/api/acl/delCheckedacl/:aclId').delete(acl.delCheckedacl);

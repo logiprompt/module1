@@ -109,26 +109,19 @@
         {
           console.log(result);
           $scope.userdetails = result.data.data1;
-          $scope.userdetails2 = result.data.data2;
-$scope.formdata.uname = $scope.userdetails.uname;
+          $scope.userdetails2 = result.data.data2[0];
+          console.log($scope.userdetails2);
+          $scope.formdata.uname = $scope.userdetails.uname;
           $scope.formdata.fname = $scope.userdetails.fname;
-$scope.formdata.lname = $scope.userdetails.lname;
+          $scope.formdata.lname = $scope.userdetails.lname;
 
-$scope.formdata.email = $scope.userdetails.email;
+          $scope.formdata.email = $scope.userdetails.email;
 
-           $scope.formdata.status = $scope.userdetails.status;
- $scope.formdata.role = $scope.userdetails.accessList;
-
-
- $scope.formdata.cadminpassword = $scope.userdetails2.uname;
-// $scope.formdata.password = $scope.userdetails.uname;
-// $scope.formdata.cpassword = $scope.userdetails.uname;
-
-          // $scope.name = $scope.userdetails.name;
-          // $scope.subject = $scope.userdetails.subject;
-          // $scope.content = $scope.userdetails.content;
-          // $scope.custom = $scope.userdetails.custom;
-          // $scope.status = $scope.userdetails.status.toString();
+          $scope.formdata.status = $scope.userdetails.status;
+          $scope.formdata.role = $scope.userdetails.accessList;
+          $scope.formdata.cadminpassword = $scope.userdetails2.cadminpass;
+          $scope.formdata.cpassword = $scope.userdetails2.cpassword;
+          $scope.formdata.password = $scope.userdetails2.password;
 
         }
         else {
@@ -229,7 +222,7 @@ $scope.formdata.email = $scope.userdetails.email;
         //    }
         //  });
 
-        $scope.updateUser = function(){
+        $scope.updateAdminUser = function(){
           console.log(110);
          if ($scope.validation() == 0) {
 
@@ -241,15 +234,18 @@ $scope.formdata.email = $scope.userdetails.email;
 
          var data = {		  			 
               "uname":$scope.formdata.uname,
-              "fname":$scope.formdata.subject,
-              "lname":$scope.formdata.content,
-              "email":$scope.formdata.custom,
+              "fname":$scope.formdata.fname,
+              "lname":$scope.formdata.lname,
+              "email":$scope.formdata.email,
               "status" :$scope.formdata.status,
               "accessList" :$scope.formdata.role,
+              "password":$scope.formdata.password,
+              "cadminpassword" :$scope.formdata.cadminpassword,
+              "cpassword" :$scope.formdata.cpassword,
               "userId":$stateParams.id
               }
          console.log(data);
-         $scope.userMngAdminUserService.updateUser($stateParams.id,data).then(function(result){
+         $scope.userMngAdminUserService.updateAdminUser(data).then(function(result){
             if(result.statusText = "OK"){
               swal("Success!", "Successfully updated User", "success"); 
               $state.reload();
@@ -301,11 +297,11 @@ $scope.formdata.email = $scope.userdetails.email;
         $scope.taberrorclass(".tcat");
         error = 4;
       }
-      if ($scope.imgss == '' || angular.isUndefined($scope.imgss)) {
-        $scope.adderrorclass(".write_textbox");
-        $scope.taberrorclass(".tcat");
-        error = 4;
-      }
+      // if ($scope.imgss == '' || angular.isUndefined($scope.imgss)) {
+      //   $scope.adderrorclass(".write_textbox");
+      //   $scope.taberrorclass(".tcat");
+      //   error = 4;
+      // }
 
       if ($scope.formdata.status == 0 || angular.isUndefined($scope.formdata.status)) {
         $scope.adderrorclass(".status");

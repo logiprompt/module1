@@ -250,14 +250,50 @@ form label {
                                      <li><a href="/product/businesstypelist">Business types</a></li>
                                 </ul>
                             </li>
-                                 
+                           
+<!--                              
+                            <li ng-repeat="item in topmenulist" ng-if="item.level==1"> 
+                                <a ng-if="item.level!=1" class="has-arrow" href="/{{item.path}}" aria-expanded="false">
+                                <a ng-if="item.level==1" class="has-arrow" href="#" aria-expanded="false">
+                               
+                                <span class="hide-menu" >{{item.menu}}</span></a>
+                                <ul ng-if="item.hasChild==true" aria-expanded="true" class="collapse">
+                                    <li ng-repeat="sub in submenulist" ng-if="sub.parentID==item._id">
+                                        <a  ng-if="sub.level!=2" class="has-arrow" ng-if="sub.hasChild==true" href="/{{sub.path}}">{{sub.menu}} </a>
+                                        <a  ng-if="sub.level==2" class="has-arrow waves-effect waves-dark" ng-if="sub.hasChild==true" href="#">{{sub.menu}} </a>
+                                    
+                                     <ul ng-if="sub.hasChild==true" aria-expanded="true" class="collapse">
+                                                <li ng-repeat="sub in submenulist" ng-if="sub.parentID==item._id">
+                                                <a class="has-arrow waves-effect waves-dark" ng-if="sub.hasChild==true" href="/{{sub.path}}">{{sub.menu}} </a></li>                                   
+                                        </ul>
+                                    
+                                    </li>                                   
+                               
+                                       
+                               
+                               
+                               
+                               
+                                    </ul>
+                            </li> -->
+
+                                 <!-- <li ng-repeat="item in topmenulist" ng-if="item.level==1"> <a ng-if="item.level!=1" class="has-arrow waves-effect waves-dark" href="/{{item.path}}" aria-expanded="false">
+                                <a ng-if="item.level==1" class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                                
+                                <span class="hide-menu" >{{item.menu}}</span></a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <li ng-repeat="sub in submenulist" ng-if="sub.parentID==item._id"><a ng-if="sub.hasChild==true" href="/{{sub.path}}">{{sub.menu}} </a></li>
+                                   
+                                </ul>
+                            </li>  -->
                            <li ng-repeat="item in vm.menu.items | orderBy: 'position'"  ng-switch="item.type"  ui-sref-active="active" class="{{item.class}}" uib-dropdown="item.type === 'dropdown'"> 
 
                             <a class="has-arrow waves-effect waves-dark" ng-switch-default ui-sref="{{item.state}}" ng-bind="item.title" aria-expanded="false"  href="#">
-                                <!-- <i class="mdi mdi-gauge"></i> -->
+                                
                                 <span class="hide-menu" >{{item.title}}</span></a>
                                 <ul>
-                                    <li ng-repeat="subitem in item.items | orderBy: 'position'" ng-switch="subitem.type"  ui-sref-active="active"  ><a ui-sref="{{subitem.state}}({{subitem.params}})" ng-bind="subitem.title" class="{{subitem.class}}">Minimal </a>
+                                    <li ng-repeat="subitem in item.items | orderBy: 'position'" ng-switch="subitem.type"  ui-sref-active="active"  >
+                                        <a ui-sref="{{subitem.state}}({{subitem.params}})" ng-bind="subitem.title" class="{{subitem.class}}">Minimal </a>
                                    
                                   <ul   ng-if="subitem.items.length>0">
                                     <li ng-repeat="i in subitem.items | orderBy: 'position'"><a ui-sref="{{i.state}}({{i.params}})" ng-bind="i.title">Minimal </a></li>
@@ -269,11 +305,6 @@ form label {
                                    
                                 </ul> 
                             </li>
- 
-
-
-
-                          
                            
                          
                             <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">

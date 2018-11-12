@@ -76,7 +76,7 @@
 
 	 userMngAdminUser.getAdminUserById = function(userId){
 		return $http({
-			   url: '/api/admin/selectAdminuser/',
+			   url: '/api/admin/selectAdminuser',
 			   method: "POST",
 			   params:{'userId':userId}
 			  // params:{'userId':'userId'}
@@ -88,9 +88,9 @@
 	  * 
 	  */
 
-	 userMngAdminUser.updateUser = function(userId,data){
+	 userMngAdminUser.updateAdminUser = function(data){
 		 return $http({
-		        url: '/api/admin/selectAdminusers/'+userId,
+		        url: '/api/admin/selectAdminuser',
 		        method: "PUT",
 		        data:data
 		    });

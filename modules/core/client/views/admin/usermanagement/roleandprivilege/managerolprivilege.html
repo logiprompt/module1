@@ -263,10 +263,10 @@
                                         <li class="nav-item "> <a class="nav-link" data-toggle="tab" href="#home" role="tab"
                                                 aria-selected="true"><span class="hidden-xs-down">Language : default</span>
                                             </a> </li>
-                                        <li class="nav-item "> <a class="nav-link tcat active show" data-toggle="tab"
+                                        <li class="nav-item "> <a class="nav-link tcat" data-toggle="tab"
                                                 href="#content" role="tab" aria-selected="false"> <span class="hidden-xs-down">Modules</span></a>
                                         </li>
-                                        <li class="nav-item "> <a class="nav-link tcat" data-toggle="tab" href="#role"
+                                        <li class="nav-item"> <a class="nav-link tcat active show" data-toggle="tab" href="#role"
                                                 role="tab" aria-selected="false"> <span class="hidden-xs-down">Menu
                                                  </span></a> </li>
                                        
@@ -279,7 +279,7 @@
                                                                    
                                        
                                   
-                                        <div class="tab-pane p-20" id="role" role="tabpanel">
+                                        <div class="tab-pane p-20 active" id="role" role="tabpanel">
                                             <div class="row p-20">
                                                 <div class="col-lg-12">
                                                     <div class="form-group m-b-10">
@@ -292,7 +292,7 @@
                                                             <div class="col-lg-8">
                                                                 <input name="shortchk" type="checkbox" name="checkboxrole[]"
                                                                     id="checkbox_{{$index+1}}" class="filled-in chk-col-light-blue rowrolechk"
-                                                                    value="{{roleval._id}}"><label class="lblsize"
+                                                                    value="{{roleval._id}}"  ng-checked="acllist.indexOf(roleval._id) >-1"><label class="lblsize"
                                                                     for="checkbox_{{$index+1}}">{{roleval.menu}}</label>
                                                             </div>
                                                         </div>

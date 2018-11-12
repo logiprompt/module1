@@ -5,13 +5,13 @@
     .module('core')
     .controller('HeaderController', HeaderController);
 
-  HeaderController.$inject = ['$scope', '$http', '$state', 'Authentication', 'menuService'];
+  HeaderController.$inject = ['$scope', '$http', '$state', 'Authentication', 'menuService','headermenuService'];
 
-  function HeaderController($scope, $http, $state, Authentication, menuService, ) {
+  function HeaderController($scope, $http, $state, Authentication, menuService,headermenuService ) {
 
     var vm = this;
     $scope.menuService = menuService;
-
+    $scope.headermenuService = headermenuService;
     vm.accountMenu = menuService.getMenu('account').items[0];
     vm.authentication = Authentication;
     vm.isCollapsed = false;
@@ -53,6 +53,37 @@
         });
 
 
+
+        $scope.getTopMenuList= function(){
+          // console.log(userID);
+           $scope.headermenuService.getTopMenuList().then(function(result){
+            if(result.statusText = "OK"){
+              $scope.topmenulist = result.data;
+             
+      
+       console.log($scope.topmenulist); 
+             }else{
+               
+             }
+          });
+         }
+     
+         $scope.getTopMenuList();
+
+         $scope.getTopSubMenuList= function(){
+          // console.log(userID);
+           $scope.headermenuService.getTopSubMenuList().then(function(result){
+            if(result.statusText = "OK"){
+              $scope.submenulist = result.data;
+      
+       console.log($scope.submenulist);
+             }else{
+               
+             }
+          });
+         }
+     
+         $scope.getTopSubMenuList();
 
 
   }

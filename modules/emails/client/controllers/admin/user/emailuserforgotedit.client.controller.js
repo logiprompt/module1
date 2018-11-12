@@ -102,7 +102,8 @@
       * Description : get User Forgot details
       * Owner : jeeja
    */
-
+  $scope.currentLan=localStorage.getItem('currentLang').toString();
+  $scope.defaultLang=localStorage.getItem('defaultLang').toString();
     console.log($scope.userforgotService);
     $scope.getUserForgotById = function (userId) {
       console.log(0);
@@ -110,13 +111,24 @@
         console.log(userId);
         if (result.statusText = "OK") {
           console.log(result);
+          var details=result.data;
+             $scope.status =details.status.toString();    
+          if(angular.equals($scope.currentLan, $scope.defaultLang)){
           $scope.userdetails = result.data;
           $scope.name = $scope.userdetails.name;
           $scope.subject = $scope.userdetails.subject;
           $scope.content = $scope.userdetails.content;
           $scope.custom = $scope.userdetails.custom;
-          $scope.status = $scope.userdetails.status.toString();
+                 }
+        else{
+          $scope.userdetails = result.data;
+          $scope.name =details.oLang[ $scope.currentLan].name ? details.oLang[ $scope.currentLan].name :details.name;
+          $scope.subject = details.oLang[ $scope.currentLan].subject ? details.oLang[ $scope.currentLan].subject :details.subject;
+          $scope.content = details.oLang[ $scope.currentLan].content ? details.oLang[ $scope.currentLan].content :details.content;
+          $scope.custom = details.oLang[ $scope.currentLan].custom ? details.oLang[ $scope.currentLan].custom :details.custom;
+         
 
+        }
         }
         else {
 
