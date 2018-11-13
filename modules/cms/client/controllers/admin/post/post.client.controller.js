@@ -13,6 +13,17 @@
 	  $scope.postformdata = {};
 	  $scope.choices = ["0"];
 	  $scope.postvideos = ["0"];
+	  $scope.postformdata.post_status = "1";
+	  $scope.postformdata.post_displayinmenu = "2";
+	  
+	  if($stateParams.id){
+		  CmsService.getPostById($stateParams.id).then(function(result){
+			  if(result.statusText = "OK"){
+				  $scope.postformdata = result.data
+				  console.log($scope.postformdata);
+			  }
+		  })
+	  }
 	  
 	  $scope.addNewChoice = function(index){
 		  $scope.choices.push(index);
@@ -28,9 +39,31 @@
 		  $scope.postvideos.pop(index,1);
 	  }
 	  
+	  CmsService.getCategoryItems().then(function (result) {
+	        $scope.categoryItems = result['data'];
+	       console.log( $scope.categoryItems);
+	      })
+	  
 	  $scope.addpost = function(){
-		  console.log( $scope.postformdata);
-		  
+		  if($stateParams.id){
+			  $scope.postformdata.post_content = CKEDITOR.instances.editor1.getData().replace(/^.*?<body[^>]*>(.*?)<\/body>.*?$/i,"$1");;
+		  CmsService.updatePostById($stateParams.id,$scope.postformdata).then(function(result){
+			  if(result.statusText = "OK"){
+				   
+	   				 swal( 'Updated!',
+	   	                     'Post Updated sucessfully',
+	   	                     'success'
+	   	                   )
+	   				$state.go('post');
+	   				  }else{
+	   					swal( 'error!',
+		      	                   'Error while creating new post ! Please try again later.',
+		      	                   'error'
+		      	                )
+	   				  }
+			  })
+		  }else{
+			  $scope.postformdata.post_content = CKEDITOR.instances.editor1.getData().replace(/^.*?<body[^>]*>(.*?)<\/body>.*?$/i,"$1");;
 		  CmsService.addPost($scope.postformdata).then(function(result){
 			  if(result.statusText = "OK"){
 				   
@@ -47,8 +80,14 @@
    				  }
 		  })
 	  }
+	  }
 
 	  
+	  $scope.generateSlgURL = function(){
+     	 var replaceSpacesText = $scope.postformdata.post_title;
+     	$scope.postformdata.post_slug = replaceSpacesText.split(" ").join("_").toLowerCase();
+     	 $scope.postformdata.post_urlkey = "post/"+$scope.postformdata.post_slug+"_"+Number(new Date())+".html"
+      }
 
  function getActionBtns(){
 
@@ -84,7 +123,7 @@
    $scope.chk={};
    
    $scope.newpage=function(){
-	 $state.go('addpost');
+	 $state.go('addcmspost');
    }
    $scope.editpages=function(){
 	 console.log($scope.editpage[0].getAttribute("href"));

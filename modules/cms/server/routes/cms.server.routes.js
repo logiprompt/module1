@@ -12,7 +12,23 @@ module.exports = function(app) {
     .get(cms.list)
     .post(cms.create);
   app.route('/api/cms/post/:id').all(/*cmsPolicy.isAllowed*/).delete(cms.deletepost);
+  app.route('/api/cms/post/:id').all(/*cmsPolicy.isAllowed*/).get(cms.getpostById);
+  app.route('/api/cms/post/:id').all(/*cmsPolicy.isAllowed*/).put(cms.updatepostById);
+  
+  
+  app.route('/api/cms/category/addCategory').post(cms.addCategory);
 
+  app.route('/api/cms/category/updateCategory').post(cms.updateCategory);
+
+  app.route('/api/cms/category/addSubCategory').post(cms.addSubCategory);
+
+  app.route('/api/cms/category/deleteCategory/:categoryId').put(cms.deleteCategory);
+
+  app.route('/api/cms/category/getCategoryItems').get(cms.getCategoryItems);
+
+  app.route('/api/cms/category/getCategoryDetails/:categoryId').get(cms.getCategoryDetails);
+  
+  
   app.route('/api/cms/:cmId').all(cmsPolicy.isAllowed)
     .get(cms.read)
     .put(cms.update)

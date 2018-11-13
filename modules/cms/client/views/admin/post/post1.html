@@ -152,8 +152,10 @@
                                                 <th><input type="checkbox" id="checkAll" class="checkAll" ng-model="checkalltxt" ng-click="chkall()"   />
                                     <label for="checkAll"></label></th>
                                                 <th>Title</th>
+                                                <th>Post Type</th>
                                                 <th>Created By</th>
                                                 <th>Created Date</th>
+                                                
                                                <th>Status</th>
                                                <th>Action</th>
                                             </tr>
@@ -166,6 +168,7 @@
                                                 <td><input type="checkbox" id="basic_checkbox_{{$index+1}}"  class="rowtxtchk" value="{{$index+1}}" ng-click="addchkval(1)" />
                                     <label for="basic_checkbox_{{$index+1}}"></label></td>
                                                  <td>{{post.post_title}}</td>
+                                                 <td>{{post.post_type}}</td>
                                                 <td>{{post.user}}</td>
                                                 <td>{{post.created | date:'MM/dd/yyyy'}}</td>
                                                 <td><span ng-if="post.status == '1'">Enable</span><span ng-if="post.status == '0'">Disable</span></td>
@@ -173,7 +176,7 @@
                                                         <a class="btn waves-effect waves-light btn-sm btn-info" href="#">
                                                             View
                                                           </a>
-                                                                                                                     <a class="btn waves-effect waves-light btn-sm btn-info" href="/cms/editpost/1">
+                                                                                                                     <a class="btn waves-effect waves-light btn-sm btn-info" href="/cms/editpost/{{post._id}}">
                                                             Modify
                                                           </a>                                         
                                                         <button class="btn waves-effect waves-light btn-sm btn-danger"  ng-click="delete_post(post._id)" rel=""  >

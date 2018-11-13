@@ -246,7 +246,7 @@ width: 70px;
                                    <div class="form-group m-b-10 btn23 btn-top">
                                     <button type="submit" class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
                                 
-                                        <a href="/cms/post"><button type="button" class="btn waves-effect waves-light btn-sm btn-default"> Cancel </button> </a>
+                                        <a href="/settings/cmspost"><button type="button" class="btn waves-effect waves-light btn-sm btn-default"> Cancel </button> </a>
                                      </div> 
                                  
                               
@@ -273,7 +273,7 @@ width: 70px;
                                                     <div class="form-group m-b-10">
                                                         <span class="bar"></span>
                                                         <label for="input1"> Title</label>
-                                                        <input type="text" class="form-control cat" id="name" name="post_title" ng-model="postformdata.post_title" ng-class="{ 'validationErr' : postform.$submitted && !postform.post_title.$valid}" ng-required=true>
+                                                        <input type="text" class="form-control cat" id="name" name="post_title" ng-model="postformdata.post_title" ng-change="generateSlgURL()" ng-class="{ 'validationErr' : postform.$submitted && !postform.post_title.$valid}" ng-required=true>
                                                       
                                                         
                                                     </div> 
@@ -451,8 +451,8 @@ width: 70px;
                                                     <div class="form-group m-b-10">
                                                       <label for="input1">Category</label>    
                                                       <select multiple name="post_category" ng-model="postformdata.post_category">
-                                                      <option value="1">Category1</option>
-                                                      <option value="2">category2</option>
+                                                      <option value="cat._id" ng-repeat="cat in categoryItems">{{cat.category}}</option>
+                                                     
                                                       </select>
                                                         <!--  <div id="treeview2" class=""></div>-->
                                             
@@ -665,7 +665,7 @@ width: 70px;
                                                <span class="bar"></span>
                                                         <label for="tags">Tags</label>
                                                     <div class="form-group m-b-40">
-                                                        <textarea class="form-control cat" id="tags" name="tags" type="text" ng-model="formdata.tags" rows="5" ></textarea>
+                                                        <textarea class="form-control cat" id="tags" name="post_tags" type="text" ng-model="postformdata.post_tags" rows="5" ></textarea>
                                                     </div>
                                                 </div>
                                         </div>
