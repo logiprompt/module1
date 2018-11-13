@@ -164,7 +164,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/order/paymentfailure/paymentfailure.html',
-    controller: 'OrderpaymentfailureController',
+    controller: 'PaymentFailureController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -206,7 +206,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/order/nostock/nostockitem.html',
-    controller: 'OrdernostockController',
+    controller: 'OrdernostockListController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -233,7 +233,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/order/nostock/edit.html',
-    controller: 'OrdernostockController',
+    controller: 'OrdernostockEdit',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -248,14 +248,14 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/order/hold/hold.html',
-    controller: 'OrderholdController',
+    controller: 'OrderholdlistController',
     controllerAs: 'vm',
     },
      footer:adminfooter
   } 
 })
 .state('emailaddhold', {
-  url: '/email/addhold',
+  url: '/email/orderhold',
  // controllerAs: 'vm',
   views:{
     header:adminheader,

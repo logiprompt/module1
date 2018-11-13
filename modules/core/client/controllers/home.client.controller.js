@@ -16,7 +16,8 @@
     	if( $scope.formdata.username=='admin' && $scope.formdata.password=='admin')
     	{
     		localStorage.setItem('adminlogin','true');
-    		localStorage.setItem('username','admin');
+        localStorage.setItem('username','admin');
+        localStorage.setItem('userrole','5beaa710e5357c1b2c0bcef8');
     		  document.location="/adminhome";
 
     	}

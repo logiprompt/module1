@@ -11,6 +11,19 @@
     
 	  
 	 var acl = {};
+
+	 	/*
+		 * Function : getmenus
+		 * Description : get ALl menu details
+		 */
+		acl.getMenuList = function () {
+			//console.log(5678);
+			
+			return $http({
+				url: '/api/acl/getMenuList',
+				method: "POST"
+			});
+		}
 	  
 	 /*
 	  * Function : addacl

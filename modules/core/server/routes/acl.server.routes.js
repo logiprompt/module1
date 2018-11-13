@@ -10,6 +10,8 @@ module.exports = function(app) {
   // extrafield Group Routes
 	
 //	app.route('/api/acl/getacl') .post(acl.list);
+app.route('/api/acl/getMenuList')
+.post(acl.getMenuList);
   
   app.route('/api/acl/create').post(acl.create);
   
@@ -18,6 +20,8 @@ module.exports = function(app) {
   //.delete(acl.delete)
  // .put(acl.updateacl);
   //console.log(13);
+
+ 
   //app.route('/api/acl/delCheckedacl/:aclId').delete(acl.delCheckedacl);
 	
 };

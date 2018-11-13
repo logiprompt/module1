@@ -127,26 +127,32 @@ exports.update = function (request, response) {
 
 
     Userforgot.findById(userId).lean().exec(function (error, data) {
+          
         if (error) {
             response.status(500).send(error);
             return;
         } else {
+          
             if (reqBody.isDefaultLang) {
                 data.name = reqBody.name;
                 data.subject = reqBody.subject;
                 data.content = reqBody.content;
                 data.custom = reqBody.custom;
                 data.status = reqBody.status;
-            }
-            else {
-                var obj = {};
-                obj.name = reqBody.name;
-                obj.subject = reqBody.subject;
-                obj.content = reqBody.content;
-                obj.custom = reqBody.custom;
+            } 
+            
+             else {
+               
+                 var obj = {};
+                 obj.name = reqBody.name;
+                 obj.subject = reqBody.subject;
+                 obj.content = reqBody.content;
+                 obj.custom = reqBody.custom;
+                
                 data['oLang'][reqBody.userSelectedLang] = obj;
-            }
-
+                 
+             }
+        
             Userforgot.update({'_id':userId}, 
                 {$set:data} ).exec(function (error, output) {
                 if (error) {

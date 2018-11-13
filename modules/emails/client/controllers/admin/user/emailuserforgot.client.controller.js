@@ -85,14 +85,14 @@ function EmailuserforgotController($scope, $http, $state, $stateParams, Upload, 
     */
   $scope.addForget = function () {
 
-    if ($scope.formdata.$valid) {
+    if ($scope.formdata.$valid && $scope.status!=0) {
       var data = {
         "name": $scope.name,
         "subject": $scope.subject,
         "content": $scope.content,
         "custom": $scope.custom,
         "status": $scope.status,
-        "olang": {}
+        "oLang": {}
       }
 
 
@@ -100,7 +100,7 @@ function EmailuserforgotController($scope, $http, $state, $stateParams, Upload, 
 
         if (result.statusText = "OK") {
           swal("Success!", "Successfully added user!", "success");
-          $state.go('emailforgetpass');
+         // $state.go('emailforgetpass');
         } else {
           swal("error!", "User already exist!", "error");
         }

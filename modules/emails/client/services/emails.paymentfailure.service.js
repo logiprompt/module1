@@ -13,9 +13,9 @@
 	 var userforgot = {};
 	  
 	 /*
-	  * Function : addUserForget
-	  * Description : add UserForget details
-	  * owner : jeeja
+	  * Function : addPaymentFailure
+	  * Description : add PaymentFailure details
+	  * owner : anju
 	  */
 	 userforgot.addPaymentFailure = function(data){
 		 
@@ -27,14 +27,14 @@
 	   }
 
  /*
-	  * Function : getUsers
-	  * Description : get all UserForget details
-	  * owner : jeeja
+	  * Function : getPaymentFailure
+	  * Description : get all PaymentFailure details
+	  * owner : anju
 	  */
-	 userforgot.getUserForgot = function(){
+	 userforgot.getPaymentFailure = function(){
 		  
 		return $http({
-			   url: '/api/userforgot',
+			   url: '/api/addPaymentFailure',
 			   method: "GET"
 		   });
 	   }

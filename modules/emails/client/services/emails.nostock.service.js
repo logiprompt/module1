@@ -17,24 +17,25 @@
 	  * Description : add UserForget details
 	  * owner : jeeja
 	  */
-	 nostock.addOrderCreation = function(data){
-		 
-		return $http({
-	           url: '/api/ordercreation',
+	nostock.addNoStock = function(data)
+	{	
+		console.log(data);	 
+	    return $http({
+	           url: '/api/nostock',
 	           method: "POST",
 	           data:data
 	       });
-	   }
+	}
 
- /*
+ 	/*
 	  * Function : getUsers
 	  * Description : get all UserForget details
 	  * owner : jeeja
 	  */
-	 nostock.getOrderCreation = function(){
+	 nostock.getNoStock = function(){
 		  
 		return $http({
-			   url: '/api/ordercreation',
+			   url: '/api/nostock',
 			   method: "GET"
 		   });
 	   }
@@ -45,10 +46,10 @@
 	  * Description : Delete UserForget details by id
 	  * owner : prabin
 	  */
-	 nostock.delOrderCreation = function(userId)
+	 nostock.delNoStock = function(userId)
 		{		  
 		 	return $http({
-			url: '/api/ordercreationbyid',
+			url: '/api/NoStockbyid',
 				method: "DELETE",
 				params:{'userId':userId}
 		    });
@@ -59,36 +60,20 @@
 	  * Description : Delete details by ids
 	  * owner : jeeja
 	  */
-	 nostock.delCheckedOrderCreation= function(userId){
+	 nostock.delCheckedNoStock= function(userId){
 		//console.log(userId);		  
 	   return $http({
-			  url: '/api/ordercreation/delCheckedOrderCreation',
+			  url: '/api/nostock/delCheckedNoStock',
 			  method: "DELETE",
 			  params:{'userId':userId}
 		  });
 	  }
    
 	 
-	 /*
-	  * Function : getUserForgetById
-	  * Description : get one UserForget details by id
-	
-	  */
-
-	  
-	//  userforgot.getUserForgotById = function(userId){
-	// 	 return $http({
-	// 	        url: '/api/userforgotid',
-	// 			method: "GET",
-	// 			params:{userId:userId}
-	// 	    });
-	//  }
-
-	 
-	nostock.getOrderCreationById = function(userId){
+	nostock.getNoStockById = function(userId){
 		// console.log(userId);
 		return $http({
-			   url: '/api/ordercreationbyid',
+			   url: '/api/nostockbyid',
 			   method: "GET",
 			   params:{'userId':userId}
 		   });
@@ -97,10 +82,10 @@
 	 /*
 	  * 
 	  */
-	 nostock.updateOrderCreation = function(userId,data){
-		//console.log(userId);
+	 nostock.updateNoStock = function(userId,data){
+		console.log(data);
 		 return $http({
-		        url: '/api/ordercreationbyid',
+		        url: '/api/nostockbyid',
 		        method: "PUT", 
 		        data:data
 		    });

@@ -14,19 +14,18 @@
 	  
 	
 	 
-
-
-	
 	
 	 /*
 	  * Function : getheadermenu
 	  * Description : get one headermenu details
 	 
 	  */
-	 headermenu.getTopMenuList = function(){
+	 headermenu.getTopMenuList = function(role){
+		 console.log(role);
 		return $http({
 			   url: '/api/headermenu',
-			   method: "POST"
+			   method: "POST",
+			   params:{'role':role}
 			
 		   });
 	}

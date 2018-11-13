@@ -9,7 +9,7 @@ var mongoose = require('mongoose'),
 /**
  * Newpost Schema
  */
-var UserForgotSchema = new Schema({
+var OrderCreationSchema = new Schema({
  
   name: {
     type: String,
@@ -60,4 +60,4 @@ var UserForgotSchema = new Schema({
 
 });
 
-module.exports=mongoose.model('Sys_OrderCreation', UserForgotSchema);
+module.exports=mongoose.model('Sys_OrderCreation', OrderCreationSchema);

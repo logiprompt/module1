@@ -7,6 +7,7 @@ var path = require('path'),
     mongoose = require('mongoose'),
     custom=require('./custom'),
     Acl = mongoose.model('Sys_acl'),
+    AdminMenu = mongoose.model('Sys_adminMenu'),
     Genlang = mongoose.model('Sys_genlanguage'),
     errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
@@ -71,11 +72,11 @@ else{
 
 
 /**
- * List of currencies
+ * List of level 1 menu
  */
-exports.getList = function(request, response) {
+exports.getMenuList = function(request, response) {
     //console.log(68074);
-    Acl.find().exec(function(error, items) {
+    AdminMenu.find({level:'1'}).exec(function(error, items) {
 
         if (error) {
             return response.status(400).send({

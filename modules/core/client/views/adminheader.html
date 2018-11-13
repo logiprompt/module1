@@ -251,8 +251,7 @@ form label {
                                 </ul>
                             </li>
                            
-<!--                              
-                            <li ng-repeat="item in topmenulist" ng-if="item.level==1"> 
+<!--             <li ng-repeat="item in topmenulist" ng-if="item.level==1"> 
                                 <a ng-if="item.level!=1" class="has-arrow" href="/{{item.path}}" aria-expanded="false">
                                 <a ng-if="item.level==1" class="has-arrow" href="#" aria-expanded="false">
                                
@@ -269,23 +268,23 @@ form label {
                                     
                                     </li>                                   
                                
-                                       
-                               
-                               
-                               
                                
                                     </ul>
                             </li> -->
 
-                                 <!-- <li ng-repeat="item in topmenulist" ng-if="item.level==1"> <a ng-if="item.level!=1" class="has-arrow waves-effect waves-dark" href="/{{item.path}}" aria-expanded="false">
-                                <a ng-if="item.level==1" class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+
+
+                                 <li ng-repeat="val in topmenulist"> <a class="has-arrow waves-effect waves-dark" href="/{{val.path}}" aria-expanded="false">
                                 
-                                <span class="hide-menu" >{{item.menu}}</span></a>
+                                
+                                <span class="hide-menu" >{{val.menu}}</span></a>
                                 <ul aria-expanded="false" class="collapse">
-                                    <li ng-repeat="sub in submenulist" ng-if="sub.parentID==item._id"><a ng-if="sub.hasChild==true" href="/{{sub.path}}">{{sub.menu}} </a></li>
+                                    <li ng-repeat="sub in val.childIDs"><a  href="/{{sub.path}}">{{sub}} </a></li>
                                    
                                 </ul>
-                            </li>  -->
+                            </li> 
+
+                            
                            <li ng-repeat="item in vm.menu.items | orderBy: 'position'"  ng-switch="item.type"  ui-sref-active="active" class="{{item.class}}" uib-dropdown="item.type === 'dropdown'"> 
 
                             <a class="has-arrow waves-effect waves-dark" ng-switch-default ui-sref="{{item.state}}" ng-bind="item.title" aria-expanded="false"  href="#">

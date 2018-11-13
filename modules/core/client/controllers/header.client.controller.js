@@ -51,24 +51,27 @@
         function (response) { // optional
           // failed
         });
+        $scope.userrole= localStorage.getItem("userrole");
 
 
+        $scope.getTopMenuList= function(role){
 
-        $scope.getTopMenuList= function(){
-          // console.log(userID);
-           $scope.headermenuService.getTopMenuList().then(function(result){
+           $scope.headermenuService.getTopMenuList(role).then(function(result){
+
+           
             if(result.statusText = "OK"){
-              $scope.topmenulist = result.data;
-             
-      
-       console.log($scope.topmenulist); 
+             // $scope.topmenulist = result.data;
+            $scope.topmenulist = result.data[0].menuIDs;
+            //  $scope.topsubmenulist = result.items;
+
+            console.log($scope.topmenulist); 
              }else{
                
              }
           });
          }
      
-         $scope.getTopMenuList();
+         $scope.getTopMenuList($scope.userrole);
 
          $scope.getTopSubMenuList= function(){
           // console.log(userID);
@@ -76,7 +79,7 @@
             if(result.statusText = "OK"){
               $scope.submenulist = result.data;
       
-       console.log($scope.submenulist);
+      // console.log($scope.submenulist);
              }else{
                
              }

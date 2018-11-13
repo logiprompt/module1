@@ -3,17 +3,17 @@
 
   angular
     .module('core')
-    .controller('OrdercreationController', OrdercreationController);
+    .controller('OrderholdController', OrderholdController);
 
 
 
-    OrdercreationController.$inject = ['$scope','$http','$state','$stateParams', 'Upload','ordercreationService'];
+    OrderholdController.$inject = ['$scope','$http','$state','$stateParams', 'Upload','orderholdService'];
 
-  function OrdercreationController ($scope, $http, $state, $stateParams, Upload,ordercreationService) {
+  function OrderholdController ($scope, $http, $state, $stateParams, Upload,orderholdService) {
 
   $scope.formdata = {};
   $scope.status ='0';
-  $scope.ordercreationService = ordercreationService;
+  $scope.orderholdService = orderholdService;
  /////////////////////select/////////////////////////////
 
 ///////////////////////////////////////////////////////
@@ -83,32 +83,33 @@ $scope.iconw=function(){
 
  ///////////////////list /////////////////////
  /*
-	 * Function : getordercreation
-	 * Description : get ordercreation details
-	 * Owner : jeeja
+	 * Function : getorderhold
+	 * Description : get orderhold details
+	 
 	 */
 
-  $scope.getOrderHold = function(){
-    //console.log(0);
-    $scope.ordercreationService.getOrderCreation().then(function(result){
-     if(result.statusText = "OK"){
-       $scope.userlist = result.data;
-//console.log(1);
-//console.log(result.data);
-      }else{
+//   $scope.getOrderHold = function(){
+//     //console.log(0);
+//     $scope.orderholdService.getOrderHold().then(function(result){
+//      if(result.statusText = "OK"){
+//        $scope.userlist = result.data;
+// //console.log(1);
+// console.log(result.data);
+//       }else{
         
-      }
-   });
-  }
-  $scope.getOrderCreation();
+//       }
+//    });
+//   }
+//   $scope.getOrderHold();
  //////////////////////////////////
 
  /*
 	 * Function : addordercreation
 	 * Description : Add ordercreation details
-	 * Owner : jeeja
+	
 	 */
-  $scope.addOrderCreation = function(){
+  console.log(8686);
+  $scope.addOrderHold = function(){
     
 		if($scope.formdata.$valid){
 		var data = {
@@ -119,14 +120,14 @@ $scope.iconw=function(){
 				"status" :$scope.status
         }
       
-		
-		  $scope.ordercreationService.addOrderCreation(data).then(function(result){
+		console.log(data);
+		  $scope.orderholdService.addOrderHold(data).then(function(result){
 
 			  if(result.statusText = "OK"){
-				  swal("Success!", "Successfully added user!", "success");  
-				  $state.go('emailordercreation');
+				  swal("Success!", "Successfully added!", "success");  
+				  $state.go('emailhold');
 			  }else{
-				  swal("error!", "User already exist!", "error");
+				  swal("error!", "Already exist!", "error");
 			  }
 			  
 		  })
@@ -137,11 +138,11 @@ $scope.iconw=function(){
 
 
 /*
-	   * FUnction : delOrderCreation
-	   * Description : delete OrderCreation By Id
-	   * Owner :jeeja
+	   * FUnction : delOrderHold
+	   * Description : delete OrderHold By Id
+	 
 	   */
-    $scope.delOrderCreation = function(userId){
+    $scope.delOrderHold = function(userId){
 		   
 		   
       swal({
@@ -154,7 +155,7 @@ $scope.iconw=function(){
               confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
               if(result){
-              $scope.ordercreationService.delOrderCreation(userId).then(function(result){
+              $scope.orderholdService.delOrderHold(userId).then(function(result){
               if(result.statusText = "OK"){
 
               swal('Deleted!',
@@ -171,119 +172,6 @@ $scope.iconw=function(){
      
     }
 ///////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- function getActionBtns(){
-
-
- $scope.addpage  = document.querySelectorAll(".add-action");
- $scope.addpage[0].addEventListener("click", $scope.newpage, false);
-
- $scope.editpage= document.querySelectorAll(".edit-action");
- $scope.editpage[0].addEventListener("click", $scope.editpages, false);
-
- var delpage= document.querySelectorAll(".delete-action");
- delpage[0].addEventListener("click", $scope.delpage, false);
-
-
-
- }
-$scope.chkall=function(){
-$scope.editpage[0].removeAttribute("href");
- 
-}
-$scope.addchkval=function(linkid){
-  var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-//console.log(linkid)
-//console.log(checkedValue[0])
-  if(checkedValue.length>1){
-  $scope.editpage[0].removeAttribute("href");
-  }
-  else{
-
-    $scope.editpage[0].setAttribute("href", "/email/editcreation/"+linkid);
-  }
-
-}
-$scope.chk={};
-
-$scope.newpage=function(){
-  $state.go('emailaddcreation');
-}
-$scope.editpages=function(){
-    var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-  if(checkedValue.length>0){
- // console.log($scope.editpage[0].getAttribute("href"));
-if($scope.editpage[0].getAttribute("href")){
-document.location=$scope.editpage[0].getAttribute("href");
-}
- }
- 
-}
-$scope.chkValue=[];
-
-
-$scope.delpage=function(){
-  $scope.chkValue=[];
- 
-  //$state.go('addlanguage');
-  var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-//console.log(checkedValue)
-  for(var i=0;i<checkedValue.length;i++){
-    $scope.chkValue.push(checkedValue[i].value);
-  }
-
-
-
-
-
-
-  var userId=$scope.chkValue;
-//console.log(userId);
-  swal({
-    title: 'Are you sure?',
-    text: "You want to delete checked items!",
-    type: 'warning',
-    showCancelButton: false,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Yes, delete it!'
-  }).then((result) => {
-    if(result){
-    $scope.ordercreationService.delCheckedOrderCreation(userId).then(function(result){
-    if(result.statusText = "OK"){
-    swal('Deleted!',
-          'User has been deleted.',
-          'success')
-          $state.reload();
-     }else{
-       
-     }
-  })
-  }
-  })
-
-
-
-
-
-
- 
-}
-setTimeout(getActionBtns, 1500);         
 
 
  }

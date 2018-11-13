@@ -24,11 +24,11 @@
   * 
   **/
     $scope.getMenuList = function () {
-      $scope.adminMenuService.getMenuList().then(function(data){
+      $scope.aclService.getMenuList().then(function(data){
          if(data.statusText = "OK")
          {
            $scope.menuList = data.data;
-        //console.log( $scope.menuList);
+        console.log( $scope.menuList);
          }
          else{}
       })

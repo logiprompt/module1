@@ -123,10 +123,10 @@ $scope.iconw=function(){
 		  $scope.ordercreationService.addOrderCreation(data).then(function(result){
 
 			  if(result.statusText = "OK"){
-				  swal("Success!", "Successfully added user!", "success");  
+				  swal("Success!", "Successfully added!", "success");  
 				  $state.go('emailordercreation');
 			  }else{
-				  swal("error!", "User already exist!", "error");
+				  swal("error!", "Already exist!", "error");
 			  }
 			  
 		  })

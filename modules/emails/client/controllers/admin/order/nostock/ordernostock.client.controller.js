@@ -70,7 +70,7 @@ $scope.choices = [{id: 'choice1'}];
   }
  }
  if(document.getElementById("imgfile")!=null){
-   document.getElementById("imgfile").addEventListener("change", readFile, false); 
+  // document.getElementById("imgfile").addEventListener("change", readFile, false); 
  }
 
 $scope.iconw=function(){
@@ -113,34 +113,35 @@ $scope.iconw=function(){
    * 
 	 */
   
-  $scope.addNoStock = function(){
-    
-		if($scope.formdata.$valid){
-    var data = 
+  $scope.addNoStock = function()
+  {    
+   // console.log(555555555);
+    if($scope.formdata.$valid)
+    {
+      var data={
+                  "name":$scope.name,
+                  "subject":$scope.subject,
+                  "content":$scope.content,
+                  "custom":$scope.custom,
+                  "status" :$scope.status,
+                  "oLang":{}
+                }    
+      $scope.nostockService.addNoStock(data).then(function(result)
       {
-          "name":$scope.name,
-          "subject":$scope.subject,
-          "content":$scope.content,
-          "custom":$scope.custom,
-          "status" :$scope.status
-      }
-      
-		
-		  $scope.nostockService.addNoStock(data).then(function(result){
-
-			  if(result.statusText = "OK"){
-				  swal("Success!", "Successfully added user!", "success");  
-				  $state.go('emailordercreation');
-			  }else{
-				  swal("error!", "User already exist!", "error");
-			  }
-			  
+        if(result.statusText = "OK")
+        {
+				  swal("Success!", "Successfully added!", "success");  
+				  $state.go('emailnostocklist');
+        }
+        else
+        {
+				  swal("error!", "Already exist!", "error");
+			  }			  
 		  })
 		}
-			
-	  }
-///////////////////////////////////////////////////////////////////////
+  }
 
+///////////////////////////////////////////////////////////////////////
 
 /*
 	   * FUnction : delOrderCreation
@@ -177,122 +178,5 @@ $scope.iconw=function(){
      
     }
 ///////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
- function getActionBtns(){
-
-
- $scope.addpage  = document.querySelectorAll(".add-action");
- $scope.addpage[0].addEventListener("click", $scope.newpage, false);
-
- $scope.editpage= document.querySelectorAll(".edit-action");
- $scope.editpage[0].addEventListener("click", $scope.editpages, false);
-
- var delpage= document.querySelectorAll(".delete-action");
- delpage[0].addEventListener("click", $scope.delpage, false);
-
-
-
- }
-$scope.chkall=function(){
-$scope.editpage[0].removeAttribute("href");
- 
-}
-$scope.addchkval=function(linkid){
-  var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-console.log(linkid)
-console.log(checkedValue[0])
-  if(checkedValue.length>1){
-  $scope.editpage[0].removeAttribute("href");
   }
-  else{
-
-    $scope.editpage[0].setAttribute("href", "/email/editnostock/"+linkid);
-  }
-
-}
-$scope.chk={};
-
-$scope.newpage=function(){
-  $state.go('emailaddnostock');
-}
-$scope.editpages=function(){
-    var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-  if(checkedValue.length>0){
-  console.log($scope.editpage[0].getAttribute("href"));
-if($scope.editpage[0].getAttribute("href")){
-document.location=$scope.editpage[0].getAttribute("href");
-}
- }
- 
-}
-$scope.chkValue=[];
-
-
-$scope.delpage=function(){
-  $scope.chkValue=[];
- 
-  //$state.go('addlanguage');
-  var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-console.log(checkedValue)
-  for(var i=0;i<checkedValue.length;i++){
-    $scope.chkValue.push(checkedValue[i].value);
-  }
- 
-
-
-
-
-
-  var userId=$scope.chkValue;
-//console.log(userId);
-  swal({
-    title: 'Are you sure?',
-    text: "You want to delete checked items!",
-    type: 'warning',
-    showCancelButton: false,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Yes, delete it!'
-  }).then((result) => {
-    if(result){
-    $scope.ordercreationService.delCheckedNoStock(userId).then(function(result){
-    if(result.statusText = "OK"){
-    swal('Deleted!',
-          'User has been deleted.',
-          'success')
-          $state.reload();
-     }else{
-       
-     }
-  })
-  }
-  })
-
-
-
-
-
-
-}
-setTimeout(getActionBtns, 1500);         
-
-
- }
-
-
-
-
-
-
 }());

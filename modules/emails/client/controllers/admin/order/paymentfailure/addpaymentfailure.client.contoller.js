@@ -10,10 +10,14 @@
     AddpaymentfailureController.$inject = ['$scope','$http','$state','$stateParams', 'Upload','paymentfailureService'];
 
   function AddpaymentfailureController ($scope, $http, $state, $stateParams, Upload,paymentfailureService) {
+$scope.paymentfailureService=paymentfailureService;
 
-  $scope.addForget = function(){
+
+
+
+  $scope.addPaymentFailure = function(){
     
-    if($scope.formdata.$valid){
+    if($scope.formdata.$valid && $scope.status!=0){
     var data = {
         "name":$scope.name,
         "subject":$scope.subject,
@@ -22,14 +26,14 @@
         "status" :$scope.status
         }
       
-    
-      $scope.paymentfailureService.addUserForgot(data).then(function(result){
+    console.log($scope.paymentfailureService);
+      $scope.paymentfailureService.addPaymentFailure(data).then(function(result){
 
         if(result.statusText = "OK"){
-          swal("Success!", "Successfully added user!", "success");  
-          $state.go('emailforgetpass');
+          swal("Success!", "Successfully added!", "success");  
+          $state.go('emailpaymentfailure');
         }else{
-          swal("error!", "User already exist!", "error");
+          swal("error!", "Already exist!", "error");
         }
         
       })

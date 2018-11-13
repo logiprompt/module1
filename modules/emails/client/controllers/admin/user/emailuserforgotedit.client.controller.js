@@ -104,14 +104,16 @@
    */
   $scope.currentLan=localStorage.getItem('currentLang').toString();
   $scope.defaultLang=localStorage.getItem('defaultLang').toString();
-    console.log($scope.userforgotService);
+    //console.log($scope.userforgotService);
     $scope.getUserForgotById = function (userId) {
-      console.log(0);
+      //console.log(0);
       $scope.userforgotService.getUserForgotById(userId).then(function (result) {
-        console.log(userId);
+       // console.log(userId);
+         console.log(result);
+         var details=result.data;
         if (result.statusText = "OK") {
-          console.log(result);
-          var details=result.data;
+        
+         
              $scope.status =details.status.toString();    
           if(angular.equals($scope.currentLan, $scope.defaultLang)){
           $scope.userdetails = result.data;
@@ -119,13 +121,14 @@
           $scope.subject = $scope.userdetails.subject;
           $scope.content = $scope.userdetails.content;
           $scope.custom = $scope.userdetails.custom;
-                 }
+        }
         else{
+                     
           $scope.userdetails = result.data;
-          $scope.name =details.oLang[ $scope.currentLan].name ? details.oLang[ $scope.currentLan].name :details.name;
-          $scope.subject = details.oLang[ $scope.currentLan].subject ? details.oLang[ $scope.currentLan].subject :details.subject;
-          $scope.content = details.oLang[ $scope.currentLan].content ? details.oLang[ $scope.currentLan].content :details.content;
-          $scope.custom = details.oLang[ $scope.currentLan].custom ? details.oLang[ $scope.currentLan].custom :details.custom;
+          $scope.name =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].name : details.name;
+          $scope.subject = $scope.currentLan in details.oLang  ?details.oLang[ $scope.currentLan].subject :  details.subject;
+          $scope.content =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].content:details.content ;
+          $scope.custom =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].custom :details.custom;
          
 
         }
@@ -199,6 +202,7 @@
 
 
         $scope.userforgotService.updateUserForgot($stateParams.id, data).then(function (result) {
+          console.log(result);
           if (result.statusText = "OK") {
             swal("Sccess!", "Successfully updated User", "success");
             $state.reload();
