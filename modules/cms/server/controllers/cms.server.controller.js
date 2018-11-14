@@ -6,6 +6,7 @@
 var path = require('path'),
   mongoose = require('mongoose'),
   Cm = mongoose.model('Cm'),
+  cmsCategory = mongoose.model('cmsCategory'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   _ = require('lodash');
 
@@ -26,6 +27,53 @@ exports.create = function(req, res) {
     }
   });
 };
+
+/*
+ * Get post by id
+ */
+exports.getpostById = function(req, res){
+	var id = req.params.id;
+Cm.findById(id).exec(function (error, items) {
+		
+        if (error) {
+  		  console.log(error);
+          res.status(500).send(error);
+          return;
+        }
+        res.json(items);
+      });
+}
+/*
+ * Updatepost by Id
+ */
+exports.updatepostById = function(req, res){
+	var id = req.params.id;
+	Cm.findById(id).exec(function (error, item) {
+			
+	        if (error) {
+	  		  console.log(error);
+	          res.status(500).send(error);
+	          return;
+	        }
+	       // item = req.body;
+	        item.post_title = req.body.post_title;
+	          item.post_content = req.body.post_content;
+	          item.post_type = req.body.post_type;
+	          item.post_status = req.body.post_status;
+	          item.post_category = req.body.post_category;
+	          item.post_metadesc = req.body.post_metadesc;
+	          item.post_metakey = req.body.post_metakey;
+	          item.post_slug = req.body.post_slug;
+	          item.post_urlkey = req.body.post_urlkey;
+	          item.post_displayinmenu = req.body.post_displayinmenu;
+	          item.post_tags = req.body.post_tags;
+	          item.post_text = req.body.post_text;
+	        item.save();
+
+	        res.json(item);
+	        return;
+	      });
+	}
 
 exports.deletepost = function(req, res){
 	var id = req.params.id;
@@ -141,3 +189,124 @@ exports.cmByID = function(req, res, next, id) {
     next();
   });
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* add new category */
+exports.addCategory = function (req, res, next) {
+    console.log(req.body)
+    cmsCategory.create(req.body, function (err, post) {
+        if (err) {
+            return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+            res.json("category added");
+        }
+    });
+}
+
+/* add sub category */
+exports.addSubCategory = function (req, res, next) {
+    cmsCategory.create(req.body, function (err, post) {
+        if (err) {
+            return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+            cmsCategory.update({ _id: req.body.parentId }, { $set: { hasChild: true }, $push: { childIDs: post._id } }, function (err, post) {
+                if (err) {
+                    return res.status(400).send({
+                        message: errorHandler.getErrorMessage(err)
+                    });
+                } else {
+                    res.json("Subcategory updated");
+                }
+            })
+        }
+    });
+}
+
+/* delete a category */
+exports.deleteCategory = function (req, res, next) {
+    cmsCategory.find({ _id: req.params.categoryId }).select('childIDs').exec(function (err, data) {
+        var ids = data[0].childIDs;
+        ids.push(req.params.categoryId)
+        cmsCategory.update({ _id: { $in: ids } }, { $set: { isdeleted: true } }, { multi: true }, function (err, post) {
+            if (err) {
+                return res.status(400).send({
+                    message: errorHandler.getErrorMessage(err)
+                });
+            } else {
+                res.json("category updated");
+            }
+        });
+    })
+
+}
+
+/* get all category items */
+exports.getCategoryItems = function (req, res, next) {
+    cmsCategory.find({ level: '1', isdeleted: false }).populate('childIDs').sort('-created').exec(function (err, data) {
+        if (err) {
+            return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+            res.json(data);
+        }
+    })
+}
+
+/* get category details */
+exports.getCategoryDetails = function (req, res, next) {
+    cmsCategory.findById(req.params.categoryId).populate({ path: 'childIDs', model: 'cmsCategory' }).exec(function (err, data) {
+        console.log(data)
+        if (err) {
+            return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+            res.json(data);
+        }
+    })
+}
+
+/* update category details */
+exports.updateCategory = function (req, res, next) {
+	cmsCategory.findByIdAndUpdate(req.body._id, {
+        $set: {
+            "modified": Date.now(),
+            "category": req.body.category,
+            "description": req.body.description,
+            "status": req.body.status,
+            "extrafieldGroup": req.body.extrafieldGroup
+        }
+    }, function (err, data) {
+        if (err) {
+            return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+            res.json("category updated");
+        }
+    })
+}
