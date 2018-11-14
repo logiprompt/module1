@@ -118,6 +118,67 @@ cms.updateCategory = function (data) {
 }
 
 
+
+
+
+
+
+
+
+/*
+ * Function : addPage
+ * Description : add new page
+ */
+
+cms.addPage = function (data) {
+    return $http({
+        url: '/api/cms/page/addPage',
+        method: "POST",
+        data: data
+    });
+}
+
+
+/*
+ * Function : getPageItems
+ * Description : get page Items
+ */
+
+cms.getPageItems = function () {
+    return $http({
+        url: '/api/cms/page/getPageItems',
+        method: "GET"
+    });
+}
+
+cms.deletePage = function (pageId) {
+    return $http({
+        url: '/api/cms/page/deletePage/' + pageId,
+        method: "DELETE"
+    });
+}
+
+cms.getPageDetails = function (pageId) {
+    return $http({
+        url: '/api/cms/page/getPageDetails/' + pageId,
+        method: "GET"
+    });
+}
+
+
+cms.updatePage = function (data) {
+    return $http({
+        url: '/api/cms/page/updatePage',
+        method: "POST",
+        data: data
+    });
+}
+
+
+
+
+
+
 return cms;
   }
 }());

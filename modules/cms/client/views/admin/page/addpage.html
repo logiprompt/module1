@@ -197,6 +197,7 @@ width:60%;
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Page</h4>
+                                <form ng-submit="addNewPage()" name="pageform" novalidate enctype="multipart/form-data">
                                 <div class="col-lg-12">
                      
                                 <!-- <h4 class="card-title">Vertical Tab</h4>
@@ -206,22 +207,18 @@ width:60%;
                                 
                                  
                                    <div class="form-group m-b-10 btn23">
-                                   <button type="button" ng-click="addPage()" class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
+                                   <button type="submit"  class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
                                        <a href="/cms/page"><button type="button"  class="btn waves-effect waves-light btn-sm btn-default"> Cancel </button></a>
-                                        <button type="button" ng-click="del(val.page_id)" class="btn waves-effect waves-light btn-sm btn-danger"> Delete </button>
                                   </div> 
                                  
                                 
-
-                                <form class="">  
                                 <div class="vtabs">
                                     <ul class="nav nav-tabs tabs-vertical" role="tablist">
                                         <li class="nav-item"> <a class="nav-link tcat" data-toggle="tab" href="#home" role="tab" aria-selected="true"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Language : default</span> </a> </li>
                                         <li class="nav-item"> <a class="nav-link active show" data-toggle="tab" href="#content" role="tab" aria-selected="false"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Content</span></a> </li>
                                         <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#meta_data" role="tab" aria-selected="false"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Meta data</span></a> </li>
                                          <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#navigation" role="tab" aria-selected="false"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Navigation</span></a> </li>
-                                         <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#display" role="tab" aria-selected="false"> <span class="hidden-xs-down">Display settings</span></a> </li> 
-                                         <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#logs" role="tab" aria-selected="false"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Logs</span></a> </li>
+                                                  <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#logs" role="tab" aria-selected="false"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Logs</span></a> </li>
                                     </ul>
                                     <!-- Tab panes -->
                                     
@@ -231,7 +228,7 @@ width:60%;
                                             <div class="p-20">
                                                
                                                     <div class="form-group m-b-10"><label for="name">Title</label>
-                                                        <input type="text" class="form-control cat" id="name" ng-model="formdata.title" >
+                                                        <input type="text" class="form-control cat" id="name"  name="page_title" ng-model="formdata.page_title" ng-change="generateSlgURL()" ng-class="{ 'validationErr' : pageform.$submitted && !pageform.page_title.$valid}" ng-required=true >
                                                       
                                                         <span class="bar"></span>
                                                         
@@ -239,7 +236,7 @@ width:60%;
 
                                             <div class="form-group m-b-10">
                                            <label for="editor1">Content</label>
-                                                       <textarea id="editor1" class="form-control" ng-model="formdata.content"></textarea><span class="bar"></span>
+                                                       <textarea id="editor1" class="form-control" name="page_content" ng-model="formdata.page_content"></textarea><span class="bar"></span>
                                                       
                                                         <span class="bar"></span>
                                                        
@@ -287,8 +284,8 @@ width:60%;
 
                                                           <div class="form-group m-b-40">
                                                                 <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >--><label for="status">Status</label>
-                                                                       <select class="form-control filter-option" name="status" id="status" ng-model="formdata.status">
-                                                                       <option class="filter-option-inner" value="0">choose</option>
+                                                                       <select class="form-control filter-option" name="page_status" id="status" ng-model="formdata.page_status">
+                                                                       
 
                                                                                           <option value="1" class="filter-option-inner">Disable</option>
                                                                                           <option value="2">Enable</option>
@@ -306,14 +303,14 @@ width:60%;
                                             <div class="p-20">
                                                
                                                     <div class="form-group m-b-10"><label for="input1"> Meta description</label>
-                                                        <textarea class="form-control cat" id="name" type="text" ng-model="formdata.wer" ></textarea>
+                                                        <textarea class="form-control cat" id="name" name="page_metadesc" type="text" ng-model="formdata.page_metadesc" ></textarea>
                                                       
                                                         <span class="bar"></span>
                                                         
                                                     </div>
 
                                                     <div class="form-group m-b-10"> <label for="input1"> Meta keywords</label>
-                                                        <textarea class="form-control cat" id="name" type="text" ng-model="formdata.asd" ></textarea>
+                                                        <textarea class="form-control cat" id="name" name="page_metakey" type="text" ng-model="formdata.page_metakey" ></textarea>
                                                       
                                                         <span class="bar"></span>
                                                        
@@ -323,13 +320,13 @@ width:60%;
                                         </div>
                                         <div class="tab-pane p-20" id="navigation" role="tabpanel">
                                              <div class="form-group m-b-10"> <label for="input1">Slug</label>
-                                                        <input type="text" class="form-control cat" id="name"   >
+                                                        <input type="text" class="form-control cat" id="name" name="page_slug" ng-model="formdata.page_slug"  >
                                                       
                                                         <span class="bar"></span>
                                                        
                                                     </div>
                                                 <div class="form-group m-b-10"> <label for="input1"> URL KEY</label>
-                                                        <input type="text" class="form-control cat" id="name"   >
+                                                        <input type="text" class="form-control cat" id="name"  name="page_urlkey" ng-model="formdata.page_urlkey" >
                                                       
                                                         <span class="bar"></span>
                                                        
@@ -338,9 +335,8 @@ width:60%;
                                                     <div class="form-group m-b-10">
                                                             <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >--> 
                                                              <label for="status">Display in Menu</label>
-                                                                   <select class="form-control filter-option" name="status" id="status" ng-model="formdata.status">
-                                                                   <option class="filter-option-inner" value="0">choose</option>
-
+                                                                   <select class="form-control filter-option" name="page_displayinmenu" id="status" ng-model="formdata.page_displayinmenu">
+                                                                   
                                                                                       <option value="1" class="filter-option-inner">Yes</option>
                                                                                       <option value="2">No</option>
                                                                                       </select>
@@ -352,15 +348,7 @@ width:60%;
 
                                         </div>
 
-                                        <div class="tab-pane p-20" id="display" role="tabpanel">
-                                                <div class="form-group m-b-10">
-                                                 <label for="input1"> Display in</label>
-                                              <select class="selectpicker form-control" multiple data-style="form-control btn-info">
-                                            <option value="0" selected>Choose</option>
-                                                 <option value="1">Global</option>
-                                                 <option value="2">India</option>
-                                            <option value="3">UAE</option>
-                                            </select></div></div>
+                                        
 
                                         <div class="tab-pane p-20" id="logs" role="tabpanel">
                                             
@@ -406,9 +394,10 @@ width:60%;
                                    
                                 </div>
 
-                            </form>
+                            
                             
                     </div>
+                              </form>
                               <!-- 
                                 <form class="floating-labels m-t-40">
                                     <div class="form-group m-b-40">

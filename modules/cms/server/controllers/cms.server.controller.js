@@ -7,6 +7,7 @@ var path = require('path'),
   mongoose = require('mongoose'),
   Cm = mongoose.model('Cm'),
   cmsCategory = mongoose.model('cmsCategory'),
+  cmsPage = mongoose.model('cmsPage'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   _ = require('lodash');
 
@@ -309,4 +310,130 @@ exports.updateCategory = function (req, res, next) {
             res.json("category updated");
         }
     })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* add new Page */
+exports.addPage = function (req, res, next) {
+    console.log(req.body)
+    cmsPage.create(req.body, function (err, post) {
+        if (err) {
+            return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+            res.json("category added");
+        }
+    });
+}
+
+
+
+/* delete a page */
+exports.deletePage = function (req, res) {
+      var id = req.params.pageId;
+    cmsPage.findById(id).exec(function (error, item) {
+	    
+	    if (error) {
+	      response.status(500).send(error);
+	      return;
+	    }
+
+	    if (item) {
+	    	// var cm = item;
+
+	    	 item.remove(function(err) {
+	    	    if (err) {
+	    	      return res.status(400).send({
+	    	        message: errorHandler.getErrorMessage(err)
+	    	      });
+	    	    } else {
+	    	      res.jsonp(item);
+	    	    }
+	    	  });
+	    	
+	    }
+	    });
+    
+
+}
+
+/* get all category items */
+exports.getPageItems = function (req, res, next) {
+    cmsPage.find().exec(function (err, data) {
+        if (err) {
+            return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+            res.json(data);
+        }
+    })
+}
+
+/* get category details */
+exports.getPageDetails = function (req, res, next) {
+    cmsPage.findById(req.params.pageId).exec(function (err, data) {
+        console.log(data)
+        if (err) {
+            return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+            res.json(data);
+        }
+    })
+}
+
+/* update category details */
+exports.updatePage = function (req, res, next) {
+	var id = req.params.pageId
+	cmsPage.findById(id).exec(function (error, item) {
+		
+        if (error) {
+  		  console.log(error);
+          res.status(500).send(error);
+          return;
+        }
+       // item = req.body;
+        item.page_title = req.body.page_title;
+          item.page_content = req.body.page_content;
+          item.page_status = req.body.page_status;
+          item.page_metadesc = req.body.page_metadesc;
+          item.page_metakey = req.body.page_metakey;
+          item.page_slug = req.body.page_slug;
+          item.page_urlkey = req.body.page_urlkey;
+          item.page_displayinmenu = req.body.page_displayinmenu;
+        item.save();
+
+        res.json(item);
+        return;
+      });
 }

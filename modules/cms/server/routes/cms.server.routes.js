@@ -29,6 +29,16 @@ module.exports = function(app) {
   app.route('/api/cms/category/getCategoryDetails/:categoryId').get(cms.getCategoryDetails);
   
   
+  app.route('/api/cms/page/addPage').post(cms.addPage);
+
+  app.route('/api/cms/page/updatePage').post(cms.updatePage);
+
+  app.route('/api/cms/page/deletePage/:pageId').delete(cms.deletePage);
+
+  app.route('/api/cms/page/getPageItems').get(cms.getPageItems);
+
+  app.route('/api/cms/page/getPageDetails/:pageId').get(cms.getPageDetails);
+  
   app.route('/api/cms/:cmId').all(cmsPolicy.isAllowed)
     .get(cms.read)
     .put(cms.update)

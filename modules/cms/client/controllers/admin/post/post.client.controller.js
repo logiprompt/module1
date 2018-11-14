@@ -63,7 +63,7 @@
 	   				  }
 			  })
 		  }else{
-			  $scope.postformdata.post_content = CKEDITOR.instances.editor1.getData().replace(/^.*?<body[^>]*>(.*?)<\/body>.*?$/i,"$1");;
+			  $scope.postformdata.post_content = CKEDITOR.instances.editor1.getData().replace(/^.*?<body[^>]*>(.*?)<\/body>.*?$/i,"$1");
 		  CmsService.addPost($scope.postformdata).then(function(result){
 			  if(result.statusText = "OK"){
 				   

@@ -111,26 +111,27 @@
                                                 </thead>
                                                 
                                                 <tbody>
-                                                   <tr >
+                                                   <tr ng-repeat="page in pageItems">
                                                     <td>
                                                        <input type="checkbox" id="basic_checkbox_{{$index+1}}"  class="rowtxtchk" value="{{$index+1}}" ng-click="addchkval(1)" />
                                     <label for="basic_checkbox_{{$index+1}}"></label> 
 
 
                                                     </td>
-                                                        <td> page1
+                                                        <td> {{page.page_title}}
                                                         </td>
-                                                        <td>Admin</td>
-                                                         <td>18-08-2018</td>
-                                                         <td>Enabled</td>
+                                                        <td>{{page.user}}</td>
+                                                         <td>{{page.created}}</td>
+                                                         <td><span ng-if="page.page_status == '1'">Enabled</span>
+                                                         <span ng-if="page.page_status == '2'">Disabled</span></td>
                                                         <td style="width:20% !important;"> 
                                                            
                                                             
-                                                            <a class="btn waves-effect waves-light btn-sm btn-info" href="/cms/editpage/1">
+                                                            <a class="btn waves-effect waves-light btn-sm btn-info" href="/cms/editpage/{{page._id}}">
                                                                 Edit
                                                               </a>
                                                                                                           
-                                                                <button class="btn waves-effect waves-light btn-sm btn-danger"  ng-click="del(1)" rel=""  >
+                                                                <button class="btn waves-effect waves-light btn-sm btn-danger"  ng-click="deletePage(page._id)" rel=""  >
                                                                  Delete
                                                                 </button>
                                                                 </td>

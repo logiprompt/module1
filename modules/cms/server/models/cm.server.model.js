@@ -93,6 +93,56 @@ var cmsCategorySchema = new Schema({
 
 });
 
+
+var CmPageSchema = new Schema({
+	  page_title: {
+	    type: String,
+	    default: '',
+	    required: 'Please fill post title',
+	    trim: true
+	  },
+	  page_content:{
+		  type: String
+	  },
+	  page_status:{
+		  type: String
+	  },
+	  page_metadesc:{
+		  type: String
+	  },
+	  page_metakey:{
+		  type: String
+	  },
+	  page_slug:{
+		  type: String
+	  },
+	  page_urlkey:{
+		  type: String
+	  },
+	  page_displayinmenu:{
+		  type: String  
+	  },
+	  created: {
+	    type: Date,
+	    default: Date.now
+	  },
+	  user: {
+	    type: Schema.ObjectId,
+	    ref: 'User'
+	  },
+	  updated: {
+		    type: Date,
+		    default: Date.now
+		  },
+		  updateduser: {
+		    type: Schema.ObjectId,
+		    ref: 'User'
+		  },
+		  OLang: {}
+	});
+
+mongoose.model('cmsPage', CmPageSchema);
+
 mongoose.model('cmsCategory', cmsCategorySchema);
 
 mongoose.model('Cm', CmSchema);

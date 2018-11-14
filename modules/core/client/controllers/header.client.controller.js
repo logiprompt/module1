@@ -61,7 +61,10 @@
            
             if(result.statusText = "OK"){
              // $scope.topmenulist = result.data;
-            $scope.topmenulist = result.data[0].menuIDs;
+            	if(result.data.length){
+            		$scope.topmenulist = result.data[0].menuIDs;
+            	}
+            
             //  $scope.topsubmenulist = result.items;
 
             console.log($scope.topmenulist); 

@@ -7,11 +7,61 @@
 
 
 
-    PageController.$inject = ['$scope','$http','$state','$stateParams', 'Upload'];
+    PageController.$inject = ['$scope','$http','$state','$stateParams', 'Upload','CmsService','$location'];
 
-  function PageController ($scope, $http, $state,$stateParams,Upload) {
+  function PageController ($scope, $http, $state,$stateParams,Upload,CmsService,$location) {
 
   $scope.formdata = {};
+  $scope.CmsService = CmsService;
+  $scope.formdata.page_status = "1";
+  $scope.formdata.page_displayinmenu = "2";
+  
+  
+  $scope.generateSlgURL = function(){
+	   	 var replaceSpacesText = $scope.formdata.page_title;
+	   	 $scope.formdata.page_slug = replaceSpacesText.split(" ").join("_").toLowerCase();
+	   	 $scope.formdata.page_urlkey = "page/"+$scope.formdata.page_slug+"_"+Number(new Date())+".html"
+	    }
+  
+  
+  /*
+   * Function : getPageItems
+   * description : Get all category items for the list
+   */
+$scope.getPageItems = function () {
+$scope.CmsService.getPageItems().then(function (result) {
+  $scope.pageItems = result['data'];
+})
+}
+$scope.getPageItems();
+
+
+$scope.deletePage = function (pageId) {
+    $scope.CmsService.deletePage(pageId).then(function (result) {
+      $scope.getPageItems();
+    })
+  }
+
+
+$scope.addNewPage = function () {
+	$scope.formdata.page_content = CKEDITOR.instances.editor1.getData().replace(/^.*?<body[^>]*>(.*?)<\/body>.*?$/i,"$1");;
+    $scope.CmsService.addPage($scope.formdata).then(function (result) {
+    	 if(result.statusText = "OK"){
+    		 $location.path('/cms/page');
+				 swal( 'Created!',
+	                     'New Page created sucessfully',
+	                     'success'
+	                   )
+				$state.go('post');
+				  }else{
+					swal( 'error!',
+      	                   'Error while creating new post ! Please try again later.',
+      	                   'error'
+      	                )
+				  }
+      
+    })
+  }
  /////////////////////select/////////////////////////////
 
  ///////////////////////insert////////////////////////////
