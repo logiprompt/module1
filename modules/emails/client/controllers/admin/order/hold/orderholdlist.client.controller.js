@@ -102,9 +102,62 @@ console.log(result.data);
   }
   $scope.getOrderHold();
  //////////////////////////////////
-
-///////////////////////////////////////////////////////////////////////
-
+ $scope.getOrderHoldById = function(userId)
+ {
+   //console.log(0);
+     $scope.orderholdService.getOrderHoldById(userId).then(function(result)
+     {
+         //console.log(userId);
+         if(result.statusText = "OK")
+         {
+           console.log(result.data);
+           $scope.userdetails = result.data;
+           $scope.name = $scope.userdetails.name;
+           $scope.subject = $scope.userdetails.subject;
+           $scope.content = $scope.userdetails.content;
+           $scope.custom = $scope.userdetails.custom;
+           $scope.status = $scope.userdetails.status.toString();
+ 
+         }
+         else
+         {
+           
+         }
+     });
+ }
+ $scope.getOrderHoldById($stateParams.id);
+ 
+ 
+ 
+  //////////////////////////////////
+   /*
+    *
+    *  Function : update UserForgot
+    * Description : Update UserForgot details
+    * Owner : jeeja
+    * 
+    */
+ 
+   $scope.updateOrderHold = function(){
+     // console.log($scope.formdata);
+      if($scope.formdata.$valid && $scope.status!=0){
+     var data = {		  			 
+          "name":$scope.name,
+          "subject":$scope.subject,
+          "content":$scope.content,
+          "custom":$scope.custom,
+          "status" :$scope.status,
+          "userId":$stateParams.id
+          }
+     
+      $scope.orderholdService.updateOrderHold($stateParams.id,data).then(function(result){
+        if(result.statusText = "OK"){
+          swal("Success!", "Successfully updated", "success"); 
+          $state.reload();
+         }
+      });
+    }
+    }
 
 /*
 	   * FUnction : delOrderHold
@@ -128,7 +181,7 @@ console.log(result.data);
               if(result.statusText = "OK"){
 
               swal('Deleted!',
-                   'User has been deleted.',
+                   'Item has been deleted.',
                    'success')
 
               $state.reload();
@@ -170,7 +223,7 @@ $scope.addchkval=function(linkid){
   }
   else{
 
-    $scope.editpage[0].setAttribute("href", "/email/editcreation/"+linkid);
+    $scope.editpage[0].setAttribute("href", "/email/editorderhold/"+linkid);
   }
 
 }
@@ -219,7 +272,7 @@ $scope.delpage=function(){
     confirmButtonText: 'Yes, delete it!'
   }).then((result) => {
     if(result){
-    $scope.orderholdService.delCheckedOrderCreation(userId).then(function(result){
+    $scope.orderholdService.delCheckedOrderHold(userId).then(function(result){
     if(result.statusText = "OK"){
     swal('Deleted!',
           'User has been deleted.',

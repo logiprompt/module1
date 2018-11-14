@@ -19,14 +19,14 @@ module.exports = function(app) {
    // .delete(userforgot.delete);
 
     console.log(paymentfailure);
-  //app.route('/api/userforgot/delCheckedUserForgot').all()
-    //.delete(userforgot.delCheckedUser);
+  app.route('/api/paymentfailure/delCheckedPaymentFailure').all()
+    .delete(paymentfailure.delCheckedPayment);
 
   // Finish by binding the Email middleware
-  //app.route('/api/userforgotbyid').all()
-  //.get(userforgot.reads) 
-  //.put(userforgot.update) 
-  //.delete(userforgot.delete);
+  app.route('/api/paymentfailurebyid').all()
+    .get(paymentfailure.reads) 
+    .put(paymentfailure.update) 
+    .delete(paymentfailure.delete);
  // app.param(':userId', userforgot.userByIDs);
 
 

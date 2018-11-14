@@ -3,17 +3,45 @@
 
   angular
     .module('core')
-    .controller('OrdercompletionsController', OrdercompletionsController);
+    .controller('AddOrdercommentsController', AddOrdercommentsController);
 
 
 
-    OrdercompletionsController.$inject = ['$scope','$http','$state','$stateParams', 'Upload'];
+    AddOrdercommentsController.$inject = ['$scope','$http','$state','$stateParams', 'Upload','ordercommentsService'];
 
-  function OrdercompletionsController ($scope, $http, $state, $stateParams, Upload) {
+  function AddOrdercommentsController ($scope, $http, $state, $stateParams, Upload, ordercommentsService) {
 
   $scope.formdata = {};
-  $scope.formdata.status ='0';
- /////////////////////select/////////////////////////////
+  $scope.status ='0';
+  $scope.ordercommentsService=ordercommentsService;
+ /////////////////////insert/////////////////////////////
+ 
+ 
+  $scope.addOrderComments = function(){
+    
+    if($scope.formdata.$valid && $scope.status!=0){
+    var data = {
+        "name":$scope.name,
+        "subject":$scope.subject,
+        "content":$scope.content,
+        "custom":$scope.custom,
+        "status" :$scope.status
+        }
+      
+    console.log($scope.ordercommentsService);
+      $scope.ordercommentsService.addOrderComments(data).then(function(result){
+
+        if(result.statusText = "OK"){
+          swal("Success!", "Successfully added!", "success");  
+          $state.go('emailordercomments');
+        }else{
+          swal("error!", "Already exist!", "error");
+        }
+        
+      })
+    }
+      
+    }
 
 ///////////////////////////////////////////////////////
 
@@ -111,14 +139,14 @@ console.log(checkedValue[0])
   }
   else{
 
-    $scope.editpage[0].setAttribute("href", "/email/editordercompletion/"+linkid);
+    $scope.editpage[0].setAttribute("href", "/email/editordercomments/"+linkid);
   }
 
 }
 $scope.chk={};
 
 $scope.newpage=function(){
-  $state.go('emailaddordercompletion');
+  $state.go('emailaddordercomments');
 }
 $scope.editpages=function(){
     var checkedValue = document.querySelectorAll('.rowtxtchk:checked');

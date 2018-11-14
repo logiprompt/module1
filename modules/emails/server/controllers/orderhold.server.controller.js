@@ -77,8 +77,8 @@ exports.reads= function(request, response)
 
 exports.userByIDs = function(request, response) 
 {
-    console.log(request);
-    console.log(90909090909090)
+   // console.log(request);
+   // console.log(90909090909090)
     Orderhold.findById(request.params.userId)
     .lean()
     .exec(function(error, items) {
@@ -158,7 +158,7 @@ exports.userByIDs = function(request, response)
       *Delete currency by IDs
       *
       **/
-      exports.delCheckedOrdercreate = function(request, response) {
+      exports.delCheckedOrderHold = function(request, response) {
       
           var arr = request.query.userId;
           console.log(arr);

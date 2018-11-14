@@ -3,18 +3,18 @@
 
   angular
     .module('emails')
-    .controller('Emailordercreationedit', Emailordercreationedit);
+    .controller('EmailMemoCreationEdit', MemoCreationEdit);
 
 
 
-    Emailordercreationedit.$inject = ['$scope','$http','$state','$stateParams', 'Upload','ordercreationService'];
+    MemoCreationEdit.$inject = ['$scope','$http','$state','$stateParams', 'Upload','memoCreationService'];
 
-  function Emailordercreationedit ($scope, $http, $state, $stateParams, Upload,ordercreationService) {
+  function MemoCreationEdit ($scope, $http, $state, $stateParams, Upload,memoCreationService) {
 
    //$scope.formdata = {};
    $scope.status = "0";
    $scope.username= localStorage.getItem('username');
-   $scope.ordercreationService = ordercreationService;
+   $scope.memoCreationService = memoCreationService;
 
  /////////////////////select/////////////////////////////
 ////////////////////////ip fetch//////////////////////////////
@@ -24,7 +24,7 @@ $http.get("https://ipinfo.io/").then(function (response) {
   
   });
  ///////////////////////////////////////////////////////
-
+ $scope.currentLang= localStorage.getItem('currentLang');
  
 $scope.setasDefault=function(id){
 
@@ -76,7 +76,7 @@ $scope.delUserForgot = function(userId){
           confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
           if(result){
-          $scope.userforgotService.delUserForgot(userId).then(function(result){
+          $scope.memoCreationService.delUserForgot(userId).then(function(result){
           if(result.statusText = "OK"){
           swal(
                         'Deleted!',
@@ -103,31 +103,44 @@ $scope.delUserForgot = function(userId){
 	 * Owner : jeeja
 */
 
-//console.log( $scope.userforgotService);
-  $scope.getOrderCreationById = function(userId)
+//console.log( $scope.memoCreationService);
+$scope.currentLan=localStorage.getItem('currentLang').toString();
+  $scope.defaultLang=localStorage.getItem('defaultLang').toString();
+
+  $scope.getMemoCreationById = function(userId)
   {
     //console.log(0);
-      $scope.ordercreationService.getOrderCreationById(userId).then(function(result)
+      $scope.memoCreationService.getMemoCreationById(userId).then(function(result)
       {
-          //console.log(userId);
-          if(result.statusText = "OK")
-          {
-            //console.log(result);
-            $scope.userdetails = result.data;
-            $scope.name = $scope.userdetails.name;
-            $scope.subject = $scope.userdetails.subject;
-            $scope.content = $scope.userdetails.content;
-            $scope.custom = $scope.userdetails.custom;
-            $scope.status = $scope.userdetails.status.toString();
+        //console.log(userId);
+        var details=result.data;
+       if (result.statusText = "OK") {
+         //console.log(result);
+        
+            $scope.status =details.status.toString();    
+         if(angular.equals($scope.currentLan, $scope.defaultLang)){
+         $scope.userdetails = result.data;
+         $scope.name = $scope.userdetails.name;
+         $scope.subject = $scope.userdetails.subject;
+         $scope.content = $scope.userdetails.content;
+         $scope.custom = $scope.userdetails.custom;
+                }
+       else{
+        // console.log(details.oLang)
+         $scope.userdetails = result.data;
+         $scope.name =angular.isUndefined(details.oLang) ? details.name:details.oLang[ $scope.currentLan].name ;
+         $scope.subject = angular.isUndefined(details.oLang)  ? details.subject:details.oLang[ $scope.currentLan].subject ;
+         $scope.content =angular.isUndefined(details.oLang) ?details.content: details.oLang[ $scope.currentLan].content ;
+         $scope.custom = angular.isUndefined(details.oLang)  ? details.custom:details.oLang[ $scope.currentLan].custom ; 
 
-          }
-          else
-          {
-            
-          }
+       }
+       }
+       else {
+
+       }
       });
   }
-  $scope.getOrderCreationById($stateParams.id);
+  $scope.getMemoCreationById($stateParams.id);
 
 
 
@@ -159,23 +172,43 @@ $scope.delUserForgot = function(userId){
    * 
 	 */
 
-      $scope.updateOrderCreation = function(){
-       // console.log($scope.formdata);
+      $scope.updateMemoCreatin = function(){
+        //console.log(564564);
         if($scope.formdata.$valid && $scope.status!=0){
-       var data = {		  			 
-            "name":$scope.name,
-            "subject":$scope.subject,
-            "content":$scope.content,
-            "custom":$scope.custom,
-            "status" :$scope.status,
-            "userId":$stateParams.id
-            }
-       
-        $scope.ordercreationService.updateOrderCreation($stateParams.id,data).then(function(result){
-          if(result.statusText = "OK"){
+        if (localStorage.getItem("currentLang") == 'en') 
+        {
+          var data = 
+          {
+            "name": $scope.name,
+            "subject": $scope.subject,
+            "content": $scope.content,
+            "custom": $scope.custom,
+            "status": $scope.status,
+            "userId": $stateParams.id,
+            "isDefaultLang" : true
+          }
+        }
+        else 
+        {
+          var data = 
+          {
+            "name": $scope.name,
+            "subject": $scope.subject,
+            "content": $scope.content,
+            "custom": $scope.custom,
+            "userId": $stateParams.id,
+            "isDefaultLang" : false,
+            "defaultLang":localStorage.getItem("defaultLang"),
+            "userSelectedLang":localStorage.getItem("currentLang")
+          };
+        }
+        //console.log(data);
+        $scope.memoCreationService.updateMemoCreatin($stateParams.id,data).then(function(result){
+          if(result.statusText = "OK")
+          {
             swal("Sccess!", "Successfully updated User", "success"); 
             $state.reload();
-           }
+          }
         });
       }
       }

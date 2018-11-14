@@ -29,7 +29,7 @@ exports.create = function (req, res) {
 
 
 /**
- * List of users
+ * List of payment failure
  */
 exports.list = function (request, response) {
     
@@ -50,7 +50,7 @@ exports.reads = function (request, response) {
     console.log(request);
 
 
-    Userforgot.findById(request.query.userId)
+    Paymentfailure.findById(request.query.userId)
         .lean()
         .exec(function (error, items) {
             if (error) {
@@ -69,28 +69,28 @@ exports.reads = function (request, response) {
 //  * Get User by ID
 //  */
 
-exports.userByIDs = function (request, response) {
-    console.log(request);
-    console.log(90909090909090)
-    Userforgot.findById(request.params.userId)
-        .lean()
-        .exec(function (error, items) {
-            if (error) {
-                console.log(error);
-                response.status(500).send(error);
-                return;
-            }
-            response.jsonp(items);
-        });
-};
+//exports.userByIDs = function (request, response) {
+//    console.log(request);
+//    console.log(90909090909090)
+//    Userforgot.findById(request.params.userId)
+//        .lean()
+//        .exec(function (error, items) {
+//            if (error) {
+//                console.log(error);
+//                response.status(500).send(error);
+//                return;
+//            }
+//            response.jsonp(items);
+//        });
+//};
 
 /**
- * Delete currency by ID
+ * Delete Paymentfailure by ID
  */
 exports.delete = function (request, response) {
     var userId = request.query.userId;
     console.log(userId);
-    Userforgot.findById(userId).exec(function (error, item) {
+    Paymentfailure.findById(userId).exec(function (error, item) {
 
         if (error) {
             response.status(500).send(error);
@@ -118,7 +118,7 @@ exports.delete = function (request, response) {
 };
 
 /*
-* Update currency
+* Update Paymentfailure
 */
 exports.update = function (request, response) {
     var reqBody = request.body;
@@ -126,7 +126,7 @@ exports.update = function (request, response) {
     var data;
 
 
-    Userforgot.findById(userId).lean().exec(function (error, data) {
+    Paymentfailure.findById(userId).lean().exec(function (error, data) {
         if (error) {
             response.status(500).send(error);
             return;
@@ -147,7 +147,7 @@ exports.update = function (request, response) {
                 data['oLang'][reqBody.userSelectedLang] = obj;
             }
 
-            Userforgot.update({'_id':userId}, 
+            Paymentfailure.update({'_id':userId}, 
                 {$set:data} ).exec(function (error, output) {
                 if (error) {
                     response.status(500).send(error);
@@ -164,14 +164,14 @@ exports.update = function (request, response) {
 
 
 /** 
-*Delete currency by IDs
+*Delete Paymentfailure by IDs
 *
 **/
-exports.delCheckedUser = function (request, response) {
+exports.delCheckedPayment = function (request, response) {
 
     var arr = request.query.userId;
     console.log(arr);
-    Userforgot.deleteMany({ _id: { '$in': arr } }).exec(function (err, data) {
+    Paymentfailure.deleteMany({ _id: { '$in': arr } }).exec(function (err, data) {
         if (err) throw err;
         response.json({
             status: 1,

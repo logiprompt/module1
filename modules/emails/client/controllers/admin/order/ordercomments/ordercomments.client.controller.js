@@ -3,21 +3,83 @@
 
   angular
     .module('core')
-    .controller('OrderunholdController', OrderunholdController);
+    .controller('OrdercommentsController', OrdercommentsController);
 
 
 
-    OrderunholdController.$inject = ['$scope','$http','$state','$stateParams', 'Upload'];
+    OrdercommentsController.$inject = ['$scope','$http','$state','$stateParams', 'Upload','ordercommentsService'];
 
-  function OrderunholdController ($scope, $http, $state, $stateParams, Upload) {
+  function OrdercommentsController ($scope, $http, $state, $stateParams, Upload, ordercommentsService) {
 
   $scope.formdata = {};
   $scope.formdata.status ='0';
+  $scope.ordercommentsService=ordercommentsService;
  /////////////////////select/////////////////////////////
 
 ///////////////////////////////////////////////////////
 
+ $scope.currentLang= localStorage.getItem('currentLang');
+  console.log($scope.currentLan)
+  
+  ///////////////////list /////////////////////
+  /*
+    * Function : get Ordercomments
+    * Description : get Ordercomments details
+    * Owner : anju
+    */
 
+  $scope.getOrderComments = function () {
+    console.log(0);
+    $scope.ordercommentsService.getOrderComments().then(function (result) {
+      if (result.statusText = "OK") {
+        $scope.userlist = result.data;
+        //console.log(1);
+        console.log(result.data);
+      } else {
+
+      }
+    });
+  }
+  $scope.getOrderComments();
+
+///////////////////////////////////////////////////////////////
+
+  /*
+       * FUnction : delOrderComments
+       * Description : delete OrderComments id
+       * Owner :anju
+       * 
+       */
+  $scope.delOrderComments = function (userId) {
+
+
+    swal({
+      title: 'Are you sure?',
+      text: "You want to delete this !",
+      type: 'warning',
+      showCancelButton: false,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result) {
+        $scope.ordercommentsService.delOrderComments(userId).then(function (result) {
+          if (result.statusText = "OK") {
+            swal(
+              'Deleted!',
+              'Order Comments has been deleted.',
+              'success'
+            )
+            $state.reload();
+          } else {
+
+          }
+        })
+      }
+    })
+
+  }
+  ///////////////////////////////////////////////////////////////////////
 
 
        
@@ -111,14 +173,14 @@ console.log(checkedValue[0])
   }
   else{
 
-    $scope.editpage[0].setAttribute("href", "/email/editunhold/"+linkid);
+    $scope.editpage[0].setAttribute("href", "/email/editordercomments/"+linkid);
   }
 
 }
 $scope.chk={};
 
 $scope.newpage=function(){
-  $state.go('emailaddunhold');
+  $state.go('emailaddordercomments');
 }
 $scope.editpages=function(){
     var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
@@ -142,6 +204,35 @@ console.log(checkedValue)
   for(var i=0;i<checkedValue.length;i++){
     $scope.chkValue.push(checkedValue[i].value);
   }
+  
+  
+    var userId = $scope.chkValue;
+    console.log(userId);
+    swal({
+      title: 'Are you sure?',
+      text: "You want to delete checked items!",
+      type: 'warning',
+      showCancelButton: false,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result) {
+        $scope.ordercommentsService.delCheckedOrderComments(userId).then(function (result) {
+          if (result.statusText = "OK") {
+            swal(
+              'Deleted!',
+              'Payment Failure has been deleted.',
+              'success'
+            )
+            $state.reload();
+            //  $scope.getUser();
+          } else {
+
+          }
+        })
+      }
+    })
  
 }
 setTimeout(getActionBtns, 1500);         

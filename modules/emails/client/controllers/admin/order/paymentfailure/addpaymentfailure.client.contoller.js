@@ -9,9 +9,10 @@
 
     AddpaymentfailureController.$inject = ['$scope','$http','$state','$stateParams', 'Upload','paymentfailureService'];
 
-  function AddpaymentfailureController ($scope, $http, $state, $stateParams, Upload,paymentfailureService) {
+  function AddpaymentfailureController ($scope, $http, $state, $stateParams, Upload, paymentfailureService) {
 $scope.paymentfailureService=paymentfailureService;
-
+ $scope.formdata = {};
+$scope.status = '0';
 
 
 

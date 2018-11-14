@@ -7,12 +7,13 @@
 
 
 
-    EmailinvoicecommentsController.$inject = ['$scope','$http','$state','$stateParams', 'Upload'];
+    EmailinvoicecommentsController.$inject = ['$scope','$http','$state','$stateParams', 'Upload','invoicecommentsservice'];
 
-  function EmailinvoicecommentsController ($scope, $http, $state, $stateParams, Upload) {
+  function EmailinvoicecommentsController ($scope, $http, $state, $stateParams, Upload,invoicecommentsService) {
 
   $scope.formdata = {};
   $scope.formdata.status ='0';
+  $scope.invoicecommentsService = invoicecommentsService;
  /////////////////////select/////////////////////////////
 
 ///////////////////////////////////////////////////////
@@ -37,6 +38,30 @@ $scope.setasDefault=function(id){
       });
 
 }
+///////////////add invoice comments/////////////////////////////////////
+$scope.addInvoicecomments = function(){
+  if($scope.formdata.$valid && $scope.status!=0){
+  var data = {
+      "name":$scope.name,
+      "subject":$scope.subject,
+      "content":$scope.content,
+      "custom":$scope.custom,
+      "status" :$scope.status
+      }
+    
+  
+    $scope.invoicecommentsService.addInvoicecomments(data).then(function(result){
+      if(result.statusText = "OK"){
+        swal("Success!", "Successfully Created invoice comments!", "success");  
+        $state.go('emailinvoicecreation');
+      }else{
+        swal("error!", "Invoicecomments already exist!", "error");
+      }
+      
+    })
+  }
+    
+  }
 
 /////////////////////////////////////////////////////////////////////////
 

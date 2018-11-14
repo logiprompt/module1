@@ -15,6 +15,8 @@ exports.create = function (req, res) {
 
     var userDetails = req.body;
     console.log(userDetails);
+
+   
     Userforgot.create(userDetails, function (err) {
         if (err) {
             return res.status(400).send({

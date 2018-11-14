@@ -3,17 +3,45 @@
 
   angular
     .module('core')
-    .controller('OrdercreationController', OrdercreationController);
+    .controller('AddOrderprocessController', AddOrderprocessController);
 
 
 
-    OrdercreationController.$inject = ['$scope','$http','$state','$stateParams', 'Upload'];
+    AddOrderprocessController.$inject = ['$scope','$http','$state','$stateParams', 'Upload','orderprocessService'];
 
-  function OrdercreationController ($scope, $http, $state, $stateParams, Upload) {
+  function AddOrderprocessController ($scope, $http, $state, $stateParams, Upload, orderprocessService) {
 
   $scope.formdata = {};
-  $scope.formdata.status ='0';
- /////////////////////select/////////////////////////////
+  $scope.status ='0';
+  $scope.orderprocessService=orderprocessService;
+ /////////////////////insert/////////////////////////////
+ 
+ 
+  $scope.addOrderProcess = function(){
+    
+    if($scope.formdata.$valid && $scope.status!=0){
+    var data = {
+        "name":$scope.name,
+        "subject":$scope.subject,
+        "content":$scope.content,
+        "custom":$scope.custom,
+        "status" :$scope.status
+        }
+      
+    console.log($scope.orderprocessService);
+      $scope.orderprocessService.addOrderProcess(data).then(function(result){
+
+        if(result.statusText = "OK"){
+          swal("Success!", "Successfully added!", "success");  
+          $state.go('emailorderprocess');
+        }else{
+          swal("error!", "Already exist!", "error");
+        }
+        
+      })
+    }
+      
+    }
 
 ///////////////////////////////////////////////////////
 
@@ -111,14 +139,14 @@ console.log(checkedValue[0])
   }
   else{
 
-    $scope.editpage[0].setAttribute("href", "/email/editcreation/"+linkid);
+    $scope.editpage[0].setAttribute("href", "/email/editordercomments/"+linkid);
   }
 
 }
 $scope.chk={};
 
 $scope.newpage=function(){
-  $state.go('emailaddcreation');
+  $state.go('emailaddordercomments');
 }
 $scope.editpages=function(){
     var checkedValue = document.querySelectorAll('.rowtxtchk:checked');

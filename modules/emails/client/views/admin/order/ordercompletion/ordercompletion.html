@@ -64,68 +64,46 @@
                                             <button type="button" ng-click="ins" class="btn waves-effect waves-light btn-sm btn-info btns"> Submit </button>
                                         </div>
                                     </div>
-                                            <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th><input type="checkbox" id="checkAll" class="checkAll" ng-model="checkalltxt" ng-click="chkall()"   />
-                                    <label for="checkAll"></label>ID#</th>
-                                                        <th>Template<br> Name</th>
-                                                        <th>Created<br> Date </th>
-                                                        <th>Modified<br> Date </th>
-                                                        <th>Status</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                
-                                                <tbody>
-                                                   <tr >
-                                                        <td><!-- {{$index+1}} -->
-                                                             <input type="checkbox" id="basic_checkbox_1"  class="rowtxtchk" value="1" ng-click="addchkval(1)" />
-                                    <label for="basic_checkbox_1"></label>
-                                                        1</td>
-                                                        <td>Registration mail 2</td>
-                                                        <td>Aug 15 2018</td>
-                                                        <td>Aug 15 2018</td>
-                                                       
-                                                         <td>Active</td>
-                                                        <td style="width:20% !important;"> 
-                                                           <a class="btn waves-effect waves-light btn-sm btn-info" href="/email/editordercompletion/1">
-                                                                Edit
-                                                              </a>
-                                                             <button class="btn waves-effect waves-light btn-sm btn-danger"  ng-click="del(1)" rel=""  >
-                                                                 Delete
-                                                                </button>
-                                                            
-                                                                                                          
-                                                               
-                                                                </td>
-                                                    </tr>
-
-                                                      <tr >
-                                                        <td><!-- {{$index+1}} -->
-                                                             <input type="checkbox" id="basic_checkbox_2"  class="rowtxtchk" value="2" ng-click="addchkval(2)" />
-                                    <label for="basic_checkbox_2"></label>
-                                                        2</td>
-                                                        <td>Registration mail 1</td>
-                                                        <td>Aug 15 2018</td>
-                                                        <td>Aug 15 2018</td>
-                                                       
-                                                         <td>DE Active</td>
-                                                        <td style="width:20% !important;"> 
-                                                           <a class="btn waves-effect waves-light btn-sm btn-info" href="/email/editordercompletion/2">
-                                                                Edit
-                                                              </a>
-                                                             <button class="btn waves-effect waves-light btn-sm btn-danger"  ng-click="del(1)" rel=""  >
-                                                                 Delete
-                                                                </button>
+                                    <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th><input type="checkbox" id="checkAll" class="checkAll" ng-model="checkalltxt" ng-click="chkall()"   />
+                            <label for="checkAll"></label>ID#</th>
+                                                <th>Template<br> Name</th>
+                                                <th>Created<br> Date </th>
+                                                <th>Modified<br> Date </th>
+                                                <th>Status</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        
+                                        <tbody>
+                                           <tr ng-repeat="list in holdlist">
+                                            <td><!-- {{$index+1}} -->
+                                                <input type="checkbox" id="basic_checkbox_{{$index+1}}"  class="rowtxtchk" value="{{list._id}}" ng-click="addchkval(list._id)" />
+                                   <label for="basic_checkbox_{{$index+1}}"></label>
+                                   {{$index+1}}</td>
+                                   <td> {{list.oLang[currentLan].name ? list.oLang[currentLan].name :list.name}}</td>
+                                   <td>{{list.created}}</td>
+                                   <td>{{list.modified}}</td>
                                                            
-                                                                                                          
-                                                               
-                                                                </td>
-                                                    </tr>
-                                                    
-                                                </tbody>
-                                            </table>
+                                   <td><span ng-if="list.status==1">Active</span><span ng-if="list.status==2">De-Active</span></td>
+                                   <td style="width:20% !important;"> 
+                                      <a class="btn waves-effect waves-light btn-sm btn-info" href="/email/editordercompletion/{{list._id}}">
+                                           Edit
+                                         </a>
+                                        <button type="button" class="btn waves-effect waves-light btn-sm btn-danger"  ng-click="delOrderCompletion(list._id)" rel=""  >
+                                            Delete
+                                           </button>
+                                       
+                                                                                     
+                                          
+                                           </td>
+                                                        </tr>
+                                              
+                                            
+                                        </tbody>
+                                    </table>
                                         </div>
                                     </div>
                                 </div>

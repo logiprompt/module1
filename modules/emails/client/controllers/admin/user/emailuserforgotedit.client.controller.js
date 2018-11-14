@@ -17,13 +17,7 @@
     $scope.userforgotService = userforgotService;
 
     /////////////////////select/////////////////////////////
-    ////////////////////////ip fetch//////////////////////////////
-
-    $http.get("https://ipinfo.io/").then(function (response) {
-      $scope.ip = response.data.ip;
-
-    });
-    ///////////////////////////////////////////////////////
+   
 
    $scope.currentLang= localStorage.getItem('currentLang');
     $scope.setasDefault = function (id) {

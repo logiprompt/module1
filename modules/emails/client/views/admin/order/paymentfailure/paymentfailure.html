@@ -89,10 +89,10 @@
                                                        
                                                          <td><span ng-if="list.status==1">Active</span><span ng-if="list.status==2">De-Active</span></td>
                                                         <td style="width:20% !important;"> 
-                                                           <a class="btn waves-effect waves-light btn-sm btn-info" href="/email/editpaymentfailure/1">
+                                                           <a class="btn waves-effect waves-light btn-sm btn-info" href="/email/editpaymentfailure/{{list._id}}">
                                                                 Edit
                                                               </a>
-                                                             <button class="btn waves-effect waves-light btn-sm btn-danger"  ng-click="del(1)" rel=""  >
+                                                             <button class="btn waves-effect waves-light btn-sm btn-danger"  ng-click="delPaymentFailure(list._id)" rel=""  >
                                                                  Delete
                                                                 </button>
                                                             

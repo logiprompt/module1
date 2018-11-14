@@ -55,7 +55,9 @@ var NoStockSchema = new Schema({
     type: String,
    
   },
-  olang :{	  
+  oLang :{	
+    type:Object,
+    default:{}  
   }
 
 });

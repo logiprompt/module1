@@ -3,22 +3,23 @@
 
   angular
     .module('core')
-    .controller('OrderpaymentfailureController', OrderpaymentfailureController);
+    .controller('OrdercancelationController', OrdercancelationController);
 
 
 
-    OrderpaymentfailureController.$inject = ['$scope','$http','$state','$stateParams', 'Upload'];
+    OrdercancelationController.$inject = ['$scope','$http','$state','$stateParams', 'Upload','cancelationService'];
 
-  function OrderpaymentfailureController ($scope, $http, $state, $stateParams, Upload) {
+  function OrdercancelationController ($scope, $http, $state, $stateParams, Upload,cancelationService) {
 
   $scope.formdata = {};
   $scope.formdata.status ='0';
+  $scope.cancelationService = cancelationService;
  /////////////////////select/////////////////////////////
 
 ///////////////////////////////////////////////////////
 
 
-
+$scope.currentLang= localStorage.getItem('currentLang');
 
        
 $scope.setasDefault=function(id){
@@ -79,8 +80,102 @@ $scope.iconw=function(){
              }
 
             // $(document).find('#myTable').DataTable();
+//////////////////list /////////////////////
+ /*
+	 * Function : getordercreation
+	 * Description : get ordercreation details
+	 * Owner : jeeja
+	 */
+
+  $scope.getCancelation  = function(){
+    //console.log(0);
+    $scope.cancelationService.getCancelation().then(function(result){
+     if(result.statusText = "OK"){
+       $scope.userlist = result.data;
+//console.log(1);
+//console.log(result.data);
+      }else{
+        
+      }
+   });
+  }
+  $scope.getCancelation ();
+ //////////////////////////////////
+
+  /*
+	 *
+   *  Function : addordercreation
+	 * Description : Add ordercreation details
+	 * Owner : jeeja
+   * 
+	 */
+  
+  $scope.addCancelation = function()
+  {    
+   // console.log(555555555);
+    if($scope.formdata.$valid)
+    {
+      var data={
+                  "name":$scope.name,
+                  "subject":$scope.subject,
+                  "content":$scope.content,
+                  "custom":$scope.custom,
+                  "status" :$scope.status,
+                  "oLang":{}
+                }    
+      $scope.cancelationService.addCancelation(data).then(function(result)
+      {
+        if(result.statusText = "OK")
+        {
+				  swal("Success!", "Successfully added!", "success");  
+				  $state.go('emailcancelation');
+        }
+        else
+        {
+				  swal("error!", "Already exist!", "error");
+			  }			  
+		  })
+		}
+  }
 
 
+///////////////////////////////////////////////////////////////////////
+
+/*
+	   * FUnction : delOrderCreation
+	   * Description : delete OrderCreation By Id
+	   * Owner :jeeja
+	   */
+    $scope.delCancelation  = function(userId){
+		   
+		   
+      swal({
+              title: 'Are you sure?',
+              text: "You want to delete this user!",
+              type: 'warning',
+              showCancelButton: false,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+              if(result){
+              $scope.cancelationService.delCancelation (userId).then(function(result){
+              if(result.statusText = "OK"){
+
+              swal('Deleted!',
+                   'User has been deleted.',
+                   'success')
+
+              $state.reload();
+               }else{
+                 
+               }
+            })
+            }
+            })
+     
+    }
+///////////////////////////////////////////////////////////////////////
 
 
  function getActionBtns(){
@@ -111,14 +206,14 @@ console.log(checkedValue[0])
   }
   else{
 
-    $scope.editpage[0].setAttribute("href", "/email/editpaymentfailure/"+linkid);
+    $scope.editpage[0].setAttribute("href", "/email/editcancelation/"+linkid);
   }
 
 }
 $scope.chk={};
 
 $scope.newpage=function(){
-  $state.go('emailaddpaymentfailure');
+  $state.go('emailaddcancelation');
 }
 $scope.editpages=function(){
     var checkedValue = document.querySelectorAll('.rowtxtchk:checked');

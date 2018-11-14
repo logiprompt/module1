@@ -24,7 +24,7 @@ exports.getTopMenuList = function(request, response) {
    
     Acl.find({userID:request.query.role})
     .populate({ path: 'menuIDs', model: 'Sys_adminMenu' ,
-    populate: { path: 'menuIDs', model: 'Sys_adminMenu' }})
+    populate: { path: 'menuIDs', model: 'Sys_adminMenu'}})
    
     .exec(function (err, data) {
         

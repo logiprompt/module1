@@ -60,17 +60,17 @@ function PaymentFailureController($scope, $http, $state, $stateParams, Upload, p
 ///////////////////////////////////////////////////////////////
 
   /*
-       * FUnction : deluserforgot
-       * Description : delete userforgot id
-       * Owner :jeeja
+       * FUnction : delPaymentFailure
+       * Description : delete Payment id
+       * Owner :anju
        * 
        */
-  $scope.delUserForgot = function (userId) {
+  $scope.delPaymentFailure = function (userId) {
 
 
     swal({
       title: 'Are you sure?',
-      text: "You want to delete this user!",
+      text: "You want to delete this !",
       type: 'warning',
       showCancelButton: false,
       confirmButtonColor: '#3085d6',
@@ -78,11 +78,11 @@ function PaymentFailureController($scope, $http, $state, $stateParams, Upload, p
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result) {
-        $scope.userforgotService.delUserForgot(userId).then(function (result) {
+        $scope.paymentfailureService.delPaymentFailure(userId).then(function (result) {
           if (result.statusText = "OK") {
             swal(
               'Deleted!',
-              'User has been deleted.',
+              'Payment Failure has been deleted.',
               'success'
             )
             $state.reload();
@@ -127,14 +127,14 @@ function PaymentFailureController($scope, $http, $state, $stateParams, Upload, p
     }
     else {
 
-      $scope.editpage[0].setAttribute("href", "/email/editforgetpass/" + linkid);
+      $scope.editpage[0].setAttribute("href", "/email/editpaymentfailure/" + linkid);
     }
 
   }
   $scope.chk = {};
 
   $scope.newpage = function () {
-    $state.go('emailaddforgetpass');
+    $state.go('emailaddpaymentfailure');
   }
   $scope.editpages = function () {
     var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
@@ -171,11 +171,11 @@ function PaymentFailureController($scope, $http, $state, $stateParams, Upload, p
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result) {
-        $scope.userforgotService.delCheckedUserForget(userId).then(function (result) {
+        $scope.paymentfailureService.delCheckedPaymentFailure(userId).then(function (result) {
           if (result.statusText = "OK") {
             swal(
               'Deleted!',
-              'User has been deleted.',
+              'Payment Failure has been deleted.',
               'success'
             )
             $state.reload();

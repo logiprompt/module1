@@ -59,10 +59,10 @@
 	  * Description : Delete details by ids
 	
 	  */
-	 orderhold.delCheckedorderhold= function(userId){
+	 orderhold.delCheckedOrderHold= function(userId){
 		//console.log(userId);		  
 	   return $http({
-			  url: '/api/orderhold/delCheckedorderhold',
+			  url: '/api/orderhold/delCheckedOrderHold',
 			  method: "DELETE",
 			  params:{'userId':userId}
 		  });
@@ -85,8 +85,8 @@
 	//  }
 
 	 
-	orderhold.getorderholdById = function(userId){
-		// console.log(userId);
+	orderhold.getOrderHoldById = function(userId){
+		 console.log(userId);
 		return $http({
 			   url: '/api/orderholdbyid',
 			   method: "GET",
@@ -97,7 +97,7 @@
 	 /*
 	  * 
 	  */
-	 orderhold.updateorderhold = function(userId,data){
+	 orderhold.updateOrderHold = function(userId,data){
 		//console.log(userId);
 		 return $http({
 		        url: '/api/orderholdbyid',

@@ -19,8 +19,8 @@ module.exports = function(app) {
    // .delete(userforgot.delete);
 
   //   console.log(ordercreation);
-  // app.route('/api/orderhold/delCheckedOrderCreation').all()
-  //   .delete(ordercreation.delCheckedOrdercreate);
+   app.route('/api/orderhold/delCheckedOrderHold').all()
+  .delete(orderhold.delCheckedOrderHold);
 
   // Finish by binding the Email middleware
  app.route('/api/orderholdbyid').all()

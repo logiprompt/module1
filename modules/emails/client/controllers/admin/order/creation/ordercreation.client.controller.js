@@ -85,7 +85,7 @@ $scope.iconw=function(){
  /*
 	 * Function : getordercreation
 	 * Description : get ordercreation details
-	 * Owner : jeeja
+
 	 */
 
   $scope.getOrderCreation = function(){
@@ -106,7 +106,7 @@ $scope.iconw=function(){
  /*
 	 * Function : addordercreation
 	 * Description : Add ordercreation details
-	 * Owner : jeeja
+	
 	 */
   $scope.addOrderCreation = function(){
     

@@ -191,7 +191,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/order/paymentfailure/edit.html',
-    controller: 'OrderpaymentfailureController',
+    controller: 'EditPaymentFailureController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -268,13 +268,13 @@
   } 
 })
 .state('emailedithold', {
-  url: '/email/edithold/:id',
+  url: '/email/editorderhold/:id',
  // controllerAs: 'vm',
   views:{
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/order/hold/edit.html',
-    controller: 'OrderholdController',
+     controller: 'OrderholdeditController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -289,33 +289,33 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/order/unhold/unhold.html',
-    controller: 'OrderunholdController',
+    controller: 'OrderunholdlistController',
     controllerAs: 'vm',
     },
      footer:adminfooter
   } 
 })
 .state('emailaddunhold', {
-  url: '/email/addunhold',
+  url: '/email/order/unholdcreation',
  // controllerAs: 'vm',
   views:{
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/order/unhold/addunhold.html',
-    controller: 'OrderunholdController',
+    controller: 'OrderUnholdController',
     controllerAs: 'vm',
     },
      footer:adminfooter
   } 
 })
 .state('emaileditunhold', {
-  url: '/email/editunhold/:id',
+  url: '/email/order/editunhold/:id',
  // controllerAs: 'vm',
   views:{
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/order/unhold/edit.html',
-    controller: 'OrderunholdController',
+    controller: 'OrderUnholdeditController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -343,7 +343,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/order/ordercomments/addordercomments.html',
-    controller: 'OrdercommentsController',
+    controller: 'AddOrdercommentsController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -356,7 +356,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/order/ordercomments/edit.html',
-    controller: 'OrdercommentsController',
+    controller: 'EditOrdercommentsController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -371,7 +371,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/order/cancelation/cancelation.html',
-    controller: 'CancelationController',
+    controller: 'OrdercancelationlistController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -384,7 +384,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/order/cancelation/addcancelation.html',
-    controller: 'CancelationController',
+    controller: 'OrdercancelationController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -397,7 +397,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/order/cancelation/edit.html',
-    controller: 'CancelationController',
+    controller: 'OrdercancelationeditController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -426,7 +426,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/order/orderprocess/addorderprocess.html',
-    controller: 'OrderprocessController',
+    controller: 'AddOrderprocessController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -455,7 +455,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/order/ordercompletion/ordercompletion.html',
-    controller: 'OrdercompletionsController',
+    controller: 'OrdercompletionlistController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -468,7 +468,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/order/ordercompletion/addordercompletion.html',
-    controller: 'OrdercompletionsController',
+    controller: 'OrderCompletionaddController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -481,7 +481,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/order/ordercompletion/edit.html',
-    controller: 'OrdercompletionsController',
+    controller: 'OrdercompletioneditController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -522,7 +522,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/invoice/invoicecreation/edit.html',
-    controller: 'EmailinvoicecreationController',
+    controller: 'EmailinvoicecreationeditController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -580,7 +580,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/creditmemo/memocreation/memocreation.html',
-    controller: 'EmailmemocreationController',
+    controller: 'MemoCreationListController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -606,7 +606,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/creditmemo/memocreation/edit.html',
-    controller: 'EmailmemocreationController',
+    controller: 'EmailMemoCreationEdit',
     controllerAs: 'vm',
     },
      footer:adminfooter

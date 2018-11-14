@@ -41,27 +41,27 @@
 	
 
 	 /*
-	  * Function : deleteUser
-	  * Description : Delete UserForget details by id
-	  * owner : prabin
+	  * Function : delete PaymentFailure
+	  * Description : Delete PaymentFailure details by id
+	  * owner : anju
 	  */
-	 userforgot.delUserForgot = function(userId){		  
+	 userforgot.delPaymentFailure = function(userId){		  
 		 return $http({
-			url: '/api/userforgotbyid',
+			url: '/api/paymentfailurebyid',
 				method: "DELETE",
 				params:{'userId':userId}
 		    });
 		}
 
 			 /*
-	  * Function : delCheckedUserForget
+	  * Function : delCheckedPaymentFailure
 	  * Description : Delete details by ids
 	  * owner : jeeja
 	  */
-	 userforgot.delCheckedUserForget= function(userId){
+	 userforgot.delCheckedPaymentFailure= function(userId){
 		console.log(userId);		  
 	   return $http({
-			  url: '/api/userforgot/delCheckedUserForgot',
+			  url: '/api/paymentfailure/delCheckedPaymentFailure',
 			  method: "DELETE",
 			  params:{'userId':userId}
 		  });
@@ -84,10 +84,10 @@
 	//  }
 
 	 
-	 userforgot.getUserForgotById = function(userId){
+	 userforgot.getPaymentFailureById = function(userId){
 		 console.log(userId);
 		return $http({
-			   url: '/api/userforgotbyid',
+			   url: '/api/paymentfailurebyid',
 			   method: "GET",
 			   params:{'userId':userId}
 		   });
@@ -95,10 +95,10 @@
 	 /*
 	  * 
 	  */
-	 userforgot.updateUserForgot = function(userId,data){
+	 userforgot.updatePaymentFailure = function(userId,data){
 		 console.log(userId);
 		 return $http({
-		        url: '/api/userforgotbyid',
+		        url: '/api/paymentfailurebyid',
 		        method: "PUT", 
 		        data:data
 		    });
