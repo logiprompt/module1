@@ -141,8 +141,8 @@ var adminfooter={
         views:{
           header:adminheader,
           content: { 
-           templateUrl: '/modules/cms/client/views/admin/page/edit.html',
-          controller: 'EditPageController',
+           templateUrl: '/modules/cms/client/views/admin/page/addpage.html',
+          controller: 'PageController',
           controllerAs: 'vm',
           },
            footer:adminfooter

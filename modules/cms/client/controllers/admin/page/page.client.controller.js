@@ -16,6 +16,7 @@
   $scope.formdata.page_status = "1";
   $scope.formdata.page_displayinmenu = "2";
   
+ 
   
   $scope.generateSlgURL = function(){
 	   	 var replaceSpacesText = $scope.formdata.page_title;
@@ -36,6 +37,18 @@ $scope.CmsService.getPageItems().then(function (result) {
 $scope.getPageItems();
 
 
+$scope.getPageDetails = function(id){
+	CmsService.getPageDetails(id).then(function(result){
+		  if(result.statusText = "OK"){
+			  $scope.formdata = result.data
+			  console.log($scope.formdata);
+		  }
+	  })
+}
+if($stateParams.id){
+	  $scope.getPageDetails($stateParams.id);
+}
+
 $scope.deletePage = function (pageId) {
     $scope.CmsService.deletePage(pageId).then(function (result) {
       $scope.getPageItems();
@@ -44,7 +57,26 @@ $scope.deletePage = function (pageId) {
 
 
 $scope.addNewPage = function () {
-	$scope.formdata.page_content = CKEDITOR.instances.editor1.getData().replace(/^.*?<body[^>]*>(.*?)<\/body>.*?$/i,"$1");;
+	$scope.formdata.page_content = CKEDITOR.instances.editor1.getData().replace(/^.*?<body[^>]*>(.*?)<\/body>.*?$/i,"$1");
+	
+	if($stateParams.id){
+		  
+	  CmsService.updatePage($stateParams.id,$scope.formdata).then(function(result){
+		  if(result.statusText = "OK"){
+			  $location.path('/cms/page');
+ 				 swal( 'Updated!',
+ 	                     'Page Updated sucessfully',
+ 	                     'success'
+ 	                   )
+ 				$state.go('post');
+ 				  }else{
+ 					swal( 'error!',
+	      	                   'Error while creating new post ! Please try again later.',
+	      	                   'error'
+	      	                )
+ 				  }
+		  })
+	  }else{
     $scope.CmsService.addPage($scope.formdata).then(function (result) {
     	 if(result.statusText = "OK"){
     		 $location.path('/cms/page');
@@ -61,6 +93,7 @@ $scope.addNewPage = function () {
 				  }
       
     })
+	  }
   }
  /////////////////////select/////////////////////////////
 

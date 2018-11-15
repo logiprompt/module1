@@ -166,10 +166,10 @@ cms.getPageDetails = function (pageId) {
 }
 
 
-cms.updatePage = function (data) {
+cms.updatePage = function (pageId,data) {
     return $http({
-        url: '/api/cms/page/updatePage',
-        method: "POST",
+        url: '/api/cms/page/updatePage/'+pageId,
+        method: "PUT",
         data: data
     });
 }

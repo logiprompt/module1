@@ -31,7 +31,7 @@ module.exports = function(app) {
   
   app.route('/api/cms/page/addPage').post(cms.addPage);
 
-  app.route('/api/cms/page/updatePage').post(cms.updatePage);
+  app.route('/api/cms/page/updatePage/:pageId').put(cms.updatePage);
 
   app.route('/api/cms/page/deletePage/:pageId').delete(cms.deletePage);
 
