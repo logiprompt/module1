@@ -211,8 +211,55 @@
 					   };
 				   extrafieldObj.olang.en =  eng  ;
 				   }
-			   }else {
-				   if($scope.extrafieldform_tb_extrafield.$valid){
+			   }else if(type == 'selectlist'){
+				   if($scope.extrafieldform_sl_extrafield.$valid){
+					   extrafieldObj.groupid = $stateParams.groupid ;
+					   extrafieldObj.status = $scope.extrafield_sl_status ? $scope.extrafield_sl_status : '';
+					   extrafieldObj.name = $scope.extrafield_sl_name;
+					   extrafieldObj.label = $scope.extrafield_sl_label;
+					   extrafieldObj.size = $scope.extrafield_sl_size ? $scope.extrafield_sl_size : '';
+					   extrafieldObj.classname = $scope.extrafield_sl_class ? $scope.extrafield_sl_class : '';
+					   extrafieldObj.style = $scope.extrafield_sl_style ? $scope.extrafield_sl_style :'';
+					   extrafieldObj.defvalue = $scope.extrafield_sl_defvalue ? $scope.extrafield_sl_defvalue : '';
+					   extrafieldObj.type = $scope.extrafield_sl_type ? $scope.extrafield_sl_type : type;
+					   extrafieldObj.FEvisibility = $scope.extrafield_sl_FEvisibility ? $scope.extrafield_sl_FEvisibility : '';
+					   extrafieldObj.position = $scope.extrafield_sl_position ? $scope.extrafield_sl_position : '';
+					   extrafieldObj.required = $scope.extrafield_sl_required ? $scope.extrafield_sl_required : '';
+					   extrafieldObj.cols = $scope.extrafield_sl_cols;
+					   extrafieldObj.rows = $scope.extrafield_sl_rows;
+					   extrafieldObj.values = $scope.values;
+					   var eng = {
+							   'name' : $scope.extrafield_sl_name,
+							   'label' : $scope.extrafield_sl_label,
+							   'values' : $scope.values
+						   };
+					   extrafieldObj.olang.en =  eng  ;
+					   }
+				   }else if(type == 'yes') {
+					   if($scope.extrafieldform_yes_extrafield.$valid){
+						   extrafieldObj.groupid = $stateParams.groupid ;
+						   extrafieldObj.status = $scope.extrafield_yes_status ? $scope.extrafield_yes_status : '';
+						   extrafieldObj.name = $scope.extrafield_yes_name;
+						   extrafieldObj.label = $scope.extrafield_yes_label;
+						   extrafieldObj.size = $scope.extrafield_yes_size ? $scope.extrafield_yes_size : '';
+						   extrafieldObj.classname = $scope.extrafield_yes_class ? $scope.extrafield_yes_class : '';
+						   extrafieldObj.style = $scope.extrafield_yes_style ? $scope.extrafield_yes_style :'';
+						   extrafieldObj.defvalue = $scope.extrafield_yes_defvalue ? $scope.extrafield_tb_defvalue : '';
+						   extrafieldObj.type = $scope.extrafield_yes_type ? $scope.extrafield_yes_type : 'yes';
+						   extrafieldObj.FEvisibility = $scope.extrafield_yes_FEvisibility ? $scope.extrafield_yes_FEvisibility : '';
+						   extrafieldObj.position = $scope.extrafield_yes_position ? $scope.extrafield_yes_position : '';
+						   extrafieldObj.required = $scope.extrafield_yes_required ? $scope.extrafield_yes_required : '';
+						   extrafieldObj.cols = $scope.extrafield_yes_cols;
+						   extrafieldObj.rows = $scope.extrafield_yes_rows;
+						   extrafieldObj.values = $scope.values;
+						   var eng = {
+								   'name' : $scope.extrafield_yes_name,
+								   'label' : $scope.extrafield_yes_label,
+								   'values' : $scope.values
+							   };
+						   extrafieldObj.olang.en =  eng  ;
+						   }
+					   }else if($scope.extrafieldform_tb_extrafield.$valid){
 				   extrafieldObj.groupid = $stateParams.groupid ;
 				   extrafieldObj.status = $scope.extrafield_tb_status ? $scope.extrafield_tb_status : '';
 				   extrafieldObj.name = $scope.extrafield_tb_name;
@@ -235,7 +282,7 @@
 					   };
 				   extrafieldObj.olang.en =  eng  ;
 				   }
-			   }
+			   
 			   
 			   if($scope.editExtrafield){
 				   
@@ -352,7 +399,42 @@
  				 $scope.values = [{id: '1'}];
  				$scope.olang = [];
  				$scope.extrafieldform_dd_extrafield.$submitted = false;
-		   }else {
+		   }else if(type == 'selectlist'){
+				  $scope.extrafield_sl_label = '';
+	 				$scope.extrafield_sl_name = '';
+	 				$scope.extrafield_sl_size = '';
+	 				$scope.extrafield_sl_class = '';
+	 				$scope.extrafield_sl_style = '';
+	 				$scope.extrafield_sl_defvalue = '';
+	 				$scope.extrafield_sl_type = '';
+	 				$scope.extrafield_sl_FEvisibility = '';
+	 				$scope.extrafield_sl_position = '';
+	 				$scope.extrafield_sl_status = '';
+	 				$scope.extrafield_sl_required = '';
+	 				$scope.extrafield_sl_cols = '';
+	 				$scope.extrafield_sl_rows = '';
+	 				 $scope.values = [{id: '1'}];
+	 				$scope.olang = [];
+	 				$scope.extrafieldform_sl_extrafield.$submitted = false;
+			   }else if(type == 'yes'){
+				   
+				   $scope.extrafield_yes_label = '';
+	 				$scope.extrafield_yes_name = '';
+	 				$scope.extrafield_yes_size = '';
+	 				$scope.extrafield_yes_class = '';
+	 				$scope.extrafield_yes_style = '';
+	 				$scope.extrafield_yes_defvalue = '';
+	 				$scope.extrafield_yes_type = 'yes';
+	 				$scope.extrafield_yes_FEvisibility = '';
+	 				$scope.extrafield_yes_position = '';
+	 				$scope.extrafield_yes_status = '';
+	 				$scope.extrafield_yes_required = '';
+	 				$scope.extrafield_yes_cols = '';
+	 				$scope.extrafield_yes_rows = '';
+	 				 $scope.values = [{id: '1'}];
+	 				$scope.olang = [];
+	 				$scope.extrafieldform_yes_extrafield.$submitted = false;
+			   }else {
 			  $scope.extrafield_tb_label = '';
  				$scope.extrafield_tb_name = '';
  				$scope.extrafield_tb_size = '';
@@ -387,6 +469,7 @@
 		   $('.nav-link.dropdown').removeClass('displaynone');
 		   $('.nav-link.checkbox').removeClass('displaynone');
 		   $('.nav-link.radio').removeClass('displaynone');
+		   $('.nav-link.selectlist').addClass('displaynone');
 	   
 		   if(selectedField.type == 'textarea'){
 			   $scope.extrafield_ta_status = selectedField.status ? selectedField.status.toString() : "0";
@@ -410,6 +493,7 @@
 				   $('.nav-link.dropdown').addClass('displaynone');
 				   $('.nav-link.checkbox').addClass('displaynone');
 				   $('.nav-link.radio').addClass('displaynone');
+				   $('.nav-link.selectlist').addClass('displaynone');
 			   }, 10);
 			   
 			   
@@ -431,6 +515,7 @@
 			   $('.nav-link.dropdown').addClass('displaynone');
 			   $('.nav-link.checkbox').addClass('displaynone');
 			   $('.nav-link.textarea').addClass('displaynone');
+			   $('.nav-link.selectlist').addClass('displaynone');
 			   
 		   }else if(selectedField.type == 'checkbox'){
 			   $scope.extrafield_cb_status = selectedField.status ? selectedField.status.toString() : "0";
@@ -451,6 +536,7 @@
 			   $('.nav-link.dropdown').addClass('displaynone');
 			   $('.nav-link.radio').addClass('displaynone');
 			   $('.nav-link.textarea').addClass('displaynone');
+			   $('.nav-link.selectlist').addClass('displaynone');
 			   
 		   }else if(selectedField.type == 'dropdown'){
 			   $scope.extrafield_dd_status = selectedField.status ? selectedField.status.toString() : "0";
@@ -468,6 +554,48 @@
 			   
 			   $('.nav-link.dropdown').click();			   
 			   $('.nav-link.textbox').addClass('displaynone');
+			   $('.nav-link.checkbox').addClass('displaynone');
+			   $('.nav-link.radio').addClass('displaynone');
+			   $('.nav-link.textarea').addClass('displaynone');
+			   $('.nav-link.selectlist').addClass('displaynone');
+			   
+		   }else if(selectedField.type == 'selectlist'){
+			   $scope.extrafield_sl_status = selectedField.status ? selectedField.status.toString() : "0";
+			   $scope.extrafield_sl_name = selectedField.name;
+			   $scope.extrafield_sl_label = selectedField.label;
+			   $scope.extrafield_sl_size = selectedField.size ? selectedField.size.toString() : '';
+			   $scope.extrafield_sl_class = selectedField.classname;
+			   $scope.extrafield_sl_style = selectedField.style;
+			   $scope.extrafield_sl_defvalue = selectedField.defvalue;
+			   $scope.extrafield_sl_type = selectedField.type;
+			   $scope.extrafield_sl_FEvisibility = selectedField.FEvisibility;
+			   $scope.extrafield_sl_position = selectedField.position;
+			   $scope.extrafield_sl_required = selectedField.required;
+			   $scope.values = selectedField.values;
+			   
+			   $('.nav-link.selectlist').click();	
+			   $('.nav-link.dropdown').addClass('displaynone');
+			   $('.nav-link.textbox').addClass('displaynone');
+			   $('.nav-link.checkbox').addClass('displaynone');
+			   $('.nav-link.radio').addClass('displaynone');
+			   $('.nav-link.textarea').addClass('displaynone');
+			   $('.nav-link.selectlist').addClass('displaynone');
+			   
+		   }else if(selectedField.type == 'yes') {
+			   $scope.extrafield_yes_status = selectedField.status ? selectedField.status.toString() : "0";
+			   $scope.extrafield_yes_name = selectedField.name;
+			   $scope.extrafield_yes_label = selectedField.label;
+			   $scope.extrafield_yes_class = selectedField.classname;
+			   $scope.extrafield_yes_style = selectedField.style;
+			   $scope.extrafield_yes_type = selectedField.type;
+			   $scope.extrafield_yes_FEvisibility = selectedField.FEvisibility;
+			   $scope.extrafield_yes_required = selectedField.required;
+			   $scope.values = selectedField.values;
+			   
+			   $('.nav-link.yes').click();
+			   $('.nav-link.textbox').addClass('displaynone');
+			   $('.nav-link.selectlist').addClass('displaynone');
+			   $('.nav-link.dropdown').addClass('displaynone');
 			   $('.nav-link.checkbox').addClass('displaynone');
 			   $('.nav-link.radio').addClass('displaynone');
 			   $('.nav-link.textarea').addClass('displaynone');
@@ -491,6 +619,7 @@
 			   $('.nav-link.checkbox').addClass('displaynone');
 			   $('.nav-link.radio').addClass('displaynone');
 			   $('.nav-link.textarea').addClass('displaynone');
+			   $('.nav-link.selectlist').addClass('displaynone');
 			   
 		   }	   
 		   
