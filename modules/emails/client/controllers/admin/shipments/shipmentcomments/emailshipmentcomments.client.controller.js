@@ -3,21 +3,83 @@
 
   angular
     .module('core')
-    .controller('EmailmemocommentsController', EmailmemocommentsController);
+    .controller('EmailshipmentcommentsController', EmailshipmentcommentsController);
 
 
 
-    EmailmemocommentsController.$inject = ['$scope','$http','$state','$stateParams', 'Upload'];
+    EmailshipmentcommentsController.$inject = ['$scope','$http','$state','$stateParams', 'Upload','shipmentcommentsService'];
 
-  function EmailmemocommentsController ($scope, $http, $state, $stateParams, Upload) {
+  function EmailshipmentcommentsController ($scope, $http, $state, $stateParams, Upload, shipmentcommentsService) {
 
   $scope.formdata = {};
   $scope.formdata.status ='0';
+  $scope.shipmentcommentsService=shipmentcommentsService;
  /////////////////////select/////////////////////////////
 
 ///////////////////////////////////////////////////////
 
+ $scope.currentLang= localStorage.getItem('currentLang');
+  console.log($scope.currentLan)
+  
+  ///////////////////list /////////////////////
+  /*
+    * Function : get shipmentcomments
+    * Description : get shipmentcomments details
+    * Owner : anju
+    */
 
+  $scope.getShipmentComments = function () {
+    console.log(0);
+    $scope.shipmentcommentsService.getShipmentComments().then(function (result) {
+      if (result.statusText = "OK") {
+        $scope.userlist = result.data;
+        //console.log(1);
+        console.log(result.data);
+      } else {
+
+      }
+    });
+  }
+  $scope.getShipmentComments();
+
+///////////////////////////////////////////////////////////////
+
+  /*
+       * FUnction : delshipmentcomments
+       * Description : delete shipmentcomments id
+       * Owner :anju
+       * 
+       */
+  $scope.delShipmentComments = function (userId) {
+
+
+    swal({
+      title: 'Are you sure?',
+      text: "You want to delete this !",
+      type: 'warning',
+      showCancelButton: false,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result) {
+        $scope.shipmentcommentsService.delShipmentComments(userId).then(function (result) {
+          if (result.statusText = "OK") {
+            swal(
+              'Deleted!',
+              'Shipment Comments has been deleted.',
+              'success'
+            )
+            $state.reload();
+          } else {
+
+          }
+        })
+      }
+    })
+
+  }
+  ///////////////////////////////////////////////////////////////////////
 
 
        
@@ -104,21 +166,21 @@ $scope.editpage[0].removeAttribute("href");
 }
 $scope.addchkval=function(linkid){
   var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-// console.log(linkid)
-// console.log(checkedValue[0])
+console.log(linkid)
+console.log(checkedValue[0])
   if(checkedValue.length>1){
   $scope.editpage[0].removeAttribute("href");
   }
   else{
 
-    $scope.editpage[0].setAttribute("href", "/email/editmemocomments/"+linkid);
+    $scope.editpage[0].setAttribute("href", "/email/editshipmentcomments/"+linkid);
   }
 
 }
 $scope.chk={};
 
 $scope.newpage=function(){
-  $state.go('emailaddmemocomments');
+  $state.go('emailaddshipmentcomments');
 }
 $scope.editpages=function(){
     var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
@@ -142,6 +204,35 @@ console.log(checkedValue)
   for(var i=0;i<checkedValue.length;i++){
     $scope.chkValue.push(checkedValue[i].value);
   }
+  
+  
+    var userId = $scope.chkValue;
+    console.log(userId);
+    swal({
+      title: 'Are you sure?',
+      text: "You want to delete checked items!",
+      type: 'warning',
+      showCancelButton: false,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result) {
+        $scope.shipmentcommentsService.delCheckedShipmentComments(userId).then(function (result) {
+          if (result.statusText = "OK") {
+            swal(
+              'Deleted!',
+              'Shipment Comments has been deleted.',
+              'success'
+            )
+            $state.reload();
+            //  $scope.getUser();
+          } else {
+
+          }
+        })
+      }
+    })
  
 }
 setTimeout(getActionBtns, 1500);         

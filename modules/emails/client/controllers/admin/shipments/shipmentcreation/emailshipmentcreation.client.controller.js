@@ -7,13 +7,80 @@
 
 
 
-    EmailshipmentcreationController.$inject = ['$scope','$http','$state','$stateParams', 'Upload'];
+    EmailshipmentcreationController.$inject = ['$scope','$http','$state','$stateParams', 'Upload','shipmentcreationService'];
 
-  function EmailshipmentcreationController ($scope, $http, $state, $stateParams, Upload) {
+  function EmailshipmentcreationController ($scope, $http, $state, $stateParams, Upload, shipmentcreationService) {
 
   $scope.formdata = {};
   $scope.formdata.status ='0';
+  $scope.shipmentcreationService=shipmentcreationService;
  /////////////////////select/////////////////////////////
+
+///////////////////////////////////////////////////////
+
+ $scope.currentLang= localStorage.getItem('currentLang');
+  console.log($scope.currentLan)
+  
+  ///////////////////list /////////////////////
+  /*
+    * Function : get shipmentcreation
+    * Description : get shipmentcreation details
+    * Owner : anju
+    */
+
+  $scope.getShipmentCreation = function () {
+    console.log(0);
+    $scope.shipmentcreationService.getShipmentCreation().then(function (result) {
+      if (result.statusText = "OK") {
+        $scope.userlist = result.data;
+        //console.log(1);
+        console.log(result.data);
+      } else {
+
+      }
+    });
+  }
+  $scope.getShipmentCreation();
+
+///////////////////////////////////////////////////////////////
+
+  /*
+       * FUnction : delshipmentcreation
+       * Description : delete shipmentcreation id
+       * Owner :anju
+       * 
+       */
+  $scope.delShipmentCreation = function (userId) {
+
+
+    swal({
+      title: 'Are you sure?',
+      text: "You want to delete this !",
+      type: 'warning',
+      showCancelButton: false,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result) {
+        $scope.shipmentcreationService.delShipmentCreation(userId).then(function (result) {
+          if (result.statusText = "OK") {
+            swal(
+              'Deleted!',
+              'Shipment Creation has been deleted.',
+              'success'
+            )
+            $state.reload();
+          } else {
+
+          }
+        })
+      }
+    })
+
+  }
+  ///////////////////////////////////////////////////////////////////////
+
 
        
 $scope.setasDefault=function(id){
@@ -137,6 +204,35 @@ console.log(checkedValue)
   for(var i=0;i<checkedValue.length;i++){
     $scope.chkValue.push(checkedValue[i].value);
   }
+  
+  
+    var userId = $scope.chkValue;
+    console.log(userId);
+    swal({
+      title: 'Are you sure?',
+      text: "You want to delete checked items!",
+      type: 'warning',
+      showCancelButton: false,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result) {
+        $scope.shipmentcreationService.delCheckedShipmentCreation(userId).then(function (result) {
+          if (result.statusText = "OK") {
+            swal(
+              'Deleted!',
+              'Shipment Creation has been deleted.',
+              'success'
+            )
+            $state.reload();
+            //  $scope.getUser();
+          } else {
+
+          }
+        })
+      }
+    })
  
 }
 setTimeout(getActionBtns, 1500);         

@@ -205,7 +205,7 @@ width:60%;
                                 <h6 class="card-subtitle">Use default tab with class <code>vtabs &amp; tabs-vertical</code></h6> -->
                                 <!-- Nav tabs -->
 
-                                  <form class="">  
+                                <form class="" name="formdata" ng-submit="addMemoComments()" novalidate>  
                                  
                                  
                                  
@@ -223,7 +223,7 @@ width:60%;
                                         <div class="tab-pane active show" id="content" role="tabpanel">  
                                             <div class="form-group m-b-10 btn23">
                                         <a href="/email/memocomments"><button type="button"  class="btn waves-effect waves-light btn-sm btn-default"> Cancel </button></a>
-                                        <button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
+                                        <button type="submit" class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
                                   </div> 
                                         <!--   <div class="form-group">
                                                     <label class="control-label">First Name</label>
@@ -231,43 +231,43 @@ width:60%;
                                                     <small class="form-control-feedback"> This is inline help </small> </div> -->
                                             <div class="p-20">
 
-                                               <div class="form-group m-b-10">
-                                                            <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
-                                                            <label for="input1"> Name</label>
-                                                            <input type="text" class="form-control cat" id="name"  ng-model="formdata.category" >
-                                            </div>
-                                                    <div class="form-group m-b-10"> 
-                                                     <label for="input1"> Subject</label>
-                                                        <input type="text" class="form-control cat" id="name"  ng-model="formdata.category" >
-                                                      
-                                                    </div> 
-
-                                                    
-                                                    <div class="form-group m-b-10"> 
-                                                     <label for="input1"> Content</label>
-                                                     <textarea class="form-control cat" id="desc" type="text" ng-model="formdata.desc" ></textarea>
-                                                      
-                                                    </div> 
-                                                   
-                                                        <div class="form-group m-b-10"> 
-                                                     <label for="input1"> Custom styles</label>
-                                                     <textarea class="form-control cat" id="desc" type="text" ng-model="formdata.desc" ></textarea>
-                                                      
-                                                    </div>    
-                                                         
-                                                        <div class="form-group m-b-10">
-                                                                <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
-                                                                <label for="input1"> Status</label>
-                                                                       <select class="form-control filter-option" name="status" id="status" >
-                                                                       <option class="filter-option-inner" value="0">choose</option>
-
-                                                                   <option value="1" class="">Active</option>  
-                                                                   <option value="2" class="">De active</option> 
-
-                                                    
-                                                  </select>
+                                                <div class="form-group m-b-10">
+                                                    <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
+                                                    <label for="input1"> Name</label>
+                                                    <input type="text" class="form-control name" name="name" id="name" ng-model="name"
+                                                        ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.name.$valid}">
                                                 </div>
-                                
+                                                <div class="form-group m-b-10">
+                                                    <label for="input1"> Subject</label>
+                                                    <input type="text" class="form-control subject" name="subject" id="subject"
+                                                        ng-model="subject" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.subject.$valid}">
+
+                                                </div>
+
+
+                                                <div class="form-group m-b-10">
+                                                    <label for="input1"> Content</label>
+                                                    <textarea class="form-control content" id="content" name="content" ng-model="content"
+                                                        ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.content.$valid}"></textarea>
+
+                                                </div>
+
+                                                <div class="form-group m-b-10">
+                                                    <label for="input1"> Custom styles</label>
+                                                    <textarea class="form-control custom" id="custom" name="custom"
+                                                        ng-model="custom" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.custom.$valid}"></textarea>
+                                                </div>
+
+                                                <div class="form-group m-b-10">
+                                                    <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
+                                                    <label for="input1"> Status</label>
+                                                    <select class="form-control filter-option" name="status" id="status"
+                                                        ng-model="status" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && (!formdata.status.$valid || status==0 )}">
+                                                        <option class="filter-option-inner" value="0">choose</option>
+                                                        <option value="1" class="">Active</option>
+                                                        <option value="2" class="">De active</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
                                       

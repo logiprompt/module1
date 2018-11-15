@@ -4,23 +4,23 @@
 
   angular
   .module('emails')
-  .service('invoicecommentsService', invoicecommentsService);
+  .service('subscriptionService',subscriptionService);
 
-  invoicecommentsService.$inject = ['$resource','$http'];
-  function invoicecommentsService($resource,$http) {
+  subscriptionService.$inject = ['$resource','$http'];
+  function subscriptionService($resource,$http) {
     
 	  
-	 var invoicecommentsService = {};
+	 var subscriptionService = {};
 	  
 	 /*
 	  * Function : adduser
 	  * Description : add user details
 	  * owner : jeeja
 	  */
-	 invoicecommentsService.addInvoicecomments = function(data){
+	 subscriptionService.addSubscription = function(data){
 		 
 		return $http({
-	           url: '/api/addInvoicecomments',
+	           url: '/api/addSubscription',
 	           method: "POST",
 	           data:data
 	       });
@@ -33,10 +33,10 @@
 	  * Description : get all user details
 	  * owner : jeeja
 	  */
-	 invoicecommentsService.getinvoice = function(){
+	 subscriptionService.getsubscription = function(){
 		  
 		return $http({
-			   url: '/api/addInvoice',
+			   url: '/api/addSubscription',
 			   method: "GET"
 		   });
 	   }
@@ -47,7 +47,7 @@
 	  * Description : Delete user details by id
 	  * 
 	  */
-	 invoicecommentsService.delInvoice = function(userId){
+	 subscriptionService.delInvoice = function(userId){
 		 	console.log(13);	  
 		 return $http({
 		        url: '/api/addInvoice/',
@@ -63,7 +63,7 @@
 	  * Description : Delete details by ids
 	  * 
 	  */
-	 invoicecommentsService.delcheckedinvoice = function(userId){
+	 subscriptionService.delcheckedinvoice = function(userId){
 		console.log(12);		  
 	   return $http({
 			  url: '/api/invoice/delCheckedinvoice',
@@ -78,7 +78,7 @@
 	  * Description : get one user details by id
 	  * 
 	  */
-	 invoicecommentsService.getInvoiceById = function(userId){
+	 subscriptionService.getInvoiceById = function(userId){
 		 return $http({
 		        url: '/api/getinvoice',
 				method: "GET",
@@ -89,7 +89,7 @@
 	 /*
 	  * 
 	  */
-	 invoicecommentsService.updateInvoice = function(userId,data){
+	 subscriptionService.updateInvoice = function(userId,data){
 		 console.log(userId);
 		 return $http({
 		        url: '/api/updateinvoice',
@@ -97,7 +97,7 @@
 		        data:data
 		    });
 	 }
-	 return invoicecommentsService;
+	 return subscriptionService;
 	  
 	 
   }

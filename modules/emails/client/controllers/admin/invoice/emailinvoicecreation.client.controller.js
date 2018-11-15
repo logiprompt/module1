@@ -19,8 +19,10 @@
 ///////////////////////////////////////////////////////
 
 
+$scope.currentLan=localStorage.getItem('currentLang').toString();
 
-console.log(777777);
+
+
        
 $scope.setasDefault=function(id){
 
@@ -95,7 +97,7 @@ $scope.addInvoice = function(){
           if (result.statusText = "OK") {
             swal(
               'Deleted!',
-              'User has been deleted.',
+              'Invoice has been deleted.',
               'success'
             )
             $state.reload();

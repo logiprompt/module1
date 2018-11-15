@@ -3,17 +3,45 @@
 
   angular
     .module('core')
-    .controller('EmailshipmentcommentsController', EmailshipmentcommentsController);
+    .controller('AddEmailshipmentcreationController', AddEmailshipmentcreationController);
 
 
 
-    EmailshipmentcommentsController.$inject = ['$scope','$http','$state','$stateParams', 'Upload'];
+    AddEmailshipmentcreationController.$inject = ['$scope','$http','$state','$stateParams', 'Upload','shipmentcreationService'];
 
-  function EmailshipmentcommentsController ($scope, $http, $state, $stateParams, Upload) {
+  function AddEmailshipmentcreationController ($scope, $http, $state, $stateParams, Upload, shipmentcreationService) {
 
   $scope.formdata = {};
-  $scope.formdata.status ='0';
- /////////////////////select/////////////////////////////
+  $scope.status ='0';
+  $scope.shipmentcreationService=shipmentcreationService;
+ /////////////////////insert/////////////////////////////
+ 
+ 
+  $scope.addShipmentCreation = function(){
+    
+    if($scope.formdata.$valid && $scope.status!=0){
+    var data = {
+        "name":$scope.name,
+        "subject":$scope.subject,
+        "content":$scope.content,
+        "custom":$scope.custom,
+        "status" :$scope.status
+        }
+      
+    console.log($scope.shipmentcreationService);
+      $scope.shipmentcreationService.addShipmentCreation(data).then(function(result){
+
+        if(result.statusText = "OK"){
+          swal("Success!", "Successfully added!", "success");  
+          $state.go('emailshipmentcreation');
+        }else{
+          swal("error!", "Already exist!", "error");
+        }
+        
+      })
+    }
+      
+    }
 
 ///////////////////////////////////////////////////////
 
@@ -104,21 +132,21 @@ $scope.editpage[0].removeAttribute("href");
 }
 $scope.addchkval=function(linkid){
   var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-// console.log(linkid)
-// console.log(checkedValue[0])
+console.log(linkid)
+console.log(checkedValue[0])
   if(checkedValue.length>1){
   $scope.editpage[0].removeAttribute("href");
   }
   else{
 
-    $scope.editpage[0].setAttribute("href", "/email/editshipmentcomments/"+linkid);
+    $scope.editpage[0].setAttribute("href", "/email/editordercomments/"+linkid);
   }
 
 }
 $scope.chk={};
 
 $scope.newpage=function(){
-  $state.go('emailaddshipmentcomments');
+  $state.go('emailaddordercomments');
 }
 $scope.editpages=function(){
     var checkedValue = document.querySelectorAll('.rowtxtchk:checked');

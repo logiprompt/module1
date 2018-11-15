@@ -9,7 +9,6 @@ var path = require('path'),
 
 /* add new category */
 exports.addCategory = function (req, res, next) {
-    console.log(req.body)
     productCategory.create(req.body, function (err, post) {
         if (err) {
             return res.status(400).send({
@@ -62,7 +61,7 @@ exports.deleteCategory = function (req, res, next) {
 
 /* get all category items */
 exports.getCategoryItems = function (req, res, next) {
-    productCategory.find({ level: '1', isdeleted: false }).populate('childIDs').populate('extrafieldGroup').sort('-created').exec(function (err, data) {
+    productCategory.find({ level: '1', isdeleted: false }).populate('childIDs').populate({ 'path': 'extrafieldGroup', 'model': 'extrafieldGroup' }).sort('-created').exec(function (err, data) {
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
@@ -76,7 +75,6 @@ exports.getCategoryItems = function (req, res, next) {
 /* get category details */
 exports.getCategoryDetails = function (req, res, next) {
     productCategory.findById(req.params.categoryId).populate({ 'path': 'extrafieldGroup', model: 'extrafieldGroup' }).populate({ path: 'childIDs', model: 'productcategory', populate: { path: 'extrafieldGroup', model: 'extrafieldGroup' } }).exec(function (err, data) {
-        console.log(data)
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)

@@ -19,11 +19,11 @@ module.exports = function(app) {
    // .delete(userforgot.delete);
 
     //console.log(ordercomments);
-  app.route('/api/ordercomments/delCheckedOrderComments').all()
-    .delete(orderprocess.delCheckedOrderComments);
+  app.route('/api/orderprocess/delCheckedOrderProcess').all()
+    .delete(orderprocess.delCheckedOrderProcess);
 
   // Finish by binding the Email middleware
-  app.route('/api/ordercommentsbyid').all()
+  app.route('/api/orderprocessbyid').all()
     .get(orderprocess.reads) 
     .put(orderprocess.update) 
     .delete(orderprocess.delete);

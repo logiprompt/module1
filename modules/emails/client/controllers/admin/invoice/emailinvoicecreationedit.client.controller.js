@@ -112,15 +112,34 @@ $scope.choices = [{id: 'choice1'}];
       $scope.updateInvoice = function(){
         console.log(110);
         if($scope.formdata.$valid && $scope.status!=0){
-       var data = {		  			 
-            "name":$scope.name,
-            "subject":$scope.subject,
-            "content":$scope.content,
-            "custom":$scope.custom,
-            "status" :$scope.status,
-            "userId":$stateParams.id
+          if (localStorage.getItem("currentLang") == 'en') 
+          {
+            var data = 
+            {
+              "name": $scope.name,
+              "subject": $scope.subject,
+              "content": $scope.content,
+              "custom": $scope.custom,
+              "status": $scope.status,
+              "userId": $stateParams.id,
+              "isDefaultLang" : true
             }
-       console.log(data);
+          }
+          else 
+          {
+            var data = 
+            {
+              "name": $scope.name,
+              "subject": $scope.subject,
+              "content": $scope.content,
+              "custom": $scope.custom,
+              "userId": $stateParams.id,
+              "isDefaultLang" : false,
+              "defaultLang":localStorage.getItem("defaultLang"),
+              "userSelectedLang":localStorage.getItem("currentLang")
+            };
+          }
+       //console.log(data);
        $scope.invoicecreationService.updateInvoice($stateParams.id,data).then(function(result){
           if(result.statusText = "OK"){
             swal("Success!", "Successfully updated Invoice", "success"); 

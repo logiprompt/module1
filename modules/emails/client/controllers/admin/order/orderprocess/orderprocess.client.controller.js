@@ -7,13 +7,13 @@
 
 
 
-    OrderprocessController.$inject = ['$scope','$http','$state','$stateParams', 'Upload','ordercommentsService'];
+    OrderprocessController.$inject = ['$scope','$http','$state','$stateParams', 'Upload','orderprocessService'];
 
-  function OrderprocessController ($scope, $http, $state, $stateParams, Upload, ordercommentsService) {
+  function OrderprocessController ($scope, $http, $state, $stateParams, Upload, orderprocessService) {
 
   $scope.formdata = {};
   $scope.formdata.status ='0';
-  $scope.ordercommentsService=ordercommentsService;
+  $scope.orderprocessService=orderprocessService;
  /////////////////////select/////////////////////////////
 
 ///////////////////////////////////////////////////////
@@ -23,16 +23,16 @@
   
   ///////////////////list /////////////////////
   /*
-    * Function : get Ordercomments
-    * Description : get Ordercomments details
+    * Function : get Orderprocess
+    * Description : get Orderprocess details
     * Owner : anju
     */
 
-  $scope.getOrderComments = function () {
+  $scope.getOrderProcess = function () {
     console.log(0);
-    $scope.ordercommentsService.getOrderComments().then(function (result) {
+    $scope.orderprocessService.getOrderProcess().then(function (result) {
       if (result.statusText = "OK") {
-        $scope.userlist = result.data;
+        $scope.orderlist = result.data;
         //console.log(1);
         console.log(result.data);
       } else {
@@ -40,17 +40,17 @@
       }
     });
   }
-  $scope.getOrderComments();
+  $scope.getOrderProcess();
 
 ///////////////////////////////////////////////////////////////
 
   /*
-       * FUnction : delOrderComments
-       * Description : delete OrderComments id
+       * FUnction : delOrderprocess
+       * Description : delete Orderprocess id
        * Owner :anju
        * 
        */
-  $scope.delOrderComments = function (userId) {
+  $scope.delOrderProcess = function (userId) {
 
 
     swal({
@@ -63,11 +63,11 @@
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result) {
-        $scope.ordercommentsService.delOrderComments(userId).then(function (result) {
+        $scope.orderprocessService.delOrderProcess(userId).then(function (result) {
           if (result.statusText = "OK") {
             swal(
               'Deleted!',
-              'Order Comments has been deleted.',
+              'Order Process has been deleted.',
               'success'
             )
             $state.reload();
@@ -173,7 +173,7 @@ console.log(checkedValue[0])
   }
   else{
 
-    $scope.editpage[0].setAttribute("href", "/email/editordercomments/"+linkid);
+    $scope.editpage[0].setAttribute("href", "/email/editorderprocess/"+linkid);
   }
 
 }
@@ -218,11 +218,11 @@ console.log(checkedValue)
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result) {
-        $scope.ordercommentsService.delCheckedOrderComments(userId).then(function (result) {
+        $scope.orderprocessService.delCheckedOrderProcess(userId).then(function (result) {
           if (result.statusText = "OK") {
             swal(
               'Deleted!',
-              'Payment Failure has been deleted.',
+              'Order Process has been deleted.',
               'success'
             )
             $state.reload();

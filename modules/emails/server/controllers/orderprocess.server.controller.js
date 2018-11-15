@@ -29,11 +29,11 @@ exports.create = function (req, res) {
 
 
 /**
- * List of order comments
+ * List of order process
  */
 exports.list = function (request, response) {
     
-    Ordercomments.find().exec(function (error, items) {
+    Orderprocess.find().exec(function (error, items) {
 
         if (error) {
             return response.status(400).send({
@@ -50,7 +50,7 @@ exports.reads = function (request, response) {
     console.log(request);
 
 
-    Ordercomments.findById(request.query.userId)
+    Orderprocess.findById(request.query.userId)
         .lean()
         .exec(function (error, items) {
             if (error) {
@@ -85,12 +85,12 @@ exports.reads = function (request, response) {
 //};
 
 /**
- * Delete ordercomments by ID
+ * Delete orderprocess by ID
  */
 exports.delete = function (request, response) {
     var userId = request.query.userId;
     console.log(userId);
-    Ordercomments.findById(userId).exec(function (error, item) {
+    Orderprocess.findById(userId).exec(function (error, item) {
 
         if (error) {
             response.status(500).send(error);
@@ -118,7 +118,7 @@ exports.delete = function (request, response) {
 };
 
 /*
-* Update Ordercomments
+* Update Orderprocess
 */
 exports.update = function (request, response) {
     var reqBody = request.body;
@@ -126,7 +126,7 @@ exports.update = function (request, response) {
     var data;
 
 
-    Ordercomments.findById(userId).lean().exec(function (error, data) {
+    Orderprocess.findById(userId).lean().exec(function (error, data) {
         if (error) {
             response.status(500).send(error);
             return;
@@ -147,7 +147,7 @@ exports.update = function (request, response) {
                 data['oLang'][reqBody.userSelectedLang] = obj;
             }
 
-            Ordercomments.update({'_id':userId}, 
+            Orderprocess.update({'_id':userId}, 
                 {$set:data} ).exec(function (error, output) {
                 if (error) {
                     response.status(500).send(error);
@@ -164,14 +164,14 @@ exports.update = function (request, response) {
 
 
 /** 
-*Delete Ordercomments by IDs
+*Delete Orderprocess by IDs
 *
 **/
-exports.delCheckedOrderComments = function (request, response) {
+exports.delCheckedOrderProcess = function (request, response) {
 
     var arr = request.query.userId;
     console.log(arr);
-    Ordercomments.deleteMany({ _id: { '$in': arr } }).exec(function (err, data) {
+    Orderprocess.deleteMany({ _id: { '$in': arr } }).exec(function (err, data) {
         if (err) throw err;
         response.json({
             status: 1,

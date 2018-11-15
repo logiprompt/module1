@@ -416,8 +416,8 @@ width:60%;
                                                             
                                                                   <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
                                                                   <label for="input1"> Status</label>
-                                                                         <select class="form-control filter-option" name="status" id="status">
-                                                                         <option class="filter-option-inner" value="0">choose</option>
+                                                                  <select class="form-control filter-option invoicecomments" name="status" id="status" ng-model="status"  ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && (!formdata.status.$valid || status==0 )}" >
+                                                                    <option class="filter-option-inner" value="0">choose</option>
         
                                                                      <option value="1" class=""></option> </select>  </div>
         

@@ -7,23 +7,23 @@
  var  invoicecomments = require('../controllers/invoicecomment.server.controller');
 module.exports = function(app) {
   // Emails Routes
-  app.route('/api/addInvoicecomments').all()
+  app.route('/api/addInvoicecomment').all()
     .get(invoicecomments.list)
-    .post(invoicecomments.create)
+    .post(invoicecomments.creates)
     .delete(invoicecomments.delete);
 
   //   app.route('/api/userreg/delUser/:userId').all()
   //  .delete(userreg.delete);
  
 
-    app.route('/api/updateinvoice').all()
-    .put(invoicecomments.updateInvoice);
+    app.route('/api/updateinvoicecomment').all()
+    .put(invoicecomments.updateInvoicecomment);
   
-    app.route('/api/invoice/delCheckedinvoice').all()
+    app.route('/api/invoice/delCheckedinvoicecomments').all()
     .delete(invoicecomments.delCheckedinvoice);
   // Finish by binding the Email middleware
-  app.route('/api/getinvoice').all()
-    .get(invoicecomments.invoiceByID);
+  app.route('/api/getinvoicecomment').all()
+    .get(invoicecomments.invoicecommentsByID);
  
 
 

@@ -3,17 +3,45 @@
 
   angular
     .module('core')
-    .controller('EmailtagsubmissionController', EmailtagsubmissionController);
+    .controller('AddEmailshipmentupdatesController', AddEmailshipmentupdatesController);
 
 
 
-    EmailtagsubmissionController.$inject = ['$scope','$http','$state','$stateParams', 'Upload'];
+    AddEmailshipmentupdatesController.$inject = ['$scope','$http','$state','$stateParams', 'Upload','shipmentupdatesService'];
 
-  function EmailtagsubmissionController ($scope, $http, $state, $stateParams, Upload) {
+  function AddEmailshipmentupdatesController ($scope, $http, $state, $stateParams, Upload, shipmentupdatesService) {
 
   $scope.formdata = {};
-  $scope.formdata.status ='0';
- /////////////////////select/////////////////////////////
+  $scope.status ='0';
+  $scope.shipmentupdatesService=shipmentupdatesService;
+ /////////////////////insert/////////////////////////////
+ 
+ 
+  $scope.addShipmentUpdates = function(){
+    
+    if($scope.formdata.$valid && $scope.status!=0){
+    var data = {
+        "name":$scope.name,
+        "subject":$scope.subject,
+        "content":$scope.content,
+        "custom":$scope.custom,
+        "status" :$scope.status
+        }
+      
+    console.log($scope.shipmentupdatesService);
+      $scope.shipmentupdatesService.addShipmentUpdates(data).then(function(result){
+
+        if(result.statusText = "OK"){
+          swal("Success!", "Successfully added!", "success");  
+          $state.go('emailshipmentupdates');
+        }else{
+          swal("error!", "Already exist!", "error");
+        }
+        
+      })
+    }
+      
+    }
 
 ///////////////////////////////////////////////////////
 
@@ -111,14 +139,14 @@ console.log(checkedValue[0])
   }
   else{
 
-    $scope.editpage[0].setAttribute("href", "/email/edittagaction/"+linkid);
+    $scope.editpage[0].setAttribute("href", "/email/editordercomments/"+linkid);
   }
 
 }
 $scope.chk={};
 
 $scope.newpage=function(){
-  $state.go('emailaddtagaction');
+  $state.go('emailaddordercomments');
 }
 $scope.editpages=function(){
     var checkedValue = document.querySelectorAll('.rowtxtchk:checked');

@@ -222,7 +222,7 @@ console.log(checkedValue)
           if (result.statusText = "OK") {
             swal(
               'Deleted!',
-              'Payment Failure has been deleted.',
+              'Order Comments has been deleted.',
               'success'
             )
             $state.reload();

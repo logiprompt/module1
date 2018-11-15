@@ -3,33 +3,33 @@
 
   angular
     .module('core')
-    .controller('EditOrdercommentsController', EditOrdercommentsController);
+    .controller('EditOrderprocessController', EditOrderprocessController);
 
 
 
-    EditOrdercommentsController.$inject = ['$scope','$http','$state','$stateParams', 'Upload','ordercommentsService'];
+    EditOrderprocessController.$inject = ['$scope','$http','$state','$stateParams', 'Upload','orderprocessService'];
 
-  function EditOrdercommentsController ($scope, $http, $state, $stateParams, Upload, ordercommentsService) {
+  function EditOrderprocessController ($scope, $http, $state, $stateParams, Upload, orderprocessService) {
 
   $scope.formdata = {};
   $scope.formdata.status ='0';
-  $scope.ordercommentsService=ordercommentsService;
+  $scope.orderprocessService=orderprocessService;
   
    $scope.currentLan=localStorage.getItem('currentLang').toString();
   console.log($scope.currentLan)
-  ///////////////////Order Comments By Id /////////////////////
+  ///////////////////Order process By Id /////////////////////
 
     /*
-      * Function : get OrderComments ById
-      * Description : get OrderComments details
+      * Function : get OrderProcess ById
+      * Description : get OrderProcess details
       * Owner : anju
    */
   $scope.currentLan=localStorage.getItem('currentLang').toString();
   $scope.defaultLang=localStorage.getItem('defaultLang').toString();
 
-    $scope.getOrderCommentsById = function (userId) {
+    $scope.getOrderProcessById = function (userId) {
       console.log(0);
-      $scope.ordercommentsService.getOrderCommentsById(userId).then(function (result) {
+      $scope.orderprocessService.getOrderProcessById(userId).then(function (result) {
         console.log(userId);
          console.log(result);
          var details=result.data;
@@ -64,7 +64,7 @@
         }
       });
     }
-    $scope.getOrderCommentsById($stateParams.id);
+    $scope.getOrderProcessById($stateParams.id);
 
 
 
@@ -72,13 +72,13 @@
 
     /*
      *
-     *  Function : update Order Comments
-     * Description : Update Order Comments details
+     *  Function : update Order Process
+     * Description : Update Order Process details
      * Owner : anju
      * 
      */
 
-    $scope.updateOrderComments = function () {
+    $scope.updateOrderProcess = function () {
       var formData = $scope.formdata;
       if ($scope.formdata.$valid && $scope.status != 0) {
 
@@ -109,7 +109,7 @@
         }
 
 
-        $scope.ordercommentsService.updateOrderComments($stateParams.id, data).then(function (result) {
+        $scope.orderprocessService.updateOrderProcess($stateParams.id, data).then(function (result) {
           console.log(result);
           if (result.statusText = "OK") {
             swal("Sccess!", "Successfully updated ", "success");

@@ -5,9 +5,7 @@
     .module('core')
     .controller('EmailinvoicecommentsController', EmailinvoicecommentsController);
 
-
-
-    EmailinvoicecommentsController.$inject = ['$scope','$http','$state','$stateParams', 'Upload','invoicecommentsservice'];
+    EmailinvoicecommentsController.$inject = ['$scope','$http','$state','$stateParams', 'Upload','invoicecommentsService'];
 
   function EmailinvoicecommentsController ($scope, $http, $state, $stateParams, Upload,invoicecommentsService) {
 
@@ -17,11 +15,8 @@
  /////////////////////select/////////////////////////////
 
 ///////////////////////////////////////////////////////
-
-
-
-
-       
+$scope.currentLan=localStorage.getItem('currentLang').toString();
+      
 $scope.setasDefault=function(id){
 
     $http({
@@ -40,6 +35,8 @@ $scope.setasDefault=function(id){
 }
 ///////////////add invoice comments/////////////////////////////////////
 $scope.addInvoicecomments = function(){
+ 
+
   if($scope.formdata.$valid && $scope.status!=0){
   var data = {
       "name":$scope.name,
@@ -53,7 +50,7 @@ $scope.addInvoicecomments = function(){
     $scope.invoicecommentsService.addInvoicecomments(data).then(function(result){
       if(result.statusText = "OK"){
         swal("Success!", "Successfully Created invoice comments!", "success");  
-        $state.go('emailinvoicecreation');
+        $state.go('emailinvoicecomments');
       }else{
         swal("error!", "Invoicecomments already exist!", "error");
       }
@@ -62,7 +59,61 @@ $scope.addInvoicecomments = function(){
   }
     
   }
+///////////////////list /////////////////////
+  /*
+    * Function : getinvoice comments
+    * Description : getinvoice comments
+    * Owner : 
+    */
 
+   $scope.getInvoicecomments = function () {
+    
+    $scope.invoicecommentsService.getInvoicecomments().then(function (result) {
+      if (result.statusText = "OK") {
+        $scope.commentslist = result.data;
+        //console.log(1);
+        //console.log(result.data);
+      } else {
+
+      }
+    });
+  }
+  $scope.getInvoicecomments();
+  //////////////////////////////////
+
+
+  
+  //////////////////////////delete invoice//////////////////////////////
+  $scope.delInvoice = function (userId) {
+
+
+    swal({
+      title: 'Are you sure?',
+      text: "You want to delete this Invoice Comment!",
+      type: 'warning',
+      showCancelButton: false,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result) {
+        $scope.invoicecommentsService.delInvoice(userId).then(function (result) {
+          if (result.statusText = "OK") {
+            swal(
+              'Deleted!',
+              'Invoice Comment has been deleted.',
+              'success'
+            )
+            $state.reload();
+          } else {
+
+          }
+        })
+      }
+    })
+
+  }
+/////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////
 
 $scope.choices = [{id: 'choice1'}];
@@ -158,16 +209,46 @@ document.location=$scope.editpage[0].getAttribute("href");
 $scope.chkValue=[];
 
 
-$scope.delpage=function(){
-  $scope.chkValue=[];
- 
+
+$scope.delpage = function () {
+  $scope.chkValue = [];
+
   //$state.go('addlanguage');
   var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-console.log(checkedValue)
-  for(var i=0;i<checkedValue.length;i++){
+  console.log(checkedValue)
+  for (var i = 0; i < checkedValue.length; i++) {
     $scope.chkValue.push(checkedValue[i].value);
   }
- 
+
+  var userId = $scope.chkValue;
+  console.log(userId);
+  swal({
+    title: 'Are you sure?',
+    text: "You want to delete checked items!",
+    type: 'warning',
+    showCancelButton: false,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+  }).then((result) => {
+    if (result) {
+      $scope.invoicecommentsService.delcheckedcomment(userId).then(function (result) {
+        if (result.statusText = "OK") {
+          swal(
+            'Deleted!',
+            'Invoice Comment has been deleted.',
+            'success'
+          )
+          $state.reload();
+          //  $scope.getUser();
+        } else {
+
+        }
+      })
+    }
+  })
+
+
 }
 setTimeout(getActionBtns, 1500);         
 

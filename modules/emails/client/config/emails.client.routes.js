@@ -439,7 +439,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/order/orderprocess/edit.html',
-    controller: 'OrderprocessController',
+    controller: 'EditOrderprocessController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -563,7 +563,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/invoice/invoicecomments/edit.html',
-    controller: 'EmailinvoicecommentsController',
+    controller: 'emailinvoicecommenteditController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -621,7 +621,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/creditmemo/memocomments/memocomments.html',
-    controller: 'EmailmemocommentsController',
+    controller: 'MemoCommentsListController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -647,7 +647,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/creditmemo/memocomments/edit.html',
-    controller: 'EmailmemocommentsController',
+    controller: 'EmailMemoCommentsEdit',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -676,7 +676,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/shipments/shipmentcreation/addshipmentcreation.html',
-    controller: 'EmailshipmentcreationController',
+    controller: 'AddEmailshipmentcreationController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -689,7 +689,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/shipments/shipmentcreation/edit.html',
-    controller: 'EmailshipmentcreationController',
+    controller: 'EditEmailshipmentcreationController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -717,7 +717,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/shipments/shipmentcomments/addshipmentcomments.html',
-    controller: 'EmailshipmentcommentsController',
+    controller: 'AddEmailshipmentcommentsController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -730,7 +730,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/shipments/shipmentcomments/edit.html',
-    controller: 'EmailshipmentcommentsController',
+    controller: 'EditEmailshipmentcommentsController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -758,7 +758,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/shipments/shipmentupdates/addshipmentupdates.html',
-    controller: 'EmailshipmentupdatesController',
+    controller: 'AddEmailshipmentupdatesController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -771,7 +771,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/shipments/shipmentupdates/edit.html',
-    controller: 'EmailshipmentupdatesController',
+    controller: 'EditEmailshipmentupdatesController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -787,7 +787,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/promotion/shareusers/shareusers.html',
-    controller: 'Emailshareusers',
+    controller: 'ShareuserslistController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -800,7 +800,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/promotion/shareusers/addshareusers.html',
-    controller: 'Emailshareusers',
+    controller: 'ShareUsersaddController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -813,7 +813,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/promotion/shareusers/edit.html',
-    controller: 'Emailshareusers',
+    controller: 'ShareUserseditController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -963,7 +963,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/product/reviewsubmission/reviewsubmission.html',
-    controller: 'EmailreviewsubmissionController',
+    controller: 'EmailReviewSubmissionListController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -976,7 +976,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/product/reviewsubmission/addreviewsubmission.html',
-    controller: 'EmailreviewsubmissionController',
+    controller: 'EmailReviewSubmissionController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -989,7 +989,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/product/reviewsubmission/edit.html',
-    controller: 'EmailreviewsubmissionController',
+    controller: 'EmailReviewSubmissionEdit',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -1004,7 +1004,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/product/ratingsubmission/ratingsubmission.html',
-    controller: 'EmailratingsubmissionController',
+    controller: 'EmailRatingSubmissionListController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -1017,7 +1017,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/product/ratingsubmission/addratingsubmission.html',
-    controller: 'EmailratingsubmissionController',
+    controller: 'EmailRatingSubmissionController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -1030,7 +1030,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/product/ratingsubmission/edit.html',
-    controller: 'EmailratingsubmissionController',
+    controller: 'EmailRatingSubmissionEdit',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -1045,7 +1045,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/product/tagsubmission/tagsubmission.html',
-    controller: 'EmailtagsubmissionController',
+    controller: 'EmailTagSubmissionListController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -1058,7 +1058,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/product/tagsubmission/addtagsubmission.html',
-    controller: 'EmailtagsubmissionController',
+    controller: 'EmailTagSubmissionController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -1071,7 +1071,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/product/tagsubmission/edit.html',
-    controller: 'EmailtagsubmissionController',
+    controller: 'EmailTagSubmissionEdit',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -1086,7 +1086,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/product/productreviewaction/reviewaction.html',
-    controller: 'EmailpdtreviewactionController',
+    controller: 'EmailReviewActionListController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -1099,7 +1099,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/product/productreviewaction/addreviewaction.html',
-    controller: 'EmailpdtreviewactionController',
+    controller: 'EmailReviewActionController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -1112,7 +1112,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/product/productreviewaction/edit.html',
-    controller: 'EmailpdtreviewactionController',
+    controller: 'EmailReviewActionEdit',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -1209,7 +1209,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/cms/cmsreviewsubmission/reviewsubmission.html',
-    controller: 'EmailcmsreviewsubmissionController',
+    controller: 'CmsreviewlistController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -1522,7 +1522,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/newsletter/subscription/edit.html',
-    controller: 'EmailnewslettersubscriptionController',
+    controller: 'EmailnewslettersubscriptioneditController',
     controllerAs: 'vm',
     },
      footer:adminfooter

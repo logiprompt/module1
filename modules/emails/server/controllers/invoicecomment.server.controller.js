@@ -11,9 +11,10 @@ var path = require('path'),
 /**
 * Create  invoice 
 */
-exports.create = function(req, res) {
-    var Invoicecomment = req.body;
-    Invoicecomment.create(invoice,function(err) {
+exports.creates = function(req, res) {
+   
+    var invoicecomment = req.body;
+    Invoicecomment.create(invoicecomment,function(err) {
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
@@ -32,7 +33,7 @@ exports.create = function(req, res) {
  */
 exports.list = function(request, response) {
    
-    Invoice.find().exec(function(error, items) {
+    Invoicecomment.find().exec(function(error, items) {
 
         if (error) {
             return response.status(400).send({
@@ -60,8 +61,8 @@ exports.read = function(req, res) {
  * Get User by ID
  */
 
-exports.invoiceByID = function(request, response) {
-    Invoice.findById(request.query.userId)
+exports.invoicecommentsByID = function(request, response) {
+    Invoicecomment.findById(request.query.userId)
     .lean()
     .exec(function(error, items) {
         if (error) {
@@ -81,7 +82,7 @@ exports.invoiceByID = function(request, response) {
 	exports.delete = function(request, response) {
         var userId = request.query.userId;
          console.log(userId);
-        Invoice.findById(userId).exec(function (error, item) {
+         Invoicecomment.findById(userId).exec(function (error, item) {
             
             if (error) {
               response.status(500).send(error);
@@ -97,12 +98,12 @@ exports.invoiceByID = function(request, response) {
                 }
 
                 response.status(200).json({
-                  'message': 'Invoice was removed.'
+                  'message': 'Invoice Comment was removed.'
                 });
               });
             } else {
               response.status(404).json({
-                message: 'Invoice with id ' + userId + ' was not found.'
+                message: 'Invoice Comment with id ' + userId + ' was not found.'
               });
             }
           });
@@ -111,26 +112,52 @@ exports.invoiceByID = function(request, response) {
       	/*
 	 * Update currency
 	 */
-	exports.updateInvoice= function(request, response){
-        var userId = request.body.userId;
+	exports.updateInvoicecomment= function(request, response){ 
+      
+       // console.log(request);
+        var reqBody = request.body;
+        var userId = reqBody.userId;
         
-		Invoice.findById(userId).exec(function (error, item) {
-			  if (error) {
-			        response.status(500).send(error);
-			        return;
-			      }
-			  
-			  if (item) {
-				  	item.name = request.body.name;
-			        item.subject = request.body.subject;
-                    item.content = request.body.content;
-                    item.custom = request.body.custom;
-			        item.status = request.body.status;
-			        item.save();
-                
-			        response.json(item);
-			        return;
-			      }
+
+		Invoicecomment.findById(userId).exec(function (error, data) {
+            if (error) 
+            {
+               response.status(500).send(error);
+               return;
+            }
+          
+            if (data) 
+            {
+              if (reqBody.isDefaultLang) 
+              { 
+                  data.name = reqBody.name;
+                  data.subject = reqBody.subject;
+                  data.content = reqBody.content;
+                  data.custom = reqBody.custom;
+                  data.status = reqBody.status;
+              }
+
+              else 
+              {
+                  var obj = {};
+                  obj.name = reqBody.name;
+                  obj.subject = reqBody.subject;
+                  obj.content = reqBody.content;
+                  obj.custom = reqBody.custom;
+                  data['oLang'][reqBody.userSelectedLang] = obj;
+              }
+             
+              Invoicecomment.update({'_id':userId}, 
+                  {$set:data} ).exec(function (error, output) {
+                  if (error)
+                  {
+                      response.status(500).send(error);
+                      return;
+                  }
+                  response.json(output);
+                  return;    
+              })
+          }
 
 		  })
 	}
@@ -145,7 +172,7 @@ exports.invoiceByID = function(request, response) {
           //var arr = request.query.userId.split(',');
           var arr = request.query.userId;
           //console.log(arr);
-          Invoice.deleteMany({_id:{'$in':arr}}).exec(function (err, data) {
+          Invoicecomment.deleteMany({_id:{'$in':arr}}).exec(function (err, data) {
                                if (err) throw err;
                                response.json({
                                               status: 1,

@@ -3,21 +3,83 @@
 
   angular
     .module('core')
-    .controller('EmailratingsubmissionController', EmailratingsubmissionController);
+    .controller('EmailshipmentupdatesController', EmailshipmentupdatesController);
 
 
 
-    EmailratingsubmissionController.$inject = ['$scope','$http','$state','$stateParams', 'Upload'];
+    EmailshipmentupdatesController.$inject = ['$scope','$http','$state','$stateParams', 'Upload','shipmentupdatesService'];
 
-  function EmailratingsubmissionController ($scope, $http, $state, $stateParams, Upload) {
+  function EmailshipmentupdatesController ($scope, $http, $state, $stateParams, Upload, shipmentupdatesService) {
 
   $scope.formdata = {};
   $scope.formdata.status ='0';
+  $scope.shipmentupdatesService=shipmentupdatesService;
  /////////////////////select/////////////////////////////
 
 ///////////////////////////////////////////////////////
 
+ $scope.currentLang= localStorage.getItem('currentLang');
+  console.log($scope.currentLan)
+  
+  ///////////////////list /////////////////////
+  /*
+    * Function : get shipmentupdates
+    * Description : get shipmentcomments details
+    * Owner : anju
+    */
 
+  $scope.getShipmentUpdates = function () {
+    console.log(0);
+    $scope.shipmentupdatesService.getShipmentUpdates().then(function (result) {
+      if (result.statusText = "OK") {
+        $scope.userlist = result.data;
+        //console.log(1);
+        console.log(result.data);
+      } else {
+
+      }
+    });
+  }
+  $scope.getShipmentUpdates();
+
+///////////////////////////////////////////////////////////////
+
+  /*
+       * FUnction : delShipmentUpdates
+       * Description : delete ShipmentUpdates id
+       * Owner :anju
+       * 
+       */
+  $scope.delShipmentUpdates = function (userId) {
+
+
+    swal({
+      title: 'Are you sure?',
+      text: "You want to delete this !",
+      type: 'warning',
+      showCancelButton: false,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result) {
+        $scope.shipmentupdatesService.delShipmentUpdates(userId).then(function (result) {
+          if (result.statusText = "OK") {
+            swal(
+              'Deleted!',
+              'Shipment Updates has been deleted.',
+              'success'
+            )
+            $state.reload();
+          } else {
+
+          }
+        })
+      }
+    })
+
+  }
+  ///////////////////////////////////////////////////////////////////////
 
 
        
@@ -111,14 +173,14 @@ console.log(checkedValue[0])
   }
   else{
 
-    $scope.editpage[0].setAttribute("href", "/email/editratingaction/"+linkid);
+    $scope.editpage[0].setAttribute("href", "/email/editshipmentupdates/"+linkid);
   }
 
 }
 $scope.chk={};
 
 $scope.newpage=function(){
-  $state.go('emailaddratingaction');
+  $state.go('emailaddshipmentupdates');
 }
 $scope.editpages=function(){
     var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
@@ -142,6 +204,35 @@ console.log(checkedValue)
   for(var i=0;i<checkedValue.length;i++){
     $scope.chkValue.push(checkedValue[i].value);
   }
+  
+  
+    var userId = $scope.chkValue;
+    console.log(userId);
+    swal({
+      title: 'Are you sure?',
+      text: "You want to delete checked items!",
+      type: 'warning',
+      showCancelButton: false,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result) {
+        $scope.shipmentupdatesService.delCheckedShipmentUpdates(userId).then(function (result) {
+          if (result.statusText = "OK") {
+            swal(
+              'Deleted!',
+              'Shipment Comments has been deleted.',
+              'success'
+            )
+            $state.reload();
+            //  $scope.getUser();
+          } else {
+
+          }
+        })
+      }
+    })
  
 }
 setTimeout(getActionBtns, 1500);         

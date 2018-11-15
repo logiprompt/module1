@@ -27,41 +27,41 @@
 	   }
 
  /*
-	  * Function : getOrderComments
-	  * Description : get all OrderComments details
+	  * Function : getOrderprocess
+	  * Description : get all Orderprocess details
 	  * owner : anju
 	  */
-	 orderprocess.getOrderComments = function(){
+	 orderprocess.getOrderProcess = function(){
 		  
 		return $http({
-			   url: '/api/addOrderComments',
+			   url: '/api/addOrderProcess',
 			   method: "GET"
 		   });
 	   }
 	
 
 	 /*
-	  * Function : delete OrderComments
-	  * Description : Delete OrderComments details by id
+	  * Function : delete OrderProcess
+	  * Description : Delete OrderProcess details by id
 	  * owner : anju
 	  */
-	 orderprocess.delOrderComments = function(userId){		  
+	 orderprocess.delOrderProcess = function(userId){		  
 		 return $http({
-			url: '/api/ordercommentsbyid',
+			url: '/api/orderprocessbyid',
 				method: "DELETE",
 				params:{'userId':userId}
 		    });
 		}
 
 			 /*
-	  * Function : delCheckedPaymentFailure
+	  * Function : delCheckedorderprocess
 	  * Description : Delete details by ids
 	  * owner : anju
 	  */
-	 orderprocess.delCheckedOrderComments= function(userId){
+	 orderprocess.delCheckedOrderProcess= function(userId){
 		console.log(userId);		  
 	   return $http({
-			  url: '/api/ordercomments/delCheckedOrderComments',
+			  url: '/api/orderprocess/delCheckedOrderProcess',
 			  method: "DELETE",
 			  params:{'userId':userId}
 		  });
@@ -84,10 +84,10 @@
 	//  }
 
 	 
-	 orderprocess.getOrderCommentsById = function(userId){
+	 orderprocess.getOrderProcessById = function(userId){
 		 console.log(userId);
 		return $http({
-			   url: '/api/ordercommentsbyid',
+			   url: '/api/orderprocessbyid',
 			   method: "GET",
 			   params:{'userId':userId}
 		   });
@@ -95,10 +95,10 @@
 	 /*
 	  * 
 	  */
-	 orderprocess.updateOrderComments = function(userId,data){
+	 orderprocess.updateOrderProcess = function(userId,data){
 		 console.log(userId);
 		 return $http({
-		        url: '/api/ordercommentsbyid',
+		        url: '/api/orderprocessbyid',
 		        method: "PUT", 
 		        data:data
 		    });
