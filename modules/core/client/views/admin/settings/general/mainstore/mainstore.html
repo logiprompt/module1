@@ -205,11 +205,11 @@ width:60%;
                                 <h6 class="card-subtitle">Use default tab with class <code>vtabs &amp; tabs-vertical</code></h6> -->
                                 <!-- Nav tabs -->
 
-                                  <form class="">  
+                                  <form class="" name="formdata" ng-submit="insMainstore()" novalidate>  
                                  
                                  <div class="form-group m-b-10 btn23">
                                         <a href="/settings/countrylist"><button type="button"  class="btn waves-effect waves-light btn-sm btn-default"> Cancel </button></a>
-                                        <button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
+                                        <button type="submit" class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
                                   </div> 
                                  
                               
@@ -252,7 +252,8 @@ width:60%;
                                             	 <div class="col-md-6">
                                                    <label for="tags">Store name</label>
                                                     <div class="form-group">
-                                                         <input type="text" class="form-control" id="name"  ng-model="formdata.name" >
+                                                           <input type="text" class="form-control name" name="name" id="name" ng-model="name"
+                                                        ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.name.$valid}">
                                                     </div>
                                                 </div>    
                                                 <div class="col-md-3">
@@ -270,7 +271,8 @@ width:60%;
                                                  <div class="col-md-6">
                                                    <label for="tags">Contract Person</label>
                                                     <div class="form-group">
-                                                         <input type="text" class="form-control" id="name"  ng-model="formdata.name" >
+                                                          <input type="text" class="form-control contactperson" name="contactperson" id="contactperson" ng-model="contactperson"
+                                                        ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.contactperson.$valid}">
                                                     </div>
                                                 </div>    
                                                 <div class="col-md-3">
@@ -288,7 +290,8 @@ width:60%;
                                                  <div class="col-md-6">
                                                    <label for="tags">Email</label>
                                                     <div class="form-group">
-                                                         <input type="text" class="form-control" id="name"  ng-model="formdata.name" >
+                                                         <input type="text" class="form-control email" name="email" id="email" ng-model="email"
+                                                        ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.email.$valid}">
                                                     </div>
                                                 </div>    
                                                 <div class="col-md-3">
@@ -306,7 +309,8 @@ width:60%;
                                                  <div class="col-md-6">
                                                    <label for="tags">Telephone</label>
                                                     <div class="form-group">
-                                                         <input type="text" class="form-control" id="name"  ng-model="formdata.name" >
+                                                         <input type="text" class="form-control telephone" name="telephone" id="telephone" ng-model="telephone"
+                                                        ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.telephone.$valid}">
                                                     </div>
                                                 </div>    
                                                 <div class="col-md-3">
@@ -324,7 +328,8 @@ width:60%;
                                                  <div class="col-md-6">
                                                    <label for="tags">Mobile</label>
                                                     <div class="form-group">
-                                                         <input type="text" class="form-control" id="name"  ng-model="formdata.name" >
+                                                         <input type="text" class="form-control mobile" name="mobile" id="mobile" ng-model="mobile"
+                                                        ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.mobile.$valid}">
                                                     </div>
                                                 </div>    
                                                 <div class="col-md-3">
@@ -343,7 +348,8 @@ width:60%;
                                                 <div class="col-md-6">
                                                    <label for="tags">Fax</label>
                                                     <div class="form-group">
-                                                         <input type="text" class="form-control" id="name"  ng-model="formdata.name" >
+                                                         <input type="text" class="form-control fax" name="fax" id="fax" ng-model="fax"
+                                                        ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.fax.$valid}">
                                                     </div>
                                                 </div>    
                                                 <div class="col-md-3">
@@ -374,15 +380,17 @@ width:60%;
                                                 
                                                    <label for="tags">Country</label>
                                                     <div class="form-group">
-                                                        <select id="selcou" name="selcou" class="form-control">
-                                                        	<option value="0">Select</option>
-                                                        	<option value="1">India</option>
+                                                        <select class="form-control filter-option" name="country" id="country"
+                                                        ng-model="country" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && (!formdata.country.$valid || country==0 )}">
+                                                        	<option class="filter-option-inner" value="0">choose country</option>
+                                                                      <option  class="filter-option-inner" ng-repeat="val in countrylist" value="{{val._id}}">{{val.country}}</option>
                                                         </select>
                                                     </div>
                                                
                                                     <label for="tags">State</label>
                                                     <div class="form-group">
-                                                         <select id="selcou" name="selcou" class="form-control">
+                                                         <select class="form-control filter-option" name="state" id="state"
+                                                        ng-model="state" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && (!formdata.state.$valid || state==0 )}">
                                                         	<option value="0">Select</option>
                                                         	<option value="1">Kerala</option>
                                                         </select>
@@ -390,7 +398,8 @@ width:60%;
                                                 
                                                     <label for="tags">District </label>
                                                     <div class="form-group">
-                                                         <select id="selcou" name="selcou" class="form-control">
+                                                         <select class="form-control filter-option" name="district" id="district"
+                                                        ng-model="district" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && (!formdata.district.$valid || district==0 )}">
                                                         	<option value="0">Select</option>
                                                         	<option value="1">Kollam</option>
                                                         </select>

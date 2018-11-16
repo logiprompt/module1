@@ -244,7 +244,7 @@ width:60%;
                                                             <label for="input1"> Country Name</label>
                                                             <select id="Country" name="Country" class="form-control cat" data-style="form-control btn-info" ng-model="formdata.country" ng-change="changecountry()">
                                                                     <option class="filter-option-inner" value="0">choose country</option>
-                                                                      <option  class="filter-option-inner" ng-repeat="val in countrylist" value="{{val.country_id}}">{{val.country}}</option>
+                                                                      <option  class="filter-option-inner" ng-repeat="val in countrylist" value="{{val._id}}">{{val.country}}</option>
                                                                 </select>
                                             </div>
 
@@ -254,7 +254,7 @@ width:60%;
                                                             <select id="state" name="state" class="form-control state" data-style="form-control btn-info" ng-model="formdata.state">
                                                             
                                            <option value="0">Choose state...</option>
-                                           <option ng-repeat="state in statedata" value="{{state.state_id}}">{{state.state}}</option>
+                                           <option ng-repeat="state in statedata" value="{{state._id}}">{{state.state}}</option>
                                                                 </select>
                                             </div>
                                             

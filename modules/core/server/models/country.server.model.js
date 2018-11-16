@@ -10,10 +10,7 @@ var mongoose = require('mongoose'),
  * Newpost Schema
  */
 var CountrySchema = new Schema({
-  country_id: {
-    type: Number,
-    default: Date.now
-  },
+ 
   country: {
     type: String,
     default: '',

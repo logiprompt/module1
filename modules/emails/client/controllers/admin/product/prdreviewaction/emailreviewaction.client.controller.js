@@ -7,17 +7,16 @@
 
 
 
-    EmailReviewActionController.$inject = ['$scope','$http','$state','$stateParams', 'Upload','prdReviewSubService'];
+  EmailReviewActionController.$inject = ['$scope','$http','$state','$stateParams', 'Upload','prdReviewActionService'];
 
-function EmailReviewActionController ($scope, $http, $state, $stateParams, Upload,prdReviewSubService) {
-
+function EmailReviewActionController ($scope, $http, $state, $stateParams, Upload,prdReviewActionService)
+{
   $scope.formdata = {};
   $scope.formdata.status ='0';
-  $scope.prdReviewSubService = prdReviewSubService;
-/////////////////////select/////////////////////////////
+  $scope.prdReviewActionService = prdReviewActionService;
 
-///////////////////////////////////////////////////////
-       
+/////////////////////select/////////////////////////////
+      
 $scope.setasDefault=function(id){
 
     $http({
@@ -77,7 +76,7 @@ $scope.iconw=function(){
 
             // $(document).find('#myTable').DataTable();
  
- //////////////////////////////////
+ /////////////////////////////////////////////////////////////////////////////////////////////
 
   /*
 	 *
@@ -87,12 +86,10 @@ $scope.iconw=function(){
    * 
 	 */
   
-  $scope.addPrdReviewSub = function()
+  $scope.addPrdReviewAction = function()
   {  
-
     if($scope.formdata.$valid)
     {
-
       var data={
                   "name":$scope.name,
                   "subject":$scope.subject,
@@ -102,12 +99,12 @@ $scope.iconw=function(){
                   "oLang":{}
                 }    
 
-       $scope.prdReviewSubService.addPrdReviewSub(data).then(function(result)
+       $scope.prdReviewActionService.addPrdReviewAction(data).then(function(result)
       {
         if(result.statusText = "OK")
         {
 				  swal("Success!", "Successfully added!", "success");  
-				  $state.go('emailreviewsubmission');
+				  $state.go('emailproductreviewaction');
         }
         else
         {
@@ -116,17 +113,15 @@ $scope.iconw=function(){
 		  })
 		}
   }
-
 ///////////////////////////////////////////////////////////////////////
-
-/*
+    /*
 	   * FUnction : delOrderCreation
 	   * Description : delete OrderCreation By Id
 	   * Owner :ck
 	   */
-    $scope.delPrdReviewSub = function(userId){
-		   
-		   
+
+    $scope.delPrdReviewSub = function(userId)
+    {   
       swal({
               title: 'Are you sure?',
               text: "You want to delete this user!",
@@ -137,15 +132,16 @@ $scope.iconw=function(){
               confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
               if(result){
-               $scope.prdReviewSubService.delPrdReviewSub(userId).then(function(result){
-              if(result.statusText = "OK"){
-
-              swal('Deleted!',
-                   'User has been deleted.',
-                   'success')
-
-              $state.reload();
-               }else{
+               $scope.prdReviewActionService.delprdReviewAction(userId).then(function(result){
+              if(result.statusText = "OK")
+              {
+                swal('Deleted!',
+                    'User has been deleted.',
+                    'success')
+                $state.reload();
+               }
+               else
+               {
                  
                }
             })

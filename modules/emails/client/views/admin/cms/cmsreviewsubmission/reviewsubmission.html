@@ -78,21 +78,21 @@
                                                 </thead>
                                                 
                                                 <tbody>
-                                                   <tr >
+                                                  <tr ng-repeat="list in userlist">
                                                         <td><!-- {{$index+1}} -->
-                                                             <input type="checkbox" id="basic_checkbox_1"  class="rowtxtchk" value="1" ng-click="addchkval(1)" />
-                                    <label for="basic_checkbox_1"></label>
-                                                        1</td>
-                                                        <td>Registration mail 2</td>
-                                                        <td>Aug 15 2018</td>
-                                                        <td>Aug 15 2018</td>
+                                                             <input type="checkbox" id="basic_checkbox_{{$index+1}}"  class="rowtxtchk" value="{{list._id}}" ng-click="addchkval(list._id)" />
+                                    <label for="basic_checkbox_{{$index+1}}"></label>
+                                                        {{$index+1}}</td>
+                                                       <td>{{list.oLang[currentLan].name ? list.oLang[currentLan].name :list.name}}</td>
+                                                        <td>{{list.created}}</td>
+                                                        <td>{{list.modified}}</td>
                                                        
-                                                         <td>Active</td>
+                                                        <td><span ng-if="list.status==1">Active</span><span ng-if="list.status==2">De-Active</span></td>
                                                         <td style="width:20% !important;"> 
-                                                           <a class="btn waves-effect waves-light btn-sm btn-info" href="/email/editcmsreviewsubmission/1">
+                                                           <a class="btn waves-effect waves-light btn-sm btn-info" href="/email/editcmsreviewsubmission/{{list._id}}">
                                                                 Edit
                                                               </a>
-                                                             <button class="btn waves-effect waves-light btn-sm btn-danger"  ng-click="del(1)" rel=""  >
+                                                             <button class="btn waves-effect waves-light btn-sm btn-danger"  ng-click="delCmsreviewSubmission(list._id)" rel=""  >
                                                                  Delete
                                                                 </button>
                                                             
@@ -101,28 +101,7 @@
                                                                 </td>
                                                     </tr>
 
-                                                      <tr >
-                                                        <td><!-- {{$index+1}} -->
-                                                             <input type="checkbox" id="basic_checkbox_2"  class="rowtxtchk" value="2" ng-click="addchkval(2)" />
-                                    <label for="basic_checkbox_2"></label>
-                                                        2</td>
-                                                        <td>Registration mail 1</td>
-                                                        <td>Aug 15 2018</td>
-                                                        <td>Aug 15 2018</td>
-                                                       
-                                                         <td>DE Active</td>
-                                                        <td style="width:20% !important;"> 
-                                                           <a class="btn waves-effect waves-light btn-sm btn-info" href="/email/editcmsreviewsubmission/2">
-                                                                Edit
-                                                              </a>
-                                                             <button class="btn waves-effect waves-light btn-sm btn-danger"  ng-click="del(1)" rel=""  >
-                                                                 Delete
-                                                                </button>
-                                                           
-                                                                                                          
-                                                               
-                                                                </td>
-                                                    </tr>
+                                                      
                                                     
                                                 </tbody>
                                             </table>

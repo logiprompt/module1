@@ -24,7 +24,7 @@
 $scope.formdata.ip = response.data.ip;
 });
 
-console.log($scope.formdata);
+console.log(stateparams.id);
 /////////////////////////////////load business countries//////////////////////////////////////////
 $http({
   url: '/api/admin/selectbusinessCountry',
@@ -133,8 +133,8 @@ $scope.updateBusinessCountry=function()
             'status':$scope.formdata.status,'setupdb':$scope.formdata.setupdb,
             'migrate':$scope.formdata.migrate,
             'username':$scope.formdata.username,'ip':$scope.formdata.ip}
-  console.log(data);
- console.log($scope.validation());
+ // console.log(data);
+ //console.log($scope.validation());
   if($scope.validation()==0){
 
 
@@ -145,7 +145,7 @@ $scope.updateBusinessCountry=function()
       file:$scope.imgss
     }).then(function (response) { 
 
-      console.log(response);
+     // console.log(response);
      //$state.reload();
   
      $state.reload();

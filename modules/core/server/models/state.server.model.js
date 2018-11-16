@@ -20,11 +20,7 @@ var StateSchema = new Schema({
     required: 'Please enter state name',
     trim: true
   },
- country: {
-    type: Number,
-    default:'',
-    required: 'Please select country'
-  },
+  country: [{ type: Schema.Types.ObjectId, ref: 'Sys_country' }],
   status: {
     type: Number,
     default: '',

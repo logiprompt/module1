@@ -95,8 +95,8 @@
                                                         <select class="form-control filter-option" name="country" id="country" >
                                                                        <option class="filter-option-inner" value="0">choose</option>
                                                                        
-                                                                       <option  class="filter-option-inner" ng-repeat="val in list" value="{{val.country_id}}" ng-if="val.country_id==formdata.country" selected="selected" >{{val.country}}</option>
-                                                                       <option ng-repeat="val in list" ng-if="val.country_id!=formdata.country" value="{{val.country_id}}">{{val.country}}</option>
+                                                                       <option  class="filter-option-inner" ng-repeat="val in list" value="{{val._id}}" ng-if="val._id==formdata.country" selected="selected" >{{val.country}}</option>
+                                                                       <option ng-repeat="val in list" ng-if="val._id!=formdata.country" value="{{val._id}}">{{val.country}}</option>
                                                                    
                                                   </select>
                                                       

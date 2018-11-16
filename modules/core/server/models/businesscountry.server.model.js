@@ -15,11 +15,9 @@ var BusinesscountrySchema = new Schema({
     default: Date.now
   },
   country: {
-    type: String,
-    default: '',
-    required: 'Please enter country name ',
-    trim: true
-  },
+     type:[Schema.Types.ObjectId],
+     ref: 'Sys_country' },
+ 
  shortname: {
     type: String,
     default:'',

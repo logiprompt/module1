@@ -34,7 +34,7 @@ $http({
 .then(function(response) {
 $scope.buslist=response.data.data;
 console.log($scope.buslist);
-console.log(12);
+//console.log(12);
       // success
 }, 
 function(response) { // optional
@@ -138,8 +138,8 @@ $scope.del=function(id){
  ////////////////////////////insert/////////////////////////
 
  $scope.insbusinessCountry=function(){
-   console.log(0);
-   console.log($scope.validation()); 
+  // console.log(0);
+  // console.log($scope.validation()); 
   if($scope.validation()==0){
       
         //  var data={'country':$scope.formdata.country,'shortname':$scope.formdata.shortname,
@@ -148,7 +148,7 @@ $scope.del=function(id){
            
         var data=$scope.formdata;
      
-        console.log(data);
+       // console.log(data);
 
               Upload.upload({
                 url: '/api/admin/insbusinessCountry',
@@ -156,7 +156,7 @@ $scope.del=function(id){
                 file:$scope.imgss
               }).then(function (response) { 
 
-                console.log(response);
+             //   console.log(response);
                //$state.reload();
             
                if(response.data.data==0)

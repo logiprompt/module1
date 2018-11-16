@@ -7,16 +7,17 @@
 
 
 
-    EmailReviewActionListController.$inject = ['$scope','$http','$state','$stateParams', 'Upload','prdReviewSubService'];
+    EmailReviewActionListController.$inject = ['$scope','$http','$state','$stateParams', 'Upload','prdReviewActionService'];
 
-  function EmailReviewActionListController($scope, $http, $state, $stateParams, Upload,prdReviewSubService) {
+  function EmailReviewActionListController($scope, $http, $state, $stateParams, Upload,prdReviewActionService) {
 
   $scope.formdata = {};
   $scope.formdata.status ='0';
-  $scope.prdReviewSubService = prdReviewSubService;
+  $scope.prdReviewActionService = prdReviewActionService;
  /////////////////////select/////////////////////////////
 
 ///////////////////////////////////////////////////////
+
 $scope.currentLan=localStorage.getItem('currentLang').toString();
        
 $scope.setasDefault=function(id)
@@ -60,11 +61,11 @@ $scope.choices = [{id: 'choice1'}];
 	   * Owner :ck
 	   */
 
-$scope.getprdReviewSub = function(){
+$scope.getprdReviewAction = function(){
   //console.log(0);
-   $scope.prdReviewSubService.getprdReviewSub().then(function(result){
+   $scope.prdReviewActionService.getprdReviewAction().then(function(result){
    if(result.statusText = "OK"){
-     $scope.reviewsublist = result.data;
+     $scope.reviewactionlist = result.data;
 //console.log(1);
 //console.log(result.data);
     }else{
@@ -72,7 +73,7 @@ $scope.getprdReviewSub = function(){
     }
  });
 }
-$scope.getprdReviewSub();
+$scope.getprdReviewAction();
 
 
 ///////////////////////////////////////////////////////////////////////
@@ -82,7 +83,7 @@ $scope.getprdReviewSub();
 	   * Description : delete OrderCreation By Id
 	   * Owner :jeeja
 	   */
-    $scope.delprdReviewSub = function(userId){
+    $scope.delprdReviewAction = function(userId){
    
       swal({
               title: 'Are you sure?',
@@ -94,7 +95,7 @@ $scope.getprdReviewSub();
               confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
               if(result){
-               $scope.prdReviewSubService.delprdReviewSub(userId).then(function(result){
+               $scope.prdReviewActionService.delprdReviewAction(userId).then(function(result){
               if(result.statusText = "OK"){
 
               swal('Deleted!',
@@ -184,7 +185,7 @@ $scope.delpage=function(){
     confirmButtonText: 'Yes, delete it!'
   }).then((result) => {
     if(result){
-     $scope.prdReviewSubService.delCheckedprdReviewSub(userId).then(function(result){
+     $scope.prdReviewActionService.delCheckedprdReviewAction(userId).then(function(result){
     if(result.statusText = "OK"){
     swal('Deleted!',
           'User has been deleted.',

@@ -82,12 +82,12 @@ $scope.addSubscription = function(){
   }
 
   //////////////////////////delete invoice//////////////////////////////
-  $scope.delInvoice = function (userId) {
+  $scope.delSubscription = function (userId) {
 
 
     swal({
       title: 'Are you sure?',
-      text: "You want to delete this Invoice!",
+      text: "You want to delete this Subscription!",
       type: 'warning',
       showCancelButton: false,
       confirmButtonColor: '#3085d6',
@@ -95,11 +95,11 @@ $scope.addSubscription = function(){
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result) {
-        $scope.subscriptionService.delInvoice(userId).then(function (result) {
+        $scope.subscriptionService.delSubscription(userId).then(function (result) {
           if (result.statusText = "OK") {
             swal(
               'Deleted!',
-              'Invoice has been deleted.',
+              'Subscription has been deleted.',
               'success'
             )
             $state.reload();
@@ -228,11 +228,11 @@ $scope.chkValue = [];
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result) {
-        $scope.subscriptionService.delcheckedinvoice(userId).then(function (result) {
+        $scope.subscriptionService.delcheckedsubscription(userId).then(function (result) {
           if (result.statusText = "OK") {
             swal(
               'Deleted!',
-              'Invoice has been deleted.',
+              'Subscription has been deleted.',
               'success'
             )
             $state.reload();

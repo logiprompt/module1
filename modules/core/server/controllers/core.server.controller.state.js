@@ -108,16 +108,7 @@ exports.updateState = function(req, res) {
 };
 exports.selectState = function(req, res) {
 
-  State.aggregate([
-    { $lookup:
-       {
-          from:"Sys_country",
-          localField:"country_id",
-          foreignField:"country",
-          as:"countryname"
-        }
-   }
- ]).exec(function (err, data) {
+  State.find().populate({ path: 'country', select: 'country' }).exec(function (err, data) {
              if (err) throw err;
          
          res.json({

@@ -60,7 +60,7 @@ exports.read = function(req, res) {
  * Get User by ID
  */
 
-exports.SubscriptionByID = function(request, response) {
+exports.subscriptionByID = function(request, response) {
     Subscription.findById(request.query.userId)
     .lean()
     .exec(function(error, items) {
@@ -164,7 +164,7 @@ exports.SubscriptionByID = function(request, response) {
       *Delete currency by IDs
       *
       **/
-      exports.delCheckedSubscription = function(request, response) {
+      exports.delcheckedsubscription = function(request, response) {
       
           //var arr = request.query.userId.split(',');
           var arr = request.query.userId;

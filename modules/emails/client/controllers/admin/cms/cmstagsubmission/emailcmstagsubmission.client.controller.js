@@ -2,25 +2,84 @@
   'use strict';
 
   angular
-    .module('emails')
-    .controller('EmailnewsletterconfirmController', EmailnewsletterconfirmController);
+    .module('core')
+    .controller('EmailcmstagsubmissionController', EmailcmstagsubmissionController);
 
 
 
-    EmailnewsletterconfirmController.$inject = ['$scope','$http','$state','$stateParams', 'Upload','invoicecreationService'];
+    EmailcmstagsubmissionController.$inject = ['$scope','$http','$state','$stateParams', 'Upload','cmstagsubmissionService'];
 
-  function EmailnewsletterconfirmController ($scope, $http, $state, $stateParams, Upload,invoicecreationService) {
+  function EmailcmstagsubmissionController ($scope, $http, $state, $stateParams, Upload, cmstagsubmissionService) {
 
   $scope.formdata = {};
   $scope.formdata.status ='0';
-  $scope.invoicecreationService = invoicecreationService;
+  $scope.cmstagsubmissionService=cmstagsubmissionService;
  /////////////////////select/////////////////////////////
 
 ///////////////////////////////////////////////////////
 
+ $scope.currentLang= localStorage.getItem('currentLang');
+  console.log($scope.currentLan)
+  
+  ///////////////////list /////////////////////
+  /*
+    * Function : get cmstagsubmission
+    * Description : get cmstagsubmission details
+    * Owner : anju
+    */
 
-$scope.currentLan=localStorage.getItem('currentLang').toString();
+  $scope.getCmstagSubmission = function () {
+    console.log(0);
+    $scope.cmstagsubmissionService.getCmstagSubmission().then(function (result) {
+      if (result.statusText = "OK") {
+        $scope.userlist = result.data;
+        //console.log(1);
+        console.log(result.data);
+      } else {
 
+      }
+    });
+  }
+  $scope.getCmstagSubmission();
+
+///////////////////////////////////////////////////////////////
+
+  /*
+       * FUnction : delCmstagSubmission
+       * Description : delete CmstagSubmission id
+       * Owner :anju
+       * 
+       */
+  $scope.delCmstagSubmission = function (userId) {
+
+
+    swal({
+      title: 'Are you sure?',
+      text: "You want to delete this !",
+      type: 'warning',
+      showCancelButton: false,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result) {
+        $scope.cmstagsubmissionService.delCmstagSubmission(userId).then(function (result) {
+          if (result.statusText = "OK") {
+            swal(
+              'Deleted!',
+              'Cms Tag Submission has been deleted.',
+              'success'
+            )
+            $state.reload();
+          } else {
+
+          }
+        })
+      }
+    })
+
+  }
+  ///////////////////////////////////////////////////////////////////////
 
 
        
@@ -40,75 +99,7 @@ $scope.setasDefault=function(id){
       });
 
 }
-////////////list invoice////////////////////////////////////////////////
-$scope.getinvoice = function(){
-  console.log(0);
-  $scope.invoicecreationService.getinvoice().then(function(result){
-   if(result.statusText = "OK"){
-     $scope.invoicelist = result.data;
-console.log(1);
-console.log(result.data);
-    }else{
-      
-    }
- });
-}
-$scope.getinvoice();
-////////////////add invoice creation/////////////////////////////////////
-$scope.addInvoice = function(){
-  if($scope.formdata.$valid && $scope.status!=0){
-  var data = {
-      "name":$scope.name,
-      "subject":$scope.subject,
-      "content":$scope.content,
-      "custom":$scope.custom,
-      "status" :$scope.status
-      }
-    
-  
-    $scope.invoicecreationService.addInvoice(data).then(function(result){
-      if(result.statusText = "OK"){
-        swal("Success!", "Successfully Created invoice!", "success");  
-        $state.go('emailinvoicecreation');
-      }else{
-        swal("error!", "Invoicedetails already exist!", "error");
-      }
-      
-    })
-  }
-    
-  }
 
-  //////////////////////////delete invoice//////////////////////////////
-  $scope.delInvoice = function (userId) {
-
-
-    swal({
-      title: 'Are you sure?',
-      text: "You want to delete this Invoice!",
-      type: 'warning',
-      showCancelButton: false,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
-    }).then((result) => {
-      if (result) {
-        $scope.invoicecreationService.delInvoice(userId).then(function (result) {
-          if (result.statusText = "OK") {
-            swal(
-              'Deleted!',
-              'Invoice has been deleted.',
-              'success'
-            )
-            $state.reload();
-          } else {
-
-          }
-        })
-      }
-    })
-
-  }
 /////////////////////////////////////////////////////////////////////////
 
 $scope.choices = [{id: 'choice1'}];
@@ -182,14 +173,14 @@ console.log(checkedValue[0])
   }
   else{
 
-    $scope.editpage[0].setAttribute("href", "/email/editinvoicecreation/"+linkid);
+    $scope.editpage[0].setAttribute("href", "/email/editcmstagsubmission/"+linkid);
   }
 
 }
 $scope.chk={};
 
 $scope.newpage=function(){
-  $state.go('emailaddinvoicecreation');
+  $state.go('emailaddcmstagsubmission');
 }
 $scope.editpages=function(){
     var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
@@ -201,19 +192,20 @@ document.location=$scope.editpage[0].getAttribute("href");
  }
  
 }
-$scope.chkValue = [];
+$scope.chkValue=[];
 
 
-  $scope.delpage = function () {
-    $scope.chkValue = [];
-
-    //$state.go('addlanguage');
-    var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-    console.log(checkedValue)
-    for (var i = 0; i < checkedValue.length; i++) {
-      $scope.chkValue.push(checkedValue[i].value);
-    }
-
+$scope.delpage=function(){
+  $scope.chkValue=[];
+ 
+  //$state.go('addlanguage');
+  var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
+console.log(checkedValue)
+  for(var i=0;i<checkedValue.length;i++){
+    $scope.chkValue.push(checkedValue[i].value);
+  }
+  
+  
     var userId = $scope.chkValue;
     console.log(userId);
     swal({
@@ -226,11 +218,11 @@ $scope.chkValue = [];
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result) {
-        $scope.invoicecreationService.delcheckedinvoice(userId).then(function (result) {
+        $scope.cmstagsubmissionService.delCheckedCmstagSubmission(userId).then(function (result) {
           if (result.statusText = "OK") {
             swal(
               'Deleted!',
-              'Invoice has been deleted.',
+              'Cms Tag Submission has been deleted.',
               'success'
             )
             $state.reload();
@@ -241,9 +233,8 @@ $scope.chkValue = [];
         })
       }
     })
-
-
-  }
+ 
+}
 setTimeout(getActionBtns, 1500);         
 
 

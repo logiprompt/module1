@@ -14,17 +14,8 @@ var DistrictSchema = new Schema({
     type: Number,
     default: Date.now
   },
-  state: {
-    type: String,
-    default: '',
-    required: 'Please enter state name',
-    trim: true
-  },
- country: {
-    type: String,
-    default:'',
-    required: 'Please select country'
-  },
+  state: [{ type: Schema.Types.ObjectId, ref: 'Sys_state' }],
+  country: [{ type: Schema.Types.ObjectId, ref: 'Sys_country' }],
   district: {
     type: String,
     default:'',

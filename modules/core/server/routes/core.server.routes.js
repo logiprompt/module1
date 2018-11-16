@@ -145,6 +145,12 @@ app.post('/api/admin/viewCountrybyid', function(req, res)
   var res=res;
   Country.viewCountryid(data,res);
 });
+app.post('/api/admin/viewStatebyid', function(req, res)
+{ 
+  var data=req;
+  var res=res;
+  State.viewStatebyid(data,res);
+});
 
 //////////////////District///////////////////////////
 
@@ -236,6 +242,13 @@ app.post('/api/admin/updatePincode', function(req, res)
   var data=req;
   var res=res;
   pincode.updatePincode(data,res);
+});
+///////////////////////update/////////////////
+app.post('/api/admin/updateCountry', function(req, res)
+{ 
+  var data=req;
+  var res=res;
+  Country.updateCountry(data,res);
 });
 ///////////////////////del/////////////////
 app.post('/api/admin/delPincode', function(req, res)

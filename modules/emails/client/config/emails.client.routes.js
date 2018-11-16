@@ -1127,7 +1127,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/product/productratingaction/ratingaction.html',
-    controller: 'EmailpdtratingactionController',
+    controller: 'EmailpdtratingactionlistController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -1153,7 +1153,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/product/productratingaction/edit.html',
-    controller: 'EmailpdtratingactionController',
+    controller: 'EmailpdtratingactionEdit',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -1168,7 +1168,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/product/producttagaction/tagaction.html',
-    controller: 'EmailpdttagactionController',
+    controller: 'EmailpdttagactionlistController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -1181,7 +1181,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/product/producttagaction/addtagaction.html',
-    controller: 'EmailpdttagactionController',
+    controller: 'EmailpdttaggactionController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -1194,7 +1194,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/product/producttagaction/edit.html',
-    controller: 'EmailpdttagactionController',
+    controller: 'EmailpdttagactionEdit',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -1222,7 +1222,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/cms/cmsreviewsubmission/addreviewsubmission.html',
-    controller: 'EmailcmsreviewsubmissionController',
+    controller: 'AddCmsreviewsubmissionController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -1235,7 +1235,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/cms/cmsreviewsubmission/edit.html',
-    controller: 'EmailcmsreviewsubmissionController',
+    controller: 'EditCmsreviewsubmissionController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -1250,7 +1250,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/cms/cmsratingsubmission/ratingsubmission.html',
-    controller: 'EmailcmsratingsubmissionController',
+    controller: 'CmsRatingSubListController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -1263,7 +1263,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/cms/cmsratingsubmission/addratingsubmission.html',
-    controller: 'EmailcmsratingsubmissionController',
+    controller: 'CmsRatingSubController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -1276,7 +1276,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/cms/cmsratingsubmission/edit.html',
-    controller: 'EmailcmsratingsubmissionController',
+    controller: 'CmsRatingSubEdit',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -1304,7 +1304,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/cms/cmstagsubmission/addtagsubmission.html',
-    controller: 'EmailcmstagsubmissionController',
+    controller: 'AddcmstagsubmissionController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -1317,7 +1317,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/cms/cmstagsubmission/edit.html',
-    controller: 'EmailcmstagsubmissionController',
+    controller: 'EditcmstagsubmissionController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -1332,7 +1332,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/cms/cmsreviewaction/reviewaction.html',
-    controller: 'EmailcmsreviewactionController',
+    controller: 'CmsReviewActionListController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -1345,7 +1345,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/cms/cmsreviewaction/addreviewaction.html',
-    controller: 'EmailcmsreviewactionController',
+    controller: 'CmsReviewActionController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -1358,7 +1358,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/cms/cmsreviewaction/edit.html',
-    controller: 'EmailcmsreviewactionController',
+    controller: 'CmsReviewActionEdit',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -1386,7 +1386,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/cms/cmsratingaction/addratingaction.html',
-    controller: 'EmailcmsratingactionController',
+    controller: 'AddcmsratingactionController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -1399,7 +1399,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/cms/cmsratingaction/edit.html',
-    controller: 'EmailcmsratingactionController',
+    controller: 'EditcmsratingactionController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -1414,7 +1414,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/cms/cmstagaction/tagaction.html',
-    controller: 'EmailcmstagactionController',
+    controller: 'CmtagactionlistController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -1427,7 +1427,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/cms/cmstagaction/addtagaction.html',
-    controller: 'EmailcmstagactionController',
+    controller: 'CmstaggactionController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -1440,7 +1440,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/cms/cmstagaction/edit.html',
-    controller: 'EmailcmstagactionController',
+    controller: 'CmstagactionEdit',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -1456,7 +1456,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/newsletter/emailconfirmation/emailconfirmation.html',
-    controller: 'EmailnewsletterconfirmController',
+    controller: 'NewsletterconfirmListController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -1469,7 +1469,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/newsletter/emailconfirmation/addemailconfirmation.html',
-    controller: 'EmailnewsletterconfirmController',
+    controller: 'MailConfirmationController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -1482,7 +1482,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/newsletter/emailconfirmation/edit.html',
-    controller: 'EmailnewsletterconfirmController',
+    controller: 'EmailconfirmationEdit',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -1563,7 +1563,7 @@
     header:adminheader,
     content: { 
      templateUrl: '/modules/emails/client/views/admin/newsletter/successfullsubscription/edit.html',
-    controller: 'EmailsuccessfullsubscriptionController',
+    controller: 'SuccessfullsubeditController',
     controllerAs: 'vm',
     },
      footer:adminfooter

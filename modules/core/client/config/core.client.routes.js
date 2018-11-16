@@ -414,6 +414,54 @@ var adminfooter={
 /////////////end pincode//////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+/////////////////////////////////////main store start/////////////////////////////////////////
+
+.state('settingsmainstore', {
+  url: '/settings/mainstore',
+ // controllerAs: 'vm',
+  views:{
+    header:adminheader,
+    content: { 
+     templateUrl: '/modules/core/client/views/admin/settings/general/mainstore/mainstore.html',
+    controller: 'Mainstore',
+    controllerAs: 'vm',
+    },
+     footer:adminfooter
+  } 
+})
+
+.state('mainstoreadd', {
+  url: '/settings/mainstoreadd',
+ // controllerAs: 'vm',
+  views:{
+    header:adminheader,
+    content: { 
+     templateUrl: '/modules/core/client/views/admin/settings/general/mainstore/mainstoreadd.html',
+    controller: 'Mainstoreadd',
+    controllerAs: 'vm',
+    },
+     footer:adminfooter
+  } 
+})
+
+.state('mainstoreedit', {
+  url: '/settings/mainstoreedit/:id',
+ // controllerAs: 'vm',
+  views:{
+    header:adminheader,
+    content: { 
+     templateUrl: '/modules/core/client/views/admin/settings/general/mainstore/mainstoreedit.html',
+    controller: 'Mainstoreedit',
+    controllerAs: 'vm',
+    },
+     footer:adminfooter
+  } 
+})
+
+
+
+
 /////////////////////////////////////language start/////////////////////////////////////////
 
 .state('settingslanglist', {
@@ -650,6 +698,54 @@ var adminfooter={
   } 
 })
 //////////////////////////////////////////////////////////////////////////////
+//////////////////////////////generalcountry//////////////////////////////////////////////////
+
+
+
+
+.state('generalcountry', {
+  url: '/settings/generalcountry',
+ // controllerAs: 'vm',
+  views:{
+    header:adminheader,
+    content: { 
+     templateUrl: '/modules/core/client/views/admin/settings/general/deliveryservicearea/country/countrylist.html',
+    controller: 'Generalcountrylist',
+    controllerAs: 'vm',
+    },
+     footer:adminfooter
+  } 
+})
+
+.state('generalcountryadd', {
+  url: '/settings/generalcountryadd',
+ // controllerAs: 'vm',
+  views:{
+    header:adminheader,
+    content: { 
+     templateUrl: '/modules/core/client/views/admin/settings/general/deliveryservicearea/country/countryaddlist.html',
+    controller: 'Generalcountrylist',
+    controllerAs: 'vm',
+    },
+     footer:adminfooter
+  } 
+})
+
+.state('generalcountryedit', {
+  url: '/settings/generalcountryedit/:id',
+ // controllerAs: 'vm',
+  views:{
+    header:adminheader,
+    content: { 
+     templateUrl: '/modules/core/client/views/admin/settings/general/deliveryservicearea/country/countryedit.html',
+    controller: 'Generalcountrylist',
+    controllerAs: 'vm',
+    },
+     footer:adminfooter
+  } 
+})
+
+
 
 
 

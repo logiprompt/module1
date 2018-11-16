@@ -121,8 +121,8 @@
                                      <label for="basic_checkbox_{{$index+1}}"></label>
                                                                                 {{$index+1}}</td>
                                                         <td>{{val.district}}</td>
-                                                        <td>{{val.country}}</td>
-                                                         <td>{{val.state}}</td>
+                                                        <td>{{val.country[0].country}}</td>
+                                                         <td>{{val.state[0].state}}</td>
                                                        <td><span ng-if="val.status==1">Disabled</span><span ng-if="val.status==2">Enabled</span></td>
                                                       
                                                         

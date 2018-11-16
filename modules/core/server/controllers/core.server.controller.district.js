@@ -166,16 +166,17 @@ exports.updDistrict = function(req, res) {
 
 exports.selectDistrict = function(req, res) {
 
-  District.find({}).exec(function (err, data) {
-             if (err) throw err;
-         
-				 res.json({
-                    status: true,
-                    data:data
-                });	
-				
-			
-				});
+  District.find().populate({ path: 'country', select: 'country' }).populate({ path: 'state', select: 'state' }).exec(function (err, data) {
+    if (err) throw err;
+
+res.json({
+           status: true,
+           data:data
+       }); 
+
+
+});
+
 
 };
 /////////////////////////////////Edit District///////////////////////////

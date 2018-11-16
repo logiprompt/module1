@@ -16,14 +16,14 @@ module.exports = function(app) {
   //  .delete(userreg.delete);
  
 
-  //   app.route('/api/updateinvoice').all()
-  //   .put(subscription.updateInvoice);
+    app.route('/api/updateSubscription').all()
+     .put(subscription.updateSubscription);
   
-  //   app.route('/api/invoice/delCheckedinvoice').all()
-  //   .delete(subscription.delCheckedinvoice);
+     app.route('/api/delcheckedsubscription').all()
+     .delete(subscription.delcheckedsubscription);
   // // Finish by binding the Email middleware
-  // app.route('/api/getinvoice').all()
-  //   .get(subscription.invoiceByID);
+   app.route('/api/getsubscription').all()
+    .get(subscription.subscriptionByID);
  
 
 

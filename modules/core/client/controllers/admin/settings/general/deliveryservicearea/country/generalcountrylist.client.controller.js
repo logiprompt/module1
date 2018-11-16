@@ -7,17 +7,18 @@
 
 
 
-    Generalcountrylist.$inject = ['$scope','$http','$state','$stateParams', 'Upload'];
+    Generalcountrylist.$inject = ['$scope','$http','$state','$stateParams', 'Upload','serviceAreaCountryService'];
 
-  function Generalcountrylist ($scope, $http, $state, $stateParams, Upload) {
+  function Generalcountrylist ($scope, $http, $state, $stateParams, Upload,serviceAreaCountryService) {
 
   $scope.formdata = {};
   $scope.formdata.status ='0';
+  $scope.serviceAreaCountryService = serviceAreaCountryService;
  /////////////////////select/////////////////////////////
 
  ///////////////////////////////////////////////////////
 
- 
+ $scope.currentLan=localStorage.getItem('currentLang').toString();
 $scope.setasDefault=function(id){
 
     $http({
@@ -53,32 +54,30 @@ $scope.choices = [{id: 'choice1'}];
       
  };
 
- function readFile(ev) {
+ //////////////////////////////////////////////////////////////////////
+ /*
+	   * FUnction : delOrderCreation
+	   * Description : delete OrderCreation By Id
+	   * Owner :ck
+	   */
 
-  if (this.files && this.files[0]) {
-  var FR= new FileReader();
-  FR.onload = function(e) {
-    document.getElementById("imgfiles").src= e.target.result;
-   ev.target.parentNode.parentNode.parentNode.childNodes[3].childNodes[1].childNodes[1]=e.target.result;
-    //document.getElementById("b64").innerHTML = e.target.result;
-  };       
-  FR.readAsDataURL( this.files[0] );
-  }
- }
- if(document.getElementById("imgfile")!=null){
-   document.getElementById("imgfile").addEventListener("change", readFile, false); 
- }
-
-$scope.iconw=function(){
-
-        document.getElementById('imgfile').click();
-        
-             }
-
-            // $(document).find('#myTable').DataTable();
+$scope.getserviceAreaCountry = function(){
+  //console.log(0);
+   $scope.serviceAreaCountryService.getserviceAreaCountry().then(function(result){
+    console.log(result.data);
+   if(result.statusText = "OK"){
+     $scope.servicecountrylist = result.data;
+//console.log(1);
+//console.log(result.data);
+    }else{
+      
+    }
+ });
+}
+$scope.getserviceAreaCountry();
 
 
-
+///////////////////////////////////////////////////////////////////////
 
  function getActionBtns(){
 

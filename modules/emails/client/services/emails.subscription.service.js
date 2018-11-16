@@ -47,10 +47,10 @@
 	  * Description : Delete user details by id
 	  * 
 	  */
-	 subscriptionService.delInvoice = function(userId){
+	 subscriptionService.delSubscription = function(userId){
 		 	console.log(13);	  
 		 return $http({
-		        url: '/api/addInvoice/',
+		        url: '/api/addSubscription/',
 				method: "DELETE",
 				params:{'userId':userId}
 				
@@ -63,10 +63,10 @@
 	  * Description : Delete details by ids
 	  * 
 	  */
-	 subscriptionService.delcheckedinvoice = function(userId){
+	 subscriptionService.delcheckedsubscription = function(userId){
 		console.log(12);		  
 	   return $http({
-			  url: '/api/invoice/delCheckedinvoice',
+			  url: '/api/delcheckedsubscription',
 			  method: "DELETE",
 			  params:{'userId':userId}
 		  });
@@ -78,9 +78,10 @@
 	  * Description : get one user details by id
 	  * 
 	  */
-	 subscriptionService.getInvoiceById = function(userId){
+	 subscriptionService.getSubscriptionById = function(userId){
+		 console.log(1111);
 		 return $http({
-		        url: '/api/getinvoice',
+		        url: '/api/getsubscription',
 				method: "GET",
 				params:{'userId':userId}
 		    });
@@ -89,10 +90,10 @@
 	 /*
 	  * 
 	  */
-	 subscriptionService.updateInvoice = function(userId,data){
+	 subscriptionService.updateSubscription = function(userId,data){
 		 console.log(userId);
 		 return $http({
-		        url: '/api/updateinvoice',
+		        url: '/api/updateSubscription',
 				method: "PUT",
 		        data:data
 		    });

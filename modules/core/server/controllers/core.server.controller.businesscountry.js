@@ -110,7 +110,7 @@ else{
 
   var maxValue=Promise.resolve(custom.maxplus('Sys_businesscountry','business_id'));
 
-  maxValue.then(function(value) {
+    maxValue.then(function(value) {
     newCountry.country = req.body.country;
     newCountry.business_id = value;
     newCountry.shortname = req.body.shortname;
@@ -157,7 +157,7 @@ else{
 
 exports.selectbusinessCountry = function(req, res) {
 
-  Businesscountry.find({}).exec(function (err, data) {
+  Businesscountry.find({}).populate({ path: 'country',model: 'Sys_country', select: 'country' }).exec(function (err, data) {
     if (err) throw err;
   
 res.json({
@@ -224,7 +224,7 @@ return res.end("Error uploading file.");
 else{
   
   if(picpath==''){
-    Businesscountry.update({business_id:req.body.id},{
+    Businesscountry.update({_id:req.body.id},{
     $set:{"country" : req.body.country,
     "shortname" : req.body.shortname,
     "domain":req.body.domain,
@@ -241,7 +241,7 @@ else{
           }
           else{
             
-            Businesscountry.update({business_id:req.body.id},{
+            Businesscountry.update({_id:req.body.id},{
               $set:{"country" : req.body.country,
               "shortname" : req.body.shortname,
               "domain":req.body.domain,
@@ -272,7 +272,7 @@ else{
 exports.delBusinesscountry = function(req, res) {
 
   
-  Businesscountry.deleteOne({business_id:req.body.id}).exec(function (err, data) {
+  Businesscountry.deleteOne({_id:req.body.id}).exec(function (err, data) {
              if (err) throw err;
         
 				 res.json({

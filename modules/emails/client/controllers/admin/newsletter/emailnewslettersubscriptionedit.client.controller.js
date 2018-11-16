@@ -2,28 +2,30 @@
   'use strict';
 
   angular
-    .module('emails')
-    .controller('emailnewslettersubscriptioneditController', emailnewslettersubscriptioneditController);
+    .module('core')
+    .controller('EmailnewslettersubscriptioneditController', EmailnewslettersubscriptioneditController);
 
 
+    EmailnewslettersubscriptioneditController.$inject = ['$scope','$http','$state','$stateParams', 'Upload','subscriptionService'];
 
-    emailnewslettersubscriptioneditController.$inject = ['$scope','$http','$state','$stateParams', 'Upload','subscriptionService'];
-
-  function emailnewslettersubscriptioneditController ($scope, $http, $state, $stateParams, Upload,subscriptionService) {
+  function EmailnewslettersubscriptioneditController ($scope, $http, $state, $stateParams, Upload,subscriptionService) {
 
   $scope.formdata = {};
-  $scope.formdata.status ='0';
-  $scope.subscriptionService = subscriptionService;
+   $scope.status = "0";
+   $scope.username= localStorage.getItem('username');
+   $scope.subscriptionService = subscriptionService;
+
+
  /////////////////////select/////////////////////////////
+////////////////////////ip fetch//////////////////////////////
 
-///////////////////////////////////////////////////////
+$http.get("https://ipinfo.io/").then(function (response) {
+  $scope.ip = response.data.ip;
+  
+  });
+ ///////////////////////////////////////////////////////
 
-
-$scope.currentLan=localStorage.getItem('currentLang').toString();
-
-
-
-       
+ 
 $scope.setasDefault=function(id){
 
     $http({
@@ -40,77 +42,7 @@ $scope.setasDefault=function(id){
       });
 
 }
-////////////list invoice////////////////////////////////////////////////
-$scope.getsubscription = function(){
-  console.log(0);
-  $scope.subscriptionService.getsubscription().then(function(result){
-   if(result.statusText = "OK"){
-     $scope.invoicelist = result.data;
-console.log(1);
-console.log(result.data);
-    }else{
-      
-    }
- });
-}
-$scope.getsubscription();
-////////////////add invoice creation/////////////////////////////////////
-$scope.addSubscription = function(){
 
- 
-  if($scope.formdata.$valid && $scope.status!=0){
-  var data = {
-      "name":$scope.name,
-      "subject":$scope.subject,
-      "content":$scope.content,
-      "custom":$scope.custom,
-      "status" :$scope.status
-      }
-    
-  
-    $scope.subscriptionService.addSubscription(data).then(function(result){
-      if(result.statusText = "OK"){
-        swal("Success!", "Successfully Created Subscription Template!", "success");  
-        $state.go('emailsubscription');
-      }else{
-        swal("error!", "Subscription Template already exist!", "error");
-      }
-      
-    })
-  }
-    
-  }
-
-  //////////////////////////delete invoice//////////////////////////////
-  $scope.delInvoice = function (userId) {
-
-
-    swal({
-      title: 'Are you sure?',
-      text: "You want to delete this Invoice!",
-      type: 'warning',
-      showCancelButton: false,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
-    }).then((result) => {
-      if (result) {
-        $scope.subscriptionService.delInvoice(userId).then(function (result) {
-          if (result.statusText = "OK") {
-            swal(
-              'Deleted!',
-              'Invoice has been deleted.',
-              'success'
-            )
-            $state.reload();
-          } else {
-
-          }
-        })
-      }
-    })
-
-  }
 /////////////////////////////////////////////////////////////////////////
 
 $scope.choices = [{id: 'choice1'}];
@@ -125,46 +57,104 @@ $scope.choices = [{id: 'choice1'}];
  $scope.removeChoice = function(val) {
          if($scope.choices.length>1){
        $scope.choices.splice(val,1);
-         }
-      
+         }   
  };
 
- function readFile(ev) {
-
-  if (this.files && this.files[0]) {
-  var FR= new FileReader();
-  FR.onload = function(e) {
-    document.getElementById("imgfiles").src= e.target.result;
-   ev.target.parentNode.parentNode.parentNode.childNodes[3].childNodes[1].childNodes[1]=e.target.result;
-    //document.getElementById("b64").innerHTML = e.target.result;
-  };       
-  FR.readAsDataURL( this.files[0] );
-  }
- }
- if(document.getElementById("imgfile")!=null){
-   document.getElementById("imgfile").addEventListener("change", readFile, false); 
- }
-
-$scope.iconw=function(){
-
-        document.getElementById('imgfile').click();
-        
-             }
-
-            // $(document).find('#myTable').DataTable();
-
-
-
-
+ ///////////////////list /////////////////////
  
-setTimeout(getActionBtns, 1500);         
+ /*
+	 * Function : getInvoiceById
+	 * Description : get User details
+	 *
+	 */
+
+  $scope.getSubscriptionById = function(userId){
+    console.log(0);
+    $scope.subscriptionService.getSubscriptionById(userId).then(function(result){
+      console.log(result);
+      var details=result.data;
+      if (result.statusText = "OK") {
+      
+       
+           $scope.status =details.status.toString();    
+        if(angular.equals($scope.currentLan, $scope.defaultLang)){
+        $scope.userdetails = result.data;
+        $scope.name = $scope.userdetails.name;
+        $scope.subject = $scope.userdetails.subject;
+        $scope.content = $scope.userdetails.content;
+        $scope.custom = $scope.userdetails.custom;
+      }
+      else{
+                   
+        $scope.userdetails = result.data;
+        $scope.name =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].name : details.name;
+        $scope.subject = $scope.currentLan in details.oLang  ?details.oLang[ $scope.currentLan].subject :  details.subject;
+        $scope.content =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].content:details.content ;
+        $scope.custom =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].custom :details.custom;
+       
+
+      }
+      }
+   });
+  }
+  $scope.getSubscriptionById($stateParams.id);
+ //////////////////////////////////
+  /*
+	 *
+   *  Function : update invoicecreation
+	 * Description : Update Currency details
+	 * 
+   * 
+   * 
+	 */
+
+      $scope.updateSubscription = function(){
+        console.log(110);
+        if($scope.formdata.$valid && $scope.status!=0){
+          if (localStorage.getItem("currentLang") == 'en') 
+          {
+            var data = 
+            {
+              "name": $scope.name,
+              "subject": $scope.subject,
+              "content": $scope.content,
+              "custom": $scope.custom,
+              "status": $scope.status,
+              "userId": $stateParams.id,
+              "isDefaultLang" : true
+            }
+          }
+          else 
+          {
+            var data = 
+            {
+              "name": $scope.name,
+              "subject": $scope.subject,
+              "content": $scope.content,
+              "custom": $scope.custom,
+              "userId": $stateParams.id,
+              "isDefaultLang" : false,
+              "defaultLang":localStorage.getItem("defaultLang"),
+              "userSelectedLang":localStorage.getItem("currentLang")
+            };
+          }
+       //console.log(data);
+       $scope.subscriptionService.updateSubscription($stateParams.id,data).then(function(result){
+          if(result.statusText = "OK"){
+            swal("Success!", "Successfully updated Subscription", "success"); 
+            $state.reload();
+           }
+        });
+      }
+      }
+
+///////////////////////////////////////////////////////////////////////
 
 
- }
 
 
 
 
-
+    }
 
 }());

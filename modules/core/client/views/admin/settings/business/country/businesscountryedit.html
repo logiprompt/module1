@@ -198,7 +198,7 @@
                     <div class="col-lg-12">
                     <div class="card">
                     <div class="card-body">
-                    <h4 class="card-title">Business Country (Edit) ID {{viewbus.business_id}}</h4>
+                    <h4 class="card-title">Business Country (Edit) ID 1</h4>
                     <div class="col-lg-12">
 
                     <!-- <h4 class="card-title">Vertical Tab</h4>
@@ -237,7 +237,7 @@
                     <select class="form-control filter-option country" name="country" id="country" ng-model="formdata.country" >
                     <option  class="filter-option-inner" value="0">Choose</option>
 
-                    <option  class="filter-option-inner" ng-repeat="val in counlist" value="{{val.country_id}}" ng-selected="viewbus.country==val.country_id" selected>{{val.country}}</option>  
+                    <option  class="filter-option-inner" ng-repeat="val in counlist" value="{{val._id}}" ng-selected="viewbus.country==val._id" selected>{{val.country}}</option>  
 
 
                     </select> 

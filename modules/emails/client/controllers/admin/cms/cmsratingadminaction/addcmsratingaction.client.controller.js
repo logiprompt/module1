@@ -3,17 +3,45 @@
 
   angular
     .module('core')
-    .controller('EmailcmsreviewactionController', EmailcmsreviewactionController);
+    .controller('AddcmsratingactionController', AddcmsratingactionController);
 
 
 
-    EmailcmsreviewactionController.$inject = ['$scope','$http','$state','$stateParams', 'Upload'];
+    AddcmsratingactionController.$inject = ['$scope','$http','$state','$stateParams', 'Upload','cmsratingactionService'];
 
-  function EmailcmsreviewactionController ($scope, $http, $state, $stateParams, Upload) {
+  function AddcmsratingactionController ($scope, $http, $state, $stateParams, Upload, cmsratingactionService) {
 
   $scope.formdata = {};
-  $scope.formdata.status ='0';
- /////////////////////select/////////////////////////////
+  $scope.status ='0';
+  $scope.cmsratingactionService=cmsratingactionService;
+ /////////////////////insert/////////////////////////////
+ 
+ 
+  $scope.addRatingAction = function(){
+    
+    if($scope.formdata.$valid && $scope.status!=0){
+    var data = {
+        "name":$scope.name,
+        "subject":$scope.subject,
+        "content":$scope.content,
+        "custom":$scope.custom,
+        "status" :$scope.status
+        }
+      
+    console.log($scope.cmstagsubmissionService);
+      $scope.cmsratingactionService.addRatingAction(data).then(function(result){
+
+        if(result.statusText = "OK"){
+          swal("Success!", "Successfully added!", "success");  
+          $state.go('emailcmsratingaction');
+        }else{
+          swal("error!", "Already exist!", "error");
+        }
+        
+      })
+    }
+      
+    }
 
 ///////////////////////////////////////////////////////
 
@@ -111,14 +139,14 @@ console.log(checkedValue[0])
   }
   else{
 
-    $scope.editpage[0].setAttribute("href", "/email/editcmsreviewaction/"+linkid);
+    $scope.editpage[0].setAttribute("href", "/email/editordercomments/"+linkid);
   }
 
 }
 $scope.chk={};
 
 $scope.newpage=function(){
-  $state.go('emailaddcmsreviewaction');
+  $state.go('emailaddordercomments');
 }
 $scope.editpages=function(){
     var checkedValue = document.querySelectorAll('.rowtxtchk:checked');

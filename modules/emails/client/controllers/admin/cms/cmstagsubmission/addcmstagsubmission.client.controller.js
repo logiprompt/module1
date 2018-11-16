@@ -3,17 +3,45 @@
 
   angular
     .module('core')
-    .controller('EmailcmsreviewsubmissionController', EmailcmsreviewsubmissionController);
+    .controller('AddcmstagsubmissionController', AddcmstagsubmissionController);
 
 
 
-    EmailcmsreviewsubmissionController.$inject = ['$scope','$http','$state','$stateParams', 'Upload'];
+    AddcmstagsubmissionController.$inject = ['$scope','$http','$state','$stateParams', 'Upload','cmstagsubmissionService'];
 
-  function EmailcmsreviewsubmissionController ($scope, $http, $state, $stateParams, Upload) {
+  function AddcmstagsubmissionController ($scope, $http, $state, $stateParams, Upload, cmstagsubmissionService) {
 
   $scope.formdata = {};
-  $scope.formdata.status ='0';
- /////////////////////select/////////////////////////////
+  $scope.status ='0';
+  $scope.cmstagsubmissionService=cmstagsubmissionService;
+ /////////////////////insert/////////////////////////////
+ 
+ 
+  $scope.addTagSubmission = function(){
+    
+    if($scope.formdata.$valid && $scope.status!=0){
+    var data = {
+        "name":$scope.name,
+        "subject":$scope.subject,
+        "content":$scope.content,
+        "custom":$scope.custom,
+        "status" :$scope.status
+        }
+      
+    console.log($scope.cmstagsubmissionService);
+      $scope.cmstagsubmissionService.addTagSubmission(data).then(function(result){
+
+        if(result.statusText = "OK"){
+          swal("Success!", "Successfully added!", "success");  
+          $state.go('emailcmstagsubmission');
+        }else{
+          swal("error!", "Already exist!", "error");
+        }
+        
+      })
+    }
+      
+    }
 
 ///////////////////////////////////////////////////////
 
@@ -111,14 +139,14 @@ console.log(checkedValue[0])
   }
   else{
 
-    $scope.editpage[0].setAttribute("href", "/email/editcmsreviewsubmission/"+linkid);
+    $scope.editpage[0].setAttribute("href", "/email/editordercomments/"+linkid);
   }
 
 }
 $scope.chk={};
 
 $scope.newpage=function(){
-  $state.go('emailaddcmsreviewsubmission');
+  $state.go('emailaddordercomments');
 }
 $scope.editpages=function(){
     var checkedValue = document.querySelectorAll('.rowtxtchk:checked');

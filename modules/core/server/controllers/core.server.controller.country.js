@@ -91,14 +91,14 @@ exports.insCountry= function(req, res) {
   exist2.then(function(value2) {
     if(value2==0){
 
-  var maxValue=Promise.resolve(custom.maxplus('Sys_country','country_id'));
+  var maxValue=Promise.resolve(custom.maxplus('Sys_country','_id'));
  
   maxValue.then(function(value) {
   
     //var Newslug=custom.createslug(req.body.category,value);
 
   var newCountry = new Country(req.body);
-  newCountry.country_id = value;
+
   newCountry.country = req.body.countryname;
   newCountry.shortcode = req.body.shortname;
   newCountry.countrystatus = req.body.status;
@@ -131,7 +131,7 @@ exports.insCountry= function(req, res) {
 exports.updateCountry = function(req, res) {
   //var Newslug=custom.createslug(req.body.category,req.body.id);
  
-  Country.update({country_id:req.body.id},{
+  Country.update({_id:req.body.id},{
      $set:{"country" : req.body.country,"shortcode":req.body.shortcode,"countrystatus":req.body.status,"modified" : Date.now(),"modified_user":req.body.username,"modified_ip":req.body.ip}
  },function(err) { 
                     if (err) throw err;
@@ -155,7 +155,7 @@ Country.find({}).exec(function (err, data) {
 /////////////////////////////////View Country///////////////////////////
 exports.viewCountryid = function(req, res) {
 
-  Country.findOne({country_id: req.body.id}).exec(function (err, data) {
+  Country.findOne({_id: req.body.id}).exec(function (err, data) {
              if (err) throw err;
           
 				 res.json({
@@ -172,7 +172,7 @@ exports.viewCountryid = function(req, res) {
 exports.delCountry = function(req, res) {
 
   
-  Country.deleteOne({country_id:req.body.id}).exec(function (err, data) {
+  Country.deleteOne({_id:req.body.id}).exec(function (err, data) {
              if (err) throw err;
         
 				 res.json({
@@ -189,7 +189,7 @@ exports.delCountry = function(req, res) {
 
 exports.delcheckedcountry = function(req, res) {
 
-  Country.deleteMany({country_id:{'$in': req.body.id}}).exec(function (err, data) {
+  Country.deleteMany({_id:{'$in': req.body.id}}).exec(function (err, data) {
              if (err) throw err;
         res.json({
                     status: 1,

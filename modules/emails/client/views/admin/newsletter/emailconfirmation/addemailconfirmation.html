@@ -205,7 +205,7 @@ width:60%;
                                 <h6 class="card-subtitle">Use default tab with class <code>vtabs &amp; tabs-vertical</code></h6> -->
                                 <!-- Nav tabs -->
 
-                                <form class=""  name="formdata" ng-submit="addemailconformation()" novalidate>   
+                                <form class=""  name="formdata" ng-submit="addMailConfirmation()" novalidate>   
 
                                  
                                  
@@ -223,7 +223,7 @@ width:60%;
                                         <div class="tab-pane active show" id="content" role="tabpanel">  
                                             <div class="form-group m-b-10 btn23">
                                         <a href="/email/emailconfirmation"><button type="button"  class="btn waves-effect waves-light btn-sm btn-default"> Cancel </button></a>
-                                        <button type="submit"  class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
+                                        <button type="submit" class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
                                   </div> 
                                         <!--   <div class="form-group">
                                                     <label class="control-label">First Name</label>
@@ -234,7 +234,8 @@ width:60%;
                                                <div class="form-group m-b-10">
                                                             <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
                                                             <label for="input1"> Mailer</label>
-                                                            <select class="form-control filter-option" name="status" id="status" >
+                                                            <select class="form-control filter-option mailer" name="mailer" id="mailer" ng-model="mailer"
+                                                            ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.mailer.$valid}">
                                                                 <option class="filter-option-inner" value="0">choose</option>
 
                                                             <option value="1" class="">SMTP</option>  
@@ -246,54 +247,47 @@ width:60%;
                                             <div class="form-group m-b-10">
                                                 <div class="switch">
                                                         <label>SMTP authentication   
-                                                            <input type="checkbox" checked><span class="lever switch-col-light-blue"></span></label>
+                                                            <input type="checkbox" checked class="smtpauthen"  name="smtpauthen" id="smtpauthen" ng-model="smtpauthen"
+                                                            ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.smtpauthen.$valid}"><span class="lever switch-col-light-blue"></span></label>
                                                     </div>
                                             </div> 
 
                                             <div class="form-group m-b-10">
                                                 <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
                                                 <label for="input1"> SMTP security</label>
-                                                <select class="form-control filter-option" name="status" id="status" >
-                                                    <option selected class="filter-option-inner" value="0">None</option>
-
+                                                <select class="form-control filter-option smtpsecur" name="smtpsecur" id="smtpsecur" ng-model="smtpsecur"
+                                                ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.smtpsecur.$valid}">
+                                                <option selected class="filter-option-inner" value="0">None</option>
                                                 <option value="1" class="">SSL</option>  
                                                 <option value="2" class="">TLS </option>
                                                 <option value="3" class="">SSL/TLS </option> 
-
-                                 
-                               </select>
-                                </div>
-
-
-
+                                            </select>
+                                         </div>
                                                     <div class="form-group m-b-10"> 
                                                      <label for="input1"> SMTP port</label>
-                                                        <input type="text" class="form-control cat" id="name"  ng-model="formdata.category" >
+                                                        <input type="text" class="form-control smtpport" id="smtpport"  ng-model="smtpport" name="smtpport"
+                                                        ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.smtpport.$valid}" >
                                                       
                                                     </div> 
 
                                                     <div class="form-group m-b-10"> 
                                                         <label for="input1"> SMTP password</label>
-                                                           <input type="text" class="form-control cat" id="name"  ng-model="formdata.category" >
+                                                           <input type="text" class="form-control smtppass" id="smtppass"  ng-model="smtppass" name="smtppass"
+                                                           ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.smtppass.$valid}" >
                                                          
                                                        </div> 
 
                                                        <div class="form-group m-b-10"> 
                                                         <label for="input1"> SMTP username</label>
-                                                           <input type="text" class="form-control cat" id="name"  ng-model="formdata.category" >
+                                                           <input type="text" class="form-control smtpuname" id="smtpuname"  ng-model="smtpuname" name="smtpuname"
+                                                           ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.smtpuname.$valid}">
                                                          
                                                        </div> 
                                                        <div class="form-group m-b-10"> 
                                                         <label for="input1"> SMTP host</label>
-                                                           <input type="text" class="form-control cat" id="name"  ng-model="formdata.category" >
-                                                         
+                                                           <input type="text" class="form-control smtphost" id="smtphost"  ng-model="smtphost" name="smtphost"
+                                                           ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.smtphost.$valid}">
                                                        </div> 
-
-
-                                                        
-                                                         
-                                  
-                                
                                             </div>
                                         </div>
                                       

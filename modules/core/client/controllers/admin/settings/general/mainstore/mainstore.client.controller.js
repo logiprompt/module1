@@ -7,14 +7,62 @@
 
 
 
-    Mainstore.$inject = ['$scope','$http','$state','$stateParams', 'Upload'];
+    Mainstore.$inject = ['$scope','$http','$state','$stateParams', 'Upload', 'mainstoreService'];
 
-  function Mainstore ($scope, $http, $state, $stateParams, Upload) {
+  function Mainstore ($scope, $http, $state, $stateParams, Upload, mainstoreService) {
 
   $scope.formdata = {};
   $scope.formdata.status ='0';
- /////////////////////select/////////////////////////////
+  $scope.mainstoreService=mainstoreService;
+ 
+ $scope.currentLang= localStorage.getItem('currentLang');
+  console.log($scope.currentLan)
+  
+  
+  
+   $scope.insMainstore = function(){
+    
+    if($scope.formdata.$valid && $scope.status!=0){
+    var data = {
+        "name":$scope.name,
+        "contactperson":$scope.contactperson,
+        "email":$scope.email,
+        "telephone":$scope.telephone,
+        "mobile" :$scope.mobile,
+		"fax" :$scope.fax
+        }
+      
+    console.log($scope.cmstagsubmissionService);
+      $scope.mainstoreService.insMainstore(data).then(function(result){
 
+        if(result.statusText = "OK"){
+          swal("Success!", "Successfully added!", "success");  
+          $state.go('settingsmainstore');
+        }else{
+          swal("error!", "Already exist!", "error");
+        }
+        
+      })
+    }
+      
+    }
+	
+	
+	 $scope.getCountrys = function () {
+    console.log(0);
+    $scope.mainstoreService.getCountrys().then(function (result) {
+      if (result.statusText = "OK") {
+        $scope.countrylist = result.data;
+        //console.log(1);
+        console.log(result.data);
+      } else {
+
+      }
+    });
+  }
+  $scope.getCountrys();
+	
+	
  ///////////////////////////////////////////////////////
 
  
@@ -53,102 +101,10 @@ $scope.choices = [{id: 'choice1'}];
       
  };
 
- function readFile(ev) {
-
-  if (this.files && this.files[0]) {
-  var FR= new FileReader();
-  FR.onload = function(e) {
-    document.getElementById("imgfiles").src= e.target.result;
-   ev.target.parentNode.parentNode.parentNode.childNodes[3].childNodes[1].childNodes[1]=e.target.result;
-    //document.getElementById("b64").innerHTML = e.target.result;
-  };       
-  FR.readAsDataURL( this.files[0] );
-  }
- }
- if(document.getElementById("imgfile")!=null){
-   document.getElementById("imgfile").addEventListener("change", readFile, false); 
- }
-
-$scope.iconw=function(){
-
-        document.getElementById('imgfile').click();
-        
-             }
-
-            // $(document).find('#myTable').DataTable();
 
 
 
-
- function getActionBtns(){
-
-
- $scope.addpage  = document.querySelectorAll(".add-action");
- $scope.addpage[0].addEventListener("click", $scope.newpage, false);
-
- $scope.editpage= document.querySelectorAll(".edit-action");
- $scope.editpage[0].addEventListener("click", $scope.editpages, false);
-
- var delpage= document.querySelectorAll(".delete-action");
- delpage[0].addEventListener("click", $scope.delpage, false);
-
-  var bus= document.querySelectorAll(".business-action");
- bus[0].addEventListener("click", $scope.insbus, false);
-
-
-
- }
-
- $scope.insbus=function(){
-  $("#myModal").modal();
- }
-$scope.chkall=function(){
-$scope.editpage[0].removeAttribute("href");
- 
-}
-$scope.addchkval=function(linkid){
-  var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-console.log(linkid)
-console.log(checkedValue[0])
-  if(checkedValue.length>1){
-  $scope.editpage[0].removeAttribute("href");
-  }
-  else{
-
-    $scope.editpage[0].setAttribute("href", "/settings/districtedit/"+linkid);
-  }
-
-}
-$scope.chk={};
-
-$scope.newpage=function(){
-  $state.go('districtadd');
-}
-$scope.editpages=function(){
-    var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-    if(checkedValue.length>0){
-    console.log($scope.editpage[0].getAttribute("href"));
-  if($scope.editpage[0].getAttribute("href")){
-  document.location=$scope.editpage[0].getAttribute("href");
-  }
-}
- 
-}
-$scope.chkValue=[];
-
-
-$scope.delpage=function(){
-  $scope.chkValue=[];
- 
-  //$state.go('addlanguage');
-  var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-console.log(checkedValue)
-  for(var i=0;i<checkedValue.length;i++){
-    $scope.chkValue.push(checkedValue[i].value);
-  }
- 
-}
-setTimeout(getActionBtns, 1500);         
+      
 
 
  }

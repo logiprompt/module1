@@ -211,7 +211,7 @@ width:60%;
                                 <h6 class="card-subtitle">Use default tab with class <code>vtabs &amp; tabs-vertical</code></h6> -->
                                 <!-- Nav tabs -->
 
-                                <form class="" name="formdata" ng-submit="addReviewSubmition()" novalidate>
+                                <form class="" name="formdata" ng-submit="updateReviewSubmition()" novalidate>
                                  
                                  
                               
@@ -245,7 +245,7 @@ width:60%;
                                                         <button type="submit" class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
                                                      <a href="/email/cmsreviewsubmission"><button type="button"  class="btn waves-effect waves-light btn-sm btn-default"> Cancel </button></a> 
                                                     
-                                                       <button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm btn-danger"> Delete </button> 
+                                                       <!--<button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm btn-danger"> Delete </button> -->
                                                 </div> 
                                                
                                         <!--   <div class="form-group">
@@ -257,8 +257,8 @@ width:60%;
                                                 <div class="form-group m-b-10">
                                                     <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
                                                     <label for="input1"> Name</label>
-                                                    <input type="text" class="form-control name" id="name" ng-model="name"
-                                                    ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.name.$valid}">
+                                                     <input type="text" class="form-control name" id="name" name="name" ng-model="name"
+                                                        ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.name.$valid}">
                                     </div>
                                                     </div> 
 
@@ -270,8 +270,8 @@ width:60%;
                                          <div class="col-md-9">
                                             <div class="form-group m-b-10"> 
                                                 <label for="input1"> Subject</label>
-                                                   <input type="text" class="form-control subject" id="subject"
-                                                   ng-model="subject" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.subject.$valid}">
+                                                   <input type="text" class="form-control subject" name="subject" id="subject"
+                                                        ng-model="subject" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.subject.$valid}">
                                                  
                                                </div> 
 
@@ -286,8 +286,8 @@ width:60%;
                                                           
                                             <div class="form-group m-b-10"> 
                                                 <label for="input1"> Content</label>
-                                                <textarea class="form-control content" id="content" ng-model="content"
-                                                ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.content.$valid}"></textarea>
+                                               <textarea class="form-control content" id="content" name="content" ng-model="content"
+                                                        ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.content.$valid}"></textarea>
                                                  
                                                </div> 
                                                         
@@ -303,8 +303,8 @@ width:60%;
                                           <div class="col-md-9">
                                             <div class="form-group m-b-10"> 
                                                 <label for="input1"> Custom styles</label>
-                                                <textarea class="form-control custom" id="custom" name="custom"
-                                                ng-model="custom" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.custom.$valid}"></textarea>
+                                              <textarea class="form-control custom" id="custom" name="custom"
+                                                        ng-model="custom" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.custom.$valid}"></textarea>
                                                  
                                                </div>   
                                                   
@@ -319,12 +319,12 @@ width:60%;
                                             <div class="form-group m-b-10">
                                                 <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
                                                 <label for="input1"> Status</label>
-                                                       <select class="form-control filter-option" name="status" id="status"
-                                                       ng-model="status" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.status.$valid}" >
-                                                       <option class="filter-option-inner" value="0">choose</option>
+                                                         <select class="form-control filter-option" name="status" id="status"
+                                                        ng-model="status" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && (!formdata.status.$valid || status==0 )}">
+                                                            <option class="filter-option-inner" value="0">choose</option>
 
-                                                   <option value="1" class="">Active</option>  
-                                                   <option value="2" class="">De active</option> 
+                                                   <option value="1" class="" ng-selected="userdetails.status==1" selected>Active</option>  
+                                                   <option value="2" class="" ng-selected="userdetails.status==2" selected>De active</option> 
 
                                     
                                   </select>

@@ -93,10 +93,10 @@
                                                             <div class="form-group m-b-10">
                                                                     <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
                                                                     <label for="input1"> Country Name</label>
-                                                                    <select id="editcountry" name="editcountry" class="form-control cat" data-style="form-control btn-info" ng-model="formdata.editcountry" ng-change="changecountry()">
+                                                                    <select id="editcountry" name="editcountry" class="form-control cat" data-style="form-control btn-info" >
                                             <option value="0">Choose</option>
-                                   <option ng-repeat="country in countryeditlist" ng-if="country.country_id==formdata.editcountry" selected="selected" value="{{country.country_id}}">{{country.country}}</option>
-                                  <option ng-repeat="country in countryeditlist" ng-if="country.country_id!=formdata.editcountry" value="{{country.country_id}}">{{country.country}}</option>
+                                   <option ng-repeat="country in countryeditlist" ng-if="country._id==formdata.editcountry" selected value="{{country._id}}">{{country.country}}</option>
+                                  <option ng-repeat="country in countryeditlist" ng-if="country._id!=formdata.editcountry" value="{{country._id}}">{{country.country}}</option>
                                                                         </select>
                                                     </div>
                                                 </div> 
@@ -109,10 +109,10 @@
         <div class="form-group m-b-10">
                 <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
                 <label for="input1"> State </label>
-                <select id="editstate" name="editstate" class="form-control state" data-style="form-control btn-info" ng-model="formdata.editstate">
+                <select id="editstate" name="editstate" class="form-control state" data-style="form-control btn-info" >
                          <option value="0">Choose State...</option>
-                            <option ng-repeat="state in stateeditdata" ng-if="state.state_id==formdata.editstate" selected="selected" value="{{state.state_id}}">{{state.state}}</option>     
-         <option ng-repeat="state in stateeditdata" ng-if="state.state_id!=formdata.editstate" value="{{state.state_id}}" >{{state.state}}</option>     
+                            <option ng-repeat="state in stateeditdata" ng-if="state._id==formdata.editstate" selected="selected" value="{{state._id}}">{{state.state}}</option>     
+         <option ng-repeat="state in stateeditdata" ng-if="state._id!=formdata.editstate" value="{{state._id}}" >{{state.state}}</option>     
                     </select>
 </div>
                                                 </div> 

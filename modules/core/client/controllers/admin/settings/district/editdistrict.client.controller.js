@@ -66,10 +66,11 @@ var districtid={id: $stateParams.id};
  
 $scope.viewdistrict=response.data.data;
 console.log($scope.viewdistrict);
-$scope.formdata.editcountry=response.data.data.country;
-$scope.formdata.editstate=response.data.data.state;
-$scope.formdata.editdistrict=response.data.data.district;
-$scope.formdata.editstatus=response.data.data.status;
+console.log($scope.viewdistrict.country);
+$scope.formdata.editcountry=$scope.viewdistrict.country;
+$scope.formdata.editstate=$scope.viewdistrict.state;
+$scope.formdata.editdistrict=$scope.viewdistrict.district;
+$scope.formdata.editstatus=$scope.viewdistrict.status;
 
 //$scope.formdata.status=response.data.data.countrystatus;
       // success
