@@ -15,11 +15,13 @@
 	  $scope.postvideos = ["0"];
 	  $scope.postformdata.post_status = "1";
 	  $scope.postformdata.post_displayinmenu = "2";
+	  $scope.postformdata.post_type = "text";
 	  
 	  if($stateParams.id){
 		  CmsService.getPostById($stateParams.id).then(function(result){
 			  if(result.statusText = "OK"){
-				  $scope.postformdata = result.data
+				  $scope.postformdata = result.data;
+				 // $scope.postformdata.post_category = ["5beb1c19d24b52011493f03b","5beb10786a20df11e43a18b6"];
 				  console.log($scope.postformdata);
 			  }
 		  })
@@ -45,6 +47,7 @@
 	      })
 	  
 	  $scope.addpost = function(){
+		  if($scope.postform.$valid){
 		  if($stateParams.id){
 			  $scope.postformdata.post_content = CKEDITOR.instances.editor1.getData().replace(/^.*?<body[^>]*>(.*?)<\/body>.*?$/i,"$1");;
 		  CmsService.updatePostById($stateParams.id,$scope.postformdata).then(function(result){
@@ -80,6 +83,7 @@
    				  }
 		  })
 	  }
+		  }
 	  }
 
 	  
@@ -179,6 +183,16 @@
 	  
 	  
 	  $scope.delete_post = function(id){
+		  swal({
+              title: 'Are you sure?',
+              text: "You want to delete this Product!",
+              type: 'warning',
+              showCancelButton: false,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+           	 if(result){
 	  CmsService.delete_post(id).then(function(result){
 		  console.log( result);
 		  if(result.statusText = "OK"){
@@ -188,9 +202,27 @@
 	                   );
 			  $scope.listPost();
 		  }
-	  });
+	  }) }
+           	 });
 	  }
 	  
+	  
+	  function readFile(ev) {
+
+          if (this.files && this.files[0]) {
+          var FR= new FileReader();
+          FR.onload = function(e) {
+            document.getElementById("imgfiles").src= e.target.result;
+           ev.target.parentNode.parentNode.parentNode.childNodes[3].childNodes[1].childNodes[1]=e.target.result;
+            //document.getElementById("b64").innerHTML = e.target.result;
+          };       
+          FR.readAsDataURL( this.files[0] );
+          }
+         }
+        
+         if(document.getElementById("imgfiles")!=null){
+           document.getElementById("imgfiles").addEventListener("change", readFile, false); 
+         }
 
  }
 }());

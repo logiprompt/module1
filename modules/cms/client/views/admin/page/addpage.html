@@ -215,7 +215,7 @@ width:60%;
                                 <div class="vtabs">
                                     <ul class="nav nav-tabs tabs-vertical" role="tablist">
                                         <li class="nav-item"> <a class="nav-link tcat" data-toggle="tab" href="#home" role="tab" aria-selected="true"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Language : default</span> </a> </li>
-                                        <li class="nav-item"> <a class="nav-link active show" data-toggle="tab" href="#content" role="tab" aria-selected="false"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Content</span></a> </li>
+                                        <li class="nav-item"> <a class="nav-link active show" data-toggle="tab" href="#content" role="tab" aria-selected="false" ng-class="{ 'validationErr' : pageform.$submitted && !pageform.page_title.$valid}"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Content</span></a> </li>
                                         <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#meta_data" role="tab" aria-selected="false"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Meta data</span></a> </li>
                                          <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#navigation" role="tab" aria-selected="false"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Navigation</span></a> </li>
                                                   <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#logs" role="tab" aria-selected="false"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Logs</span></a> </li>
@@ -356,24 +356,24 @@ width:60%;
                                                     <div class="col-lg-6">     
                                                         <label class="" for="cd">Created date :</label>
                                                     </div>  <div class="col-lg-6">
-                              						<label class="" name="cd" id="cd">4 may 2019</label>                                                   </div> 
+                              						<label class="" name="cd" id="cd">{{formdata.created | date : 'dd-mm-yyyy'}}</label>                                                   </div> 
                                                    
                                                 </div>
                                                     
 										 <div class="row m-b-40 lgs">
                                           <div class="col-lg-6">     
-                                                    <label class="" for="cd">Created date :</label>
+                                                    <label class="" for="cd">Created User :</label>
                                                 </div>  
                                          		<div class="col-lg-6">
-                              						<label class="" name="cd" id="cd">4 may 2019</label>        </div> 
+                              						<label class="" name="cd" id="cd">{{formdata.user}}</label>        </div> 
                                                
  </div> 
                  								<div class="row m-b-40 lgs">
                                  <div class="col-lg-6">     
-                                                    <label class="" for="cd">Created date :</label>
+                                                    <label class="" for="cd">Updated date :</label>
                                                 </div>  
                                                  <div class="col-lg-6">
-                              						<label class="" name="cd" id="cd">4 may 2019</label>         </div> 
+                              						<label class="" name="cd" id="cd">{{formdata.updated | date : 'dd-mm-yyyy'}}</label>         </div> 
                                                
  												</div>                                  
  											<div class="row m-b-40 lgs">
@@ -381,7 +381,7 @@ width:60%;
                                                 <label for="input1"> modified By :</label>
                                                </div>  
                                                <div class="col-lg-6">
-                                                <label class="" name="mb" id="cb">4 may 2018</label>
+                                                <label class="" name="mb" id="cb">{{formdata.updateduser}}</label>
                                                </div>
                                             </div>           
                                                        

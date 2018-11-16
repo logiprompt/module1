@@ -26,7 +26,7 @@ var CmSchema = new Schema({
 	  type: String
   },
   post_category:{
-	  type: String
+	  type: Array
   },
   post_metadesc:{
 	  type: String

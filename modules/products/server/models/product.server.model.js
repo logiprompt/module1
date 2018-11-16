@@ -23,6 +23,15 @@ trim: true*/
   product_type:{
 	  type: String
   },
+  product_shortdec:{
+	  type: String
+  },
+  product_desc:{
+	  type: String
+  },
+  product_weight:{
+	  type: String
+  },
   product_fromdate:{
 	  type: Date
   },
@@ -36,7 +45,7 @@ trim: true*/
 	  type: String
   },
   product_category:{
-	  
+	  type: Array
   },
   product_metadesc:{
 	  type: String

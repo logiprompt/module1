@@ -103,6 +103,9 @@
    				$scope.product_name = result.data.product_name;
    				$scope.product_sku = result.data.product_sku;
    				$scope.product_type = result.data.product_type;
+   				$scope.product_shortdec = result.data.product_shortdec;
+   				$scope.product_desc = result.data.product_desc;
+   				$scope.product_weight = result.data.product_weight;
    			    $scope.product_fromdate = result.data.product_fromdate;
    				$scope.product_enddate = result.data.product_enddate;
    				$scope.product_featured = result.data.product_featured;
@@ -223,6 +226,9 @@
 		productformData.product_name = $scope.product_name;
 		productformData.product_sku = $scope.product_sku;
 		productformData.product_type = $scope.product_type;
+		productformData.product_shortdec = $scope.product_shortdec;
+		productformData.product_desc = $scope.product_desc;
+		productformData.product_weight = $scope.product_weight;
 		productformData.product_fromdate = $scope.product_fromdate;
 		productformData.product_enddate = $scope.product_enddate;
 		productformData.product_featured = $scope.product_featured;

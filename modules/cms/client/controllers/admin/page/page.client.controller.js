@@ -50,25 +50,49 @@ if($stateParams.id){
 }
 
 $scope.deletePage = function (pageId) {
-    $scope.CmsService.deletePage(pageId).then(function (result) {
-      $scope.getPageItems();
-    })
+
+    swal({
+        title: 'Are you sure?',
+        text: "You want to delete this Product!",
+        type: 'warning',
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+     	 if(result){
+     		$scope.CmsService.deletePage(pageId).then(function (result) {
+	  console.log( result);
+	  $scope.getPageItems();
+	  if(result.statusText = "OK"){
+		  swal( 'Deleted!',
+                   'Post Deleted sucessfully',
+                   'success'
+                 );
+		 // $scope.listPost();
+	  }
+}) }
+     	 });
+    
+    
   }
 
 
 $scope.addNewPage = function () {
 	$scope.formdata.page_content = CKEDITOR.instances.editor1.getData().replace(/^.*?<body[^>]*>(.*?)<\/body>.*?$/i,"$1");
-	
+	if($scope.pageform.$valid){
 	if($stateParams.id){
 		  
 	  CmsService.updatePage($stateParams.id,$scope.formdata).then(function(result){
+		 // 
 		  if(result.statusText = "OK"){
-			  $location.path('/cms/page');
+			  
  				 swal( 'Updated!',
  	                     'Page Updated sucessfully',
  	                     'success'
  	                   )
- 				$state.go('post');
+ 				//$state.go('post');
+ 	                  $location.path('/cms/page');
  				  }else{
  					swal( 'error!',
 	      	                   'Error while creating new post ! Please try again later.',
@@ -79,12 +103,13 @@ $scope.addNewPage = function () {
 	  }else{
     $scope.CmsService.addPage($scope.formdata).then(function (result) {
     	 if(result.statusText = "OK"){
-    		 $location.path('/cms/page');
 				 swal( 'Created!',
 	                     'New Page created sucessfully',
 	                     'success'
 	                   )
-				$state.go('post');
+				//$state.go('post');
+
+	          		 $location.path('/cms/page');
 				  }else{
 					swal( 'error!',
       	                   'Error while creating new post ! Please try again later.',
@@ -94,6 +119,8 @@ $scope.addNewPage = function () {
       
     })
 	  }
+}
+	
   }
  /////////////////////select/////////////////////////////
 
