@@ -10,10 +10,12 @@ module.exports = {
         'public/lib/bootstrap/dist/css/bootstrap.css',
         'public/lib/bootstrap/dist/css/bootstrap-theme.css',
         'public/lib/angular-ui-notification/dist/angular-ui-notification.css',
-		
+        'public/lib/angular-tree-control/css/tree-control.css',
+        'public/lib/angular-tree-control/css/tree-control-attribute.css'
+        
         // endbower
       ],
-     
+
       js: [
         // bower:js
         'public/lib/angular/angular.js',
@@ -26,7 +28,9 @@ module.exports = {
         'public/lib/angular-ui-notification/dist/angular-ui-notification.js',
         'public/lib/angular-ui-router/release/angular-ui-router.js',
         'public/lib/owasp-password-strength-test/owasp-password-strength-test.js',
-		'public/lib/sweetalert/SweetAlert.min.js',
+        'public/lib/sweetalert/SweetAlert.min.js',
+        'public/lib/angular-tree-control/angular-tree-control.js',
+        'public/lib/angular-tree-control/context-menu.js'
         // endbower
       ],
       tests: ['public/lib/angular-mocks/angular-mocks.js']

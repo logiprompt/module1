@@ -675,7 +675,7 @@ var adminfooter={
     header:adminheader,
     content: { 
     templateUrl: '/modules/products/client/views/admin/businesstype/addbusinesstype.html',
-    controller: 'Businesstypelist',
+    controller: 'BusinessTypeaddController',
     controllerAs: 'vm',
     },
      footer:adminfooter

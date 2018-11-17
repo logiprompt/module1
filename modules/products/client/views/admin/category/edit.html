@@ -312,7 +312,7 @@
                                             </a>
                                         </li>
 
-                                        <li class="nav-item">
+                                        <!-- <li class="nav-item">
                                             <a class="nav-link" data-toggle="tab" href="#products" role="tab" aria-selected="false">
                                                 <span class="hidden-xs-down">Products</span>
                                             </a>
@@ -327,7 +327,7 @@
                                             <a class="nav-link" data-toggle="tab" href="#logs" role="tab" aria-selected="false">
                                                 <span class="hidden-xs-down">Logs</span>
                                             </a>
-                                        </li>
+                                        </li> -->
                                     </ul>
                                     <!-- Tab panes -->
 
@@ -463,14 +463,14 @@
 
                                                 <div class="form-group m-b-10">
                                                     <label for="input1"> Meta description</label>
-                                                    <textarea class="form-control cat" id="name" type="text" ng-model="formdata.wer"></textarea>
+                                                    <textarea class="form-control cat" id="name" type="text" ng-model="formdata.metaDescription"></textarea>
 
 
                                                 </div>
 
                                                 <div class="form-group m-b-10">
                                                     <label for="input1"> Meta keywords</label>
-                                                    <textarea class="form-control cat" id="name" type="text" ng-model="formdata.asd"></textarea>
+                                                    <textarea class="form-control cat" id="name" type="text" ng-model="formdata.metaKeywords"></textarea>
 
                                                 </div>
 
@@ -480,7 +480,7 @@
 
                                             <div class="form-group m-b-10">
                                                 <label for="input1"> URL KEY</label>
-                                                <input type="text" class="form-control cat" id="name" ng-model="formdata.category">
+                                                <input type="text" class="form-control cat" id="name" ng-model="formdata.urlKey">
 
                                             </div>
 
@@ -488,10 +488,10 @@
                                                 <label for="input1"> Display in menu link</label>
 
 
-                                                <select class="form-control filter-option" name="menu" id="menu" ng-model="formdata.menu">
+                                                <select class="form-control filter-option" name="menu" id="menu" ng-model="formdata.displayInMenu">
                                                     <option class="filter-option-inner" value="0">choose</option>
-                                                    <option class="filter-option-inner" value="1">Yes</option>
-                                                    <option class="filter-option-inner" value="2">No</option>
+                                                    <option class="filter-option-inner" value="yes">Yes</option>
+                                                    <option class="filter-option-inner" value="no">No</option>
                                                 </select>
                                             </div>
 
@@ -499,10 +499,10 @@
                                                 <label for="input1"> Display in sidebar</label>
 
 
-                                                <select class="form-control filter-option" name="sidebar" id="sidebar" ng-model="formdata.sidebar">
+                                                <select class="form-control filter-option" name="sidebar" id="sidebar" ng-model="formdata.displayInSidebar">
                                                     <option class="filter-option-inner" value="0">choose</option>
-                                                    <option class="filter-option-inner" value="1">Yes</option>
-                                                    <option class="filter-option-inner" value="2">No</option>
+                                                    <option class="filter-option-inner" value="yes">Yes</option>
+                                                    <option class="filter-option-inner" value="no">No</option>
                                                 </select>
 
                                             </div>
@@ -518,9 +518,8 @@
 
                                             <div class="form-group m-b-10">
                                                 <label for="input1">Extra field group</label>
-                                                {{selectedExtrafieldGroup}}
                                                 <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
-                                                <select multiselectDropdown class="selectpicker form-control" multiple data-style="form-control btn-info" ng-model="selectedExtrafieldGroup" ng-options="item._id as item.groupname for item in extrafieldGroupItems track by item.groupname">
+                                                <select multiselectDropdown class="selectpicker form-control" multiple data-style="form-control btn-info" ng-model="selectedExtrafieldGroup" ng-options="item._id as item.groupname for item in extrafieldGroupItems">
                                                 </select>
 
                                             </div>
