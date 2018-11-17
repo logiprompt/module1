@@ -32,10 +32,11 @@
 	 * Pre define product static values
 	 */
    if(!$stateParams.id){
-	
+	   
    }else{
 	   $scope.edit_product = true;
 	   $scope.product_images = []; 
+	  
    }
    $scope.newimage = ''
 	var productformData = {};
@@ -52,9 +53,21 @@
         $scope.categoryLists = result.data;
         console.log($scope.categoryLists);
       });
+      
+      $scope.loadDynamicExtrafield = function(index){
+    	  $scope.extraFieldGroup = [];
+    		  for( var i =0; i<$scope.extraFieldGroupList.length; i++){
+    			  for( var j =0; j<$scope.categoryLists[index].extrafieldGroup.length; j++){ 
+    				  
+    				  if($scope.extraFieldGroupList[i].group._id == $scope.categoryLists[index].extrafieldGroup[j]._id &&  jQuery.inArray($scope.categoryLists[index]._id,$scope.product_category) == 0 ){
+    					  $scope.extraFieldGroup.push($scope.extraFieldGroupList[i]);
+    				  }
+    			  }
+        	  }
+      }
     /*
-     * Get Extra field Group and fields
-     */
+	 * Get Extra field Group and fields
+	 */
       var extrafield = new Array();
       if(!$stateParams.id){
       $scope.extrafieldService.getExtraFieldGroup().then(function(result){
@@ -72,8 +85,8 @@
 						   
 						  }
 				   })
-				   $scope.extraFieldGroup = extrafield;
-				   console.log($scope.extraFieldGroup);
+				   $scope.extraFieldGroupList = extrafield;
+				   console.log($scope.extraFieldGroupList);
 				   
 			   })
 			   
@@ -83,9 +96,8 @@
       
       
    /*
-    * LIst 
-    * Products
-    */
+	 * LIst Products
+	 */
       $scope.getAllProducts = function(){
       $scope.ProductsService.listProduct().then(function(result){
 		   if(result.statusText = "OK"){
@@ -100,8 +112,8 @@
       }
 	
       /*
-       * LIst Products by id
-       */
+		 * LIst Products by id
+		 */
          $scope.getProductsById = function(id){
          $scope.ProductsService.listProductById(id).then(function(result){
    		   if(result.statusText = "OK"){
@@ -157,7 +169,7 @@
    				$scope.product_abc = $scope.formdata.product_abc;
    				$scope.product_abc_def = $scope.formdata.product_abc_def;
    				$scope.product_freeshipping = $scope.formdata.product_freeshipping;
-   				//$scope.olang = result.data.olang;
+   				// $scope.olang = result.data.olang;
    				
    		   }
          	});
@@ -173,8 +185,8 @@
         	 $scope.product_urlkey = "product/"+$scope.product_slug+"_"+Number(new Date())+".html"
          }
       /*
-       * Delete product by ID
-       */
+		 * Delete product by ID
+		 */
       $scope.deleteProduct = function(id){
     	  
     	  swal({
@@ -218,22 +230,18 @@
       }
       $scope.save = function(){
     	  $scope.product_images.push($scope.newimage);
-    	/* $scope.img = {'product_title':'',
-    			 'product_alt':'',
-    			 'ngfBlobUrl':'',
-    			 'ngfHeight':'',
-    			 'ngfWidth':''    			 
-    			 };
-    	 $scope.img.product_title = $scope.product_imagetitle;
-    	 $scope.img.product_alt = $scope.product_imagealt;
-    	 $scope.img.ngfBlobUrl = $scope.image.$ngfBlobUrl;
-    	 $scope.img.ngfHeight =$scope.image.$ngfHeight;
-    	 $scope.img.ngfWidth = $scope.image.$ngfHeight;
-    	 
-    	  $scope.product_imageList.push($scope.img);
-    	  $scope.product_imagetitle = "";
-    	  $scope.product_imagealt = "";
-    	  $scope.image = "";*/
+    	/*
+		 * $scope.img = {'product_title':'', 'product_alt':'', 'ngfBlobUrl':'',
+		 * 'ngfHeight':'', 'ngfWidth':'' }; $scope.img.product_title =
+		 * $scope.product_imagetitle; $scope.img.product_alt =
+		 * $scope.product_imagealt; $scope.img.ngfBlobUrl =
+		 * $scope.image.$ngfBlobUrl; $scope.img.ngfHeight
+		 * =$scope.image.$ngfHeight; $scope.img.ngfWidth =
+		 * $scope.image.$ngfHeight;
+		 * 
+		 * $scope.product_imageList.push($scope.img); $scope.product_imagetitle =
+		 * ""; $scope.product_imagealt = ""; $scope.image = "";
+		 */
     	 
       }
 	$scope.saveProduct = function(){
@@ -273,7 +281,7 @@
 			productformData.product_notifylowqty_def = $scope.product_notifylowqty_def;
 			productformData.product_stockavailable = $scope.product_stockavailable;
 			productformData.product_extrafield = $scope.extraFieldGroup;
-			productformData.product_images = formfileData;//$scope.product_imageList;
+			productformData.product_images = formfileData;// $scope.product_imageList;
 			productformData.product_tags = $scope.product_tags;
 			productformData.product_taxablestatus = $scope.product_taxablestatus;
 			productformData.product_taxgroup = $scope.product_taxgroup;
@@ -346,10 +354,10 @@ document.getElementById("treview").style.display = "block";
 
 
   
-/////////////////////defaultLang//////////
+// ///////////////////defaultLang//////////
  
  
- /////////////////////select/////////////////////////////
+ // ///////////////////select/////////////////////////////
 
         $scope.rmerrorclass=function(){
                 angular.element(document.querySelectorAll('.validationErr')).removeClass('validationErr');
@@ -374,7 +382,7 @@ document.getElementById("treview").style.display = "block";
                     return error;          
             }
 
-///////////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////////
 $scope.addCategory=function(){
 
 
@@ -483,7 +491,7 @@ $scope.chkValue=[];
 $scope.delpage=function(){
   $scope.chkValue=[];
  
-  //$state.go('addlanguage');
+  // $state.go('addlanguage');
   var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
 console.log(checkedValue)
   for(var i=0;i<checkedValue.length;i++){
