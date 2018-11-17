@@ -106,7 +106,7 @@ exports.updateProducts = function(request, response){
 				item.product_abc = request.body.product_abc;
 				item.product_abc_def = request.body.product_abc_def;
 				item.product_freeshipping = request.body.product_freeshipping;
-				item.olang = request.body.olang;
+				item.oLang = request.body.oLang;
 		       
 				item.save();
 
