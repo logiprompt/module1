@@ -16,13 +16,20 @@
 	  $scope.postformdata.post_status = "1";
 	  $scope.postformdata.post_displayinmenu = "2";
 	  $scope.postformdata.post_type = "text";
-	  
+	  $scope.currentLan=localStorage.getItem('currentLang').toString();
+	  $scope.defaultLang=localStorage.getItem('defaultLang').toString();
+	//  $scope.currentLan = 'mal';
 	  if($stateParams.id){
 		  CmsService.getPostById($stateParams.id).then(function(result){
 			  if(result.statusText = "OK"){
-				  $scope.postformdata = result.data;
-				 // $scope.postformdata.post_category = ["5beb1c19d24b52011493f03b","5beb10786a20df11e43a18b6"];
-				  console.log($scope.postformdata);
+				  
+				  $scope.postformdataOrg = result.data;
+				  if( $scope.currentLan != 'en'){
+					  
+					  $scope.postformdata = JSON.parse( result.data.oLang[$scope.currentLan]);
+				  }else{
+				  $scope.postformdata = result.data
+				  }
 			  }
 		  })
 	  }
@@ -48,9 +55,19 @@
 	  
 	  $scope.addpost = function(){
 		  if($scope.postform.$valid){
+			  $scope.postformdata.post_content = CKEDITOR.instances.editor1.getData().replace(/^.*?<body[^>]*>(.*?)<\/body>.*?$/i,"$1");
+			  if($scope.currentLan != 'en'){
+					if(!$scope.postformdataOrg.oLang){
+						$scope.postformdataOrg.oLang = {};
+					}
+					$scope.postformdataOrg.oLang[$scope.currentLan] = JSON.stringify( $scope.postformdata);
+				  }else{
+					  $scope.postformdataOrg =   $scope.postformdata;
+				  }
+			  
 		  if($stateParams.id){
-			  $scope.postformdata.post_content = CKEDITOR.instances.editor1.getData().replace(/^.*?<body[^>]*>(.*?)<\/body>.*?$/i,"$1");;
-		  CmsService.updatePostById($stateParams.id,$scope.postformdata).then(function(result){
+			  //$scope.postformdata.post_content = CKEDITOR.instances.editor1.getData().replace(/^.*?<body[^>]*>(.*?)<\/body>.*?$/i,"$1");;
+		  CmsService.updatePostById($stateParams.id,$scope.postformdataOrg).then(function(result){
 			  if(result.statusText = "OK"){
 				   
 	   				 swal( 'Updated!',
@@ -66,8 +83,8 @@
 	   				  }
 			  })
 		  }else{
-			  $scope.postformdata.post_content = CKEDITOR.instances.editor1.getData().replace(/^.*?<body[^>]*>(.*?)<\/body>.*?$/i,"$1");
-		  CmsService.addPost($scope.postformdata).then(function(result){
+			  
+		  CmsService.addPost($scope.postformdataOrg).then(function(result){
 			  if(result.statusText = "OK"){
 				   
    				 swal( 'Created!',

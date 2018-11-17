@@ -140,7 +140,7 @@ product_abc_def : {
 product_freeshipping : {
 	 type: String 
 },
-  olang :{	  
+  oLang :{	  
   },
   created: {
     type: Date,

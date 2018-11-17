@@ -65,7 +65,7 @@ var CmSchema = new Schema({
 	    type: Schema.ObjectId,
 	    ref: 'User'
 	  },
-	  OLang: {}
+	  oLang: { }
 });
 
 
@@ -89,7 +89,7 @@ var cmsCategorySchema = new Schema({
   modified_user: { type: String, },
   hasChild: { type: Boolean,default: 0  },
   childIDs: { type: [Schema.ObjectId], ref: 'cmscategory' },
-  OLang: {}
+  oLang: { }
 
 });
 
@@ -138,7 +138,7 @@ var CmPageSchema = new Schema({
 		    type: Schema.ObjectId,
 		    ref: 'User'
 		  },
-		  OLang: {}
+		  oLang: {}
 	});
 
 mongoose.model('cmsPage', CmPageSchema);

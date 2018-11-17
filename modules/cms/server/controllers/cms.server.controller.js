@@ -69,6 +69,7 @@ exports.updatepostById = function(req, res){
 	          item.post_displayinmenu = req.body.post_displayinmenu;
 	          item.post_tags = req.body.post_tags;
 	          item.post_text = req.body.post_text;
+	          item.oLang = req.body.oLang;
 	        item.save();
 
 	        res.json(item);
@@ -299,7 +300,9 @@ exports.updateCategory = function (req, res, next) {
             "category": req.body.category,
             "description": req.body.description,
             "status": req.body.status,
-            "extrafieldGroup": req.body.extrafieldGroup
+            "asd": req.body.asd,
+            "wer": req.body.wer,
+            "oLang":req.body.oLang
         }
     }, function (err, data) {
         if (err) {
@@ -431,6 +434,7 @@ exports.updatePage = function (req, res, next) {
           item.page_slug = req.body.page_slug;
           item.page_urlkey = req.body.page_urlkey;
           item.page_displayinmenu = req.body.page_displayinmenu;
+          item.oLang = req.body.oLang;
         item.save();
 
         res.json(item);

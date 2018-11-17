@@ -16,6 +16,10 @@
   $scope.formdata.page_status = "1";
   $scope.formdata.page_displayinmenu = "2";
   
+  $scope.currentLan=localStorage.getItem('currentLang').toString();
+  $scope.defaultLang=localStorage.getItem('defaultLang').toString();
+  
+
  
   
   $scope.generateSlgURL = function(){
@@ -40,8 +44,14 @@ $scope.getPageItems();
 $scope.getPageDetails = function(id){
 	CmsService.getPageDetails(id).then(function(result){
 		  if(result.statusText = "OK"){
+			  $scope.formdataOrg = result.data;
+			  if( $scope.currentLan != 'en'){
+				  
+				  $scope.formdata = JSON.parse( result.data.oLang[$scope.currentLan]);
+			  }else{
 			  $scope.formdata = result.data
-			  console.log($scope.formdata);
+			  }
+
 		  }
 	  })
 }
@@ -80,10 +90,19 @@ $scope.deletePage = function (pageId) {
 
 $scope.addNewPage = function () {
 	$scope.formdata.page_content = CKEDITOR.instances.editor1.getData().replace(/^.*?<body[^>]*>(.*?)<\/body>.*?$/i,"$1");
-	if($scope.pageform.$valid){
+	if($scope.pageform.$valid){		
+		if($scope.currentLan != 'en'){
+			if(!$scope.formdataOrg.oLang){
+				$scope.formdataOrg.oLang = {};
+			}
+			$scope.formdataOrg.oLang[$scope.currentLan] = JSON.stringify( $scope.formdata);
+		  }else{
+			  $scope.formdataOrg =   $scope.formdata;
+		  }
 	if($stateParams.id){
-		  
-	  CmsService.updatePage($stateParams.id,$scope.formdata).then(function(result){
+		
+		
+	  CmsService.updatePage($stateParams.id,$scope.formdataOrg).then(function(result){
 		 // 
 		  if(result.statusText = "OK"){
 			  

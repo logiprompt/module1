@@ -42,14 +42,16 @@
     }
 
     $scope.addNewCategory = function () {
+    	if($scope.catform.$valid){
       $scope.formdata.level = $scope.category;
-      $scope.formdata.extrafieldGroup = $scope.selectedExtrafieldGroup;
       $scope.productcategoryService.addCategory($scope.formdata).then(function (result) {
         $location.path('/settings/cmscategory');
       })
+    	}
     }
 
     $scope.addSubCategory = function () {
+    	if($scope.catform.$valid){
       $scope.formdata.category = $scope.formdata.subcategory
       $scope.formdata.parentId = $scope.selectedCategoryId;
       $scope.formdata.level = $scope.category;
@@ -57,6 +59,7 @@
       $scope.productcategoryService.addSubCategory($scope.formdata).then(function (result) {
         $location.path('/settings/cmscategory');
       })
+    	}
     }
 
   

@@ -9,11 +9,8 @@
    $scope.formdata = {};
    $scope.extrafieldService = extrafieldService;
 
-	/*
-	 * Pre define product static values
-	 */
-   if(!$stateParams.id){
-	$scope.product_type = "1";
+   
+   $scope.product_type = "1";
 	$scope.product_featured = "0";
 	$scope.product_status = "1";
 	$scope.product_displayinmenu = "0"
@@ -27,6 +24,15 @@
 	$scope.product_freeshipping = "0"
 	$scope.product_images = [];
 	$scope.edit_product = false;
+   
+   $scope.currentLan=localStorage.getItem('currentLang').toString();
+   $scope.defaultLang=localStorage.getItem('defaultLang').toString();
+   
+	/*
+	 * Pre define product static values
+	 */
+   if(!$stateParams.id){
+	
    }else{
 	   $scope.edit_product = true;
 	   $scope.product_images = []; 
@@ -99,50 +105,59 @@
          $scope.getProductsById = function(id){
          $scope.ProductsService.listProductById(id).then(function(result){
    		   if(result.statusText = "OK"){
+   			   
+   			 $scope.formdataOrg = result.data;
+			  if( $scope.currentLan != 'en'){				  
+				  $scope.formdata = JSON.parse( result.data.oLang[$scope.currentLan]);
+			  }else{
+			  $scope.formdata = result.data
+			  }
+   			   
+   			   
   					console.log(result.data);
-   				$scope.product_name = result.data.product_name;
-   				$scope.product_sku = result.data.product_sku;
-   				$scope.product_type = result.data.product_type;
-   				$scope.product_shortdec = result.data.product_shortdec;
-   				$scope.product_desc = result.data.product_desc;
-   				$scope.product_weight = result.data.product_weight;
-   			    $scope.product_fromdate = result.data.product_fromdate;
-   				$scope.product_enddate = result.data.product_enddate;
-   				$scope.product_featured = result.data.product_featured;
-   				$scope.product_status = result.data.product_status;
-   				$scope.product_category = result.data.product_category;
-   				$scope.product_metadesc = result.data.product_metadesc;
-   				$scope.product_metakey = result.data.product_metakey;
-   				$scope.product_slug = result.data.product_slug;
-   				$scope.product_urlkey = result.data.product_urlkey;
-   				$scope.product_displayinmenu = result.data.product_displayinmenu;
-   				$scope.product_price = result.data.product_price;
-   				$scope.product_specialprice = result.data.product_specialprice;
-   				$scope.product_splpricestartdate = result.data.product_splpricestartdate;
-   				$scope.product_splpriceenddate = result.data.product_splpriceenddate;
-   				$scope.product_groupqty = result.data.product_groupqty;
-   				$scope.product_groupprice = result.data.product_groupprice;
-   				$scope.product_qty = result.data.product_qty;
-   				$scope.product_qtyoutofstockstatus = result.data.product_qtyoutofstockstatus;
-   				$scope.product_qtyoutofstockstatus_def = result.data.product_qtyoutofstockstatus_def;
-   				$scope.product_minqtyallowed = result.data.product_minqtyallowed;
-   				$scope.product_minqtyallowed_def = result.data.product_minqtyallowed_def;
-   				$scope.product_maxqtyallowed = result.data.product_maxqtyallowed;
-   				$scope.product_maxqtyallowed_def = result.data.product_maxqtyallowed_def;
-   				$scope.product_notifylowqty = result.data.product_notifylowqty;
-   				$scope.product_notifylowqty_def = result.data.product_notifylowqty_def;
-   				$scope.product_stockavailable = result.data.product_stockavailable;
-   				$scope.extraFieldGroup = result.data.product_extrafield;
-   				$scope.product_imageList = result.data.product_images ? result.data.product_images : [];
-   				$scope.product_tags = result.data.product_tags;
-   				$scope.product_taxablestatus = result.data.product_taxablestatus;
-   				$scope.product_taxgroup = result.data.product_taxgroup;
-   				$scope.product_cst = result.data.product_cst;
-   				$scope.product_cst_def = result.data.product_cst_def;
-   				$scope.product_abc = result.data.product_abc;
-   				$scope.product_abc_def = result.data.product_abc_def;
-   				$scope.product_freeshipping = result.data.product_freeshipping;
-   				$scope.olang = result.data.olang;
+   				$scope.product_name = $scope.formdata.product_name;
+   				$scope.product_sku = $scope.formdata.product_sku;
+   				$scope.product_type = $scope.formdata.product_type ?  $scope.formdata.product_type: '1';
+   				$scope.product_shortdec = $scope.formdata.product_shortdec;
+   				$scope.product_desc = $scope.formdata.product_desc;
+   				$scope.product_weight = $scope.formdata.product_weight;
+   			    $scope.product_fromdate = $scope.formdata.product_fromdate;
+   				$scope.product_enddate = $scope.formdata.product_enddate;
+   				$scope.product_featured = $scope.formdata.product_featured;
+   				$scope.product_status = $scope.formdata.product_status;
+   				$scope.product_category = $scope.formdata.product_category;
+   				$scope.product_metadesc = $scope.formdata.product_metadesc;
+   				$scope.product_metakey = $scope.formdata.product_metakey;
+   				$scope.product_slug = $scope.formdata.product_slug;
+   				$scope.product_urlkey = $scope.formdata.product_urlkey;
+   				$scope.product_displayinmenu = $scope.formdata.product_displayinmenu;
+   				$scope.product_price = $scope.formdata.product_price;
+   				$scope.product_specialprice = $scope.formdata.product_specialprice;
+   				$scope.product_splpricestartdate = $scope.formdata.product_splpricestartdate;
+   				$scope.product_splpriceenddate = $scope.formdata.product_splpriceenddate;
+   				$scope.product_groupqty = $scope.formdata.product_groupqty;
+   				$scope.product_groupprice = $scope.formdata.product_groupprice;
+   				$scope.product_qty = $scope.formdata.product_qty;
+   				$scope.product_qtyoutofstockstatus = $scope.formdata.product_qtyoutofstockstatus;
+   				$scope.product_qtyoutofstockstatus_def = $scope.formdata.product_qtyoutofstockstatus_def;
+   				$scope.product_minqtyallowed = $scope.formdata.product_minqtyallowed;
+   				$scope.product_minqtyallowed_def = $scope.formdata.product_minqtyallowed_def;
+   				$scope.product_maxqtyallowed = $scope.formdata.product_maxqtyallowed;
+   				$scope.product_maxqtyallowed_def = $scope.formdata.product_maxqtyallowed_def;
+   				$scope.product_notifylowqty = $scope.formdata.product_notifylowqty;
+   				$scope.product_notifylowqty_def = $scope.formdata.product_notifylowqty_def;
+   				$scope.product_stockavailable = $scope.formdata.product_stockavailable;
+   				$scope.extraFieldGroup = $scope.formdata.product_extrafield;
+   				$scope.product_imageList = $scope.formdata.product_images ? result.data.product_images : [];
+   				$scope.product_tags = $scope.formdata.product_tags;
+   				$scope.product_taxablestatus = $scope.formdata.product_taxablestatus;
+   				$scope.product_taxgroup = $scope.formdata.product_taxgroup;
+   				$scope.product_cst = $scope.formdata.product_cst;
+   				$scope.product_cst_def = $scope.formdata.product_cst_def;
+   				$scope.product_abc = $scope.formdata.product_abc;
+   				$scope.product_abc_def = $scope.formdata.product_abc_def;
+   				$scope.product_freeshipping = $scope.formdata.product_freeshipping;
+   				//$scope.olang = result.data.olang;
    				
    		   }
          	});
@@ -223,52 +238,65 @@
       }
 	$scope.saveProduct = function(){
 		if($scope.productForm.$valid){
-		productformData.product_name = $scope.product_name;
-		productformData.product_sku = $scope.product_sku;
-		productformData.product_type = $scope.product_type;
-		productformData.product_shortdec = $scope.product_shortdec;
-		productformData.product_desc = $scope.product_desc;
-		productformData.product_weight = $scope.product_weight;
-		productformData.product_fromdate = $scope.product_fromdate;
-		productformData.product_enddate = $scope.product_enddate;
-		productformData.product_featured = $scope.product_featured;
-		productformData.product_status = $scope.product_status;
-		productformData.product_category = $scope.product_category;
-		productformData.product_metadesc = $scope.product_metadesc;
-		productformData.product_metakey = $scope.product_metakey;
-		productformData.product_slug = $scope.product_slug;
-		productformData.product_urlkey = $scope.product_urlkey;
-		productformData.product_displayinmenu = $scope.product_displayinmenu;
-		productformData.product_price = $scope.product_price;
-		productformData.product_specialprice =	$scope.product_specialprice;
-		productformData.product_splpricestartdate = $scope.product_splpricestartdate;
-		productformData.product_splpriceenddate = $scope.product_splpriceenddate;
-		productformData.product_groupqty = $scope.product_groupqty;
-		productformData.product_groupprice = $scope.product_groupprice;
-		productformData.product_qty = $scope.product_qty;
-		productformData.product_qtyoutofstockstatus = $scope.product_qtyoutofstockstatus;
-		productformData.product_qtyoutofstockstatus_def=$scope.product_qtyoutofstockstatus_def;
-		productformData.product_minqtyallowed = $scope.product_minqtyallowed;
-		productformData.product_minqtyallowed_def = $scope.product_minqtyallowed_def;
-		productformData.product_maxqtyallowed = $scope.product_maxqtyallowed;
-		productformData.product_maxqtyallowed_def = $scope.product_maxqtyallowed_def;
-		productformData.product_notifylowqty = $scope.product_notifylowqty;
-		productformData.product_notifylowqty_def = $scope.product_notifylowqty_def;
-		productformData.product_stockavailable = $scope.product_stockavailable;
-		productformData.product_extrafield = $scope.extraFieldGroup;
-		productformData.product_images = formfileData;//$scope.product_imageList;
-		productformData.product_tags = $scope.product_tags;
-		productformData.product_taxablestatus = $scope.product_taxablestatus;
-		productformData.product_taxgroup = $scope.product_taxgroup;
-		productformData.product_cst = $scope.product_cst;
-		productformData.product_cst_def = $scope.product_cst_def;
-		productformData.product_abc = $scope.product_abc;
-		productformData.product_abc_def = $scope.product_abc_def;
-		productformData.product_freeshipping = $scope.product_freeshipping;
-		productformData.olang = {};
+			
+			
+			productformData.product_name = $scope.product_name;
+			productformData.product_sku = $scope.product_sku;
+			productformData.product_type = $scope.product_type;
+			productformData.product_shortdec = $scope.product_shortdec;
+			productformData.product_desc = $scope.product_desc;
+			productformData.product_weight = $scope.product_weight;
+			productformData.product_fromdate = $scope.product_fromdate;
+			productformData.product_enddate = $scope.product_enddate;
+			productformData.product_featured = $scope.product_featured;
+			productformData.product_status = $scope.product_status;
+			productformData.product_category = $scope.product_category;
+			productformData.product_metadesc = $scope.product_metadesc;
+			productformData.product_metakey = $scope.product_metakey;
+			productformData.product_slug = $scope.product_slug;
+			productformData.product_urlkey = $scope.product_urlkey;
+			productformData.product_displayinmenu = $scope.product_displayinmenu;
+			productformData.product_price = $scope.product_price;
+			productformData.product_specialprice =	$scope.product_specialprice;
+			productformData.product_splpricestartdate = $scope.product_splpricestartdate;
+			productformData.product_splpriceenddate = $scope.product_splpriceenddate;
+			productformData.product_groupqty = $scope.product_groupqty;
+			productformData.product_groupprice = $scope.product_groupprice;
+			productformData.product_qty = $scope.product_qty;
+			productformData.product_qtyoutofstockstatus = $scope.product_qtyoutofstockstatus;
+			productformData.product_qtyoutofstockstatus_def=$scope.product_qtyoutofstockstatus_def;
+			productformData.product_minqtyallowed = $scope.product_minqtyallowed;
+			productformData.product_minqtyallowed_def = $scope.product_minqtyallowed_def;
+			productformData.product_maxqtyallowed = $scope.product_maxqtyallowed;
+			productformData.product_maxqtyallowed_def = $scope.product_maxqtyallowed_def;
+			productformData.product_notifylowqty = $scope.product_notifylowqty;
+			productformData.product_notifylowqty_def = $scope.product_notifylowqty_def;
+			productformData.product_stockavailable = $scope.product_stockavailable;
+			productformData.product_extrafield = $scope.extraFieldGroup;
+			productformData.product_images = formfileData;//$scope.product_imageList;
+			productformData.product_tags = $scope.product_tags;
+			productformData.product_taxablestatus = $scope.product_taxablestatus;
+			productformData.product_taxgroup = $scope.product_taxgroup;
+			productformData.product_cst = $scope.product_cst;
+			productformData.product_cst_def = $scope.product_cst_def;
+			productformData.product_abc = $scope.product_abc;
+			productformData.product_abc_def = $scope.product_abc_def;
+			productformData.product_freeshipping = $scope.product_freeshipping;
+			
+			if($scope.currentLan != 'en'){
+				if(!$scope.formdataOrg.oLang){
+					$scope.formdataOrg.oLang = {};
+				}
+				$scope.formdataOrg.oLang[$scope.currentLan] = JSON.stringify(productformData);
+			  }else{
+				  $scope.formdataOrg =   productformData;
+			  }
+			
+			
+		
 		
 		if($stateParams.id){			
-			$scope.ProductsService.updateProductById($stateParams.id,productformData).then(function(result){
+			$scope.ProductsService.updateProductById($stateParams.id,$scope.formdataOrg).then(function(result){
 				   if(result.statusText = "OK"){
 					   
 	    				 swal( 'Updated!',
@@ -280,7 +308,7 @@
 				   }
 			});
 		}else{
-		$scope.ProductsService.addProduct(productformData).then(function(result){
+		$scope.ProductsService.addProduct($scope.formdataOrg).then(function(result){
 			   if(result.statusText = "OK"){
 				   
     				 swal( 'Added!',

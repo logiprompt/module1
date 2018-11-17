@@ -421,11 +421,14 @@ width:60%;
 
             <!-- modal -->
             <script>
-                 CKEDITOR.replace( 'editor1', {
-                fullPage: true,
-                allowedContent: true,
-                extraPlugins: 'wysiwygarea'
-        });
+            setTimeout(function(){
+            	CKEDITOR.replace( 'editor1', {
+                    fullPage: true,
+                    allowedContent: true,
+                    extraPlugins: 'wysiwygarea'
+            });
+            	}, 1000)
+                 
                     setTimeout(function(){
                     $('.selectpicker').selectpicker({style: 'btn-default',
                                  size: 4}); }, 1000)</script>

@@ -39,6 +39,7 @@
        */
 
     $scope.updateCategory = function () {
+    
       console.log($scope.selectedExtrafieldGroup)
       $scope.formdata.extrafieldGroup = $scope.selectedExtrafieldGroup;
       $scope.productcategoryService.updateCategory($scope.formdata).then(function (result) {
