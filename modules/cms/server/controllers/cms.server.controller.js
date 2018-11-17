@@ -69,6 +69,7 @@ exports.updatepostById = function(req, res){
 	          item.post_displayinmenu = req.body.post_displayinmenu;
 	          item.post_tags = req.body.post_tags;
 	          item.post_text = req.body.post_text;
+	          item.oLang = req.body.oLang;
 	        item.save();
 
 	        res.json(item);
@@ -301,7 +302,7 @@ exports.updateCategory = function (req, res, next) {
             "status": req.body.status,
             "asd": req.body.asd,
             "wer": req.body.wer,
-            "extrafieldGroup": req.body.extrafieldGroup
+            "oLang":req.body.oLang
         }
     }, function (err, data) {
         if (err) {

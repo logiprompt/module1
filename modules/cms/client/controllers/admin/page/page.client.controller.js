@@ -51,7 +51,7 @@ $scope.getPageDetails = function(id){
 			  }else{
 			  $scope.formdata = result.data
 			  }
-			  console.log($scope.formdata);
+
 		  }
 	  })
 }
