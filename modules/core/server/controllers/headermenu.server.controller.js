@@ -52,7 +52,13 @@ exports.getTopMenuList = function(request, response) {
 
 exports.getTopSubMenuList = function(request, response) {
    
-    Headermenu.find({'parentID':{$ne: null}}).exec(function(error, items) {
+    // <TODO>
+    //condition to be added 
+    //find menu from user role id
+    //Set proper level values on menu create
+    Headermenu.find({'level':1})
+    .populate({path:"childIDs", populate:{path:"childIDs",populate:{path:"childIDs"}}})
+    .exec(function(error, items) {
 
         if (error) {
             return response.status(400).send({
