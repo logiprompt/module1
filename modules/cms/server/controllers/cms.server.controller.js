@@ -431,6 +431,7 @@ exports.updatePage = function (req, res, next) {
           item.page_slug = req.body.page_slug;
           item.page_urlkey = req.body.page_urlkey;
           item.page_displayinmenu = req.body.page_displayinmenu;
+          item.oLang = req.body.oLang;
         item.save();
 
         res.json(item);
