@@ -758,13 +758,17 @@ $('.example24').DataTable({
 responsive: true
 
 });
+setTimeout(function(){
+CKEDITOR.replace( 'editor1', {
+    fullPage: true,
+    allowedContent: true,
+    extraPlugins: 'wysiwygarea'
+});
+}, 1000)
+
 });
 
-               CKEDITOR.replace( 'editor1', {
-                fullPage: true,
-                allowedContent: true,
-                extraPlugins: 'wysiwygarea'
-        });
+         
                     setTimeout(function(){
                     $('.selectpicker').selectpicker({style: 'btn-default',
                                  size: 4}); }, 1000)</script>
