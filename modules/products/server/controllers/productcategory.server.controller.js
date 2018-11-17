@@ -93,7 +93,12 @@ exports.updateCategory = function (req, res, next) {
             "category": req.body.category,
             "description": req.body.description,
             "status": req.body.status,
-            "extrafieldGroup": req.body.extrafieldGroup
+            "extrafieldGroup": req.body.extrafieldGroup,
+            "metaDescription":req.body.metaDescription,
+            "metaKeywords":req.body.metaKeywords,
+            "urlKey":req.body.urlKey,
+            "displayInMenu":req.body.displayInMenu,
+            "displayInSidebar":req.body.displayInSidebar
         }
     }, function (err, data) {
         if (err) {

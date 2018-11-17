@@ -20,9 +20,14 @@ var ProductCategorySchema = new Schema({
   modified: { type: Date, default: Date.now },
   created_user: { type: String, default: 'Admin' },
   modified_user: { type: String, },
-  hasChild: { type: Boolean,default: 0  },
+  hasChild: { type: Boolean, default: 0 },
   childIDs: { type: [Schema.ObjectId], ref: 'productcategory' },
   extrafieldGroup: { type: [Schema.ObjectId], ref: 'extrafieldGroup' },
+  metaDescription: { type: String, default: '' },
+  metaKeywords: { type: String, default: '' },
+  urlKey: { type: String, default: '' },
+  displayInMenu: { type: String, default: '' },
+  displayInSidebar: { type: String, default: '' },
   OLang: {}
 
 });
