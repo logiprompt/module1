@@ -299,6 +299,8 @@ exports.updateCategory = function (req, res, next) {
             "category": req.body.category,
             "description": req.body.description,
             "status": req.body.status,
+            "asd": req.body.asd,
+            "wer": req.body.wer,
             "extrafieldGroup": req.body.extrafieldGroup
         }
     }, function (err, data) {
