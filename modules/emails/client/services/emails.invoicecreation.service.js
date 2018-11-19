@@ -90,7 +90,7 @@
 	  * 
 	  */
 	 invoicecreationService.updateInvoice = function(userId,data){
-		 console.log(userId);
+		 //console.log(userId);
 		 return $http({
 		        url: '/api/updateinvoice',
 				method: "PUT",

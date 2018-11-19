@@ -7,6 +7,7 @@ var path = require('path'),
     mongoose = require('mongoose'),
     mainstore = mongoose.model('Sys_MainStore'),
 	country = mongoose.model('Sys_country'),
+	state = mongoose.model('Sys_state'),
     errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
 /**
@@ -46,12 +47,15 @@ exports.list = function (request, response) {
         }
     });
 };
+/**
+ * List of state
+ */
 
 exports.reads = function (request, response) {
-    console.log(request);
+    console.log(request.body);
 
 
-    cmsratingaction.findById(request.query.userId)
+    state.find({"country":request.body.userId})
         .lean()
         .exec(function (error, items) {
             if (error) {

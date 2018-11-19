@@ -38,6 +38,21 @@
 			   method: "POST"
 		   });
 	   }
+	   
+/*
+	  * Function : getState
+	  * Description : get all State details
+	  * owner : anju
+	  */
+	   
+	    mainstore.getStatesbyId = function(changeId){
+		 console.log(changeId);
+		return $http({
+			   url: '/api/getsStatesbyId',
+			   method: "POST",
+			   data:{'userId':changeId}
+		   });
+	}
 	
 
 	 /*

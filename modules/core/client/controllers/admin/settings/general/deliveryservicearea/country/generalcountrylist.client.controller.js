@@ -75,80 +75,57 @@ $scope.getserviceAreaCountry = function(){
  });
 }
 $scope.getserviceAreaCountry();
+///////////////////////////////////////////////////////////////////////////
 
 
-///////////////////////////////////////////////////////////////////////
-
- function getActionBtns(){
-
-
- $scope.addpage  = document.querySelectorAll(".add-action");
- $scope.addpage[0].addEventListener("click", $scope.newpage, false);
-
- $scope.editpage= document.querySelectorAll(".edit-action");
- $scope.editpage[0].addEventListener("click", $scope.editpages, false);
-
- var delpage= document.querySelectorAll(".delete-action");
- delpage[0].addEventListener("click", $scope.delpage, false);
-
-  var bus= document.querySelectorAll(".business-action");
- bus[0].addEventListener("click", $scope.insbus, false);
+    /*
+	   * FUnction : delOrderCreation
+	   * Description : delete OrderCreation By Id
+	   * Owner :ck
+	   */
 
 
-
- }
-
- $scope.insbus=function(){
-  $("#myModal").modal();
- }
-$scope.chkall=function(){
-$scope.editpage[0].removeAttribute("href");
- 
-}
-$scope.addchkval=function(linkid){
-  var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-console.log(linkid)
-console.log(checkedValue[0])
-  if(checkedValue.length>1){
-  $scope.editpage[0].removeAttribute("href");
-  }
-  else{
-
-    $scope.editpage[0].setAttribute("href", "/settings/generalcountryedit/"+linkid);
-  }
-
-}
-$scope.chk={};
-
-$scope.newpage=function(){
-  $state.go('generalcountryadd');
-}
-$scope.editpages=function(){
-    var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-    if(checkedValue.length>0){
-    console.log($scope.editpage[0].getAttribute("href"));
-  if($scope.editpage[0].getAttribute("href")){
-  document.location=$scope.editpage[0].getAttribute("href");
-  }
-}
- 
-}
-$scope.chkValue=[];
-
-
-$scope.delpage=function(){
+$scope.addgencountrylist = function()
+{   
   $scope.chkValue=[];
- 
-  //$state.go('addlanguage');
   var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-console.log(checkedValue)
   for(var i=0;i<checkedValue.length;i++){
     $scope.chkValue.push(checkedValue[i].value);
   }
- 
-}
-setTimeout(getActionBtns, 1500);         
+var countries= $scope.chkValue;
+  //console.log(countries);
 
+var clength=countries.length;
+//console.log(clength);
+
+  if(clength!=0)
+  {
+   // console.log(98080);
+
+    var data={
+                "name":$scope.name,
+                "subject":$scope.subject,
+                "content":$scope.content,
+                "custom":$scope.custom,
+                "status" :$scope.status,
+                "oLang":{}
+              }    
+    $scope.nostockService.addgencountrylist(data).then(function(result)
+    {
+      if(result.statusText = "OK")
+      {
+        swal("Success!", "Successfully added!", "success");  
+        $state.go('emailnostocklist');
+      }
+      else
+      {
+        swal("error!", "Already exist!", "error");
+      }			  
+    })
+  }
+}
+
+///////////////////////////////////////////////////////////////////////
 
  }
 

@@ -56,8 +56,10 @@ var ProductTagSubSchema = new Schema({
    
   },
   oLang :{	  
+    type: Schema.Types.Mixed, 
+    default: {}
   }
 
-});
+}, { minimize: false });
 
 module.exports=mongoose.model('Sys_PrdTagSubmission', ProductTagSubSchema);

@@ -55,9 +55,11 @@ var InvoicecommentsSchema = new Schema({
     type: String,
    
   },
-  olang :{	  
+  oLang :{	  
+    type: Schema.Types.Mixed, 
+    default: {}
   }
 
-});
+}, { minimize: false });
 
 module.exports=mongoose.model('Sys_invoicecomment', InvoicecommentsSchema);

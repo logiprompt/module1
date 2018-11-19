@@ -36,8 +36,11 @@ var AclSchema = new Schema({
     type: String,
    
   },
-  OLang:{}
+  oLang :{	  
+    type: Schema.Types.Mixed, 
+    default: {}
+  }
 
-});
+}, { minimize: false });
 
 module.exports=mongoose.model('Sys_acl', AclSchema);

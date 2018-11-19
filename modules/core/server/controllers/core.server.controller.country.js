@@ -86,8 +86,13 @@ exports.renderNotFound = function (req, res) {
 //////////////////////insert country///////////////////////////////
 
 exports.insCountry= function(req, res) {
-
-  var exist2=Promise.resolve(custom.fieldexist('Sys_country','country',req.body.countryname));
+  var country=req.body.countryname;
+  // console.log(country);
+   var upper = country.replace(/^\w/, function (chr) {
+     return chr.toUpperCase();
+   });
+   //console.log(upper);
+  var exist2=Promise.resolve(custom.fieldexist('Sys_country','country',upper));
   exist2.then(function(value2) {
     if(value2==0){
 
@@ -96,10 +101,10 @@ exports.insCountry= function(req, res) {
   maxValue.then(function(value) {
   
     //var Newslug=custom.createslug(req.body.category,value);
-
+    
   var newCountry = new Country(req.body);
 
-  newCountry.country = req.body.countryname;
+  newCountry.country =upper;
   newCountry.shortcode = req.body.shortname;
   newCountry.countrystatus = req.body.status;
   newCountry.created = Date.now();
@@ -130,9 +135,14 @@ exports.insCountry= function(req, res) {
 ///////////////////////////update Country///////////////////////////////////
 exports.updateCountry = function(req, res) {
   //var Newslug=custom.createslug(req.body.category,req.body.id);
- 
+  var country=req.body.country;
+  //console.log(country);
+  var upper = country.replace(/^\w/, function (chr) {
+    return chr.toUpperCase();
+  });
+  //console.log(upper);
   Country.update({_id:req.body.id},{
-     $set:{"country" : req.body.country,"shortcode":req.body.shortcode,"countrystatus":req.body.status,"modified" : Date.now(),"modified_user":req.body.username,"modified_ip":req.body.ip}
+     $set:{"country" : upper,"shortcode":req.body.shortcode,"countrystatus":req.body.status,"modified" : Date.now(),"modified_user":req.body.username,"modified_ip":req.body.ip}
  },function(err) { 
                     if (err) throw err;
             });

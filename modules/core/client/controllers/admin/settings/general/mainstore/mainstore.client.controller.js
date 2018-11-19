@@ -13,6 +13,9 @@
 
   $scope.formdata = {};
   $scope.formdata.status ='0';
+  $scope.country ='0';
+   $scope.state ='0';
+     $scope.district ='0';
   $scope.mainstoreService=mainstoreService;
  
  $scope.currentLang= localStorage.getItem('currentLang');
@@ -61,7 +64,43 @@
     });
   }
   $scope.getCountrys();
-	
+  
+  //////////////////change state////////////////////////////////////
+
+ 
+$scope.getStates=function(){
+	var changeId=$scope.country;
+console.log(changeId);
+   $scope.mainstoreService.getStatesbyId(changeId).then(function (result) {
+      if (result.statusText = "OK") {
+        $scope.statelist = result.data;
+        console.log(1);
+        console.log(result.data);
+      } else {
+
+      }
+    });
+
+}
+
+//////////////////change district////////////////////////////////////
+
+// 
+//$scope.getDistrict=function(){
+//	var changeId=$scope.country;
+//console.log(changeId);
+//   $scope.mainstoreService.getStatesbyId(changeId).then(function (result) {
+//      if (result.statusText = "OK") {
+//        $scope.statelist = result.data;
+//        console.log(1);
+//        console.log(result.data);
+//      } else {
+//
+//      }
+//    });
+//
+//}
+//	
 	
  ///////////////////////////////////////////////////////
 

@@ -110,7 +110,7 @@ $scope.choices = [{id: 'choice1'}];
 	 */
 
       $scope.updateInvoice = function(){
-        console.log(110);
+       // alert(65656);
         if($scope.formdata.$valid && $scope.status!=0){
           if (localStorage.getItem("currentLang") == 'en') 
           {

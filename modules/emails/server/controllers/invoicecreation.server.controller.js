@@ -114,7 +114,7 @@ exports.invoiceByID = function(request, response) {
 	exports.updateInvoice= function(request, response){
         var reqBody = request.body;
         var userId = reqBody.userId;
-        
+        //console.log(5555555);
 
 		Invoice.findById(userId).exec(function (error, data) {
             if (error) 

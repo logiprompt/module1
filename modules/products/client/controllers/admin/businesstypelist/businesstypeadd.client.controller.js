@@ -33,22 +33,67 @@
     $scope.dataForTheTree =
       [
         {
-          "name": "Joe", "age": "21", "children": [
-            { "name": "Smith", "age": "42", "children": [] },
-            {
-              "name": "Gary", "age": "21", "children": [
-                {
-                  "name": "Jenifer", "age": "23", "children": [
-                    { "name": "Dani", "age": "32", "children": [] },
-                    { "name": "Max", "age": "34", "children": [] }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        { "name": "Albert", "age": "33", "children": [] },
-        { "name": "Ron", "age": "29", "children": [] }
+          "_id": "5beaa8df64061e5b3ce1ea4d",
+          "level": 1,
+          "hasChild": true,
+          "__v": 1,
+          "children": [
+              {
+                  "_id": "5beaa9057a7ec0471468ad1c",
+                  "level": 2,
+                  "hasChild": true,
+                  "__v": 1,
+                  "children": [
+                      {
+                          "_id": "5bebb6251778491e886da21c",
+                          "level": 2,
+                          "hasChild": false,
+                          "__v": 0,
+                          "children": [],
+                          "modified": "2018-11-14T05:44:05.530Z",
+                          "created": "2018-11-14T05:44:05.530Z",
+                          "path": "submenusub",
+                          "urlslug": "submenusub",
+                          "alt": "submenusub",
+                          "description": "submenusub",
+                          "parentID": "5beaa9057a7ec0471468ad1c",
+                          "menu": "submenusub"
+                      }
+                  ],
+                  "modified": "2018-11-13T10:35:49.780Z",
+                  "created": "2018-11-13T10:35:49.780Z",
+                  "path": "submenu1",
+                  "urlslug": "submenu1",
+                  "alt": "submenu1",
+                  "description": "submenu1",
+                  "parentID": "5beaa8df64061e5b3ce1ea4d",
+                  "menu": "submenu1"
+              }
+          ],
+          "modified": "2018-11-13T10:35:11.630Z",
+          "created": "2018-11-13T10:35:11.630Z",
+          "path": "menu1",
+          "urlslug": "menu1",
+          "alt": "menu1",
+          "description": "menu1",
+          "parentID": null,
+          "menu": "menu1"
+      },
+      {
+          "_id": "5beaa9287a7ec0471468ad1d",
+          "level": 1,
+          "hasChild": false,
+          "__v": 0,
+          "children": [],
+          "modified": "2018-11-13T10:36:24.983Z",
+          "created": "2018-11-13T10:36:24.983Z",
+          "path": "menu2",
+          "urlslug": "menu2",
+          "alt": "menu2",
+          "description": "menu2",
+          "parentID": null,
+          "menu": "menu2"
+      }
       ];
 
 

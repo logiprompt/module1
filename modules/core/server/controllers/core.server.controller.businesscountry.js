@@ -103,7 +103,7 @@ else{
 
   var exist1=Promise.resolve(custom.fieldexist('Sys_businesscountry','country',req.body.country));
   exist1.then(function(value2) {
-    console.log(value2);
+    //console.log(value2);
  
   if(value2==0)
  {
@@ -186,7 +186,7 @@ exports.viewBusinesscountryid = function(req, res) {
 
   //var newCategorys = new Category();
  
-  Businesscountry.findOne({business_id: req.body.id}).exec(function (err, data) {
+  Businesscountry.findOne({_id: req.body.id}).exec(function (err, data) {
              if (err) throw err;
            
 				 res.json({

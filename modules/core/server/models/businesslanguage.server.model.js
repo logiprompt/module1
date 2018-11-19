@@ -14,17 +14,13 @@ var BusinesslanguageSchema = new Schema({
     type: String
   },
   blangcountry: {
-    type: String,
-    default: '',
-    required: 'Please enter country name ',
-    trim: true
+    type:[Schema.Types.ObjectId],
+     ref: 'Sys_country' 
   },
   
   blanguagename: {
-    type: String,
-    default: '',
-    required: 'Please enter country name ',
-    trim: true
+    type:[Schema.Types.ObjectId],
+     ref: 'Sys_genlanguage' 
   },
 shortname: {
     type: String,
@@ -93,6 +89,7 @@ shortname: {
     type: String,
    
   }
+  
 
 });
 

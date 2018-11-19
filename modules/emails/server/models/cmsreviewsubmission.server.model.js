@@ -56,10 +56,10 @@ var CmsreviewsubmissionSchema = new Schema({
    
   },
   oLang :{	  
-    type:Object,
-    default:{}
+    type: Schema.Types.Mixed, 
+    default: {}
   }
 
-});
+}, { minimize: false });
 
 module.exports=mongoose.model('Sys_CmsreviewSubmission', CmsreviewsubmissionSchema);

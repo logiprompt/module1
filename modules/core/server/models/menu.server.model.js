@@ -67,8 +67,11 @@ var AdminMenuSchema = new Schema({
   childIDs:{
       type:[]
   },
-  OLang:{}
+  oLang :{	  
+    type: Schema.Types.Mixed, 
+    default: {}
+  }
 
-});
+}, { minimize: false });
 
 module.exports=mongoose.model('Sys_adminMenu', AdminMenuSchema);

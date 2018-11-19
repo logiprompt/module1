@@ -55,11 +55,11 @@ var NoStockSchema = new Schema({
     type: String,
    
   },
-  oLang :{	
-    type:Object,
-    default:{}  
+  oLang :{	  
+    type: Schema.Types.Mixed, 
+    default: {}
   }
 
-});
+}, { minimize: false });
 
 module.exports=mongoose.model('Sys_NoStock', NoStockSchema);

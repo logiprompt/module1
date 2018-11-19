@@ -710,7 +710,7 @@ var adminfooter={
     header:adminheader,
     content: { 
      templateUrl: '/modules/core/client/views/admin/settings/general/deliveryservicearea/country/countrylist.html',
-    controller: 'Generalcountrylist',
+    controller: 'GenCountryListController',
     controllerAs: 'vm',
     },
      footer:adminfooter
@@ -731,24 +731,19 @@ var adminfooter={
   } 
 })
 
-.state('generalcountryedit', {
+.state('generalcountryedit', 
+{
   url: '/settings/generalcountryedit/:id',
- // controllerAs: 'vm',
   views:{
-    header:adminheader,
-    content: { 
-     templateUrl: '/modules/core/client/views/admin/settings/general/deliveryservicearea/country/countryedit.html',
-    controller: 'Generalcountrylist',
-    controllerAs: 'vm',
+      header:adminheader,
+      content: { 
+      templateUrl: '/modules/core/client/views/admin/settings/general/deliveryservicearea/country/countryedit.html',
+      controller: 'GenCountryListEdit',
+      controllerAs: 'vm',
     },
-     footer:adminfooter
+      footer:adminfooter
   } 
 })
-
-
-
-
-
 
 //////////////////////////////////////////////////////////////////////////////
       .state('not-found', {

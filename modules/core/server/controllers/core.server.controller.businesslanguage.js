@@ -144,7 +144,8 @@ maxValue.then(function(value)
 
 exports.selectBusinesslang = function(req, res) {
 
-  Businesslanguage.find({}).exec(function (err, data) {
+  Businesslanguage.find({}).populate({ path: 'blangcountry',model: 'Sys_country', select: 'country' })
+  .exec(function (err, data) {
     if (err) throw err;
   
 res.json({
@@ -157,7 +158,7 @@ res.json({
 /////////////////////////////////////////////////////////////
 exports.delbusinesslang = function(req, res) {
 
-  Businesslanguage.deleteOne({businesslang_id:req.body.id}).exec(function (err, data) {
+  Businesslanguage.deleteOne({_id:req.body.id}).exec(function (err, data) {
               if (err) throw err;
          
           res.json({
@@ -171,7 +172,7 @@ exports.delbusinesslang = function(req, res) {
  
 exports.delcheckedbusinesslang = function(req, res) {
 
-  Businesslanguage.deleteMany({businesslang_id:{'$in': req.body.id}}).exec(function (err, data) {
+  Businesslanguage.deleteMany({_id:{'$in': req.body.id}}).exec(function (err, data) {
              if (err) throw err;
         res.json({
                     status: 1,
@@ -186,7 +187,7 @@ exports.editBusinesslangbyid = function(req, res) {
 
   //var newCategorys = new Category();
  
-  Businesslanguage.findOne({businesslang_id: req.body.id}).exec(function (err, data) {
+  Businesslanguage.findOne({_id: req.body.id}).exec(function (err, data) {
              if (err) throw err;
            
 				 res.json({
@@ -222,7 +223,7 @@ exports.setasDefault = function(req, res) {
  },function(err) { 
                     if (err) throw err;
 
-            Country.update({country_id:req.body.id},{
+            Country.update({_id:req.body.id},{
      $set:{"defaultcountry" : 1,"modified" : Date.now()}
  },function(err) { 
                     if (err) throw err;
@@ -267,7 +268,7 @@ return res.end("Error uploading file.");
 else{
  
   if(picpath==''){
-    Businesslanguage.update({businesslang_id:req.body.id},{
+    Businesslanguage.update({_id:req.body.id},{
     $set:{"blangcountry" : req.body.bcountryname,
         "blanguagename" : req.body.blanguagename,
         "shortname" : req.body.shortname,
@@ -287,7 +288,7 @@ else{
           }
           else{
             
-            Businesslanguage.update({businesslang_id:req.body.id},{
+            Businesslanguage.update({_id:req.body.id},{
       $set:{"blangcountry" : req.body.bcountryname,
             "blanguagename" : req.body.blanguagename,
             "shortname" : req.body.shortname,

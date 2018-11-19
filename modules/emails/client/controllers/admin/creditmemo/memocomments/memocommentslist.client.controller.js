@@ -133,8 +133,8 @@ $scope.editpage[0].removeAttribute("href");
 }
 $scope.addchkval=function(linkid){
   var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-console.log(linkid)
-console.log(checkedValue[0])
+// console.log(linkid)
+// console.log(checkedValue[0])
   if(checkedValue.length>1){
   $scope.editpage[0].removeAttribute("href");
   }

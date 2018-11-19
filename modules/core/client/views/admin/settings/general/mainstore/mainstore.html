@@ -381,7 +381,7 @@ width:60%;
                                                    <label for="tags">Country</label>
                                                     <div class="form-group">
                                                         <select class="form-control filter-option" name="country" id="country"
-                                                        ng-model="country" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && (!formdata.country.$valid || country==0 )}">
+                                                        ng-model="country" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && (!formdata.country.$valid || country==0 )}" ng-change="getStates()">
                                                         	<option class="filter-option-inner" value="0">choose country</option>
                                                                       <option  class="filter-option-inner" ng-repeat="val in countrylist" value="{{val._id}}">{{val.country}}</option>
                                                         </select>
@@ -390,9 +390,9 @@ width:60%;
                                                     <label for="tags">State</label>
                                                     <div class="form-group">
                                                          <select class="form-control filter-option" name="state" id="state"
-                                                        ng-model="state" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && (!formdata.state.$valid || state==0 )}">
-                                                        	<option value="0">Select</option>
-                                                        	<option value="1">Kerala</option>
+                                                        ng-model="state" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && (!formdata.state.$valid || state==0 )}" ng-change="getDistrict()">
+                                                        	<option class="filter-option-inner" value="0">choose state</option>
+                                                        	   <option ng-repeat="state in statelist" value="{{state._id}}">{{state.state}}</option>
                                                         </select>
                                                     </div>
                                                 
