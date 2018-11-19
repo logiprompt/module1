@@ -64,12 +64,9 @@ function EmailuserforgotController($scope, $http, $state, $stateParams, Upload, 
     */
 
   $scope.getUserForgot = function () {
-    console.log(0);
     $scope.userforgotService.getUserForgot().then(function (result) {
       if (result.statusText = "OK") {
         $scope.userlist = result.data;
-        //console.log(1);
-        //console.log(result.data);
       } else {
 
       }
@@ -173,8 +170,6 @@ function EmailuserforgotController($scope, $http, $state, $stateParams, Upload, 
   }
   $scope.addchkval = function (linkid) {
     var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-    console.log(linkid)
-    console.log(checkedValue[0])
     if (checkedValue.length > 1) {
       $scope.editpage[0].removeAttribute("href");
     }
@@ -207,13 +202,11 @@ function EmailuserforgotController($scope, $http, $state, $stateParams, Upload, 
 
     //$state.go('addlanguage');
     var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-    console.log(checkedValue)
     for (var i = 0; i < checkedValue.length; i++) {
       $scope.chkValue.push(checkedValue[i].value);
     }
 
     var userId = $scope.chkValue;
-    console.log(userId);
     swal({
       title: 'Are you sure?',
       text: "You want to delete checked items!",

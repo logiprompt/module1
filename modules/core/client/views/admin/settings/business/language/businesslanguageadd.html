@@ -217,7 +217,7 @@ width:60%;
                                                             <select class="form-control filter-option" name="bcountryname" id="bcountryname" ng-model="formdata.bcountryname">
                                                                 <option class="filter-option-inner" value="0">Choose</option>
                                 
-                                                                <option  class="filter-option-inner" ng-repeat="val in counlist" value="{{val._id}}">{{val.country}}</option>  
+                                                                <option  class="filter-option-inner" ng-repeat="val in counlist" value="{{val.country_id}}">{{val.country}}</option>  
                                                             </select> 
                                             </div>
 
@@ -227,7 +227,7 @@ width:60%;
                                                     <select class="form-control filter-option" name="blanguagename" id="blanguagename" ng-model="formdata.blanguagename" >
                                                         <option  class="filter-option-inner" value="0">Choose</option>
                         
-                                                        <option  class="filter-option-inner" ng-repeat="langval in langlist" value="{{langval._id}}">{{langval.language}}</option>
+                                                        <option  class="filter-option-inner" ng-repeat="langval in langlist" value="{{langval.language_id}}">{{langval.language}}</option>
         
                                                         </select> 
                                     </div>

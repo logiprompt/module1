@@ -54,6 +54,21 @@
 		   });
 	}
 	
+	/*
+	  * Function : getDistrict
+	  * Description : get all District details
+	  * owner : anju
+	  */
+	   
+	    mainstore.getDistrictbyId = function(stateId){
+		 console.log(stateId);
+		return $http({
+			   url: '/api/getsDistrictbyId',
+			   method: "POST",
+			   data:{'userId':stateId}
+		   });
+	}
+	
 
 	 /*
 	  * Function : delete cmsratingaction

@@ -185,14 +185,32 @@ $scope.getOrderUnholdById($stateParams.id);
   $scope.updateOrderUnhold = function(){
      console.log($scope.formdata);
      if($scope.formdata.$valid && $scope.status!=0){
-    var data = {		  			 
-         "name":$scope.name,
-         "subject":$scope.subject,
-         "content":$scope.content,
-         "custom":$scope.custom,
-         "status" :$scope.status,
-         "userId":$stateParams.id
-         }
+   
+
+      if (localStorage.getItem("currentLang") == 'en') {
+        var data = {
+          "name": $scope.name,
+          "subject": $scope.subject,
+          "content": $scope.content,
+          "custom": $scope.custom,
+          "status": $scope.status,
+          "userId": $stateParams.id,
+          "isDefaultLang" : true,
+
+        }
+      }
+      else {
+        var data = {
+          "name": $scope.name,
+          "subject": $scope.subject,
+          "content": $scope.content,
+          "custom": $scope.custom,
+          "userId": $stateParams.id,
+          "isDefaultLang" : false,
+          "defaultLang":localStorage.getItem("defaultLang"),
+          "userSelectedLang":localStorage.getItem("currentLang")
+        };
+      }
     
      $scope.orderunholdService.updateOrderUnhold($stateParams.id,data).then(function(result){
        if(result.statusText = "OK"){

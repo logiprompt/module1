@@ -15,7 +15,7 @@
   $scope.status ='0';
   $scope.orderholdService = orderholdService;
  /////////////////////select/////////////////////////////
-
+ $scope.currentLan=localStorage.getItem('currentLang').toString();
 ///////////////////////////////////////////////////////
 
 
@@ -144,23 +144,35 @@ console.log(result.data);
 
 
 
-    
+    $scope.currentLan=localStorage.getItem('currentLang').toString();
+  $scope.defaultLang=localStorage.getItem('defaultLang').toString();
 ///////////////////////////////////////////////////////////////////////
 $scope.getOrderHoldById = function(userId)
 {
-  //console.log(0);
+    console.log($scope.currentLan);
     $scope.orderholdService.getOrderHoldById(userId).then(function(result)
     {
-        //console.log(userId);
+        var details=result.data;
         if(result.statusText = "OK")
         {
-          //console.log(result);
+          $scope.status =details.status.toString();    
+          if(angular.equals($scope.currentLan, $scope.defaultLang)){
           $scope.userdetails = result.data;
           $scope.name = $scope.userdetails.name;
           $scope.subject = $scope.userdetails.subject;
           $scope.content = $scope.userdetails.content;
           $scope.custom = $scope.userdetails.custom;
-          $scope.status = $scope.userdetails.status.toString();
+        }
+        else
+        {
+          // console.log(details.oLang)
+          $scope.userdetails = result.data;
+          $scope.name =angular.isUndefined(details.oLang) ? details.name:details.oLang[ $scope.currentLan].name ;
+          $scope.subject = angular.isUndefined(details.oLang)  ? details.subject:details.oLang[ $scope.currentLan].subject ;
+          $scope.content =angular.isUndefined(details.oLang) ?details.content: details.oLang[ $scope.currentLan].content ;
+          $scope.custom = angular.isUndefined(details.oLang)  ? details.custom:details.oLang[ $scope.currentLan].custom ; 
+ 
+        }
 
         }
         else
@@ -185,14 +197,33 @@ $scope.getOrderHoldById($stateParams.id);
   $scope.updateOrderHold = function(){
     // console.log($scope.formdata);
      if($scope.formdata.$valid && $scope.status!=0){
-    var data = {		  			 
-         "name":$scope.name,
-         "subject":$scope.subject,
-         "content":$scope.content,
-         "custom":$scope.custom,
-         "status" :$scope.status,
-         "userId":$stateParams.id
-         }
+      if (localStorage.getItem("currentLang") == 'en') 
+      {
+        var data = 
+        {
+          "name": $scope.name,
+          "subject": $scope.subject,
+          "content": $scope.content,
+          "custom": $scope.custom,
+          "status": $scope.status,
+          "userId": $stateParams.id,
+          "isDefaultLang" : true
+        }
+      }
+      else 
+      {
+        var data = 
+        {
+          "name": $scope.name,
+          "subject": $scope.subject,
+          "content": $scope.content,
+          "custom": $scope.custom,
+          "userId": $stateParams.id,
+          "isDefaultLang" : false,
+          "defaultLang":localStorage.getItem("defaultLang"),
+          "userSelectedLang":localStorage.getItem("currentLang")
+        };
+      }
     
      $scope.orderholdService.updateOrderHold($stateParams.id,data).then(function(result){
        if(result.statusText = "OK"){

@@ -7,6 +7,7 @@ var path = require('path'),
     mongoose = require('mongoose'),
     multer = require('multer'),
     Businesstype = mongoose.model('Sys_BusinessType'),
+    Headermenu = mongoose.model('Sys_adminMenu'),
     errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
 /**
@@ -31,6 +32,7 @@ exports.create = function (req, res) {
 
     upload(req, res, function (err) {
         var reqBody = req.body;
+        console.log(req.body);
         if (err) {
             return res.end("Error uploading file.");
         }
@@ -96,6 +98,28 @@ exports.reads = function (request, response) {
             }
         });
 
+};
+
+exports.getTopSubMenuList = function(request, response) {
+   
+    // <TODO>
+    //condition to be added 
+    //find menu from user role id
+    //Set proper level values on menu create
+    Headermenu.find({'level':1})
+    .populate({path:"childIDs", populate:{path:"childIDs",populate:{path:"childIDs"}}})
+    .exec(function(error, items) {
+
+        if (error) {
+            return response.status(400).send({
+              message: errorHandler.getErrorMessage(error)
+            });
+          } else {
+            //console.log(items);
+           response.jsonp(items);
+          }
+            
+    });
 };
 
 // /**

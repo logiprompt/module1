@@ -93,7 +93,7 @@ $scope.addgencountrylist = function()
     $scope.chkValue.push(checkedValue[i].value);
   }
 var countries= $scope.chkValue;
-  //console.log(countries);
+  console.log(countries);
 
 var clength=countries.length;
 //console.log(clength);
@@ -103,19 +103,16 @@ var clength=countries.length;
    // console.log(98080);
 
     var data={
-                "name":$scope.name,
-                "subject":$scope.subject,
-                "content":$scope.content,
-                "custom":$scope.custom,
-                "status" :$scope.status,
-                "oLang":{}
+                "countries":countries,
+                "clength":clength
               }    
-    $scope.nostockService.addgencountrylist(data).then(function(result)
+    $scope.serviceAreaCountryService.addgencountrylist(data).then(function(result)
     {
       if(result.statusText = "OK")
       {
         swal("Success!", "Successfully added!", "success");  
-        $state.go('emailnostocklist');
+       // $state.go('emailnostocklist');
+       $state.reload();
       }
       else
       {

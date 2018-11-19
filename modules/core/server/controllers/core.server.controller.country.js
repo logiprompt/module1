@@ -141,6 +141,10 @@ exports.updateCountry = function(req, res) {
     return chr.toUpperCase();
   });
   //console.log(upper);
+  var exist2=Promise.resolve(custom.fieldexist('Sys_country','country',upper));
+  exist2.then(function(value2) {
+    if(value2==0){
+
   Country.update({_id:req.body.id},{
      $set:{"country" : upper,"shortcode":req.body.shortcode,"countrystatus":req.body.status,"modified" : Date.now(),"modified_user":req.body.username,"modified_ip":req.body.ip}
  },function(err) { 
@@ -150,6 +154,13 @@ exports.updateCountry = function(req, res) {
   res.json({
     data:0
         });
+      }
+      else{
+      res.json({
+        data:1
+        });
+      }
+    })
 };
 
 //////////////////////select Country///////////////////////////////
@@ -181,17 +192,27 @@ exports.viewCountryid = function(req, res) {
 
 exports.delCountry = function(req, res) {
 
-  
+ var exist2=Promise.resolve(custom.fieldexist('Sys_state','country',req.body.id));
+ exist2.then(function(value2) {
+  // console.log(value2);
+  if(value2==0){
   Country.deleteOne({_id:req.body.id}).exec(function (err, data) {
              if (err) throw err;
         
 				 res.json({
-                    status: 1,
+                    data:0,
                   
                 });	
 				
 			
-				});
+        });
+      }
+      else{
+      res.json({
+        data:1
+        });
+      }
+    })
 
 };
 

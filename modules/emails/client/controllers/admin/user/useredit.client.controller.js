@@ -69,19 +69,31 @@ $scope.choices = [{id: 'choice1'}];
 	 * Description : get User details
 	 *
 	 */
+  $scope.currentLan=localStorage.getItem('currentLang').toString();
+  $scope.defaultLang=localStorage.getItem('defaultLang').toString();
 
   $scope.getUserById = function(userId){
-    console.log(0);
     $scope.userregService.getUserById(userId).then(function(result){
+      var details=result.data;
      if(result.statusText = "OK"){
-       console.log(1);
-console.log(result);
-       $scope.userdetails = result.data;
-$scope.name = $scope.userdetails.name;
-$scope.subject = $scope.userdetails.subject;
-$scope.content = $scope.userdetails.content;
-$scope.custom = $scope.userdetails.custom;
-$scope.status = $scope.userdetails.status;
+      $scope.status =details.status.toString();    
+      if(angular.equals($scope.currentLan, $scope.defaultLang)){
+           
+      $scope.userdetails = result.data;
+      $scope.name = $scope.userdetails.name;
+      $scope.subject = $scope.userdetails.subject;
+      $scope.content = $scope.userdetails.content;
+      $scope.custom = $scope.userdetails.custom;
+    }
+    else{
+              
+      $scope.userdetails = result.data;
+      $scope.name =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].name : details.name;
+      $scope.subject = $scope.currentLan in details.oLang  ?details.oLang[ $scope.currentLan].subject :  details.subject;
+      $scope.content =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].content:details.content ;
+      $scope.custom =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].custom :details.custom;
+
+    }
 
 
       }else{
@@ -100,17 +112,31 @@ $scope.status = $scope.userdetails.status;
 	 */
 
       $scope.updateUser = function(){
-        console.log(110);
         if($scope.formdata.$valid && $scope.status!=0){
-       var data = {		  			 
-            "name":$scope.name,
-            "subject":$scope.subject,
-            "content":$scope.content,
-            "custom":$scope.custom,
-            "status" :$scope.status,
-            "userId":$stateParams.id
+          if (localStorage.getItem("currentLang") == 'en') {
+            var data = {
+              "name": $scope.name,
+              "subject": $scope.subject,
+              "content": $scope.content,
+              "custom": $scope.custom,
+              "status": $scope.status,
+              "userId": $stateParams.id,
+              "isDefaultLang" : true,
+  
             }
-       console.log(data);
+          }
+          else {
+            var data = {
+              "name": $scope.name,
+              "subject": $scope.subject,
+              "content": $scope.content,
+              "custom": $scope.custom,
+              "userId": $stateParams.id,
+              "isDefaultLang" : false,
+              "defaultLang":localStorage.getItem("defaultLang"),
+              "userSelectedLang":localStorage.getItem("currentLang")
+            };
+          }
        $scope.userregService.updateUser($stateParams.id,data).then(function(result){
           if(result.statusText = "OK"){
             swal("Success!", "Successfully updated User", "success"); 
@@ -151,8 +177,6 @@ $scope.editpage[0].removeAttribute("href");
 }
 $scope.addchkval=function(linkid){
   var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-console.log(linkid)
-console.log(checkedValue[0])
   if(checkedValue.length>1){
   $scope.editpage[0].removeAttribute("href");
   }
@@ -185,12 +209,10 @@ $scope.delpage=function(){
  
   //$state.go('addlanguage');
   var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-console.log(checkedValue)
   for(var i=0;i<checkedValue.length;i++){
     $scope.chkValue.push(checkedValue[i].value);
   }
   var userId=$scope.chkValue;
-console.log(userId);
   swal({
     title: 'Are you sure?',
     text: "You want to delete checked items!",

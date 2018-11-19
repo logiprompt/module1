@@ -15,7 +15,7 @@
   $scope.formdata.status ='0';
   $scope.nostockService = nostockService;
  /////////////////////select/////////////////////////////
-
+ $scope.currentLan=localStorage.getItem('currentLang').toString();
 ///////////////////////////////////////////////////////
 
 

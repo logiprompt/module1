@@ -47,15 +47,17 @@
 //////////////////delete state///////////////////////////////
 $scope.del=function(id){
 
- swal( {
-  title: "Are you sure?",
-  text: "You will not be able to recover this !",
-  type: "warning",
-  dangerMode: true,
-  buttons: true,
-}).then(
-       function () {  var val={'id':id};
-       console.log(val);
+       swal({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          var val={'id':id};
+      // console.log(val);
           $http({
                url: '/api/admin/delstate',
                method: "POST",
@@ -75,13 +77,15 @@ $scope.del=function(id){
       }
                   
            }, 
-           function(response) { // optional
-                   // failed
-           });
-        },
-       function () { return false; });
+        function(response) { // optional
+                // failed
+        });
 
- 
+
+        } else {
+          swal("Your file is safe!");
+        }
+      });
   }
 
 /////////////////////////////////////////////////////////////

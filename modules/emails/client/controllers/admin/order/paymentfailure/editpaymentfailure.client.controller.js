@@ -52,34 +52,28 @@ function EditPaymentFailureController($scope, $http, $state, $stateParams, Uploa
         console.log(userId);
          console.log(result);
          var details=result.data;
-        if (result.statusText = "OK") {
+         if (result.statusText = "OK") {
         
          
-             $scope.status =details.status.toString();    
-          if(angular.equals($scope.currentLan, $scope.defaultLang)){
-          $scope.userdetails = result.data;
-          $scope.name = $scope.userdetails.name;
-          $scope.subject = $scope.userdetails.subject;
-          $scope.content = $scope.userdetails.content;
-          $scope.custom = $scope.userdetails.custom;
-        }
-        else{
-                     
-          $scope.userdetails = result.data;
-         $scope.name =angular.isUndefined(details.oLang) ? details.name:details.oLang[ $scope.currentLan].name ;
-         $scope.subject = angular.isUndefined(details.oLang)  ? details.subject:details.oLang[ $scope.currentLan].subject ;
-         $scope.content =angular.isUndefined(details.oLang) ?details.content: details.oLang[ $scope.currentLan].content ;
-         $scope.custom = angular.isUndefined(details.oLang)  ? details.custom:details.oLang[ $scope.currentLan].custom ; 
- $scope.userdetails = result.data;
-         $scope.name =angular.isUndefined(details.oLang) ? details.name:details.oLang[ $scope.currentLan].name ;
-         $scope.subject = angular.isUndefined(details.oLang)  ? details.subject:details.oLang[ $scope.currentLan].subject ;
-         $scope.content =angular.isUndefined(details.oLang) ?details.content: details.oLang[ $scope.currentLan].content ;
-         $scope.custom = angular.isUndefined(details.oLang)  ? details.custom:details.oLang[ $scope.currentLan].custom ; 
+          $scope.status =details.status.toString();    
+       if(angular.equals($scope.currentLan, $scope.defaultLang)){
+       $scope.userdetails = result.data;
+       $scope.name = $scope.userdetails.name;
+       $scope.subject = $scope.userdetails.subject;
+       $scope.content = $scope.userdetails.content;
+       $scope.custom = $scope.userdetails.custom;
+     }
+     else{
+                  
+       $scope.userdetails = result.data;
+       $scope.name =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].name : details.name;
+       $scope.subject = $scope.currentLan in details.oLang  ?details.oLang[ $scope.currentLan].subject :  details.subject;
+       $scope.content =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].content:details.content ;
+       $scope.custom =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].custom :details.custom;
+      
 
-         
-
-        }
-        }
+     }
+     }
         else {
 
         }

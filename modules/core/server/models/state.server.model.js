@@ -10,10 +10,7 @@ var mongoose = require('mongoose'),
  * Newpost Schema
  */
 var StateSchema = new Schema({
-  state_id: {
-    type: Number,
-    default: Date.now
-  },
+  
   state: {
     type: String,
     default: '',

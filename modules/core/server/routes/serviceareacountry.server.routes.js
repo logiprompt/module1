@@ -12,7 +12,12 @@ module.exports = function(app) {
 //	app.route('/api/serviceareacountry/getserviceareacountry') .post(serviceareacountry.list);
 app.route('/api/genserviceareacountry')
 .post(serviceareacountry.serviceareacountrylist);
-  
+
+app.route('/api/genserviceareacountries')
+.post(serviceareacountry.create);
+
+  app.route('/api/genserviceareas')
+.post(serviceareacountry.list);
   // app.route('/api/serviceareacountry/create').post(serviceareacountry.create);
   
   // app.route('/api/serviceareacountry')

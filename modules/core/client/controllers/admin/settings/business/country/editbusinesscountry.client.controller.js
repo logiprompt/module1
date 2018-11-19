@@ -24,7 +24,7 @@
 $scope.formdata.ip = response.data.ip;
 });
 
-console.log($stateParams.id);
+console.log($scope.formdata);
 /////////////////////////////////load business countries//////////////////////////////////////////
 $http({
   url: '/api/admin/selectbusinessCountry',
@@ -110,7 +110,7 @@ $scope.viewbus=response.data.data;
 console.log($scope.viewbus);
 $scope.formdata.shortname=response.data.data.shortname;
 $scope.formdata.domain=response.data.data.domain;
-//$scope.formdata.country=response.data.data.country;
+$scope.formdata.country=response.data.data.country;
 $scope.formdata.status=response.data.data.status;
 $scope.formdata.setupdb=response.data.data.setupdb;
 $scope.formdata.migrate=response.data.data.migrate;
@@ -128,15 +128,13 @@ function(response) { // optional
 $scope.updateBusinessCountry=function()
 {
   
- var data={
-            'id':$stateParams.id,'country':$scope.formdata.country,
+ var data={'id':$stateParams.id,'country':$scope.formdata.country,
             'shortname':$scope.formdata.shortname,'domain':$scope.formdata.domain ,
             'status':$scope.formdata.status,'setupdb':$scope.formdata.setupdb,
             'migrate':$scope.formdata.migrate,
-            'username':$scope.formdata.username,'ip':$scope.formdata.ip
-          }
- // console.log(data);
- //console.log($scope.validation());
+            'username':$scope.formdata.username,'ip':$scope.formdata.ip}
+  console.log(data);
+ console.log($scope.validation());
   if($scope.validation()==0){
 
 
@@ -147,7 +145,7 @@ $scope.updateBusinessCountry=function()
       file:$scope.imgss
     }).then(function (response) { 
 
-     // console.log(response);
+      console.log(response);
      //$state.reload();
   
      $state.reload();
@@ -169,7 +167,7 @@ $scope.updateBusinessCountry=function()
            
         var data=$scope.formdata;
      
-        //console.log(data);
+        console.log(data);
 
               Upload.upload({
                 url: '/api/admin/insbusinessCountry',
@@ -182,7 +180,7 @@ $scope.updateBusinessCountry=function()
             
                if(response.data.data==0)
         {
-           swal("Success!", "Successfully added !", "success");
+           swal("Sccess!", "Successfully added !", "success");
          $state.reload();
         }
         else if(response.data.data==1)

@@ -105,22 +105,28 @@ exports.changecountry = function(req, res) {
 //////////////////////insert District///////////////////////////////
 
 exports.insDistrict= function(req, res) {
-
-  var exist2=Promise.resolve(custom.fieldexist('Sys_district','district',req.body.district));
+  var district=req.body.district;
+  // console.log(country);
+   var upper = district.replace(/^\w/, function (chr) {
+     return chr.toUpperCase();
+   });
+  var exist2=Promise.resolve(custom.fieldexist3('Sys_district','country',req.body.country,'state',req.body.state,'district',upper));
   exist2.then(function(value2) {
+    console.log(value2);
     if(value2==0){
 
-  var maxValue=Promise.resolve(custom.maxplus('Sys_district','district_id'));
+  var maxValue=Promise.resolve(custom.maxplus('Sys_district','_id'));
  
   maxValue.then(function(value) {
   
     //var Newslug=custom.createslug(req.body.category,value);
 
   var newDistrict = new District(req.body);
-  newDistrict.district_id = value;
+ 
+  
   newDistrict.country = req.body.country;
   newDistrict.state = req.body.state;
-  newDistrict.district = req.body.district;
+  newDistrict.district = upper;
   newDistrict.status = req.body.status;
   newDistrict.created = Date.now();
   newDistrict.modified = Date.now();
@@ -151,7 +157,7 @@ exports.insDistrict= function(req, res) {
 exports.updDistrict = function(req, res) {
   //var Newslug=custom.createslug(req.body.category,req.body.id);
  
-  District.update({district_id:req.body.id},{
+  District.update({_id:req.body.id},{
      $set:{"country" : req.body.country,"state":req.body.state,"district":req.body.district,"status":req.body.status,"modified" : Date.now(),"modified_user":req.body.username,"modified_ip":req.body.ip}
  },function(err) { 
                     if (err) throw err;
@@ -182,7 +188,7 @@ res.json({
 /////////////////////////////////Edit District///////////////////////////
 exports.viewDistrictbyid = function(req, res) {
 
-  District.findOne({district_id: req.body.id}).exec(function (err, data) {
+  District.findOne({_id: req.body.id}).exec(function (err, data) {
              if (err) throw err;
           
 				 res.json({
@@ -199,7 +205,7 @@ exports.viewDistrictbyid = function(req, res) {
 exports.delDistrict = function(req, res) {
 
   
-  District.deleteOne({district_id:req.body.id}).exec(function (err, data) {
+  District.deleteOne({_id:req.body.id}).exec(function (err, data) {
              if (err) throw err;
         
 				 res.json({
@@ -215,7 +221,7 @@ exports.delDistrict = function(req, res) {
 
 exports.delcheckeddistrict = function(req, res) {
 
-  District.deleteMany({district_id:{'$in': req.body.id}}).exec(function (err, data) {
+  District.deleteMany({_id:{'$in': req.body.id}}).exec(function (err, data) {
              if (err) throw err;
         res.json({
                     status: 1,

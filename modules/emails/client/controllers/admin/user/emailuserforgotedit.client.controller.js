@@ -98,17 +98,12 @@
    */
   $scope.currentLan=localStorage.getItem('currentLang').toString();
   $scope.defaultLang=localStorage.getItem('defaultLang').toString();
-    //console.log($scope.userforgotService);
     $scope.getUserForgotById = function (userId) {
-      //console.log(0);
       $scope.userforgotService.getUserForgotById(userId).then(function (result) {
-       // console.log(userId);
-         console.log(result);
          var details=result.data;
         if (result.statusText = "OK") {
         
-         
-             $scope.status =details.status.toString();    
+          $scope.status =details.status.toString();    
           if(angular.equals($scope.currentLan, $scope.defaultLang)){
           $scope.userdetails = result.data;
           $scope.name = $scope.userdetails.name;
@@ -133,27 +128,6 @@
       });
     }
     $scope.getUserForgotById($stateParams.id);
-
-
-
-    // $http({
-    //   url: '/api/userforgot/'+$stateParams.id,
-    //   method: "GET",
-
-    // })
-    // .then(function(result) {
-    //   console.log(result);
-    // $scope.langlist=result.data;
-    //       // success
-    //    //console.log( $scope.counlist)  
-    //       //console.log(5464564564);
-    // }, 
-    // function(response) { // optional
-    //       // failed
-    // });
-
-
-
 
     //////////////////////////////////
     /*
@@ -196,7 +170,7 @@
 
 
         $scope.userforgotService.updateUserForgot($stateParams.id, data).then(function (result) {
-          console.log(result);
+        
           if (result.statusText = "OK") {
             swal("Sccess!", "Successfully updated User", "success");
             $state.reload();

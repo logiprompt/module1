@@ -65,24 +65,6 @@ exports.reads = function (request, response) {
 
 };
 
-// /**
-//  * Get User by ID
-//  */
-
-//exports.userByIDs = function (request, response) {
-//    console.log(request);
-//    console.log(90909090909090)
-//    Userforgot.findById(request.params.userId)
-//        .lean()
-//        .exec(function (error, items) {
-//            if (error) {
-//                console.log(error);
-//                response.status(500).send(error);
-//                return;
-//            }
-//            response.jsonp(items);
-//        });
-//};
 
 /**
  * Delete Paymentfailure by ID

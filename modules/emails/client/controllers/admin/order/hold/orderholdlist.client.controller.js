@@ -15,7 +15,7 @@
   $scope.status ='0';
   $scope.orderholdService = orderholdService;
  /////////////////////select/////////////////////////////
-
+ $scope.currentLan=localStorage.getItem('currentLang').toString();
 ///////////////////////////////////////////////////////
 
 

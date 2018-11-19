@@ -7,70 +7,70 @@ var path = require('path'),
     mongoose = require('mongoose'),
     custom=require('./custom'),
     country = mongoose.model('Sys_country'),
-    
+    inscountry = mongoose.model('Sys_serviceareacountry'),
     errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
 /**
 * Create  Admin menu 
 */
-exports.create = function(req, res) {
-//console.log(req.header['language']);
+exports.create = function(req, res) 
+{
+    var arr = req.body.countries.length;
+    var countriess = req.body.countries;
+    for(var i=0;i<arr;i++)
+    {
+        var country = new inscountry(req.body);
+        country.countries = countriess[i];
+        //  country.servicestatus = 1;
+        //  country.stateoptional = 1; 
+        //  country.distoptional = 1;
+        //  country.pinoptional = 1;
+        country.created = Date.now();
+        country.modified = Date.now();
 
-var exist2=Promise.resolve(custom.fieldexist('Sys_acl','userID',req.body.userID));
-exist2.then(function(value2) {
-  if(value2==0){
-    var aclData = req.body;
-   // console.log(req.body);
-    Acl.create(aclData,function(err) {
-        if (err) {
-            return res.status(400).send({
-                message: errorHandler.getErrorMessage(err)
-            });
-        } else {
-            res.jsonp(aclData);
-        }
-    });
-}
-else{
-    Acl.find({userID:req.body.userID}).exec(function (error, item) {
-        if (error) {
-          res.status(500).send(error);
-              return;
+        country.save(function (err) 
+        {
+            if (err) 
+            {
+                return res.status(400).send({
+                    message: errorHandler.getErrorMessage(err)
+                });
+            } 
+            else 
+            {
+                res.jsonp(country);
             }
-        //console.log(item);
-        if (item) {
-
-
-            Acl.update({userID:req.body.userID},
-                {
-                $set:{"menuIDs" : req.body.menuIDs,
-                "modified" : Date.now()}
-            },function(err) { 
-                               if (err) throw err;
-                       });
-           
-             res.json({
-                  data:1
-                   });
-
-
-            //console.log(8888)
-          // item.menuIDs = req.body.menuIDs;
-          // item.modified = Date.now();
-        //   item.save();
-        //   res.json(item);
-              return;
-            }
-
-    })
-}
-})
-
+        });
+    }
 };
 
-exports.serviceareacountrylist = function (request, response) {
+exports.serviceareacountrylist = function (request, response) 
+{
+    inscountry.find().exec(function (error, item) 
+    {
+        console.log(item);
+        country.find({'_id': {$not: {$in : item}}}).exec(function (error, items) 
+        {
+            if (error) 
+            {
+                return response.status(400).send({
+                    message: errorHandler.getErrorMessage(error)
+                });
+            } 
+            else 
+            {
+                response.jsonp(items);  
+            }
+        });
+    }); 
+};
+
+/**
+ * List of serviceareas
+ */
+exports.list = function (request, response) {
     
-    country.find().exec(function (error, items) {
+    inscountry.find({}).populate({ path: 'countries',model: 'Sys_country', select: 'country'}).exec(function (error, items) {
 
         if (error) {
             return response.status(400).send({

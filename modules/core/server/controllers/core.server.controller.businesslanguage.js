@@ -245,6 +245,7 @@ res.json({
 //////////////////////////////////////////////////////////////////////
 
 exports.updatebusinessLang = function(req, res) {
+ 
 
   var picpath="";
   var today=Date.now();
@@ -266,8 +267,9 @@ if(err) {
 return res.end("Error uploading file.");
 }
 else{
- 
+ console.log(req.body);
   if(picpath==''){
+   // console.log(picpath);
     Businesslanguage.update({_id:req.body.id},{
     $set:{"blangcountry" : req.body.bcountryname,
         "blanguagename" : req.body.blanguagename,
@@ -279,17 +281,18 @@ else{
         "setupdb":req.body.setupdb,
         "migrate": req.body.migrate,
         "modified_user":req.body.username,
-        "modified_ip":req.body.ip,
+       // "modified_ip":req.body.ip,
         "modified" : Date.now()}
 },function(err) { 
                    if (err) throw err;
+                   
            });
 
           }
           else{
-            
+            console.log(picpath);
             Businesslanguage.update({_id:req.body.id},{
-      $set:{"blangcountry" : req.body.bcountryname,
+            $set:{"blangcountry" : req.body.bcountryname,
             "blanguagename" : req.body.blanguagename,
             "shortname" : req.body.shortname,
             "localname":req.body.localname,
@@ -300,12 +303,21 @@ else{
             "setupdb":req.body.setupdb,
             "migrate": req.body.migrate,
             "modified_user":req.body.username,
-           "modified_ip":req.body.ip,
+           //"modified_ip":req.body.ip,
            "modified" : Date.now()}
+
+
+
+
+
           },function(err) { 
                              if (err) throw err;
                      });
+                     res.json({
+                      data:0
+                      });       
 
+console.log(req.body);
           }
 
 

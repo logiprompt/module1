@@ -400,8 +400,8 @@ width:60%;
                                                     <div class="form-group">
                                                          <select class="form-control filter-option" name="district" id="district"
                                                         ng-model="district" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && (!formdata.district.$valid || district==0 )}">
-                                                        	<option value="0">Select</option>
-                                                        	<option value="1">Kollam</option>
+                                                        	<option class="filter-option-inner" value="0">choose district</option>
+                                                        	   <option ng-repeat="district in districtlist" value="{{district._id}}">{{district.district}}</option>
                                                         </select>
                                                     </div>
                                                 
@@ -409,12 +409,13 @@ width:60%;
                                                  
                                                     <label for="tags">Postal Code </label>
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" id="name"  ng-model="formdata.telephone" >
+                                                       <input type="text" class="form-control postal" name="postal" id="postal" ng-model="postal"
+                                                        ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.postal.$valid}">
                                                     </div>
                                                  
                                                     <label for="tags">Address </label>
                                                     <div class="form-group">
-                                                        <textarea id="txtAddr" name="txtAddr" class="form-control"></textarea>
+                                                        <textarea id="txtAddr" name="txtAddr" class="form-control txtAddr" ng-model="txtAddr" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.txtAddr.$valid}"></textarea>
                                                     </div>
                                                
                                                   <label for="tags">Geo location </label>
@@ -423,10 +424,12 @@ width:60%;
                                                     </div>
                                                 
                                                 <div class="col-md-6">
-                                                   <input type="text" id="txtlat" name="txtlat" class="form-control">
+                                                   <input type="text" id="txtlat" name="txtlat" class="form-control txtlat" ng-model="txtlat"
+                                                        ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.txtlat.$valid}">
                                                 </div>
                                                 <div class="col-md-6">
-                                                   <input type="text" id="txtlong" name="txtlong" class="form-control">
+                                                   <input type="text" id="txtlong" name="txtlong" class="form-control txtlong" ng-model="txtlong"
+                                                        ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.txtlong.$valid}">
                                                 </div>
                                                 </div>
                                                 </div>
@@ -451,7 +454,7 @@ width:60%;
                                                <div class="col-md-4">
                                                   <label for="tags">Sunday </label>
                                                     <div class="form-group">
-                                                       <select id="selSunday" name="selSunday" class="form-control">
+                                                       <select id="selSunday" name="selSunday" ng-model="selSunday" ng-change="sunday()" class="form-control">
  														  <option value="0">Select</option>
  														  <option value="1">Holiday</option>
  														  <option value="2">One shift</option>
@@ -459,38 +462,40 @@ width:60%;
                                                        </select>
                                                     </div>
                                                </div> 
+                                               <div  class="sunMrng" ng-if="sunMrng==1">
                                                 <div class="col-md-2">
                                                 	<label for="tags">From </label>
                                                     <div class="form-group">
-                                                         <input type="text" class="form-control" id="name"   >
+                                                         <input type="text" class="form-control" id="sunfrom" name="sunfrom" ng-model="sunfrom">
                                                     </div>
                                                </div> 
                                                 <div class="col-md-2">
                                                 	<label for="tags">To </label>
                                                     <div class="form-group">
-                                                         <input type="text" class="form-control" id="name"   >
+                                                         <input type="text" class="form-control" id="sunto" name="sunto" ng-model="sunto">
                                                     </div>
                                                </div> 
+                                               </div>
+                                                <div  class="sunMrng" ng-if="sunEve==1">
+                                               
                                                 <div class="col-md-2">
                                                 	<label for="tags">From </label>
                                                     <div class="form-group">
-                                                         <input type="text" class="form-control" id="name"   >
+                                                         <input type="text" class="form-control" id="sunevefrom" name="sunevefrom" ng-model="sunevefrom">
                                                     </div>
                                                </div> 
                                                 <div class="col-md-2">
                                                 	<label for="tags">To </label>
                                                     <div class="form-group">
-                                                         <input type="text" class="form-control" id="name"   >
+                                                         <input type="text" class="form-control" id="suneveto" name="suneveto" ng-model="suneveto">
                                                     </div>
                                                </div> 
-
-
-
-
+											</div>
+											<div class="clearfix"></div>
                                                <div class="col-md-4">
                                                   <label for="tags">Monday </label>
                                                     <div class="form-group">
-                                                       <select id="selSunday" name="selSunday" class="form-control">
+                                                       <select id="selMonday" name="selMonday" class="form-control" ng-model="selMonday" ng-change="monday()">
  														  <option value="0">Select</option>
  														  <option value="1">Holiday</option>
  														  <option value="2">One shift</option>
@@ -498,36 +503,39 @@ width:60%;
                                                        </select>
                                                     </div>
                                                </div> 
+                                                <div  class="monMrng" ng-if="monMrng==1">
                                                 <div class="col-md-2">
                                                 	<label for="tags">From </label>
                                                     <div class="form-group">
-                                                         <input type="text" class="form-control" id="name"   >
+                                                         <input type="text" class="form-control" id="monfrom" name="monfrom" ng-model="monfrom">
                                                     </div>
                                                </div> 
                                                 <div class="col-md-2">
                                                 	<label for="tags">To </label>
                                                     <div class="form-group">
-                                                         <input type="text" class="form-control" id="name"   >
+                                                         <input type="text" class="form-control" id="monto" name="monto" ng-model="monto">
                                                     </div>
                                                </div> 
+                                               </div>
+                                               <div  class="monMrng" ng-if="monEve==1">
                                                 <div class="col-md-2">
                                                 	<label for="tags">From </label>
                                                     <div class="form-group">
-                                                         <input type="text" class="form-control" id="name"   >
+                                                         <input type="text" class="form-control" id="monevefrom" name="monevefrom" ng-model="monevefrom">
                                                     </div>
                                                </div> 
                                                 <div class="col-md-2">
                                                 	<label for="tags">To </label>
                                                     <div class="form-group">
-                                                         <input type="text" class="form-control" id="name"   >
+                                                         <input type="text" class="form-control" id="moneveto" name="moneveto" ng-model="moneveto">
                                                     </div>
                                                </div> 
-
-
+                                           </div>
+                                          <div class="clearfix"></div>
                                                <div class="col-md-4">
-                                                  <label for="tags">Thuesday </label>
+                                                  <label for="tags">Tuesday </label>
                                                     <div class="form-group">
-                                                       <select id="selSunday" name="selSunday" class="form-control">
+                                                       <select id="selTuesday" name="selTuesday" class="form-control" ng-model="selTuesday" ng-change="tuesday()">
  														  <option value="0">Select</option>
  														  <option value="1">Holiday</option>
  														  <option value="2">One shift</option>
@@ -535,36 +543,40 @@ width:60%;
                                                        </select>
                                                     </div>
                                                </div> 
+                                                <div  class="tueMrng" ng-if="tueMrng==1">
                                                 <div class="col-md-2">
                                                 	<label for="tags">From </label>
                                                     <div class="form-group">
-                                                         <input type="text" class="form-control" id="name"   >
+                                                         <input type="text" class="form-control" id="tuefrom" name="tuefrom" ng-model="tuefrom">
                                                     </div>
                                                </div> 
                                                 <div class="col-md-2">
                                                 	<label for="tags">To </label>
                                                     <div class="form-group">
-                                                         <input type="text" class="form-control" id="name"   >
+                                                         <input type="text" class="form-control" id="tueto" name="tueto" ng-model="tueto">
                                                     </div>
                                                </div> 
+                                               </div>
+                                                <div  class="tueMrng" ng-if="tueEve==1">
                                                 <div class="col-md-2">
                                                 	<label for="tags">From </label>
                                                     <div class="form-group">
-                                                         <input type="text" class="form-control" id="name"   >
+                                                         <input type="text" class="form-control" id="tueevefrom" name="tueevefrom" ng-model="tueevefrom">
                                                     </div>
                                                </div> 
                                                 <div class="col-md-2">
                                                 	<label for="tags">To </label>
                                                     <div class="form-group">
-                                                         <input type="text" class="form-control" id="name"   >
+                                                         <input type="text" class="form-control" id="tueeveto" name="tueeveto" ng-model="tueeveto">
                                                     </div>
                                                </div> 
-
+                                                  </div>
+                                                  <div class="clearfix"></div>
 
                                                <div class="col-md-4">
                                                   <label for="tags">Wednesday </label>
                                                     <div class="form-group">
-                                                       <select id="selSunday" name="selSunday" class="form-control">
+                                                       <select name="selWednesday" id="selWednesday" class="form-control" ng-model="selWednesday" ng-change="wednesday()">
  														  <option value="0">Select</option>
  														  <option value="1">Holiday</option>
  														  <option value="2">One shift</option>
@@ -572,36 +584,41 @@ width:60%;
                                                        </select>
                                                     </div>
                                                </div> 
+                                                <div  class="wedMrng" ng-if="wedMrng==1">
                                                 <div class="col-md-2">
                                                 	<label for="tags">From </label>
                                                     <div class="form-group">
-                                                         <input type="text" class="form-control" id="name"   >
+                                                         <input type="text" class="form-control" id="wedfrom" name="wedfrom" ng-model="wedfrom">
                                                     </div>
                                                </div> 
                                                 <div class="col-md-2">
                                                 	<label for="tags">To </label>
                                                     <div class="form-group">
-                                                         <input type="text" class="form-control" id="name"   >
+                                                         <input type="text" class="form-control" id="wedto" name="wedto" ng-model="wedto">
                                                     </div>
                                                </div> 
+                                               </div>
+                                                <div  class="wedMrng" ng-if="wedEve==1">
                                                 <div class="col-md-2">
                                                 	<label for="tags">From </label>
                                                     <div class="form-group">
-                                                         <input type="text" class="form-control" id="name"   >
+                                                         <input type="text" class="form-control" id="wedevefrom" name="wedevefrom" ng-model="wedevefrom">
                                                     </div>
                                                </div> 
                                                 <div class="col-md-2">
                                                 	<label for="tags">To </label>
                                                     <div class="form-group">
-                                                         <input type="text" class="form-control" id="name"   >
+                                                         <input type="text" class="form-control" id="wedeveto"  name="wedeveto" ng-model="wedeveto">
                                                     </div>
+                                               </div>
                                                </div> 
+                                               <div class="clearfix"></div>
 
 
                                                <div class="col-md-4">
                                                   <label for="tags">Thursday </label>
                                                     <div class="form-group">
-                                                       <select id="selSunday" name="selSunday" class="form-control">
+                                                       <select name="selThursday" id="selThursday" class="form-control" ng-model="selThursday" ng-change="thursday()">
  														  <option value="0">Select</option>
  														  <option value="1">Holiday</option>
  														  <option value="2">One shift</option>
@@ -609,35 +626,40 @@ width:60%;
                                                        </select>
                                                     </div>
                                                </div> 
+                                                <div  class="thuMrng" ng-if="thuMrng==1">
                                                 <div class="col-md-2">
                                                 	<label for="tags">From </label>
                                                     <div class="form-group">
-                                                         <input type="text" class="form-control" id="name"   >
+                                                         <input type="text" class="form-control" id="thufrom" name="thufrom" ng-model="thufrom">
                                                     </div>
                                                </div> 
                                                 <div class="col-md-2">
                                                 	<label for="tags">To </label>
                                                     <div class="form-group">
-                                                         <input type="text" class="form-control" id="name"   >
+                                                         <input type="text" class="form-control" id="thuto" name="thuto" ng-model="thuto">
                                                     </div>
                                                </div> 
+                                               </div>
+                                               <div  class="thuMrng" ng-if="thuEve==1">
                                                 <div class="col-md-2">
                                                 	<label for="tags">From </label>
                                                     <div class="form-group">
-                                                         <input type="text" class="form-control" id="name"   >
+                                                         <input type="text" class="form-control" id="thuevefrom" name="thuevefrom" ng-model="thuevefrom">
                                                     </div>
                                                </div> 
                                                 <div class="col-md-2">
                                                 	<label for="tags">To </label>
                                                     <div class="form-group">
-                                                         <input type="text" class="form-control" id="name"   >
+                                                         <input type="text" class="form-control" id="thueveto" name="thueveto" ng-model="thueveto">
                                                     </div>
                                                </div> 
+                                               </div>
+                                               <div class="clearfix"></div>
 
                                                <div class="col-md-4">
                                                   <label for="tags">Friday </label>
                                                     <div class="form-group">
-                                                       <select id="selSunday" name="selSunday" class="form-control">
+                                                       <select id="selFriday" name="selFriday" ng-model="selFriday" ng-change="friday()" class="form-control">
  														  <option value="0">Select</option>
  														  <option value="1">Holiday</option>
  														  <option value="2">One shift</option>
@@ -645,65 +667,73 @@ width:60%;
                                                        </select>
                                                     </div>
                                                </div> 
+                                               <div  class="friMrng" ng-if="friMrng==1">
                                                 <div class="col-md-2">
                                                 	<label for="tags">From </label>
                                                     <div class="form-group">
-                                                         <input type="text" class="form-control" id="name"   >
+                                                         <input type="text" class="form-control" id="frifrom" name="frifrom" ng-model="frifrom">
                                                     </div>
                                                </div> 
                                                 <div class="col-md-2">
                                                 	<label for="tags">To </label>
                                                     <div class="form-group">
-                                                         <input type="text" class="form-control" id="name"   >
+                                                         <input type="text" class="form-control" id="frito" name="frito" ng-model="frito">
                                                     </div>
+                                               </div>
                                                </div> 
+                                               <div  class="friMrng" ng-if="friEve==1">
                                                 <div class="col-md-2">
                                                 	<label for="tags">From </label>
                                                     <div class="form-group">
-                                                         <input type="text" class="form-control" id="name"   >
+                                                         <input type="text" class="form-control" id="frievefrom" name="frievefrom" ng-model="frievefrom">
                                                     </div>
                                                </div> 
                                                 <div class="col-md-2">
                                                 	<label for="tags">To </label>
                                                     <div class="form-group">
-                                                         <input type="text" class="form-control" id="name"   >
+                                                         <input type="text" class="form-control" id="frieveto" name="frieveto" ng-model="frieveto">
                                                     </div>
                                                </div> 
-
+                                               </div>
+                                           <div class="clearfix"></div>
                                                <div class="col-md-4">
                                                   <label for="tags">Saturday </label>
                                                     <div class="form-group">
-                                                       <select id="selSunday" name="selSunday" class="form-control">
+                                                       <select id="selSaturday" name="selSaturday" ng-model="selSaturday" ng-change="saturday()" class="form-control">
  														  <option value="0">Select</option>
  														  <option value="1">Holiday</option>
  														  <option value="2">One shift</option>
  														  <option value="3">Two shift</option>
                                                        </select>
                                                     </div>
-                                               </div> 
+                                               </div>
+                                               <div  class="satMrng" ng-if="satMrng==1"> 
                                                 <div class="col-md-2">
                                                 	<label for="tags">From </label>
                                                     <div class="form-group">
-                                                         <input type="text" class="form-control" id="name"   >
+                                                         <input type="text" class="form-control" id="satfrom" name="satfrom" ng-model="satfrom">
                                                     </div>
                                                </div> 
                                                 <div class="col-md-2">
                                                 	<label for="tags">To </label>
                                                     <div class="form-group">
-                                                         <input type="text" class="form-control" id="name"   >
+                                                         <input type="text" class="form-control" id="satto" name="satto" ng-model="satto">
                                                     </div>
                                                </div> 
+                                               </div>
+                                               <div  class="satMrng" ng-if="satEve==1">
                                                 <div class="col-md-2">
                                                 	<label for="tags">From </label>
                                                     <div class="form-group">
-                                                         <input type="text" class="form-control" id="name"   >
+                                                         <input type="text" class="form-control" id="satevefrom" name="satevefrom" ng-model="satevefrom">
                                                     </div>
                                                </div> 
                                                 <div class="col-md-2">
                                                 	<label for="tags">To </label>
                                                     <div class="form-group">
-                                                         <input type="text" class="form-control" id="name"   >
+                                                         <input type="text" class="form-control" id="sateveto" name="sateveto" ng-model="sateveto">
                                                     </div>
+                                               </div>
                                                </div> 
 
 

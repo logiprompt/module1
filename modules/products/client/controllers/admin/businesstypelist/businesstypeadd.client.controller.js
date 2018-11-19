@@ -15,9 +15,23 @@
     $scope.status = '0';
     $scope.businesstypeaddService = businesstypeaddService;
     /////////////////////select/////////////////////////////
+    $scope.getSubMenulist = function () {
+      businesstypeaddService.getSubMenulist().then(function (result) {
+      
+        if (result.statusText = "OK") {
+          $scope.dataForTheTree =result.data;
+         console.log(result);
+        } else {
+          
+        }
 
+      })
+   
+    }
+
+    $scope.getSubMenulist();
     $scope.treeOptions = {
-      nodeChildren: "children",
+      nodeChildren: "childIDs",
       dirSelectable: true,
       injectClasses: {
         ul: "a1",
@@ -30,75 +44,13 @@
         labelSelected: "a8"
       }
     }
-    $scope.dataForTheTree =
-      [
-        {
-          "_id": "5beaa8df64061e5b3ce1ea4d",
-          "level": 1,
-          "hasChild": true,
-          "__v": 1,
-          "children": [
-              {
-                  "_id": "5beaa9057a7ec0471468ad1c",
-                  "level": 2,
-                  "hasChild": true,
-                  "__v": 1,
-                  "children": [
-                      {
-                          "_id": "5bebb6251778491e886da21c",
-                          "level": 2,
-                          "hasChild": false,
-                          "__v": 0,
-                          "children": [],
-                          "modified": "2018-11-14T05:44:05.530Z",
-                          "created": "2018-11-14T05:44:05.530Z",
-                          "path": "submenusub",
-                          "urlslug": "submenusub",
-                          "alt": "submenusub",
-                          "description": "submenusub",
-                          "parentID": "5beaa9057a7ec0471468ad1c",
-                          "menu": "submenusub"
-                      }
-                  ],
-                  "modified": "2018-11-13T10:35:49.780Z",
-                  "created": "2018-11-13T10:35:49.780Z",
-                  "path": "submenu1",
-                  "urlslug": "submenu1",
-                  "alt": "submenu1",
-                  "description": "submenu1",
-                  "parentID": "5beaa8df64061e5b3ce1ea4d",
-                  "menu": "submenu1"
-              }
-          ],
-          "modified": "2018-11-13T10:35:11.630Z",
-          "created": "2018-11-13T10:35:11.630Z",
-          "path": "menu1",
-          "urlslug": "menu1",
-          "alt": "menu1",
-          "description": "menu1",
-          "parentID": null,
-          "menu": "menu1"
-      },
-      {
-          "_id": "5beaa9287a7ec0471468ad1d",
-          "level": 1,
-          "hasChild": false,
-          "__v": 0,
-          "children": [],
-          "modified": "2018-11-13T10:36:24.983Z",
-          "created": "2018-11-13T10:36:24.983Z",
-          "path": "menu2",
-          "urlslug": "menu2",
-          "alt": "menu2",
-          "description": "menu2",
-          "parentID": null,
-          "menu": "menu2"
-      }
-      ];
+
 
 
       $scope.showSelected = function(node){
-      
+     //console.log(node);
+      $scope.stypename=node._id;
+
       }
 
     $scope.choices = [{ id: 'choice1' }];
@@ -149,12 +101,12 @@
 
     $scope.addBusiness = function () {
       console.log($scope.file);
-      debugger;
+     
       console.log($scope.formdata.$valid);
-      // if ($scope.formdata.$valid) {
+      // if ($scope.formdata.$valid && $scope.subTypeName) {
       var data = {
         "businessTypeName": $scope.btypename,
-        // "subTypeName": $scope.stypename,
+         "subTypeName": $scope.stypename,
         "image": $scope.file,
         "description": $scope.description,
         "slug": $scope.slug,
@@ -168,6 +120,7 @@
       businesstypeaddService.addBusiness(data).then(function (result) {
         console.log(result);
         if (result.statusText = "OK") {
+
           swal("Success!", "Successfully added!", "success");
           //$state.go('emailordercompletion');
         } else {

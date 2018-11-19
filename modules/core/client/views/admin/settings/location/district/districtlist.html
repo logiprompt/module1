@@ -117,7 +117,7 @@
                                                 <tbody>
                                                    <tr ng-repeat="val in list">
                                                         <td><!-- {{$index+1}} -->
-                                                             <input type="checkbox" id="basic_checkbox_{{$index+1}}"  class="rowtxtchk" value="{{val.district_id}}" ng-click="addchkval(val.district_id)" />
+                                                             <input type="checkbox" id="basic_checkbox_{{$index+1}}"  class="rowtxtchk" value="{{val._id}}" ng-click="addchkval(val._id)" />
                                      <label for="basic_checkbox_{{$index+1}}"></label>
                                                                                 {{$index+1}}</td>
                                                         <td>{{val.district}}</td>
@@ -127,10 +127,10 @@
                                                       
                                                         
                                                         <td style="width:20% !important;"> 
-                                                           <a class="btn waves-effect waves-light btn-sm btn-info" href="/settings/districtedit/{{val.district_id}}">
+                                                           <a class="btn waves-effect waves-light btn-sm btn-info" href="/settings/districtedit/{{val._id}}">
                                                             Edit
                                                               </a>
-                                                              <button class="btn waves-effect waves-light btn-sm btn-danger"  ng-click="del(val.district_id)" rel="" >
+                                                              <button class="btn waves-effect waves-light btn-sm btn-danger"  ng-click="del(val._id)" rel="" >
                                                                 Delete
                                                                </button>
                                                               

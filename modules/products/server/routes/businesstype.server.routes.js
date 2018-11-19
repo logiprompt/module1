@@ -29,7 +29,8 @@ module.exports = function(app) {
   .delete(businesstype.delete);
  // app.param(':userId', userforgot.userByIDs);
 
-
+ app.route('/api/businessType/getsubmenu')
+  .post(businesstype.getTopSubMenuList);
 
  
 };

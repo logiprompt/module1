@@ -130,27 +130,47 @@ $scope.changecountry=function(){
  ////////////////////////delete district///////////////////////////////
  $scope.del=function(id){
  
-  
+  swal({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  })
+  .then((willDelete) => {
+    if (willDelete) {
+      var val={'id':id};
+      //console.log(val);
+         $http({
+              url: '/api/admin/delDistrict',
+              method: "POST",
+              data:val
+          })
+          .then(function(response) {
+    
+          if(response.data.data==1)
+          {
+          swal("Sccess!", "Successfully Deleted District!", "success");
+          $state.reload();
+          }
+    else if(response.data.data==0)
+    {
+      swal("error!", "Cannot delete is country!", "error");
+       //$state.reload();
+    }
+           
+    }, 
+    function(response) { // optional
+            // failed
+    });
+
+
+    } else {
+      swal("Your file is safe!");
+    }
+  });
           
-              var val={'id':id};
-              //console.log(val);
-                 $http({
-                      url: '/api/admin/delDistrict',
-                      method: "POST",
-                      data:val
-                  })
-                  .then(function(response) {
-					  
-                  if(response.data.data==1)
-                  {
-                  swal("Sccess!", "Successfully Deleted District!", "success");
-                  $state.reload();
-                  }
-                         
-                  }, 
-                  function(response) { // optional
-                          // failed
-                  });
+           
               
               }
  

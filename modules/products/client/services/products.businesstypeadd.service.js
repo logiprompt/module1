@@ -31,7 +31,18 @@
 			//        data:data
 			//    });
 		}
+	
 
+		businesstypeaddService.getSubMenulist = function (data) {
+
+
+			return Upload.upload({
+				url: '/api/businessType/getsubmenu',
+				
+			})
+				
+		
+		}
 		/*
 			 * Function : getUsers
 			 * Description : get all UserForget details

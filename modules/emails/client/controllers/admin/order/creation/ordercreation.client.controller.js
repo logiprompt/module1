@@ -87,7 +87,8 @@ $scope.iconw=function(){
 	 * Description : get ordercreation details
 
 	 */
-
+  $scope.currentLan=localStorage.getItem('currentLang').toString();
+  $scope.defaultLang=localStorage.getItem('defaultLang').toString();
   $scope.getOrderCreation = function(){
     //console.log(0);
     $scope.ordercreationService.getOrderCreation().then(function(result){
@@ -116,7 +117,8 @@ $scope.iconw=function(){
         "subject":$scope.subject,
         "content":$scope.content,
         "custom":$scope.custom,
-				"status" :$scope.status
+        "status" :$scope.status,
+        "oLang":{}
         }
       
 		

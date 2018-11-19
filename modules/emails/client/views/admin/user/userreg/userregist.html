@@ -83,7 +83,7 @@
                                                              <input type="checkbox" id="basic_checkbox_{{$index+1}}"  class="rowtxtchk" value="{{list._id}}" ng-click="addchkval(list._id)" />
                                     <label for="basic_checkbox_{{$index+1}}"></label>
                                     {{$index+1}}</td>
-                                                        <td>{{list.name}}</td>
+                                                        <td> {{list.oLang[currentLan].name ? list.oLang[currentLan].name :list.name}}</td>
                                                         <td>{{list.created}}</td>
                                                         <td>{{list.modified}}</td>
                                                        

@@ -27,7 +27,7 @@
 $scope.formdata.ip = response.data.ip;
 });
 
-//console.log($scope.formdata);
+console.log($scope.formdata);
 
 /////////////////////////////////load countries//////////////////////////////////////////
 $http({
@@ -50,7 +50,6 @@ $http({
 })
 .then(function(response) {
 $scope.businesslanglist=response.data.data;
-//console.log($scope.businesslanglist);
       // success
 }, 
 function(response) { // optional
@@ -134,12 +133,12 @@ $scope.iconw=function(){
             
  $scope.insbusinesslang=function()
  {
-  // console.log($scope.validation());
+   console.log($scope.validation());
   if($scope.validation()==0){
       
      var data=$scope.formdata;
  
-   // console.log(data);
+    console.log(data);
 
           Upload.upload({
             url: '/api/admin/insbusinesslang',
@@ -147,14 +146,13 @@ $scope.iconw=function(){
             file:$scope.imgss
           }).then(function (response) { 
 
-          // console.log(response);
+            console.log(response);
            //$state.reload();
         
            if(response.data.data==0)
     {
        swal("Success!", "Successfully added !", "success");
-    //  $state.reload();
-    $state.go('businesslanguagelist');
+     $state.reload();
     }
     else if(response.data.data==1)
     {
@@ -268,8 +266,8 @@ $scope.editpage[0].removeAttribute("href");
 }
 $scope.addchkval=function(linkid){
   var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-//console.log(linkid)
-//console.log(checkedValue[0])
+console.log(linkid)
+console.log(checkedValue[0])
   if(checkedValue.length>1){
   $scope.editpage[0].removeAttribute("href");
   }
@@ -287,7 +285,7 @@ $scope.newpage=function(){
 $scope.editpages=function(){
     var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
     if(checkedValue.length>0){
-    //console.log($scope.editpage[0].getAttribute("href"));
+    console.log($scope.editpage[0].getAttribute("href"));
   if($scope.editpage[0].getAttribute("href")){
   document.location=$scope.editpage[0].getAttribute("href");
   }

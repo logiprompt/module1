@@ -95,7 +95,7 @@
                                             />
                                             <label for="basic_checkbox_{{$index+1}}"></label>
                                             {{$index+1}}</td>
-                                        <td>{{list.name}}</td>
+                                        <td> {{list.oLang[currentLan].name ? list.oLang[currentLan].name :list.name}}</td>
                                         <td>{{list.created}}</td>
                                         <td>{{list.modified}}</td>
 

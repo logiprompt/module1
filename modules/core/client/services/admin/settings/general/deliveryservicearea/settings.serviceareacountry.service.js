@@ -15,12 +15,12 @@
 	 /*
 	  * Function : addserviceAreaCountry
 	  * Description : add serviceAreaCountry details
-	  * owner : anju
+	  * owner : ck
 	  */
-	 serviceAreaCountry.addRatingAction = function(data){
+	 serviceAreaCountry.addgencountrylist = function(data){
 		 
 		return $http({
-	           url: '/api/addserviceareacountry',
+	           url: '/api/genserviceareacountries',
 	           method: "POST",
 	           data:data
 	       });
@@ -29,7 +29,7 @@
  /*
 	  * Function : getserviceAreaCountry
 	  * Description : get all serviceAreaCountry details
-	  * owner : anju
+	  * owner : ck
 	  */
 	 serviceAreaCountry.getserviceAreaCountry = function(){
 		  
@@ -39,11 +39,22 @@
 		   });
 	   }
 	
-
+ /*
+	  * Function : getserviceAreaCountry
+	  * Description : get all serviceAreaCountry details
+	  * owner : ck
+	  */
+	 serviceAreaCountry.getServiceAreas = function(){
+		  
+		return $http({
+			   url: '/api/genserviceareas',
+			   method: "POST"
+		   });
+	   }
 	 /*
 	  * Function : delete serviceAreaCountry
 	  * Description : Delete serviceAreaCountry details by id
-	  * owner : anju
+	  * owner : ck
 	  */
 	 serviceAreaCountry.delserviceAreaCountry = function(userId){		  
 		 return $http({
@@ -56,7 +67,7 @@
 			 /*
 	  * Function : delCheckedserviceAreaCountry
 	  * Description : Delete details by ids
-	  * owner : anju
+	  * owner : ck
 	  */
 	 serviceAreaCountry.delCheckedserviceAreaCountry= function(userId){
 		console.log(userId);		  

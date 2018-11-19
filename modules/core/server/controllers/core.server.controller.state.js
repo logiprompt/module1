@@ -86,11 +86,16 @@ exports.selectCountry = function(req, res) {
 
 exports.updateState = function(req, res) {
   //var Newslug=custom.createslug(req.body.category,req.body.id);
-  var exist2=Promise.resolve(custom.fieldexist('Sys_state','state',req.body.state));
+  var state=req.body.state;
+  // console.log(country);
+   var upper = state.replace(/^\w/, function (chr) {
+     return chr.toUpperCase();
+   });
+  var exist2=Promise.resolve(custom.fieldexist2('Sys_state','country',req.body.country,'state',upper));
   exist2.then(function(value2) {
     if(value2==0){
- State.update({state_id:req.body.id},{
-     $set:{"country" : req.body.country,"state":req.body.state,"status":req.body.status,"modified" : Date.now(),"modified_user":req.body.username,"modified_ip":req.body.ip}
+ State.update({_id:req.body.id},{
+     $set:{"country" : req.body.country,"state":upper,"status":req.body.status,"modified" : Date.now(),"modified_user":req.body.username,"modified_ip":req.body.ip}
  },function(err) { 
                     if (err) throw err;
             });
@@ -122,20 +127,25 @@ exports.selectState = function(req, res) {
 };
 //////////////////////insert///////////////////////////////
 exports.insState= function(req, res) {
-
-  var exist2=Promise.resolve(custom.fieldexist('Sys_state','state',req.body.state));
+  var state=req.body.state;
+  // console.log(country);
+   var upper = state.replace(/^\w/, function (chr) {
+     return chr.toUpperCase();
+   });
+  var exist2=Promise.resolve(custom.fieldexist2('Sys_state','country',req.body.country,'state',upper));
   exist2.then(function(value2) {
     if(value2==0){
 
-  var maxValue=Promise.resolve(custom.maxplus('Sys_state','state_id'));
+  var maxValue=Promise.resolve(custom.maxplus('Sys_state','_id'));
  
   maxValue.then(function(value) {
   console.log(11);
     //var Newslug=custom.createslug(req.body.category,value);
 
   var newState = new State(req.body);
-  newState.state_id = value;
-  newState.state = req.body.state;
+ 
+  
+  newState.state =upper;
   newState.country = req.body.country;
   newState.status = req.body.status;
   newState.created = Date.now();
@@ -162,7 +172,7 @@ else
 
 exports.viewStatebyid = function(req, res) {
 
-  State.findOne({state_id: req.body.id}).exec(function (err, data) {
+  State.findOne({_id: req.body.id}).exec(function (err, data) {
              if (err) throw err;
           
 				 res.json({
@@ -180,8 +190,8 @@ exports.delstate = function(req, res) {
   exist2.then(function(value2) {
     if(value2==0){
      
-  State.deleteOne({state_id:req.body.id}).exec(function (err, data) {
-    console.log(4444);
+  State.deleteOne({_id:req.body.id}).exec(function (err, data) {
+   // console.log(4444);
              if (err) throw err;
         
 				 res.json({
@@ -216,7 +226,7 @@ exports.updateCat = function(req, res) {
 };
 exports.delcheckedstate = function(req, res) {
 
-  State.deleteMany({state_id:{'$in': req.body.id}}).exec(function (err, data) {
+  State.deleteMany({_id:{'$in': req.body.id}}).exec(function (err, data) {
              if (err) throw err;
         res.json({
                     status: 1,

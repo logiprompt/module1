@@ -12,11 +12,11 @@
   function Editbusinesslanguage ($scope, $http, $state, $stateParams, Upload) {
 
   $scope.formdata = {};
-  $scope.formdata.status ='0';
-  $scope.formdata.bcountryname ='0';
-  $scope.formdata.langstatus ='0';
-  $scope.formdata.blanguagename ='0';
-  $scope.formdata.supportrtl ='0';
+  // $scope.formdata.status ='0';
+  // $scope.formdata.bcountryname ='0';
+  // $scope.formdata.langstatus ='0';
+  // $scope.formdata.blanguagename ='0';
+  // $scope.formdata.supportrtl ='0';
   //$scope.formdata.migrate=false;
   //$scope.formdata.setupdb=false;
   $scope.formdata.username= localStorage.getItem('username');
@@ -125,7 +125,7 @@ var busid={id: $stateParams.id};
  
   
 $scope.viewbus=response.data.data;
-//console.log($scope.viewbus);
+console.log($scope.viewbus);
 $scope.formdata.bcountryname=response.data.data.blangcountry;
 $scope.formdata.blanguagename=response.data.data.blanguagename;
 $scope.formdata.bshortname=response.data.data.shortname;
@@ -168,10 +168,10 @@ function(response) { // optional
        file:$scope.imgss
      }).then(function (response) { 
  
-      console.log(response);
+       console.log(response);
       //$state.reload();
    
-     // $state.go('businesslanguagelist');
+      $state.reload();
      });   
          
    }
@@ -288,8 +288,8 @@ $scope.editpage[0].removeAttribute("href");
 }
 $scope.addchkval=function(linkid){
   var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-//console.log(linkid)
-//console.log(checkedValue[0])
+console.log(linkid)
+console.log(checkedValue[0])
   if(checkedValue.length>1){
   $scope.editpage[0].removeAttribute("href");
   }
@@ -307,7 +307,7 @@ $scope.newpage=function(){
 $scope.editpages=function(){
     var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
     if(checkedValue.length>0){
-    //console.log($scope.editpage[0].getAttribute("href"));
+    console.log($scope.editpage[0].getAttribute("href"));
   if($scope.editpage[0].getAttribute("href")){
   document.location=$scope.editpage[0].getAttribute("href");
   }
@@ -322,7 +322,7 @@ $scope.delpage=function(){
  
   //$state.go('addlanguage');
   var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-//console.log(checkedValue)
+console.log(checkedValue)
   for(var i=0;i<checkedValue.length;i++){
     $scope.chkValue.push(checkedValue[i].value);
   }

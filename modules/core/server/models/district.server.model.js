@@ -10,10 +10,7 @@ var mongoose = require('mongoose'),
  * Newpost Schema
  */
 var DistrictSchema = new Schema({
-  district_id: {
-    type: Number,
-    default: Date.now
-  },
+ 
   state: [{ type: Schema.Types.ObjectId, ref: 'Sys_state' }],
   country: [{ type: Schema.Types.ObjectId, ref: 'Sys_country' }],
   district: {

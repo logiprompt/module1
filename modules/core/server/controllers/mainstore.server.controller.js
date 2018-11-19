@@ -8,6 +8,7 @@ var path = require('path'),
     mainstore = mongoose.model('Sys_MainStore'),
 	country = mongoose.model('Sys_country'),
 	state = mongoose.model('Sys_state'),
+	district = mongoose.model('Sys_district'),
     errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
 /**
@@ -56,6 +57,29 @@ exports.reads = function (request, response) {
 
 
     state.find({"country":request.body.userId})
+        .lean()
+        .exec(function (error, items) {
+            if (error) {
+                console.log(error);
+                response.status(500).send(error);
+                return;
+            }
+            else {
+                response.jsonp(items);
+            }
+        });
+
+};
+
+/**
+ * List of district
+ */
+
+exports.readsdistrict = function (request, response) {
+    console.log(request.body);
+
+
+    district.find({"state":request.body.userId})
         .lean()
         .exec(function (error, items) {
             if (error) {

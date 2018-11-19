@@ -18,7 +18,7 @@ var BusinessTypeSchema = new Schema({
     trim: true
   },
  subTypeName: {
-    type: String,
+    type: [Schema.Types.ObjectId],
     default:'',
    // required: 'Please enter sub type name'
   },

@@ -72,8 +72,8 @@ exports.reads = function (request, response) {
 //  */
 
 exports.userByIDs = function (request, response) {
-    console.log(request);
-    console.log(90909090909090)
+    // console.log(request);
+    // console.log(90909090909090)
     Userforgot.findById(request.params.userId)
         .lean()
         .exec(function (error, items) {

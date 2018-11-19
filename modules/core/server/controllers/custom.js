@@ -91,6 +91,35 @@ module.exports.fieldexist = function (table_name,field_name,value)
   });
 
 }
+module.exports.fieldexist3 = function (table_name,field_name1,value1,field_name2,value2,field_name3,value3) 
+{
+  var newTable = mongoose.model(table_name);
+
+    return   new Promise(function(resolve, reject) {
+      query={};
+      query[field_name1] = value1;
+      query[field_name2] = value2;
+      query[field_name3] = value3;
+     //console.log( query);
+     //var ind='country';
+    newTable.find( query)
+     .count(function (err, data) {
+     // console.log(data)
+       if(data==0 ){
+
+         var exist=0;
+         resolve( exist) ;
+         }
+        else{
+        var exist=1;
+        resolve( exist) ;
+        }
+
+      });
+  });
+
+}
+
 module.exports.createslug = function (title,maxvalue) 
 {
 	

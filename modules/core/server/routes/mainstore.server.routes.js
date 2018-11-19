@@ -24,9 +24,12 @@ module.exports = function(app) {
    //.delete(cmsratingaction.delCheckedCmsratingAction);
 
   // Finish by binding the Email middleware
+   app.route('/api/getsDistrictbyId').all()
+   .post(mainstore.readsdistrict) 
+   
   app.route('/api/getsStatesbyId').all()
-    .post(mainstore.reads) 
-    .put(mainstore.update) 
+    .post(mainstore.reads)
+	.put(mainstore.update) 
     .delete(mainstore.delete);
  // app.param(':userId', userforgot.userByIDs);
 

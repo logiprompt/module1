@@ -5,13 +5,13 @@
     .module('core')
     .controller('GenCountryListController', GenCountryListController);
 
-    GenCountryListController.$inject = ['$scope','$http','$state','$stateParams', 'Upload','nostockService'];
+    GenCountryListController.$inject = ['$scope','$http','$state','$stateParams', 'Upload','serviceAreaCountryService'];
 
-  function GenCountryListController ($scope, $http, $state, $stateParams, Upload,nostockService) {
+  function GenCountryListController ($scope, $http, $state, $stateParams, Upload,serviceAreaCountryService) {
 
   $scope.formdata = {};
   $scope.formdata.status ='0';
-  $scope.nostockService = nostockService;
+  $scope.serviceAreaCountryService = serviceAreaCountryService;
  /////////////////////select/////////////////////////////
 
 ///////////////////////////////////////////////////////
@@ -88,19 +88,19 @@ $scope.iconw=function(){
 	 * Owner : jeeja
 	 */
 
-  $scope.getNoStock = function(){
+  $scope.getServiceAreas = function(){
     //console.log(0);
-    $scope.nostockService.getNoStock().then(function(result){
+    $scope.serviceAreaCountryService.getServiceAreas().then(function(result){
      if(result.statusText = "OK"){
-       $scope.userlist = result.data;
+       $scope.servicearealist = result.data;
 //console.log(1);
-//console.log(result.data);
+console.log(result.data);
       }else{
         
       }
    });
   }
-  $scope.getNoStock();
+  $scope.getServiceAreas();
  //////////////////////////////////
 
   /*

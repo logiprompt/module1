@@ -142,35 +142,83 @@ $scope.choices = [{id: 'choice1'}];
               var val={'id':id};
               //console.log(val);
               swal({
-                title: 'Are you sure?',
+                title: "Are you sure?",
                 text: "You won't be able to revert this!",
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-              }).then((result) => {
-                 $http({
-                      url: '/api/admin/delcountry',
-                      method: "POST",
-                      data:val
-                  })
-                  .then(function(response) {
-                    swal(
-                      'Deleted!',
-                      'Your file has been deleted.',
-                      'success'
-                    )
-             $state.reload();
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+              })
+              .then((willDelete) => {
+                if (willDelete) {
+                  $http({
+                    url: '/api/admin/delcountry',
+                    method: "POST",
+                    data:val
+                })
+                .then(function(response) {
+                  if(response.data.data==0)
+                  {
+                  swal(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                  )
+           $state.reload();
+                }
+                else if(response.data.data==1)
+                {
+                  swal("error!", "Cannot delete is country!", "error");
+                   //$state.reload();
+                }
+                       
+                }, 
+                function(response) { // optional
+                        // failed
+                });
+
+
+                } else {
+                  swal("Your file is safe!");
+                }
+              });
+            //   swal({
+            //     title: 'Are you sure?',
+            //     text: "You won't be able to revert this!",
+            //     type: 'warning',
+            //     showCancelButton: true,
+            //     confirmButtonColor: '#3085d6',
+            //     cancelButtonColor: '#d33',
+            //     confirmButtonText: 'Yes, delete it!'
+            //   }).then((result) => {
+            //      $http({
+            //           url: '/api/admin/delcountry',
+            //           method: "POST",
+            //           data:val
+            //       })
+            //       .then(function(response) {
+            //         if(response.data.data==0)
+            //         {
+            //         swal(
+            //           'Deleted!',
+            //           'Your file has been deleted.',
+            //           'success'
+            //         )
+            //  $state.reload();
+            //       }
+            //       else if(response.data.data==1)
+            //       {
+            //         swal("error!", "Cannot delete is country!", "error");
+            //          //$state.reload();
+            //       }
                          
-                  }, 
-                  function(response) { // optional
-                          // failed
-                  });
+            //       }, 
+            //       function(response) { // optional
+            //               // failed
+            //       });
 
 
               
-              })
+            //   })
             }
             
 
@@ -272,12 +320,11 @@ $scope.delpage=function(){
   swal({
     title: 'Are you sure?',
     text: "You won't be able to revert this!",
-    type: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Yes, delete it!'
-  }).then((result) => {
+    icon: 'warning',
+    buttons: true,
+    dangerMode:true,
+  }).then((willDelete) => {
+    if(willDelete){
   var ids={'id':$scope.chkValue};
   //console.log(ids);
   //var val={'id':id};
@@ -301,7 +348,7 @@ $scope.delpage=function(){
         function(response) { // optional
                 // failed
         });
-        
+      } else{  swal("Your file is safe!");}
       })
 
  
