@@ -12,7 +12,7 @@
 
         productprice.addProductPrice = function (data) {
             return $http({
-                url: '/api/promotions/addProductPrice',
+                url: '/api/promotions/addProductPrices',
                 method: "POST",
                 data: data
             });

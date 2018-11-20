@@ -37,7 +37,7 @@ $scope.defaultLang=localStorage.getItem('defaultLang').toString();
    // console.log(0);
       $scope.productpriceService.getProductPriceDetails(userId).then(function(result)
       {
-
+console.log(result);
         var details=result.data;
         if (result.statusText = "OK") {
         
@@ -45,10 +45,22 @@ $scope.defaultLang=localStorage.getItem('defaultLang').toString();
              $scope.status =details.status.toString();    
           if(angular.equals($scope.currentLan, $scope.defaultLang)){
           $scope.userdetails = result.data;
-          $scope.name = $scope.userdetails.name;
-          $scope.subject = $scope.userdetails.subject;
-          $scope.content = $scope.userdetails.content;
-          $scope.custom = $scope.userdetails.custom;
+          $scope.formdata.ruleName = $scope.userdetails.name;
+          $scope.formdata.description = $scope.userdetails.subject;
+          $scope.formdata.startDate = $scope.userdetails.content;
+          $scope.formdata.endDate = $scope.userdetails.custom;
+
+          $scope.formdata.status = $scope.userdetails.name;
+          $scope.formdata.applyTo = $scope.userdetails.subject;
+          $scope.formdata.conditions = $scope.userdetails.content;
+          $scope.formdata.actionApplyTo = $scope.userdetails.custom;
+
+          $scope.formdata.discountAmount = $scope.userdetails.name;
+          $scope.formdata.stopRuleProcess = $scope.userdetails.subject;
+          $scope.formdata.displayIn = $scope.userdetails.content;
+          $scope.formdata.actionApplyTo = $scope.userdetails.custom;
+
+          
         }
         else{
                      
@@ -98,9 +110,35 @@ $scope.defaultLang=localStorage.getItem('defaultLang').toString();
     {
       if($scope.formData.$valid)
       {
-        $scope.productpriceService.addProductPrice($scope.formdata).then(function (result) 
+        //$scope.formdata.file=$scope.imgss;
+
+        var data = {
+          "ruleName": $scope.formdata.ruleName,
+          "description": $scope.formdata.description,
+          "startDate": $scope.formdata.startDate,
+          "endDate": $scope.formdata.endDate,
+          //"ruleName": $scope.formdata.btypename,
+          "status": $scope.formdata.status,
+          "applyTo": $scope.formdata.applyTo,
+          "conditions": $scope.formdata.conditions,
+          "actionApplyTo": $scope.formdata.actionApplyTo,
+          "discountAmount": $scope.formdata.discountAmount,
+          "stopRuleProcess": $scope.formdata.stopRuleProcess,
+          "displayIn": $scope.formdata.displayIn,
+          "image": $scope.imgss,
+          
+          
+        }
+
+
+
+
+
+
+        //console.log($scope.formdata);
+        $scope.productpriceService.addProductPrice(data).then(function (result) 
         {
-           $location.path('/promotions/productrules');
+           //$location.path('/promotions/productrules');
         })
       }
     }

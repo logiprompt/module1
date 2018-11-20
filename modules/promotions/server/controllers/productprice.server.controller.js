@@ -4,20 +4,62 @@
  * Module dependencies.
  */
 var path = require('path'),
+multer = require('multer'),
     productPrice = require('../models/productprice.server.model.js'),
     errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
 /* add promotion product price rule*/
 exports.addProductPrice = function (req, res, next) {
-    productPrice.create(req.body, function (err, post) {
-        if (err) {
-            return res.status(400).send({
-                message: errorHandler.getErrorMessage(err)
-            });
-        } else {
-            res.json("category added");
+
+  
+
+
+    var picpath = "";
+    var storage = multer.diskStorage({
+        destination: function (req, file, callback) {
+            callback(null, './public/uploads');
+        },
+        filename: function (req, file, callback) {
+            console.log(file);
+            var ext =  file.originalname.substr(file.originalname.length - 3); // => "Tabs1"
+            callback(null, file.fieldname + '-' + Date.now() +'.' +  ext); // => "Tabs1");
+            picpath = "uploads/" + file.fieldname + '-' + Date.now() + '.' + ext;
         }
     });
+    
+    var upload = multer({ storage: storage }).single('image');
+   
+    upload(req, res, function (err) {
+        var reqBody = req.body;
+        console.log(req.body);
+        if (err) {
+            return res.end("Error uploading file.");
+        }
+        else {
+            reqBody['image'] = picpath;
+            productPrice.create(reqBody, function (err, post) {
+                if (err) {
+                    return res.status(400).send({
+                        message: errorHandler.getErrorMessage(err)
+                    });
+                } else {
+                    res.jsonp("category added");
+                    return
+                }
+            });
+
+        }
+    });
+
+
+
+
+
+
+
+
+
+   
 }
 
 // get list of all product price rules

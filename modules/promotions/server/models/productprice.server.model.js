@@ -19,6 +19,7 @@ var ProductPriceSchema = new Schema({
   createdDate: { type: Date, default: Date.now },
   status: { type: String },
   applyTo: { type: String, },
+  image: {type: String,default:''},
   category: { type: [] },
   product: { type: [] },
   conditions: { type: String },

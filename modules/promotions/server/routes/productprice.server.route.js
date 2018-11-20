@@ -8,7 +8,7 @@ var promotionsPolicy = require('../policies/promotions.server.policy'),
 
 module.exports = function (app) {
     //add product price rule
-    app.route('/api/promotions/addProductPrice').post(productPrice.addProductPrice);
+    app.route('/api/promotions/addProductPrices').post(productPrice.addProductPrice);
 
     //update product price rule
     app.route('/api/promotions/updateProductPrice').put(productPrice.updateProductPrice);
