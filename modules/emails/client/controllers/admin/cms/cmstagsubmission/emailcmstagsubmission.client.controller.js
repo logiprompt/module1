@@ -18,8 +18,8 @@
 
 ///////////////////////////////////////////////////////
 
- $scope.currentLang= localStorage.getItem('currentLang');
-  console.log($scope.currentLan)
+ $scope.currentLan= localStorage.getItem('currentLang');
+ // console.log($scope.currentLan)
   
   ///////////////////list /////////////////////
   /*
@@ -29,12 +29,12 @@
     */
 
   $scope.getCmstagSubmission = function () {
-    console.log(0);
+   // console.log(0);
     $scope.cmstagsubmissionService.getCmstagSubmission().then(function (result) {
       if (result.statusText = "OK") {
         $scope.userlist = result.data;
         //console.log(1);
-        console.log(result.data);
+        //console.log(result.data);
       } else {
 
       }
@@ -166,8 +166,8 @@ $scope.editpage[0].removeAttribute("href");
 }
 $scope.addchkval=function(linkid){
   var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-console.log(linkid)
-console.log(checkedValue[0])
+//console.log(linkid)
+//console.log(checkedValue[0])
   if(checkedValue.length>1){
   $scope.editpage[0].removeAttribute("href");
   }
@@ -185,7 +185,7 @@ $scope.newpage=function(){
 $scope.editpages=function(){
     var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
   if(checkedValue.length>0){
-  console.log($scope.editpage[0].getAttribute("href"));
+ // console.log($scope.editpage[0].getAttribute("href"));
 if($scope.editpage[0].getAttribute("href")){
 document.location=$scope.editpage[0].getAttribute("href");
 }
@@ -200,14 +200,14 @@ $scope.delpage=function(){
  
   //$state.go('addlanguage');
   var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-console.log(checkedValue)
+//console.log(checkedValue)
   for(var i=0;i<checkedValue.length;i++){
     $scope.chkValue.push(checkedValue[i].value);
   }
   
   
     var userId = $scope.chkValue;
-    console.log(userId);
+    //console.log(userId);
     swal({
       title: 'Are you sure?',
       text: "You want to delete checked items!",

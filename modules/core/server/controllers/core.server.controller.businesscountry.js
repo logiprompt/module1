@@ -103,14 +103,14 @@ else{
 
   var exist1=Promise.resolve(custom.fieldexist('Sys_businesscountry','country',req.body.country));
   exist1.then(function(value2) {
-    //console.log(value2);
+    console.log(value2);
  
   if(value2==0)
  {
 
   var maxValue=Promise.resolve(custom.maxplus('Sys_businesscountry','business_id'));
 
-    maxValue.then(function(value) {
+  maxValue.then(function(value) {
     newCountry.country = req.body.country;
     newCountry.business_id = value;
     newCountry.shortname = req.body.shortname;
@@ -293,7 +293,7 @@ exports.delBusinesscountry = function(req, res) {
 exports.busdelchecked = function(req, res) {
 
   
-  Businesscountry.deleteMany({business_id:{'$in': req.body.id}}).exec(function (err, data) {
+  Businesscountry.deleteMany({_id:{'$in': req.body.id}}).exec(function (err, data) {
              if (err) throw err;
         
 				 res.json({

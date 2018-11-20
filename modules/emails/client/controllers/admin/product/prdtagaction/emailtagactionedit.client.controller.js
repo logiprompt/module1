@@ -127,11 +127,11 @@ $scope.currentLan=localStorage.getItem('currentLang').toString();
                 }
        else{
         // console.log(details.oLang)
-         $scope.userdetails = result.data;
-         $scope.name =angular.isUndefined(details.oLang) ? details.name:details.oLang[ $scope.currentLan].name ;
-         $scope.subject = angular.isUndefined(details.oLang)  ? details.subject:details.oLang[ $scope.currentLan].subject ;
-         $scope.content =angular.isUndefined(details.oLang) ?details.content: details.oLang[ $scope.currentLan].content ;
-         $scope.custom = angular.isUndefined(details.oLang)  ? details.custom:details.oLang[ $scope.currentLan].custom ; 
+        $scope.userdetails = result.data;
+        $scope.name =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].name : details.name;
+        $scope.subject = $scope.currentLan in details.oLang  ?details.oLang[ $scope.currentLan].subject :  details.subject;
+        $scope.content =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].content:details.content ;
+        $scope.custom =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].custom :details.custom;
 
        }
        }
@@ -172,7 +172,7 @@ $scope.currentLan=localStorage.getItem('currentLang').toString();
    * 
 	 */
 
-      $scope.updateCmsTagAction = function(){
+      $scope.updateprdTagAction = function(){
         
         //console.log(564564);
         if($scope.formdata.$valid && $scope.status!=0){
@@ -204,7 +204,7 @@ $scope.currentLan=localStorage.getItem('currentLang').toString();
           };
         }
         //console.log(data);
-        $scope.prdTagActionService.updateCmsTagAction($stateParams.id,data).then(function(result){
+        $scope.prdTagActionService.updateprdTagAction($stateParams.id,data).then(function(result){
           if(result.statusText = "OK")
           {
             swal("Sccess!", "Successfully updated User", "success"); 

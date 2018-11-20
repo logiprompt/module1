@@ -116,7 +116,7 @@
                                     <tr ng-repeat="item in productPriceList">
 
                                         <td>
-                                            <input type="checkbox" id="basic_checkbox_{{$index+1}}" class="rowtxtchk" value="{{$index+1}}" ng-click="addchkval(1)" />
+                                            <input type="checkbox" id="basic_checkbox_{{$index+1}}" class="rowtxtchk" value="{{$index+1}}" ng-click="addchkval(item._id)" />
                                             <label for="basic_checkbox_{{$index+1}}"></label>{{$index+1}}</td>
                                         <td>{{item.ruleName}}</td>
                                         <td>{{item.startDate}}</td>

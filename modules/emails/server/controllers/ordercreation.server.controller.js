@@ -13,7 +13,7 @@ var path = require('path'),
 */
 exports.create = function(req, res) {
     var userDetails = req.body;
-    console.log(userDetails);
+    //console.log(userDetails);
     Ordercreation.create(userDetails,function(err) {
         if (err) {
             return res.status(400).send({
@@ -32,7 +32,7 @@ exports.create = function(req, res) {
  * List of users
  */
 exports.list = function(request, response) {
-    console.log(919191919191919);
+   // console.log(919191919191919);
     Ordercreation.find().exec(function(error, items) {
 
         if (error) {
@@ -53,7 +53,7 @@ exports.list = function(request, response) {
 
 exports.reads= function(request, response) 
 { 
-  console.log(request);
+ // console.log(request);
     
 
   Ordercreation.findById(request.query.userId)
@@ -77,13 +77,13 @@ exports.reads= function(request, response)
 
 exports.userByIDs = function(request, response) 
 {
-    console.log(request);
-    console.log(90909090909090)
+   // console.log(request);
+   // console.log(90909090909090)
     Ordercreation.findById(request.params.userId)
     .lean()
     .exec(function(error, items) {
         if (error) {
-            console.log(error);
+            //console.log(error);
             response.status(500).send(error);
             return;
         }

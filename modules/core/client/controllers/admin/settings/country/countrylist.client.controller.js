@@ -15,7 +15,7 @@
   $scope.formdata.status ='0';
 
   $scope.formdata.username= localStorage.getItem('username');
-
+  $scope.currentLan=localStorage.getItem('currentLang').toString();
   ////////////////////////ip fetch//////////////////////////////
 
   $http.get("https://ipinfo.io/").then(function (response) {

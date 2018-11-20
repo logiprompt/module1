@@ -12,7 +12,7 @@
 function EmailReviewActionController ($scope, $http, $state, $stateParams, Upload,prdReviewActionService)
 {
   $scope.formdata = {};
-  $scope.formdata.status ='0';
+  $scope.status ='0';
   $scope.prdReviewActionService = prdReviewActionService;
 
 /////////////////////select/////////////////////////////

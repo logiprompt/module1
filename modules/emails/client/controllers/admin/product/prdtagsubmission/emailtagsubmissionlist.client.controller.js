@@ -19,6 +19,7 @@
 
 ///////////////////////////////////////////////////////
 $scope.currentLan=localStorage.getItem('currentLang').toString();
+  console.log($scope.currentLan)
        
 $scope.setasDefault=function(id)
 {

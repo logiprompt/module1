@@ -3,31 +3,31 @@
   angular
     .module('promotions')
     .controller('PromocartController', PromocartController);
-  PromocartController.$inject = ['$scope', '$http', '$state', '$stateParams','$location', 'productpriceService'];
-  function PromocartController($scope, $http, $state, $stateParams,$location, productpriceService) {
+  PromocartController.$inject = ['$scope', '$http', '$state', '$stateParams','$location', 'productcartService'];
+  function PromocartController($scope, $http, $state, $stateParams,$location, productcartService) {
 
     $scope.formdata = {};
-    $scope.productpriceService = productpriceService;
+    $scope.productcartService = productcartService;
 
     /******** Edit Product price rule - arun */
 
     //Function : ProductPricedetails
 
-    $scope.getProductPriceDetails = function () {
-      $scope.productpriceService.getProductPriceDetails($stateParams.id).then(function (result) {
-        $scope.formdata = result['data'];
-        $scope.formdata.startDate = $scope.formdata.startDate.split("T")[0];
-        $scope.formdata.endDate = $scope.formdata.endDate.split("T")[0];
-      })
-    }
-
-    $scope.getProductPriceDetails();
-
-    $scope.updateProductPrice = function(){
-      $scope.productpriceService.updateProductPrice($scope.formdata).then(function (result) {
-        $location.path('/promotions/productrules');
-      })
-    }
+  //  $scope.getProductPriceDetails = function () {
+//      $scope.productpriceService.getProductPriceDetails($stateParams.id).then(function (result) {
+//        $scope.formdata = result['data'];
+//        $scope.formdata.startDate = $scope.formdata.startDate.split("T")[0];
+//        $scope.formdata.endDate = $scope.formdata.endDate.split("T")[0];
+//      })
+//    }
+//
+//    $scope.getProductPriceDetails();
+//
+//    $scope.updateProductPrice = function(){
+//      $scope.productpriceService.updateProductPrice($scope.formdata).then(function (result) {
+//        $location.path('/promotions/productrules');
+//      })
+//    }
     /******** Edit Product price rule ends */
 
 

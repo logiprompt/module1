@@ -10,44 +10,133 @@
   function NewstemplateController($scope, $http, $state, $stateParams, Upload, $location, NewsletterTemplateService) {
     $scope.formdata = {};
     $scope.NewsletterTemplateService = NewsletterTemplateService;
-
+    $scope.currentLan=localStorage.getItem('currentLang').toString();
     /*newsletter template starts*/
-
+   
+    $scope.defaultLang = localStorage.getItem('defaultLang').toString();
     //add new template
     $scope.addNewsLetterTemplate = function () {
       var desc = CKEDITOR.instances['desc'].document.getBody().getHtml();
-      $scope.formdata.content = desc;
-      $scope.NewsletterTemplateService.addNewsLetterTemplate($scope.formdata).then(function (result) {
-        $location.path('/newsletters/template');
+     // $scope.formdata.content = desc;
+     console.log($scope.formdata.$valid);
+      if ($scope.formdata.$valid && $scope.status!=0) {
+       // console.log(121212);
+        var data = {
+          "templateName": $scope.name,
+          "templateSubject": $scope.subject,
+          "senderName": $scope.sender,
+          "senderEmail": $scope.senderEmail,
+          "content":desc,
+          "status": $scope.status,
+          "oLang": {}
+        }
+      $scope.NewsletterTemplateService.addNewsLetterTemplate(data).then(function (result) {
+        if (result.statusText = "OK") {
+          swal("Success!", "Successfully added !", "success");
+          $state.go('newslettertemplate');
+         //$location.path('/newsletters/template');
+        } else {
+          swal("error!", " already exist!", "error");
+        }
+       
       })
     }
-
+  }
     //get template lists
     $scope.getAllNewsLetterTemplates = function () {
       $scope.NewsletterTemplateService.getAllNewsLetterTemplates().then(function (result) {
         $scope.newLetterTemplates = result['data'];
+      
+        
       })
     }
 
     if ($stateParams.id == undefined) {
+     // alert(111111);
       $scope.getAllNewsLetterTemplates();
     }
 
     //get newsletter template details
     if ($stateParams.id != undefined) {
+      //console.log(333333);
       $scope.NewsletterTemplateService.getNewsLetterTemplateDetails($stateParams.id).then(function (result) {
-        $scope.NewsLetterDetails = result['data'];
-        CKEDITOR.instances['desc'].setData($scope.NewsLetterDetails.content)
+        //$scope.NewsLetterDetails = result['data'];
+        var details = result.data;
+       console.log(details.content);
+   
+       
+     // console.log(details);
+        if (result.statusText ="OK") {
+ 
+           $scope.status = details.status;
+           if (angular.equals($scope.currentLan, $scope.defaultLang)) {
+             $scope.userdetails = result.data;
+             $scope.name = $scope.userdetails.templateName;
+             $scope.subject = $scope.userdetails.templateSubject;
+             $scope.sender = $scope.userdetails.senderName;
+             $scope.senderEmail = $scope.userdetails.senderEmail;
+             $scope.desc = $scope.userdetails.content;
+            // CKEDITOR.instances['desc'].setData(details.content);
+           }
+           else {
+console.log(details);
+           $scope.userdetails = result.data;
+             $scope.name = $scope.currentLan in details.oLang ? details.oLang[$scope.currentLan].senderName : details.senderName;
+             $scope.subject = $scope.currentLan in details.oLang ? details.oLang[$scope.currentLan].templateSubject : details.templateSubject;
+             $scope.sender = $scope.currentLan in details.oLang ? details.oLang[$scope.currentLan].senderName : details.senderName;
+             $scope.senderEmail = $scope.currentLan in details.oLang ? details.oLang[$scope.currentLan].senderEmail : details.senderEmail;
+             $scope.desc = $scope.currentLan in details.oLang ? details.oLang[$scope.currentLan].content : details.content;
+
+
+           }
+        }
       })
     }
 
     //update newsletter template
+    
     $scope.updateNewsTemplate = function(){
-      var desc = CKEDITOR.instances['desc'].document.getBody().getHtml();
-      $scope.NewsLetterDetails.content = desc;
-      $scope.NewsletterTemplateService.updateNewsLetterTemplate($scope.NewsLetterDetails).then(function (result) {
-        $location.path('/newsletters/template');
+   
+     var desc = CKEDITOR.instances['desc'].document.getBody().getHtml();
+    //  $scope.NewsLetterDetails.content = desc;
+    console.log($scope.formdata.$valid)
+      if ($scope.formdata.$valid && $scope.status != 0) {
+
+
+        if (localStorage.getItem("currentLang") == 'en') {
+          var data = {
+            "templateName": $scope.name,
+            "templateSubject": $scope.subject,
+            "senderName": $scope.sender,
+            "senderEmail": $scope.senderEmail,
+            "content":desc,
+            "status": $scope.status,
+            "userId": $stateParams.id,
+            "isDefaultLang": true,
+
+          }
+        }
+        else {
+          var data = {
+            "templateName": $scope.name,
+            "templateSubject": $scope.subject,
+            "senderName": $scope.sender,
+            "senderEmail": $scope.senderEmail,
+            "content":desc,
+            "userId": $stateParams.id,
+            "isDefaultLang": false,
+            "defaultLang": localStorage.getItem("defaultLang"),
+            "userSelectedLang": localStorage.getItem("currentLang")
+          };
+        }
+      $scope.NewsletterTemplateService.updateNewsLetterTemplate( data).then(function (result) {
+        if (result.statusText = "OK") {
+          swal("Sccess!", "Successfully updated ", "success");
+          $state.go('newslettertemplate');
+        }
+        //$location.path('/newsletters/template');
       })
+    }
     }
 
     /*newsletter template ends*/
@@ -57,7 +146,41 @@
     ///////////////////////////////////////////////////////
 
 
+   /*
+       * FUnction : delNewsTemp
+       * Description : delete NewsTemp id
+       * 
+       * 
+       */
+      $scope.delNewsTemp = function (userId) {
 
+
+        swal({
+          title: 'Are you sure?',
+          text: "You want to delete this user!",
+          type: 'warning',
+          showCancelButton: false,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result) {
+            $scope.NewsletterTemplateService.delNewsTemp(userId).then(function (result) {
+              if (result.statusText = "OK") {
+                swal(
+                  'Deleted!',
+                  'User has been deleted.',
+                  'success'
+                )
+                $state.reload();
+              } else {
+    
+              }
+            })
+          }
+        })
+    
+      }
 
 
 

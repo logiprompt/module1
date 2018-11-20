@@ -89,7 +89,7 @@
                                                             <input type="checkbox" id="basic_checkbox_{{$index+1}}"  class="rowtxtchk" value="{{val._id}}" ng-click="addchkval(val._id)" />
                                                             <label for="basic_checkbox_{{$index+1}}"></label>
                                                                                 {{$index+1}}</td>
-                                                        <td>{{val.country}}</td>
+                                                        <td>{{val.oLang[currentLan].country ? val.oLang[currentLan].country :val.country}}</td>
                                                         <td>{{val.shortcode}}</td>
                                                         <td><span ng-if="val.countrystatus==1">Enabled</span><span ng-if="val.countrystatus==2">Disabled</span></td>
                                                        <td>Yes</td>

@@ -36,7 +36,8 @@ exports.getShippingPriceList = function (req, res, next) {
 
 //delete shipping price rule
 exports.deleteShippingPrice = function (req, res, next) {
-    shippingPrice.remove({ _id: req.params.itemId }).exec(function (err, data) {
+    console.log(req.query.itemId);
+    shippingPrice.remove({ _id: req.query.itemId }).exec(function (err, data) {
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)

@@ -131,7 +131,7 @@ var adminfooter={
     header:adminheader,
     content: { 
      templateUrl: '/modules/products/client/views/admin/taxgroup/addtaxgroup.html',
-    controller: 'ProtaxgroupController',
+    controller: 'AddtaxgroupController',
     controllerAs: 'vm',
     },
      footer:adminfooter

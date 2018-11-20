@@ -9,13 +9,14 @@ var path = require('path'),
 
 /* add news letter template */
 exports.addNewsLetterTemplate = function (req, res, next) {
-    newsLetter.create(req.body, function (err, post) {
+    var userDetails = req.body;
+    newsLetter.create(userDetails, function (err, post) {
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
-            res.json("news letter template added");
+            res.json(userDetails);
         }
     });
 }
@@ -32,7 +33,38 @@ exports.getAllNewsLetterTemplates = function (req, res, next) {
         }
     })
 }
+/**
+ * Delete delNewsTempbyid by ID
+ */
+exports.delNewsTempbyid = function (request, response) {
+    var userId = request.body.userId;
+    console.log(userId);
+    newsLetter.findById(userId).exec(function (error, item) {
 
+        if (error) {
+            response.status(500).send(error);
+            return;
+        }
+
+        if (item) {
+            item.remove(function (error) {
+
+                if (error) {
+                    response.status(500).send(error);
+                    return;
+                }
+
+                response.status(200).json({
+                    'message': 'User was removed.'
+                });
+            });
+        } else {
+            response.status(404).json({
+                message: 'User with id ' + userId + ' was not found.'
+            });
+        }
+    });
+};
 //get newsletter template details
 exports.getNewsLetterTemplateDetails = function (req, res, next) {
     newsLetter.findById(req.params.templateId).exec(function (err, data) {
@@ -47,25 +79,79 @@ exports.getNewsLetterTemplateDetails = function (req, res, next) {
 }
 
 //update newsletter template details
-exports.updateNewsLetterTemplate = function (req, res, next) {
+exports.updateNewsLetterTemplate = function (req, response, next) {
     console.log(req.body)
-    newsLetter.findByIdAndUpdate(req.body._id, {
-        $set: {
-            "modified": Date.now(),
-            "status": req.body.status,
-            "content": req.body.content,
-            "senderEmail": req.body.senderEmail,
-            "senderName": req.body.senderName,
-            "templateSubject": req.body.templateSubject,
-            "templateName": req.body.templateName
-        }
-    }, function (err, data) {
-        if (err) {
-            return res.status(400).send({
-                message: errorHandler.getErrorMessage(err)
-            });
+    // newsLetter.findByIdAndUpdate(req.body._id, {
+    //     $set: {
+    //         "modified": Date.now(),
+    //         "status": req.body.status,
+    //         "content": req.body.content,
+    //         "senderEmail": req.body.senderEmail,
+    //         "senderName": req.body.senderName,
+    //         "templateSubject": req.body.templateSubject,
+    //         "templateName": req.body.templateName
+    //     }
+    // }, function (err, data) {
+    //     if (err) {
+    //         return res.status(400).send({
+    //             message: errorHandler.getErrorMessage(err)
+    //         });
+    //     } else {
+    //         res.json("newsletter updated");
+    //     }
+    // })
+
+
+
+    var reqBody = req.body;
+    var userId = reqBody.userId;
+    var data;
+
+
+    newsLetter.findByIdAndUpdate(userId).lean().exec(function (error, data) {
+          
+        if (error) {
+            response.status(500).send(error);
+            return;
         } else {
-            res.json("newsletter updated");
+          
+            if (reqBody.isDefaultLang) {
+                data.templateName = reqBody.templateName;
+                data.templateSubject = reqBody.templateSubject;
+                data.senderName = reqBody.senderName;
+                data.senderEmail = reqBody.senderEmail;
+                data.content=reqBody.content;
+                data.status = reqBody.status;
+            } 
+            
+             else {
+               
+                 var obj = {};
+                 obj.templateName = reqBody.templateName;
+                 obj.templateSubject = reqBody.templateSubject;
+                 obj.senderName = reqBody.senderName;
+                 obj.senderEmail = reqBody.senderEmail;
+                 obj.content=reqBody.content;
+                 data['oLang'][reqBody.userSelectedLang] = obj;
+                 
+             }
+        
+             newsLetter.update({'_id':userId}, 
+                {$set:data} ).exec(function (error, output) {
+                if (error) {
+                    response.status(500).send(error);
+                    return;
+                }
+                response.json(output);
+                return;
+
+
+            })
         }
     })
+
+
+   
+
+
 }

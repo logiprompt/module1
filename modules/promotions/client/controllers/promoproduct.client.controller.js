@@ -5,47 +5,149 @@
     .controller('PromoproductController', PromoproductController);
   PromoproductController.$inject = ['$scope', '$http', '$state', '$stateParams', '$location', 'productcategoryService', 'productpriceService'];
   function PromoproductController($scope, $http, $state, $stateParams, $location, productcategoryService, productpriceService) {
-    $scope.formdata = {};
+    $scope.formdata = {}; 
+    $scope.formData = {};
     $scope.productcategoryService = productcategoryService;
     $scope.productpriceService = productpriceService;
 
     /******** Product price rule - arun */
 
-    $scope.getProductPriceList = function () {
-      $scope.productpriceService.getProductPriceList().then(function (result) {
+    $scope.getProductPriceList = function () 
+    {
+      $scope.productpriceService.getProductPriceList().then(function (result) 
+      {
         $scope.productPriceList = result['data']
-        $scope.productPriceList.forEach(function (element) {
+        $scope.productPriceList.forEach(function (element) 
+        {
           element.startDate = element.startDate.split("T")[0];
           element.endDate = element.endDate.split("T")[0];
         }, this);
       })
     }
-    $scope.getProductPriceList();
-
-    $scope.getCategoryItems = function () {
-      $scope.productcategoryService.getCategoryItems().then(function (result) {
-        $scope.categoryItems = result['data'];
-        $scope.categoryItems.forEach(function (element) {
-          element.created = element.created.split("T")[0];
-        }, this);
-      })
+    if ($stateParams.id == undefined)
+    {
+       $scope.getProductPriceList();
     }
-    $scope.getCategoryItems();
+/////////////////////////////////////////////////////////////////////////////////////////
 
-    $scope.cancel = function () {
+$scope.currentLan=localStorage.getItem('currentLang').toString();
+$scope.defaultLang=localStorage.getItem('defaultLang').toString();
+  $scope.getProductPriceDetails = function(userId)
+  {
+   // console.log(0);
+      $scope.productpriceService.getProductPriceDetails(userId).then(function(result)
+      {
+
+        var details=result.data;
+        if (result.statusText = "OK") {
+        
+         
+             $scope.status =details.status.toString();    
+          if(angular.equals($scope.currentLan, $scope.defaultLang)){
+          $scope.userdetails = result.data;
+          $scope.name = $scope.userdetails.name;
+          $scope.subject = $scope.userdetails.subject;
+          $scope.content = $scope.userdetails.content;
+          $scope.custom = $scope.userdetails.custom;
+        }
+        else{
+                     
+          $scope.userdetails = result.data;
+          $scope.name =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].name : details.name;
+          $scope.subject = $scope.currentLan in details.oLang  ?details.oLang[ $scope.currentLan].subject :  details.subject;
+          $scope.content =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].content:details.content ;
+          $scope.custom =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].custom :details.custom;
+         
+
+        }
+        }
+          else
+          {
+            
+          }
+      });
+  }
+  if ($stateParams.id != undefined)
+  {
+  $scope.getProductPriceDetails($stateParams.id);
+
+
+  }
+
+    //////////////////////////////////////////////////////////////////////////
+
+    // $scope.getCategoryItems = function () 
+    // {
+    //   $scope.productpriceService.getProductPriceDetails().then(function (result) 
+    //   {
+    //     console.log(result);
+    //     $scope.categoryItems = result['data'];
+    //     $scope.categoryItems.forEach(function (element) 
+    //     {
+    //       element.created = element.created.split("T")[0];
+    //     }, this);
+    //   })
+    // }
+    // $scope.getCategoryItems();
+
+    $scope.cancel = function () 
+    {  
     }
 
-    $scope.AddProductPrice = function () {
-      $scope.productpriceService.addProductPrice($scope.formdata).then(function (result) {
-        $location.path('/promotions/productrules');
-      })
+    $scope.AddProductPrice = function () 
+    {
+      if($scope.formData.$valid)
+      {
+        $scope.productpriceService.addProductPrice($scope.formdata).then(function (result) 
+        {
+           $location.path('/promotions/productrules');
+        })
+      }
     }
+
+
+
 
     $scope.deleteProductPrice = function (itemId) {
-      $scope.productpriceService.deleteProductPrice(itemId).then(function (result) {
-        $scope.getProductPriceList();
+
+
+      swal({
+        title: 'Are you sure?',
+        text: "You want to delete this item!",
+        type: 'warning',
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if(result){
+        $scope.productpriceService.deleteProductPrice(itemId).then(function (result) {
+        if(result.statusText = "OK"){
+        swal(
+                      'Deleted!',
+                      'Item has been deleted.',
+                      'success'
+                    )
+                    $scope.getProductPriceList();
+         }else{
+           
+         }
       })
+      }
+      })
+    
     }
+
+
+
+    // $scope.deleteProductPrice = function (itemId) {
+
+    //   $scope.productpriceService.deleteProductPrice(itemId).then(function (result) {
+    //     $scope.getProductPriceList();
+    //   })
+    // }
+
+
     /******** Product price rule ends- */
 
 
@@ -66,7 +168,6 @@
         // failed
       });
     $scope.formdata.sale = '1';
-    //$scope.formdata.category='0';
     $scope.formdata.con = '1';
     $scope.formdata.status = '0';
     $http({
@@ -74,11 +175,9 @@
       method: "POST",
 
     })
-      .then(function (response) {
+      .then(function (response) 
+      {
         $scope.listlang = response.data.data;
-
-
-
       },
       function (response) { // optional
         // failed
@@ -195,8 +294,10 @@
 
       $scope.formdata.id = id;
     }
-    $scope.insCategoryLang = function () {
-      if ($scope.validation2() == 0) {
+    $scope.insCategoryLang = function () 
+    {
+      if ($scope.validation2() == 0) 
+      {
         $('#myModal').modal('hide');
         $http({
           url: '/api/admin/insCategoryLang',
@@ -213,11 +314,8 @@
       }
     }
 
-
-
-
-    function getActionBtns() {
-
+    function getActionBtns() 
+    {
 
       $scope.addpage = document.querySelectorAll(".add-action");
       $scope.addpage[0].addEventListener("click", $scope.newpage, false);
@@ -227,8 +325,6 @@
 
       var delpage = document.querySelectorAll(".delete-action");
       delpage[0].addEventListener("click", $scope.delpage, false);
-
-
 
     }
     $scope.chkall = function () {

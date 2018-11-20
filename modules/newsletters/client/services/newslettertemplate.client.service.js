@@ -11,6 +11,8 @@
 
         var newsLetterTemplate = {};
 
+       
+
         /*
          * Function : addNewsLetterTemplate
          * Description : add new newsletter template
@@ -43,6 +45,7 @@
          */
 
         newsLetterTemplate.getNewsLetterTemplateDetails = function (templateId) {
+           // console.log(44444);
             return $http({
                 url: '/api/newsLetter/getNewsLetterTemplateDetails/' + templateId,
                 method: "GET"
@@ -57,10 +60,26 @@
         newsLetterTemplate.updateNewsLetterTemplate = function (data) {
             return $http({
                 url: '/api/newsLetter/updateNewsLetterTemplate',
-                method: "PUT",
+                method: "POST",
                 data: data
             });
         }
+
+        	/*
+		 * Function : delNewsTemp
+		 * Description : Delete NewsTemp details by id
+		 
+		 */
+		newsLetterTemplate.delNewsTemp = function (userId) {
+			return $http({
+				url: '/api/newsLetter/delNewsTempbyid',
+				method: "POST",
+				data: { 'userId': userId }
+			});
+		}
+
+
+
         return newsLetterTemplate;
     }
 

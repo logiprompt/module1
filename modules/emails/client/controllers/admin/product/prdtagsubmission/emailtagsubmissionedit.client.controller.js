@@ -15,6 +15,9 @@
    $scope.status = "0";
    $scope.username= localStorage.getItem('username');
    $scope.prdTagSubService = prdTagSubService;
+   
+   $scope.currentLan=localStorage.getItem('currentLang').toString();
+  console.log($scope.currentLan)
 
  /////////////////////select/////////////////////////////
 ////////////////////////ip fetch//////////////////////////////
@@ -128,11 +131,10 @@ $scope.currentLan=localStorage.getItem('currentLang').toString();
        else{
         // console.log(details.oLang)
          $scope.userdetails = result.data;
-         $scope.name =angular.isUndefined(details.oLang) ? details.name:details.oLang[ $scope.currentLan].name ;
-         $scope.subject = angular.isUndefined(details.oLang)  ? details.subject:details.oLang[ $scope.currentLan].subject ;
-         $scope.content =angular.isUndefined(details.oLang) ?details.content: details.oLang[ $scope.currentLan].content ;
-         $scope.custom = angular.isUndefined(details.oLang)  ? details.custom:details.oLang[ $scope.currentLan].custom ; 
-
+          $scope.name =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].name : details.name;
+          $scope.subject = $scope.currentLan in details.oLang  ?details.oLang[ $scope.currentLan].subject :  details.subject;
+          $scope.content =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].content:details.content ;
+          $scope.custom =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].custom :details.custom;
        }
        }
        else {
@@ -208,7 +210,7 @@ $scope.currentLan=localStorage.getItem('currentLang').toString();
           if(result.statusText = "OK")
           {
             swal("Sccess!", "Successfully updated User", "success"); 
-            $state.reload();
+            $state.go('emailtagsubmission');
           }
         });
       }

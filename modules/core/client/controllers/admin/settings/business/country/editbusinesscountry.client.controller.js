@@ -24,7 +24,7 @@
 $scope.formdata.ip = response.data.ip;
 });
 
-console.log($scope.formdata);
+//console.log($scope.formdata);
 /////////////////////////////////load business countries//////////////////////////////////////////
 $http({
   url: '/api/admin/selectbusinessCountry',
@@ -181,7 +181,7 @@ $scope.updateBusinessCountry=function()
                if(response.data.data==0)
         {
            swal("Sccess!", "Successfully added !", "success");
-         $state.reload();
+           $state.go('businesscountrylist');
         }
         else if(response.data.data==1)
         {

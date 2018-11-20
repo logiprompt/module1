@@ -130,6 +130,8 @@ exports.userByIDs = function(request, response)
         //console.log(request)
         var reqBody = request.body;
         var userId = reqBody.userId;
+        var data;
+
         //console.log(userId);
 
          prdRatingAdminAction.findById(userId).exec(function (error, data) 

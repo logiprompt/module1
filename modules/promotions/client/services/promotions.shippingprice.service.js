@@ -12,7 +12,7 @@
 
         shippingprice.addShippingPrice = function (data) {
             return $http({
-                url: '/api/promotions/addShippingPrice',
+                url: '/api/promotion/addShippingPrice',
                 method: "POST",
                 data: data
             });
@@ -20,15 +20,17 @@
 
         shippingprice.getShippingPriceList = function (data) {
             return $http({
-                url: '/api/promotions/getShippingPriceList',
+                url: '/api/promotion/getShippingPriceList',
                 method: "GET"
             });
         }
 
         shippingprice.deleteShippingPrice = function (itemId) {
             return $http({
-                url: '/api/promotions/deleteShippingPrice/' + itemId,
-                method: "DELETE"
+                url: '/api/promotion/deleteShippingPrice',
+                method: "DELETE",
+               // data:{'itemId':itemId},
+                params:{'itemId':itemId}
             });
         }
 

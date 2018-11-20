@@ -259,12 +259,12 @@ width: 70px;
                                 <h6 class="card-subtitle">Use default tab with class <code>vtabs &amp; tabs-vertical</code></h6> -->
                                 <!-- Nav tabs -->
 
-                                  <form class="">  
+                                  <form class="" name="formData" ng-submit="AddProductCart()" novalidate>  
                                  
                                    <div class="form-group m-b-10 btn23">
-                                    <button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
+                                    <button type="submit" class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
                                 
-                                        <a href="/product/product"><button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm btn-default"> Cancel </button> </a>
+                                        <a href="/promotions/addcartprice"><button type="button" class="btn waves-effect waves-light btn-sm btn-default"> Cancel </button> </a>
                                      </div> 
                                  
                               
@@ -294,7 +294,8 @@ width: 70px;
                                                         <div class="form-group m-b-10">
                                                             <span class="bar"></span>
                                                             <label for="input1"> Rule name </label>
-                                                            <input type="text" class="form-control cat" id="name" ng-model="formdata.category" >
+                                                            <input type="text" class="form-control ruleName" id="name" ng-model="formdata.ruleName"
+                                                        name="ruleName" ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.ruleName.$valid}">
                                                          </div> 
                                                         <div class="form-group m-b-10">
                                                             <label> Description</label>

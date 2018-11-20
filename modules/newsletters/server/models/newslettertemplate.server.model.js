@@ -21,7 +21,11 @@ var NewsLetterSchema = new Schema({
     modified: { type: Date, default: Date.now },
     created_user: { type: String, default: 'Admin' },
     modified_user: { type: String, },
-    OLang: {}
-});
+    oLang :{	  
+        type: Schema.Types.Mixed, 
+        default: {}
+      }
+    
+    }, { minimize: false });
 
 module.exports = mongoose.model('NewsLetter', NewsLetterSchema);

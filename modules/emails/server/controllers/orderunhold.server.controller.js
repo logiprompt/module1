@@ -53,7 +53,7 @@ exports.list = function(request, response) {
 
 exports.reads= function(request, response) 
 { 
-  console.log(request);
+  //console.log(request);
     
 
   Orderunhold.findById(request.query.userId)
@@ -96,7 +96,7 @@ exports.userByIDs = function(request, response)
 	 */
 	exports.delete = function(request, response) {
         var userId = request.query.userId;
-         console.log(userId);
+       ///  console.log(userId);
          Orderunhold.findById(userId).exec(function (error, item) {
             
             if (error) {
@@ -133,44 +133,45 @@ exports.userByIDs = function(request, response)
         var data;
 
 		Orderunhold.findById(userId).exec(function (error, data) {
-			  if (error) {
-			        response.status(500).send(error);
-			        return;
-			      }
-                  else {
+            if (error) {
+                response.status(500).send(error);
+                return;
+              }
           
-                    if (reqBody.isDefaultLang) {
-                        data.name = reqBody.name;
-                        data.subject = reqBody.subject;
-                        data.content = reqBody.content;
-                        data.custom = reqBody.custom;
-                        data.status = reqBody.status;
-                    } 
-                    
-                     else {
-                       
-                         var obj = {};
-                         obj.name = reqBody.name;
-                         obj.subject = reqBody.subject;
-                         obj.content = reqBody.content;
-                         obj.custom = reqBody.custom;
-                        
-                        data['oLang'][reqBody.userSelectedLang] = obj;
-                         
-                     }
+              else {
+      
+                if (reqBody.isDefaultLang) {
+                    data.name = reqBody.name;
+                    data.subject = reqBody.subject;
+                    data.content = reqBody.content;
+                    data.custom = reqBody.custom;
+                    data.status = reqBody.status;
+                } 
                 
-                     Orderunhold.update({'_id':userId}, 
-                        {$set:data} ).exec(function (error, output) {
-                        if (error) {
-                            response.status(500).send(error);
-                            return;
-                        }
-                        response.json(output);
+                 else {
+                   
+                     var obj = {};
+                     obj.name = reqBody.name;
+                     obj.subject = reqBody.subject;
+                     obj.content = reqBody.content;
+                     obj.custom = reqBody.custom;
+                    
+                    data['oLang'][reqBody.userSelectedLang] = obj;
+                     
+                 }
+            
+                 Orderunhold.update({'_id':userId}, 
+                    {$set:data} ).exec(function (error, output) {
+                    if (error) {
+                        response.status(500).send(error);
                         return;
-        
-        
-                    })
-                }
+                    }
+                    response.json(output);
+                    return;
+    
+    
+                })
+            }
 
 		  })
 	}

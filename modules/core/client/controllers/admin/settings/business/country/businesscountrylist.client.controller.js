@@ -161,8 +161,8 @@ $scope.del=function(id){
             
                if(response.data.data==0)
         {
-           swal("Sccess!", "Successfully added !", "success");
-         $state.reload();
+           swal("Success!", "Successfully added !", "success");
+         $state.go('businesscountrylist');
         }
         else if(response.data.data==1)
         {
@@ -186,7 +186,7 @@ $scope.del=function(id){
      var error=0;
      $scope.rmerrorclass();
        
-       if($scope.formdata.country=='0' || angular.isUndefined($scope.formdata.country) ){
+       if($scope.formdata.country==0 || angular.isUndefined($scope.formdata.country) ){
          $scope.adderrorclass(".country");
          error=1;
          

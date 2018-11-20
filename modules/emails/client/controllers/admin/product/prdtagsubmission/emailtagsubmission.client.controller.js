@@ -14,6 +14,9 @@ function EmailTagSubmissionController ($scope, $http, $state, $stateParams, Uplo
   $scope.formdata = {};
   $scope.formdata.status ='0';
   $scope.prdTagSubService = prdTagSubService;
+  
+  
+  
 /////////////////////select/////////////////////////////
 
 ///////////////////////////////////////////////////////

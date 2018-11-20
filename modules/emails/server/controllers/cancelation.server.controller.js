@@ -93,7 +93,7 @@ exports.userByIDs = function(request, response)
 	 */
 	exports.delete = function(request, response) {
         var userId = request.query.userId;
-         console.log(userId);
+        // console.log(userId);
          Cancelation.findById(userId).exec(function (error, item) {
             
             if (error) {
@@ -124,27 +124,53 @@ exports.userByIDs = function(request, response)
 	 * Update currency
 	 */
 	exports.update= function(request, response){
+        var reqBody = request.body;
+        var userId = reqBody.userId;
+        var data;
         // console.log(request)
-             var userId = request.body.userId;
+           //  var userId = request.body.userId;
            //  console.log(userId);
      
-             Cancelation.findById(userId).exec(function (error, item) {
-                   if (error) {
-                         response.status(500).send(error);
-                         return;
-                       }
-                   
-                   if (item) {
-                           item.name = request.body.name;
-                         item.subject = request.body.subject;
-                         item.content = request.body.content;
-                         item.custom = request.body.custom;
-                         item.status = request.body.status;
-                         item.save();
-                         //console.log(item);
-                         response.json(item);
-                         return;
-                       }
+             Cancelation.findById(userId).exec(function (error, data) {
+                if (error) {
+			        response.status(500).send(error);
+			        return;
+			      }
+			  
+                  else {
+          
+                    if (reqBody.isDefaultLang) {
+                        data.name = reqBody.name;
+                        data.subject = reqBody.subject;
+                        data.content = reqBody.content;
+                        data.custom = reqBody.custom;
+                        data.status = reqBody.status;
+                    } 
+                    
+                     else {
+                       
+                         var obj = {};
+                         obj.name = reqBody.name;
+                         obj.subject = reqBody.subject;
+                         obj.content = reqBody.content;
+                         obj.custom = reqBody.custom;
+                        
+                        data['oLang'][reqBody.userSelectedLang] = obj;
+                         
+                     }
+                
+                     Cancelation.update({'_id':userId}, 
+                        {$set:data} ).exec(function (error, output) {
+                        if (error) {
+                            response.status(500).send(error);
+                            return;
+                        }
+                        response.json(output);
+                        return;
+        
+        
+                    })
+                }
      
                })
          }

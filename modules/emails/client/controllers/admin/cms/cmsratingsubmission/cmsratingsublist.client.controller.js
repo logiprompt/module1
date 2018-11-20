@@ -12,7 +12,7 @@
   function CmsRatingSubListController($scope, $http, $state, $stateParams, Upload,cmsRatingSubService) {
 
   $scope.formdata = {};
-  $scope.formdata.status ='0';
+  $scope.status ='0';
   $scope.cmsRatingSubService = cmsRatingSubService;
  /////////////////////select/////////////////////////////
 

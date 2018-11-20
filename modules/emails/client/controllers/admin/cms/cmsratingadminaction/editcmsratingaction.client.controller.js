@@ -12,11 +12,11 @@
   function EditcmsratingactionController ($scope, $http, $state, $stateParams, Upload, cmsratingactionService) {
 
   $scope.formdata = {};
-  $scope.formdata.status ='0';
+  $scope.status ='0';
   $scope.cmsratingactionService=cmsratingactionService;
   
-   $scope.currentLan=localStorage.getItem('currentLang').toString();
-  console.log($scope.currentLan)
+   //$scope.currentLan=localStorage.getItem('currentLang').toString();
+  //console.log($scope.currentLan)
   ///////////////////shipmentcomments By Id /////////////////////
 
     /*
@@ -28,10 +28,10 @@
   $scope.defaultLang=localStorage.getItem('defaultLang').toString();
 
     $scope.getCmsratingActionById = function (userId) {
-      console.log(0);
+     // console.log(0);
       $scope.cmsratingactionService.getCmsratingActionById(userId).then(function (result) {
-        console.log(userId);
-         console.log(result);
+       // console.log(userId);
+        // console.log(result);
          var details=result.data;
         if (result.statusText = "OK") {
         
@@ -46,16 +46,11 @@
         }
         else{
                      
-         $scope.userdetails = result.data;
-         $scope.name =angular.isUndefined(details.oLang) ? details.name:details.oLang[ $scope.currentLan].name ;
-         $scope.subject = angular.isUndefined(details.oLang)  ? details.subject:details.oLang[ $scope.currentLan].subject ;
-         $scope.content =angular.isUndefined(details.oLang) ?details.content: details.oLang[ $scope.currentLan].content ;
-         $scope.custom = angular.isUndefined(details.oLang)  ? details.custom:details.oLang[ $scope.currentLan].custom ; 
- $scope.userdetails = result.data;
-         $scope.name =angular.isUndefined(details.oLang) ? details.name:details.oLang[ $scope.currentLan].name ;
-         $scope.subject = angular.isUndefined(details.oLang)  ? details.subject:details.oLang[ $scope.currentLan].subject ;
-         $scope.content =angular.isUndefined(details.oLang) ?details.content: details.oLang[ $scope.currentLan].content ;
-         $scope.custom = angular.isUndefined(details.oLang)  ? details.custom:details.oLang[ $scope.currentLan].custom ; 
+          $scope.userdetails = result.data;
+          $scope.name =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].name : details.name;
+          $scope.subject = $scope.currentLan in details.oLang  ?details.oLang[ $scope.currentLan].subject :  details.subject;
+          $scope.content =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].content:details.content ;
+          $scope.custom =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].custom :details.custom;
 
         }
         }
@@ -110,7 +105,7 @@
 
 
         $scope.cmsratingactionService.updateCmsratingAction($stateParams.id, data).then(function (result) {
-          console.log(result);
+        //  console.log(result);
           if (result.statusText = "OK") {
             swal("Sccess!", "Successfully updated ", "success");
              $state.go('emailcmsratingaction');
@@ -204,8 +199,8 @@ $scope.editpage[0].removeAttribute("href");
 }
 $scope.addchkval=function(linkid){
   var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-console.log(linkid)
-console.log(checkedValue[0])
+//console.log(linkid)
+//console.log(checkedValue[0])
   if(checkedValue.length>1){
   $scope.editpage[0].removeAttribute("href");
   }
@@ -223,7 +218,7 @@ $scope.newpage=function(){
 $scope.editpages=function(){
     var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
   if(checkedValue.length>0){
-  console.log($scope.editpage[0].getAttribute("href"));
+  //console.log($scope.editpage[0].getAttribute("href"));
 if($scope.editpage[0].getAttribute("href")){
 document.location=$scope.editpage[0].getAttribute("href");
 }
@@ -238,7 +233,7 @@ $scope.delpage=function(){
  
   //$state.go('addlanguage');
   var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-console.log(checkedValue)
+//console.log(checkedValue)
   for(var i=0;i<checkedValue.length;i++){
     $scope.chkValue.push(checkedValue[i].value);
   }

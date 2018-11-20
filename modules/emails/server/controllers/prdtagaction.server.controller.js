@@ -130,48 +130,51 @@ exports.userByIDs = function(request, response)
         //console.log(request)
         var reqBody = request.body;
         var userId = reqBody.userId;
+        var data;
+
         //console.log(userId);
 
          prdTagAction.findById(userId).exec(function (error, data) 
         {
-              if (error) 
-              {
-			     response.status(500).send(error);
-			     return;
-			  }
-			  
-              if (data) 
-              {
-                if (reqBody.isDefaultLang) 
-                {
+            if (error) {
+                response.status(500).send(error);
+                return;
+              }
+          
+              else {
+      
+                if (reqBody.isDefaultLang) {
                     data.name = reqBody.name;
                     data.subject = reqBody.subject;
                     data.content = reqBody.content;
                     data.custom = reqBody.custom;
                     data.status = reqBody.status;
-                }
-
-                else 
-                {
-                    var obj = {};
-                    obj.name = reqBody.name;
-                    obj.subject = reqBody.subject;
-                    obj.content = reqBody.content;
-                    obj.custom = reqBody.custom;
+                } 
+                
+                 else {
+                   
+                     var obj = {};
+                     obj.name = reqBody.name;
+                     obj.subject = reqBody.subject;
+                     obj.content = reqBody.content;
+                     obj.custom = reqBody.custom;
+                    
                     data['oLang'][reqBody.userSelectedLang] = obj;
-                }
-    
+                     
+                 }
+            
                  prdTagAction.update({'_id':userId}, 
                     {$set:data} ).exec(function (error, output) {
-                    if (error)
-                    {
+                    if (error) {
                         response.status(500).send(error);
                         return;
                     }
                     response.json(output);
-                    return;    
+                    return;
+    
+    
                 })
-			}
+            }
 
 		})
 	}

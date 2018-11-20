@@ -12,7 +12,7 @@
   function CmsReviewActionListController($scope, $http, $state, $stateParams, Upload,cmsReviewActionService) {
 
   $scope.formdata = {};
-  $scope.formdata.status ='0';
+  $scope.status ='0';
   $scope.cmsReviewActionService = cmsReviewActionService;
  /////////////////////select/////////////////////////////
 

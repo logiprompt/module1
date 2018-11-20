@@ -12,11 +12,11 @@
   function Editbusinesslanguage ($scope, $http, $state, $stateParams, Upload) {
 
   $scope.formdata = {};
-  // $scope.formdata.status ='0';
-  // $scope.formdata.bcountryname ='0';
-  // $scope.formdata.langstatus ='0';
-  // $scope.formdata.blanguagename ='0';
-  // $scope.formdata.supportrtl ='0';
+  $scope.formdata.status ='0';
+  $scope.formdata.bcountryname ='0';
+  $scope.formdata.langstatus ='0';
+  $scope.formdata.blanguagename ='0';
+  $scope.formdata.supportrtl ='0';
   //$scope.formdata.migrate=false;
   //$scope.formdata.setupdb=false;
   $scope.formdata.username= localStorage.getItem('username');

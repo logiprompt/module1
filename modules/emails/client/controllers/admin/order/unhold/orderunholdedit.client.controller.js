@@ -94,7 +94,7 @@ $scope.iconw=function(){
      if(result.statusText = "OK"){
        $scope.holdlist = result.data;
 //console.log(1);
-console.log(result.data);
+//console.log(result.data);
       }else{
         
       }
@@ -143,7 +143,8 @@ console.log(result.data);
 
 
 
-
+    $scope.currentLan=localStorage.getItem('currentLang').toString();
+    $scope.defaultLang=localStorage.getItem('defaultLang').toString();
     
 ///////////////////////////////////////////////////////////////////////
 $scope.getOrderUnholdById = function(userId)
@@ -151,18 +152,30 @@ $scope.getOrderUnholdById = function(userId)
   //console.log(0);
     $scope.orderunholdService.getOrderUnholdById(userId).then(function(result)
     {
-        //console.log(userId);
-        if(result.statusText = "OK")
-        {
-          console.log(result.data);
-          $scope.userdetails = result.data;
-          $scope.name = $scope.userdetails.name;
-          $scope.subject = $scope.userdetails.subject;
-          $scope.content = $scope.userdetails.content;
-          $scope.custom = $scope.userdetails.custom;
-          $scope.status = $scope.userdetails.status.toString();
+      var details=result.data;
+      if (result.statusText = "OK") {
+      
+       
+           $scope.status =details.status.toString();    
+        if(angular.equals($scope.currentLan, $scope.defaultLang)){
+        $scope.userdetails = result.data;
+        $scope.name = $scope.userdetails.name;
+        $scope.subject = $scope.userdetails.subject;
+        $scope.content = $scope.userdetails.content;
+        $scope.custom = $scope.userdetails.custom;
+      }
+      else{
+                   
+        $scope.userdetails = result.data;
+        $scope.name =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].name : details.name;
+        $scope.subject = $scope.currentLan in details.oLang  ?details.oLang[ $scope.currentLan].subject :  details.subject;
+        $scope.content =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].content:details.content ;
+        $scope.custom =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].custom :details.custom;
 
-        }
+       
+
+      }
+      }
         else
         {
           
@@ -183,7 +196,7 @@ $scope.getOrderUnholdById($stateParams.id);
    */
 
   $scope.updateOrderUnhold = function(){
-     console.log($scope.formdata);
+   //  console.log($scope.formdata);
      if($scope.formdata.$valid && $scope.status!=0){
    
 
@@ -215,7 +228,8 @@ $scope.getOrderUnholdById($stateParams.id);
      $scope.orderunholdService.updateOrderUnhold($stateParams.id,data).then(function(result){
        if(result.statusText = "OK"){
          swal("Success!", "Successfully updated", "success"); 
-         $state.reload();
+         //$state.reload();
+         $state.go('emailunhold');
         }
      });
    }

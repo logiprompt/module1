@@ -18,7 +18,7 @@
 
 ///////////////////////////////////////////////////////
 
- $scope.currentLang= localStorage.getItem('currentLang');
+$scope.currentLan=localStorage.getItem('currentLang').toString();
   console.log($scope.currentLan)
   
   ///////////////////list /////////////////////

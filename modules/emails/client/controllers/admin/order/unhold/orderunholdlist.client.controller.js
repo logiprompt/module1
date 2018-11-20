@@ -18,7 +18,7 @@
 
 ///////////////////////////////////////////////////////
 
-
+$scope.currentLan=localStorage.getItem('currentLang').toString();
 
 
        
@@ -111,7 +111,7 @@ $scope.getOrderUnholdById = function(userId)
         //console.log(userId);
         if(result.statusText = "OK")
         {
-          console.log(result.data);
+        //  console.log(result.data);
           $scope.userdetails = result.data;
           $scope.name = $scope.userdetails.name;
           $scope.subject = $scope.userdetails.subject;
@@ -140,7 +140,7 @@ $scope.getOrderUnholdById($stateParams.id);
    */
 
   $scope.updateOrderUnhold = function(){
-     console.log($scope.formdata);
+    // console.log($scope.formdata);
      if($scope.formdata.$valid && $scope.status!=0){
     var data = {		  			 
          "name":$scope.name,

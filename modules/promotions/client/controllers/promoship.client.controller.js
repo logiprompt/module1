@@ -21,41 +21,76 @@
         }, this);
       })
     }
-    if ($stateParams.id == undefined) {
+  //  if ($stateParams.id == undefined) {
       $scope.getShippingPriceList();
-    }
+    //}
 
     //Add Shipping price rule
     $scope.AddShippingPrice = function () {
-      $scope.shippingpriceService.addShippingPrice($scope.formdata).then(function (result) {
+      if($scope.formData.$valid && $scope.formdata.status!=0){
+      var data=$scope.formdata;
+
+     //console.log(data);
+      $scope.shippingpriceService.addShippingPrice(data).then(function (result) {
         //$location.path('/promotions/shipping');
+        if(result.statusText = "OK"){
+				  swal("Success!", "Successfully added!", "success");  
+				  $state.go('promoshipping');
+			  }else{
+				  swal("error!", "Already exist!", "error");
+			  }
       })
+    }
     }
 
     //Delete Shipping price rule
     $scope.deleteShippingPrice = function (itemId) {
-      $scope.shippingpriceService.deleteShippingPrice(itemId).then(function (result) {
-        $scope.getShippingPriceList();
+
+
+      swal({
+        title: 'Are you sure?',
+        text: "You want to delete this item!",
+        type: 'warning',
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if(result){
+        $scope.shippingpriceService.deleteShippingPrice(itemId).then(function (result) {
+        if(result.statusText = "OK"){
+        swal(
+                      'Deleted!',
+                      'Item has been deleted.',
+                      'success'
+                    )
+                    $scope.getShippingPriceList();
+         }else{
+           
+         }
       })
+      }
+      })
+    
     }
 
     //get shipping price rule details
-    $scope.getShippingPriceDetails = function () {
-      $scope.shippingpriceService.getShippingPriceDetails($stateParams.id).then(function (result) {
-        $scope.formdata = result['data'];
-        $scope.formdata.startDate = $scope.formdata.startDate.split("T")[0];
-        $scope.formdata.endDate = $scope.formdata.endDate.split("T")[0];
-      })
-    }
-    if ($stateParams.id != undefined) {
-      $scope.getShippingPriceDetails();
-    }
+    // $scope.getShippingPriceDetails = function () {
+    //   $scope.shippingpriceService.getShippingPriceDetails($stateParams.id).then(function (result) {
+    //     $scope.formdata = result['data'];
+    //     $scope.formdata.startDate = $scope.formdata.startDate.split("T")[0];
+    //     $scope.formdata.endDate = $scope.formdata.endDate.split("T")[0];
+    //   })
+    // }
+    // if ($stateParams.id != undefined) {
+    //   $scope.getShippingPriceDetails();
+    // }
 
-    $scope.updateShippingPriceRule = function(){
-      $scope.shippingpriceService.updateShippingPriceRule($scope.formdata).then(function (result) {
-        $location.path('/promotions/shipping');
-      })
-    }
+    // $scope.updateShippingPriceRule = function(){
+    //   $scope.shippingpriceService.updateShippingPriceRule($scope.formdata).then(function (result) {
+    //     $location.path('/promotions/shipping');
+    //   })
+    // }
 
 
     /* shipping prod rule */
@@ -64,165 +99,165 @@
 
 
     /////////////////////defaultLang//////////
-    $http({
-      url: '/api/admin/getdefaultLang',
-      method: "POST",
-    })
-      .then(function (response) {
+    // $http({
+    //   url: '/api/admin/getdefaultLang',
+    //   method: "POST",
+    // })
+    //   .then(function (response) {
 
-        $scope.formdata.defaultlang = response.data.data;
+    //     $scope.formdata.defaultlang = response.data.data;
 
-      },
-      function (response) { // optional
-        // failed
-      });
-    $scope.formdata.sale = '1';
-    //$scope.formdata.category='0';
-    $scope.formdata.con = '1';
-    $scope.formdata.status = '0';
-    $http({
-      url: '/api/admin/getallLanguages',
-      method: "POST",
+    //   },
+    //   function (response) { // optional
+    //     // failed
+    //   });
+    // $scope.formdata.sale = '1';
+    // //$scope.formdata.category='0';
+    // $scope.formdata.con = '1';
+    // $scope.formdata.status = '0';
+    // $http({
+    //   url: '/api/admin/getallLanguages',
+    //   method: "POST",
 
-    })
-      .then(function (response) {
-        $scope.listlang = response.data.data;
-
-
-
-      },
-      function (response) { // optional
-        // failed
-      });
+    // })
+    //   .then(function (response) {
+    //     $scope.listlang = response.data.data;
 
 
-    $scope.values1 = [{ id: 'choice1' }];
-    //$scope.choices.length	
-    // console.log($scope.choices.length);
-    $scope.addNewValues = function () {
-      var newItemNo1 = $scope.values1.length + 1;
-      $scope.values1.push({ 'id': 'values1' + newItemNo1 });
-      //console.log($scope.choices.length);
-    };
 
-    $scope.removeValues = function (val) {
-      if ($scope.values1.length > 1) {
-        $scope.values1.splice(val, 1);
-      }
-      //console.log($scope.choices.length);
-    };
+    //   },
+    //   function (response) { // optional
+    //     // failed
+    //   });
+
+
+    // $scope.values1 = [{ id: 'choice1' }];
+    // //$scope.choices.length	
+    // // console.log($scope.choices.length);
+    // $scope.addNewValues = function () {
+    //   var newItemNo1 = $scope.values1.length + 1;
+    //   $scope.values1.push({ 'id': 'values1' + newItemNo1 });
+    //   //console.log($scope.choices.length);
+    // };
+
+    // $scope.removeValues = function (val) {
+    //   if ($scope.values1.length > 1) {
+    //     $scope.values1.splice(val, 1);
+    //   }
+    //   //console.log($scope.choices.length);
+    // };
 
     /////////////////////select/////////////////////////////
 
 
-    ///////////////////////insert////////////////////////////
-    $scope.insCategory = function () {
-      if ($scope.validation() == 0) {
-        $http({
-          url: '/api/admin/insCategory',
-          method: "POST",
-          data: $scope.formdata
-        })
-          .then(function (response) {
-            $state.reload();
-            // success
-          },
-          function (response) { // optional
-            // failed
-          });
-      }
-    }
+    // ///////////////////////insert////////////////////////////
+    // $scope.insCategory = function () {
+    //   if ($scope.validation() == 0) {
+    //     $http({
+    //       url: '/api/admin/insCategory',
+    //       method: "POST",
+    //       data: $scope.formdata
+    //     })
+    //       .then(function (response) {
+    //         $state.reload();
+    //         // success
+    //       },
+    //       function (response) { // optional
+    //         // failed
+    //       });
+    //   }
+    // }
 
 
 
-    $scope.del = function (id) {
-      var val = { 'id': id };
-      $http({
-        url: '/api/admin/delcate',
-        method: "POST",
-        data: val
-      })
-        .then(function (response) {
-          $state.reload();
-        },
-        function (response) { // optional
-          // failed
-        });
-    }
-    $scope.rmerrorclass = function () {
-      angular.element(document.querySelectorAll('.validationErr')).removeClass('validationErr');
-      angular.element(document.querySelectorAll('.tabvalidationErr')).removeClass('tabvalidationErr');
-    }
-    $scope.adderrorclass = function (cls) {
-      angular.element(document.querySelector(cls)).addClass('validationErr');
-    }
-    $scope.taberrorclass = function (cls) {
-      angular.element(document.querySelector(cls)).addClass('tabvalidationErr');
-    }
+    // $scope.del = function (id) {
+    //   var val = { 'id': id };
+    //   $http({
+    //     url: '/api/admin/delcate',
+    //     method: "POST",
+    //     data: val
+    //   })
+    //     .then(function (response) {
+    //       $state.reload();
+    //     },
+    //     function (response) { // optional
+    //       // failed
+    //     });
+    // }
+    // $scope.rmerrorclass = function () {
+    //   angular.element(document.querySelectorAll('.validationErr')).removeClass('validationErr');
+    //   angular.element(document.querySelectorAll('.tabvalidationErr')).removeClass('tabvalidationErr');
+    // }
+    // $scope.adderrorclass = function (cls) {
+    //   angular.element(document.querySelector(cls)).addClass('validationErr');
+    // }
+    // $scope.taberrorclass = function (cls) {
+    //   angular.element(document.querySelector(cls)).addClass('tabvalidationErr');
+    // }
 
-    $scope.validation = function () {
-      var error = 0;
-      $scope.rmerrorclass();
-      if ($scope.formdata.category == '' || angular.isUndefined($scope.formdata.category)) {
-        $scope.adderrorclass(".cat");
-        $scope.taberrorclass(".tcat");
-        error = 1;
-      }
+    // $scope.validation = function () {
+    //   var error = 0;
+    //   $scope.rmerrorclass();
+    //   if ($scope.formdata.category == '' || angular.isUndefined($scope.formdata.category)) {
+    //     $scope.adderrorclass(".cat");
+    //     $scope.taberrorclass(".tcat");
+    //     error = 1;
+    //   }
 
-      return error;
-    }
+    //   return error;
+    // }
 
     ///////////////////////////////////////////////////////////////////////
-    $scope.addCategory = function () {
+    // $scope.addCategory = function () {
 
 
-      $http({
-        url: '/api/admin/addCategory',
-        method: "POST",
-        data: $scope.formdata
-      })
-        .then(function (response) {
+    //   $http({
+    //     url: '/api/admin/addCategory',
+    //     method: "POST",
+    //     data: $scope.formdata
+    //   })
+    //     .then(function (response) {
 
-          // success
-        },
-        function (response) { // optional
-          // failed
-        });
-    }
-    $scope.validation2 = function () {
-      var error = 0;
-      $scope.rmerrorclass();
-      if ($scope.formdata.categorylang == '' || angular.isUndefined($scope.formdata.categorylang)) {
-        $scope.adderrorclass(".categorylang");
-        error = 1;
-      }
-      if ($scope.formdata.catlang == '0' || angular.isUndefined($scope.formdata.catlang)) {
-        $scope.adderrorclass(".catlang");
-        error = 1;
-      }
-      return error;
-    }
-    $scope.openLangModel = function (id) {
+    //       // success
+    //     },
+    //     function (response) { // optional
+    //       // failed
+    //     });
+    // }
+    // $scope.validation2 = function () {
+    //   var error = 0;
+    //   $scope.rmerrorclass();
+    //   if ($scope.formdata.categorylang == '' || angular.isUndefined($scope.formdata.categorylang)) {
+    //     $scope.adderrorclass(".categorylang");
+    //     error = 1;
+    //   }
+    //   if ($scope.formdata.catlang == '0' || angular.isUndefined($scope.formdata.catlang)) {
+    //     $scope.adderrorclass(".catlang");
+    //     error = 1;
+    //   }
+    //   return error;
+    // }
+    // $scope.openLangModel = function (id) {
 
-      $scope.formdata.id = id;
-    }
-    $scope.insCategoryLang = function () {
-      if ($scope.validation2() == 0) {
-        $('#myModal').modal('hide');
-        $http({
-          url: '/api/admin/insCategoryLang',
-          method: "POST",
-          data: $scope.formdata
-        })
-          .then(function (response) {
-            $state.reload();
-            // success
-          },
-          function (response) { // optional
-            // failed
-          });
-      }
-    }
+    //   $scope.formdata.id = id;
+    // }
+    // $scope.insCategoryLang = function () {
+    //   if ($scope.validation2() == 0) {
+    //     $('#myModal').modal('hide');
+    //     $http({
+    //       url: '/api/admin/insCategoryLang',
+    //       method: "POST",
+    //       data: $scope.formdata
+    //     })
+    //       .then(function (response) {
+    //         $state.reload();
+    //         // success
+    //       },
+    //       function (response) { // optional
+    //         // failed
+    //       });
+    //   }
+    // }
 
 
 
@@ -287,6 +322,34 @@
       for (var i = 0; i < checkedValue.length; i++) {
         $scope.chkValue.push(checkedValue[i].value);
       }
+
+      var itemId=$scope.chkValue;
+      console.log(itemId);
+        swal({
+          title: 'Are you sure?',
+          text: "You want to delete checked items!",
+          type: 'warning',
+          showCancelButton: false,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if(result){
+          $scope.shippingpriceService.delChecked(itemId).then(function(result){
+          if(result.statusText = "OK"){
+          swal(
+                        'Deleted!',
+                        'Items have been deleted.',
+                        'success'
+                      )
+            $scope.getShippingPriceList();
+           }else{
+             
+           }
+        })
+        }
+        })
+      
 
     }
     setTimeout(getActionBtns, 2000);

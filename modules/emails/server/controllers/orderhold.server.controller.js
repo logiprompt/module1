@@ -11,10 +11,9 @@ var path = require('path'),
 /**
 * Create  Admin menu 
 */
-exports.create = function(req, res) {
+exports.create = function (req, res) {
     var userDetails = req.body;
-    console.log(userDetails);
-    Orderhold.create(userDetails,function(err) {
+    Orderhold.create(userDetails, function (err) {
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
@@ -31,18 +30,17 @@ exports.create = function(req, res) {
 /**
  * List of users
  */
-exports.list = function(request, response) {
-    //console.log(919191919191919);
-    Orderhold.find().exec(function(error, items) {
+exports.list = function (request, response) {
+    Orderhold.find().exec(function (error, items) {
 
         if (error) {
             return response.status(400).send({
-              message: errorHandler.getErrorMessage(error)
+                message: errorHandler.getErrorMessage(error)
             });
-          } else {
-           
-           response.jsonp(items);
-          } 
+        } else {
+
+            response.jsonp(items);
+        }
     });
 };
 
@@ -51,23 +49,19 @@ exports.list = function(request, response) {
 
 
 
-exports.reads= function(request, response) 
-{ 
-  console.log(request);
-    
-
-  Orderhold.findById(request.query.userId)
-    .lean()
-    .exec(function(error, items) {
-        if (error) {
-            console.log(error);
-            response.status(500).send(error);
-            return;
-        }
-        else{
-        response.jsonp(items);
-        }
-    });
+exports.reads = function (request, response) {
+    Orderhold.findById(request.query.userId)
+        .lean()
+        .exec(function (error, items) {
+            if (error) {
+                console.log(error);
+                response.status(500).send(error);
+                return;
+            }
+            else {
+                response.jsonp(items);
+            }
+        });
 
 };
 
@@ -75,125 +69,115 @@ exports.reads= function(request, response)
 //  * Get User by ID
 //  */
 
-exports.userByIDs = function(request, response) 
-{
-   // console.log(request);
-   // console.log(90909090909090)
+exports.userByIDs = function (request, response) {
     Orderhold.findById(request.params.userId)
-    .lean()
-    .exec(function(error, items) {
+        .lean()
+        .exec(function (error, items) {
+            if (error) {
+                console.log(error);
+                response.status(500).send(error);
+                return;
+            }
+            response.jsonp(items);
+        });
+};
+
+/**
+ * Delete currency by ID
+ */
+exports.delete = function (request, response) {
+    var userId = request.query.userId;
+    Orderhold.findById(userId).exec(function (error, item) {
+
         if (error) {
-            console.log(error);
             response.status(500).send(error);
             return;
         }
-        response.jsonp(items);
-    });
-};
 
-	/**
-	 * Delete currency by ID
-	 */
-	exports.delete = function(request, response) {
-        var userId = request.query.userId;
-         console.log(userId);
-         Orderhold.findById(userId).exec(function (error, item) {
-            
-            if (error) {
-              response.status(500).send(error);
-              return;
-            }
-
-            if (item) {
-              item.remove(function (error) {
+        if (item) {
+            item.remove(function (error) {
 
                 if (error) {
-                  response.status(500).send(error);
-                  return;
+                    response.status(500).send(error);
+                    return;
                 }
 
                 response.status(200).json({
-                  'message': 'User was removed.'
+                    'message': 'User was removed.'
                 });
-              });
-            } else {
-              response.status(404).json({
+            });
+        } else {
+            response.status(404).json({
                 message: 'User with id ' + userId + ' was not found.'
-              });
+            });
+        }
+    });
+};
+
+/*
+* Update currency
+*/
+exports.update = function (request, response) {
+    var reqBody = request.body;
+    var userId = reqBody.userId;
+
+    Orderhold.findById(userId).exec(function (error, data) {
+        if (error) {
+            response.status(500).send(error);
+            return;
+        }
+
+        if (data) {
+            if (reqBody.isDefaultLang) {
+                data.name = reqBody.name;
+                data.subject = reqBody.subject;
+                data.content = reqBody.content;
+                data.custom = reqBody.custom;
+                data.status = reqBody.status;
             }
-          });
-      };
 
-      	/*
-	 * Update currency
-	 */
-	exports.update= function(request, response){
-        var reqBody = request.body;
-        var userId = reqBody.userId;
-
-		Orderhold.findById(userId).exec(function (error, data) {
-            if (error) 
-            {
-               response.status(500).send(error);
-               return;
+            else {
+                var obj = {};
+                obj.name = reqBody.name;
+                obj.subject = reqBody.subject;
+                obj.content = reqBody.content;
+                obj.custom = reqBody.custom;
+                data['oLang'][reqBody.userSelectedLang] = obj;
             }
-            
-            if (data) 
-            {
-              if (reqBody.isDefaultLang) 
-              {
-                  data.name = reqBody.name;
-                  data.subject = reqBody.subject;
-                  data.content = reqBody.content;
-                  data.custom = reqBody.custom;
-                  data.status = reqBody.status;
-              }
 
-              else 
-              {
-                  var obj = {};
-                  obj.name = reqBody.name;
-                  obj.subject = reqBody.subject;
-                  obj.content = reqBody.content;
-                  obj.custom = reqBody.custom;
-                  data['oLang'][reqBody.userSelectedLang] = obj;
-              }
-  
-              Orderhold.update({'_id':userId}, 
-                  {$set:data} ).exec(function (error, output) {
-                  if (error)
-                  {
-                      response.status(500).send(error);
-                      return;
-                  }
-                  response.json(output);
-                  return;    
-              })
-          }
+            Orderhold.update({ '_id': userId },
+                { $set: data }).exec(function (error, output) {
+                    if (error) {
+                        response.status(500).send(error);
+                        return;
+                    }
+                    response.json(output);
+                    return;
+                })
+        }
 
-		  })
-	}
-	
-
-      /** 
-      *Delete currency by IDs
-      *
-      **/
-      exports.delCheckedOrderHold = function(request, response) {
-      
-          var arr = request.query.userId;
-          console.log(arr);
-          Orderhold.deleteMany({_id:{'$in':arr}}).exec(function (err, data) {
-                               if (err) throw err;
-                               response.json({
-                                              status: 1,
-                                  });	
-                      
-                  
-                      });
+    })
+}
 
 
-      };
+/** 
+*Delete currency by IDs
+*
+**/
+exports.delCheckedOrderHold = function (request, response) 
+{
+    var arr = request.query.userId;
+    Orderhold.deleteMany({ _id: { '$in': arr } }).exec(function (err, data) {
+        if (err) throw err;
+        response.json({
+            status: 1,
+        });
+
+
+    });
+
+
+};
 
 
 

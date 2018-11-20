@@ -120,7 +120,7 @@ $scope.iconw=function(){
 				"status" :$scope.status
         }
       
-		console.log(data);
+	//	console.log(data);
 		  $scope.orderunholdService.addOrderUnhold(data).then(function(result){
 
 			  if(result.statusText = "OK"){

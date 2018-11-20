@@ -28,7 +28,7 @@
         "status" :$scope.status
         }
       
-    console.log($scope.cmsreviewsubmissionService);
+    //console.log($scope.cmsreviewsubmissionService);
       $scope.cmsreviewsubmissionService.addReviewSubmition(data).then(function(result){
 
         if(result.statusText = "OK"){

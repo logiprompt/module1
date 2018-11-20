@@ -3,85 +3,81 @@
 
   angular
     .module('core')
- 
-  .controller('EditPaymentFailureController', EditPaymentFailureController);
+
+    .controller('EditPaymentFailureController', EditPaymentFailureController);
 
 
-EditPaymentFailureController.$inject = ['$scope', '$http', '$state', '$stateParams', 'Upload', 'paymentfailureService'];
+  EditPaymentFailureController.$inject = ['$scope', '$http', '$state', '$stateParams', 'Upload', 'paymentfailureService'];
 
-function EditPaymentFailureController($scope, $http, $state, $stateParams, Upload, paymentfailureService) {
+  function EditPaymentFailureController($scope, $http, $state, $stateParams, Upload, paymentfailureService) {
 
-  $scope.formdata = {};
-  $scope.formdata.status = '0';
-  $scope.paymentfailureService = paymentfailureService;
-  /////////////////////select/////////////////////////////
+    $scope.formdata = {};
+    $scope.formdata.status = '0';
+    $scope.paymentfailureService = paymentfailureService;
+    /////////////////////select/////////////////////////////
 
-  ///////////////////////////////////////////////////////
-  $scope.currentLan=localStorage.getItem('currentLang').toString();
-  console.log($scope.currentLan)
-  $scope.setasDefault = function (id) {
+    ///////////////////////////////////////////////////////
+    $scope.currentLan = localStorage.getItem('currentLang').toString();
+    $scope.setasDefault = function (id) {
 
-    $http({
-      url: '/api/admin/setasDefault1',
-      method: "POST",
-      data: { 'id': id }
-    })
-      .then(function (response) {
-        $state.reload();
-        // success
-      },
-        function (response) { // optional
-          // failed
-        });
+      $http({
+        url: '/api/admin/setasDefault1',
+        method: "POST",
+        data: { 'id': id }
+      })
+        .then(function (response) {
+          $state.reload();
+          // success
+        },
+          function (response) { // optional
+            // failed
+          });
 
-  }
+    }
 
- ///////////////////Payment Failure By Id /////////////////////
+    ///////////////////Payment Failure By Id /////////////////////
 
     /*
       * Function : getPaymentFailureById
       * Description : get Payment Failure details
       * Owner : anju
    */
-  $scope.currentLan=localStorage.getItem('currentLang').toString();
-  $scope.defaultLang=localStorage.getItem('defaultLang').toString();
+    $scope.currentLan = localStorage.getItem('currentLang').toString();
+    $scope.defaultLang = localStorage.getItem('defaultLang').toString();
 
     $scope.getPaymentFailureById = function (userId) {
-      console.log(0);
       $scope.paymentfailureService.getPaymentFailureById(userId).then(function (result) {
-        console.log(userId);
-         console.log(result);
-         var details=result.data;
-         if (result.statusText = "OK") {
-        
-         
-          $scope.status =details.status.toString();    
-       if(angular.equals($scope.currentLan, $scope.defaultLang)){
-       $scope.userdetails = result.data;
-       $scope.name = $scope.userdetails.name;
-       $scope.subject = $scope.userdetails.subject;
-       $scope.content = $scope.userdetails.content;
-       $scope.custom = $scope.userdetails.custom;
-     }
-     else{
-                  
-       $scope.userdetails = result.data;
-       $scope.name =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].name : details.name;
-       $scope.subject = $scope.currentLan in details.oLang  ?details.oLang[ $scope.currentLan].subject :  details.subject;
-       $scope.content =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].content:details.content ;
-       $scope.custom =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].custom :details.custom;
-      
+        var details = result.data;
+        if (result.statusText = "OK") {
 
-     }
-     }
+
+          $scope.status = details.status.toString();
+          if (angular.equals($scope.currentLan, $scope.defaultLang)) {
+            $scope.userdetails = result.data;
+            $scope.name = $scope.userdetails.name;
+            $scope.subject = $scope.userdetails.subject;
+            $scope.content = $scope.userdetails.content;
+            $scope.custom = $scope.userdetails.custom;
+          }
+          else {
+
+            $scope.userdetails = result.data;
+            $scope.name = $scope.currentLan in details.oLang ? details.oLang[$scope.currentLan].name : details.name;
+            $scope.subject = $scope.currentLan in details.oLang ? details.oLang[$scope.currentLan].subject : details.subject;
+            $scope.content = $scope.currentLan in details.oLang ? details.oLang[$scope.currentLan].content : details.content;
+            $scope.custom = $scope.currentLan in details.oLang ? details.oLang[$scope.currentLan].custom : details.custom;
+
+
+          }
+        }
         else {
 
         }
       });
     }
     $scope.getPaymentFailureById($stateParams.id);
-  
-///////////////////////////////////////////////////////////////
+
+    ///////////////////////////////////////////////////////////////
 
     /*
      *
@@ -104,7 +100,7 @@ function EditPaymentFailureController($scope, $http, $state, $stateParams, Uploa
             "custom": $scope.custom,
             "status": $scope.status,
             "userId": $stateParams.id,
-            "isDefaultLang" : true,
+            "isDefaultLang": true,
 
           }
         }
@@ -115,18 +111,17 @@ function EditPaymentFailureController($scope, $http, $state, $stateParams, Uploa
             "content": $scope.content,
             "custom": $scope.custom,
             "userId": $stateParams.id,
-            "isDefaultLang" : false,
-            "defaultLang":localStorage.getItem("defaultLang"),
-            "userSelectedLang":localStorage.getItem("currentLang")
+            "isDefaultLang": false,
+            "defaultLang": localStorage.getItem("defaultLang"),
+            "userSelectedLang": localStorage.getItem("currentLang")
           };
         }
 
 
         $scope.paymentfailureService.updatePaymentFailure($stateParams.id, data).then(function (result) {
-          console.log(result);
           if (result.statusText = "OK") {
             swal("Sccess!", "Successfully updated User", "success");
-            $state.reload();
+            $state.go('emailpaymentfailure');
           }
         });
       }
@@ -135,43 +130,43 @@ function EditPaymentFailureController($scope, $http, $state, $stateParams, Uploa
     ///////////////////////////////////////////////////////////////////////
 
 
-  /*
-       * FUnction : deluserforgot
-       * Description : delete userforgot id
-       * Owner :jeeja
-       * 
-       */
-  $scope.delUserForgot = function (userId) {
+    /*
+         * FUnction : deluserforgot
+         * Description : delete userforgot id
+         * Owner :jeeja
+         * 
+         */
+    $scope.delUserForgot = function (userId) {
 
 
-    swal({
-      title: 'Are you sure?',
-      text: "You want to delete this user!",
-      type: 'warning',
-      showCancelButton: false,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
-    }).then((result) => {
-      if (result) {
-        $scope.userforgotService.delUserForgot(userId).then(function (result) {
-          if (result.statusText = "OK") {
-            swal(
-              'Deleted!',
-              'User has been deleted.',
-              'success'
-            )
-            $state.reload();
-          } else {
+      swal({
+        title: 'Are you sure?',
+        text: "You want to delete this user!",
+        type: 'warning',
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result) {
+          $scope.userforgotService.delUserForgot(userId).then(function (result) {
+            if (result.statusText = "OK") {
+              swal(
+                'Deleted!',
+                'User has been deleted.',
+                'success'
+              )
+              $state.reload();
+            } else {
 
-          }
-        })
-      }
-    })
+            }
+          })
+        }
+      })
+
+    }
+    ///////////////////////////////////////////////////////////////////////
 
   }
-  ///////////////////////////////////////////////////////////////////////
-
-}
 
 }());

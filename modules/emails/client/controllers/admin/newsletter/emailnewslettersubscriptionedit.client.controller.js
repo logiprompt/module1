@@ -67,7 +67,8 @@ $scope.choices = [{id: 'choice1'}];
 	 * Description : get User details
 	 *
 	 */
-
+  $scope.currentLan=localStorage.getItem('currentLang').toString();
+  $scope.defaultLang=localStorage.getItem('defaultLang').toString();
   $scope.getSubscriptionById = function(userId){
     console.log(0);
     $scope.subscriptionService.getSubscriptionById(userId).then(function(result){
@@ -142,7 +143,7 @@ $scope.choices = [{id: 'choice1'}];
        $scope.subscriptionService.updateSubscription($stateParams.id,data).then(function(result){
           if(result.statusText = "OK"){
             swal("Success!", "Successfully updated Subscription", "success"); 
-            $state.reload();
+            $state.go('emailsubscription');
            }
         });
       }

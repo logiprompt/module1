@@ -162,7 +162,7 @@ var adminfooter={
         header:adminheader,
         content: { 
          templateUrl: '/modules/promotions/client/views/admin/promotions/product/edit.html',
-        controller: 'PromocartController',
+        controller: 'PromoproductController',
         controllerAs: 'vm',
         },
          footer:adminfooter

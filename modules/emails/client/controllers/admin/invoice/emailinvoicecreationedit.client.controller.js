@@ -68,7 +68,8 @@ $scope.choices = [{id: 'choice1'}];
 	 * Description : get User details
 	 *
 	 */
-
+  $scope.currentLan=localStorage.getItem('currentLang').toString();
+  $scope.defaultLang=localStorage.getItem('defaultLang').toString();
   $scope.getInvoiceById = function(userId){
     console.log(0);
     $scope.invoicecreationService.getInvoiceById(userId).then(function(result){
@@ -143,7 +144,7 @@ $scope.choices = [{id: 'choice1'}];
        $scope.invoicecreationService.updateInvoice($stateParams.id,data).then(function(result){
           if(result.statusText = "OK"){
             swal("Success!", "Successfully updated Invoice", "success"); 
-            $state.reload();
+            $state.go('emailinvoicecreation');
            }
         });
       }

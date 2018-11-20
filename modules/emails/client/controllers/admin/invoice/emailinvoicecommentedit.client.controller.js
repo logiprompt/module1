@@ -142,7 +142,7 @@ $scope.choices = [{id: 'choice1'}];
        $scope.invoicecommentsService.updateInvoicecomments($stateParams.id,data).then(function(result){
           if(result.statusText = "OK"){
             swal("Success!", "Successfully updated Invoice Comments", "success"); 
-            $state.reload();
+            $state.go('emailinvoicecomments');
            }
         });
       }

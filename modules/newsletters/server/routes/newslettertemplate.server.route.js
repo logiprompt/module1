@@ -17,6 +17,8 @@ module.exports = function (app) {
     app.route('/api/newsLetter/getNewsLetterTemplateDetails/:templateId').get(newsLetter.getNewsLetterTemplateDetails);
 
     //update newsletter template details
-    app.route('/api/newsLetter/updateNewsLetterTemplate').put(newsLetter.updateNewsLetterTemplate);
+    app.route('/api/newsLetter/updateNewsLetterTemplate').post(newsLetter.updateNewsLetterTemplate);
+
+    app.route('/api/newsLetter/delNewsTempbyid').post(newsLetter.delNewsTempbyid);
 
 };

@@ -165,7 +165,7 @@
           console.log(result);
           if (result.statusText = "OK") {
             swal("Sccess!", "Successfully updated User", "success");
-            $state.reload();
+            $state.go('emailshareusers');
           }
         });
       }

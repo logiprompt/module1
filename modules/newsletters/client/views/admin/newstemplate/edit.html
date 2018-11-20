@@ -168,9 +168,9 @@
                                 <h6 class="card-subtitle">Use default tab with class <code>vtabs &amp; tabs-vertical</code></h6> -->
                             <!-- Nav tabs -->
 
-                            <form class="">
+                            <form class=""  name="formdata" ng-submit="updateNewsTemplate()" novalidate>
                                 <div class="form-group m-b-10 btn23">
-                                    <button type="button" ng-click="updateNewsTemplate()" class="btn waves-effect waves-light btn-sm btn-info">
+                                    <button type="submit"  class="btn waves-effect waves-light btn-sm btn-info">
                                         Save </button>
 
                                     <a href="/newsletters/template">
@@ -187,7 +187,7 @@
                                             <a class="nav-link tcat" data-toggle="tab" href="#home" role="tab"
                                                 aria-selected="true">
                                                 <span class="hidden-xs-down">Country :
-                                                    <select class="form-control filter-option " name="status" id="status">
+                                                    <select class="form-control filter-option "  id="country">
                                                         <option class="filter-option-inner" selected value="0">choose</option>
                                                         <option value="1" class="">India</option>
                                                     </select>
@@ -199,7 +199,7 @@
                                             <a class="nav-link tcat" data-toggle="tab" href="#home" role="tab"
                                                 aria-selected="true">
                                                 <span class="hidden-xs-down">Language :
-                                                    <select class="form-control filter-option " name="status" id="status">
+                                                    <select class="form-control filter-option "  id="lang">
                                                         <option class="filter-option-inner" selected value="0">choose</option>
                                                         <option value="1" class="">Hindi</option>
                                                     </select>
@@ -226,78 +226,38 @@
 
                                                 <div class="form-group m-b-10">
                                                     <label for="input1"> Template name</label>
-                                                    <input type="text" class="form-control cat" id="name" ng-model="NewsLetterDetails.templateName">
-
+                                                    <input type="text" class="form-control name" name="name" id="name" ng-model="name" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.name.$valid}">
                                                 </div>
                                                 <div class="form-group m-b-10">
                                                     <label for="input1"> Template Subject</label>
-                                                    <input type="text" class="form-control cat" id="name" ng-model="NewsLetterDetails.templateSubject">
+                                                    <input type="text" class="form-control subject" id="subject" name="subject" ng-model="subject"  ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.subject.$valid}">
 
                                                 </div>
                                                 <div class="form-group m-b-10">
                                                     <label for="input1"> Sender name</label>
-                                                    <input type="text" class="form-control cat" id="name" ng-model="NewsLetterDetails.senderName">
+                                                    <input type="text" class="form-control sender" id="sender" name="sender" ng-model="sender"  ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.sender.$valid}">
 
                                                 </div>
                                                 <div class="form-group m-b-10">
                                                     <label for="input1"> Sender email </label>
-                                                    <input type="text" class="form-control cat" id="name" ng-model="NewsLetterDetails.senderEmail">
+                                                    <input type="text" class="form-control senderEmail" id="senderEmail" name="senderEmail"
+                                                    ng-model="senderEmail"  ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.senderEmail.$valid}">
 
                                                 </div>
 
                                                 <div class="form-group m-b-10">
                                                     <label for="input1">Content</label>
-                                                    <textarea class="form-control cat" id="desc" type="text" ng-model="formdata.desc"></textarea>
+                                                    <textarea class="form-control desc" id="desc"  ng-model="desc" type="text"   ng-class="{ 'validationErr' : formdata.$submitted && !formdata.desc.$valid}"></textarea>
 
 
-                                                </div>
+                                                </div> 
 
-                                                <!--<div class="form_group m-b-10">
-                                                        
-                                                           
-                                                            <label for="first_name" id="labelimg">Thumbnail</label>
-                                                            
-                                                            <div class="fluid left_c_input file_wrap m-b-10">
-                                                                 <div class="write_textbox"> 
-                                                                      <input  type="text" readonly placeholder="No file selected" class="txtFilepath" style="border:none !important;"  name="name{{$index}}">                                       
-                                                                  </div>
-                                                                 <div class="iconw" ng-click="iconw()"><i class="fa fa-download"></i>Upload</div>
-                                                                 <input  type="file" id="imgfile" name="imgfile{{$index}}"  class="file_input_hidden img" ng-model="imgss" ngf-select  />                        
-                                                                     </div>       
-                                                          
-                                                          </div>-->
-                                                <!--<div class="col-lg-3 col-md-6 imgprev">
-                                                                <div class="card">
-                                                                    <div class="el-card-item">
-                                                                        <div class="el-card-avatar el-overlay-1 imageup"> <img src="/uploads/dummy.jpg" alt="user" id="imgfiles"  class="imgup"/>
-                                                                           
-                                                                               
-                                                                               
-                                                                            
-                                                                        </div>
-                                                                    
-                                                                    </div>
-                                                                </div>
-                                                            </div>-->
-                                                <!--<div class="form_group m-b-10" style="clear:both;">
-                                                        
-                                                           
-                                                            <label for="first_name" id="labelimg">Attachment</label>
-                                                            
-                                                            <div class="fluid left_c_input file_wrap m-b-10">
-                                                                 <div class="write_textbox"> 
-                                                                      <input  type="text" readonly placeholder="No file selected" class="txtFilepath" style="border:none !important;"  name="name{{$index}}">                                       
-                                                                  </div>
-                                                                 <div class="iconw" ng-click="iconw()"><i class="fa fa-download"></i>Upload</div>
-                                                                 <input  type="file" id="imgfile" name="imgfile{{$index}}"  class="file_input_hidden img" ng-model="imgss" ngf-select  />                        
-                                                                     </div>       
-                                                          
-                                                          </div>-->
+                                            
                                                 <div class="form-group m-b-10">
                                                     <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
                                                     <label for="input1"> Status</label>
                                                     <select class="form-control filter-option" name="status" id="status"
-                                                        ng-model="NewsLetterDetails.status">
+                                                    ng-model="status" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && (!formdata.status.$valid || status==0 )}">
                                                         <option class="filter-option-inner" selected value="0">choose</option>
                                                         <option value="enabled" class="">Enabled</option>
                                                         <option value="disabled" class="">Disabled</option>

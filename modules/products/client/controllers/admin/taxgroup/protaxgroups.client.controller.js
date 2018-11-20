@@ -3,14 +3,31 @@
   angular
     .module('products')
     .controller('ProtaxgroupController', ProtaxgroupController);
-    ProtaxgroupController.$inject = ['$scope','$http','$state','$stateParams'];
-  function ProtaxgroupController ($scope, $http, $state) {
+    ProtaxgroupController.$inject = ['$scope','$http','$state','$stateParams','taxgroupService'];
+  function ProtaxgroupController ($scope, $http, $state,$stateParams,taxgroupService) {
    
-   $scope.formdata = {};
-
+  // $scope.formdata = {};
+$scope.taxgroupService=taxgroupService;
 /////////////////////defaultLang//////////
+$scope.status='0';
+$scope.getTaxGroup=function(){
+    
+    //	console.log(data);
+        $scope.taxgroupService.getTaxGroup().then(function(result){
+  console.log(result.data)
+  $scope.alltaxgroups=result.data;
+          // if(result.statusText = "OK"){
+          //   swal("Success!", "Successfully added!", "success");  
+          //   $state.go('taxgroups');
+          // }else{
+          //   swal("error!", "Already exist!", "error");
+          // }
+          
+        })
+  
 
-
+}
+$scope.getTaxGroup();
 
 $scope.values1 = [{id: 'choice1'}];
 //$scope.choices.length	
@@ -31,45 +48,7 @@ $scope.values1 = [{id: 'choice1'}];
  /////////////////////select/////////////////////////////
  
 
- ///////////////////////insert////////////////////////////
 
-
-        $scope.rmerrorclass=function(){
-                angular.element(document.querySelectorAll('.validationErr')).removeClass('validationErr');
-                angular.element(document.querySelectorAll('.tabvalidationErr')).removeClass('tabvalidationErr');
-                }
-                $scope.adderrorclass=function(cls){
-                angular.element(document.querySelector(cls)).addClass('validationErr');
-                }
-                $scope.taberrorclass=function(cls){
-                  angular.element(document.querySelector(cls)).addClass('tabvalidationErr');
-                  }
-
-                $scope.validation=function(){
-                var error=0;
-                $scope.rmerrorclass();
-                  if($scope.formdata.category=='' || angular.isUndefined($scope.formdata.category) ){
-                    $scope.adderrorclass(".cat");
-                    $scope.taberrorclass(".tcat");
-                    error=1;
-                    }
-
-                    return error;          
-            }
-
-    $scope.validation2=function(){
-                var error=0;
-                $scope.rmerrorclass();
-                  if($scope.formdata.categorylang=='' || angular.isUndefined($scope.formdata.categorylang) ){
-                    $scope.adderrorclass(".categorylang");
-                    error=1;
-                    }
-                     if($scope.formdata.catlang=='0' || angular.isUndefined($scope.formdata.catlang) ){
-                    $scope.adderrorclass(".catlang");
-                    error=1;
-                    }
-                    return error;          
-            }
   $scope.openLangModel=function(id){
     
     $scope.formdata.id=id;
