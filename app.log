@@ -45680,3 +45680,1283 @@
 
 2018-11-20T14:31:10.132Z - info: [0mGET /admin/images/sort_asc.png [36m304 [0m17.369 ms - -[0m
 
+2018-11-20T15:33:17.385Z - info: [0mGET / [32m200 [0m72.892 ms - -[0m
+
+2018-11-20T15:33:17.422Z - info: [0mGET /admin/assets/plugins/bootstrap/css/bootstrap.min.css [36m304 [0m3.735 ms - -[0m
+
+2018-11-20T15:33:17.438Z - info: [0mGET /lib/sweetalert/sweetalert.css [36m304 [0m1.159 ms - -[0m
+
+2018-11-20T15:33:17.449Z - info: [0mGET /admin/assets/plugins/jquery/jquery.min.js [36m304 [0m1.016 ms - -[0m
+
+2018-11-20T15:33:17.496Z - info: [0mGET /lib/angular/angular.js [36m304 [0m4.860 ms - -[0m
+
+2018-11-20T15:33:17.513Z - info: [0mGET /lib/ng-file-upload/ng-file-upload.js [36m304 [0m0.791 ms - -[0m
+
+2018-11-20T15:33:17.547Z - info: [0mGET /lib/angular-messages/angular-messages.js [36m304 [0m0.747 ms - -[0m
+
+2018-11-20T15:33:17.565Z - info: [0mGET /lib/angular-animate/angular-animate.js [36m304 [0m0.770 ms - -[0m
+
+2018-11-20T15:33:17.592Z - info: [0mGET /lib/angular-bootstrap/ui-bootstrap-tpls.js [36m304 [0m0.754 ms - -[0m
+
+2018-11-20T15:33:17.607Z - info: [0mGET /lib/angular-mocks/angular-mocks.js [36m304 [0m5.253 ms - -[0m
+
+2018-11-20T15:33:17.610Z - info: [0mGET /lib/angular-resource/angular-resource.js [36m304 [0m4.510 ms - -[0m
+
+2018-11-20T15:33:17.623Z - info: [0mGET /lib/angular-ui-notification/dist/angular-ui-notification.js [36m304 [0m2.471 ms - -[0m
+
+2018-11-20T15:33:17.630Z - info: [0mGET /lib/owasp-password-strength-test/owasp-password-strength-test.js [36m304 [0m1.167 ms - -[0m
+
+2018-11-20T15:33:17.635Z - info: [0mGET /lib/sweetalert/SweetAlert.min.js [36m304 [0m2.696 ms - -[0m
+
+2018-11-20T15:33:17.657Z - info: [0mGET /lib/angular-ui-router/release/angular-ui-router.js [36m304 [0m1.339 ms - -[0m
+
+2018-11-20T15:33:17.677Z - info: [0mGET /modules/core/client/app/init.js [36m304 [0m7.763 ms - -[0m
+
+2018-11-20T15:33:17.679Z - info: [0mGET /modules/cms/client/cms.client.module.js [36m304 [0m6.145 ms - -[0m
+
+2018-11-20T15:33:17.688Z - info: [0mGET /modules/core/client/app/config.js [32m200 [0m19.343 ms - -[0m
+
+2018-11-20T15:33:17.699Z - info: [0mGET /modules/core/client/core.client.module.js [36m304 [0m3.836 ms - -[0m
+
+2018-11-20T15:33:17.702Z - info: [0mGET /modules/emails/client/emails.client.module.js [36m304 [0m5.013 ms - -[0m
+
+2018-11-20T15:33:17.711Z - info: [0mGET /modules/newsletters/client/newsletters.client.module.js [36m304 [0m4.844 ms - -[0m
+
+2018-11-20T15:33:17.715Z - info: [0mGET /modules/products/client/products.client.module.js [36m304 [0m3.181 ms - -[0m
+
+2018-11-20T15:33:17.722Z - info: [0mGET /modules/promotions/client/promotions.client.module.js [36m304 [0m11.804 ms - -[0m
+
+2018-11-20T15:33:17.728Z - info: [0mGET /modules/users/client/users.client.module.js [36m304 [0m5.248 ms - -[0m
+
+2018-11-20T15:33:17.735Z - info: [0mGET /modules/cms/client/config/cms.client.config.js [36m304 [0m10.774 ms - -[0m
+
+2018-11-20T15:33:17.756Z - info: [0mGET /modules/cms/client/controllers/admin/category/category.client.controller.js [32m200 [0m11.743 ms - -[0m
+
+2018-11-20T15:33:17.760Z - info: [0mGET /modules/cms/client/controllers/admin/category/editcategory.client.controller.js [32m200 [0m8.005 ms - -[0m
+
+2018-11-20T15:33:17.776Z - info: [0mGET /modules/cms/client/controllers/admin/page/page.client.controller.js [32m200 [0m1.845 ms - -[0m
+
+2018-11-20T15:33:17.814Z - info: [0mGET /modules/cms/client/controllers/admin/page/editpage.client.controller.js [32m200 [0m31.534 ms - -[0m
+
+2018-11-20T15:33:17.815Z - info: [0mGET /modules/cms/client/controllers/admin/plugins/editplugins.client.controller.js [32m200 [0m30.566 ms - -[0m
+
+2018-11-20T15:33:17.817Z - info: [0mGET /modules/cms/client/controllers/admin/post/post.client.controller.js [32m200 [0m26.175 ms - -[0m
+
+2018-11-20T15:33:17.822Z - info: [0mGET /modules/cms/client/controllers/admin/plugins/plugins.client.controller.js [32m200 [0m37.332 ms - -[0m
+
+2018-11-20T15:33:17.825Z - info: [0mGET /modules/cms/client/config/cms.client.routes.js [32m200 [0m91.547 ms - -[0m
+
+2018-11-20T15:33:17.838Z - info: [0mGET /modules/cms/client/controllers/admin/post/editpost.client.controller.js [32m200 [0m53.879 ms - -[0m
+
+2018-11-20T15:33:17.901Z - info: [0mGET /modules/cms/client/controllers/cms.client.controller.js [36m304 [0m13.715 ms - -[0m
+
+2018-11-20T15:33:17.904Z - info: [0mGET /modules/cms/client/controllers/list-cms.client.controller.js [36m304 [0m11.402 ms - -[0m
+
+2018-11-20T15:33:17.908Z - info: [0mGET /modules/core/client/config/core-admin.client.menus.js [36m304 [0m12.135 ms - -[0m
+
+2018-11-20T15:33:17.910Z - info: [0mGET /modules/core/client/config/core-admin.client.routes.js [36m304 [0m10.872 ms - -[0m
+
+2018-11-20T15:33:17.916Z - info: [0mGET /modules/core/client/config/core.client.menus.js [36m304 [0m14.848 ms - -[0m
+
+2018-11-20T15:33:17.927Z - info: [0mGET /modules/core/client/config/core.client.route-filter.js [36m304 [0m11.634 ms - -[0m
+
+2018-11-20T15:33:17.931Z - info: [0mGET /modules/core/client/controllers/admin/settings/business/language/businesslanguagelist.client.controller.js [36m304 [0m7.993 ms - -[0m
+
+2018-11-20T15:33:17.939Z - info: [0mGET /modules/core/client/controllers/admin/settings/business/language/editbusinesslanguage.client.controller.js [36m304 [0m8.590 ms - -[0m
+
+2018-11-20T15:33:17.950Z - info: [0mGET /modules/core/client/controllers/admin/settings/business/country/businesscountrylist.client.controller.js [32m200 [0m18.037 ms - -[0m
+
+2018-11-20T15:33:17.953Z - info: [0mGET /modules/core/client/controllers/admin/settings/cart/settingscart.client.controller.js [36m304 [0m9.827 ms - -[0m
+
+2018-11-20T15:33:17.959Z - info: [0mGET /modules/core/client/controllers/admin/settings/business/country/editbusinesscountry.client.controller.js [32m200 [0m14.165 ms - -[0m
+
+2018-11-20T15:33:17.961Z - info: [0mGET /modules/cms/client/services/cms.client.service.js [32m200 [0m52.237 ms - -[0m
+
+2018-11-20T15:33:17.980Z - info: [0mGET /modules/core/client/config/core.client.routes.js [32m200 [0m21.424 ms - -[0m
+
+2018-11-20T15:33:17.984Z - info: [0mGET /modules/core/client/controllers/admin/settings/country/editcountry.client.controller.js [36m304 [0m8.753 ms - -[0m
+
+2018-11-20T15:33:17.993Z - info: [0mGET /modules/core/client/controllers/admin/settings/country/countrylist.client.controller.js [32m200 [0m29.472 ms - -[0m
+
+2018-11-20T15:33:18.005Z - info: [0mGET /modules/core/client/controllers/admin/settings/district/districtlist.client.controller.js [32m200 [0m22.631 ms - -[0m
+
+2018-11-20T15:33:18.007Z - info: [0mGET /modules/core/client/controllers/admin/settings/district/editdistrict.client.controller.js [32m200 [0m21.887 ms - -[0m
+
+2018-11-20T15:33:18.008Z - info: [0mGET /admin/css/style.css [36m304 [0m2.285 ms - -[0m
+
+2018-11-20T15:33:18.012Z - info: [0mGET /modules/core/client/controllers/admin/settings/general/deliveryservicearea/country/gencountrylist.client.controller.js [32m200 [0m21.806 ms - -[0m
+
+2018-11-20T15:33:18.018Z - info: [0mGET /modules/core/client/controllers/admin/settings/general/deliveryservicearea/country/gencountrylistedit.client.controller.js [32m200 [0m20.767 ms - -[0m
+
+2018-11-20T15:33:18.028Z - info: [0mGET /admin/css/custom.css [36m304 [0m4.165 ms - -[0m
+
+2018-11-20T15:33:18.032Z - info: [0mGET /modules/core/client/controllers/admin/settings/general/currency/currencylist.client.controller.js [36m304 [0m4.969 ms - -[0m
+
+2018-11-20T15:33:18.041Z - info: [0mGET /modules/core/client/controllers/admin/settings/general/currency/currencyedit.client.controller.js [32m200 [0m46.753 ms - -[0m
+
+2018-11-20T15:33:18.068Z - info: [0mGET /modules/core/client/controllers/admin/settings/general/deliveryservicearea/country/generalcountrylist.client.controller.js [32m200 [0m2.075 ms - -[0m
+
+2018-11-20T15:33:18.074Z - info: [0mGET /modules/core/client/controllers/admin/settings/general/deliveryservicearea/district/generaldistrictlist.client.controller.js [36m304 [0m1.085 ms - -[0m
+
+2018-11-20T15:33:18.085Z - info: [0mGET /modules/core/client/controllers/admin/settings/general/deliveryservicearea/postalcode/generalpostalcodelist.client.controller.js [36m304 [0m5.744 ms - -[0m
+
+2018-11-20T15:33:18.089Z - info: [0mGET /modules/core/client/controllers/admin/settings/general/deliveryservicearea/state/generalstatelist.client.controller.js [36m304 [0m4.476 ms - -[0m
+
+2018-11-20T15:33:18.098Z - info: [0mGET /modules/core/client/controllers/admin/settings/general/languages/editlanguage.client.controller.js [36m304 [0m10.458 ms - -[0m
+
+2018-11-20T15:33:18.102Z - info: [0mGET /modules/core/client/controllers/admin/settings/general/languages/languagelist.client.controller.js [36m304 [0m16.972 ms - -[0m
+
+2018-11-20T15:33:18.118Z - info: [0mGET /admin/css/icons/font-awesome/css/fontawesome-all.css [36m304 [0m4.329 ms - -[0m
+
+2018-11-20T15:33:18.122Z - info: [0mGET /admin/css/icons/simple-line-icons/css/simple-line-icons.css [36m304 [0m6.695 ms - -[0m
+
+2018-11-20T15:33:18.125Z - info: [0mGET /modules/core/client/controllers/admin/settings/membership/settingsmembership.client.controller.js [36m304 [0m11.793 ms - -[0m
+
+2018-11-20T15:33:18.126Z - info: [0mGET /admin/css/icons/weather-icons/css/weather-icons.min.css [36m304 [0m3.836 ms - -[0m
+
+2018-11-20T15:33:18.135Z - info: [0mGET /admin/css/icons/linea-icons/linea.css [36m304 [0m1.481 ms - -[0m
+
+2018-11-20T15:33:18.141Z - info: [0mGET /admin/css/icons/themify-icons/themify-icons.css [36m304 [0m4.824 ms - -[0m
+
+2018-11-20T15:33:18.143Z - info: [0mGET /admin/css/icons/flag-icon-css/flag-icon.min.css [36m304 [0m4.081 ms - -[0m
+
+2018-11-20T15:33:18.145Z - info: [0mGET /admin/css/icons/material-design-iconic-font/css/materialdesignicons.min.css [36m304 [0m2.862 ms - -[0m
+
+2018-11-20T15:33:18.153Z - info: [0mGET /admin/css/spinners.css [36m304 [0m7.068 ms - -[0m
+
+2018-11-20T15:33:18.156Z - info: [0mGET /admin/css/animate.css [36m304 [0m6.352 ms - -[0m
+
+2018-11-20T15:33:18.160Z - info: [0mGET /modules/core/client/controllers/admin/settings/pincode/editpincode.client.controller.js [36m304 [0m6.516 ms - -[0m
+
+2018-11-20T15:33:18.164Z - info: [0mGET /modules/core/client/controllers/admin/settings/menu/settingsmenu.client.controller.js [32m200 [0m44.117 ms - -[0m
+
+2018-11-20T15:33:18.167Z - info: [0mGET /modules/core/client/controllers/admin/settings/menu/editsettingsmenu.client.controller.js [32m200 [0m47.624 ms - -[0m
+
+2018-11-20T15:33:18.173Z - info: [0mGET /modules/core/client/controllers/admin/settings/offlinevendor/offlinevendor.client.controller.js [36m304 [0m10.382 ms - -[0m
+
+2018-11-20T15:33:18.178Z - info: [0mGET /modules/core/client/controllers/admin/settings/pincode/pincodelist.client.controller.js [36m304 [0m11.452 ms - -[0m
+
+2018-11-20T15:33:18.186Z - info: [0mGET /modules/core/client/controllers/admin/settings/general/mainstore/mainstore.client.controller.js [32m200 [0m19.002 ms - -[0m
+
+2018-11-20T15:33:18.189Z - info: [0mGET /modules/core/client/controllers/admin/settings/settingsnewsletter/settingsnewsletter.client.controller.js [36m304 [0m9.771 ms - -[0m
+
+2018-11-20T15:33:18.199Z - info: [0mGET /modules/core/client/controllers/admin/settings/settingsproduct/settingsproduct.client.controller.js [36m304 [0m12.126 ms - -[0m
+
+2018-11-20T15:33:18.202Z - info: [0mGET /modules/core/client/controllers/admin/settings/settingspromotion/settingspromotion.client.controller.js [36m304 [0m8.032 ms - -[0m
+
+2018-11-20T15:33:18.206Z - info: [0mGET /modules/core/client/controllers/admin/settings/store/storelist.client.controller.js [36m304 [0m7.001 ms - -[0m
+
+2018-11-20T15:33:18.214Z - info: [0mGET /modules/core/client/controllers/admin/usermanagement/roleandprivilege/editusermanagementrole.client.controller.js [36m304 [0m1.868 ms - -[0m
+
+2018-11-20T15:33:18.216Z - info: [0mGET /modules/core/client/services/admin/settings/general/deliveryservicearea/settings.serviceareacountry.service.js [32m200 [0m15.191 ms - -[0m
+
+2018-11-20T15:33:18.227Z - info: [0mGET /modules/core/client/controllers/admin/settings/state/statelist.client.controller%20.js [32m200 [0m14.164 ms - -[0m
+
+2018-11-20T15:33:18.232Z - info: [0mGET /modules/core/client/controllers/admin/usermanagement/roleandprivilege/usermanagementrole.client.controller.js [36m304 [0m6.536 ms - -[0m
+
+2018-11-20T15:33:18.235Z - info: [0mGET /modules/core/client/controllers/admin/settings/state/stateedit.client.controller.js [36m304 [0m5.182 ms - -[0m
+
+2018-11-20T15:33:18.239Z - info: [0mGET /modules/core/client/controllers/admin/usermanagement/adminuser/usermngeditadminuser.client.controller.js [32m200 [0m41.994 ms - -[0m
+
+2018-11-20T15:33:18.242Z - info: [0mGET /modules/core/client/controllers/admin/usermanagement/roleandprivilege/manageusermanagementrole.client.controller.js [32m200 [0m41.609 ms - -[0m
+
+2018-11-20T15:33:18.254Z - info: [0mGET /modules/core/client/controllers/error.client.controller.js [36m304 [0m4.940 ms - -[0m
+
+2018-11-20T15:33:18.258Z - info: [0mGET /modules/core/client/services/core.adminmenu.service.js [36m304 [0m4.328 ms - -[0m
+
+2018-11-20T15:33:18.262Z - info: [0mGET /modules/core/client/controllers/admin/usermanagement/adminuser/usermanagementadminuser.client.controller.js [32m200 [0m35.847 ms - -[0m
+
+2018-11-20T15:33:18.275Z - info: [0mGET /modules/core/client/services/admin/settings/general/mainstore/settings.mainstore.service.js [32m200 [0m14.913 ms - -[0m
+
+2018-11-20T15:33:18.277Z - info: [0mGET /modules/core/client/services/core.acl.service.js [32m200 [0m14.729 ms - -[0m
+
+2018-11-20T15:33:18.278Z - info: [0mGET /modules/core/client/services/core.client.service.js [36m304 [0m5.066 ms - -[0m
+
+2018-11-20T15:33:18.279Z - info: [0mGET /modules/core/client/directives/auto-focus.client.directive.js [36m304 [0m3.815 ms - -[0m
+
+2018-11-20T15:33:18.286Z - info: [0mGET /modules/core/client/directives/page-title.client.directive.js [36m304 [0m15.303 ms - -[0m
+
+2018-11-20T15:33:18.289Z - info: [0mGET /modules/core/client/services/core.currency.service.js [36m304 [0m5.205 ms - -[0m
+
+2018-11-20T15:33:18.291Z - info: [0mGET /modules/core/client/services/interceptors/auth-interceptor.client.service.js [36m304 [0m4.626 ms - -[0m
+
+2018-11-20T15:33:18.298Z - info: [0mGET /modules/core/client/services/core.headermenu.service.js [32m200 [0m44.783 ms - 928[0m
+
+2018-11-20T15:33:18.304Z - info: [0mGET /modules/core/client/controllers/home.client.controller.js [32m200 [0m12.560 ms - -[0m
+
+2018-11-20T15:33:18.306Z - info: [0mGET /modules/core/client/services/socket.io.client.service.js [36m304 [0m5.168 ms - -[0m
+
+2018-11-20T15:33:18.308Z - info: [0mGET /modules/emails/client/config/emails.client.config.js [36m304 [0m4.154 ms - -[0m
+
+2018-11-20T15:33:18.310Z - info: [0mGET /modules/core/client/services/menu.client.service.js [32m200 [0m15.111 ms - -[0m
+
+2018-11-20T15:33:18.318Z - info: [0mGET /modules/core/client/services/core.usermngadminuser.service.js [32m200 [0m15.331 ms - -[0m
+
+2018-11-20T15:33:18.328Z - info: [0mGET /modules/emails/client/config/emails.client.routes.js [32m200 [0m16.328 ms - -[0m
+
+2018-11-20T15:33:18.330Z - info: [0mGET /modules/emails/client/controllers/admin/cms/cmsratingadminaction/addcmsratingaction.client.controller.js [32m200 [0m9.911 ms - -[0m
+
+2018-11-20T15:33:18.332Z - info: [0mGET /modules/emails/client/controllers/admin/cms/cmsratingadminaction/editcmsratingaction.client.controller.js [32m200 [0m9.393 ms - -[0m
+
+2018-11-20T15:33:18.334Z - info: [0mGET /modules/emails/client/controllers/admin/cms/cmsratingadminaction/emailcmsratingaction.client.controller.js [32m200 [0m8.842 ms - -[0m
+
+2018-11-20T15:33:18.341Z - info: [0mGET /modules/emails/client/controllers/admin/cms/cmsratingsubmission/cmsratingsub.client.controller.js [32m200 [0m7.780 ms - -[0m
+
+2018-11-20T15:33:18.344Z - info: [0mGET /modules/emails/client/controllers/admin/cms/cmsratingsubmission/cmsratingsubedit.client.controller.js [32m200 [0m14.098 ms - -[0m
+
+2018-11-20T15:33:18.349Z - info: [0mGET /modules/emails/client/controllers/admin/cms/cmsratingsubmission/cmsratingsublist.client.controller.js [32m200 [0m7.657 ms - -[0m
+
+2018-11-20T15:33:18.353Z - info: [0mGET /modules/emails/client/controllers/admin/cms/cmsreview/addcmsreviewsubmission.client.controller.js [32m200 [0m7.186 ms - -[0m
+
+2018-11-20T15:33:18.357Z - info: [0mGET /modules/emails/client/controllers/admin/cms/cmsreview/cmsreviewlist.client.controller.js [32m200 [0m6.832 ms - -[0m
+
+2018-11-20T15:33:18.375Z - info: [0mGET /modules/emails/client/controllers/admin/cms/cmsreviewaction/cmsreviewaction.client.controller.js [32m200 [0m6.861 ms - -[0m
+
+2018-11-20T15:33:18.377Z - info: [0mGET /modules/emails/client/controllers/admin/cms/cmsreviewaction/cmsreviewactionedit.client.controller.js [32m200 [0m6.316 ms - -[0m
+
+2018-11-20T15:33:18.380Z - info: [0mGET /modules/emails/client/controllers/admin/cms/cmsreviewaction/cmsreviewactionlist.client.controller.js [32m200 [0m5.793 ms - -[0m
+
+2018-11-20T15:33:18.385Z - info: [0mGET /modules/emails/client/controllers/admin/cms/cmsreview/editcmsreviewsubmission.client.controller.js [32m200 [0m9.907 ms - -[0m
+
+2018-11-20T15:33:18.387Z - info: [0mGET /modules/emails/client/controllers/admin/cms/cmstagaction/cmstagaction.client.controller.js [32m200 [0m5.616 ms - -[0m
+
+2018-11-20T15:33:18.389Z - info: [0mGET /modules/emails/client/controllers/admin/cms/cmstagaction/cmstagactionedit.client.controller.js [32m200 [0m4.228 ms - -[0m
+
+2018-11-20T15:33:18.400Z - info: [0mGET /modules/core/client/directives/show-errors.client.directive.js [36m304 [0m6.001 ms - -[0m
+
+2018-11-20T15:33:18.408Z - info: [0mGET /modules/core/client/controllers/header.client.controller.js [32m200 [0m9.300 ms - -[0m
+
+2018-11-20T15:33:18.411Z - info: [0mGET /modules/emails/client/controllers/admin/cms/cmstagaction/cmstagactionlist.client.controller.js [32m200 [0m8.821 ms - -[0m
+
+2018-11-20T15:33:18.414Z - info: [0mGET /modules/emails/client/controllers/admin/cms/cmstagsubmission/addcmstagsubmission.client.controller.js [32m200 [0m7.587 ms - -[0m
+
+2018-11-20T15:33:18.419Z - info: [0mGET /modules/emails/client/controllers/admin/cms/cmstagsubmission/editcmstagsubmission.client.controller.js [32m200 [0m8.544 ms - -[0m
+
+2018-11-20T15:33:18.428Z - info: [0mGET /modules/emails/client/controllers/admin/cms/cmstagsubmission/emailcmstagsubmission.client.controller.js [32m200 [0m8.398 ms - -[0m
+
+2018-11-20T15:33:18.443Z - info: [0mGET /modules/emails/client/controllers/admin/creditmemo/memocomments/memocommentslist.client.controller.js [32m200 [0m11.996 ms - -[0m
+
+2018-11-20T15:33:18.450Z - info: [0mGET /modules/emails/client/controllers/admin/creditmemo/memocreation/creditmemocreation.client.controller.js [32m200 [0m11.289 ms - -[0m
+
+2018-11-20T15:33:18.452Z - info: [0mGET /modules/emails/client/controllers/admin/creditmemo/memocomments/memocommentsedit.client.controller.js [32m200 [0m12.846 ms - -[0m
+
+2018-11-20T15:33:18.456Z - info: [0mGET /modules/emails/client/controllers/admin/creditmemo/memocreation/memocreationedit.client.controller.js [32m200 [0m7.033 ms - -[0m
+
+2018-11-20T15:33:18.463Z - info: [0mGET /modules/emails/client/controllers/admin/creditmemo/memocreation/memocreationlist.client.controller.js [32m200 [0m12.524 ms - -[0m
+
+2018-11-20T15:33:18.468Z - info: [0mGET /modules/emails/client/controllers/admin/creditmemo/memocomments/creditmemocomments.client.controller.js [32m200 [0m49.772 ms - -[0m
+
+2018-11-20T15:33:18.477Z - info: [0mGET /modules/emails/client/controllers/admin/invoice/emailinvoicecommentedit.client.controller.js [32m200 [0m17.776 ms - -[0m
+
+2018-11-20T15:33:18.482Z - info: [0mGET /modules/emails/client/controllers/admin/invoice/emailinvoicecreationedit.client.controller.js [32m200 [0m12.637 ms - -[0m
+
+2018-11-20T15:33:18.485Z - info: [0mGET /modules/emails/client/controllers/admin/newsletter/emailnewslettersubscription.client.controller.js [32m200 [0m7.833 ms - -[0m
+
+2018-11-20T15:33:18.487Z - info: [0mGET /modules/emails/client/controllers/admin/newsletter/emailnewslettersubscriptionedit.client.controller.js [32m200 [0m6.770 ms - -[0m
+
+2018-11-20T15:33:18.490Z - info: [0mGET /modules/emails/client/controllers/admin/newsletter/newsmailconfirmation/emailnewsletterconfirmlist.client.controller.js [32m200 [0m8.110 ms - -[0m
+
+2018-11-20T15:33:18.501Z - info: [0mGET /modules/emails/client/controllers/admin/invoice/emailinvoicecomments.client.controller.js [32m200 [0m40.527 ms - -[0m
+
+2018-11-20T15:33:18.504Z - info: [0mGET /modules/emails/client/controllers/admin/invoice/emailinvoicecreation.client.controller.js [32m200 [0m42.708 ms - -[0m
+
+2018-11-20T15:33:18.542Z - info: [0mGET /modules/emails/client/controllers/admin/newsletter/newsmailconfirmation/mailconfirmationedit.client.controller.js [32m200 [0m7.417 ms - -[0m
+
+2018-11-20T15:33:18.545Z - info: [0mGET /modules/emails/client/controllers/admin/newsletter/successfullsubedit.client.controller.js [32m200 [0m6.580 ms - -[0m
+
+2018-11-20T15:33:18.547Z - info: [0mGET /modules/emails/client/controllers/admin/newsletter/newsmailconfirmation/mailconfirmation.client.controller.js [32m200 [0m9.372 ms - -[0m
+
+2018-11-20T15:33:18.549Z - info: [0mGET /modules/emails/client/controllers/admin/order/cancelation/ordercancelationedit.client.controller.js [32m200 [0m4.648 ms - -[0m
+
+2018-11-20T15:33:18.553Z - info: [0mGET /modules/emails/client/controllers/admin/order/cancelation/ordercancelationlist.client.controller.js [32m200 [0m3.138 ms - -[0m
+
+2018-11-20T15:33:18.557Z - info: [0mGET /modules/emails/client/controllers/admin/order/creation/emailordercreationedit.client.controller.js [32m200 [0m4.167 ms - -[0m
+
+2018-11-20T15:33:18.559Z - info: [0mGET /modules/emails/client/controllers/admin/order/creation/ordercreation.client.controller.js [32m200 [0m1.390 ms - -[0m
+
+2018-11-20T15:33:18.570Z - info: [0mGET /modules/emails/client/controllers/admin/order/cancelation/ordercancelation.client.controller.js [32m200 [0m33.386 ms - -[0m
+
+2018-11-20T15:33:18.586Z - info: [0mGET /modules/emails/client/controllers/admin/order/hold/orderhold.client.controller.js [32m200 [0m9.693 ms - -[0m
+
+2018-11-20T15:33:18.588Z - info: [0mGET /modules/emails/client/controllers/admin/order/hold/orderholdedit.client.controller.js [32m200 [0m9.345 ms - -[0m
+
+2018-11-20T15:33:18.592Z - info: [0mGET /modules/emails/client/controllers/admin/order/hold/orderholdlist.client.controller.js [32m200 [0m7.364 ms - -[0m
+
+2018-11-20T15:33:18.593Z - info: [0mGET /modules/emails/client/controllers/admin/order/nostock/ordernostockedit.client.controller.js [32m200 [0m6.029 ms - -[0m
+
+2018-11-20T15:33:18.594Z - info: [0mGET /modules/emails/client/controllers/admin/order/nostock/ordernostocklist.client.controller.js [32m200 [0m5.546 ms - -[0m
+
+2018-11-20T15:33:18.621Z - info: [0mGET /modules/emails/client/controllers/admin/order/ordercomments/addordercomments.client.controller.js [32m200 [0m26.617 ms - -[0m
+
+2018-11-20T15:33:18.624Z - info: [0mGET /modules/emails/client/controllers/admin/order/nostock/ordernostock.client.controller.js [32m200 [0m40.062 ms - -[0m
+
+2018-11-20T15:33:18.640Z - info: [0mGET /modules/emails/client/controllers/admin/order/ordercomments/editordercomments.client.controller.js [32m200 [0m7.933 ms - -[0m
+
+2018-11-20T15:33:18.646Z - info: [0mGET /modules/emails/client/controllers/admin/order/ordercomments/ordercomments.client.controller.js [32m200 [0m6.531 ms - -[0m
+
+2018-11-20T15:33:18.649Z - info: [0mGET /modules/emails/client/controllers/admin/order/ordercompletion/ordercompletionadd.client.controller.js [32m200 [0m5.892 ms - -[0m
+
+2018-11-20T15:33:18.652Z - info: [0mGET /modules/emails/client/controllers/admin/newsletter/emailsucessfullsubscription.client.controller.js [32m200 [0m5.273 ms - -[0m
+
+2018-11-20T15:33:18.654Z - info: [0mGET /modules/emails/client/controllers/admin/order/ordercompletion/ordercompletionedit.client.controller.js [32m200 [0m4.177 ms - -[0m
+
+2018-11-20T15:33:18.657Z - info: [0mGET /modules/emails/client/controllers/admin/order/ordercompletion/ordercompletionlist.client.controller.js [32m200 [0m3.475 ms - -[0m
+
+2018-11-20T15:33:18.674Z - info: [0mGET /modules/emails/client/controllers/admin/order/orderprocess/addorderprocess.client.controller.js [32m200 [0m10.752 ms - -[0m
+
+2018-11-20T15:33:18.679Z - info: [0mGET /modules/emails/client/controllers/admin/order/orderprocess/orderprocess.client.controller.js [32m200 [0m7.656 ms - -[0m
+
+2018-11-20T15:33:18.681Z - info: [0mGET /modules/emails/client/controllers/admin/order/paymentfailure/editpaymentfailure.client.controller.js [32m200 [0m5.382 ms - -[0m
+
+2018-11-20T15:33:18.682Z - info: [0mGET /modules/emails/client/controllers/admin/order/paymentfailure/addpaymentfailure.client.contoller.js [32m200 [0m7.325 ms - -[0m
+
+2018-11-20T15:33:18.685Z - info: [0mGET /modules/emails/client/controllers/admin/order/orderprocess/editorderprocess.client.controller.js [32m200 [0m8.636 ms - -[0m
+
+2018-11-20T15:33:18.687Z - info: [0mGET /modules/emails/client/controllers/admin/order/unhold/orderunhold.client.controller.js [32m200 [0m8.820 ms - -[0m
+
+2018-11-20T15:33:18.696Z - info: [0mGET /modules/emails/client/controllers/admin/order/paymentfailure/paymentfailure.client.controller.js [32m200 [0m24.797 ms - -[0m
+
+2018-11-20T15:33:18.715Z - info: [0mGET /modules/emails/client/controllers/admin/order/unhold/orderunholdedit.client.controller.js [32m200 [0m10.831 ms - -[0m
+
+2018-11-20T15:33:18.717Z - info: [0mGET /modules/emails/client/controllers/admin/order/unhold/orderunholdlist.client.controller.js [32m200 [0m7.416 ms - -[0m
+
+2018-11-20T15:33:18.720Z - info: [0mGET /modules/emails/client/controllers/admin/product/prdratingsadminaction/emailratingsadminaction.client.controller.js [32m200 [0m6.360 ms - -[0m
+
+2018-11-20T15:33:18.722Z - info: [0mGET /modules/emails/client/controllers/admin/product/prdratingsadminaction/emailratingsadminactionedit.client.controller.js [32m200 [0m5.451 ms - -[0m
+
+2018-11-20T15:33:18.726Z - info: [0mGET /modules/emails/client/controllers/admin/product/prdratingsadminaction/emailratingsadminactionlist.client.controller.js [32m200 [0m4.549 ms - -[0m
+
+2018-11-20T15:33:18.734Z - info: [0mGET /modules/emails/client/controllers/admin/product/prdratingsubmission/emailratingsubmission.client.controller.js [32m200 [0m3.305 ms - -[0m
+
+2018-11-20T15:33:18.745Z - info: [0mGET /modules/emails/client/controllers/admin/product/prdratingsubmission/emailratingsubmissionlist.client.controller.js [32m200 [0m9.673 ms - -[0m
+
+2018-11-20T15:33:18.748Z - info: [0mGET /modules/emails/client/controllers/admin/product/prdreviewaction/emailreviewaction.client.controller.js [32m200 [0m8.920 ms - -[0m
+
+2018-11-20T15:33:18.750Z - info: [0mGET /modules/emails/client/controllers/admin/product/prdreviewaction/emailreviewactionedit.client.controller.js [32m200 [0m8.174 ms - -[0m
+
+2018-11-20T15:33:18.752Z - info: [0mGET /modules/emails/client/controllers/admin/product/prdratingsubmission/emailratingsubmissionedit.client.controller.js [32m200 [0m10.446 ms - -[0m
+
+2018-11-20T15:33:18.756Z - info: [0mGET /modules/emails/client/controllers/admin/product/prdreviewaction/emailreviewactionlist.client.controller.js [32m200 [0m4.685 ms - -[0m
+
+2018-11-20T15:33:18.757Z - info: [0mGET /modules/emails/client/controllers/admin/product/prdreviewsubmission/emailreviewsubmission.client.controller.js [32m200 [0m3.304 ms - -[0m
+
+2018-11-20T15:33:18.771Z - info: [0mGET /modules/emails/client/controllers/admin/product/prdreviewsubmission/emailreviewsubmissionedit.client.controller.js [32m200 [0m6.235 ms - -[0m
+
+2018-11-20T15:33:18.773Z - info: [0mGET /modules/emails/client/controllers/admin/product/prdreviewsubmission/emailreviewsubmissionlist.client.controller.js [32m200 [0m5.738 ms - -[0m
+
+2018-11-20T15:33:18.779Z - info: [0mGET /modules/emails/client/controllers/admin/product/prdtagaction/emailtagaction.client.controller.js [32m200 [0m5.200 ms - -[0m
+
+2018-11-20T15:33:18.824Z - info: [0mGET /modules/emails/client/controllers/admin/product/prdtagaction/emailtagactionedit.client.controller.js [32m200 [0m5.019 ms - -[0m
+
+2018-11-20T15:33:18.826Z - info: [0mGET /modules/emails/client/controllers/admin/product/prdtagaction/emailtagactionlist.client.controller.js [32m200 [0m3.768 ms - -[0m
+
+2018-11-20T15:33:18.828Z - info: [0mGET /modules/emails/client/controllers/admin/product/prdtagsubmission/emailtagsubmission.client.controller.js [32m200 [0m3.455 ms - -[0m
+
+2018-11-20T15:33:18.836Z - info: [0mGET /modules/emails/client/controllers/admin/product/emailratingsaction.client.controller.js [36m304 [0m10.638 ms - -[0m
+
+2018-11-20T15:33:18.838Z - info: [0mGET /modules/emails/client/controllers/admin/product/emailtagaction.client.controller.js [36m304 [0m6.761 ms - -[0m
+
+2018-11-20T15:33:18.847Z - info: [0mGET /modules/emails/client/controllers/admin/product/prdtagsubmission/emailtagsubmissionedit.client.controller.js [32m200 [0m21.525 ms - -[0m
+
+2018-11-20T15:33:18.853Z - info: [0mGET /modules/emails/client/controllers/admin/promotion/shareusers/shareusersadd.client.controller.js [32m200 [0m10.482 ms - -[0m
+
+2018-11-20T15:33:18.855Z - info: [0mGET /modules/emails/client/controllers/admin/promotion/shareusers/shareusersedit.client.controller.js [32m200 [0m9.762 ms - -[0m
+
+2018-11-20T15:33:18.859Z - info: [0mGET /modules/emails/client/controllers/admin/product/prdtagsubmission/emailtagsubmissionlist.client.controller.js [32m200 [0m10.968 ms - -[0m
+
+2018-11-20T15:33:18.866Z - info: [0mGET /modules/emails/client/controllers/admin/promotion/shareusers/shareuserslist.client.controller.js [32m200 [0m8.122 ms - -[0m
+
+2018-11-20T15:33:18.875Z - info: [0mGET /modules/emails/client/controllers/admin/shipments/shipmentcomments/addemailshipmentcomments.client.controller.js [32m200 [0m17.533 ms - -[0m
+
+2018-11-20T15:33:18.882Z - info: [0mGET /modules/emails/client/controllers/admin/shipments/shipmentcomments/editemailshipmentcomments.client.controller.js [32m200 [0m20.135 ms - -[0m
+
+2018-11-20T15:33:18.889Z - info: [0mGET /modules/emails/client/controllers/admin/shipments/shipmentcomments/emailshipmentcomments.client.controller.js [32m200 [0m15.368 ms - -[0m
+
+2018-11-20T15:33:18.891Z - info: [0mGET /modules/emails/client/controllers/admin/shipments/shipmentcreation/addemailshipmentcreation.client.controller.js [32m200 [0m14.873 ms - -[0m
+
+2018-11-20T15:33:18.893Z - info: [0mGET /modules/emails/client/controllers/admin/shipments/shipmentcreation/editemailshipmentcreation.client.controller.js [32m200 [0m13.917 ms - -[0m
+
+2018-11-20T15:33:18.898Z - info: [0mGET /modules/emails/client/controllers/admin/shipments/shipmentcreation/emailshipmentcreation.client.controller.js [32m200 [0m12.984 ms - -[0m
+
+2018-11-20T15:33:18.902Z - info: [0mGET /modules/emails/client/controllers/admin/shipments/shipmentupdates/addemailshipmentupdates.client.controller.js [32m200 [0m14.741 ms - -[0m
+
+2018-11-20T15:33:18.905Z - info: [0mGET /modules/emails/client/controllers/admin/shipments/shipmentupdates/editemailshipmentupdates.client.controller.js [32m200 [0m13.095 ms - -[0m
+
+2018-11-20T15:33:18.908Z - info: [0mGET /modules/emails/client/controllers/admin/shipments/shipmentupdates/emailshipmentupdates.client.controller.js [32m200 [0m9.644 ms - -[0m
+
+2018-11-20T15:33:18.919Z - info: [0mGET /modules/emails/client/services/emails.cancelation.service.js [32m200 [0m17.250 ms - -[0m
+
+2018-11-20T15:33:18.931Z - info: [0mGET /modules/emails/client/controllers/admin/promotion/emailshareusers.client.controller.js [36m304 [0m4.566 ms - -[0m
+
+2018-11-20T15:33:18.945Z - info: [0mGET /modules/emails/client/services/emails.cmsratingaction.service.js [32m200 [0m12.665 ms - -[0m
+
+2018-11-20T15:33:18.947Z - info: [0mGET /modules/emails/client/services/emails.cmsratingsub.service.js [32m200 [0m9.531 ms - -[0m
+
+2018-11-20T15:33:18.949Z - info: [0mGET /modules/emails/client/controllers/admin/user/emailuserforgot.client.controller.js [32m200 [0m9.394 ms - -[0m
+
+2018-11-20T15:33:18.950Z - info: [0mGET /modules/emails/client/controllers/admin/user/emailuserforgotedit.client.controller.js [32m200 [0m9.129 ms - -[0m
+
+2018-11-20T15:33:18.958Z - info: [0mGET /modules/emails/client/controllers/admin/user/emailuserreg.client.controller.js [32m200 [0m11.976 ms - -[0m
+
+2018-11-20T15:33:18.964Z - info: [0mGET /modules/emails/client/controllers/emails.client.controller.js [36m304 [0m7.428 ms - -[0m
+
+2018-11-20T15:33:18.966Z - info: [0mGET /modules/emails/client/controllers/list-emails.client.controller.js [36m304 [0m6.758 ms - -[0m
+
+2018-11-20T15:33:18.968Z - info: [0mGET /modules/emails/client/services/emails.client.service.js [36m304 [0m6.081 ms - -[0m
+
+2018-11-20T15:33:18.971Z - info: [0mGET /modules/emails/client/controllers/admin/user/useredit.client.controller.js [32m200 [0m19.833 ms - -[0m
+
+2018-11-20T15:33:18.979Z - info: [0mGET /modules/newsletters/client/config/newsletters.client.config.js [36m304 [0m4.073 ms - -[0m
+
+2018-11-20T15:33:18.980Z - info: [0mGET /modules/newsletters/client/config/newsletters.client.routes.js [36m304 [0m3.123 ms - -[0m
+
+2018-11-20T15:33:18.982Z - info: [0mGET /modules/newsletters/client/controllers/list-newsletters.client.controller.js [36m304 [0m5.565 ms - -[0m
+
+2018-11-20T15:33:18.989Z - info: [0mGET /modules/emails/client/services/emails.userforgot.service.js [32m200 [0m26.670 ms - -[0m
+
+2018-11-20T15:33:18.991Z - info: [0mGET /modules/emails/client/services/emails.userreg.service.js [32m200 [0m22.765 ms - -[0m
+
+2018-11-20T15:33:18.996Z - info: [0mGET /modules/emails/client/services/emails.cmsreviewaction.service.js [32m200 [0m7.154 ms - -[0m
+
+2018-11-20T15:33:19.006Z - info: [0mGET /modules/newsletters/client/controllers/newsletters.client.controller.js [36m304 [0m5.901 ms - -[0m
+
+2018-11-20T15:33:19.012Z - info: [0mGET /modules/newsletters/client/controllers/newsletters/newsletters.client.controller.js [36m304 [0m4.944 ms - -[0m
+
+2018-11-20T15:33:19.014Z - info: [0mGET /modules/emails/client/services/emails.cmsreviewsubmission.service.js [32m200 [0m16.913 ms - -[0m
+
+2018-11-20T15:33:19.018Z - info: [0mGET /modules/emails/client/services/emails.cmstagsubmission.service.js [32m200 [0m12.124 ms - -[0m
+
+2018-11-20T15:33:19.020Z - info: [0mGET /modules/emails/client/services/emails.cmstagaction.service.js [32m200 [0m13.938 ms - -[0m
+
+2018-11-20T15:33:19.025Z - info: [0mGET /modules/emails/client/services/emails.invoicecomments.service.js [32m200 [0m9.674 ms - -[0m
+
+2018-11-20T15:33:19.032Z - info: [0mGET /modules/newsletters/client/services/newsletters.client.service.js [36m304 [0m2.939 ms - -[0m
+
+2018-11-20T15:33:19.036Z - info: [0mGET /modules/emails/client/services/emails.invoicecreation.service.js [32m200 [0m17.826 ms - -[0m
+
+2018-11-20T15:33:19.044Z - info: [0mGET /modules/emails/client/services/emails.mailconfirmation.service.js [32m200 [0m11.141 ms - -[0m
+
+2018-11-20T15:33:19.045Z - info: [0mGET /modules/newsletters/client/controllers/newsletters/newslettertemplate.client.controller.js [32m200 [0m10.713 ms - -[0m
+
+2018-11-20T15:33:19.047Z - info: [0mGET /modules/products/client/config/products.client.config.js [36m304 [0m6.537 ms - -[0m
+
+2018-11-20T15:33:19.051Z - info: [0mGET /modules/emails/client/services/emails.memocomments.service.js [32m200 [0m11.265 ms - -[0m
+
+2018-11-20T15:33:19.054Z - info: [0mGET /modules/products/client/controllers/admin/businesstypelist/businesstypelist.client.controller.js [36m304 [0m3.363 ms - -[0m
+
+2018-11-20T15:33:19.058Z - info: [0mGET /modules/products/client/config/products.client.routes.js [32m200 [0m10.025 ms - -[0m
+
+2018-11-20T15:33:19.064Z - info: [0mGET /modules/emails/client/services/emails.memocreation.service.js [32m200 [0m25.650 ms - -[0m
+
+2018-11-20T15:33:19.068Z - info: [0mGET /modules/emails/client/services/emails.nostock.service.js [32m200 [0m6.229 ms - -[0m
+
+2018-11-20T15:33:19.080Z - info: [0mGET /modules/emails/client/services/emails.ordercomments.service.js [32m200 [0m14.054 ms - -[0m
+
+2018-11-20T15:33:19.110Z - info: [0mGET /modules/emails/client/services/emails.orderprocess.service.js [32m200 [0m5.819 ms - -[0m
+
+2018-11-20T15:33:19.112Z - info: [0mGET /modules/emails/client/services/emails.ordercrteation.service.js [32m200 [0m38.206 ms - -[0m
+
+2018-11-20T15:33:19.114Z - info: [0mGET /modules/emails/client/services/emails.ordercompletion.service.js [32m200 [0m39.506 ms - -[0m
+
+2018-11-20T15:33:19.116Z - info: [0mGET /modules/emails/client/services/emails.orderhold.service.js [32m200 [0m35.446 ms - -[0m
+
+2018-11-20T15:33:19.119Z - info: [0mGET /modules/emails/client/services/emails.orderunhold.service.js [32m200 [0m33.065 ms - -[0m
+
+2018-11-20T15:33:19.130Z - info: [0mGET /modules/emails/client/services/emails.paymentfailure.service.js [32m200 [0m42.269 ms - -[0m
+
+2018-11-20T15:33:19.137Z - info: [0mGET /modules/emails/client/services/emails.prdratingsub.service.js [32m200 [0m8.751 ms - -[0m
+
+2018-11-20T15:33:19.139Z - info: [0mGET /modules/emails/client/services/emails.prdratingadminaction.service.js [32m200 [0m10.052 ms - -[0m
+
+2018-11-20T15:33:19.142Z - info: [0mGET /modules/emails/client/services/emails.prdreviewaction.service.js [32m200 [0m8.792 ms - -[0m
+
+2018-11-20T15:33:19.144Z - info: [0mGET /modules/emails/client/services/emails.prdreviewsub.service.js [32m200 [0m8.259 ms - -[0m
+
+2018-11-20T15:33:19.149Z - info: [0mGET /modules/emails/client/services/emails.prdtagaction.service.js [32m200 [0m7.846 ms - -[0m
+
+2018-11-20T15:33:19.157Z - info: [0mGET /modules/emails/client/services/emails.prdtagsub.service.js [32m200 [0m20.717 ms - -[0m
+
+2018-11-20T15:33:19.165Z - info: [0mGET /modules/emails/client/services/emails.shareusers.service.js [32m200 [0m11.783 ms - -[0m
+
+2018-11-20T15:33:19.168Z - info: [0mGET /modules/emails/client/services/emails.shipmentcomments.service.js [32m200 [0m11.293 ms - -[0m
+
+2018-11-20T15:33:19.170Z - info: [0mGET /modules/emails/client/services/emails.shipmentcreation.service.js [32m200 [0m8.193 ms - -[0m
+
+2018-11-20T15:33:19.171Z - info: [0mGET /modules/emails/client/services/emails.shipmentupdates.service.js [32m200 [0m7.228 ms - -[0m
+
+2018-11-20T15:33:19.174Z - info: [0mGET /modules/emails/client/services/emails.sub.service.js [32m200 [0m6.179 ms - -[0m
+
+2018-11-20T15:33:19.188Z - info: [0mGET /modules/products/client/controllers/admin/category/editprocategory.client.controller.js [36m304 [0m3.436 ms - -[0m
+
+2018-11-20T15:33:19.190Z - info: [0mGET /modules/products/client/controllers/admin/category/procategory.client.controller.js [36m304 [0m2.398 ms - -[0m
+
+2018-11-20T15:33:19.196Z - info: [0mGET /modules/products/client/controllers/admin/category/category.client.controller.js [32m200 [0m21.364 ms - -[0m
+
+2018-11-20T15:33:19.199Z - info: [0mGET /modules/newsletters/client/services/newslettertemplate.client.service.js [32m200 [0m13.876 ms - -[0m
+
+2018-11-20T15:33:19.201Z - info: [0mGET /modules/emails/client/services/emails.subscription.service.js [32m200 [0m15.303 ms - -[0m
+
+2018-11-20T15:33:19.207Z - info: [0mGET /modules/products/client/controllers/admin/businesstypelist/businesstypeadd.client.controller.js [32m200 [0m12.933 ms - -[0m
+
+2018-11-20T15:33:19.209Z - info: [0mGET /modules/products/client/controllers/admin/extrafield/editproextrafield.client.controller.js [36m304 [0m8.594 ms - -[0m
+
+2018-11-20T15:33:19.217Z - info: [0mGET /modules/products/client/controllers/admin/extrafield/progroup.client.controller.js [36m304 [0m11.524 ms - -[0m
+
+2018-11-20T15:33:19.219Z - info: [0mGET /modules/products/client/controllers/admin/invoice/addinvoices.client.controller.js [36m304 [0m5.180 ms - -[0m
+
+2018-11-20T15:33:19.222Z - info: [0mGET /modules/products/client/controllers/admin/invoice/invoices.client.controller.js [36m304 [0m8.894 ms - -[0m
+
+2018-11-20T15:33:19.223Z - info: [0mGET /modules/products/client/controllers/admin/order/addsales.client.controller.js [36m304 [0m6.902 ms - -[0m
+
+2018-11-20T15:33:19.227Z - info: [0mGET /modules/products/client/controllers/admin/order/order.client.controller.js [36m304 [0m9.209 ms - -[0m
+
+2018-11-20T15:33:19.233Z - info: [0mGET /modules/products/client/controllers/admin/order/orderdetails.client.controller.js [36m304 [0m6.880 ms - -[0m
+
+2018-11-20T15:33:19.234Z - info: [0mGET /modules/products/client/controllers/admin/product/editproduct.client.controller.js [36m304 [0m6.206 ms - -[0m
+
+2018-11-20T15:33:19.237Z - info: [0mGET /modules/products/client/controllers/admin/report/orderreport.client.controller.js [36m304 [0m6.188 ms - -[0m
+
+2018-11-20T15:33:19.247Z - info: [0mGET /modules/products/client/controllers/admin/extrafield/proextrafield.client.controller.js [32m200 [0m42.706 ms - -[0m
+
+2018-11-20T15:33:19.249Z - info: [0mGET /modules/products/client/controllers/admin/product/proproduct.client.controller.js [32m200 [0m11.232 ms - -[0m
+
+2018-11-20T15:33:19.252Z - info: [0mGET /modules/products/client/controllers/admin/taxgroup/protaxgroups.client.controller.js [32m200 [0m7.618 ms - -[0m
+
+2018-11-20T15:33:19.254Z - info: [0mGET /modules/products/client/controllers/admin/taxgroup/editprotaxgroups.client.controller.js [32m200 [0m8.150 ms - -[0m
+
+2018-11-20T15:33:19.257Z - info: [0mGET /modules/products/client/controllers/admin/taxgroup/addtaxgroups.client.controller.js [32m200 [0m6.436 ms - -[0m
+
+2018-11-20T15:33:19.259Z - info: [0mGET /modules/products/client/services/products.businesstypeadd.service.js [32m200 [0m7.791 ms - -[0m
+
+2018-11-20T15:33:19.276Z - info: [0mGET /modules/products/client/controllers/admin/taxgroup/taxgroups.client.controller.js [36m304 [0m8.505 ms - -[0m
+
+2018-11-20T15:33:19.277Z - info: [0mGET /modules/products/client/controllers/list-products.client.controller.js [36m304 [0m6.238 ms - -[0m
+
+2018-11-20T15:33:19.279Z - info: [0mGET /modules/products/client/controllers/products.client.controller.js [36m304 [0m5.247 ms - -[0m
+
+2018-11-20T15:33:19.281Z - info: [0mGET /modules/products/client/services/product.category.service.js [36m304 [0m4.169 ms - -[0m
+
+2018-11-20T15:33:19.283Z - info: [0mGET /modules/products/client/services/products.client.service.js [36m304 [0m3.281 ms - -[0m
+
+2018-11-20T15:33:19.293Z - info: [0mGET /modules/products/client/services/products.extrafield.service.js [36m304 [0m18.391 ms - -[0m
+
+2018-11-20T15:33:19.296Z - info: [0mGET /modules/promotions/client/config/promotions.client.config.js [36m304 [0m7.282 ms - -[0m
+
+2018-11-20T15:33:19.299Z - info: [0mGET /modules/promotions/client/controllers/list-promotions.client.controller.js [36m304 [0m5.540 ms - -[0m
+
+2018-11-20T15:33:19.307Z - info: [0mGET /modules/products/client/services/produts.taxgroup.service.js [32m200 [0m15.336 ms - -[0m
+
+2018-11-20T15:33:19.309Z - info: [0mGET /modules/promotions/client/config/promotions.client.routes.js [32m200 [0m13.385 ms - -[0m
+
+2018-11-20T15:33:19.312Z - info: [0mGET /modules/promotions/client/controllers/promocart.client.controller.js [32m200 [0m13.787 ms - -[0m
+
+2018-11-20T15:33:19.319Z - info: [0mGET /modules/promotions/client/controllers/promotions.client.controller.js [36m304 [0m3.184 ms - -[0m
+
+2018-11-20T15:33:19.320Z - info: [0mGET /modules/promotions/client/services/promotions.client.service.js [36m304 [0m2.556 ms - -[0m
+
+2018-11-20T15:33:19.322Z - info: [0mGET /modules/promotions/client/controllers/promoproduct.client.controller.js [32m200 [0m13.273 ms - -[0m
+
+2018-11-20T15:33:19.323Z - info: [0mGET /modules/promotions/client/controllers/promoship.client.controller.js [32m200 [0m12.614 ms - -[0m
+
+2018-11-20T15:33:19.326Z - info: [0mGET /modules/promotions/client/services/promotions.productcart.service.js [32m200 [0m7.250 ms - -[0m
+
+2018-11-20T15:33:19.336Z - info: [0mGET /modules/promotions/client/controllers/promocoupons.client.controller.js [32m200 [0m29.107 ms - -[0m
+
+2018-11-20T15:33:19.346Z - info: [0mGET /modules/users/client/config/users-admin.client.menus.js [36m304 [0m5.230 ms - -[0m
+
+2018-11-20T15:33:19.348Z - info: [0mGET /modules/users/client/config/users-admin.client.routes.js [36m304 [0m4.376 ms - -[0m
+
+2018-11-20T15:33:19.351Z - info: [0mGET /modules/users/client/config/users.client.routes.js [36m304 [0m7.849 ms - -[0m
+
+2018-11-20T15:33:19.357Z - info: [0mGET /modules/users/client/controllers/admin/list-users.client.controller.js [36m304 [0m9.137 ms - -[0m
+
+2018-11-20T15:33:19.358Z - info: [0mGET /modules/promotions/client/services/promotions.productprice.service.js [32m200 [0m12.117 ms - -[0m
+
+2018-11-20T15:33:19.362Z - info: [0mGET /modules/promotions/client/services/promotions.shippingprice.service.js [32m200 [0m15.126 ms - -[0m
+
+2018-11-20T15:33:19.368Z - info: [0mGET /modules/users/client/controllers/admin/user.client.controller.js [36m304 [0m10.325 ms - -[0m
+
+2018-11-20T15:33:19.370Z - info: [0mGET /modules/users/client/controllers/authentication.client.controller.js [36m304 [0m9.674 ms - -[0m
+
+2018-11-20T15:33:19.374Z - info: [0mGET /modules/users/client/controllers/password.client.controller.js [36m304 [0m10.745 ms - -[0m
+
+2018-11-20T15:33:19.379Z - info: [0mGET /modules/users/client/controllers/settings/change-password.client.controller.js [36m304 [0m9.879 ms - -[0m
+
+2018-11-20T15:33:19.381Z - info: [0mGET /modules/users/client/controllers/settings/change-profile-picture.client.controller.js [36m304 [0m9.262 ms - -[0m
+
+2018-11-20T15:33:19.385Z - info: [0mGET /modules/users/client/controllers/settings/edit-profile.client.controller.js [36m304 [0m10.057 ms - -[0m
+
+2018-11-20T15:33:19.390Z - info: [0mGET /modules/users/client/controllers/settings/manage-social-accounts.client.controller.js [36m304 [0m10.205 ms - -[0m
+
+2018-11-20T15:33:19.392Z - info: [0mGET /modules/users/client/controllers/settings/settings.client.controller.js [36m304 [0m9.617 ms - -[0m
+
+2018-11-20T15:33:19.396Z - info: [0mGET /modules/users/client/directives/password-validator.client.directive.js [36m304 [0m10.612 ms - -[0m
+
+2018-11-20T15:33:19.402Z - info: [0mGET /modules/users/client/directives/password-verify.client.directive.js [36m304 [0m10.013 ms - -[0m
+
+2018-11-20T15:33:19.403Z - info: [0mGET /modules/users/client/directives/users.client.directive.js [36m304 [0m9.308 ms - -[0m
+
+2018-11-20T15:33:19.406Z - info: [0mGET /modules/users/client/services/authentication.client.service.js [36m304 [0m9.461 ms - -[0m
+
+2018-11-20T15:33:19.408Z - info: [0mGET /modules/users/client/services/password-validator.client.service.js [36m304 [0m7.878 ms - -[0m
+
+2018-11-20T15:33:19.410Z - info: [0mGET /modules/users/client/services/users.client.service.js [36m304 [0m7.246 ms - -[0m
+
+2018-11-20T15:33:19.452Z - info: [0mGET /modules/core/client/img/brand/favicon.ico [36m304 [0m0.686 ms - -[0m
+
+2018-11-20T15:33:19.762Z - info: [0mGET /manifest.json [36m304 [0m1.533 ms - -[0m
+
+2018-11-20T15:33:24.966Z - info: [0mGET /admin/assets/plugins/bootstrap/css/bootstrap.min.css.map [36m304 [0m1.409 ms - -[0m
+
+2018-11-20T15:33:24.994Z - info: [0mGET /admin/css/icons/material-design-iconic-font/css/materialdesignicons.min.css.map [32m200 [0m35.823 ms - -[0m
+
+2018-11-20T15:35:19.496Z - info: [0mGET / [32m200 [0m100.464 ms - -[0m
+
+2018-11-20T15:35:19.615Z - info: [0mGET /lib/sweetalert/sweetalert.css [32m200 [0m23.327 ms - -[0m
+
+2018-11-20T15:35:19.696Z - info: [0mGET /admin/assets/plugins/jquery/jquery.min.js [32m200 [0m54.906 ms - -[0m
+
+2018-11-20T15:35:19.699Z - info: [0mGET /admin/assets/plugins/bootstrap/css/bootstrap.min.css [32m200 [0m128.524 ms - -[0m
+
+2018-11-20T15:35:19.906Z - info: [0mGET /lib/angular-animate/angular-animate.js [32m200 [0m57.828 ms - -[0m
+
+2018-11-20T15:35:19.916Z - info: [0mGET /lib/angular-messages/angular-messages.js [32m200 [0m25.243 ms - -[0m
+
+2018-11-20T15:35:19.923Z - info: [0mGET /lib/ng-file-upload/ng-file-upload.js [32m200 [0m19.688 ms - -[0m
+
+2018-11-20T15:35:19.933Z - info: [0mGET /lib/angular-bootstrap/ui-bootstrap-tpls.js [32m200 [0m37.628 ms - -[0m
+
+2018-11-20T15:35:19.936Z - info: [0mGET /lib/angular-mocks/angular-mocks.js [32m200 [0m37.094 ms - -[0m
+
+2018-11-20T15:35:19.950Z - info: [0mGET /lib/angular-ui-notification/dist/angular-ui-notification.js [32m200 [0m20.693 ms - -[0m
+
+2018-11-20T15:35:19.953Z - info: [0mGET /lib/angular-resource/angular-resource.js [32m200 [0m27.379 ms - -[0m
+
+2018-11-20T15:35:19.960Z - info: [0mGET /lib/sweetalert/SweetAlert.min.js [32m200 [0m6.976 ms - -[0m
+
+2018-11-20T15:35:19.983Z - info: [0mGET /lib/angular-ui-router/release/angular-ui-router.js [32m200 [0m5.221 ms - -[0m
+
+2018-11-20T15:35:19.991Z - info: [0mGET /lib/angular-tree-control/context-menu.js [32m200 [0m8.821 ms - -[0m
+
+2018-11-20T15:35:19.994Z - info: [0mGET /modules/core/client/app/config.js [32m200 [0m8.381 ms - -[0m
+
+2018-11-20T15:35:19.996Z - info: [0mGET /lib/angular-tree-control/angular-tree-control.js [32m200 [0m13.896 ms - -[0m
+
+2018-11-20T15:35:20.006Z - info: [0mGET /lib/owasp-password-strength-test/owasp-password-strength-test.js [32m200 [0m53.756 ms - -[0m
+
+2018-11-20T15:35:20.031Z - info: [0mGET /modules/core/client/core.client.module.js [32m200 [0m5.755 ms - 259[0m
+
+2018-11-20T15:35:20.035Z - info: [0mGET /modules/emails/client/emails.client.module.js [32m200 [0m7.929 ms - 102[0m
+
+2018-11-20T15:35:20.037Z - info: [0mGET /modules/newsletters/client/newsletters.client.module.js [32m200 [0m7.137 ms - 107[0m
+
+2018-11-20T15:35:20.047Z - info: [0mGET /modules/cms/client/cms.client.module.js [32m200 [0m21.469 ms - 94[0m
+
+2018-11-20T15:35:20.051Z - info: [0mGET /lib/angular/angular.js [32m200 [0m17.684 ms - -[0m
+
+2018-11-20T15:35:20.057Z - info: [0mGET /modules/products/client/products.client.module.js [32m200 [0m14.601 ms - 104[0m
+
+2018-11-20T15:35:20.060Z - info: [0mGET /modules/core/client/app/init.js [32m200 [0m43.406 ms - -[0m
+
+2018-11-20T15:35:20.066Z - info: [0mGET /modules/users/client/users.client.module.js [32m200 [0m16.713 ms - 395[0m
+
+2018-11-20T15:35:20.070Z - info: [0mGET /modules/promotions/client/promotions.client.module.js [32m200 [0m23.315 ms - 101[0m
+
+2018-11-20T15:35:20.085Z - info: [0mGET /modules/cms/client/config/cms.client.routes.js [32m200 [0m16.807 ms - -[0m
+
+2018-11-20T15:35:20.091Z - info: [0mGET /modules/cms/client/controllers/admin/category/category.client.controller.js [32m200 [0m8.693 ms - -[0m
+
+2018-11-20T15:35:20.096Z - info: [0mGET /modules/cms/client/controllers/admin/page/editpage.client.controller.js [32m200 [0m9.972 ms - -[0m
+
+2018-11-20T15:35:20.099Z - info: [0mGET /modules/cms/client/config/cms.client.config.js [32m200 [0m38.708 ms - 910[0m
+
+2018-11-20T15:35:20.115Z - info: [0mGET /modules/cms/client/controllers/admin/category/editcategory.client.controller.js [32m200 [0m28.872 ms - -[0m
+
+2018-11-20T15:35:20.118Z - info: [0mGET /modules/cms/client/controllers/admin/page/page.client.controller.js [32m200 [0m25.017 ms - -[0m
+
+2018-11-20T15:35:20.127Z - info: [0mGET /modules/cms/client/controllers/admin/plugins/editplugins.client.controller.js [32m200 [0m19.109 ms - -[0m
+
+2018-11-20T15:35:20.132Z - info: [0mGET /modules/cms/client/controllers/admin/plugins/plugins.client.controller.js [32m200 [0m18.376 ms - -[0m
+
+2018-11-20T15:35:20.140Z - info: [0mGET /modules/cms/client/controllers/admin/post/editpost.client.controller.js [32m200 [0m21.553 ms - -[0m
+
+2018-11-20T15:35:20.143Z - info: [0mGET /modules/cms/client/controllers/admin/post/post.client.controller.js [32m200 [0m21.050 ms - -[0m
+
+2018-11-20T15:35:20.160Z - info: [0mGET /modules/cms/client/controllers/list-cms.client.controller.js [32m200 [0m24.732 ms - 272[0m
+
+2018-11-20T15:35:20.165Z - info: [0mGET /modules/cms/client/controllers/cms.client.controller.js [32m200 [0m22.355 ms - -[0m
+
+2018-11-20T15:35:20.178Z - info: [0mGET /modules/core/client/config/core-admin.client.routes.js [32m200 [0m18.273 ms - 404[0m
+
+2018-11-20T15:35:20.186Z - info: [0mGET /modules/cms/client/services/cms.client.service.js [32m200 [0m21.490 ms - -[0m
+
+2018-11-20T15:35:20.200Z - info: [0mGET /modules/core/client/config/core.client.routes.js [32m200 [0m16.569 ms - -[0m
+
+2018-11-20T15:35:20.205Z - info: [0mGET /modules/core/client/config/core-admin.client.menus.js [32m200 [0m47.154 ms - 685[0m
+
+2018-11-20T15:35:20.215Z - info: [0mGET /modules/core/client/config/core.client.menus.js [32m200 [0m48.665 ms - 947[0m
+
+2018-11-20T15:35:20.219Z - info: [0mGET /modules/core/client/controllers/admin/settings/business/country/businesscountrylist.client.controller.js [32m200 [0m12.267 ms - -[0m
+
+2018-11-20T15:35:20.238Z - info: [0mGET /modules/core/client/config/core.client.route-filter.js [32m200 [0m36.510 ms - -[0m
+
+2018-11-20T15:35:20.243Z - info: [0mGET /modules/core/client/controllers/admin/settings/business/country/editbusinesscountry.client.controller.js [32m200 [0m16.054 ms - -[0m
+
+2018-11-20T15:35:20.255Z - info: [0mGET /modules/core/client/controllers/admin/settings/country/countrylist.client.controller.js [32m200 [0m15.530 ms - -[0m
+
+2018-11-20T15:35:20.266Z - info: [0mGET /modules/core/client/controllers/admin/settings/business/language/businesslanguagelist.client.controller.js [32m200 [0m45.002 ms - -[0m
+
+2018-11-20T15:35:20.272Z - info: [0mGET /modules/core/client/controllers/admin/settings/business/language/editbusinesslanguage.client.controller.js [32m200 [0m30.933 ms - -[0m
+
+2018-11-20T15:35:20.284Z - info: [0mGET /modules/core/client/controllers/admin/settings/district/districtlist.client.controller.js [32m200 [0m9.335 ms - -[0m
+
+2018-11-20T15:35:20.292Z - info: [0mGET /modules/core/client/controllers/admin/settings/cart/settingscart.client.controller.js [32m200 [0m39.314 ms - -[0m
+
+2018-11-20T15:35:20.306Z - info: [0mGET /modules/core/client/controllers/admin/settings/country/editcountry.client.controller.js [32m200 [0m26.188 ms - -[0m
+
+2018-11-20T15:35:20.334Z - info: [0mGET /modules/core/client/controllers/admin/settings/district/editdistrict.client.controller.js [32m200 [0m42.230 ms - -[0m
+
+2018-11-20T15:35:20.343Z - info: [0mGET /modules/core/client/controllers/admin/settings/general/currency/currencyedit.client.controller.js [32m200 [0m33.849 ms - -[0m
+
+2018-11-20T15:35:20.367Z - info: [0mGET /modules/core/client/controllers/admin/settings/general/deliveryservicearea/country/gencountrylist.client.controller.js [32m200 [0m34.594 ms - -[0m
+
+2018-11-20T15:35:20.371Z - info: [0mGET /modules/core/client/controllers/admin/settings/general/deliveryservicearea/country/gencountrylistedit.client.controller.js [32m200 [0m26.607 ms - -[0m
+
+2018-11-20T15:35:20.381Z - info: [0mGET /modules/core/client/controllers/admin/settings/general/deliveryservicearea/country/generalcountrylist.client.controller.js [32m200 [0m32.575 ms - -[0m
+
+2018-11-20T15:35:20.394Z - info: [0mGET /modules/core/client/controllers/admin/settings/general/currency/currencylist.client.controller.js [32m200 [0m54.813 ms - -[0m
+
+2018-11-20T15:35:20.440Z - info: [0mGET /modules/core/client/controllers/admin/settings/general/deliveryservicearea/district/generaldistrictlist.client.controller.js [32m200 [0m41.608 ms - -[0m
+
+2018-11-20T15:35:20.450Z - info: [0mGET /modules/core/client/controllers/admin/settings/general/deliveryservicearea/postalcode/generalpostalcodelist.client.controller.js [32m200 [0m38.313 ms - -[0m
+
+2018-11-20T15:35:20.468Z - info: [0mGET /modules/core/client/controllers/admin/settings/general/languages/editlanguage.client.controller.js [32m200 [0m57.234 ms - -[0m
+
+2018-11-20T15:35:20.472Z - info: [0mGET /modules/core/client/controllers/admin/settings/general/deliveryservicearea/state/generalstatelist.client.controller.js [32m200 [0m59.419 ms - -[0m
+
+2018-11-20T15:35:20.483Z - info: [0mGET /modules/core/client/controllers/admin/settings/general/languages/languagelist.client.controller.js [32m200 [0m59.164 ms - -[0m
+
+2018-11-20T15:35:20.491Z - info: [0mGET /modules/core/client/controllers/admin/settings/general/mainstore/mainstore.client.controller.js [32m200 [0m51.921 ms - -[0m
+
+2018-11-20T15:35:20.505Z - info: [0mGET /admin/css/custom.css [32m200 [0m35.071 ms - -[0m
+
+2018-11-20T15:35:20.506Z - info: [0mGET /modules/core/client/controllers/admin/settings/menu/editsettingsmenu.client.controller.js [32m200 [0m18.982 ms - -[0m
+
+2018-11-20T15:35:20.514Z - info: [0mGET /modules/core/client/controllers/admin/settings/menu/settingsmenu.client.controller.js [32m200 [0m13.091 ms - -[0m
+
+2018-11-20T15:35:20.543Z - info: [0mGET /modules/core/client/controllers/admin/settings/membership/settingsmembership.client.controller.js [32m200 [0m48.437 ms - -[0m
+
+2018-11-20T15:35:20.549Z - info: [0mGET /modules/core/client/controllers/admin/settings/offlinevendor/offlinevendor.client.controller.js [32m200 [0m37.713 ms - -[0m
+
+2018-11-20T15:35:20.560Z - info: [0mGET /modules/core/client/controllers/admin/settings/settingsnewsletter/settingsnewsletter.client.controller.js [32m200 [0m27.233 ms - -[0m
+
+2018-11-20T15:35:20.562Z - info: [0mGET /modules/core/client/controllers/admin/settings/pincode/editpincode.client.controller.js [32m200 [0m34.879 ms - -[0m
+
+2018-11-20T15:35:20.570Z - info: [0mGET /admin/css/style.css [32m200 [0m40.484 ms - -[0m
+
+2018-11-20T15:35:20.574Z - info: [0mGET /modules/core/client/controllers/admin/settings/pincode/pincodelist.client.controller.js [32m200 [0m40.066 ms - -[0m
+
+2018-11-20T15:35:20.595Z - info: [0mGET /modules/core/client/controllers/admin/settings/settingsproduct/settingsproduct.client.controller.js [32m200 [0m31.842 ms - -[0m
+
+2018-11-20T15:35:20.602Z - info: [0mGET /modules/core/client/controllers/admin/settings/state/statelist.client.controller%20.js [32m200 [0m13.114 ms - -[0m
+
+2018-11-20T15:35:20.614Z - info: [0mGET /modules/core/client/controllers/admin/usermanagement/adminuser/usermanagementadminuser.client.controller.js [32m200 [0m10.358 ms - -[0m
+
+2018-11-20T15:35:20.617Z - info: [0mGET /modules/core/client/controllers/admin/settings/state/stateedit.client.controller.js [32m200 [0m26.449 ms - -[0m
+
+2018-11-20T15:35:20.626Z - info: [0mGET /modules/core/client/controllers/admin/settings/settingspromotion/settingspromotion.client.controller.js [32m200 [0m51.669 ms - -[0m
+
+2018-11-20T15:35:20.641Z - info: [0mGET /modules/core/client/controllers/admin/settings/store/storelist.client.controller.js [32m200 [0m46.168 ms - -[0m
+
+2018-11-20T15:35:20.647Z - info: [0mGET /admin/css/icons/simple-line-icons/css/simple-line-icons.css [32m200 [0m32.392 ms - -[0m
+
+2018-11-20T15:35:20.654Z - info: [0mGET /admin/css/icons/font-awesome/css/fontawesome-all.css [32m200 [0m42.622 ms - -[0m
+
+2018-11-20T15:35:20.701Z - info: [0mGET /admin/css/icons/weather-icons/css/weather-icons.min.css [32m200 [0m43.337 ms - -[0m
+
+2018-11-20T15:35:20.703Z - info: [0mGET /admin/css/icons/themify-icons/themify-icons.css [32m200 [0m55.215 ms - -[0m
+
+2018-11-20T15:35:20.706Z - info: [0mGET /admin/css/icons/linea-icons/linea.css [32m200 [0m63.870 ms - -[0m
+
+2018-11-20T15:35:20.713Z - info: [0mGET /admin/css/icons/flag-icon-css/flag-icon.min.css [32m200 [0m60.577 ms - -[0m
+
+2018-11-20T15:35:20.718Z - info: [0mGET /admin/css/spinners.css [32m200 [0m28.875 ms - -[0m
+
+2018-11-20T15:35:20.758Z - info: [0mGET /admin/css/icons/material-design-iconic-font/css/materialdesignicons.min.css [32m200 [0m87.642 ms - -[0m
+
+2018-11-20T15:35:20.765Z - info: [0mGET /modules/core/client/controllers/admin/usermanagement/roleandprivilege/manageusermanagementrole.client.controller.js [32m200 [0m6.809 ms - -[0m
+
+2018-11-20T15:35:20.768Z - info: [0mGET /modules/core/client/controllers/admin/usermanagement/adminuser/usermngeditadminuser.client.controller.js [32m200 [0m10.215 ms - -[0m
+
+2018-11-20T15:35:20.770Z - info: [0mGET /modules/core/client/controllers/error.client.controller.js [32m200 [0m7.293 ms - 397[0m
+
+2018-11-20T15:35:20.786Z - info: [0mGET /modules/core/client/controllers/admin/usermanagement/roleandprivilege/editusermanagementrole.client.controller.js [32m200 [0m31.008 ms - -[0m
+
+2018-11-20T15:35:20.790Z - info: [0mGET /modules/core/client/controllers/admin/usermanagement/roleandprivilege/usermanagementrole.client.controller.js [32m200 [0m27.519 ms - -[0m
+
+2018-11-20T15:35:20.812Z - info: [0mGET /modules/core/client/controllers/header.client.controller.js [32m200 [0m12.139 ms - -[0m
+
+2018-11-20T15:35:20.814Z - info: [0mGET /modules/core/client/controllers/home.client.controller.js [32m200 [0m11.290 ms - -[0m
+
+2018-11-20T15:35:20.819Z - info: [0mGET /admin/css/animate.css [32m200 [0m58.541 ms - -[0m
+
+2018-11-20T15:35:20.827Z - info: [0mGET /modules/core/client/services/admin/settings/general/deliveryservicearea/settings.serviceareacountry.service.js [32m200 [0m6.228 ms - -[0m
+
+2018-11-20T15:35:20.829Z - info: [0mGET /modules/core/client/services/admin/settings/general/mainstore/settings.mainstore.service.js [32m200 [0m6.231 ms - -[0m
+
+2018-11-20T15:35:20.832Z - info: [0mGET /modules/core/client/services/core.acl.service.js [32m200 [0m7.764 ms - -[0m
+
+2018-11-20T15:35:20.836Z - info: [0mGET /modules/core/client/directives/auto-focus.client.directive.js [32m200 [0m36.650 ms - 713[0m
+
+2018-11-20T15:35:20.844Z - info: [0mGET /modules/core/client/directives/page-title.client.directive.js [32m200 [0m35.787 ms - -[0m
+
+2018-11-20T15:35:20.846Z - info: [0mGET /modules/core/client/directives/show-errors.client.directive.js [32m200 [0m34.925 ms - -[0m
+
+2018-11-20T15:35:20.858Z - info: [0mGET /modules/core/client/services/core.client.service.js [32m200 [0m8.310 ms - 414[0m
+
+2018-11-20T15:35:20.861Z - info: [0mGET /modules/core/client/services/core.headermenu.service.js [32m200 [0m8.949 ms - 928[0m
+
+2018-11-20T15:35:20.867Z - info: [0mGET /modules/core/client/services/core.usermngadminuser.service.js [32m200 [0m9.800 ms - -[0m
+
+2018-11-20T15:35:20.875Z - info: [0mGET /modules/core/client/services/menu.client.service.js [32m200 [0m7.199 ms - -[0m
+
+2018-11-20T15:35:20.877Z - info: [0mGET /modules/core/client/services/core.adminmenu.service.js [32m200 [0m29.586 ms - -[0m
+
+2018-11-20T15:35:20.882Z - info: [0mGET /modules/emails/client/config/emails.client.config.js [32m200 [0m9.739 ms - 704[0m
+
+2018-11-20T15:35:20.883Z - info: [0mGET /modules/core/client/services/core.currency.service.js [32m200 [0m23.582 ms - -[0m
+
+2018-11-20T15:35:20.892Z - info: [0mGET /modules/core/client/services/interceptors/auth-interceptor.client.service.js [32m200 [0m26.334 ms - -[0m
+
+2018-11-20T15:35:20.894Z - info: [0mGET /modules/core/client/services/socket.io.client.service.js [32m200 [0m19.947 ms - -[0m
+
+2018-11-20T15:35:20.906Z - info: [0mGET /modules/emails/client/controllers/admin/cms/cmsratingadminaction/addcmsratingaction.client.controller.js [32m200 [0m11.696 ms - -[0m
+
+2018-11-20T15:35:20.912Z - info: [0mGET /modules/emails/client/config/emails.client.routes.js [32m200 [0m14.920 ms - -[0m
+
+2018-11-20T15:35:20.916Z - info: [0mGET /modules/emails/client/controllers/admin/cms/cmsratingadminaction/editcmsratingaction.client.controller.js [32m200 [0m11.433 ms - -[0m
+
+2018-11-20T15:35:20.920Z - info: [0mGET /modules/emails/client/controllers/admin/cms/cmsratingadminaction/emailcmsratingaction.client.controller.js [32m200 [0m11.339 ms - -[0m
+
+2018-11-20T15:35:20.937Z - info: [0mGET /modules/emails/client/controllers/admin/cms/cmsratingsubmission/cmsratingsub.client.controller.js [32m200 [0m23.793 ms - -[0m
+
+2018-11-20T15:35:20.942Z - info: [0mGET /modules/emails/client/controllers/admin/cms/cmsratingsubmission/cmsratingsubedit.client.controller.js [32m200 [0m24.871 ms - -[0m
+
+2018-11-20T15:35:20.962Z - info: [0mGET /modules/emails/client/controllers/admin/cms/cmsratingsubmission/cmsratingsublist.client.controller.js [32m200 [0m22.979 ms - -[0m
+
+2018-11-20T15:35:20.974Z - info: [0mGET /modules/emails/client/controllers/admin/cms/cmsreview/cmsreviewlist.client.controller.js [32m200 [0m23.922 ms - -[0m
+
+2018-11-20T15:35:20.981Z - info: [0mGET /modules/emails/client/controllers/admin/cms/cmsreview/editcmsreviewsubmission.client.controller.js [32m200 [0m24.027 ms - -[0m
+
+2018-11-20T15:35:20.984Z - info: [0mGET /modules/emails/client/controllers/admin/cms/cmsreview/addcmsreviewsubmission.client.controller.js [32m200 [0m24.886 ms - -[0m
+
+2018-11-20T15:35:20.994Z - info: [0mGET /modules/emails/client/controllers/admin/cms/cmsreviewaction/cmsreviewaction.client.controller.js [32m200 [0m27.482 ms - -[0m
+
+2018-11-20T15:35:20.999Z - info: [0mGET /modules/emails/client/controllers/admin/cms/cmsreviewaction/cmsreviewactionedit.client.controller.js [32m200 [0m30.760 ms - -[0m
+
+2018-11-20T15:35:21.009Z - info: [0mGET /modules/emails/client/controllers/admin/cms/cmsreviewaction/cmsreviewactionlist.client.controller.js [32m200 [0m22.799 ms - -[0m
+
+2018-11-20T15:35:21.013Z - info: [0mGET /modules/emails/client/controllers/admin/cms/cmstagaction/cmstagaction.client.controller.js [32m200 [0m15.619 ms - -[0m
+
+2018-11-20T15:35:21.020Z - info: [0mGET /modules/emails/client/controllers/admin/cms/cmstagaction/cmstagactionedit.client.controller.js [32m200 [0m14.911 ms - -[0m
+
+2018-11-20T15:35:21.023Z - info: [0mGET /modules/emails/client/controllers/admin/cms/cmstagaction/cmstagactionlist.client.controller.js [32m200 [0m14.358 ms - -[0m
+
+2018-11-20T15:35:21.033Z - info: [0mGET /modules/emails/client/controllers/admin/cms/cmstagsubmission/addcmstagsubmission.client.controller.js [32m200 [0m13.663 ms - -[0m
+
+2018-11-20T15:35:21.040Z - info: [0mGET /modules/emails/client/controllers/admin/cms/cmstagsubmission/editcmstagsubmission.client.controller.js [32m200 [0m21.915 ms - -[0m
+
+2018-11-20T15:35:21.047Z - info: [0mGET /modules/emails/client/controllers/admin/cms/cmstagsubmission/emailcmstagsubmission.client.controller.js [32m200 [0m17.496 ms - -[0m
+
+2018-11-20T15:35:21.055Z - info: [0mGET /modules/emails/client/controllers/admin/creditmemo/memocomments/creditmemocomments.client.controller.js [32m200 [0m14.656 ms - -[0m
+
+2018-11-20T15:35:21.059Z - info: [0mGET /modules/emails/client/controllers/admin/creditmemo/memocomments/memocommentsedit.client.controller.js [32m200 [0m14.005 ms - -[0m
+
+2018-11-20T15:35:21.062Z - info: [0mGET /modules/emails/client/controllers/admin/creditmemo/memocomments/memocommentslist.client.controller.js [32m200 [0m13.536 ms - -[0m
+
+2018-11-20T15:35:21.072Z - info: [0mGET /modules/emails/client/controllers/admin/creditmemo/memocreation/creditmemocreation.client.controller.js [32m200 [0m13.746 ms - -[0m
+
+2018-11-20T15:35:21.080Z - info: [0mGET /modules/emails/client/controllers/admin/creditmemo/memocreation/memocreationedit.client.controller.js [32m200 [0m20.348 ms - -[0m
+
+2018-11-20T15:35:21.089Z - info: [0mGET /modules/emails/client/controllers/admin/creditmemo/memocreation/memocreationlist.client.controller.js [32m200 [0m22.137 ms - -[0m
+
+2018-11-20T15:35:21.099Z - info: [0mGET /modules/emails/client/controllers/admin/invoice/emailinvoicecommentedit.client.controller.js [32m200 [0m16.362 ms - -[0m
+
+2018-11-20T15:35:21.102Z - info: [0mGET /modules/emails/client/controllers/admin/invoice/emailinvoicecomments.client.controller.js [32m200 [0m15.918 ms - -[0m
+
+2018-11-20T15:35:21.104Z - info: [0mGET /modules/emails/client/controllers/admin/invoice/emailinvoicecreation.client.controller.js [32m200 [0m14.901 ms - -[0m
+
+2018-11-20T15:35:21.114Z - info: [0mGET /modules/emails/client/controllers/admin/invoice/emailinvoicecreationedit.client.controller.js [32m200 [0m18.493 ms - -[0m
+
+2018-11-20T15:35:21.121Z - info: [0mGET /modules/emails/client/controllers/admin/newsletter/emailnewslettersubscription.client.controller.js [32m200 [0m21.643 ms - -[0m
+
+2018-11-20T15:35:21.128Z - info: [0mGET /modules/emails/client/controllers/admin/newsletter/emailnewslettersubscriptionedit.client.controller.js [32m200 [0m20.147 ms - -[0m
+
+2018-11-20T15:35:21.136Z - info: [0mGET /modules/emails/client/controllers/admin/newsletter/newsmailconfirmation/emailnewsletterconfirmlist.client.controller.js [32m200 [0m13.822 ms - -[0m
+
+2018-11-20T15:35:21.138Z - info: [0mGET /modules/emails/client/controllers/admin/newsletter/newsmailconfirmation/mailconfirmation.client.controller.js [32m200 [0m12.367 ms - -[0m
+
+2018-11-20T15:35:21.143Z - info: [0mGET /modules/emails/client/controllers/admin/newsletter/emailsucessfullsubscription.client.controller.js [32m200 [0m14.834 ms - -[0m
+
+2018-11-20T15:35:21.151Z - info: [0mGET /modules/emails/client/controllers/admin/newsletter/newsmailconfirmation/mailconfirmationedit.client.controller.js [32m200 [0m14.114 ms - -[0m
+
+2018-11-20T15:35:21.159Z - info: [0mGET /modules/emails/client/controllers/admin/newsletter/successfullsubedit.client.controller.js [32m200 [0m20.099 ms - -[0m
+
+2018-11-20T15:35:21.167Z - info: [0mGET /modules/emails/client/controllers/admin/order/cancelation/ordercancelation.client.controller.js [32m200 [0m20.731 ms - -[0m
+
+2018-11-20T15:35:21.175Z - info: [0mGET /modules/emails/client/controllers/admin/order/cancelation/ordercancelationlist.client.controller.js [32m200 [0m12.882 ms - -[0m
+
+2018-11-20T15:35:21.178Z - info: [0mGET /modules/emails/client/controllers/admin/order/cancelation/ordercancelationedit.client.controller.js [32m200 [0m14.580 ms - -[0m
+
+2018-11-20T15:35:21.183Z - info: [0mGET /modules/emails/client/controllers/admin/order/creation/emailordercreationedit.client.controller.js [32m200 [0m13.050 ms - -[0m
+
+2018-11-20T15:35:21.188Z - info: [0mGET /modules/emails/client/controllers/admin/order/creation/ordercreation.client.controller.js [32m200 [0m13.221 ms - -[0m
+
+2018-11-20T15:35:21.195Z - info: [0mGET /modules/emails/client/controllers/admin/order/hold/orderhold.client.controller.js [32m200 [0m20.500 ms - -[0m
+
+2018-11-20T15:35:21.203Z - info: [0mGET /modules/emails/client/controllers/admin/order/hold/orderholdedit.client.controller.js [32m200 [0m19.993 ms - -[0m
+
+2018-11-20T15:35:21.208Z - info: [0mGET /modules/emails/client/controllers/admin/order/hold/orderholdlist.client.controller.js [32m200 [0m12.735 ms - -[0m
+
+2018-11-20T15:35:21.211Z - info: [0mGET /modules/emails/client/controllers/admin/order/nostock/ordernostock.client.controller.js [32m200 [0m12.235 ms - -[0m
+
+2018-11-20T15:35:21.224Z - info: [0mGET /modules/emails/client/controllers/admin/order/nostock/ordernostockedit.client.controller.js [32m200 [0m9.610 ms - -[0m
+
+2018-11-20T15:35:21.281Z - info: [0mGET /modules/emails/client/controllers/admin/order/nostock/ordernostocklist.client.controller.js [32m200 [0m12.187 ms - -[0m
+
+2018-11-20T15:35:21.303Z - info: [0mGET /modules/emails/client/controllers/admin/order/ordercomments/addordercomments.client.controller.js [32m200 [0m82.943 ms - -[0m
+
+2018-11-20T15:35:21.318Z - info: [0mGET /modules/emails/client/controllers/admin/order/ordercomments/editordercomments.client.controller.js [32m200 [0m75.596 ms - -[0m
+
+2018-11-20T15:35:21.327Z - info: [0mGET /modules/emails/client/controllers/admin/order/ordercompletion/ordercompletionadd.client.controller.js [32m200 [0m37.653 ms - -[0m
+
+2018-11-20T15:35:21.330Z - info: [0mGET /modules/emails/client/controllers/admin/order/ordercomments/ordercomments.client.controller.js [32m200 [0m44.375 ms - -[0m
+
+2018-11-20T15:35:21.338Z - info: [0mGET /modules/emails/client/controllers/admin/order/ordercompletion/ordercompletionedit.client.controller.js [32m200 [0m21.999 ms - -[0m
+
+2018-11-20T15:35:21.349Z - info: [0mGET /modules/emails/client/controllers/admin/order/ordercompletion/ordercompletionlist.client.controller.js [32m200 [0m39.077 ms - -[0m
+
+2018-11-20T15:35:21.388Z - info: [0mGET /modules/emails/client/controllers/admin/order/orderprocess/addorderprocess.client.controller.js [32m200 [0m31.735 ms - -[0m
+
+2018-11-20T15:35:21.394Z - info: [0mGET /modules/emails/client/controllers/admin/order/orderprocess/editorderprocess.client.controller.js [32m200 [0m19.018 ms - -[0m
+
+2018-11-20T15:35:21.413Z - info: [0mGET /modules/emails/client/controllers/admin/order/paymentfailure/editpaymentfailure.client.controller.js [32m200 [0m43.054 ms - -[0m
+
+2018-11-20T15:35:21.418Z - info: [0mGET /modules/emails/client/controllers/admin/order/orderprocess/orderprocess.client.controller.js [32m200 [0m48.255 ms - -[0m
+
+2018-11-20T15:35:21.426Z - info: [0mGET /modules/emails/client/controllers/admin/order/paymentfailure/addpaymentfailure.client.contoller.js [32m200 [0m47.780 ms - -[0m
+
+2018-11-20T15:35:21.435Z - info: [0mGET /modules/emails/client/controllers/admin/order/paymentfailure/paymentfailure.client.controller.js [32m200 [0m41.196 ms - -[0m
+
+2018-11-20T15:35:21.443Z - info: [0mGET /modules/emails/client/controllers/admin/order/unhold/orderunhold.client.controller.js [32m200 [0m34.785 ms - -[0m
+
+2018-11-20T15:35:21.447Z - info: [0mGET /modules/emails/client/controllers/admin/order/unhold/orderunholdedit.client.controller.js [32m200 [0m33.230 ms - -[0m
+
+2018-11-20T15:35:21.452Z - info: [0mGET /modules/emails/client/controllers/admin/order/unhold/orderunholdlist.client.controller.js [32m200 [0m14.859 ms - -[0m
+
+2018-11-20T15:35:21.457Z - info: [0mGET /modules/emails/client/controllers/admin/product/prdratingsadminaction/emailratingsadminaction.client.controller.js [32m200 [0m11.352 ms - -[0m
+
+2018-11-20T15:35:21.461Z - info: [0mGET /modules/emails/client/controllers/admin/product/prdratingsadminaction/emailratingsadminactionedit.client.controller.js [32m200 [0m7.892 ms - -[0m
+
+2018-11-20T15:35:21.471Z - info: [0mGET /modules/emails/client/controllers/admin/product/emailratingsaction.client.controller.js [32m200 [0m36.615 ms - -[0m
+
+2018-11-20T15:35:21.483Z - info: [0mGET /modules/emails/client/controllers/admin/product/emailtagaction.client.controller.js [32m200 [0m46.413 ms - -[0m
+
+2018-11-20T15:35:21.503Z - info: [0mGET /modules/emails/client/controllers/admin/product/prdratingsadminaction/emailratingsadminactionlist.client.controller.js [32m200 [0m1.558 ms - -[0m
+
+2018-11-20T15:35:21.515Z - info: [0mGET /modules/emails/client/controllers/admin/product/prdratingsubmission/emailratingsubmissionedit.client.controller.js [32m200 [0m16.273 ms - -[0m
+
+2018-11-20T15:35:21.517Z - info: [0mGET /modules/emails/client/controllers/admin/product/prdratingsubmission/emailratingsubmission.client.controller.js [32m200 [0m18.334 ms - -[0m
+
+2018-11-20T15:35:21.521Z - info: [0mGET /modules/emails/client/controllers/admin/product/prdratingsubmission/emailratingsubmissionlist.client.controller.js [32m200 [0m13.535 ms - -[0m
+
+2018-11-20T15:35:21.524Z - info: [0mGET /modules/emails/client/controllers/admin/product/prdreviewaction/emailreviewaction.client.controller.js [32m200 [0m12.146 ms - -[0m
+
+2018-11-20T15:35:21.531Z - info: [0mGET /modules/emails/client/controllers/admin/product/prdreviewaction/emailreviewactionedit.client.controller.js [32m200 [0m10.049 ms - -[0m
+
+2018-11-20T15:35:21.544Z - info: [0mGET /modules/emails/client/controllers/admin/product/prdreviewaction/emailreviewactionlist.client.controller.js [32m200 [0m18.262 ms - -[0m
+
+2018-11-20T15:35:21.553Z - info: [0mGET /modules/emails/client/controllers/admin/product/prdreviewsubmission/emailreviewsubmissionedit.client.controller.js [32m200 [0m17.989 ms - -[0m
+
+2018-11-20T15:35:21.556Z - info: [0mGET /modules/emails/client/controllers/admin/product/prdreviewsubmission/emailreviewsubmission.client.controller.js [32m200 [0m19.549 ms - -[0m
+
+2018-11-20T15:35:21.561Z - info: [0mGET /modules/emails/client/controllers/admin/product/prdreviewsubmission/emailreviewsubmissionlist.client.controller.js [32m200 [0m14.305 ms - -[0m
+
+2018-11-20T15:35:21.564Z - info: [0mGET /modules/emails/client/controllers/admin/product/prdtagaction/emailtagaction.client.controller.js [32m200 [0m13.871 ms - -[0m
+
+2018-11-20T15:35:21.575Z - info: [0mGET /modules/emails/client/controllers/admin/product/prdtagaction/emailtagactionedit.client.controller.js [32m200 [0m16.352 ms - -[0m
+
+2018-11-20T15:35:21.584Z - info: [0mGET /modules/emails/client/controllers/admin/product/prdtagaction/emailtagactionlist.client.controller.js [32m200 [0m21.293 ms - -[0m
+
+2018-11-20T15:35:21.595Z - info: [0mGET /modules/emails/client/controllers/admin/product/prdtagsubmission/emailtagsubmission.client.controller.js [32m200 [0m13.541 ms - -[0m
+
+2018-11-20T15:35:21.598Z - info: [0mGET /modules/emails/client/controllers/admin/product/prdtagsubmission/emailtagsubmissionedit.client.controller.js [32m200 [0m12.890 ms - -[0m
+
+2018-11-20T15:35:21.603Z - info: [0mGET /modules/emails/client/controllers/admin/product/prdtagsubmission/emailtagsubmissionlist.client.controller.js [32m200 [0m15.394 ms - -[0m
+
+2018-11-20T15:35:21.605Z - info: [0mGET /modules/emails/client/controllers/admin/promotion/emailshareusers.client.controller.js [32m200 [0m15.246 ms - -[0m
+
+2018-11-20T15:35:21.619Z - info: [0mGET /modules/emails/client/controllers/admin/promotion/shareusers/shareusersadd.client.controller.js [32m200 [0m27.266 ms - -[0m
+
+2018-11-20T15:35:21.628Z - info: [0mGET /modules/emails/client/controllers/admin/promotion/shareusers/shareusersedit.client.controller.js [32m200 [0m23.884 ms - -[0m
+
+2018-11-20T15:35:21.637Z - info: [0mGET /modules/emails/client/controllers/admin/promotion/shareusers/shareuserslist.client.controller.js [32m200 [0m14.016 ms - -[0m
+
+2018-11-20T15:35:21.642Z - info: [0mGET /modules/emails/client/controllers/admin/shipments/shipmentcomments/addemailshipmentcomments.client.controller.js [32m200 [0m14.076 ms - -[0m
+
+2018-11-20T15:35:21.646Z - info: [0mGET /modules/emails/client/controllers/admin/shipments/shipmentcomments/editemailshipmentcomments.client.controller.js [32m200 [0m16.633 ms - -[0m
+
+2018-11-20T15:35:21.656Z - info: [0mGET /modules/emails/client/controllers/admin/shipments/shipmentcomments/emailshipmentcomments.client.controller.js [32m200 [0m16.552 ms - -[0m
+
+2018-11-20T15:35:21.666Z - info: [0mGET /modules/emails/client/controllers/admin/shipments/shipmentcreation/addemailshipmentcreation.client.controller.js [32m200 [0m22.938 ms - -[0m
+
+2018-11-20T15:35:21.675Z - info: [0mGET /modules/emails/client/controllers/admin/shipments/shipmentcreation/editemailshipmentcreation.client.controller.js [32m200 [0m25.982 ms - -[0m
+
+2018-11-20T15:35:21.685Z - info: [0mGET /modules/emails/client/controllers/admin/shipments/shipmentcreation/emailshipmentcreation.client.controller.js [32m200 [0m18.983 ms - -[0m
+
+2018-11-20T15:35:21.691Z - info: [0mGET /modules/emails/client/controllers/admin/shipments/shipmentupdates/addemailshipmentupdates.client.controller.js [32m200 [0m17.142 ms - -[0m
+
+2018-11-20T15:35:21.695Z - info: [0mGET /modules/emails/client/controllers/admin/shipments/shipmentupdates/editemailshipmentupdates.client.controller.js [32m200 [0m17.244 ms - -[0m
+
+2018-11-20T15:35:21.705Z - info: [0mGET /modules/emails/client/controllers/admin/shipments/shipmentupdates/emailshipmentupdates.client.controller.js [32m200 [0m16.047 ms - -[0m
+
+2018-11-20T15:35:21.719Z - info: [0mGET /modules/emails/client/controllers/admin/user/emailuserforgot.client.controller.js [32m200 [0m24.958 ms - -[0m
+
+2018-11-20T15:35:21.738Z - info: [0mGET /modules/emails/client/controllers/admin/user/emailuserforgotedit.client.controller.js [32m200 [0m29.898 ms - -[0m
+
+2018-11-20T15:35:21.757Z - info: [0mGET /modules/emails/client/controllers/admin/user/emailuserreg.client.controller.js [32m200 [0m24.557 ms - -[0m
+
+2018-11-20T15:35:21.759Z - info: [0mGET /modules/emails/client/controllers/list-emails.client.controller.js [32m200 [0m29.861 ms - 314[0m
+
+2018-11-20T15:35:21.763Z - info: [0mGET /modules/emails/client/controllers/admin/user/useredit.client.controller.js [32m200 [0m31.090 ms - -[0m
+
+2018-11-20T15:35:21.777Z - info: [0mGET /modules/emails/client/controllers/emails.client.controller.js [32m200 [0m51.578 ms - -[0m
+
+2018-11-20T15:35:21.781Z - info: [0mGET /modules/emails/client/services/emails.cancelation.service.js [32m200 [0m35.724 ms - -[0m
+
+2018-11-20T15:35:21.785Z - info: [0mGET /modules/emails/client/services/emails.client.service.js [32m200 [0m31.995 ms - 412[0m
+
+2018-11-20T15:35:21.802Z - info: [0mGET /modules/emails/client/services/emails.cmsratingsub.service.js [32m200 [0m18.356 ms - -[0m
+
+2018-11-20T15:35:21.804Z - info: [0mGET /modules/emails/client/services/emails.cmsratingaction.service.js [32m200 [0m20.061 ms - -[0m
+
+2018-11-20T15:35:21.807Z - info: [0mGET /modules/emails/client/services/emails.cmsreviewaction.service.js [32m200 [0m20.996 ms - -[0m
+
+2018-11-20T15:35:21.825Z - info: [0mGET /modules/emails/client/services/emails.cmsreviewsubmission.service.js [32m200 [0m21.111 ms - -[0m
+
+2018-11-20T15:35:21.827Z - info: [0mGET /modules/emails/client/services/emails.cmstagaction.service.js [32m200 [0m17.191 ms - -[0m
+
+2018-11-20T15:35:21.833Z - info: [0mGET /modules/emails/client/services/emails.cmstagsubmission.service.js [32m200 [0m21.339 ms - -[0m
+
+2018-11-20T15:35:21.850Z - info: [0mGET /modules/emails/client/services/emails.invoicecreation.service.js [32m200 [0m22.442 ms - -[0m
+
+2018-11-20T15:35:21.854Z - info: [0mGET /modules/emails/client/services/emails.invoicecomments.service.js [32m200 [0m23.349 ms - -[0m
+
+2018-11-20T15:35:21.861Z - info: [0mGET /modules/emails/client/services/emails.mailconfirmation.service.js [32m200 [0m23.746 ms - -[0m
+
+2018-11-20T15:35:21.872Z - info: [0mGET /modules/emails/client/services/emails.memocomments.service.js [32m200 [0m19.517 ms - -[0m
+
+2018-11-20T15:35:21.874Z - info: [0mGET /modules/emails/client/services/emails.memocreation.service.js [32m200 [0m18.654 ms - -[0m
+
+2018-11-20T15:35:21.884Z - info: [0mGET /modules/emails/client/services/emails.nostock.service.js [32m200 [0m25.480 ms - -[0m
+
+2018-11-20T15:35:21.898Z - info: [0mGET /modules/emails/client/services/emails.ordercomments.service.js [32m200 [0m18.911 ms - -[0m
+
+2018-11-20T15:35:21.902Z - info: [0mGET /modules/emails/client/services/emails.ordercompletion.service.js [32m200 [0m18.925 ms - -[0m
+
+2018-11-20T15:35:21.910Z - info: [0mGET /modules/emails/client/services/emails.ordercrteation.service.js [32m200 [0m17.175 ms - -[0m
+
+2018-11-20T15:35:21.921Z - info: [0mGET /modules/emails/client/services/emails.orderhold.service.js [32m200 [0m24.802 ms - -[0m
+
+2018-11-20T15:35:21.923Z - info: [0mGET /modules/emails/client/services/emails.orderprocess.service.js [32m200 [0m23.258 ms - -[0m
+
+2018-11-20T15:35:21.931Z - info: [0mGET /modules/emails/client/services/emails.orderunhold.service.js [32m200 [0m21.825 ms - -[0m
+
+2018-11-20T15:35:21.939Z - info: [0mGET /modules/emails/client/services/emails.paymentfailure.service.js [32m200 [0m17.392 ms - -[0m
+
+2018-11-20T15:35:21.942Z - info: [0mGET /modules/emails/client/services/emails.prdratingadminaction.service.js [32m200 [0m17.404 ms - -[0m
+
+2018-11-20T15:35:21.949Z - info: [0mGET /modules/emails/client/services/emails.prdratingsub.service.js [32m200 [0m15.826 ms - -[0m
+
+2018-11-20T15:35:21.958Z - info: [0mGET /modules/emails/client/services/emails.prdreviewaction.service.js [32m200 [0m17.051 ms - -[0m
+
+2018-11-20T15:35:21.962Z - info: [0mGET /modules/emails/client/services/emails.prdreviewsub.service.js [32m200 [0m16.340 ms - -[0m
+
+2018-11-20T15:35:21.971Z - info: [0mGET /modules/emails/client/services/emails.prdtagaction.service.js [32m200 [0m16.526 ms - -[0m
+
+2018-11-20T15:35:21.979Z - info: [0mGET /modules/emails/client/services/emails.prdtagsub.service.js [32m200 [0m18.408 ms - -[0m
+
+2018-11-20T15:35:21.983Z - info: [0mGET /modules/emails/client/services/emails.shareusers.service.js [32m200 [0m19.852 ms - -[0m
+
+2018-11-20T15:35:21.988Z - info: [0mGET /modules/emails/client/services/emails.shipmentcomments.service.js [32m200 [0m18.087 ms - -[0m
+
+2018-11-20T15:35:21.998Z - info: [0mGET /modules/emails/client/services/emails.shipmentcreation.service.js [32m200 [0m16.328 ms - -[0m
+
+2018-11-20T15:35:21.999Z - info: [0mGET /modules/emails/client/services/emails.shipmentupdates.service.js [32m200 [0m15.393 ms - -[0m
+
+2018-11-20T15:35:22.009Z - info: [0mGET /modules/emails/client/services/emails.sub.service.js [32m200 [0m17.027 ms - -[0m
+
+2018-11-20T15:35:22.016Z - info: [0mGET /modules/emails/client/services/emails.subscription.service.js [32m200 [0m16.668 ms - -[0m
+
+2018-11-20T15:35:22.020Z - info: [0mGET /modules/emails/client/services/emails.userforgot.service.js [32m200 [0m18.704 ms - -[0m
+
+2018-11-20T15:35:22.025Z - info: [0mGET /modules/emails/client/services/emails.userreg.service.js [32m200 [0m16.056 ms - -[0m
+
+2018-11-20T15:35:22.032Z - info: [0mGET /modules/newsletters/client/controllers/list-newsletters.client.controller.js [32m200 [0m15.693 ms - 359[0m
+
+2018-11-20T15:35:22.038Z - info: [0mGET /modules/newsletters/client/config/newsletters.client.config.js [32m200 [0m31.309 ms - 914[0m
+
+2018-11-20T15:35:22.048Z - info: [0mGET /modules/newsletters/client/config/newsletters.client.routes.js [32m200 [0m38.346 ms - -[0m
+
+2018-11-20T15:35:22.053Z - info: [0mGET /modules/newsletters/client/controllers/newsletters/newslettertemplate.client.controller.js [32m200 [0m9.888 ms - -[0m
+
+2018-11-20T15:35:22.055Z - info: [0mGET /modules/newsletters/client/services/newsletters.client.service.js [32m200 [0m8.183 ms - 462[0m
+
+2018-11-20T15:35:22.063Z - info: [0mGET /modules/newsletters/client/services/newslettertemplate.client.service.js [32m200 [0m5.983 ms - -[0m
+
+2018-11-20T15:35:22.066Z - info: [0mGET /modules/newsletters/client/controllers/newsletters/newsletters.client.controller.js [32m200 [0m28.582 ms - -[0m
+
+2018-11-20T15:35:22.071Z - info: [0mGET /modules/newsletters/client/controllers/newsletters.client.controller.js [32m200 [0m41.715 ms - -[0m
+
+2018-11-20T15:35:22.089Z - info: [0mGET /modules/products/client/config/products.client.routes.js [32m200 [0m8.070 ms - -[0m
+
+2018-11-20T15:35:22.100Z - info: [0mGET /modules/products/client/controllers/admin/businesstypelist/businesstypeadd.client.controller.js [32m200 [0m14.257 ms - -[0m
+
+2018-11-20T15:35:22.104Z - info: [0mGET /modules/products/client/config/products.client.config.js [32m200 [0m25.090 ms - -[0m
+
+2018-11-20T15:35:22.113Z - info: [0mGET /modules/products/client/controllers/admin/category/category.client.controller.js [32m200 [0m11.764 ms - -[0m
+
+2018-11-20T15:35:22.129Z - info: [0mGET /modules/products/client/controllers/admin/businesstypelist/businesstypelist.client.controller.js [32m200 [0m32.329 ms - -[0m
+
+2018-11-20T15:35:22.136Z - info: [0mGET /modules/products/client/controllers/admin/category/procategory.client.controller.js [32m200 [0m17.107 ms - -[0m
+
+2018-11-20T15:35:22.144Z - info: [0mGET /modules/products/client/controllers/admin/category/editprocategory.client.controller.js [32m200 [0m42.793 ms - -[0m
+
+2018-11-20T15:35:22.154Z - info: [0mGET /modules/products/client/controllers/admin/extrafield/proextrafield.client.controller.js [32m200 [0m2.894 ms - -[0m
+
+2018-11-20T15:35:22.177Z - info: [0mGET /modules/products/client/controllers/admin/extrafield/progroup.client.controller.js [32m200 [0m27.368 ms - -[0m
+
+2018-11-20T15:35:22.187Z - info: [0mGET /modules/products/client/controllers/admin/extrafield/editproextrafield.client.controller.js [32m200 [0m37.024 ms - -[0m
+
+2018-11-20T15:35:22.260Z - info: [0mGET /modules/products/client/controllers/admin/invoice/invoices.client.controller.js [32m200 [0m54.551 ms - -[0m
+
+2018-11-20T15:35:22.262Z - info: [0mGET /modules/products/client/controllers/admin/order/addsales.client.controller.js [32m200 [0m46.365 ms - -[0m
+
+2018-11-20T15:35:22.266Z - info: [0mGET /modules/products/client/controllers/admin/order/order.client.controller.js [32m200 [0m54.836 ms - -[0m
+
+2018-11-20T15:35:22.273Z - info: [0mGET /modules/products/client/controllers/admin/product/editproduct.client.controller.js [32m200 [0m58.414 ms - -[0m
+
+2018-11-20T15:35:22.276Z - info: [0mGET /modules/products/client/controllers/admin/order/orderdetails.client.controller.js [32m200 [0m59.409 ms - -[0m
+
+2018-11-20T15:35:22.279Z - info: [0mGET /modules/products/client/controllers/admin/invoice/addinvoices.client.controller.js [32m200 [0m81.476 ms - -[0m
+
+2018-11-20T15:35:22.284Z - info: [0mGET /modules/products/client/controllers/admin/product/proproduct.client.controller.js [32m200 [0m11.042 ms - -[0m
+
+2018-11-20T15:35:22.316Z - info: [0mGET /modules/products/client/controllers/admin/report/orderreport.client.controller.js [32m200 [0m42.804 ms - -[0m
+
+2018-11-20T15:35:22.327Z - info: [0mGET /modules/products/client/controllers/admin/taxgroup/addtaxgroups.client.controller.js [32m200 [0m1.936 ms - -[0m
+
+2018-11-20T15:35:22.348Z - info: [0mGET /modules/products/client/controllers/list-products.client.controller.js [32m200 [0m7.851 ms - 334[0m
+
+2018-11-20T15:35:22.355Z - info: [0mGET /modules/products/client/controllers/admin/taxgroup/editprotaxgroups.client.controller.js [32m200 [0m13.631 ms - -[0m
+
+2018-11-20T15:35:22.357Z - info: [0mGET /modules/products/client/controllers/admin/taxgroup/protaxgroups.client.controller.js [32m200 [0m12.167 ms - -[0m
+
+2018-11-20T15:35:22.360Z - info: [0mGET /modules/products/client/controllers/admin/taxgroup/taxgroups.client.controller.js [32m200 [0m10.470 ms - -[0m
+
+2018-11-20T15:35:22.375Z - info: [0mGET /modules/products/client/services/products.businesstypeadd.service.js [32m200 [0m15.581 ms - -[0m
+
+2018-11-20T15:35:22.378Z - info: [0mGET /modules/products/client/controllers/products.client.controller.js [32m200 [0m32.426 ms - -[0m
+
+2018-11-20T15:35:22.382Z - info: [0mGET /modules/products/client/services/produts.taxgroup.service.js [32m200 [0m5.881 ms - -[0m
+
+2018-11-20T15:35:22.386Z - info: [0mGET /modules/products/client/services/product.category.service.js [32m200 [0m41.208 ms - -[0m
+
+2018-11-20T15:35:22.397Z - info: [0mGET /modules/products/client/services/products.client.service.js [32m200 [0m23.352 ms - -[0m
+
+2018-11-20T15:35:22.405Z - info: [0mGET /modules/products/client/services/products.extrafield.service.js [32m200 [0m34.492 ms - -[0m
+
+2018-11-20T15:35:22.410Z - info: [0mGET /modules/promotions/client/controllers/list-promotions.client.controller.js [32m200 [0m14.737 ms - 335[0m
+
+2018-11-20T15:35:22.416Z - info: [0mGET /modules/promotions/client/config/promotions.client.routes.js [32m200 [0m14.307 ms - -[0m
+
+2018-11-20T15:35:22.422Z - info: [0mGET /modules/promotions/client/config/promotions.client.config.js [32m200 [0m27.602 ms - -[0m
+
+2018-11-20T15:35:22.428Z - info: [0mGET /modules/promotions/client/controllers/promocart.client.controller.js [32m200 [0m12.029 ms - -[0m
+
+2018-11-20T15:35:22.442Z - info: [0mGET /modules/promotions/client/controllers/promocoupons.client.controller.js [32m200 [0m20.894 ms - -[0m
+
+2018-11-20T15:35:22.451Z - info: [0mGET /modules/promotions/client/controllers/promoproduct.client.controller.js [32m200 [0m22.601 ms - -[0m
+
+2018-11-20T15:35:22.455Z - info: [0mGET /modules/promotions/client/controllers/promoship.client.controller.js [32m200 [0m23.643 ms - -[0m
+
+2018-11-20T15:35:22.457Z - info: [0mGET /modules/promotions/client/services/promotions.client.service.js [32m200 [0m18.181 ms - 432[0m
+
+2018-11-20T15:35:22.460Z - info: [0mGET /modules/promotions/client/services/promotions.productcart.service.js [32m200 [0m18.271 ms - -[0m
+
+2018-11-20T15:35:22.464Z - info: [0mGET /modules/promotions/client/services/promotions.productprice.service.js [32m200 [0m12.146 ms - -[0m
+
+2018-11-20T15:35:22.478Z - info: [0mGET /modules/promotions/client/controllers/promotions.client.controller.js [32m200 [0m49.321 ms - -[0m
+
+2018-11-20T15:35:22.500Z - info: [0mGET /modules/promotions/client/services/promotions.shippingprice.service.js [32m200 [0m1.694 ms - -[0m
+
+2018-11-20T15:35:22.519Z - info: [0mGET /modules/users/client/config/users-admin.client.menus.js [32m200 [0m13.063 ms - -[0m
+
+2018-11-20T15:35:22.560Z - info: [0mGET /modules/users/client/config/users-admin.client.routes.js [32m200 [0m33.751 ms - -[0m
+
+2018-11-20T15:35:22.562Z - info: [0mGET /modules/users/client/config/users.client.routes.js [32m200 [0m44.827 ms - -[0m
+
+2018-11-20T15:35:22.571Z - info: [0mGET /modules/users/client/controllers/admin/list-users.client.controller.js [32m200 [0m53.277 ms - -[0m
+
+2018-11-20T15:35:22.573Z - info: [0mGET /modules/users/client/controllers/authentication.client.controller.js [32m200 [0m49.060 ms - -[0m
+
+2018-11-20T15:35:22.580Z - info: [0mGET /modules/users/client/controllers/password.client.controller.js [32m200 [0m44.807 ms - -[0m
+
+2018-11-20T15:35:22.583Z - info: [0mGET /modules/users/client/controllers/admin/user.client.controller.js [32m200 [0m57.386 ms - -[0m
+
+2018-11-20T15:35:22.591Z - info: [0mGET /modules/users/client/controllers/settings/change-password.client.controller.js [32m200 [0m18.081 ms - -[0m
+
+2018-11-20T15:35:22.595Z - info: [0mGET /modules/users/client/controllers/settings/change-profile-picture.client.controller.js [32m200 [0m18.450 ms - -[0m
+
+2018-11-20T15:35:22.602Z - info: [0mGET /modules/users/client/controllers/settings/settings.client.controller.js [32m200 [0m13.099 ms - 321[0m
+
+2018-11-20T15:35:22.608Z - info: [0mGET /modules/users/client/controllers/settings/edit-profile.client.controller.js [32m200 [0m22.386 ms - -[0m
+
+2018-11-20T15:35:22.615Z - info: [0mGET /modules/users/client/directives/users.client.directive.js [32m200 [0m10.824 ms - 531[0m
+
+2018-11-20T15:35:22.619Z - info: [0mGET /modules/users/client/directives/password-validator.client.directive.js [32m200 [0m20.534 ms - -[0m
+
+2018-11-20T15:35:22.621Z - info: [0mGET /modules/users/client/directives/password-verify.client.directive.js [32m200 [0m19.485 ms - 858[0m
+
+2018-11-20T15:35:22.626Z - info: [0mGET /modules/users/client/controllers/settings/manage-social-accounts.client.controller.js [32m200 [0m29.712 ms - -[0m
+
+2018-11-20T15:35:22.628Z - info: [0mGET /modules/users/client/services/authentication.client.service.js [32m200 [0m16.756 ms - 343[0m
+
+2018-11-20T15:35:22.635Z - info: [0mGET /modules/users/client/services/password-validator.client.service.js [32m200 [0m20.724 ms - 892[0m
+
+2018-11-20T15:35:22.664Z - info: [0mGET /modules/users/client/services/users.client.service.js [32m200 [0m34.847 ms - -[0m
+
+2018-11-20T15:35:22.668Z - info: [0mGET /admin/css/icons/material-design-iconic-font/css/materialdesignicons.min.css.map [32m200 [0m27.312 ms - -[0m
+
+2018-11-20T15:35:22.793Z - info: [0mGET /modules/core/client/img/brand/favicon.ico [32m200 [0m24.817 ms - 21238[0m
+
+2018-11-20T15:35:23.180Z - info: [0mGET /modules/core/client/views/home.client.login.html [36m304 [0m2.851 ms - -[0m
+
+2018-11-20T15:35:23.210Z - info: [0mGET /admin/css/pages/login-register-lock.css [36m304 [0m0.823 ms - -[0m
+
+2018-11-20T15:35:23.214Z - info: [0mGET /admin/css/colors/default-dark.css [36m304 [0m0.661 ms - -[0m
+
+2018-11-20T15:35:23.225Z - info: [0mGET /admin/assets/plugins/bootstrap/js/popper.min.js [36m304 [0m0.976 ms - -[0m
+
+2018-11-20T15:35:23.257Z - info: [0mGET /admin/assets/plugins/bootstrap/js/bootstrap.min.js [36m304 [0m1.594 ms - -[0m
+
+2018-11-20T15:35:23.276Z - info: [0mGET /popper.min.js.map [32m200 [0m17.484 ms - -[0m
+
+2018-11-20T15:35:23.380Z - info: [0mGET /bootstrap.min.js.map [32m200 [0m24.411 ms - -[0m
+
+2018-11-20T15:35:23.550Z - info: [0mGET /assets/images/background/login-register.jpg [32m200 [0m15.340 ms - -[0m
+
+2018-11-20T15:35:23.629Z - info: [0mGET /admin/css/icons/material-design-iconic-font/css/materialdesignicons.min.css.map [36m304 [0m10.232 ms - -[0m
+
+2018-11-20T15:35:23.633Z - info: [0mGET /admin/css/icons/font-awesome/webfonts/fa-solid-900.woff2 [36m304 [0m0.746 ms - -[0m
+

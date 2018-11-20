@@ -1,0 +1,76 @@
+{
+  "_from": "angular-tree-control@^0.2.30",
+  "_id": "angular-tree-control@0.2.30",
+  "_inBundle": false,
+  "_integrity": "sha1-XUti+x72rHQh2BHEzzFUZOCZE+Q=",
+  "_location": "/angular-tree-control",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "angular-tree-control@^0.2.30",
+    "name": "angular-tree-control",
+    "escapedName": "angular-tree-control",
+    "rawSpec": "^0.2.30",
+    "saveSpec": null,
+    "fetchSpec": "^0.2.30"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/angular-tree-control/-/angular-tree-control-0.2.30.tgz",
+  "_shasum": "5d4b62fb1ef6ac7421d811c4cf315464e09913e4",
+  "_spec": "angular-tree-control@^0.2.30",
+  "_where": "E:\\Projects\\module1",
+  "author": {
+    "name": "Yoav Abrahami"
+  },
+  "bugs": {
+    "url": "https://github.com/wix/angular-tree-control/issues"
+  },
+  "bundleDependencies": false,
+  "contributors": [
+    {
+      "name": "Benjamin Orozco",
+      "email": "benoror@gmail.com"
+    },
+    {
+      "name": "Stuart McGrigor"
+    }
+  ],
+  "deprecated": false,
+  "description": "Angular Tree Control",
+  "devDependencies": {
+    "coveralls": "~2.6.1",
+    "grunt": "~0.4.2",
+    "grunt-contrib-connect": "~0.6.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-karma": "~0.6.2",
+    "grunt-release": "~0.6.0",
+    "karma": "~0.10.9",
+    "karma-chrome-launcher": "~0.1.2",
+    "karma-coffee-preprocessor": "~0.1.2",
+    "karma-coverage": "~0.1.4",
+    "karma-firefox-launcher": "~0.1.3",
+    "karma-growl-reporter": "~0.1.1",
+    "karma-html2js-preprocessor": "~0.1.0",
+    "karma-jasmine": "~0.1.5",
+    "karma-phantomjs-launcher": "~0.1.1",
+    "karma-requirejs": "~0.2.1",
+    "karma-script-launcher": "~0.1.0",
+    "requirejs": "~2.1.10"
+  },
+  "homepage": "https://github.com/wix/angular-tree-control",
+  "license": "MIT",
+  "main": "angular-tree-control.js",
+  "name": "angular-tree-control",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/wix/angular-tree-control.git"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "version": "0.2.30"
+}
