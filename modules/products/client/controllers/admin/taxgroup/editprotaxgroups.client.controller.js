@@ -19,6 +19,7 @@ $scope.getTaxGroupById = function (userId) {
   $scope.taxgroupService.getTaxGroupById(userId).then(function (result) {
     var details = result.data;
     console.log(details);
+    
     // if (result.statusText = "OK") {
     //   $scope.status = details.status.toString();
     //   if (angular.equals($scope.currentLan, $scope.defaultLang)) {

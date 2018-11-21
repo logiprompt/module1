@@ -149,7 +149,7 @@
                                                <div class="col-md-9">
                                                 <div class="form-group m-b-10"> 
                                                     <label for="input1">Tax group name</label>
-                                                       <input type="text" class="form-control cat" id="name"  ng-model="formdata.category" >
+                                                       <input type="text" class="form-control cat" id="name" name="name"  ng-model="name" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.name.$valid}">
                                                      
                                                    </div> 
                                                     </div> 
