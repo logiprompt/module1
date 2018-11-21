@@ -8,8 +8,8 @@ var newslettersPolicy = require('../policies/newsletters.server.policy'),
 
 module.exports = function(app) {
   // Newsletters Routes
-  app.route('/api/newsletters').all(newslettersPolicy.isAllowed)
-    .get(newsletters.list)
+  app.route('/api/getNewslettertemp').all()
+   .get(newsletters.listtemp)
     .post(newsletters.create);
 
   app.route('/api/newsletters/:newsletterId').all(newslettersPolicy.isAllowed)

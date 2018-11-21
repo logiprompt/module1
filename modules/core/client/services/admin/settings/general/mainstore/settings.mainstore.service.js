@@ -20,7 +20,7 @@
 	 mainstore.insMainstore = function(data){
 		 
 		return $http({
-	           url: '/api/insMainstore',
+	           url: '/api/insMainstoreadd',
 	           method: "POST",
 	           data:data
 	       });

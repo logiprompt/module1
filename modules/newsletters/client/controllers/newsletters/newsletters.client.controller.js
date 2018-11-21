@@ -7,9 +7,9 @@
 
 
 
-    NewslettersController.$inject = ['$scope','$http','$state','$stateParams','Upload'];
+    NewslettersController.$inject = ['$scope','$http','$state','$stateParams','$location','Upload','NewslettersService'];
 
-  function NewslettersController ($scope, $http, $state,$stateParams,Upload) {
+  function NewslettersController ($scope, $http, $state,$stateParams,$location,Upload,NewslettersService) {
   
     
   
@@ -17,13 +17,68 @@
  
 ///////////////////////////////////////////////////////
 
-
-
- 
+$scope.formdata = {};
+$scope.formdata.status = '0';
+$scope.NewslettersService = NewslettersService;
    
 
+$scope.currentLan=localStorage.getItem('currentLang').toString();
+    /*newsletter template starts*/
+   
+    $scope.defaultLang = localStorage.getItem('defaultLang').toString();
+$scope.getNewslettertemp = function () {
+  $scope.NewslettersService.getNewslettertemp().then(function (result) {
+    if (result.statusText = "OK") {
+      $scope.templist = result.data;
+    } else {
 
-       
+    }
+  });
+}
+$scope.getNewslettertemp();
+
+   $scope.temp='0';   
+   
+   ////////////////////////////////////////////////////
+
+  $scope.addNewsLetter = function () {
+  alert(687686);
+    var desc = CKEDITOR.instances['contentdesc'].document.getBody().getHtml();
+    console.log(desc);
+      console.log($scope.formdata.contentdesc.$valid);
+      console.log($scope.formdata);
+    if ($scope.formdata.$valid && $scope.status!="0") {
+
+      alert(5678965766);
+
+      var data = {
+        "temp": $scope.temp,
+        "title": $scope.title,
+        "subject": $scope.subject,
+        "sender": $scope.sender,
+        "senderemail": $scope.senderemail,
+        "contentdesc":desc,
+        "imgfile": $scope.imgss,
+        "imgfile1": $scope.imgss2,
+        "status": $scope.status,
+        "oLang": {}
+      }
+
+console.log(data);
+      $scope.NewslettersService.addNewsLetter(data).then(function (result) {
+
+        if (result.statusText = "OK") {
+          swal("Success!", "Successfully added !", "success");
+         // $state.go('emailforgetpass');
+        } else {
+          swal("error!", " already exist!", "error");
+        }
+
+      })
+    }
+
+  }
+   ///////////////////////////////////////////////////
 $scope.setasDefault=function(id){
 
     $http({
@@ -59,27 +114,27 @@ $scope.choices = [{id: 'choice1'}];
       
  };
 
- function readFile(ev) {
+//  function readFile(ev) {
 
-  if (this.files && this.files[0]) {
-  var FR= new FileReader();
-  FR.onload = function(e) {
-    document.getElementById("imgfiles").src= e.target.result;
-   ev.target.parentNode.parentNode.parentNode.childNodes[3].childNodes[1].childNodes[1]=e.target.result;
-    //document.getElementById("b64").innerHTML = e.target.result;
-  };       
-  FR.readAsDataURL( this.files[0] );
-  }
- }
- if(document.getElementById("imgfile")!=null){
-   document.getElementById("imgfile").addEventListener("change", readFile, false); 
- }
+//   if (this.files && this.files[0]) {
+//   var FR= new FileReader();
+//   FR.onload = function(e) {
+//     document.getElementById("imgfiles").src= e.target.result;
+//    ev.target.parentNode.parentNode.parentNode.childNodes[3].childNodes[1].childNodes[1]=e.target.result;
+//     //document.getElementById("b64").innerHTML = e.target.result;
+//   };       
+//   FR.readAsDataURL( this.files[0] );
+//   }
+//  }
+//  if(document.getElementById("imgfile")!=null){
+//    document.getElementById("imgfile").addEventListener("change", readFile, false); 
+//  }
 
-$scope.iconw=function(){
+// $scope.iconw=function(){
 
-        document.getElementById('imgfile').click();
+//         document.getElementById('imgfile').click();
         
-             }
+//              }
 
             // $(document).find('#myTable').DataTable();
 

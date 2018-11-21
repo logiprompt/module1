@@ -122,13 +122,13 @@
                                 <h6 class="card-subtitle">Use default tab with class <code>vtabs &amp; tabs-vertical</code></h6> -->
                                 <!-- Nav tabs -->
 
-                                  <form class="">  
+                                  <form class="" name="formdata"  ng-submit="updateTaxGroup()" novalidate>  
                                  
                                    <div class="form-group m-b-10 btn23">
-                                        <button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm btn-danger"> Delete </button> 
+                                        <!-- <button type="button"  class="btn waves-effect waves-light btn-sm btn-danger"> Delete </button>  -->
                                         
                                         <a href="/product/taxgroups" ><button type="button" class="btn waves-effect waves-light btn-sm btn-default"> Cancel </button> </a> 
-                                        <button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
+                                        <button type="submit"  class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
                                   </div> 
                                  
                               
@@ -149,7 +149,7 @@
                                                <div class="col-md-9">
                                                 <div class="form-group m-b-10"> 
                                                     <label for="input1">Tax group name</label>
-                                                       <input type="text" class="form-control cat" id="name" name="name"  ng-model="name" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.name.$valid}">
+                                                       <input type="text" class="form-control cat" id="name" name="name"  ng-model="name" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.name.$valid}" >
                                                      
                                                    </div> 
                                                     </div> 
@@ -163,7 +163,7 @@
                                             <div class="form-group m-b-10">
                                                 <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
                                                 <label for="input1"> Status</label>
-                                                       <select class="form-control filter-option" name="status" id="status" ng-model="formdata.status">
+                                                       <select class="form-control filter-option" name="status" id="status" ng-model="status" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && status==0}">
                                                        <option class="filter-option-inner" value="0">choose</option>
 
                                                    <option value="1" class="">Enabled</option>  

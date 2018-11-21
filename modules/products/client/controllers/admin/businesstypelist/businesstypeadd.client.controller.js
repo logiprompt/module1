@@ -116,7 +116,7 @@
         "status": $scope.status
       }
 
-      console.log(data);
+     // console.log(data);
       businesstypeaddService.addBusiness(data).then(function (result) {
         console.log(result);
         if (result.statusText = "OK") {

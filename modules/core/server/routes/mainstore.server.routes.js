@@ -11,6 +11,10 @@ module.exports = function(app) {
   app.route('/api/insMainstores').all()
   
     .post(mainstore.list)
+   
+	
+	app.route('/api/insMainstoreadd').all()
+  
     .post(mainstore.create);
 
 //app.route('/api/userforgot/:userId').all()

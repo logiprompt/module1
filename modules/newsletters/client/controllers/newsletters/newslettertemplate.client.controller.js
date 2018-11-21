@@ -303,11 +303,37 @@ console.log(details);
 
       //$state.go('addlanguage');
       var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-      console.log(checkedValue)
+      //console.log(checkedValue)
       for (var i = 0; i < checkedValue.length; i++) {
         $scope.chkValue.push(checkedValue[i].value);
       }
-
+      var userId = $scope.chkValue;
+      //console.log(userId);
+    
+      swal({
+        title: 'Are you sure?',
+        text: "You want to delete checked items!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then((willDelete) => {
+        if (willDelete) {
+          $scope.NewsletterTemplateService.delcheckednewstemp(userId).then(function (result) {
+            if (result.statusText = "OK") {
+              swal(
+                'Deleted!',
+                'Checked items has been deleted.',
+                'success'
+              )
+              $state.reload();
+              //  $scope.getUser();
+            } else {
+  
+            }
+          })
+        }
+        else{}
+      })
     }
     setTimeout(getActionBtns, 1500);
 

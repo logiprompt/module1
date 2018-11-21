@@ -20,5 +20,6 @@ module.exports = function (app) {
     app.route('/api/newsLetter/updateNewsLetterTemplate').post(newsLetter.updateNewsLetterTemplate);
 
     app.route('/api/newsLetter/delNewsTempbyid').post(newsLetter.delNewsTempbyid);
+    app.route('/api/newsLetter/delcheckednewstemp').delete(newsLetter.delcheckednewstemp);
 
 };

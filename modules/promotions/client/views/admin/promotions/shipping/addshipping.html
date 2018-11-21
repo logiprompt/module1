@@ -611,7 +611,8 @@
                                                 <div class="form-group m-b-10">
                                                     <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
                                                     <label for="actionApplyTo">Apply to</label>
-                                                    <select class="form-control filter-option" name="actionApplyTo" id="actionApplyTo" ng-model="formdata.actionApplyTo" ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.actionApplyTo.$valid}">
+                                                    <select class="form-control filter-option" name="actionApplyTo" id="actionApplyTo" ng-model="formdata.actionApplyTo" 
+                                                    ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.actionApplyTo.$valid}">
                                                         <option class="filter-option-inner" value="0">select</option>
 
                                                         <option value="by percentage of original price" class="filter-option-inner">By percentage of the original price</option>
@@ -628,7 +629,8 @@
                                                     <label for="discountedShippingAmount">Discounted Shipping Amount </label>
 
                                                     <span class="bar"></span>
-                                                    <input type="text" class="form-control" id="discountedShippingAmount"  name="discountedShippingAmount" ng-model="formdata.discountedShippingAmount" ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.discountedShippingAmount.$valid}">
+                                                    <input type="text" class="form-control" id="discountedShippingAmount"  name="discountedShippingAmount" ng-model="formdata.discountedShippingAmount" 
+                                                    ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.discountedShippingAmount.$valid}">
                                                 </div>
 
 
@@ -641,7 +643,7 @@
                                                 <div class="form-group m-b-10">
                                                     <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
                                                     <label for="ruleProcessing">Stop Further Rule Processing</label>
-                                                    <select class="form-control filter-option" name="ruleProcessing" id="ruleProcessing" ng-model="formdata.ruleProcessing" ng-required="true"
+                                                    <select class="form-control filter-option" name="ruleProcessing" id="ruleProcessing" ng-model="formdata.stopRuleProcess" ng-required="true"
                                                         ng-class="{ 'validationErr' : formData.$submitted && !formData.ruleProcessing.$valid}">
                                                         <option class="filter-option-inner" value="1">choose</option>
 

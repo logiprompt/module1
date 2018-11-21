@@ -18,13 +18,18 @@ var ShippingPriceSchema = new Schema({
     createdDate: { type: Date, default: Date.now },
     status: { type: String },
     applyTo: { type: String, },
+    image: {type: String,default:''},
     conditions: { type: String },
     values: { type: [String], default: '' },
     conditionsStatus: { type: String },
     actionApplyTo: { type: String },
     discountAmount: { type: String },
     stopRuleProcess: { type: String },
-    OLang: {}
-});
+    oLang :{	  
+        type: Schema.Types.Mixed, 
+        default: {}
+      }
+    
+    }, { minimize: false });
 
-module.exports = mongoose.model('ShippingPrice', ShippingPriceSchema);
+module.exports = mongoose.model('Sys_shippingPrice', ShippingPriceSchema);

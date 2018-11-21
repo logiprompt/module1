@@ -20,7 +20,7 @@ var NewsLetterSchema = new Schema({
     created: { type: Date, default: Date.now },
     modified: { type: Date, default: Date.now },
     created_user: { type: String, default: 'Admin' },
-    modified_user: { type: String, },
+    modified_user: { type: String },
     oLang :{	  
         type: Schema.Types.Mixed, 
         default: {}

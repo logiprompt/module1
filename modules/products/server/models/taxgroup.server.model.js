@@ -39,10 +39,10 @@ var TaxGroupSchema = new Schema({
     type: String,
    
   },
-  // oLang :{	  
-  //   type: Schema.Types.Mixed, 
-  //   default: {}
-  // }
+  oLang :{	  
+    type: Schema.Types.Mixed, 
+    default: {}
+  }
 
 }, { minimize: false });
 

@@ -334,14 +334,14 @@
                                 <h6 class="card-subtitle">Use default tab with class <code>vtabs &amp; tabs-vertical</code></h6> -->
                             <!-- Nav tabs -->
 
-                            <form class="">
+                            <form class="" name="formData" ng-submit="updateShippingPriceRule()" novalidate>
 
                                 <div class="form-group m-b-10 btn23">
-                                    <button type="button" ng-click="updateShippingPriceRule()" class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
+                                    <button type="submit"  class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
 
-                                    <a href="/product/shipping">
+                                    <a href="/promotions/shipping">
                                         <button type="button" ng-click="cancel()" class="btn waves-effect waves-light btn-sm btn-default">
-                                        Cancel </button>
+                                            Cancel </button>
                                     </a>
                                 </div>
 
@@ -389,7 +389,7 @@
                                                     <div class="form-group m-b-10">
                                                         <span class="bar"></span>
                                                         <label for="input1"> Rule name </label>
-                                                        <input type="text" class="form-control cat" id="name" ng-model="formdata.ruleName">
+                                                        <input type="text" class="form-control" id="name" name="name" ng-model="formdata.ruleName" ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.ruleName.$valid}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
@@ -401,7 +401,7 @@
                                                 <div class="col-md-9">
                                                     <div class="form-group m-b-10">
                                                         <label> Description</label>
-                                                        <textarea class="form-control" rows="5" ng-model="formdata.description"></textarea>
+                                                        <textarea class="form-control" rows="5" id="description" name="description" ng-model="formdata.description" ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.description.$valid}"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
@@ -433,13 +433,11 @@
                                                                     <div class="card">
                                                                         <div class="el-card-item">
                                                                             <div class="el-card-avatar el-overlay-1 imageup">
-                                                                                <img src="/uploads/dummy.jpg" alt="user" id="imgfiles"
-                                                                                    class="imgup">
+                                                                                <img ng-src="/{{shipping.image}}" alt="user" id="imgfiles" class="imgup">
                                                                                 <div class="el-overlay">
                                                                                     <ul class="el-info">
                                                                                         <li>
-                                                                                            <a id="imgfiles2" class="btn default btn-outline image-popup-vertical-fit"
-                                                                                                href="/uploads/dummy.jpg">
+                                                                                            <a id="imgfiles2" class="btn default btn-outline image-popup-vertical-fit" href="/uploads/dummy.jpg">
                                                                                                 <i class="icon-magnifier"></i>
                                                                                             </a>
                                                                                         </li>
@@ -470,10 +468,11 @@
                                                         <label for="input1">Display in</label>
                                                         <!-- <textarea class="form-control cat" id="extra" type="text" ng-model="formdata.desc" rows="5"></textarea>-->
 
-                                                        <select class="selectpicker form-control" multiple data-style="form-control btn-info" ng-model="formdata.displayIn"></select>>
-                                                            <option>Global</option>
-                                                            <option>India</option>
-                                                            <option>UAE</option>
+                                                        <select class="selectpicker form-control" multiple data-style="form-control btn-info" ng-model="formdata.displayIn" id="displayIn" name="displayIn" ng-required="true"
+                                                        ng-class="{ 'validationErr' : formData.$submitted && !formData.displayIn.$valid}">
+                                                            <option value="Global">Global</option>
+                                                            <option value="India">India</option>
+                                                            <option value="UAE">UAE</option>
                                                         </select>
 
                                                     </div>
@@ -492,7 +491,8 @@
                                                         <label for="input1"> Start date </label>
                                                         <div class=" example ">
                                                             <div class="input-group">
-                                                                <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy" ng-model="formdata.startDate">
+                                                                <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy" ng-model="formdata.startDate" id="startDate" name="startDate" ng-required="true"
+                                                                ng-class="{ 'validationErr' : formData.$submitted && !formData.startDate.$valid}">
                                                                 <div class="input-group-append">
                                                                     <span class="input-group-text">
                                                                         <i class="icon-calender"></i>
@@ -516,7 +516,8 @@
                                                         <label for="input1"> End date </label>
                                                         <div class=" example ">
                                                             <div class="input-group">
-                                                                <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy" ng-model="formdata.endDate">
+                                                                <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy" ng-model="formdata.endDate" id="endDate" name="endDate" ng-required="true"
+                                                                ng-class="{ 'validationErr' : formData.$submitted && !formData.endDate.$valid}">
                                                                 <div class="input-group-append">
                                                                     <span class="input-group-text">
                                                                         <i class="icon-calender"></i>
@@ -537,7 +538,7 @@
                                                         <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
                                                         <span class="bar"></span>
                                                         <label for="status">Status</label>
-                                                        <select class="form-control filter-option" name="status" id="status" ng-model="formdata.status" ng-model="formdata.status">
+                                                        <select class="form-control filter-option" name="status" id="status" ng-model="formdata.status"ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.status.$valid}">
                                                             <option class="filter-option-inner" value="0">choose</option>
 
                                                             <option value="disable" class="filter-option-inner">Disable</option>
@@ -570,7 +571,7 @@
                                                     <div class="form-group m-b-10">
                                                         <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
                                                         <label for="status">Apply to</label>
-                                                        <select class="form-control filter-option" name="sale" id="sale" ng-model="formdata.applyTo">
+                                                        <select class="form-control filter-option" name="applyTo" id="applyTo" ng-model="formdata.applyTo" ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.applyTo.$valid}">
                                                             <option class="filter-option-inner" value="0">select</option>
                                                             <option value="subtotal" class="filter-option-inner">Subtotal</option>
                                                             <option value="total items quantity">Total Items Quantity</option>
@@ -597,7 +598,8 @@
                                                     <div class="form-group m-b-10">
                                                         <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
                                                         <label for="con">Conditions</label>
-                                                        <select class="form-control filter-option" name="con" id="con" ng-model="formdata.conditions">
+                                                        <select class="form-control filter-option" name="conditions" id="conditions" 
+                                                        ng-model="formdata.conditions" ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.conditions.$valid}">
                                                             <option class="filter-option-inner" value="0">select</option>
                                                             <option value="is" class="filter-option-inner">is</option>
                                                             <option value="is not">is not</option>
@@ -627,7 +629,9 @@
 
                                                         <span class="bar"></span>
 
-                                                        <input type="text" class="form-control cat col-lg-10 col-sm-8 " id="values" ng-model="formdata.values[$index]">
+                                                        <input type="text" class="form-control cat col-lg-10 col-sm-8 " id="values" name="values" ng-model="formdata.values[$index]"
+                                                        ng-required="true"
+                                                        ng-class="{ 'validationErr' : formData.$submitted && !formData.values.$valid}">
 
                                                         <div class="col-lg-2 m-b-10 col-sm-4">
                                                             <button class="add" type="button" ng-click="addNewValues($index)" style="width: 36px;
@@ -657,12 +661,14 @@
                                                 <div class="col-md-9">
                                                     <div class="form-group m-b-10">
                                                         <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
-                                                        <label for="status">These conditions are</label>
-                                                        <select class="form-control filter-option" name="status" id="status" ng-model="formdata.status" ng-model="formdata.conditionsStatus">
+                                                        <label for="conditionsStatus">These conditions are</label>
+                                                        <select class="form-control filter-option" name="conditionsStatus" id="conditionsStatus" 
+                                                        ng-model="formdata.conditionsStatus" ng-required="true"
+                                                        ng-class="{ 'validationErr' : formData.$submitted && !formData.conditionsStatus.$valid}">
                                                             <option class="filter-option-inner" value="0">choose</option>
 
-                                                            <option value="true" class="filter-option-inner">True</option>
-                                                            <option value="false">False</option>
+                                                            <option value="true" class="filter-option-inner" ng-selected="shipping.conditionsStatus=='true'">True</option>
+                                                            <option value="false" ng-selected="shipping.conditionsStatus=='false'">False</option>
                                                         </select>
                                                         <span class="bar"></span>
 
@@ -688,11 +694,12 @@
                                                     <div class="form-group m-b-10">
                                                         <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
                                                         <label for="status">Apply to</label>
-                                                        <select class="form-control filter-option" name="sale" id="sale" ng-model="formdata.actionApplyTo">
+                                                        <select class="form-control filter-option" name="actionApplyTo" id="actionApplyTo" 
+                                                        ng-model="formdata.actionApplyTo"  ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.actionApplyTo.$valid}">
                                                             <option class="filter-option-inner" value="0">select</option>
 
-                                                            <option value="by percentage of original price" class="filter-option-inner">By percentage of the original price</option>
-                                                            <option value="by fixed amount">By Fixed Amount </option>
+                                                            <option value="by percentage of original price" ng-selected="shipping.actionApplyTo=='by percentage of original price'" class="filter-option-inner">By percentage of the original price</option>
+                                                            <option value="by fixed amount" ng-selected="shipping.actionApplyTo=='by fixed amount'">By Fixed Amount </option>
                                                         </select>
                                                         <span class="bar"></span>
 
@@ -711,7 +718,8 @@
                                                         <label for="con">Discounted Shipping Amount </label>
 
                                                         <span class="bar"></span>
-                                                        <input type="text" class="form-control cat" id="values" ng-model="formdata.discountedShippingAmount">
+                                                        <input type="text" class="form-control" id="discountedShippingAmount"  name="discountedShippingAmount" 
+                                                        ng-model="formdata.discountAmount" ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.discountedShippingAmount.$valid}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
@@ -730,8 +738,9 @@
                                                     <div class="form-group m-b-10">
                                                         <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
                                                         <label for="status">Stop Further Rule Processing</label>
-                                                        <select class="form-control filter-option" name="status" id="status" ng-model="formdata.ruleProcessing">
-                                                            <option class="filter-option-inner" value="1">choose</option>
+                                                        <select class="form-control filter-option" name="ruleProcessing" id="ruleProcessing" ng-model="formdata.stopRuleProcess" ng-required="true"
+                                                        ng-class="{ 'validationErr' : formData.$submitted && !formData.ruleProcessing.$valid}">
+                                                            <option class="filter-option-inner" value="0">choose</option>
 
                                                             <option value="yes" class="filter-option-inner">Yes</option>
                                                             <option value="no">No</option>
@@ -807,23 +816,23 @@
 
 
 <script>
-        $(document).ready(function () {
+    $(document).ready(function () {
 
 
 
 
-            $('#myTable').DataTable();
+        $('#myTable').DataTable();
 
 
-            $('.example24').DataTable({
+        $('.example24').DataTable({
 
-            });
         });
+    });
 </script>
 <script>
-        setTimeout(function () {
-            $('.selectpicker').selectpicker({
-                style: 'btn-default',
-                size: 4
-            });
-        }, 1000)</script>
+    setTimeout(function () {
+        $('.selectpicker').selectpicker({
+            style: 'btn-default',
+            size: 4
+        });
+    }, 1000)</script>

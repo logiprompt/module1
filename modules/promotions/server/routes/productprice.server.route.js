@@ -11,10 +11,13 @@ module.exports = function (app) {
     app.route('/api/promotions/addProductPrices').post(productPrice.addProductPrice);
 
     //update product price rule
-    app.route('/api/promotions/updateProductPrice').put(productPrice.updateProductPrice);
+    app.route('/api/promotions/updatePromotionsProductPrice').put(productPrice.updateProductPrice);
 
     //delete product price rule
     app.route('/api/promotions/deleteProductPrice/:itemId').delete(productPrice.deleteProductPrice);
+
+    //delete checked product price rule
+    app.route('/api/promotions/delCheckedProductPrice').delete(productPrice.delChecked);
 
     //get product price rule list
     app.route('/api/promotions/getProductPriceList').get(productPrice.getProductPriceList);

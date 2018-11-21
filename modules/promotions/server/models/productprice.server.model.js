@@ -26,7 +26,8 @@ var ProductPriceSchema = new Schema({
   actionApplyTo: { type: String },
   discountAmount: { type: String },
   stopRuleProcess: { type: String },
-  OLang: {}
-});
+  oLang: { type: Schema.Types.Mixed,default: {}}
 
-module.exports = mongoose.model('ProductPrice', ProductPriceSchema);
+}, { minimize: false });
+
+module.exports = mongoose.model('Sys_productPrice', ProductPriceSchema);

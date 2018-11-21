@@ -120,9 +120,9 @@ exports.delete = function (request, response) {
 */
 exports.update = function (request, response) {
     var reqBody = request.body;
-    var userId = reqBody.userId;
+    var userId = reqBody.id;
     var data;
-
+    
 
     Taxgroup.findById(userId).lean().exec(function (error, data) {
         if (error) {
@@ -130,18 +130,12 @@ exports.update = function (request, response) {
             return;
         } else {
             if (reqBody.isDefaultLang) {
-                data.name = reqBody.name;
-                data.subject = reqBody.subject;
-                data.content = reqBody.content;
-                data.custom = reqBody.custom;
+                data.TaxGroupname = reqBody.TaxGroupname;
                 data.status = reqBody.status;
             }
             else {
                 var obj = {};
-                obj.name = reqBody.name;
-                obj.subject = reqBody.subject;
-                obj.content = reqBody.content;
-                obj.custom = reqBody.custom;
+                obj.TaxGroupname = reqBody.TaxGroupname;
                 data['oLang'][reqBody.userSelectedLang] = obj;
             }
 

@@ -21,21 +21,37 @@
         }, this);
       })
     }
-  //  if ($stateParams.id == undefined) {
+    if ($stateParams.id == undefined) {
       $scope.getShippingPriceList();
-    //}
+    }
 
     //Add Shipping price rule
     $scope.AddShippingPrice = function () {
       if($scope.formData.$valid && $scope.formdata.status!=0){
-      var data=$scope.formdata;
+     // var data=$scope.formdata;
+      var data = {
+        "ruleName": $scope.formdata.ruleName,
+         "description": $scope.formdata.description,
+        "image": $scope.imgss,
+        "displayIn": $scope.formdata.displayIn,
+        "startDate": $scope.formdata.startDate,
+        "endDate": $scope.formdata.endDate,
+        "status": $scope.formdata.status,
+        "applyTo": $scope.formdata.applyTo,
+        "conditions": $scope.formdata.conditions,
+        "values": $scope.formdata.values,
+        "conditionsStatus": $scope.formdata.conditionsStatus,
+        "actionApplyTo": $scope.formdata.actionApplyTo,
+        "discountAmount": $scope.formdata.discountedShippingAmount,
+        "stopRuleProcess": $scope.formdata.stopRuleProcess
+      }
 
      //console.log(data);
       $scope.shippingpriceService.addShippingPrice(data).then(function (result) {
         //$location.path('/promotions/shipping');
         if(result.statusText = "OK"){
 				  swal("Success!", "Successfully added!", "success");  
-				  $state.go('promoshipping');
+		//	 $state.go('promoshipping');
 			  }else{
 				  swal("error!", "Already exist!", "error");
 			  }
@@ -75,22 +91,55 @@
     }
 
     //get shipping price rule details
-    // $scope.getShippingPriceDetails = function () {
-    //   $scope.shippingpriceService.getShippingPriceDetails($stateParams.id).then(function (result) {
-    //     $scope.formdata = result['data'];
-    //     $scope.formdata.startDate = $scope.formdata.startDate.split("T")[0];
-    //     $scope.formdata.endDate = $scope.formdata.endDate.split("T")[0];
-    //   })
-    // }
-    // if ($stateParams.id != undefined) {
-    //   $scope.getShippingPriceDetails();
-    // }
+    //console.log($stateParams.id);
+    $scope.getShippingPriceDetails = function (itemId) {
+      $scope.shippingpriceService.getShippingPriceDetails(itemId).then(function (result) {
+       // console.log(result);
+       $scope.shipping=result.data; 
+        $scope.formdata = result['data'];
+       // $scope.formdata.startDate = $scope.formdata.startDate.split("T")[0];
+       // $scope.formdata.endDate = $scope.formdata.endDate.split("T")[0];
+      })
+    }
+    if ($stateParams.id != undefined) {
+      $scope.getShippingPriceDetails($stateParams.id);
+    }
 
-    // $scope.updateShippingPriceRule = function(){
-    //   $scope.shippingpriceService.updateShippingPriceRule($scope.formdata).then(function (result) {
-    //     $location.path('/promotions/shipping');
-    //   })
-    // }
+    $scope.updateShippingPriceRule = function(){
+      console.log(2345);
+      if($scope.formData.$valid && $scope.formdata.status!=0){
+        // var data=$scope.formdata;
+        
+         var data = {
+           "ruleName": $scope.formdata.ruleName,
+            "description": $scope.formdata.description,
+           "image": $scope.imgss,
+           "displayIn": $scope.formdata.displayIn,
+           "startDate": $scope.formdata.startDate,
+           "endDate": $scope.formdata.endDate,
+           "status": $scope.formdata.status,
+           "applyTo": $scope.formdata.applyTo,
+           "conditions": $scope.formdata.conditions,
+           "values": $scope.formdata.values,
+           "conditionsStatus": $scope.formdata.conditionsStatus,
+           "actionApplyTo": $scope.formdata.actionApplyTo,
+           "discountAmount": $scope.formdata.discountedShippingAmount,
+           "stopRuleProcess": $scope.formdata.stopRuleProcess,
+           "id":$stateParams.id
+         }
+         console.log(data);
+
+      $scope.shippingpriceService.updateShippingPriceRule(data).then(function (result) {
+        console.log(result);
+        if (result.statusText = "OK") {
+          swal("Success!", "Successfully updated ", "success");
+          $scope.getShippingPriceList();
+          // $state.go('emailcmsratingaction');
+        }
+       // $location.path('/promotions/shipping');
+      })
+    }
+    }
 
 
     /* shipping prod rule */
@@ -283,8 +332,8 @@
     }
     $scope.addchkval = function (linkid) {
       var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-      console.log(linkid)
-      console.log(checkedValue[0])
+      //console.log(linkid)
+     // console.log(checkedValue[0])
       if (checkedValue.length > 1) {
         $scope.editpage[0].removeAttribute("href");
       }
@@ -318,13 +367,13 @@
 
       //$state.go('addlanguage');
       var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-      console.log(checkedValue)
+     // console.log(checkedValue)
       for (var i = 0; i < checkedValue.length; i++) {
         $scope.chkValue.push(checkedValue[i].value);
       }
 
       var itemId=$scope.chkValue;
-      console.log(itemId);
+     // console.log(itemId);
         swal({
           title: 'Are you sure?',
           text: "You want to delete checked items!",

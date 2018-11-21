@@ -5,17 +5,23 @@
         .module('promotions')
         .factory('shippingpriceService', shippingpriceService);
 
-    shippingpriceService.$inject = ['$http'];
+    shippingpriceService.$inject = ['$resource', '$http', 'Upload'];
 
-    function shippingpriceService($http) {
+    function shippingpriceService($resource, $http, Upload) {
         var shippingprice = {};
 
         shippingprice.addShippingPrice = function (data) {
-            return $http({
+            // return $http({
+            //     url: '/api/promotion/addShippingPrice',
+            //     method: "POST",
+            //     data: data
+            // });
+
+            return Upload.upload({
                 url: '/api/promotion/addShippingPrice',
                 method: "POST",
-                data: data
-            });
+				data: data
+			});
         }
 
         shippingprice.getShippingPriceList = function (data) {
@@ -33,17 +39,29 @@
                 params:{'itemId':itemId}
             });
         }
-
-        shippingprice.getShippingPriceDetails = function (ruleId) {
+        shippingprice.delChecked = function (itemId) {
             return $http({
-                url: '/api/promotions/getShippingPriceDetails/' + ruleId,
-                method: "GET"
+                url: '/api/promotion/delChecked',
+                method: "DELETE",
+               // data:{'itemId':itemId},
+                params:{'itemId':itemId}
+            });
+        }
+
+        shippingprice.getShippingPriceDetails = function (itemId) {
+          
+          //  console.log(itemId);
+            return $http({
+                url: '/api/promotion/getShippingPriceDetails',
+                method: "GET",
+                params:{'itemId':itemId}
             });
         }
 
         shippingprice.updateShippingPriceRule = function (data) {
+            console.log(data);
             return $http({
-                url: '/api/promotions/updateShippingPriceRule',
+                url: '/api/promotion/updateShippingPriceRule',
                 method: "PUT",
                 data: data
             });

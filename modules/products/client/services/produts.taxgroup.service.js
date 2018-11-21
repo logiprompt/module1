@@ -84,10 +84,10 @@
 	 /*
 	  * 
 	  */
-	 taxgroup.updateOrderHold = function(userId,data){
+	 taxgroup.updateTaxGroup = function(data){
 		//console.log(userId);
 		 return $http({
-		        url: '/api/orderholdbyid',
+		        url: '/api/taxgroupbyid',
 		        method: "PUT", 
 		        data:data
 		    });

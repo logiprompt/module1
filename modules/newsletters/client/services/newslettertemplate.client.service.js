@@ -77,7 +77,14 @@
 				data: { 'userId': userId }
 			});
 		}
-
+        newsLetterTemplate.delcheckednewstemp = function(userId){
+           // console.log(1222221111);		  
+           return $http({
+                  url: '/api/newsLetter/delcheckednewstemp',
+                  method: "DELETE",
+                  params:{'userId':userId}
+              });
+          }
 
 
         return newsLetterTemplate;

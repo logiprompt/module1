@@ -454,7 +454,7 @@ width:60%;
                                                <div class="col-md-4">
                                                   <label for="tags">Sunday </label>
                                                     <div class="form-group">
-                                                       <select id="selSunday" name="selSunday" ng-model="selSunday" ng-change="sunday()" class="form-control">
+                                                       <select id="selSunday" name="selSunday" ng-model="selSunday" ng-change="sunday()" class="form-control"  ng-class="{ 'validationErr' : formdata.$submitted && (!formdata.selSunday.$valid || selSunday==0 )}">
  														  <option value="0">Select</option>
  														  <option value="1">Holiday</option>
  														  <option value="2">One shift</option>
@@ -462,7 +462,7 @@ width:60%;
                                                        </select>
                                                     </div>
                                                </div> 
-                                               <div  class="sunMrng" ng-if="sunMrng==1">
+                                               <div  class="sunMrng" ng-show="sunMrng==1">
                                                 <div class="col-md-2">
                                                 	<label for="tags">From </label>
                                                     <div class="form-group">
@@ -476,7 +476,7 @@ width:60%;
                                                     </div>
                                                </div> 
                                                </div>
-                                                <div  class="sunMrng" ng-if="sunEve==1">
+                                                <div  class="sunMrng" ng-show="sunEve==1">
                                                
                                                 <div class="col-md-2">
                                                 	<label for="tags">From </label>
@@ -495,7 +495,7 @@ width:60%;
                                                <div class="col-md-4">
                                                   <label for="tags">Monday </label>
                                                     <div class="form-group">
-                                                       <select id="selMonday" name="selMonday" class="form-control" ng-model="selMonday" ng-change="monday()">
+                                                       <select id="selMonday" name="selMonday" class="form-control" ng-model="selMonday" ng-change="monday()" ng-class="{ 'validationErr' : formdata.$submitted && (!formdata.selMonday.$valid || selMonday==0 )}">
  														  <option value="0">Select</option>
  														  <option value="1">Holiday</option>
  														  <option value="2">One shift</option>
@@ -503,7 +503,7 @@ width:60%;
                                                        </select>
                                                     </div>
                                                </div> 
-                                                <div  class="monMrng" ng-if="monMrng==1">
+                                                <div  class="monMrng" ng-show="monMrng==1">
                                                 <div class="col-md-2">
                                                 	<label for="tags">From </label>
                                                     <div class="form-group">
@@ -517,7 +517,7 @@ width:60%;
                                                     </div>
                                                </div> 
                                                </div>
-                                               <div  class="monMrng" ng-if="monEve==1">
+                                               <div  class="monMrng" ng-show="monEve==1">
                                                 <div class="col-md-2">
                                                 	<label for="tags">From </label>
                                                     <div class="form-group">
@@ -535,7 +535,7 @@ width:60%;
                                                <div class="col-md-4">
                                                   <label for="tags">Tuesday </label>
                                                     <div class="form-group">
-                                                       <select id="selTuesday" name="selTuesday" class="form-control" ng-model="selTuesday" ng-change="tuesday()">
+                                                       <select id="selTuesday" name="selTuesday" class="form-control" ng-model="selTuesday" ng-change="tuesday()" ng-class="{ 'validationErr' : formdata.$submitted && (!formdata.selTuesday.$valid || selTuesday==0 )}">
  														  <option value="0">Select</option>
  														  <option value="1">Holiday</option>
  														  <option value="2">One shift</option>
@@ -543,7 +543,7 @@ width:60%;
                                                        </select>
                                                     </div>
                                                </div> 
-                                                <div  class="tueMrng" ng-if="tueMrng==1">
+                                                <div  class="tueMrng" ng-show="tueMrng==1">
                                                 <div class="col-md-2">
                                                 	<label for="tags">From </label>
                                                     <div class="form-group">
@@ -557,7 +557,7 @@ width:60%;
                                                     </div>
                                                </div> 
                                                </div>
-                                                <div  class="tueMrng" ng-if="tueEve==1">
+                                                <div  class="tueMrng" ng-show="tueEve==1">
                                                 <div class="col-md-2">
                                                 	<label for="tags">From </label>
                                                     <div class="form-group">
@@ -576,7 +576,7 @@ width:60%;
                                                <div class="col-md-4">
                                                   <label for="tags">Wednesday </label>
                                                     <div class="form-group">
-                                                       <select name="selWednesday" id="selWednesday" class="form-control" ng-model="selWednesday" ng-change="wednesday()">
+                                                       <select name="selWednesday" id="selWednesday" class="form-control" ng-model="selWednesday" ng-change="wednesday()" ng-class="{ 'validationErr' : formdata.$submitted && (!formdata.selWednesday.$valid || selWednesday==0 )}">
  														  <option value="0">Select</option>
  														  <option value="1">Holiday</option>
  														  <option value="2">One shift</option>
@@ -584,7 +584,7 @@ width:60%;
                                                        </select>
                                                     </div>
                                                </div> 
-                                                <div  class="wedMrng" ng-if="wedMrng==1">
+                                                <div  class="wedMrng" ng-show="wedMrng==1">
                                                 <div class="col-md-2">
                                                 	<label for="tags">From </label>
                                                     <div class="form-group">
@@ -598,7 +598,7 @@ width:60%;
                                                     </div>
                                                </div> 
                                                </div>
-                                                <div  class="wedMrng" ng-if="wedEve==1">
+                                                <div  class="wedMrng" ng-show="wedEve==1">
                                                 <div class="col-md-2">
                                                 	<label for="tags">From </label>
                                                     <div class="form-group">
@@ -618,7 +618,7 @@ width:60%;
                                                <div class="col-md-4">
                                                   <label for="tags">Thursday </label>
                                                     <div class="form-group">
-                                                       <select name="selThursday" id="selThursday" class="form-control" ng-model="selThursday" ng-change="thursday()">
+                                                       <select name="selThursday" id="selThursday" class="form-control" ng-model="selThursday" ng-change="thursday()" ng-class="{ 'validationErr' : formdata.$submitted && (!formdata.selThursday.$valid || selThursday==0 )}">
  														  <option value="0">Select</option>
  														  <option value="1">Holiday</option>
  														  <option value="2">One shift</option>
@@ -626,7 +626,7 @@ width:60%;
                                                        </select>
                                                     </div>
                                                </div> 
-                                                <div  class="thuMrng" ng-if="thuMrng==1">
+                                                <div  class="thuMrng" ng-show="thuMrng==1">
                                                 <div class="col-md-2">
                                                 	<label for="tags">From </label>
                                                     <div class="form-group">
@@ -640,7 +640,7 @@ width:60%;
                                                     </div>
                                                </div> 
                                                </div>
-                                               <div  class="thuMrng" ng-if="thuEve==1">
+                                               <div  class="thuMrng" ng-show="thuEve==1">
                                                 <div class="col-md-2">
                                                 	<label for="tags">From </label>
                                                     <div class="form-group">
@@ -659,7 +659,7 @@ width:60%;
                                                <div class="col-md-4">
                                                   <label for="tags">Friday </label>
                                                     <div class="form-group">
-                                                       <select id="selFriday" name="selFriday" ng-model="selFriday" ng-change="friday()" class="form-control">
+                                                       <select id="selFriday" name="selFriday" ng-model="selFriday" ng-change="friday()" class="form-control" ng-class="{ 'validationErr' : formdata.$submitted && (!formdata.selFriday.$valid || selFriday==0 )}">
  														  <option value="0">Select</option>
  														  <option value="1">Holiday</option>
  														  <option value="2">One shift</option>
@@ -667,7 +667,7 @@ width:60%;
                                                        </select>
                                                     </div>
                                                </div> 
-                                               <div  class="friMrng" ng-if="friMrng==1">
+                                               <div  class="friMrng" ng-show="friMrng==1">
                                                 <div class="col-md-2">
                                                 	<label for="tags">From </label>
                                                     <div class="form-group">
@@ -681,7 +681,7 @@ width:60%;
                                                     </div>
                                                </div>
                                                </div> 
-                                               <div  class="friMrng" ng-if="friEve==1">
+                                               <div  class="friMrng" ng-show="friEve==1">
                                                 <div class="col-md-2">
                                                 	<label for="tags">From </label>
                                                     <div class="form-group">
@@ -699,7 +699,7 @@ width:60%;
                                                <div class="col-md-4">
                                                   <label for="tags">Saturday </label>
                                                     <div class="form-group">
-                                                       <select id="selSaturday" name="selSaturday" ng-model="selSaturday" ng-change="saturday()" class="form-control">
+                                                       <select id="selSaturday" name="selSaturday" ng-model="selSaturday" ng-change="saturday()" class="form-control" ng-class="{ 'validationErr' : formdata.$submitted && (!formdata.selSaturday.$valid || selSaturday==0 )}">
  														  <option value="0">Select</option>
  														  <option value="1">Holiday</option>
  														  <option value="2">One shift</option>
@@ -707,7 +707,7 @@ width:60%;
                                                        </select>
                                                     </div>
                                                </div>
-                                               <div  class="satMrng" ng-if="satMrng==1"> 
+                                               <div  class="satMrng" ng-show="satMrng==1"> 
                                                 <div class="col-md-2">
                                                 	<label for="tags">From </label>
                                                     <div class="form-group">
@@ -721,7 +721,7 @@ width:60%;
                                                     </div>
                                                </div> 
                                                </div>
-                                               <div  class="satMrng" ng-if="satEve==1">
+                                               <div  class="satMrng" ng-show="satEve==1">
                                                 <div class="col-md-2">
                                                 	<label for="tags">From </label>
                                                     <div class="form-group">
@@ -755,16 +755,24 @@ width:60%;
                                             
                                                   <label for="tags">Time zone </label>
                                                     <div class="form-group">
-                                                       <select id="selSunday" name="selSunday" class="form-control">
- 														  <option value="0">India standard time(Asia/culcutta) </option>
+                                                       <select ng-model="seltime" id="seltime" name="seltime" class="form-control" ng-class="{ 'validationErr' : formdata.$submitted && (!formdata.seltime.$valid || seltime==0 )}">
+                                                       <option value="0">Choose </option>
+ 														  <option value="1">India standard time(Asia/culcutta) </option>
  														  
                                                        </select>
                                                     </div>
                                             
                                                   <label for="tags">First working day of the week </label>
                                                     <div class="form-group">
-                                                       <select id="selSunday" name="selSunday" class="form-control">
- 														  <option value="0">Monday </option>
+                                                       <select id="selWorking" name="selWorking" ng-model="selWorking" class="form-control" ng-class="{ 'validationErr' : formdata.$submitted && (!formdata.selWorking.$valid || selWorking==0 )}">
+                                                       <option value="0">Choose </option>
+ 														  <option value="1">Monday </option>
+                                                           <option value="2">Tuesday </option>
+                                                            <option value="3">Wednesday </option>
+                                                             <option value="4">Thursday </option>
+                                                              <option value="5">Friday </option>
+                                                               <option value="6">Saturday </option>
+                                                                <option value="7">Sunday </option>
  														  
                                                        </select>
                                                     </div>
@@ -774,42 +782,42 @@ width:60%;
                                                          <div class="col-md-3"></div>
                                                     	 <div class="col-md-9">
                                                        		<div class="form-group has-danger" style="margin-bottom: 0px !important;">
-                                                         		<input type="checkbox" name="chkBox1" id="chkBox1" class="filled-in chk-col-light-blue">
+                                                         		<input type="checkbox" name="chkBox1" id="chkBox1" class="filled-in chk-col-light-blue" ng-model="chkBox1">
                                                          		<label class="lbl" for="chkBox1">Sunday</label>
                                                        		</div>
                                                 		 </div> 
                                                 		  <div class="col-md-3"></div>
                                                 		  <div class="col-md-9">
                                                        		<div class="form-group has-danger" style="margin-bottom: 0px !important;">
-                                                         		<input type="checkbox" name="chkBox2" id="chkBox2" class="filled-in chk-col-light-blue">
+                                                         		<input type="checkbox" name="chkBox2" id="chkBox2" class="filled-in chk-col-light-blue" ng-model="chkBox2">
                                                          		<label class="lbl" for="chkBox2">Monday</label>
                                                        		</div>
                                                 		 </div> 
                                                 		 <div class="col-md-3"></div>
                                                 		  <div class="col-md-9">
                                                        		<div class="form-group has-danger" style="margin-bottom: 0px !important;">
-                                                         		<input type="checkbox" name="chkBox3" id="chkBox3" class="filled-in chk-col-light-blue">
+                                                         		<input type="checkbox" name="chkBox3" id="chkBox3" class="filled-in chk-col-light-blue" ng-model="chkBox3">
                                                          		<label class="lbl" for="chkBox3">Thuesday</label>
                                                        		</div>
                                                 		 </div> 
                                                 		  <div class="col-md-3"></div>
                                                 		  <div class="col-md-9">
                                                        		<div class="form-group has-danger" style="margin-bottom: 0px !important;">
-                                                         		<input type="checkbox" name="chkBox4" id="chkBox4" class="filled-in chk-col-light-blue">
+                                                         		<input type="checkbox" name="chkBox4" id="chkBox4" class="filled-in chk-col-light-blue" ng-model="chkBox4">
                                                          		<label class="lbl" for="chkBox4">Wednesday</label>
                                                        		</div>
                                                 		 </div> 
                                                 		  <div class="col-md-3"></div>
                                                 		  <div class="col-md-9">
                                                        		<div class="form-group has-danger" style="margin-bottom: 0px !important;">
-                                                         		<input type="checkbox" name="chkBox5" id="chkBox5" class="filled-in chk-col-light-blue">
+                                                         		<input type="checkbox" name="chkBox5" id="chkBox5" class="filled-in chk-col-light-blue" ng-model="chkBox5">
                                                          		<label class="lbl" for="chkBox5">Thursday</label>
                                                        		</div>
                                                 		 </div> 
                                                 		  <div class="col-md-3"></div>
                                                 		  <div class="col-md-9">
                                                        		<div class="form-group has-danger" style="margin-bottom: 0px !important;">
-                                                         		<input type="checkbox" name="chkBox6" id="chkBox6" class="filled-in chk-col-light-blue">
+                                                         		<input type="checkbox" name="chkBox6" id="chkBox6" class="filled-in chk-col-light-blue" ng-model="chkBox6">
                                                          		<label class="lbl" for="chkBox6">Friday</label>
                                                        		</div>
                                                 		 </div> 
@@ -817,7 +825,7 @@ width:60%;
                                                 		  <div class="col-md-9">
                                                        		<div class="form-group has-danger" style="margin-bottom: 0px !important;">
                                                          		<!-- <input type="checkbox" name="chkBox7" id="chkBox7" class="filled-in chk-col-light-blue"> -->
-                                                         		<input type="checkbox" name="chknew" id="chknew" class="filled-in chk-col-light-blue">
+                                                         		<input type="checkbox" name="chknew" id="chknew" class="filled-in chk-col-light-blue" ng-model="chknew">
                                                          		<label class="lbl" for="chknew">Satarday</label>
                                                        		</div>
                                                 		 </div> 

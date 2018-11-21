@@ -5,7 +5,8 @@
  */
 var path = require('path'),
   mongoose = require('mongoose'),
-  Newsletter = mongoose.model('Newsletter'),
+ // Newslettertemp = mongoose.model('Newsletter'),
+  Newsletter = mongoose.model('Sys_newsletter'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   _ = require('lodash');
 
@@ -13,18 +14,68 @@ var path = require('path'),
  * Create a Newsletter
  */
 exports.create = function(req, res) {
-  var newsletter = new Newsletter(req.body);
-  newsletter.user = req.user;
 
-  newsletter.save(function(err) {
-    if (err) {
-      return res.status(400).send({
-        message: errorHandler.getErrorMessage(err)
-      });
-    } else {
-      res.jsonp(newsletter);
-    }
+  var picpath = "";
+  var storage = multer.diskStorage({
+      destination: function (req, file, callback) {
+          callback(null, './public/uploads');
+      },
+      filename: function (req, file, callback) {
+          console.log(file);
+          var ext =  file.originalname.substr(file.originalname.length - 3); // => "Tabs1"
+          callback(null, file.fieldname + '-' + Date.now() +'.' +  ext); // => "Tabs1");
+          picpath = "uploads/" + file.fieldname + '-' + Date.now() + '.' + ext;
+      }
   });
+
+  var upload = multer({ storage: storage }).single('imgfile');
+/////////////////////////////////////////////////////////////////////////
+
+
+ var picpath1 = "";
+ 
+// var storage = multer.diskStorage({
+//     destination: function (req, file, callback) {
+//         callback(null, './public/uploads');
+//     },
+//     filename: function (req, file, callback) {
+//         console.log(file);
+//         var ext =  file.originalname.substr(file.originalname.length - 3); // => "Tabs1"
+//         callback(null, file.fieldname + '-' + Date.now() +'.' +  ext); // => "Tabs1");
+//         picpath1 = "uploads/" + file.fieldname + '-' + Date.now() + '.' + ext;
+//     }
+// });
+
+// var upload = multer({ storage: storage }).single('imgfile1');
+
+
+
+
+///////////////////////////////////////////////////////////////////////////
+  upload(req, res, function (err) {
+      var reqBody = req.body;
+      console.log(req.body);
+      if (err) {
+          return res.end("Error uploading file.");
+      }
+      else {
+          reqBody['imgfile'] = picpath;
+          reqBody['imgfile1'] = picpath1;
+          Newsletter.create(reqBody, function (err) {
+              if (err) {
+                  return res.status(400).send({
+                      message: errorHandler.getErrorMessage(err)
+                  });
+              } else {
+                  res.jsonp(reqBody);
+              }
+          });
+
+      }
+  });
+
+
+
 };
 
 /**
@@ -80,6 +131,20 @@ exports.delete = function(req, res) {
 /**
  * List of Newsletters
  */
+exports.listtemp = function (request, response) {
+    
+  // Newslettertemp.find().exec(function (error, items) {
+
+  //     if (error) {
+  //         return response.status(400).send({
+  //             message: errorHandler.getErrorMessage(error)
+  //         });
+  //     } else {
+
+  //         response.jsonp(items);
+  //     }
+  // });
+};
 exports.list = function(req, res) {
   Newsletter.find().sort('-created').populate('user', 'displayName').exec(function(err, newsletters) {
     if (err) {

@@ -9,21 +9,29 @@ var mongoose = require('mongoose'),
 /**
  * Newsletter Schema
  */
-var NewsletterSchema = new Schema({
-  name: {
-    type: String,
-    default: '',
-    required: 'Please fill Newsletter name',
-    trim: true
+var NewslettersSchema = new Schema({
+ 
+  
+  temp: {
+    type: Schema.Types.ObjectId,
+    ref: 'Newsletter'
   },
-  created: {
-    type: Date,
-    default: Date.now
-  },
-  user: {
-    type: Schema.ObjectId,
-    ref: 'User'
-  }
-});
+  title: { type: String, default: '' },
+  subject: { type: String, default: '' },
+  senderemail: { type: String, default: '' },
+  contentdesc: { type: String, default: '' },
+  imgfile: { type: String, default: '' },
+  imgfile1: { type: String, default: '' },
+  status: { type: String, default: '' },
+  created: { type: Date, default: Date.now },
+  modified: { type: Date, default: Date.now },
+  created_user: { type: String, default: 'Admin' },
+  modified_user: { type: String },
+  oLang :{	  
+      type: Schema.Types.Mixed, 
+      default: {}
+    }
+  
+  }, { minimize: false });
 
-mongoose.model('Newsletter', NewsletterSchema);
+mongoose.model('Sys_newsletter', NewslettersSchema);

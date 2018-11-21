@@ -36,16 +36,65 @@ var MainstoreSchema = new Schema({
   mobile: {
     type: String,
     default: '',
-    required: 'Please enter  mobile',
+    //required: 'Please enter  mobile',
     trim: true
   },
   
   fax: {
     type: String,
     default: '',
-    required: 'Please enter  fax',
+    //required: 'Please enter  fax',
     trim: true
   },
+  
+  state: [{ type: Schema.Types.ObjectId, ref: 'Sys_state' }],
+  country: [{ type: Schema.Types.ObjectId, ref: 'Sys_country' }],
+  district: [{ type: Schema.Types.ObjectId, ref: 'Sys_district' }],
+  
+   
+  postalcode: {
+    type: String,
+    default: '',
+   // required: 'Please enter postalcode',
+    trim: true
+  },
+  
+  address: {
+    type: String,
+    default: '',
+   // required: 'Please enter address',
+    trim: true
+  },
+  
+  lattitude: {
+    type: String,
+    default: '',
+   // required: 'Please enter lattitude',
+    trim: true
+  },
+
+  longitude: {
+    type: String,
+    default: '',
+   // required: 'Please enter longitude',
+    trim: true
+  },
+  
+  timezone: {
+    type: String,
+    default: '',
+   // required: 'Please select timezone',
+    trim: true
+  },
+  
+  workingday: {
+    type: String,
+    default: '',
+   // required: 'Please select workingday',
+    trim: true
+  },
+
+  
   created: {
     type: Date,
     default: Date.now
@@ -62,6 +111,10 @@ var MainstoreSchema = new Schema({
     type: String,
    
   },
+  timing:{
+	  type:Object,
+	  
+	  },
   oLang :{	  
     type: Schema.Types.Mixed, 
     default: {}

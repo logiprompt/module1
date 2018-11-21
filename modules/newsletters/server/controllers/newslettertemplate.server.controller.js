@@ -36,6 +36,22 @@ exports.getAllNewsLetterTemplates = function (req, res, next) {
 /**
  * Delete delNewsTempbyid by ID
  */
+exports.delcheckednewstemp = function(request, response) {
+      
+    //var arr = request.query.userId.split(',');
+    var arr = request.query.userId;
+    //console.log(arr);
+    newsLetter.deleteMany({_id:{'$in':arr}}).exec(function (err, data) {
+                         if (err) throw err;
+                         response.json({
+                                        status: 1,
+                            });	
+                
+            
+                });
+
+
+}
 exports.delNewsTempbyid = function (request, response) {
     var userId = request.body.userId;
     console.log(userId);

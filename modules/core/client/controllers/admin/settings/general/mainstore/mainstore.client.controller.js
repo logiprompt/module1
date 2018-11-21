@@ -22,6 +22,8 @@
 	  $scope.selThursday ='0';
 	   $scope.selFriday ='0';
 	    $scope.selSaturday ='0';
+		$scope.seltime ='0';
+		$scope.selWorking ='0';
      $scope.district ='0';
   $scope.mainstoreService=mainstoreService;
  
@@ -31,29 +33,55 @@
   
   
    $scope.insMainstore = function(){
-    
-    if($scope.formdata.$valid && $scope.status!=0){
+    console.log($scope.sunfrom);
+   // if($scope.formdata.$valid && $scope.status!=0){
     var data = {
         "name":$scope.name,
         "contactperson":$scope.contactperson,
         "email":$scope.email,
         "telephone":$scope.telephone,
         "mobile" :$scope.mobile,
-		"fax" :$scope.fax
-        }
-      
+		"fax" :$scope.fax,
+		"timing":
+		{
+		"sunday":		
+		{"shift":$scope.selWednesday,"mrng":{"frm":$scope.sunfrom,"to":$scope.sunto},"eve":{"frm":$scope.sunevefrom,"to":$scope.suneveto}
+		},	
+		"monday":
+		
+		{"shift":$scope.selMonday,"mrng":{"frm":$scope.monfrom,"to":$scope.monto},"eve":{"frm":$scope.monevefrom,"to":$scope.moneveto}
+		}
+		,
+		"tuesday":		
+		{"shift":$scope.selTuesday,"mrng":{"frm":$scope.tuefrom,"to":$scope.tueto},"eve":{"frm":$scope.tueevefrom,"to":$scope.tueeveto}
+		},
+		"wednesday":		
+		{"shift":$scope.selWednesday,"mrng":{"frm":$scope.wedfrom,"to":$scope.wedto},"eve":{"frm":$scope.wedevefrom,"to":$scope.wedeveto}
+		},
+		"thursday":		
+		{"shift":$scope.selWednesday,"mrng":{"frm":$scope.thufrom,"to":$scope.thuto},"eve":{"frm":$scope.thuevefrom,"to":$scope.thueveto}
+		},
+		"friday":		
+		{"shift":$scope.selWednesday,"mrng":{"frm":$scope.frifrom,"to":$scope.frito},"eve":{"frm":$scope.frievefrom,"to":$scope.frieveto}
+		},
+		"saturday":		
+		{"shift":$scope.selWednesday,"mrng":{"frm":$scope.satfrom,"to":$scope.satto},"eve":{"frm":$scope.satevefrom,"to":$scope.sateveto}
+		},
+		}
+		
+	}
     console.log($scope.cmstagsubmissionService);
       $scope.mainstoreService.insMainstore(data).then(function(result){
 
         if(result.statusText = "OK"){
           swal("Success!", "Successfully added!", "success");  
-          $state.go('settingsmainstore');
+          //$state.go('settingsmainstore');
         }else{
           swal("error!", "Already exist!", "error");
         }
         
       })
-    }
+    //}
       
     }
 	
