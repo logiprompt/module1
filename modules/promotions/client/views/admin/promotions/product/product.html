@@ -118,7 +118,7 @@
                                         <td>
                                             <input type="checkbox" id="basic_checkbox_{{$index+1}}" class="rowtxtchk" value="{{item._id}}" ng-click="addchkval(item._id)" />
                                             <label for="basic_checkbox_{{$index+1}}"></label>{{$index+1}}</td>
-                                        <td>{{item.ruleName}}</td>
+                                        <td>{{item.oLang[currentLan].ruleName ? item.oLang[currentLan].ruleName :item.ruleName}}</td>
                                         <td>{{item.startDate}}</td>
                                         <td>{{item.endDate}}</td>
                                         <td>{{item.displayIn}}</td>

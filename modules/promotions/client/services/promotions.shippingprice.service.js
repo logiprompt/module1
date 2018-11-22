@@ -60,11 +60,17 @@
 
         shippingprice.updateShippingPriceRule = function (data) {
             console.log(data);
-            return $http({
+
+            return Upload.upload({
                 url: '/api/promotion/updateShippingPriceRule',
                 method: "PUT",
-                data: data
-            });
+				data: data
+			});
+            // return $http({
+            //     url: '/api/promotion/updateShippingPriceRule',
+            //     method: "PUT",
+            //     data: data
+            // });
         }
 
         return shippingprice;

@@ -8,6 +8,8 @@
 
     $scope.formdata = {};
     $scope.shippingpriceService = shippingpriceService;
+    $scope.currentLan=localStorage.getItem('currentLang').toString();
+    $scope.defaultLang=localStorage.getItem('defaultLang').toString();
 
     /* shipping prod rule */
 
@@ -46,12 +48,13 @@
         "stopRuleProcess": $scope.formdata.stopRuleProcess
       }
 
-     //console.log(data);
+    // console.log(data);
       $scope.shippingpriceService.addShippingPrice(data).then(function (result) {
+      //  console.log(result);
         //$location.path('/promotions/shipping');
         if(result.statusText = "OK"){
 				  swal("Success!", "Successfully added!", "success");  
-		//	 $state.go('promoshipping');
+			 $state.go('promoshipping');
 			  }else{
 				  swal("error!", "Already exist!", "error");
 			  }
@@ -80,7 +83,8 @@
                       'Item has been deleted.',
                       'success'
                     )
-                    $scope.getShippingPriceList();
+                    $state.reload();
+                   // $scope.getShippingPriceList();
          }else{
            
          }
@@ -91,14 +95,54 @@
     }
 
     //get shipping price rule details
-    //console.log($stateParams.id);
+   // console.log($stateParams.id);
     $scope.getShippingPriceDetails = function (itemId) {
+     // console.log(itemId);
       $scope.shippingpriceService.getShippingPriceDetails(itemId).then(function (result) {
-       // console.log(result);
-       $scope.shipping=result.data; 
-        $scope.formdata = result['data'];
+      //  console.log(result);
+      // $scope.shipping=result.data; 
+        //$scope.formdata = result['data'];
        // $scope.formdata.startDate = $scope.formdata.startDate.split("T")[0];
        // $scope.formdata.endDate = $scope.formdata.endDate.split("T")[0];
+
+       var details=result.data;
+        if (result.statusText = "OK")
+        {     
+          $scope.status =details.status.toString();    
+          if(angular.equals($scope.currentLan, $scope.defaultLang))
+          {
+            $scope.userdetails = result.data;
+            $scope.formdata.ruleName = $scope.userdetails.ruleName;
+            $scope.formdata.description = $scope.userdetails.description;
+          }
+          else
+          {           
+            $scope.userdetails = result.data;
+            $scope.formdata.ruleName =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].ruleName : details.ruleName;
+            $scope.formdata.description = $scope.currentLan in details.oLang  ?details.oLang[ $scope.currentLan].description :  details.description;
+          }
+
+        $scope.formdata.startDate = $scope.userdetails.startDate;
+        $scope.formdata.endDate = $scope.userdetails.endDate;
+        $scope.formdata.status = $scope.userdetails.status;
+        $scope.formdata.applyTo = $scope.userdetails.applyTo;
+        $scope.formdata.conditions = $scope.userdetails.conditions;
+        $scope.formdata.actionApplyTo = $scope.userdetails.actionApplyTo;
+        $scope.formdata.discountAmount = $scope.userdetails.discountAmount;
+        $scope.formdata.stopRuleProcess = $scope.userdetails.stopRuleProcess;
+        $scope.formdata.displayIn = $scope.userdetails.displayIn;
+        $scope.formdata.actionApplyTo = $scope.userdetails.actionApplyTo;  
+        $scope.formdata.conditionsStatus = $scope.userdetails.conditionsStatus;  
+
+
+        }
+          else
+          {            
+          }
+
+
+
+
       })
     }
     if ($stateParams.id != undefined) {
@@ -106,10 +150,11 @@
     }
 
     $scope.updateShippingPriceRule = function(){
-      console.log(2345);
+      console.log(436);
       if($scope.formData.$valid && $scope.formdata.status!=0){
         // var data=$scope.formdata;
-        
+       console.log(657);
+     if (localStorage.getItem("currentLang") == 'en') {
          var data = {
            "ruleName": $scope.formdata.ruleName,
             "description": $scope.formdata.description,
@@ -123,18 +168,44 @@
            "values": $scope.formdata.values,
            "conditionsStatus": $scope.formdata.conditionsStatus,
            "actionApplyTo": $scope.formdata.actionApplyTo,
-           "discountAmount": $scope.formdata.discountedShippingAmount,
+           "discountAmount": $scope.formdata.discountAmount,
            "stopRuleProcess": $scope.formdata.stopRuleProcess,
-           "id":$stateParams.id
+           "id":$stateParams.id,
+           "isDefaultLang" : true
          }
+        }
+        else{
+
+          var data = {
+            "ruleName": $scope.formdata.ruleName,
+             "description": $scope.formdata.description,
+            "image": $scope.imgss,
+            "displayIn": $scope.formdata.displayIn,
+            "startDate": $scope.formdata.startDate,
+            "endDate": $scope.formdata.endDate,
+            "status": $scope.formdata.status,
+            "applyTo": $scope.formdata.applyTo,
+            "conditions": $scope.formdata.conditions,
+            "values": $scope.formdata.values,
+            "conditionsStatus": $scope.formdata.conditionsStatus,
+            "actionApplyTo": $scope.formdata.actionApplyTo,
+            "discountAmount": $scope.formdata.discountAmount,
+            "stopRuleProcess": $scope.formdata.stopRuleProcess,
+            "id":$stateParams.id,
+            "isDefaultLang" : false,
+            "defaultLang":localStorage.getItem("defaultLang"),
+            "userSelectedLang":localStorage.getItem("currentLang")
+          }
+
+        }
          console.log(data);
 
       $scope.shippingpriceService.updateShippingPriceRule(data).then(function (result) {
-        console.log(result);
+       // console.log(result);
         if (result.statusText = "OK") {
           swal("Success!", "Successfully updated ", "success");
-          $scope.getShippingPriceList();
-          // $state.go('emailcmsratingaction');
+         // $scope.getShippingPriceList();
+          $state.go('promoshipping');
         }
        // $location.path('/promotions/shipping');
       })
@@ -144,169 +215,6 @@
 
     /* shipping prod rule */
 
-
-
-
-    /////////////////////defaultLang//////////
-    // $http({
-    //   url: '/api/admin/getdefaultLang',
-    //   method: "POST",
-    // })
-    //   .then(function (response) {
-
-    //     $scope.formdata.defaultlang = response.data.data;
-
-    //   },
-    //   function (response) { // optional
-    //     // failed
-    //   });
-    // $scope.formdata.sale = '1';
-    // //$scope.formdata.category='0';
-    // $scope.formdata.con = '1';
-    // $scope.formdata.status = '0';
-    // $http({
-    //   url: '/api/admin/getallLanguages',
-    //   method: "POST",
-
-    // })
-    //   .then(function (response) {
-    //     $scope.listlang = response.data.data;
-
-
-
-    //   },
-    //   function (response) { // optional
-    //     // failed
-    //   });
-
-
-    // $scope.values1 = [{ id: 'choice1' }];
-    // //$scope.choices.length	
-    // // console.log($scope.choices.length);
-    // $scope.addNewValues = function () {
-    //   var newItemNo1 = $scope.values1.length + 1;
-    //   $scope.values1.push({ 'id': 'values1' + newItemNo1 });
-    //   //console.log($scope.choices.length);
-    // };
-
-    // $scope.removeValues = function (val) {
-    //   if ($scope.values1.length > 1) {
-    //     $scope.values1.splice(val, 1);
-    //   }
-    //   //console.log($scope.choices.length);
-    // };
-
-    /////////////////////select/////////////////////////////
-
-
-    // ///////////////////////insert////////////////////////////
-    // $scope.insCategory = function () {
-    //   if ($scope.validation() == 0) {
-    //     $http({
-    //       url: '/api/admin/insCategory',
-    //       method: "POST",
-    //       data: $scope.formdata
-    //     })
-    //       .then(function (response) {
-    //         $state.reload();
-    //         // success
-    //       },
-    //       function (response) { // optional
-    //         // failed
-    //       });
-    //   }
-    // }
-
-
-
-    // $scope.del = function (id) {
-    //   var val = { 'id': id };
-    //   $http({
-    //     url: '/api/admin/delcate',
-    //     method: "POST",
-    //     data: val
-    //   })
-    //     .then(function (response) {
-    //       $state.reload();
-    //     },
-    //     function (response) { // optional
-    //       // failed
-    //     });
-    // }
-    // $scope.rmerrorclass = function () {
-    //   angular.element(document.querySelectorAll('.validationErr')).removeClass('validationErr');
-    //   angular.element(document.querySelectorAll('.tabvalidationErr')).removeClass('tabvalidationErr');
-    // }
-    // $scope.adderrorclass = function (cls) {
-    //   angular.element(document.querySelector(cls)).addClass('validationErr');
-    // }
-    // $scope.taberrorclass = function (cls) {
-    //   angular.element(document.querySelector(cls)).addClass('tabvalidationErr');
-    // }
-
-    // $scope.validation = function () {
-    //   var error = 0;
-    //   $scope.rmerrorclass();
-    //   if ($scope.formdata.category == '' || angular.isUndefined($scope.formdata.category)) {
-    //     $scope.adderrorclass(".cat");
-    //     $scope.taberrorclass(".tcat");
-    //     error = 1;
-    //   }
-
-    //   return error;
-    // }
-
-    ///////////////////////////////////////////////////////////////////////
-    // $scope.addCategory = function () {
-
-
-    //   $http({
-    //     url: '/api/admin/addCategory',
-    //     method: "POST",
-    //     data: $scope.formdata
-    //   })
-    //     .then(function (response) {
-
-    //       // success
-    //     },
-    //     function (response) { // optional
-    //       // failed
-    //     });
-    // }
-    // $scope.validation2 = function () {
-    //   var error = 0;
-    //   $scope.rmerrorclass();
-    //   if ($scope.formdata.categorylang == '' || angular.isUndefined($scope.formdata.categorylang)) {
-    //     $scope.adderrorclass(".categorylang");
-    //     error = 1;
-    //   }
-    //   if ($scope.formdata.catlang == '0' || angular.isUndefined($scope.formdata.catlang)) {
-    //     $scope.adderrorclass(".catlang");
-    //     error = 1;
-    //   }
-    //   return error;
-    // }
-    // $scope.openLangModel = function (id) {
-
-    //   $scope.formdata.id = id;
-    // }
-    // $scope.insCategoryLang = function () {
-    //   if ($scope.validation2() == 0) {
-    //     $('#myModal').modal('hide');
-    //     $http({
-    //       url: '/api/admin/insCategoryLang',
-    //       method: "POST",
-    //       data: $scope.formdata
-    //     })
-    //       .then(function (response) {
-    //         $state.reload();
-    //         // success
-    //       },
-    //       function (response) { // optional
-    //         // failed
-    //       });
-    //   }
-    // }
 
 
 
@@ -391,7 +299,8 @@
                         'Items have been deleted.',
                         'success'
                       )
-            $scope.getShippingPriceList();
+                      $state.reload();
+           // $scope.getShippingPriceList();
            }else{
              
            }
@@ -412,7 +321,7 @@
         var FR = new FileReader();
         FR.onload = function (e) {
           document.getElementById("imgfiles").src = e.target.result;
-          ev.target.parentNode.parentNode.parentNode.childNodes[3].childNodes[1].childNodes[1] = e.target.result;
+         // ev.target.parentNode.parentNode.parentNode.childNodes[3].childNodes[1].childNodes[1] = e.target.result;
           //document.getElementById("b64").innerHTML = e.target.result;
         };
         FR.readAsDataURL(this.files[0]);

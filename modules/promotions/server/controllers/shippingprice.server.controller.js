@@ -17,7 +17,7 @@ exports.addshippingPrice = function (req, res, next) {
             callback(null, './public/uploads');
         },
         filename: function (req, file, callback) {
-            console.log(file);
+           // console.log(file);
             var ext =  file.originalname.substr(file.originalname.length - 3); // => "Tabs1"
             callback(null, file.fieldname + '-' + Date.now() +'.' +  ext); // => "Tabs1");
             picpath = "uploads/" + file.fieldname + '-' + Date.now() + '.' + ext;
@@ -28,7 +28,7 @@ exports.addshippingPrice = function (req, res, next) {
 
     upload(req, res, function (err) {
         var reqBody = req.body;
-        console.log(req.body);
+       // console.log(req.body);
         if (err) {
             return res.end("Error uploading file.");
         }
@@ -123,9 +123,10 @@ exports.getShippingPriceDetails = function (req, res, next) {
 //update product price rule
 exports.updateShippingPriceRule = function (req, res, next) {
 
-    var data = req.body;
-    console.log(data);
-
+    var reqBody = req.body;
+    var userId = reqBody.id;
+    var data;
+    
     var picpath="";
     var today=Date.now();
     var storage = multer.diskStorage({
@@ -139,66 +140,131 @@ exports.updateShippingPriceRule = function (req, res, next) {
       
       }
     });
-    var upload = multer({ storage : storage}).single('file');
+    var upload = multer({ storage : storage}).single('image');
   upload(req,res,function(err) {
-   
+
+    shippingPrice.findById(userId).exec(function (error, data) {
+
+   var reqBody = req.body;
+console.log(999);
+//console.log( req.body);
+console.log(picpath);
+
   if(err) {
   return res.end("Error uploading file.");
   }
   else{
+
+    if (reqBody.isDefaultLang) 
+            {
+                    data.ruleName = reqBody.ruleName,
+                    data.description = reqBody.description
+            }
+
+            else 
+            {
+                var obj = {};
+                obj.ruleName = reqBody.ruleName;
+                obj.description = reqBody.description;
+
+                data['oLang'][reqBody.userSelectedLang] = obj;
+            }
     
     if(picpath==''){
-        shippingPrice.update({_id:req.body.id},{
-            $set:{
-                'ruleName':data.ruleName,
-                'description':data.description,
-                'displayIn':data.displayIn,
-                'startDate':data.startDate,
-                'endDate':data.endDate,
-                'values':data.values,
-                'conditionsStatus':data.conditionsStatus,
-                'stopRuleProcess':data.stopRuleProcess,
-                'discountAmount':data.discountAmount,
-                'actionApplyTo':data.actionApplyTo,
-                'conditions':data.conditions,
-                'status':data.status,
-                'applyTo':data.applyTo
-            }
-  },function(err) { 
-                     if (err) throw err;
-             });
+
+        data.displayIn = reqBody.displayIn,
+        data.startDate = reqBody.startDate,
+        data.endDate = reqBody.endDate,
+        data.values = reqBody.values,
+        data.conditionsStatus = reqBody.conditionsStatus,
+        data.stopRuleProcess = reqBody.stopRuleProcess,
+        data.discountAmount = reqBody.discountAmount,
+        data.applyTo = reqBody.applyTo,
+        data.actionApplyTo = reqBody.actionApplyTo,
+        data.conditions = reqBody.conditions,
+        data.status = reqBody.status
+
+
+//         shippingPrice.update({_id:req.body.id},{
+//             $set:{
+               
+//                 'displayIn':reqBody.displayIn,
+//                 'startDate':reqBody.startDate,
+//                 'endDate':reqBody.endDate,
+//                 'values':reqBody.values,
+//                 'conditionsStatus':reqBody.conditionsStatus,
+//                 'stopRuleProcess':reqBody.stopRuleProcess,
+//                 'discountAmount':reqBody.discountAmount,
+//                 'actionApplyTo':reqBody.actionApplyTo,
+//                 'conditions':reqBody.conditions,
+//                 'status':reqBody.status,
+//                 'applyTo':reqBody.applyTo
+//             }
+//   },function(err) { 
+//                      if (err) throw err;
+//              });
   
             }
             else{
               
-                shippingPrice.update({_id:req.body.id},{
-                    $set:{
-                        'ruleName':data.ruleName,
-                        'description':data.description,
-                        'displayIn':data.displayIn,
-                        'startDate':data.startDate,
-                        'endDate':data.endDate,
-                        'image':picpath,
-                        'values':data.values,
-                        'conditionsStatus':data.conditionsStatus,
-                        'stopRuleProcess':data.stopRuleProcess,
-                        'discountAmount':data.discountAmount,
-                        'actionApplyTo':data.actionApplyTo,
-                        'conditions':data.conditions,
-                        'status':data.status,
-                        'applyTo':data.applyTo
-                    }
-            },function(err) { 
-                if (err) {
-                    return res.status(400).send({
-                        message: errorHandler.getErrorMessage(err)
-                    });
-                } else {
-                    res.json("shipping price updated");
-                }
-                       });
+        data.displayIn = reqBody.displayIn,
+        data.startDate = reqBody.startDate,
+        data.endDate = reqBody.endDate,
+        data.values = reqBody.values,
+        data.conditionsStatus = reqBody.conditionsStatus,
+        data.stopRuleProcess = reqBody.stopRuleProcess,
+        data.discountAmount = reqBody.discountAmount,
+        data.applyTo = reqBody.applyTo,
+        data.actionApplyTo = reqBody.actionApplyTo,
+        data.conditions = reqBody.conditions,
+        data.status = reqBody.status,
+        data.image = picpath
+
+
+
+
+
+
+            //     shippingPrice.update({_id:req.body.id},{
+            //         $set:{
+            //             'ruleName':reqBody.ruleName,
+            //             'description':reqBody.description,
+            //             'displayIn':reqBody.displayIn,
+            //             'startDate':reqBody.startDate,
+            //             'endDate':reqBody.endDate,
+            //             'image':picpath,
+            //             'values':reqBody.values,
+            //             'conditionsStatus':reqBody.conditionsStatus,
+            //             'stopRuleProcess':reqBody.stopRuleProcess,
+            //             'discountAmount':reqBody.discountAmount,
+            //             'actionApplyTo':reqBody.actionApplyTo,
+            //             'conditions':reqBody.conditions,
+            //             'status':reqBody.status,
+            //             'applyTo':reqBody.applyTo
+            //         }
+            // },function(err) { 
+            //     if (err) {
+            //         return res.status(400).send({
+            //             message: errorHandler.getErrorMessage(err)
+            //         });
+            //     } else {
+            //         res.json("shipping price updated");
+            //     }
+            //            });
   
             }
+            console.log(data);
+            shippingPrice.update({ '_id': userId },
+                { $set: data }).exec(function (error, output) {
+                    if (error) {
+                        res.status(500).send(error);
+                        return;
+                    }
+                    res.json(output);
+                    return;
+
+
+                })
   
   
   
@@ -207,6 +273,7 @@ exports.updateShippingPriceRule = function (req, res, next) {
     res.json({
           data:199
           });
+        })
   });
    
     

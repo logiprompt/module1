@@ -58,7 +58,7 @@
 
     content: { 
      templateUrl: '/modules/newsletters/client/views/admin/newsletters/edit.html',
-    controller: 'NewslettersController',
+    controller: 'NewslettereditController',
     controllerAs: 'vm',
     },
      footer:adminfooter

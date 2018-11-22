@@ -3,51 +3,54 @@
   angular
     .module('products')
     .controller('ProtaxgroupsController', ProtaxgroupsController);
-    ProtaxgroupsController.$inject = ['$scope','$http','$state','$stateParams'];
-  function ProtaxgroupsController ($scope, $http, $state) {
+    ProtaxgroupsController.$inject = ['$scope','$http','$state','$stateParams','taxgroupService'];
+  function ProtaxgroupsController ($scope, $http, $state,$stateParams,taxgroupService) {
    //alert(); 
    $scope.formdata = {};
 
 /////////////////////defaultLang//////////
  
-        $scope.rmerrorclass=function(){
-                angular.element(document.querySelectorAll('.validationErr')).removeClass('validationErr');
-                angular.element(document.querySelectorAll('.tabvalidationErr')).removeClass('tabvalidationErr');
-                }
-                $scope.adderrorclass=function(cls){
-                angular.element(document.querySelector(cls)).addClass('validationErr');
-                }
-                $scope.taberrorclass=function(cls){
-                  angular.element(document.querySelector(cls)).addClass('tabvalidationErr');
-                  }
+        // $scope.formdata = {};
+$scope.taxgroupService=taxgroupService;
+/////////////////////defaultLang//////////
+$scope.status='0';
+$scope.getTaxGroup=function(){
+    
+    //	console.log(data);
+        $scope.taxgroupService.getTaxGroup().then(function(result){
+  console.log(result.data)
+  $scope.alltaxgroups=result.data;
+          // if(result.statusText = "OK"){
+          //   swal("Success!", "Successfully added!", "success");  
+          //   $state.go('taxgroups');
+          // }else{
+          //   swal("error!", "Already exist!", "error");
+          // }
+          
+        })
+  
 
-                $scope.validation=function(){
-                var error=0;
-                $scope.rmerrorclass();
-                  if($scope.formdata.category=='' || angular.isUndefined($scope.formdata.category) ){
-                    $scope.adderrorclass(".cat");
-                    $scope.taberrorclass(".tcat");
-                    error=1;
-                    }
+}
+$scope.getTaxGroup();
 
-                    return error;          
-            }
+$scope.values1 = [{id: 'choice1'}];
+//$scope.choices.length	
+  // console.log($scope.choices.length);
+ $scope.addNewValues = function() {
+       var newItemNo1 = $scope.values1.length+1;
+       $scope.values1.push({'id':'values1'+newItemNo1});
+       //console.log($scope.choices.length);
+ };
+       
+ $scope.removeValues = function(val) {
+         if($scope.values1.length>1){
+       $scope.values1.splice(val,1);
+         }
+       //console.log($scope.choices.length);
+ };
 
 ///////////////////////////////////////////////////////////////////////
 
-    $scope.validation2=function(){
-                var error=0;
-                $scope.rmerrorclass();
-                  if($scope.formdata.categorylang=='' || angular.isUndefined($scope.formdata.categorylang) ){
-                    $scope.adderrorclass(".categorylang");
-                    error=1;
-                    }
-                     if($scope.formdata.catlang=='0' || angular.isUndefined($scope.formdata.catlang) ){
-                    $scope.adderrorclass(".catlang");
-                    error=1;
-                    }
-                    return error;          
-            }
   $scope.openLangModel=function(id){
     
     $scope.formdata.id=id;

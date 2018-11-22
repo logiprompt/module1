@@ -117,7 +117,7 @@ var adminfooter={
     header:adminheader,
     content: { 
      templateUrl: '/modules/products/client/views/admin/taxgroup/taxgroup.html',
-      controller: 'ProtaxgroupController',
+      controller: 'ProtaxgroupsController',
       controllerAs: 'vm',
     },
      footer:adminfooter
@@ -140,13 +140,13 @@ var adminfooter={
 
 
 .state('protaxgroupadd', {
-  url: '/product/protaxgroupadd',
+  url: '/product/protaxgroupadd/:id',
  
    views:{
     header:adminheader,
     content: { 
      templateUrl: '/modules/products/client/views/admin/taxgroup/addtaxgroups.html',
-      controller: 'ProtaxgroupController',
+      controller: 'AddProTaxController',
       controllerAs: 'vm',
     },
      footer:adminfooter

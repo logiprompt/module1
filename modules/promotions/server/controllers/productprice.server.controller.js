@@ -101,57 +101,41 @@ exports.delChecked = function (request, response) {
 };
 
 //update product price rule
-exports.updateProductPrice = function (req, res, next) {
-
-   
-    var reqBody = req.body;
-    var userId = reqBody.id;
-    var data;
-console.log(123456789);
-
-   // console.log(data);
-
+exports.updateProductPrice = function (req, res, next) 
+{
     var picpath = "";
     var today = Date.now();
     var storage = multer.diskStorage({
-        destination: function (req, file, callback) {
+        destination: function (req, file, callback) 
+        {
             callback(null, './public/uploads');
         },
         filename: function (req, file, callback) {
-
             callback(null, file.fieldname + '-' + today + '.png');
-            picpath = "/uploads/" + file.fieldname + '-' + today + '.png';
-
+            picpath = "uploads/" + file.fieldname + '-' + today + '.png';
         }
     });
-    var upload = multer({ storage: storage }).single('file');
-    console.log(68776988798);
-    upload(req, res, function (err) {
 
-        productPrice.findById(userId).exec(function (error, data) {
+    var upload = multer({ storage: storage }).single('image');
+    upload(req, res, function (err) 
+    {
 
-        if (err) {
+        var reqBody = req.body;
+        var userId = reqBody.id;
+        var data = {};
+        productPrice.findById(userId).exec(function (err, data) {
+        if (err) 
+        {
             return res.end("Error uploading file.");
         }
-        else {
-
+        else 
+        {
             if (reqBody.isDefaultLang) 
             {
+                if (picpath == '') 
+                {
                     data.ruleName = reqBody.ruleName,
                     data.description = reqBody.description
-            }
-
-            else 
-            {
-                var obj = {};
-                obj.ruleName = reqBody.ruleName;
-                obj.description = reqBody.description;
-
-                data['oLang'][reqBody.userSelectedLang] = obj;
-            }
-
-            if (picpath == '') 
-            {
                     data.displayIn = reqBody.displayIn,
                     data.startDate = reqBody.startDate,
                     data.endDate = reqBody.endDate,
@@ -163,76 +147,79 @@ console.log(123456789);
                     data.actionApplyTo = reqBody.actionApplyTo,
                     data.conditions = reqBody.conditions,
                     data.status = reqBody.status
-               
+                }
+                else 
+                {
+                    data.ruleName = reqBody.ruleName,
+                    data.description = reqBody.description
+                    data.displayIn = reqBody.displayIn,
+                    data.startDate = reqBody.startDate,
+                    data.endDate = reqBody.endDate,
+                    data.category = reqBody.category,
+                    data.product = reqBody.product,
+                    data.stopRuleProcess = reqBody.stopRuleProcess,
+                    data.applyTo = reqBody.applyTo,
+                    data.discountAmount = reqBody.discountAmount,
+                    data.actionApplyTo = reqBody.actionApplyTo,
+                    data.conditions = reqBody.conditions,
+                    data.image = picpath,
+                    data.status = reqBody.status
+                }
             }
-            else
+            else 
             {
-                data.displayIn = reqBody.displayIn,
-                data.startDate = reqBody.startDate,
-                data.endDate = reqBody.endDate,
-                data.category = reqBody.category,
-                data.product = reqBody.product,
-                data.stopRuleProcess = reqBody.stopRuleProcess,
-                data.applyTo = reqBody.applyTo,
-                data.discountAmount = reqBody.discountAmount,
-                data.actionApplyTo = reqBody.actionApplyTo,
-                data.conditions = reqBody.conditions,
-                data.image = picpath,
-                data.status = reqBody.status
+                var obj = {};
+                if (picpath == '') 
+                {
+                    obj.ruleName = reqBody.ruleName;
+                    obj.description = reqBody.description;
+                    obj.displayIn = reqBody.displayIn;
+                    obj.startDate = reqBody.startDate;
+                    obj.endDate = reqBody.endDate;
+                    obj.category = reqBody.category;
+                    obj.product = reqBody.product;
+                    obj.stopRuleProcess = reqBody.stopRuleProcess;
+                    obj.discountAmount = reqBody.discountAmount;
+                    obj.applyTo = reqBody.applyTo;
+                    obj.actionApplyTo = reqBody.actionApplyTo;
+                    obj.conditions = reqBody.conditions;
+                    obj.status = reqBody.status;
+                    //console.log(obj);
+                  //  data['oLang'][reqBody.userSelectedLang] = obj;
+                }
+                else 
+                {
+                    obj.ruleName = reqBody.ruleName;
+                    obj.description = reqBody.description;
+                    obj.displayIn = reqBody.displayIn;
+                    obj.startDate = reqBody.startDate;
+                    obj.endDate = reqBody.endDate;
+                    obj.category = reqBody.category;
+                    obj.product = reqBody.product;
+                    obj.stopRuleProcess = reqBody.stopRuleProcess;
+                    obj.applyTo = reqBody.applyTo;
+                    obj.discountAmount = reqBody.discountAmount;
+                    obj.actionApplyTo = reqBody.actionApplyTo;
+                    obj.conditions = reqBody.conditions;
+                    obj.image = picpath;
+                    obj.status = reqBody.status;
+                    
+                }
+              
+data['oLang'][reqBody.userSelectedLang] = obj;
+                
             }
-console.log(data);
-            productPrice.update({ '_id': userId },
-                { $set: data }).exec(function (error, output) {
-                    if (error) {
-                        res.status(500).send(error);
-                        return;
-                    }
-                    res.json(output);
+            productPrice.update({ '_id': userId }, { $set: data }).exec(function (error, output) 
+            {
+                if (error) 
+                {
+                    res.status(500).send(error);
                     return;
-
-
-                })
-
-
-
-
-
+                }
+                res.json(output);
+                return;
+            })
         }
-
-    })
-
-        // res.json({
-        //     data: 199
-        // });
     });
-
-
-    // var data = req.body;
-    // productPrice.findByIdAndUpdate(data._id,{
-    //     $set:{
-    //         'ruleName':data.ruleName,
-    //         'description':data.description,
-    //         'displayIn':data.displayIn,
-    //         'startDate':data.startDate,
-    //         'endDate':data.endDate,
-    //         'category':data.category,
-    //         'product':data.product,
-    //         'stopRuleProcess':data.stopRuleProcess,
-    //         'discountAmount':data.discountAmount,
-    //         'actionApplyTo':data.actionApplyTo,
-    //         'conditions':data.conditions,
-    //         'status':data.status
-    //     }
-    // }, function (err, data) {
-    //     if (err) {
-    //         return res.status(400).send({
-    //             message: errorHandler.getErrorMessage(err)
-    //         });
-    //     } else {
-    //         res.json("product price updated");
-    //     }
-    // })
-
-
-
+    })
 }

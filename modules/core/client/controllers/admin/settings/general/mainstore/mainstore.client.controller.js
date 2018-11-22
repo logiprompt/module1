@@ -34,7 +34,7 @@
   
    $scope.insMainstore = function(){
     console.log($scope.sunfrom);
-   // if($scope.formdata.$valid && $scope.status!=0){
+    if($scope.formdata.$valid && $scope.status!=0){
     var data = {
         "name":$scope.name,
         "contactperson":$scope.contactperson,
@@ -42,6 +42,16 @@
         "telephone":$scope.telephone,
         "mobile" :$scope.mobile,
 		"fax" :$scope.fax,
+		"country" :$scope.country,
+		"state" :$scope.state,
+		"district" :$scope.district,
+		"postalcode" :$scope.postal,
+		"address" :$scope.txtAddr,
+		"lattitude" :$scope.txtlat,
+		"longitude" :$scope.txtlong,
+		"timezone" :$scope.seltime,
+		"workingday" :$scope.selWorking,
+		"weekend" :$scope.chkBox,
 		"timing":
 		{
 		"sunday":		
@@ -70,7 +80,7 @@
 		}
 		
 	}
-    console.log($scope.cmstagsubmissionService);
+    console.log($scope.mainstoreService);
       $scope.mainstoreService.insMainstore(data).then(function(result){
 
         if(result.statusText = "OK"){
@@ -81,7 +91,7 @@
         }
         
       })
-    //}
+    }
       
     }
 	
@@ -294,13 +304,13 @@ $scope.friday=function(){
 	}
 	$scope.satEve=0;	
 $scope.satMrng=0;
-$scope.Saturday=function(){
+$scope.saturday=function(){
 	console.log($scope.selSaturday);
 	if($scope.selSaturday==2){
 	$scope.satMrng=1;
 	$scope.satEve=0;	
 	}
-	else if($scope.selFriday==3){
+	else if($scope.selSaturday==3){
 	$scope.satMrng=1;
 	$scope.satEve=1;	
 	}

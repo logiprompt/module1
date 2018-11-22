@@ -7,9 +7,9 @@
 
 
 
-    NewslettersController.$inject = ['$scope','$http','$state','$stateParams','$location','Upload','NewslettersService'];
+    NewslettersController.$inject = ['$scope','$http','$state','$stateParams','$location','Upload','NewslettersService','NewsletterTemplateService'];
 
-  function NewslettersController ($scope, $http, $state,$stateParams,$location,Upload,NewslettersService) {
+  function NewslettersController ($scope, $http, $state,$stateParams,$location,Upload,NewslettersService,NewsletterTemplateService) {
   
     
   
@@ -20,6 +20,7 @@
 $scope.formdata = {};
 $scope.formdata.status = '0';
 $scope.NewslettersService = NewslettersService;
+$scope.NewsletterTemplateService = NewsletterTemplateService;
    
 
 $scope.currentLan=localStorage.getItem('currentLang').toString();
@@ -27,7 +28,7 @@ $scope.currentLan=localStorage.getItem('currentLang').toString();
    
     $scope.defaultLang = localStorage.getItem('defaultLang').toString();
 $scope.getNewslettertemp = function () {
-  $scope.NewslettersService.getNewslettertemp().then(function (result) {
+  $scope.NewsletterTemplateService.getAllNewsLetterTemplates().then(function (result) {
     if (result.statusText = "OK") {
       $scope.templist = result.data;
     } else {
@@ -38,7 +39,16 @@ $scope.getNewslettertemp = function () {
 $scope.getNewslettertemp();
 
    $scope.temp='0';   
-   
+   $scope.getnews = function () {
+    $scope.NewslettersService.getnews().then(function (result) {
+      if (result.statusText = "OK") {
+        $scope.list = result.data;
+      } else {
+
+      }
+    });
+  }
+  $scope.getnews();
    ////////////////////////////////////////////////////
 
   $scope.addNewsLetter = function () {
@@ -52,17 +62,17 @@ $scope.getNewslettertemp();
       alert(5678965766);
 
       var data = {
-        "temp": $scope.temp,
-        "title": $scope.title,
-        "subject": $scope.subject,
-        "sender": $scope.sender,
-        "senderemail": $scope.senderemail,
-        "contentdesc":desc,
-        "imgfile": $scope.imgss,
-        "imgfile1": $scope.imgss2,
-        "status": $scope.status,
-        "oLang": {}
-      }
+                    "temp": $scope.temp,
+                    "title": $scope.title,
+                    "subject": $scope.subject,
+                    "sender": $scope.sender,
+                    "senderemail": $scope.senderemail,
+                    "contentdesc":desc,
+                    "imgfile": $scope.imgss,
+                    "imgfile1": $scope.imgss2,
+                    "status": $scope.status,
+                    "oLang": {}
+                  }
 
 console.log(data);
       $scope.NewslettersService.addNewsLetter(data).then(function (result) {

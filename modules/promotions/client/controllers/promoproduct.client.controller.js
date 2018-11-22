@@ -34,6 +34,7 @@
 
 $scope.currentLan=localStorage.getItem('currentLang').toString();
 $scope.defaultLang=localStorage.getItem('defaultLang').toString();
+
   $scope.getProductPriceDetails = function(userId)
   {
       $scope.productpriceService.getProductPriceDetails(userId).then(function(result)
@@ -51,8 +52,8 @@ $scope.defaultLang=localStorage.getItem('defaultLang').toString();
           else
           {           
             $scope.userdetails = result.data;
-            $scope.ruleName =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].ruleName : details.ruleName;
-            $scope.subject = $scope.currentLan in details.oLang  ?details.oLang[ $scope.currentLan].subject :  details.subject;
+            $scope.formdata.ruleName =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].ruleName : details.ruleName;
+            $scope.formdata.description = $scope.currentLan in details.oLang  ?details.oLang[ $scope.currentLan].description :  details.description;
           }
 
         $scope.formdata.startDate = $scope.userdetails.startDate;

@@ -14,10 +14,11 @@ var NewslettersSchema = new Schema({
   
   temp: {
     type: Schema.Types.ObjectId,
-    ref: 'Newsletter'
+   ref: 'newsletter'
   },
   title: { type: String, default: '' },
   subject: { type: String, default: '' },
+  sender: { type: String, default: '' },
   senderemail: { type: String, default: '' },
   contentdesc: { type: String, default: '' },
   imgfile: { type: String, default: '' },
@@ -34,4 +35,4 @@ var NewslettersSchema = new Schema({
   
   }, { minimize: false });
 
-mongoose.model('Sys_newsletter', NewslettersSchema);
+  module.exports = mongoose.model('Sys_newsletter', NewslettersSchema);

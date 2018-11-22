@@ -34,7 +34,7 @@
     * 
 	  */
 	 newsletter.addNewsLetter = function(data){
-		 
+		 console.log(data);
 		return Upload.upload({
 	           url: '/api/getNewslettertemp',
 	           method: "POST",
@@ -55,7 +55,13 @@
 			   method: "GET"
 		   });
 	   }
-	
+     newsletter.getnews = function(){
+		  
+      return $http({
+           url: '/api/getnews',
+           method: "GET"
+         });
+       }
 
 	 /*
 	  * Function : deleteUser
@@ -103,14 +109,14 @@
 	//  }
 
 	 
-  newsletter.getUserForgotById = function(userId){
-		 console.log(userId);
-		return $http({
-			   url: '/api/userforgotbyid',
-			   method: "GET",
-			   params:{'userId':userId}
-		   });
-	}
+
+  newsletter.getNewsletterById = function(userId){
+    return $http({
+           url: '/api/getNewsletterById',
+       method: "GET",
+       params:{'userId':userId}
+       });
+  }
 	 /*
 	  * 
 	  */

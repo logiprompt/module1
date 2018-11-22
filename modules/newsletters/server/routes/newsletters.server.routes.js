@@ -9,14 +9,17 @@ var newslettersPolicy = require('../policies/newsletters.server.policy'),
 module.exports = function(app) {
   // Newsletters Routes
   app.route('/api/getNewslettertemp').all()
-   .get(newsletters.listtemp)
+  .get(newsletters.listtemp)
     .post(newsletters.create);
-
-  app.route('/api/newsletters/:newsletterId').all(newslettersPolicy.isAllowed)
-    .get(newsletters.read)
-    .put(newsletters.update)
-    .delete(newsletters.delete);
-
+    app.route('/api/getnews').all()
+    .get(newsletters.listnews)
+  // app.route('/api/getNewsletterByIdaa/:newsletterId').all()
+  //   .get(newsletters.read)
+  //   .put(newsletters.update)
+  //   .delete(newsletters.delete);
+    app.route('/api/getNewsletterById').all()
+    .get(newsletters.getNewsletterById);
   // Finish by binding the Newsletter middleware
-  app.param('newsletterId', newsletters.newsletterByID);
+  
+  
 };

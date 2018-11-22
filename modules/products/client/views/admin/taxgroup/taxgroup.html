@@ -54,11 +54,15 @@
                                        <label for="basic_checkbox_{{$index+1}}"></label>
                                                            </td>
                                                     <td>{{$index+1}}</td>
-                                                    <td>{{taxgroup.TaxGroupname}}</td>
-                                                    <td>{{taxgroup.created}}</td>
+                                                    <td>
+                                                        {{taxgroup.oLang[currentLan].TaxGroupname ? taxgroup.oLang[currentLan].TaxGroupname :taxgroup.TaxGroupname}}
+
+
+                                                    </td>
+                                                    <td>{{taxgroup.created}} </td>
                                                     <td>{{taxgroup.modified}}</td>
                                                     <td><span ng-if="taxgroup.status==1">Active</span><span ng-if="taxgroup.status==2">De-Active</span></td>
-                                                    <td><a class="btn waves-effect waves-light btn-sm btn-info" href="/product/protaxgroupadd">
+                                                    <td><a class="btn waves-effect waves-light btn-sm btn-info" href="/product/protaxgroupadd/{{taxgroup._id}}">
                                                             Add tax
                                                           </a>
                                                     <a class="btn waves-effect waves-light btn-sm btn-info" href="/product/edittaxgroups/{{taxgroup._id}}">

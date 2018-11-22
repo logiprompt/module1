@@ -36,14 +36,14 @@ var MainstoreSchema = new Schema({
   mobile: {
     type: String,
     default: '',
-    //required: 'Please enter  mobile',
+    required: 'Please enter  mobile',
     trim: true
   },
   
   fax: {
     type: String,
     default: '',
-    //required: 'Please enter  fax',
+    required: 'Please enter  fax',
     trim: true
   },
   
@@ -55,42 +55,49 @@ var MainstoreSchema = new Schema({
   postalcode: {
     type: String,
     default: '',
-   // required: 'Please enter postalcode',
+   required: 'Please enter postalcode',
     trim: true
   },
   
   address: {
     type: String,
     default: '',
-   // required: 'Please enter address',
+    required: 'Please enter address',
     trim: true
   },
   
   lattitude: {
     type: String,
     default: '',
-   // required: 'Please enter lattitude',
+    required: 'Please enter lattitude',
     trim: true
   },
 
   longitude: {
     type: String,
     default: '',
-   // required: 'Please enter longitude',
+   required: 'Please enter longitude',
     trim: true
   },
   
   timezone: {
     type: String,
     default: '',
-   // required: 'Please select timezone',
+  required: 'Please select timezone',
     trim: true
   },
   
   workingday: {
     type: String,
     default: '',
-   // required: 'Please select workingday',
+    required: 'Please select workingday',
+    trim: true
+  },
+  
+  weekend: {
+    type: String,
+    default: '',
+    required: 'Please select Week end days',
     trim: true
   },
 

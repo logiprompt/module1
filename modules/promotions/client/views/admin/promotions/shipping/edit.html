@@ -389,7 +389,7 @@
                                                     <div class="form-group m-b-10">
                                                         <span class="bar"></span>
                                                         <label for="input1"> Rule name </label>
-                                                        <input type="text" class="form-control" id="name" name="name" ng-model="formdata.ruleName" ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.ruleName.$valid}">
+                                                        <input type="text" class="form-control" id="name" name="name" ng-model="formdata.ruleName" ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.name.$valid}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
@@ -433,11 +433,11 @@
                                                                     <div class="card">
                                                                         <div class="el-card-item">
                                                                             <div class="el-card-avatar el-overlay-1 imageup">
-                                                                                <img ng-src="/{{shipping.image}}" alt="user" id="imgfiles" class="imgup">
+                                                                                <img ng-src="/{{userdetails.image}}" alt="user" id="imgfiles" class="imgup">
                                                                                 <div class="el-overlay">
                                                                                     <ul class="el-info">
                                                                                         <li>
-                                                                                            <a id="imgfiles2" class="btn default btn-outline image-popup-vertical-fit" href="/uploads/dummy.jpg">
+                                                                                            <a id="imgfiles2" class="btn default btn-outline image-popup-vertical-fit" href="/{{userdetails.image}}" target="_blank">
                                                                                                 <i class="icon-magnifier"></i>
                                                                                             </a>
                                                                                         </li>

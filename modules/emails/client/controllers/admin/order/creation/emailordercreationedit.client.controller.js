@@ -106,10 +106,9 @@ $scope.defaultLang=localStorage.getItem('defaultLang').toString();
       $scope.ordercreationService.getOrderCreationById(userId).then(function(result)
       {
         var details=result.data;
-        if (result.statusText = "OK") {
-        
-         
-             $scope.status =details.status.toString();    
+        if (result.statusText = "OK") 
+        {
+          $scope.status =details.status.toString();    
           if(angular.equals($scope.currentLan, $scope.defaultLang)){
           $scope.userdetails = result.data;
           $scope.name = $scope.userdetails.name;
@@ -117,21 +116,19 @@ $scope.defaultLang=localStorage.getItem('defaultLang').toString();
           $scope.content = $scope.userdetails.content;
           $scope.custom = $scope.userdetails.custom;
         }
-        else{
-                     
+        else
+        {                     
           $scope.userdetails = result.data;
           $scope.name =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].name : details.name;
           $scope.subject = $scope.currentLan in details.oLang  ?details.oLang[ $scope.currentLan].subject :  details.subject;
           $scope.content =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].content:details.content ;
           $scope.custom =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].custom :details.custom;
-         
-
         }
-        }
-          else
-          {
+      }
+      else
+      {
             
-          }
+      }
       });
   }
   $scope.getOrderCreationById($stateParams.id);

@@ -83,22 +83,24 @@
                                                 </thead>
                                                 
                                                 <tbody>
-                                                   <tr >
-                                                        <td><!-- {{$index+1}} -->
-                                                             <input type="checkbox" id="basic_checkbox_1"  class="rowtxtchk" value="1" ng-click="addchkval(1)" />
-                                    <label for="basic_checkbox_1"></label>
-                                                        1</td>
-                                                        <td>Indipendence day special</td>
+                                                   <tr ng-repeat = "item in list">
+                                                    <td><!-- {{$index+1}} -->
+                                                        <input type="checkbox" id="basic_checkbox_{{$index+1}}" class="rowtxtchk"
+                                                        value="{{item._id}}" ng-click="addchkval(item._id)" />
+                                                         <label for="basic_checkbox_{{$index+1}}"></label>
+                                                         {{$index+1}}</td>
+                                                         <td> {{item.oLang[currentLan].title ? item.oLang[currentLan].title :item.title}}</td>
+
                                                         <td>Aug 15 2018</td>
                                                         <td>Aug 15 2018</td>
                                                         <td>Aug 15 2018</td>
-                                                        <td>mail@mai.com</td>
+                                                        <td>{{item.senderemail}}</td>
                                                         <td>100</td>
                                                          <td>55</td>
                                                         <td>15</td>
                                                          <td>Sending</td>
                                                         <td style="width:20% !important;"> 
-                                                           <a class="btn waves-effect waves-light btn-sm btn-info" href="/newsletters/newslettersedit/1">
+                                                           <a class="btn waves-effect waves-light btn-sm btn-info" href="/newsletters/newslettersedit/{{item._id}}">
                                                                 Edit
                                                               </a>
                                                              <button class="btn waves-effect waves-light btn-sm btn-danger"  ng-click="del(1)" rel=""  >
