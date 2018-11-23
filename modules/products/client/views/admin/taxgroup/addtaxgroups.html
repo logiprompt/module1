@@ -170,7 +170,7 @@ border-top: 1px solid #333333;
 
                                 </div> 
                                 <div class="form-group col-lg-2 col-sm-12"> 
-                                <input type="text" class="form-control cat" id="label"  ng-model="formdata.label" value="Group name">
+                                <input type="text" class="form-control cat" id="label"  ng-model="val1.label" value="Group name"  ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.name.$valid}">
                                 </div> 
 
                                 <div class="form-group col-lg-1 col-sm-12"> 
@@ -178,7 +178,7 @@ border-top: 1px solid #333333;
         
                                         </div> 
                                         <div class="form-group col-lg-2 col-sm-12"> 
-                                        <input type="text" class="form-control cat" id="name"  ng-model="formdata.name" value="Group name">
+                                        <input type="text" class="form-control cat" id="name"  ng-model="val1.name" value="Group name"  ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.name.$valid}">
                                         </div> 
 
                                         <div class="form-group col-lg-1 col-sm-12"> 
@@ -186,7 +186,7 @@ border-top: 1px solid #333333;
                 
                                                 </div> 
                                                 <div class="form-group col-lg-3 col-sm-12"> 
-                                                <input type="text" class="form-control cat" id="values"  ng-model="formdata.values" value="Group name">
+                                                <input type="text" class="form-control cat" id="values"  ng-model="val1.values"  ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.name.$valid}" value="Group name">
                                                 </div> 
 
                                 <div class="col-lg-2 col-sm-12" >

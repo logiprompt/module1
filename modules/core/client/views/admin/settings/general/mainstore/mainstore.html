@@ -205,7 +205,7 @@ width:60%;
                                 <h6 class="card-subtitle">Use default tab with class <code>vtabs &amp; tabs-vertical</code></h6> -->
                                 <!-- Nav tabs -->
 
-                                  <form class="" name="formdata" ng-submit="insMainstore()" novalidate>  
+                                  <form class="" name="formdata" ng-submit="insertMainstore()" novalidate>  
                                  
                                  <div class="form-group m-b-10 btn23">
                                         <a href="/settings/countrylist"><button type="button"  class="btn waves-effect waves-light btn-sm btn-default"> Cancel </button></a>
@@ -383,8 +383,13 @@ width:60%;
                                                         <select class="form-control filter-option" name="country" id="country"
                                                         ng-model="country" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && (!formdata.country.$valid || country==0 )}" ng-change="getStates()">
                                                         	<option class="filter-option-inner" value="0">choose country</option>
-                                                                      <option  class="filter-option-inner" ng-repeat="val in countrylist" value="{{val._id}}">{{val.country}}</option>
-                                                        </select>
+                                                           <!--  <option ng-repeat="val in countrylist" ng-if="val._id==formdata.country" selected value="{{val._id}}">{{val.country}}</option>-->
+                                  <option ng-repeat="val in countrylist"   value="{{val._id}}">{{val.country}}</option>
+                                                                        </select>
+                                                                      <!--<option  class="filter-option-inner" ng-repeat="val in countrylist" value="{{val._id}}">{{val.country}}</option>
+                                                        </select>-->
+                                                        
+                                                        
                                                     </div>
                                                
                                                     <label for="tags">State</label>
@@ -392,8 +397,9 @@ width:60%;
                                                          <select class="form-control filter-option" name="state" id="state"
                                                         ng-model="state" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && (!formdata.state.$valid || state==0 )}" ng-change="getDistrict()">
                                                         	<option class="filter-option-inner" value="0">choose state</option>
-                                                        	   <option ng-repeat="state in statelist" value="{{state._id}}">{{state.state}}</option>
-                                                        </select>
+                                                             <option ng-repeat="state in statelist"   value="{{state._id}}">{{state.state}}</option>
+                                                                        </select>
+                                                        	
                                                     </div>
                                                 
                                                     <label for="tags">District </label>
@@ -401,8 +407,13 @@ width:60%;
                                                          <select class="form-control filter-option" name="district" id="district"
                                                         ng-model="district" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && (!formdata.district.$valid || district==0 )}">
                                                         	<option class="filter-option-inner" value="0">choose district</option>
-                                                        	   <option ng-repeat="district in districtlist" value="{{district._id}}">{{district.district}}</option>
+                                                        	<!--   <option ng-repeat="district in districtlist" value="{{district._id}}">{{district.district}}</option>
                                                         </select>
+                                                      <option ng-repeat="district in districtlist" ng-if="district._id==formdata.district" selected="selected" value="{{district._id}}">{{district.district}}</option>     
+         <option ng-repeat="district in districtlist" ng-if="district._id!=formdata.district" value="{{district._id}}" >{{district.district}}</option>     
+                    </select>-->
+                    <option ng-repeat="district in districtlist" value="{{district._id}}">{{district.district}}</option>
+                                                                        </select>
                                                     </div>
                                                 
                                                   

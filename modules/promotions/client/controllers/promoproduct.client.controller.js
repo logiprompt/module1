@@ -17,7 +17,6 @@
       $scope.productpriceService.getProductPriceList().then(function (result) 
       {
         $scope.productPriceList = result['data']
-        console.log($scope.productPriceList);
         $scope.productPriceList.forEach(function (element) 
         {
           element.startDate = element.startDate.split("T")[0];
@@ -34,7 +33,6 @@
 
 $scope.currentLan=localStorage.getItem('currentLang').toString();
 $scope.defaultLang=localStorage.getItem('defaultLang').toString();
-
   $scope.getProductPriceDetails = function(userId)
   {
       $scope.productpriceService.getProductPriceDetails(userId).then(function(result)
@@ -55,7 +53,6 @@ $scope.defaultLang=localStorage.getItem('defaultLang').toString();
             $scope.formdata.ruleName =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].ruleName : details.ruleName;
             $scope.formdata.description = $scope.currentLan in details.oLang  ?details.oLang[ $scope.currentLan].description :  details.description;
           }
-
         $scope.formdata.startDate = $scope.userdetails.startDate;
         $scope.formdata.endDate = $scope.userdetails.endDate;
         $scope.formdata.status = $scope.userdetails.status;
@@ -66,8 +63,6 @@ $scope.defaultLang=localStorage.getItem('defaultLang').toString();
         $scope.formdata.stopRuleProcess = $scope.userdetails.stopRuleProcess;
         $scope.formdata.displayIn = $scope.userdetails.displayIn;
         $scope.formdata.actionApplyTo = $scope.userdetails.actionApplyTo;  
-
-
         }
           else
           {            
@@ -81,23 +76,59 @@ $scope.defaultLang=localStorage.getItem('defaultLang').toString();
 
     //////////////////////////////////////////////////////////////////////////
 
-    // $scope.getCategoryItems = function () 
-    // {
-    //   $scope.productpriceService.getProductPriceDetails().then(function (result) 
-    //   {
-    //     console.log(result);
-    //     $scope.categoryItems = result['data'];
-    //     $scope.categoryItems.forEach(function (element) 
-    //     {
-    //       element.created = element.created.split("T")[0];
-    //     }, this);
-    //   })
-    // }
-    // $scope.getCategoryItems();
+    $scope.getCategoryItems = function () 
+    {
+      $scope.productpriceService.getProductCatDetails().then(function (result) 
+      {
+        $scope.categoryItems = result['data'];
+        $scope.categoryItems.forEach(function (element) 
+        {
+          element.created = element.created.split("T")[0];
+        }, this);
+      })
+    }
+    $scope.getCategoryItems();
+// console.log(98799);
+    $scope.treeOptions = {
+      nodeChildren: "childIDs",
+      dirSelectable: true,
+      injectClasses: {
+        ul: "a1",
+        li: "a2",
+        liSelected: "a7",
+        iExpanded: "a3",
+        iCollapsed: "a4",
+        iLeaf: "a5",
+        label: "a6",
+        labelSelected: "a8"
+      }
+    }
+
+
+
+      $scope.showSelected = function(node){
+     //console.log(node);
+      $scope.stypename=node._id;
+
+      }
+
+
+    $scope.getProductsItems = function () 
+    {
+      $scope.productpriceService.getProductsItemstDetails().then(function (result) 
+      {
+        console.log(result);
+        $scope.productItems = result['data'];
+        $scope.productItems.forEach(function (element) 
+        {
+          element.created = element.created.split("T")[0];
+        }, this);
+      })
+    }
+    $scope.getProductsItems();
 
     $scope.cancel = function () 
-    {  
-    }
+    {}
 
     $scope.AddProductPrice = function () 
     {
@@ -109,6 +140,7 @@ $scope.defaultLang=localStorage.getItem('defaultLang').toString();
                       "startDate": $scope.formdata.startDate,
                       "endDate": $scope.formdata.endDate,
                       "status": $scope.formdata.status,
+                      //"product": $scope.formdata.status,
                       "applyTo": $scope.formdata.applyTo,
                       "conditions": $scope.formdata.conditions,
                       "actionApplyTo": $scope.formdata.actionApplyTo,
@@ -122,7 +154,7 @@ $scope.defaultLang=localStorage.getItem('defaultLang').toString();
             if(result.statusText = "OK")
             {
                   swal('Success!','Successfully added.', 'success')
-                  //$state.go('productpromotions');
+                  $state.go('productpromotions');
             }
             else
             {}
@@ -131,9 +163,7 @@ $scope.defaultLang=localStorage.getItem('defaultLang').toString();
     }
 
     $scope.updateProductPrice = function(){
-      console.log(2345);
       if($scope.formData.$valid && $scope.formdata.status!=0){
-        // var data=$scope.formdata;
         if (localStorage.getItem("currentLang") == 'en') {
         var data = {
           "ruleName": $scope.formdata.ruleName,
@@ -172,15 +202,12 @@ $scope.defaultLang=localStorage.getItem('defaultLang').toString();
             "userSelectedLang":localStorage.getItem("currentLang")
           };
         }
-console.log(data);
       $scope.productpriceService.updateProductPrice(data).then(function (result) {
-
-        console.log(result);
         if (result.statusText = "OK") {
           swal("Success!", "Successfully updated ", "success");
 
           //$scope.getShippingPriceList();
-          // $state.go('emailcmsratingaction');
+          $state.go('productpromotions');
         }
        // $location.path('/promotions/shipping');
       })

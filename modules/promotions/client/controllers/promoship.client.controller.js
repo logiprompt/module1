@@ -10,8 +10,42 @@
     $scope.shippingpriceService = shippingpriceService;
     $scope.currentLan=localStorage.getItem('currentLang').toString();
     $scope.defaultLang=localStorage.getItem('defaultLang').toString();
-
+   
     /* shipping prod rule */
+
+    // $scope.formdata.values ='0';
+    // //$scope.choices.length	
+    // // console.log($scope.choices.length);
+    // $scope.addNewValues = function () {
+    //   var newItemNo1 = $scope.formdata.values.length + 1;
+    //   $scope.formdata.values.push({ 'id': 'values' + newItemNo1 });
+    //  // console.log($scope.choices.length);
+    // };
+
+    // $scope.removeValues = function (val) {
+    //   if ($scope.formdata.values.length > 1) {
+    //     $scope.formdata.values.splice(val, 1);
+    //   }
+    //   //console.log($scope.choices.length);
+    // };
+
+    $scope.values = [{}]; 
+    $scope.addNewValuesEdit = function () {
+      var newItemNo1 = $scope.values.length + 1; 
+      $scope.values.push({ 'id': 'values' + newItemNo1 });
+    };
+
+    $scope.addNewValues = function () 
+    {    
+      var newItemNo1 = $scope.values.length + 1; 
+      $scope.values.push({ 'id': 'values' + newItemNo1 }); 
+    };
+
+    $scope.removeValues = function (val) {
+      if ($scope.values.length > 1) {
+        $scope.values.splice(val, 1);
+      }
+    };
 
     //get Item List
     $scope.getShippingPriceList = function () {
@@ -133,8 +167,8 @@
         $scope.formdata.displayIn = $scope.userdetails.displayIn;
         $scope.formdata.actionApplyTo = $scope.userdetails.actionApplyTo;  
         $scope.formdata.conditionsStatus = $scope.userdetails.conditionsStatus;  
-
-
+        $scope.formdata.values = $scope.userdetails.values; 
+        $scope.values = $scope.userdetails.values;  
         }
           else
           {            

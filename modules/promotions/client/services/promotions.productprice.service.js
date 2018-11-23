@@ -27,6 +27,22 @@
             });
         }
 
+        productprice.getProductCatDetails = function (data) 
+        {
+            return $http({
+                url: '/api/promotions/getProductCatDetails',
+                method: "GET"
+            });
+        }
+
+        productprice.getProductsItemstDetails = function (data) 
+        {
+            return $http({
+                url: '/api/promotions/getProductsItemstDetails',
+                method: "GET"
+            });
+        }
+
         productprice.getProductPriceDetails = function (ruleId) 
         {
             return $http({
@@ -54,19 +70,11 @@
 
         productprice.updateProductPrice = function (data) 
         { 
-            console.log(98);
             return Upload.upload({
                 url: '/api/promotions/updatePromotionsProductPrice',
                 method: "PUT",
 				data: data
 			});
-
-            // return $http({
-            //     url: '/api/promotions/updateProductPrice',
-            //     method: "PUT",
-            //     data: data
-            // });
-            
         }
 
         return productprice;

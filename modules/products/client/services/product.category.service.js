@@ -5,8 +5,8 @@
         .module('core')
         .service('productcategoryService', productcategoryService);
 
-    productcategoryService.$inject = ['$resource', '$http'];
-    function productcategoryService($resource, $http) {
+    productcategoryService.$inject = ['$resource', '$http','Upload'];
+    function productcategoryService($resource, $http,Upload) {
 
 
         var productcategory = {};
@@ -17,7 +17,7 @@
          */
 
         productcategory.addCategory = function (data) {
-            return $http({
+            return Upload.upload({
                 url: '/api/productcategory/addCategory',
                 method: "POST",
                 data: data

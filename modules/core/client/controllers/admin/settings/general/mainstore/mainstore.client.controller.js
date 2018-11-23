@@ -32,7 +32,7 @@
   
   
   
-   $scope.insMainstore = function(){
+   $scope.insertMainstore = function(){
     console.log($scope.sunfrom);
     if($scope.formdata.$valid && $scope.status!=0){
     var data = {
@@ -55,7 +55,7 @@
 		"timing":
 		{
 		"sunday":		
-		{"shift":$scope.selWednesday,"mrng":{"frm":$scope.sunfrom,"to":$scope.sunto},"eve":{"frm":$scope.sunevefrom,"to":$scope.suneveto}
+		{"shift":$scope.selSunday,"mrng":{"frm":$scope.sunfrom,"to":$scope.sunto},"eve":{"frm":$scope.sunevefrom,"to":$scope.suneveto}
 		},	
 		"monday":
 		
@@ -69,19 +69,19 @@
 		{"shift":$scope.selWednesday,"mrng":{"frm":$scope.wedfrom,"to":$scope.wedto},"eve":{"frm":$scope.wedevefrom,"to":$scope.wedeveto}
 		},
 		"thursday":		
-		{"shift":$scope.selWednesday,"mrng":{"frm":$scope.thufrom,"to":$scope.thuto},"eve":{"frm":$scope.thuevefrom,"to":$scope.thueveto}
+		{"shift":$scope.selThursday,"mrng":{"frm":$scope.thufrom,"to":$scope.thuto},"eve":{"frm":$scope.thuevefrom,"to":$scope.thueveto}
 		},
 		"friday":		
-		{"shift":$scope.selWednesday,"mrng":{"frm":$scope.frifrom,"to":$scope.frito},"eve":{"frm":$scope.frievefrom,"to":$scope.frieveto}
+		{"shift":$scope.selFriday,"mrng":{"frm":$scope.frifrom,"to":$scope.frito},"eve":{"frm":$scope.frievefrom,"to":$scope.frieveto}
 		},
 		"saturday":		
-		{"shift":$scope.selWednesday,"mrng":{"frm":$scope.satfrom,"to":$scope.satto},"eve":{"frm":$scope.satevefrom,"to":$scope.sateveto}
+		{"shift":$scope.selSaturday,"mrng":{"frm":$scope.satfrom,"to":$scope.satto},"eve":{"frm":$scope.satevefrom,"to":$scope.sateveto}
 		},
 		}
 		
 	}
     console.log($scope.mainstoreService);
-      $scope.mainstoreService.insMainstore(data).then(function(result){
+      $scope.mainstoreService.insertMainstore(data).then(function(result){
 
         if(result.statusText = "OK"){
           swal("Success!", "Successfully added!", "success");  
@@ -145,6 +145,76 @@ console.log(stateId);
     });
 
 }
+
+  $scope.currentLan=localStorage.getItem('currentLang').toString();
+  $scope.defaultLang=localStorage.getItem('defaultLang').toString();
+
+    $scope.getMainstoreDetails = function () {
+      console.log(0);
+      $scope.mainstoreService.getMainstoreDetails().then(function (result) {
+         console.log(result);
+         var details=result.data;
+        if (result.statusText = "OK") {
+        console.log(details);
+         $scope.userdetails = result.data;
+		  $scope.email = $scope.userdetails.email;
+          $scope.telephone = $scope.userdetails.telephone;
+		  $scope.mobile = $scope.userdetails.mobile;
+		  $scope.fax = $scope.userdetails.fax;
+		  $scope.postal = $scope.userdetails.postalcode;
+          $scope.country= $scope.userdetails.country;
+		   $scope.state= $scope.userdetails.state;
+		   $scope.district= $scope.userdetails.district;
+		   $scope.txtlat = $scope.userdetails.lattitude;
+		  $scope.txtlong = $scope.userdetails.longitude;
+		   $scope.seltime = $scope.userdetails.timezone;
+		   $scope.selWorking = $scope.userdetails.workingday;
+		    $scope.selSunday = $scope.userdetails.timing.sunday.shift;
+			$scope.selMonday = $scope.userdetails.timing.monday.shift;
+			$scope.selTuesday = $scope.userdetails.timing.tuesday.shift;
+			$scope.selWednesday = $scope.userdetails.timing.wednesday.shift;
+			$scope.selThursday = $scope.userdetails.timing.thursday.shift;
+			$scope.selFriday = $scope.userdetails.timing.friday.shift;
+			$scope.selSaturday = $scope.userdetails.timing.saturday.shift;
+			
+			$scope.sunfrom = $scope.userdetails.timing.saturday.mrng.frm;
+			$scope.sunto = $scope.userdetails.timing.saturday.mrng.to;
+			$scope.sunevefrom = $scope.userdetails.timing.saturday.eve.frm;
+			$scope.suneveto = $scope.userdetails.timing.saturday.eve.to;
+			
+			$scope.tuefrom = $scope.userdetails.timing.tuesday.mrng.frm;
+			$scope.tueto = $scope.userdetails.timing.tuesday.mrng.to;
+			$scope.tueevefrom = $scope.userdetails.timing.tuesday.eve.frm;
+			$scope.tueeveto = $scope.userdetails.timing.tuesday.eve.to;
+			
+		  console.log($scope.userdetails.timing.tuesday.mrng.frm);
+          if(angular.equals($scope.currentLan, $scope.defaultLang)){
+		 
+          $scope.name = $scope.userdetails.name;
+          $scope.contactperson = $scope.userdetails.contactperson;
+		  $scope.txtAddr = $scope.userdetails.address;
+		  
+		 
+		  
+		  
+        }
+        else{
+                     
+         $scope.userdetails = result.data;
+          $scope.name =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].name : details.name;
+          $scope.subject = $scope.currentLan in details.oLang  ?details.oLang[ $scope.currentLan].subject :  details.subject;
+          $scope.content =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].content:details.content ;
+          $scope.custom =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].custom :details.custom;
+        }
+        }
+        else {
+
+        }
+      });
+    }
+    $scope.getMainstoreDetails();
+
+
 	
 	
  ///////////////////////////////////////////////////////

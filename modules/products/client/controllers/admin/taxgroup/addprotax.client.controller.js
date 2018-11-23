@@ -37,8 +37,9 @@ $scope.getTaxGroupById = function (userId) {
 $scope.getTaxGroupById($stateParams.id);
 
 $scope.addProTax=function(){
-
-
+  if($scope.formdata.$valid){
+console.log($scope.values1)
+  }
 
 }
 $scope.values1 = [{id: 'choice1'}];

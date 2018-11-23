@@ -24,13 +24,15 @@ exports.create = function (req, res) {
     },
     filename: function (req, file, callback) {
       console.log(file);
+     
+      var today=Date.now();
       var ext = file.originalname.substr(file.originalname.length - 3); // => "Tabs1"
-      callback(null, file.fieldname + '-' + Date.now() + '.' + ext); // => "Tabs1");
-      picpath = "uploads/" + file.fieldname + '-' + Date.now() + '.' + ext;
+      callback(null, file.fieldname + '-' +today + '.' + ext); // => "Tabs1");
+      picpath = "uploads/" + file.fieldname + '-' +today + '.' + ext;
     }
   });
 
-  var upload = multer({ storage: storage }).single('imgfile');
+ var upload = multer({ storage: storage }).single('imgfile');
   /////////////////////////////////////////////////////////////////////////
 
 
@@ -41,7 +43,7 @@ exports.create = function (req, res) {
   ///////////////////////////////////////////////////////////////////////////
   upload(req, res, function (err) {
     var reqBody = req.body;
-    console.log(req.body);
+    console.log(picpath);
     if (err) {
       return res.end("Error uploading file.");
     }

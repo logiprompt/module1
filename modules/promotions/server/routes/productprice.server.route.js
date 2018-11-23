@@ -22,6 +22,12 @@ module.exports = function (app) {
     //get product price rule list
     app.route('/api/promotions/getProductPriceList').get(productPrice.getProductPriceList);
 
+    //get product price rule list
+    app.route('/api/promotions/getProductCatDetails').get(productPrice.getProductCatDetails);
+    
+    //get product price rule list
+    app.route('/api/promotions/getProductsItemstDetails').get(productPrice.getProductsItemstDetails);
+
     //get product price rule
     app.route('/api/promotions/getProductPriceDetails/:ruleId').get(productPrice.getProductPriceDetails);
     

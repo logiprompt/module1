@@ -5,7 +5,10 @@
  */
 var path = require('path'),
     multer = require('multer'),
+    mongoose = require('mongoose'),
     productPrice = require('../models/productprice.server.model.js'),
+    productCat = mongoose.model('productcategory'),
+    Products = mongoose.model('Product'),
     errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
 /* add promotion product price rule*/
@@ -58,6 +61,29 @@ exports.getProductPriceList = function (req, res, next) {
     })
 }
 
+exports.getProductCatDetails = function (req, res, next) {
+    productCat.find().exec(function (err, data) {
+        if (err) {
+            return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+            res.json(data);
+        }
+    })
+}
+
+exports.getProductsItemstDetails = function (req, res, next) {
+    Products.find().exec(function (err, data) {
+        if (err) {
+            return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+            res.json(data);
+        }
+    })
+}
 //get particular product price rule
 exports.getProductPriceDetails = function (req, res, next) {
     productPrice.findById(req.params.ruleId).exec(function (err, data) {
@@ -85,19 +111,13 @@ exports.deleteProductPrice = function (req, res, next) {
 }
 
 exports.delChecked = function (request, response) {
-
     var arr = request.query.itemId;
-    //console.log(arr);
     productPrice.deleteMany({ _id: { '$in': arr } }).exec(function (err, data) {
         if (err) throw err;
         response.json({
             status: 1,
         });
-
-
     });
-
-
 };
 
 //update product price rule
@@ -110,7 +130,8 @@ exports.updateProductPrice = function (req, res, next)
         {
             callback(null, './public/uploads');
         },
-        filename: function (req, file, callback) {
+        filename: function (req, file, callback) 
+        {
             callback(null, file.fieldname + '-' + today + '.png');
             picpath = "uploads/" + file.fieldname + '-' + today + '.png';
         }
@@ -119,107 +140,71 @@ exports.updateProductPrice = function (req, res, next)
     var upload = multer({ storage: storage }).single('image');
     upload(req, res, function (err) 
     {
-
         var reqBody = req.body;
         var userId = reqBody.id;
         var data = {};
-        productPrice.findById(userId).exec(function (err, data) {
-        if (err) 
+        productPrice.findById(userId).exec(function (err, data) 
         {
-            return res.end("Error uploading file.");
-        }
-        else 
-        {
-            if (reqBody.isDefaultLang) 
+            if (err) 
             {
-                if (picpath == '') 
-                {
-                    data.ruleName = reqBody.ruleName,
-                    data.description = reqBody.description
-                    data.displayIn = reqBody.displayIn,
-                    data.startDate = reqBody.startDate,
-                    data.endDate = reqBody.endDate,
-                    data.category = reqBody.category,
-                    data.product = reqBody.product,
-                    data.stopRuleProcess = reqBody.stopRuleProcess,
-                    data.discountAmount = reqBody.discountAmount,
-                    data.applyTo = reqBody.applyTo,
-                    data.actionApplyTo = reqBody.actionApplyTo,
-                    data.conditions = reqBody.conditions,
-                    data.status = reqBody.status
-                }
-                else 
-                {
-                    data.ruleName = reqBody.ruleName,
-                    data.description = reqBody.description
-                    data.displayIn = reqBody.displayIn,
-                    data.startDate = reqBody.startDate,
-                    data.endDate = reqBody.endDate,
-                    data.category = reqBody.category,
-                    data.product = reqBody.product,
-                    data.stopRuleProcess = reqBody.stopRuleProcess,
-                    data.applyTo = reqBody.applyTo,
-                    data.discountAmount = reqBody.discountAmount,
-                    data.actionApplyTo = reqBody.actionApplyTo,
-                    data.conditions = reqBody.conditions,
-                    data.image = picpath,
-                    data.status = reqBody.status
-                }
+                return res.end("Error uploading file.");
             }
             else 
             {
-                var obj = {};
-                if (picpath == '') 
+                if (reqBody.defaultLang==reqBody.userSelectedLang) 
                 {
-                    obj.ruleName = reqBody.ruleName;
-                    obj.description = reqBody.description;
-                    obj.displayIn = reqBody.displayIn;
-                    obj.startDate = reqBody.startDate;
-                    obj.endDate = reqBody.endDate;
-                    obj.category = reqBody.category;
-                    obj.product = reqBody.product;
-                    obj.stopRuleProcess = reqBody.stopRuleProcess;
-                    obj.discountAmount = reqBody.discountAmount;
-                    obj.applyTo = reqBody.applyTo;
-                    obj.actionApplyTo = reqBody.actionApplyTo;
-                    obj.conditions = reqBody.conditions;
-                    obj.status = reqBody.status;
-                    //console.log(obj);
-                  //  data['oLang'][reqBody.userSelectedLang] = obj;
+                    data.ruleName = reqBody.ruleName,
+                    data.description = reqBody.description
                 }
                 else 
                 {
+                    var obj = {};
                     obj.ruleName = reqBody.ruleName;
                     obj.description = reqBody.description;
-                    obj.displayIn = reqBody.displayIn;
-                    obj.startDate = reqBody.startDate;
-                    obj.endDate = reqBody.endDate;
-                    obj.category = reqBody.category;
-                    obj.product = reqBody.product;
-                    obj.stopRuleProcess = reqBody.stopRuleProcess;
-                    obj.applyTo = reqBody.applyTo;
-                    obj.discountAmount = reqBody.discountAmount;
-                    obj.actionApplyTo = reqBody.actionApplyTo;
-                    obj.conditions = reqBody.conditions;
-                    obj.image = picpath;
-                    obj.status = reqBody.status;
-                    
+                    data['oLang'][reqBody.userSelectedLang] = obj;  
                 }
-              
-data['oLang'][reqBody.userSelectedLang] = obj;
-                
-            }
-            productPrice.update({ '_id': userId }, { $set: data }).exec(function (error, output) 
-            {
-                if (error) 
+
+                if (picpath == '') 
+                    {
+                        data.displayIn = reqBody.displayIn,
+                        data.startDate = reqBody.startDate,
+                        data.endDate = reqBody.endDate,
+                        data.category = reqBody.category,
+                        data.product = reqBody.product,
+                        data.stopRuleProcess = reqBody.stopRuleProcess,
+                        data.discountAmount = reqBody.discountAmount,
+                        data.applyTo = reqBody.applyTo,
+                        data.actionApplyTo = reqBody.actionApplyTo,
+                        data.conditions = reqBody.conditions,
+                        data.status = reqBody.status
+                    }
+                    else 
+                    {
+                        data.displayIn = reqBody.displayIn,
+                        data.startDate = reqBody.startDate,
+                        data.endDate = reqBody.endDate,
+                        data.category = reqBody.category,
+                        data.product = reqBody.product,
+                        data.stopRuleProcess = reqBody.stopRuleProcess,
+                        data.applyTo = reqBody.applyTo,
+                        data.discountAmount = reqBody.discountAmount,
+                        data.actionApplyTo = reqBody.actionApplyTo,
+                        data.conditions = reqBody.conditions,
+                        data.image = picpath,
+                        data.status = reqBody.status
+                    }
+
+                productPrice.update({ '_id': userId }, { $set: data }).exec(function (error, output) 
                 {
-                    res.status(500).send(error);
+                    if (error) 
+                    {
+                        res.status(500).send(error);
+                        return;
+                    }
+                    res.json(output);
                     return;
-                }
-                res.json(output);
-                return;
-            })
-        }
-    });
+                })
+            }
+        });
     })
 }

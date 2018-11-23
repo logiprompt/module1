@@ -17,7 +17,7 @@
 	  * Description : add Mainstore details
 	  * owner : anju
 	  */
-	 mainstore.insMainstore = function(data){
+	 mainstore.insertMainstore = function(data){
 		 
 		return $http({
 	           url: '/api/insMainstoreadd',
@@ -35,6 +35,19 @@
 		 
 		return $http({
 			   url: '/api/insMainstores',
+			   method: "POST"
+		   });
+	   }
+	   
+	   /*
+	  * Function : getMainstoreDetails
+	  * Description : get all MainstoreDetails details
+	  * owner : anju
+	  */
+	 mainstore.getMainstoreDetails = function(){
+		 
+		return $http({
+			   url: '/api/getMainstoreDetails',
 			   method: "POST"
 		   });
 	   }

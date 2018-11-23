@@ -47,9 +47,9 @@ var MainstoreSchema = new Schema({
     trim: true
   },
   
-  state: [{ type: Schema.Types.ObjectId, ref: 'Sys_state' }],
-  country: [{ type: Schema.Types.ObjectId, ref: 'Sys_country' }],
-  district: [{ type: Schema.Types.ObjectId, ref: 'Sys_district' }],
+  state: { type: Schema.Types.ObjectId, ref: 'Sys_state' },
+  country: { type: Schema.Types.ObjectId, ref: 'Sys_country' },
+  district: { type: Schema.Types.ObjectId, ref: 'Sys_district' },
   
    
   postalcode: {

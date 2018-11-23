@@ -624,7 +624,7 @@
 
 
                                                 <label for="name">Values</label>
-                                                <div data-ng-repeat="val1 in values1">
+                                                <div data-ng-repeat="val in values">
                                                     <div class="form-group m-b-10 col-md-9">
 
                                                         <span class="bar"></span>
@@ -634,7 +634,7 @@
                                                         ng-class="{ 'validationErr' : formData.$submitted && !formData.values.$valid}">
 
                                                         <div class="col-lg-2 m-b-10 col-sm-4">
-                                                            <button class="add" type="button" ng-click="addNewValues($index)" style="width: 36px;
+                                                            <button class="add" type="button" ng-click="addNewValuesEdit($index)" style="width: 36px;
                                         margin-top: 0px;color: #fff; padding: 6px 2px; background: #00bcd4 ; border: 1px solid #E5E5E5;">
                                                                 <i class="fa fa-plus"></i>
                                                             </button>

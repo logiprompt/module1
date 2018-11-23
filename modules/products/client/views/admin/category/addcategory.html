@@ -320,7 +320,7 @@
 
                                                 <div ng-if="category==1" class="form-group m-b-10">
                                                     <label for="input1"> category</label>
-                                                    <input type="text" class="form-control cat" id="name" ng-model="formdata.category">
+                                                    <input type="text" class="form-control cat" id="name"name="name" ng-model="formdata.category" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.name.$valid}">
 
                                                 </div>
 
@@ -378,7 +378,7 @@
 
                                                 <div class="form-group m-b-10">
                                                     <label for="input1">Description</label>
-                                                    <textarea class="form-control cat" id="desc" type="text" ng-model="formdata.description"></textarea>
+                                                    <textarea class="form-control cat" id="desc" name="desc" type="text" ng-model="formdata.description" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.desc.$valid}"></textarea>
 
 
                                                 </div>

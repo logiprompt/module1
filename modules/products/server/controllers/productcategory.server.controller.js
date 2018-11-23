@@ -4,20 +4,59 @@
  * Module dependencies.
  */
 var path = require('path'),
+multer = require('multer'),  
     productCategory = require('../models/productcategory.server.model.js'),
     errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
 /* add new category */
 exports.addCategory = function (req, res, next) {
-    productCategory.create(req.body, function (err, post) {
+    
+  var picpath = "";
+  var storage = multer.diskStorage({
+    destination: function (req, file, callback) {
+      callback(null, './public/uploads');
+    },
+    filename: function (req, file, callback) {
+      console.log(file);
+     
+      var today=Date.now();
+      var ext = file.originalname.substr(file.originalname.length - 3); // => "Tabs1"
+      callback(null, file.fieldname + '-' +today + '.' + ext); // => "Tabs1");
+      picpath = "uploads/" + file.fieldname + '-' +today + '.' + ext;
+    }
+  });
+
+ var upload = multer({ storage: storage }).single('imgfile');
+  /////////////////////////////////////////////////////////////////////////
+
+
+  var picpath1 = "";
+
+
+
+  ///////////////////////////////////////////////////////////////////////////
+  upload(req, res, function (err) {
+    var reqBody = req.body;
+    console.log(picpath);
+    if (err) {
+      return res.end("Error uploading file.");
+    }
+    else {
+      reqBody['imgfile'] = picpath;
+      // reqBody['imgfile1'] = picpath1;
+      productCategory.create(reqBody, function (err) {
         if (err) {
-            return res.status(400).send({
-                message: errorHandler.getErrorMessage(err)
-            });
+          return res.status(400).send({
+            message: errorHandler.getErrorMessage(err)
+          });
         } else {
-            res.json("category added");
+          res.jsonp(reqBody);
         }
-    });
+      });
+
+    }
+  });
+
 }
 
 /* add sub category */

@@ -49,6 +49,26 @@ exports.list = function (request, response) {
         }
     });
 };
+
+/**
+ * List of getdetails
+ */
+exports.getdetails = function (request, response) {
+    
+    mainstore.findOne().exec(function (error, items) {
+
+        if (error) {
+            return response.status(400).send({
+                message: errorHandler.getErrorMessage(error)
+            });
+        } else {
+
+            response.jsonp(items);
+        }
+    });
+};
+
+
 /**
  * List of state
  */
