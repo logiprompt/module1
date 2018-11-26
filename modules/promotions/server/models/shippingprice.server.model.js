@@ -3,6 +3,7 @@
 /**
  * Module dependencies.
  */
+
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
@@ -12,7 +13,8 @@ var mongoose = require('mongoose'),
 var ShippingPriceSchema = new Schema({
     ruleName: { type: String, default: '' },
     description: { type: String, default: '' },
-    displayIn: { type: [String], default: '' },
+    displayIn: [{ type: Schema.Types.ObjectId, ref: 'Sys_country' }],
+    // displayIn: { type: [String], default: '' },
     startDate: { type: Date, default: Date.now },
     endDate: { type: Date, default: Date.now },
     createdDate: { type: Date, default: Date.now },

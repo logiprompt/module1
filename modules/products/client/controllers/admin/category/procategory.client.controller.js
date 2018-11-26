@@ -9,7 +9,7 @@
     $scope.productcategoryService = productcategoryService;
     $scope.extrafieldService = extrafieldService;
 
-
+    $scope.currentLan=localStorage.getItem('currentLang').toString();
     /*
          * Function : getCategoryItems
          * description : Get all category items for the list
@@ -37,21 +37,65 @@
     }
 
     $scope.addNewCategory = function () {
-      $scope.formdata.level = $scope.category;
-      $scope.formdata.extrafieldGroup = $scope.selectedExtrafieldGroup;
-      $scope.productcategoryService.addCategory($scope.formdata).then(function (result) {
-        $location.path('/product/category');
+      console.log($scope.formdata);
+      if($scope.formdata.$valid && $scope.status!=0){
+        var data= {
+       "category":$scope.categoryname,
+        "level" : $scope.category,
+        "status":$scope.status,
+        "description":$scope.desc,
+        "metaDescription":$scope.metaDescription,
+        "metaKeywords":$scope.metaKeywords,
+        "urlKey":$scope.urlKey,
+        "displayInMenu":$scope.menu,
+        "displayInSidebar":$scope.sidebar,
+         "extrafieldGroup" : $scope.selectedExtrafieldGroup,
+         "imgfile":$scope.imgfile
+      }
+      $scope.productcategoryService.addCategory(data).then(function (result) {
+      
+        if(result.statusText = "OK"){
+          swal("Success!", "Successfully Created !", "success");  
+         // $state.go('procategory');
+        }else{
+          swal("error!", " Already exist!", "error");
+        } 
+        // $location.path('/product/category');
       })
+    }
     }
 
     $scope.addSubCategory = function () {
-      $scope.formdata.category = $scope.formdata.subcategory
-      $scope.formdata.parentId = $scope.selectedCategoryId;
-      $scope.formdata.level = $scope.category;
-      $scope.formdata.extrafieldGroup = $scope.selectedExtrafieldGroup;
-      $scope.productcategoryService.addSubCategory($scope.formdata).then(function (result) {
-        $location.path('/product/category');
+      // $scope.formdata.category = $scope.formdata.subcategory
+      // $scope.formdata.parentId = $scope.selectedCategoryId;
+      // $scope.formdata.level = $scope.category;
+      // $scope.formdata.extrafieldGroup = $scope.selectedExtrafieldGroup;
+      console.log($scope.formdata);
+      if($scope.formdata.$valid && $scope.status!=0){
+        var data= {
+       "category":$scope.categoryname,
+        "level" : $scope.category,
+        "status":$scope.status,
+        "description":$scope.desc,
+        "metaDescription":$scope.metaDescription,
+        "metaKeywords":$scope.metaKeywords,
+        "urlKey":$scope.urlKey,
+        "displayInMenu":$scope.menu,
+        "displayInSidebar":$scope.sidebar,
+         "extrafieldGroup" : $scope.selectedExtrafieldGroup,
+         "parentId":$scope.selectedCategoryId,
+         "imgfile":$scope.imgfile
+      }
+      $scope.productcategoryService.addSubCategory(data).then(function (result) {
+        //$location.path('/product/category');
+        if(result.statusText = "OK"){
+          swal("Success!", "Successfully Created !", "success");  
+         // $state.go('procategory');
+        }else{
+          swal("error!", " Already exist!", "error");
+        } 
       })
+    }
     }
 
     /*
@@ -131,7 +175,7 @@
         var FR = new FileReader();
         FR.onload = function (e) {
           document.getElementById("imgfiles").src = e.target.result;
-          ev.target.parentNode.parentNode.parentNode.childNodes[3].childNodes[1].childNodes[1] = e.target.result;
+        //  ev.target.parentNode.parentNode.parentNode.childNodes[3].childNodes[1].childNodes[1] = e.target.result;
           //document.getElementById("b64").innerHTML = e.target.result;
         };
         FR.readAsDataURL(this.files[0]);

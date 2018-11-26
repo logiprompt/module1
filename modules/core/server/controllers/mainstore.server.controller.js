@@ -16,20 +16,102 @@ var path = require('path'),
 */
 exports.create = function (req, res) {
 
-    var mainstoreDetails = req.body;
-    console.log(mainstoreDetails);
-    mainstore.create(mainstoreDetails, function (err) {
+   
+	  var reqBody = req.body;
+    console.log(reqBody);
+	
+
+    //var data;
+
+	        mainstore.findById(reqBody.rowId).lean().exec(function (error, data) {
+        if (error) {
+            res.status(500).send(error);
+            return;
+        } else {
+			if(data){
+			/* res.json(data);
+                return; */
+				
+			
+				 
+            if (reqBody.isDefaultLang) {
+                data.name = reqBody.name;
+                data.contactperson = reqBody.contactperson;
+                data.address = reqBody.address;
+               data.email = reqBody.email;
+                data.telephone = reqBody.telephone;
+				data.mobile = reqBody.mobile;
+				data.fax = reqBody.fax;
+				data.postalcode = reqBody.postalcode;
+				data.country = reqBody.country;
+				data.state = reqBody.state;
+				data.district = reqBody.district;
+				data.lattitude = reqBody.lattitude;
+				data.longitude = reqBody.longitude;
+				data.timezone = reqBody.timezone;
+				data.workingday = reqBody.workingday;
+				data.weekend=reqBody.weekend;
+				data.timing=reqBody.timing;
+            }
+            else {
+                var obj = {};
+				data.email = reqBody.email;
+                data.telephone = reqBody.telephone;
+				data.mobile = reqBody.mobile;
+				data.fax = reqBody.fax;
+				data.postalcode = reqBody.postalcode;
+				data.country = reqBody.country;
+				data.state = reqBody.state;
+				data.district = reqBody.district;
+				data.lattitude = reqBody.lattitude;
+				data.longitude = reqBody.longitude;
+				data.timezone = reqBody.timezone;
+				data.workingday = reqBody.workingday;
+				data.timing=reqBody.timing;
+				data.weekend=reqBody.weekend;
+                obj.name = reqBody.name;
+                obj.contactperson = reqBody.contactperson;
+                obj.address = reqBody.address;
+                data['oLang'][reqBody.userSelectedLang] = obj;
+            }
+				
+ 			
+            mainstore.update({'_id':reqBody.rowId}, 
+                {$set:data} ).exec(function (error, output) {
+                if (error) {
+                    res.status(500).send(error);
+                    return;
+                }
+                res.json(output);
+                return;
+
+
+            })
+			}
+			else{
+				
+				 mainstore.create(reqBody, function (err) {
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
-            res.jsonp(mainstoreDetails);
-			return;
+            res.jsonp(reqBody);
         }
     });
+				
+				
+				}
+			
+			
+        }
+    })
+	  
+      
+	}
+		
+	
 
-};
 
 
 /**

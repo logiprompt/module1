@@ -10,6 +10,13 @@
     function shippingpriceService($resource, $http, Upload) {
         var shippingprice = {};
 
+        shippingprice.getShippingCountryList = function (data) {
+            return $http({
+                url: '/api/promotion/getShippingCountryList',
+                method: "GET"
+            });
+        }
+
         shippingprice.addShippingPrice = function (data) {
             // return $http({
             //     url: '/api/promotion/addShippingPrice',
@@ -46,7 +53,7 @@
                // data:{'itemId':itemId},
                 params:{'itemId':itemId}
             });
-        }
+        }  
 
         shippingprice.getShippingPriceDetails = function (itemId) {
           

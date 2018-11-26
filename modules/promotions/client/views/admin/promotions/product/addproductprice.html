@@ -403,9 +403,8 @@ margin-bottom: 15px;*/
                                                     <select class="selectpicker form-control displayIn" multiple
                                                         data-style="form-control btn-info" ng-model="formdata.displayIn"
                                                         id="displayIn" name="displayIn" ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.displayIn.$valid}">
-                                                        <option>Global</option>
-                                                        <option>India</option>
-                                                        <option>UAE</option>
+                                                        <option class="filter-option-inner" value="0">choose</option>
+                                                        <option  class="filter-option-inner" ng-repeat="val in country" value="{{val._id}}">{{val.country}}</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group m-b-10">
@@ -463,6 +462,8 @@ margin-bottom: 15px;*/
                                                         <option value="category" class="filter-option-inner">Category</option>
                                                         <option value="product">Product</option>
                                                     </select>
+
+                                                    
                                                     <span class="bar"></span>
                                                 </div>
                                                 <div class="form-group m-b-10 " ng-show="formdata.applyTo=='category'">
@@ -502,8 +503,8 @@ margin-bottom: 15px;*/
                                                                         <tr  ng-repeat="items in productItems">
                                                                             <td>
                                                                                 <input type="checkbox" id="basic_checkbox_{{$index+1}}"
-                                                                                    class="rowtxtchk" value="{{$index+1}}"
-                                                                                    ng-click="addchkval(val.cat_id)" />
+                                                                                    class="rowtxtchks" value="{{items._id}}"
+                                                                                    ng-click="addchkval(items._id)" />
                                                                                 <label for="basic_checkbox_{{$index+1}}"></label>
                                                                             </td>
                                                                             <td>{{$index+1}}</td>

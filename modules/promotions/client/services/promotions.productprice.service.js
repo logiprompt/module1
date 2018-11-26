@@ -51,6 +51,13 @@
             });
         }
 
+        productprice.getProductCountries = function () 
+        {
+            return $http({
+                url: '/api/promotions/getProductCountries/',
+                method: "GET"
+            });
+        }
         productprice.deleteProductPrice = function (itemId) 
         {
             return $http({

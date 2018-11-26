@@ -37,7 +37,7 @@ exports.addCategory = function (req, res, next) {
   ///////////////////////////////////////////////////////////////////////////
   upload(req, res, function (err) {
     var reqBody = req.body;
-    console.log(picpath);
+   
     if (err) {
       return res.end("Error uploading file.");
     }
@@ -51,6 +51,7 @@ exports.addCategory = function (req, res, next) {
           });
         } else {
           res.jsonp(reqBody);
+          return;
         }
       });
 
@@ -61,13 +62,49 @@ exports.addCategory = function (req, res, next) {
 
 /* add sub category */
 exports.addSubCategory = function (req, res, next) {
-    productCategory.create(req.body, function (err, post) {
+
+
+    console.log(req.body);
+
+
+    var picpath = "";
+    var storage = multer.diskStorage({
+      destination: function (req, file, callback) {
+        callback(null, './public/uploads');
+      },
+      filename: function (req, file, callback) {
+        console.log(file);
+       
+        var today=Date.now();
+        var ext = file.originalname.substr(file.originalname.length - 3); // => "Tabs1"
+        callback(null, file.fieldname + '-' +today + '.' + ext); // => "Tabs1");
+        picpath = "uploads/" + file.fieldname + '-' +today + '.' + ext;
+      }
+    });
+  
+   var upload = multer({ storage: storage }).single('imgfile');
+
+
+   upload(req, res, function (err) {
+    var reqBody = req.body;
+   
+    if (err) {
+      return res.end("Error uploading file.");
+    }
+    else {
+      reqBody['imgfile'] = picpath;
+
+
+
+    productCategory.create(reqBody, function (err, post) {
+
+
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
-            productCategory.update({ _id: req.body.parentId }, { $set: { hasChild: true }, $push: { childIDs: post._id } }, function (err, post) {
+            productCategory.update({ _id: reqBody.parentId }, { $set: { hasChild: true }, $push: { childIDs: post._id } }, function (err, post) {
                 if (err) {
                     return res.status(400).send({
                         message: errorHandler.getErrorMessage(err)
@@ -78,6 +115,9 @@ exports.addSubCategory = function (req, res, next) {
             })
         }
     });
+
+    }
+});
 }
 
 /* delete a category */

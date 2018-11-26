@@ -1,238 +1,313 @@
-<style>.btn23{
-    float: right;
+<style>
+    .btn23 {
+        float: right;
     }
-.page-wrapper{
-   padding-top: 0px;
-     
-}
-.tblimg{
-width: 70px;
-    height: 52px;
-}
-.file_input_hidden {
-            font-size: 20px;
-            position: absolute;
-            /* right: 0px; */
-            width: 100%;
-            top: 0px;
-            bottom: 0;
-            cursor: pointer;
-            opacity: 0;
-            filter: alpha(opacity=0);
-            -ms-filter: "alpha(opacity=0)";
-            -khtml-opacity: 0;
-            -moz-opacity: 0;
-        }
-        .file_wrap .iconw {
-            border-radius: 0 5px 5px 0;
-            border-right: 1px solid #01bdd6;
-            bottom: -1px;
-            right: -1px;
-            position: absolute;
-            top: -1px;
-            width: 100px;
-            padding: 10px 0 10px 0;
-            background: #01bdd6;
-            text-align: center;
-            cursor: pointer;
-            color: #fff;
-        }
-        .file_wrap .write_textbox {
-            bottom: 0;
-            left: 0;
-            position: absolute;
-            right: 102px;
-            top: 0;
-        }
-        .file_wrap input[type="text"] {
-            background: none repeat scroll 0 0 transparent;
-            border: medium none;
-            color: #333333;
-            font-size: 16px;
-            height: 29px;
-            line-height: 28px;
-            outline: medium none;
-            padding: 4px;
-            width: 98%;
-        }
-        .file_wrap {
-            border: 1px solid #CCC;
-            border-radius: 4px;
-            height: 37px;
-            position: relative;
-        }
-            
-        .imgup
-    {    border: 1px solid #e9ecef;
-       width: 100%;
-       /* margin-bottom: 35px; */
-    } 
-         /* .lgs1{
+
+    .page-wrapper {
+        padding-top: 0px;
+
+    }
+
+    .tblimg {
+        width: 70px;
+        height: 52px;
+    }
+
+    .file_input_hidden {
+        font-size: 20px;
+        position: absolute;
+        /* right: 0px; */
+        width: 100%;
+        top: 0px;
+        bottom: 0;
+        cursor: pointer;
+        opacity: 0;
+        filter: alpha(opacity=0);
+        -ms-filter: "alpha(opacity=0)";
+        -khtml-opacity: 0;
+        -moz-opacity: 0;
+    }
+
+    .file_wrap .iconw {
+        border-radius: 0 5px 5px 0;
+        border-right: 1px solid #01bdd6;
+        bottom: -1px;
+        right: -1px;
+        position: absolute;
+        top: -1px;
+        width: 100px;
+        padding: 10px 0 10px 0;
+        background: #01bdd6;
+        text-align: center;
+        cursor: pointer;
+        color: #fff;
+    }
+
+    .file_wrap .write_textbox {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 102px;
+        top: 0;
+    }
+
+    .file_wrap input[type="text"] {
+        background: none repeat scroll 0 0 transparent;
+        border: medium none;
+        color: #333333;
+        font-size: 16px;
+        height: 29px;
+        line-height: 28px;
+        outline: medium none;
+        padding: 4px;
+        width: 98%;
+    }
+
+    .file_wrap {
+        border: 1px solid #CCC;
+        border-radius: 4px;
+        height: 37px;
+        position: relative;
+    }
+
+    .imgup {
+        border: 1px solid #e9ecef;
+        width: 100%;
+        /* margin-bottom: 35px; */
+    }
+
+    /* .lgs1{
          width: 28%;
     float: left;
 } */
-         .lblfor
-         {
-                /* margin-right: 40%; */
-    width: 65%;
-         }
-         .lblval
-         {margin-left: 70%;
-    width: 55%;
-         }
-         .rd_vid
-         {display: none;}
-		 .img-wrap{
-			 width: 16%;
-    		 height: 125px;
-			 }
-		 .img-wrap img{
-			 width: 115px;
-    		 border-radius: 58px;
-			 }
-		  .user-dtls{
-			  width:70%;
-			  float:left;
-			  }
-		  .user-dtls h5{
-			  padding: 11px 16px;
-			  }
-		  .clear{
-			  clear:both !important;
-			  }
-		  .floating-labels .form-control{
-			  border:1px solid #ddd !important;
-			  }
-		  .floating-labels label{
-			  color: #67757c;
-    		  position: absolute;
-    		  cursor: auto;
-    		  top: 13px;
-    		  -o-transition: 0.2s ease all;
-    		  transition: 0.2s ease all;
-    		  -moz-transition: 0.2s ease all;
-    		  -webkit-transition: 0.2s ease all;
-    		  font-size: 12px;		
-    		  padding-left: 5px;
-			  }
-              .bord{border-top:1px solid black;}
-              .lblsize{    font-size: 12px !important;}
-              .cntimg {
-    width: 35px;
-    height: 30px;
-}
-.fastar{color:orange !important;}
-.lblstar{padding-left: 12px;}
-.fas{padding-right: 10px}
-.detailreview{display: none;}
-.tblbundle{border-color: #e9edf21f;}
 
-        .table-responsive {
-            overflow-x: auto !important;
-        }     
-    .chkcustom + label:before, .chkcustom:not(.filled-in) + label:after {
+    .lblfor {
+        /* margin-right: 40%; */
+        width: 65%;
+    }
+
+    .lblval {
+        margin-left: 70%;
+        width: 55%;
+    }
+
+    .rd_vid {
+        display: none;
+    }
+
+    .img-wrap {
+        width: 16%;
+        height: 125px;
+    }
+
+    .img-wrap img {
+        width: 115px;
+        border-radius: 58px;
+    }
+
+    .user-dtls {
+        width: 70%;
+        float: left;
+    }
+
+    .user-dtls h5 {
+        padding: 11px 16px;
+    }
+
+    .clear {
+        clear: both !important;
+    }
+
+    .floating-labels .form-control {
+        border: 1px solid #ddd !important;
+    }
+
+    .floating-labels label {
+        color: #67757c;
+        position: absolute;
+        cursor: auto;
+        top: 13px;
+        -o-transition: 0.2s ease all;
+        transition: 0.2s ease all;
+        -moz-transition: 0.2s ease all;
+        -webkit-transition: 0.2s ease all;
+        font-size: 12px;
+        padding-left: 5px;
+    }
+
+    .bord {
+        border-top: 1px solid black;
+    }
+
+    .lblsize {
+        font-size: 12px !important;
+    }
+
+    .cntimg {
+        width: 35px;
+        height: 30px;
+    }
+
+    .fastar {
+        color: orange !important;
+    }
+
+    .lblstar {
+        padding-left: 12px;
+    }
+
+    .fas {
+        padding-right: 10px
+    }
+
+    .detailreview {
+        display: none;
+    }
+
+    .tblbundle {
+        border-color: #e9edf21f;
+    }
+
+    .table-responsive {
+        overflow-x: auto !important;
+    }
+
+    .chkcustom+label:before,
+    .chkcustom:not(.filled-in)+label:after {
         content: '';
         position: absolute;
         top: 0px !important;
     }
-    
-    
-    
-     
-    .lever{cursor: pointer;} 
 
-.el-card-item .el-overlay-1 {
-            width: 100%;
-            overflow: hidden;
-            position: relative;
-            text-align: center;
-            cursor: default;
-        }
-       .el-card-item .el-overlay-1:hover .el-overlay {
-    opacity: 1;
-    filter: alpha(opacity=100);
-    -webkit-transform: translateZ(0);
-    -ms-transform: translateZ(0);
-    transform: translateZ(0);
-}
 
-     .el-card-item {
-    position: relative;
-    /* padding-bottom: 25px; 
+
+
+    .lever {
+        cursor: pointer;
+    }
+
+    .el-card-item .el-overlay-1 {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        text-align: center;
+        cursor: default;
+    }
+
+    .el-card-item .el-overlay-1:hover .el-overlay {
+        opacity: 1;
+        filter: alpha(opacity=100);
+        -webkit-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+
+    .el-card-item {
+        position: relative;
+        /* padding-bottom: 25px; 
     margin-bottom: 15px;*/
-}
-.el-card-item .el-overlay-1 .el-info > li a:hover {
-    background: #398bf7;
-    border-color: #398bf7;
-}
- .el-card-item .el-overlay {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    overflow: hidden;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    background-color: rgba(0, 0, 0, 0.7);
-    -webkit-transition: all .4s ease-in-out;
-    -o-transition: all .4s ease-in-out;
-    transition: all .4s ease-in-out;
-}
+    }
 
- .el-card-item .el-overlay-1:hover img {
-    -ms-transform: scale(1.2) translateZ(0);
-    -webkit-transform: scale(1.2) translateZ(0);
-    /* transform: scale(1.2) translateZ(0); */
-}
+    .el-card-item .el-overlay-1 .el-info>li a:hover {
+        background: #398bf7;
+        border-color: #398bf7;
+    }
 
- .el-card-item .el-overlay-1 .el-info {
-    text-decoration: none;
-    display: inline-block;
-    text-transform: uppercase;
-    color: #ffffff;
-    background-color: transparent;
-    filter: alpha(opacity=0);
-    -webkit-transition: all .2s ease-in-out;
-    -o-transition: all .2s ease-in-out;
-    transition: all .2s ease-in-out;
-    padding: 0;
-    margin: auto;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    transform: translateY(-50%) translateZ(0);
-    -webkit-transform: translateY(-50%) translateZ(0);
-    -ms-transform: translateY(-50%) translateZ(0);
-}
-.el-card-item .el-overlay-1 .el-info > li {
-    list-style: none;
-    display: inline-block;
-    margin: 0 3px;
-}
-    
-    </style>
+    .el-card-item .el-overlay {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        overflow: hidden;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        -webkit-transition: all .4s ease-in-out;
+        -o-transition: all .4s ease-in-out;
+        transition: all .4s ease-in-out;
+    }
 
-<style type="text/css" id="treeview4-style"> .treeview .list-group-item{cursor:pointer}.treeview span.indent{margin-left:10px;margin-right:10px}.treeview span.icon{width:12px;margin-right:5px}.treeview .node-disabled{color:silver;cursor:not-allowed}.node-treeview4{color:#428bca;}.node-treeview4:not(.node-disabled):hover{background-color:rgba(0, 0, 0, 0.05);} </style>
+    .el-card-item .el-overlay-1:hover img {
+        -ms-transform: scale(1.2) translateZ(0);
+        -webkit-transform: scale(1.2) translateZ(0);
+        /* transform: scale(1.2) translateZ(0); */
+    }
+
+    .el-card-item .el-overlay-1 .el-info {
+        text-decoration: none;
+        display: inline-block;
+        text-transform: uppercase;
+        color: #ffffff;
+        background-color: transparent;
+        filter: alpha(opacity=0);
+        -webkit-transition: all .2s ease-in-out;
+        -o-transition: all .2s ease-in-out;
+        transition: all .2s ease-in-out;
+        padding: 0;
+        margin: auto;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        transform: translateY(-50%) translateZ(0);
+        -webkit-transform: translateY(-50%) translateZ(0);
+        -ms-transform: translateY(-50%) translateZ(0);
+    }
+
+    .el-card-item .el-overlay-1 .el-info>li {
+        list-style: none;
+        display: inline-block;
+        margin: 0 3px;
+    }
+</style>
+
+<style type="text/css" id="treeview4-style">
+    .treeview .list-group-item {
+        cursor: pointer
+    }
+
+    .treeview span.indent {
+        margin-left: 10px;
+        margin-right: 10px
+    }
+
+    .treeview span.icon {
+        width: 12px;
+        margin-right: 5px
+    }
+
+    .treeview .node-disabled {
+        color: silver;
+        cursor: not-allowed
+    }
+
+    .node-treeview4 {
+        color: #428bca;
+    }
+
+    .node-treeview4:not(.node-disabled):hover {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+</style>
 
 <script src="/admin/assets/plugins/bootstrap-treeview-master/dist/bootstrap-treeview.min.js"></script>
-    <script src="/admin/assets/plugins/bootstrap-treeview-master/dist/bootstrap-treeview-init.js"></script>
+<script src="/admin/assets/plugins/bootstrap-treeview-master/dist/bootstrap-treeview-init.js"></script>
 
-    <link href="/admin/assets/plugins/multiselect/css/multi-select.css" rel="stylesheet" type="text/css" />
-    <link href="/admin/assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet"/>
+<link href="/admin/assets/plugins/multiselect/css/multi-select.css" rel="stylesheet" type="text/css" />
+<link href="/admin/assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
 <!-- 
                 ///////////////////////////////////////////////////////////////////////////////////// -->
 
 
-    <div class="page-wrapper" >
-            <!-- ============================================================== -->
-            <!-- Container fluid  -->
-            <!-- ============================================================== -->
-            <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Bread crumb and right sidebar toggle -->
-                <!-- ============================================================== -->
-                <!-- <div class="row page-titles">
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- <div class="row page-titles">
                     <div class="col-md-5 align-self-center">
                         <h4 class="text-themecolor">Dashboard 1</h4>
                     </div>
@@ -246,315 +321,368 @@ width: 70px;
                         </div>
                     </div>
                 </div> -->
-                
-          
-          <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Cart price rule </h4>
-                                <div class="col-lg-12">
-                     
-                                <!-- <h4 class="card-title">Vertical Tab</h4>
-                                <h6 class="card-subtitle">Use default tab with class <code>vtabs &amp; tabs-vertical</code></h6> -->
-                                <!-- Nav tabs -->
 
-                                  <form class="" name="formData" ng-submit="AddProductCart()" novalidate>  
-                                 
-                                   <div class="form-group m-b-10 btn23">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Cart price rule </h4>
+                        <div class="col-lg-12">
+
+                            <!-- <h4 class="card-title">Vertical Tab</h4>
+                                <h6 class="card-subtitle">Use default tab with class <code>vtabs &amp; tabs-vertical</code></h6> -->
+                            <!-- Nav tabs -->
+
+                            <form class="" name="formData" ng-submit="addProductCart()" novalidate>
+
+                                <div class="form-group m-b-10 btn23">
                                     <button type="submit" class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
-                                
-                                        <a href="/promotions/addcartprice"><button type="button" class="btn waves-effect waves-light btn-sm btn-default"> Cancel </button> </a>
-                                     </div> 
-                                 
-                              
+
+                                    <a href="/promotions/cartprice">
+                                        <button type="button" class="btn waves-effect waves-light btn-sm btn-default"> Cancel </button>
+                                    </a>
+                                </div>
+
+
                                 <div class="vtabs">
                                     <ul class="nav nav-tabs tabs-vertical" role="tablist">
-                                        <li class="nav-item"> <a class="nav-link tcat" data-toggle="tab" href="#home" role="tab" aria-selected="true"><span class="hidden-xs-down">Language : default</span> </a> </li>
-                                      
-                                        <li class="nav-item"> <a class="nav-link active show" data-toggle="tab" href="#details" role="tab" aria-selected="false"> <span class="hidden-xs-down">Details</span></a> </li>
-                                       
-                                       <li class="nav-item"> <a class="nav-link  " data-toggle="tab" href="#conditions" role="tab" aria-selected="false"> <span class="hidden-xs-down">Conditions</span></a> </li>
-                                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#actions" role="tab" aria-selected="false"> <span class="hidden-xs-down">Actions</span></a> </li>
-                                        
-                                       
-                                       
-                                        </ul>
-                                    
+                                        <li class="nav-item">
+                                            <a class="nav-link tcat" data-toggle="tab" href="#home" role="tab" aria-selected="true">
+                                                <span class="hidden-xs-down">Language : default</span>
+                                            </a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link active show" data-toggle="tab" href="#details" role="tab" aria-selected="false">
+                                                <span class="hidden-xs-down">Details</span>
+                                            </a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link  " data-toggle="tab" href="#conditions" role="tab" aria-selected="false">
+                                                <span class="hidden-xs-down">Conditions</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#actions" role="tab" aria-selected="false">
+                                                <span class="hidden-xs-down">Actions</span>
+                                            </a>
+                                        </li>
+
+
+
+                                    </ul>
+
                                     <!-- Tab panes -->
-                                    
+
                                     <div class="tab-content col-lg-12">
-                                        
-                                   
-                                       
+
 
                                         <div class="tab-pane active show" id="details" role="tabpanel">
-                                                <div class="p-20">
-                                                   
-                                                        <div class="form-group m-b-10">
-                                                            <span class="bar"></span>
-                                                            <label for="input1"> Rule name </label>
-                                                            <input type="text" class="form-control ruleName" id="name" ng-model="formdata.ruleName"
-                                                        name="ruleName" ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.ruleName.$valid}">
-                                                         </div> 
-                                                        <div class="form-group m-b-10">
-                                                            <label> Description</label>
-                                                            <textarea class="form-control" rows="5"></textarea>      
-                                                        </div>
+                                            <div class="p-20">
 
-                                                        
-                                                        
-                                                        <div  >
-                                                                <div class="form_group">
-                                                             <div class="row">
-                                                                <div class="col-lg-12">
+                                                <div class="form-group m-b-10">
+                                                    <span class="bar"></span>
+                                                    <label for="ruleName"> Rule name </label>
+                                                    <input type="text" class="form-control" id="ruleName" name="ruleName" ng-model="formdata.ruleName" ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.ruleName.$valid}">
+                                                </div>
+                                                <div class="form-group m-b-10">
+                                                    <label for="description"> Description</label>
+                                                    <textarea class="form-control" rows="5" ng-model="formdata.description" id="description" name="description" ng-required="true"
+                                                        ng-class="{ 'validationErr' : formData.$submitted && !formData.description.$valid}"></textarea>
+                                                </div>
+
+
+
+                                                <div>
+                                                    <div class="form_group">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
                                                                 <label for="first_name" id="labelimg">Banner</label>
-                                                            
-                                                                         <div class="fluid left_c_input file_wrap m-b-10">
-                                                                     <div class="write_textbox"> 
-                                                                          <input  type="text" readonly placeholder="No file selected" class="txtFilepath" style="border:none !important;"  name="name{{$index}}">                                       
-                                                                      </div>
-                                                                     <div class="iconw" ng-click="iconw()"><i class="fa fa-download"></i>Upload Image</div>
-                                                                     <input  type="file" id="imgfile"  name="imgfile{{$index}}"  class="file_input_hidden img" ng-model="imgss" ngf-select  />                        
-                                                                         </div>       
+
+                                                                <div class="fluid left_c_input file_wrap m-b-10">
+                                                                    <div class="write_textbox">
+                                                                        <input type="text" readonly placeholder="No file selected" class="txtFilepath" style="border:none !important;" name="name{{$index}}">
+                                                                    </div>
+                                                                    <div class="iconw" ng-click="iconw()">
+                                                                        <i class="fa fa-download"></i>Upload Image</div>
+                                                                    <input type="file" id="imgfile" name="imgfile{{$index}}" class="file_input_hidden img" ng-model="imgss" ngf-select />
                                                                 </div>
-                                                                <div class="col-lg-3 col-md-6 imgprev">
-                                                                        <div class="card">
-                                                                            <div class="el-card-item">
-                                                                                <div class="el-card-avatar el-overlay-1 imageup"> <img src="/uploads/dummy.jpg" alt="user" id="imgfiles" class="imgup">
-                                                                                    <div class="el-overlay">
-                                                                                        <ul class="el-info">
-                                                                                            <li><a id="imgfiles2" class="btn default btn-outline image-popup-vertical-fit" href="/uploads/dummy.jpg"><i class="icon-magnifier"></i></a></li>
-                                                                                            <!-- <li><a class="btn default btn-outline" href="javascript:void(0);"><i class="icon-link"></i></a></li> -->
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!-- <div class="el-card-content">
-                                                                                    <h3 class="box-title">Project title</h3> <small>subtitle of project</small>
-                                                                                    <br> </div> -->
+                                                            </div>
+                                                            <div class="col-lg-3 col-md-6 imgprev">
+                                                                <div class="card">
+                                                                    <div class="el-card-item">
+                                                                        <div class="el-card-avatar el-overlay-1 imageup">
+                                                                            <img src="/uploads/dummy.jpg" alt="user" id="imgfiles" class="imgup">
+                                                                            <div class="el-overlay">
+                                                                                <ul class="el-info">
+                                                                                    <li>
+                                                                                        <a id="imgfiles2" class="btn default btn-outline image-popup-vertical-fit" href="/uploads/dummy.jpg">
+                                                                                            <i class="icon-magnifier"></i>
+                                                                                        </a>
+                                                                                    </li>
+                                                                                    <!-- <li><a class="btn default btn-outline" href="javascript:void(0);"><i class="icon-link"></i></a></li> -->
+                                                                                </ul>
                                                                             </div>
                                                                         </div>
+                                                                        <!-- <div class="el-card-content">
+                                                                                    <h3 class="box-title">Project title</h3> <small>subtitle of project</small>
+                                                                                    <br> </div> -->
                                                                     </div>
-                                                             
-                                                              </div>
-                                                          
-                                                              </div></div>
+                                                                </div>
+                                                            </div>
 
-                                                              <div class="form-group m-b-10">
-                                                                <label for="input1">Display in</label>
-                                                                    <!-- <textarea class="form-control cat" id="extra" type="text" ng-model="formdata.desc" rows="5"></textarea>-->
-                                                                    
-                                                                    <select class="selectpicker form-control" multiple data-style="form-control btn-info">
-                                                     <option>Global</option>
-                                                     <option>India</option>
-                                                     <option>UAE</option>
-                                                 </select>
-         
-                                                              </div>
-
-
-
-                                                       <div class="form-group m-b-10">
-                                                                           <span class="bar"></span>
-                                               <label for="input1">   Start date </label>
-                <div class=" example ">
-                      <div class="input-group">
-                          <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text"><i class="icon-calender"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                             <div class="form-group m-b-10">
-                                    <span class="bar"></span>
-                                    <label for="input1">  End date  </label>
-                               <div class=" example ">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text"><i class="icon-calender"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                             </div>  
-                             <div class="form-group m-b-10">
-                                <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >--> <span class="bar"></span>
-                  <label for="status">Status</label>
-                                       <select class="form-control filter-option" name="status" id="status" ng-model="formdata.status">
-                                       <option class="filter-option-inner" value="0">choose</option>
-
-                                                          <option value="1" class="filter-option-inner">Disable</option>
-                                                          <option value="2">Enable</option>
-                                                          </select>
-                                                           
-                           </div>      
-
-
-
-
-                                             
-                                 
-  
-                                    
-                                                </div>
-                                            </div>
-
-                                            <div class="tab-pane" id="conditions" role="tabpanel">
-                                                <div class="p-20">
-                                                   
-                                                       
-    
-    <div class="form-group m-b-10">
-                                                                <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >--> 
-                                                                 <label for="status">Apply to</label>
-                                                                       <select class="form-control filter-option" name="sale" id="sale" ng-model="formdata.sale">
-                                                                       <option class="filter-option-inner" value="0">select</option>
-    
-                                                                                          <option value="1" class="filter-option-inner">Subtotal</option>
-                                                                                          <option value="2">Total Items Quantity</option>
-                                                                                          <option value="3">Total weight </option>
-                                                                                          <option value="4">Payment Method </option>
-                                                                                          <option value="5">Shipping Method </option>
-                                                                                           <option value="6">Shipping Postcode </option>
-                                                                                            <option value="7">Shipping Region</option>
-                                                                                              <option value="8">Shipping State</option>
-                                                                                              <option value="9">Shipping Country</option>
-                                                                                          </select>
-                                                                                            <span class="bar"></span>
-                                                                                          
-                                                           </div>
-             
-             
-             <div class="form-group m-b-10">
-                                                                <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >--> 
-                                                                 <label for="con">Conditions</label>
-                                                                       <select class="form-control filter-option" name="con" id="con" ng-model="formdata.con">
-                                                                       <option class="filter-option-inner" value="0">select</option>
-    
-                                                                                          <option value="1" class="filter-option-inner">is</option>
-                                                                                          <option value="2">is not</option>
-                                                                                          <option value="3">equals or greater than </option>
-                                                                                          <option value="4">equals or less than </option>
-                                                                                          <option value="5">greater than  </option>
-                                                                                           <option value="6">less than  </option>
-                                                                                            <option value="7">is one of</option>
-                                                                                              <option value="8">is not one of </option>
-                                                                                            
-                                                                                          </select>
-                                                                                            <span class="bar"></span>
-                                                                                          
-                                                           </div>  
-                                                           
-                                                            <label for="name">Values</label> 
-                                                            
-                                                           <div class="form-group m-b-10" data-ng-repeat="val1 in values1">
-                                                           
-                                                       
-                                                        <span class="bar"></span>
-                                                    
-                                                            <input type="text" class="form-control cat col-lg-10 col-sm-8" id="values"  >
-                                                          
-                                                           
-                                                            
-                                                            <div class="col-lg-2 m-b-10 col-sm-4" >
-                                    <button class="add" type="button"  ng-click="addNewValues($index)" style="width: 36px;
-                                    margin-top: 0px;color: #fff; padding: 6px 2px; background: #00bcd4 ; border: 1px solid #E5E5E5;">
-                                    <i class="fa fa-plus"></i></button>
-    
-                                    <button class="remove" type="button"  ng-click="removeValues($index)" style="width: 36px;
-                                    margin-top: 0px;color: #fff; padding: 6px 2px; background: #00bcd4 ; border: 1px solid #E5E5E5;">
-                                    <i class="fa fa-trash"></i></button>
-                                    </div>
-                                                            
                                                         </div>
-                                                           
-                                                           
-                                                            
-                                                           
-                                                           <div class="form-group m-b-10">
-                                                                <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >--> 
-                                                                 <label for="status">These conditions are</label>
-                                                                       <select class="form-control filter-option" name="status" id="status" ng-model="formdata.status">
-                                                                       <option class="filter-option-inner" value="0">choose</option>
-    
-                                                                                          <option value="1" class="filter-option-inner">True</option>
-                                                                                          <option value="2">False</option>
-                                                                                          </select>
-                                                                                            <span class="bar"></span>
-                                                                                          
-                                                           </div>                                          
-                                    
-                                    
-                                    
-                                  
-                                                           
+
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="tab-pane" id="actions" role="tabpanel">
-                                                <div class="p-20">
+
+
+                                                <!-- <div class="form-group m-b-10">
+                                                    <label for="displayIn">Display in</label>
                                                    
-                                                       
-    
-    <div class="form-group m-b-10">
-                                                                <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >--> 
-                                                                 <label for="status">Apply to</label>
-                                                                       <select class="form-control filter-option" name="sale" id="sale" ng-model="formdata.sale">
-                                                                       <option class="filter-option-inner" value="0">select</option>
-    
-                                                                                          <option value="1" class="filter-option-inner">By percentage of the original price</option>
-                                                                                          <option value="2">By Fixed Amount  </option>
-                                                                                          
-                                                                                          </select>
-                                                                                            <span class="bar"></span>
-                                                                                          
-                                                           </div>
-             
-             
-             <div class="form-group m-b-10">
-                                                                <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >--> 
-                                                                 <label for="con">Discounted Shipping Amount </label>
-                                                                      
-                                                                                            <span class="bar"></span>
-                                                                                            <input type="text" class="form-control cat" id="values"  >            
-                                                           </div>  
-                                                           
-                                                            
-                                                            
-                                                           
-                                                           
-                                                           
-                                                            
-                                                           
-                                                           <div class="form-group m-b-10">
-                                                                <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >--> 
-                                                                 <label for="status">Stop Further Rule Processing</label>
-                                                                       <select class="form-control filter-option" name="status" id="status" ng-model="formdata.status">
-                                                                       <option class="filter-option-inner" value="1">choose</option>
-    
-                                                                                          <option value="0" class="filter-option-inner">Yes</option>
-                                                                                          <option value="2">No</option>
-                                                                                          </select>
-                                                                                            <span class="bar"></span>
-                                                                                          
-                                                           </div>                                          
-                                    
-                                    
-                                    
-                                  
-                                                           
+
+                                                    <select class="selectpicker form-control" multiple data-style="form-control btn-info" id="displayIn" 
+                                                    name="displayIn" ng-model="formdata.displayIn" ng-required="true"
+                                                        ng-class="{ 'validationErr' : formData.$submitted && !formData.displayIn.$valid}">
+                                                        <option>Global</option>
+                                                        <option>India</option>
+                                                        <option>UAE</option>
+                                                    </select>
+
+                                                </div> -->
+
+                                                <div class="form-group m-b-10">
+                                                    <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
+                                                    <label for="displayIn">Display in</label>
+                                                    <select class="selectpicker form-control" multiple data-style="form-control btn-info" id="displayIn" name="displayIn" ng-model="formdata.displayIn"
+                                                        ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.displayIn.$valid}">
+                                                        <option class="filter-option-inner" value="0">choose</option>
+                                                        <option class="filter-option-inner" ng-repeat="val in list" value="{{val._id}}">{{val.country}}</option>
+
+
+
+
+                                                    </select>
+
                                                 </div>
-                                            </div>   
-
-                                            
 
 
+
+                                                <div class="form-group m-b-10">
+                                                    <span class="bar"></span>
+                                                    <label for="startDate"> Start date </label>
+                                                    <div class=" example ">
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy" id="startDate" name="startDate" ng-model="formdata.startDate"
+                                                                ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.startDate.$valid}">
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text">
+                                                                    <i class="icon-calender"></i>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group m-b-10">
+                                                    <span class="bar"></span>
+                                                    <label for="endDate"> End date </label>
+                                                    <div class=" example ">
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy" id="endDate" name="endDate" ng-model="formdata.endDate"
+                                                                ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.endDate.$valid}">
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text">
+                                                                    <i class="icon-calender"></i>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group m-b-10">
+                                                    <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
+                                                    <span class="bar"></span>
+                                                    <label for="status">Status</label>
+                                                    <select class="form-control filter-option" name="status" id="status" ng-model="formdata.status" ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.status.$valid}">
+                                                        <option class="filter-option-inner" value="0">choose</option>
+
+                                                        <option value="disable" class="filter-option-inner">Disable</option>
+                                                        <option value="enable">Enable</option>
+                                                    </select>
+
+                                                </div>
+
+
+
+
+
+
+
+
+                                            </div>
+                                        </div>
+
+                                        <div class="tab-pane" id="conditions" role="tabpanel">
+                                            <div class="p-20">
+
+
+
+                                                <div class="form-group m-b-10">
+                                                    <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
+                                                    <label for="applyTo">Apply to</label>
+                                                    <select class="form-control filter-option" name="applyTo" id="applyTo" ng-model="formdata.applyTo" ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.applyTo.$valid}">
+                                                        <option class="filter-option-inner" value="0">select</option>
+
+                                                        <option value="subtotal" class="filter-option-inner">Subtotal</option>
+                                                        <option value="total items quantity">Total Items Quantity</option>
+                                                        <option value="Total weight">Total weight</option>
+                                                        <option value="Payment Method">Payment Method</option>
+                                                        <option value="Payment Method">Shipping Method</option>
+                                                        <option value="Shipping Postcode">Shipping Postcode</option>
+                                                        <option value="Shipping Region">Shipping Region</option>
+                                                        <option value="Shipping State">Shipping State</option>
+                                                        <option value="Shipping Country">Shipping Country</option>
+                                                    </select>
+                                                    <span class="bar"></span>
+
+                                                </div>
+
+
+                                                <div class="form-group m-b-10">
+                                                    <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
+                                                    <label for="conditions">Conditions</label>
+                                                    <select class="form-control filter-option" name="conditions" id="conditions" ng-model="formdata.conditions" ng-required="true"
+                                                        ng-class="{ 'validationErr' : formData.$submitted && !formData.conditions.$valid}">
+                                                        <option class="filter-option-inner" value="0">select</option>
+
+                                                        <option value="is" class="filter-option-inner">is</option>
+                                                        <option value="is not">is not</option>
+                                                        <option value="equals or greater than">equals or greater than</option>
+                                                        <option value="equals or less than">equals or less than</option>
+                                                        <option value="greater than">greater than</option>
+                                                        <option value="less than">less than</option>
+                                                        <option value="is one of">is one of</option>
+                                                        <option value="is not one of">is not one of</option>
+
+                                                    </select>
+                                                    <span class="bar"></span>
+
+                                                </div>
+
+                                                <label for="name">Values</label>
+
+                                                <div class="form-group m-b-10" data-ng-repeat="val in values">
+
+
+                                                    <span class="bar"></span>
+
+                                                    <input type="text" class="form-control cat col-lg-10 " id="values" name="values" ng-model="formdata.values[$index]" ng-required="true"
+                                                        ng-class="{ 'validationErr' : formData.$submitted && !formData.values.$valid}">
+
+
+
+                                                    <div class="col-lg-2 m-b-10">
+                                                        <button class="add" type="button" ng-click="addNewValues($index)" style="width: 36px;
+                                    margin-top: 0px;color: #fff; padding: 6px 2px; background: #00bcd4 ; border: 1px solid #E5E5E5;">
+                                                            <i class="fa fa-plus"></i>
+                                                        </button>
+
+                                                        <button class="remove" type="button" ng-click="removeValues($index)" style="width: 36px;
+                                    margin-top: 0px;color: #fff; padding: 6px 2px; background: #00bcd4 ; border: 1px solid #E5E5E5;">
+                                                            <i class="fa fa-trash"></i>
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+
+
+
+
+                                                <div class="form-group m-b-10">
+                                                    <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
+                                                    <label for="conditionsStatus">These conditions are</label>
+                                                    <select class="form-control filter-option" name="conditionsStatus" id="conditionsStatus" ng-model="formdata.conditionsStatus"
+                                                        ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.conditionsStatus.$valid}">
+                                                        <option class="filter-option-inner" value="0">choose</option>
+
+                                                        <option value="true" class="filter-option-inner">True</option>
+                                                        <option value="false">False</option>
+                                                    </select>
+                                                    <span class="bar"></span>
+
+                                                </div>
+
+
+
+
+
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="actions" role="tabpanel">
+                                            <div class="p-20">
+
+
+
+                                                <div class="form-group m-b-10">
+                                                    <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
+                                                    <label for="actionApplyTo">Apply to</label>
+                                                    <select class="form-control filter-option" name="actionApplyTo" id="actionApplyTo" ng-model="formdata.actionApplyTo" ng-required="true"
+                                                        ng-class="{ 'validationErr' : formData.$submitted && !formData.actionApplyTo.$valid}">
+                                                        <option class="filter-option-inner" value="0">select</option>
+
+                                                        <option value="by percentage of original price" class="filter-option-inner">By percentage of the original price</option>
+                                                        <option value="by fixed amount">By Fixed Amount </option>
+
+                                                    </select>
+                                                    <span class="bar"></span>
+
+                                                </div>
+
+
+                                                <div class="form-group m-b-10">
+                                                    <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
+                                                    <label for="discountedShippingAmount">Discounted Shipping Amount </label>
+
+                                                    <span class="bar"></span>
+                                                    <input type="text" class="form-control" id="discountedShippingAmount" name="discountedShippingAmount" ng-model="formdata.discountedShippingAmount"
+                                                        ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.discountedShippingAmount.$valid}">
+                                                </div>
+
+
+
+
+
+
+
+
+                                                <div class="form-group m-b-10">
+                                                    <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
+                                                    <label for="ruleProcessing">Stop Further Rule Processing</label>
+                                                    <select class="form-control filter-option" name="ruleProcessing" id="ruleProcessing" ng-model="formdata.stopRuleProcess"
+                                                        ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.ruleProcessing.$valid}">
+                                                        <option class="filter-option-inner" value="1">choose</option>
+
+                                                        <option value="yes" class="filter-option-inner">Yes</option>
+                                                        <option value="no">No</option>
+                                                    </select>
+                                                    <span class="bar"></span>
+
+                                                </div>
+
+
+
+
+                                            </div>
+                                        </div>
                                     </div>
-</div>
+                                </div>
+
+
                             </form>
-                            
-                    </div>
-                              <!-- 
+
+                        </div>
+                        <!-- 
                                 <form class="floating-labels m-t-40">
                                     <div class="form-group m-b-40">
                                         <input type="text" class="form-control cat" id="name" type="text" ng-model="formdata.category" >
@@ -565,54 +693,58 @@ width: 70px;
                                     <button type="button" ng-click="insCategory()" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Submit </button>
                                </div>
                                 </form> -->
-                            </div>
-                        </div>
-                        
                     </div>
-                   
-                     
-                </div>   
                 </div>
+
             </div>
 
-            <!-- modal -->
-         
-  <!-- modal -->
- <link href="/admin/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
- <script src="/admin/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
- <link rel="stylesheet" type="text/css" href="/admin/assets/plugins/datatables/media/css/dataTables.bootstrap4.css">
-  
- <script src="/admin/assets/plugins/datatables/datatables.min.js"></script>
- 
- <script>$('.mydatepicker, #datepicker').datepicker();
-        $('#datepicker-autoclose').datepicker({
-            autoclose: true,
-            todayHighlight: true
-        });
-        
-       
-        
-        
-        
-        </script>
+
+        </div>
+    </div>
+</div>
+
+<!-- modal -->
+
+<!-- modal -->
+<link href="/admin/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+<script src="/admin/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/admin/assets/plugins/datatables/media/css/dataTables.bootstrap4.css">
+
+<script src="/admin/assets/plugins/datatables/datatables.min.js"></script>
+
+<script>$('.mydatepicker, #datepicker').datepicker();
+    $('#datepicker-autoclose').datepicker({
+        autoclose: true,
+        todayHighlight: true
+    });
+
+
+
+
+
+</script>
 
 
 
 
 <script>
-        $(document).ready(function() {
+    $(document).ready(function () {
 
 
 
 
-            $('#myTable').DataTable();
-        
-       
+        $('#myTable').DataTable();
+
+
         $('.example24').DataTable({
-           
+
         });
-         });
-        </script>  <script>
-setTimeout(function(){
-$('.selectpicker').selectpicker({style: 'btn-default',
-             size: 4}); }, 1000)</script>
+    });
+</script>
+<script>
+    setTimeout(function () {
+        $('.selectpicker').selectpicker({
+            style: 'btn-default',
+            size: 4
+        });
+    }, 1000)</script>

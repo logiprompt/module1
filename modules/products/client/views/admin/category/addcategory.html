@@ -244,7 +244,7 @@
                                 <h6 class="card-subtitle">Use default tab with class <code>vtabs &amp; tabs-vertical</code></h6> -->
                             <!-- Nav tabs -->
 
-                            <form class="">
+                            <form class=""  name="formdata" ng-submit="insCategory()" novalidate>   
 
                                 <div class="form-group m-b-10 btn23">
 
@@ -252,7 +252,7 @@
                                     <a href="/product/category">
                                         <button type="button" class="btn waves-effect waves-light btn-sm btn-default"> Cancel </button>
                                     </a>
-                                    <button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
+                                    <button type="submit"  class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
                                 </div>
 
 
@@ -318,21 +318,21 @@
                                                     <label for="menu2">Sub Category</label>
                                                 </div>
 
-                                                <div ng-if="category==1" class="form-group m-b-10">
+                                                <div ng-show="category==1" class="form-group m-b-10">
                                                     <label for="input1"> category</label>
-                                                    <input type="text" class="form-control cat" id="name"name="name" ng-model="formdata.category" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.name.$valid}">
+                                                    <input type="text" class="form-control cat" id="categoryname" name="categoryname" ng-model="categoryname" ng-required="category==1" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.categoryname.$valid}">
 
                                                 </div>
 
-                                                <div ng-if="category==2" class="form-group m-b-10">
+                                                <div ng-show="category==2" class="form-group m-b-10">
                                                     <label for="input1"> category</label>
-                                                    <select class="form-control filter-option" ng-options="item._id as item.category for item in categoryItems" ng-model="selectedCategory" ng-change="selectedCategoryChanged(selectedCategory)">
+                                                    <select class="form-control filter-option" ng-options="item._id as item.category for item in categoryItems" ng-model="selectedCategory" name="selectedCategory" id="selectedCategory" ng-change="selectedCategoryChanged(selectedCategory)" ng-required="category==2" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.selectedCategory.$valid}">
                                                     </select>
                                                 </div>
 
-                                                <div ng-if="category==2" class="form-group m-b-10">
+                                                <div ng-show="category==2" class="form-group m-b-10">
                                                     <label for="input1"> Sub category</label>
-                                                    <input type="text" class="form-control cat" id="name" ng-model="formdata.subcategory">
+                                                    <input type="text" class="form-control cat" id="subcategory"   name="subcategory" ng-model="subcategory" ng-required="category==2"  ng-class="{ 'validationErr' : formdata.$submitted && !formdata.subcategory.$valid}" >
                                                 </div>
 
                                                 <div class="form_group m-b-0">
@@ -346,7 +346,7 @@
                                                         </div>
                                                         <div class="iconw" ng-click="iconw()">
                                                             <i class="fa fa-download"></i>Upload</div>
-                                                        <input type="file" id="imgfile" name="imgfile{{$index}}" class="file_input_hidden img" ng-model="imgss" ngf-select />
+                                                        <input type="file" id="imgfile" name="imgfile" class="file_input_hidden img" ng-model="imgfile" ngf-select ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.imgfile.$valid}" />
                                                     </div>
 
                                                     <div class="row">
@@ -378,7 +378,7 @@
 
                                                 <div class="form-group m-b-10">
                                                     <label for="input1">Description</label>
-                                                    <textarea class="form-control cat" id="desc" name="desc" type="text" ng-model="formdata.description" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.desc.$valid}"></textarea>
+                                                    <textarea class="form-control cat" id="desc" name="desc" type="text" ng-model="desc" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.desc.$valid}"></textarea>
 
 
                                                 </div>
@@ -389,7 +389,7 @@
                                                 <div class="form-group m-b-10">
                                                     <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
                                                     <label for="input1"> Status</label>
-                                                    <select class="form-control filter-option" name="status" id="status" ng-model="formdata.status">
+                                                    <select class="form-control filter-option" name="status" id="status" ng-model="status" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.status.$valid}">
                                                         <option value="enabled" class="">Enabled</option>
                                                         <option value="disabled" class="">Disabled</option>
                                                     </select>
@@ -402,14 +402,14 @@
 
                                                 <div class="form-group m-b-10">
                                                     <label for="input1"> Meta description</label>
-                                                    <textarea class="form-control cat" id="desc" type="text" ng-model="formdata.metaDescription"></textarea>
+                                                    <textarea class="form-control cat" id="metaDescription" name="metaDescription" type="text" ng-model="metaDescription" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.metaDescription.$valid}"></textarea>
 
 
                                                 </div>
 
                                                 <div class="form-group m-b-10">
                                                     <label for="input1"> Meta keywords</label>
-                                                    <textarea class="form-control cat" id="key" type="text" ng-model="formdata.metaKeywords"></textarea>
+                                                    <textarea class="form-control cat" id="metaKeywords" name="metaKeywords" type="text" ng-model="metaKeywords" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.metaKeywords.$valid}"></textarea>
 
                                                 </div>
 
@@ -419,7 +419,7 @@
 
                                             <div class="form-group m-b-10">
                                                 <label for="input1"> URL KEY</label>
-                                                <input type="text" class="form-control cat" id="name" ng-model="formdata.urlKey">
+                                                <input type="text" class="form-control cat" id="urlKey" name="urlKey" ng-model="urlKey" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.urlKey.$valid}">
 
                                             </div>
 
@@ -427,7 +427,7 @@
                                                 <label for="input1"> Display in menu link</label>
 
 
-                                                <select class="form-control filter-option" name="menu" id="menu" ng-model="formdata.displayInMenu">
+                                                <select class="form-control filter-option" name="menu" id="menu" ng-model="menu"  ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.menu.$valid}">
                                                     <option class="filter-option-inner" value="0">choose</option>
                                                     <option class="filter-option-inner" value="yes">Yes</option>
                                                     <option class="filter-option-inner" value="no">No</option>
@@ -438,7 +438,7 @@
                                                 <label for="input1"> Display in sidebar</label>
 
 
-                                                <select class="form-control filter-option" name="sidebar" id="sidebar" ng-model="formdata.displayInSidebar">
+                                                <select class="form-control filter-option" name="sidebar" id="sidebar" ng-model="sidebar"  ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.sidebar.$valid}">
                                                     <option class="filter-option-inner" value="0">choose</option>
                                                     <option class="filter-option-inner" value="yes">Yes</option>
                                                     <option class="filter-option-inner" value="no">No</option>

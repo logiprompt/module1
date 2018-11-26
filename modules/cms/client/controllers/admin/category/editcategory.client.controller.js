@@ -13,7 +13,7 @@
     //var vm = this;
 
     $scope.formdata = {};
-    $scope.productcategoryService = CmsService;
+    $scope.CmsService = CmsService;
     $scope.generateSlgURL = function(){
       	 var replaceSpacesText = $scope.formdata.category;
       	 $scope.formdata.category_slug = replaceSpacesText.split(" ").join("_").toLowerCase();
@@ -24,14 +24,48 @@
        * Function : getCategoryDEtails
        * description : Get category items
        */
+      $scope.currentLan=localStorage.getItem('currentLang').toString();
+      $scope.defaultLang=localStorage.getItem('defaultLang').toString();
 
     $scope.getCategoryDetails = function () {
-      $scope.productcategoryService.getCategoryDetails($stateParams.id).then(function (result) {
-        $scope.formdata = result.data;
-        $scope.selectedExtrafieldGroup = result['data']['_id']
-      })
-    }
+      $scope.CmsService.getCategoryDetails($stateParams.id).then(function (result) {
 
+
+        var details=result.data;
+        if (result.statusText = "OK")
+        {     
+          $scope.status =details.status.toString();    
+          if(angular.equals($scope.currentLan, $scope.defaultLang))
+          {
+            $scope.userdetails = result.data;
+            $scope.formdata.category = $scope.userdetails.category;
+            $scope.formdata.description = $scope.userdetails.description;
+            $scope.formdata.category_url=$scope.userdetails.category_url;
+          }
+          else
+          {           
+            $scope.userdetails = result.data;
+            $scope.formdata.category =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].category : details.category;
+            $scope.formdata.description = $scope.currentLan in details.oLang  ?details.oLang[ $scope.currentLan].description :  details.description;
+            $scope.formdata.category_url = $scope.currentLan in details.oLang  ?details.oLang[ $scope.currentLan].category_url :  details.category_url;
+          }
+
+
+           
+           $scope.formdata.desc=$scope.userdetails.category_metadesc,
+           $scope.formdata.key=$scope.userdetails.category_metakey,
+           $scope.formdata.dispmenu=$scope.userdetails.menu,
+           $scope.formdata.sidebar=$scope.userdetails.sidebar,
+           $scope.formdata.status=$scope.userdetails.status
+        //console.log(result.data);
+        //$scope.formdata = result.data;
+        //$scope.selectedExtrafieldGroup = result['data']['_id']
+      }
+      else
+      {            
+      }
+  });
+  }
     $scope.getCategoryDetails();
 
     /*
@@ -39,11 +73,50 @@
        */
 
     $scope.updateCategory = function () {
-    
-      console.log($scope.selectedExtrafieldGroup)
-      $scope.formdata.extrafieldGroup = $scope.selectedExtrafieldGroup;
-      $scope.productcategoryService.updateCategory($scope.formdata).then(function (result) {
-        $location.path('/settings/cmscategory');
+    console.log(876876);
+     // console.log($scope.selectedExtrafieldGroup)
+      //$scope.formdata.extrafieldGroup = $scope.selectedExtrafieldGroup;
+      if (localStorage.getItem("currentLang") == 'en') {
+console.log(9888);
+      var data = {
+        "category": $scope.formdata.category,
+        "description": $scope.formdata.description,
+        "category_url": $scope.formdata.category_url,
+        "category_metadesc": $scope.formdata.desc,
+        "category_metakey": $scope.formdata.key,
+        "menu": $scope.formdata.dispmenu,
+        "sidebar": $scope.formdata.sidebar,
+        "status": $scope.formdata.status,
+        "image": $scope.imgss ,
+        "id" :$stateParams.id,
+        "isDefaultLang" : true
+      }
+    } else {
+       var data = {
+        "category": $scope.formdata.category,
+        "description": $scope.formdata.description,
+        "category_url": $scope.formdata.category_url,
+        "category_metadesc": $scope.formdata.desc,
+        "category_metakey": $scope.formdata.key,
+        "menu": $scope.formdata.dispmenu,
+        "sidebar": $scope.formdata.sidebar,
+        "status": $scope.formdata.status,
+        "image": $scope.imgss ,
+        "id" :$stateParams.id,
+        "isDefaultLang" : false,
+        "defaultLang":localStorage.getItem("defaultLang"),
+        "userSelectedLang":localStorage.getItem("currentLang")
+      }
+    }
+console.log(data);
+      $scope.CmsService.updateCategory(data).then(function (result) {
+        if (result.statusText = "OK") {
+          swal("Success!", "Successfully updated ", "success");
+
+         // $location.path('/cms/category');
+          //$state.go('productpromotions');
+        }
+       // $location.path('/cms/category');
       })
     }
 
@@ -53,8 +126,8 @@
        */
 
     $scope.deleteCategory = function () {
-      $scope.productcategoryService.deleteCategory($stateParams.id).then(function (result) {
-        $location.path('/settings/cmscategory');
+      $scope.CmsService.deleteCategory($stateParams.id).then(function (result) {
+        $location.path('/cms/category');
       })
     }
 
@@ -120,27 +193,27 @@
     //   }
     // }
 
-    // $scope.iconw = function () {
-    //   document.getElementById('imgfile').click();
+    $scope.iconw = function () {
+      document.getElementById('imgfile').click();
 
-    // }
+    }
 
-    // function readFile(ev) {
+    function readFile(ev) {
 
-    //   if (this.files && this.files[0]) {
-    //     var FR = new FileReader();
-    //     FR.onload = function (e) {
-    //       document.getElementById("imgfiles").src = e.target.result;
-    //       ev.target.parentNode.parentNode.parentNode.childNodes[3].childNodes[1].childNodes[1] = e.target.result;
-    //       //document.getElementById("b64").innerHTML = e.target.result;
-    //     };
-    //     FR.readAsDataURL(this.files[0]);
-    //   }
-    // }
+      if (this.files && this.files[0]) {
+        var FR = new FileReader();
+        FR.onload = function (e) {
+          document.getElementById("imgfiles").src = e.target.result;
+          //ev.target.parentNode.parentNode.parentNode.childNodes[3].childNodes[1].childNodes[1] = e.target.result;
+          //document.getElementById("b64").innerHTML = e.target.result;
+        };
+        FR.readAsDataURL(this.files[0]);
+      }
+    }
 
-    // if (document.getElementById("imgfile") != null) {
-    //   document.getElementById("imgfile").addEventListener("change", readFile, false);
-    // }
+    if (document.getElementById("imgfile") != null) {
+      document.getElementById("imgfile").addEventListener("change", readFile, false);
+    }
 
     // $scope.del = function (id) {
 

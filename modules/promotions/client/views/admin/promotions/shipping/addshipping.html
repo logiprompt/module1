@@ -440,18 +440,35 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="form-group m-b-10">
-                                                    <label for="displayIn">Display in</label>
-                                                    <!-- <textarea class="form-control cat" id="extra" type="text" ng-model="formdata.desc" rows="5"></textarea>-->
 
-                                                    <select class="selectpicker form-control" multiple data-style="form-control btn-info" id="displayIn" name="displayIn" ng-model="formdata.displayIn" ng-required="true"
+                                                <!-- <div class="form-group m-b-10">
+                                                    <label for="displayIn">Display in</label>
+                                                   
+
+                                                    <select class="selectpicker form-control" multiple data-style="form-control btn-info" id="displayIn" 
+                                                    name="displayIn" ng-model="formdata.displayIn" ng-required="true"
                                                         ng-class="{ 'validationErr' : formData.$submitted && !formData.displayIn.$valid}">
                                                         <option>Global</option>
                                                         <option>India</option>
                                                         <option>UAE</option>
                                                     </select>
 
-                                                </div>
+                                                </div> -->
+
+                                                <div class="form-group m-b-10">
+                                                    <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
+                                                    <label for="displayIn">Display in</label>
+                                                    <select class="selectpicker form-control" multiple data-style="form-control btn-info" id="displayIn" name="displayIn" ng-model="formdata.displayIn" ng-required="true"
+                                                    ng-class="{ 'validationErr' : formData.$submitted && !formData.displayIn.$valid}">
+                                                               <option class="filter-option-inner" value="0">choose</option>
+                                                              <option  class="filter-option-inner" ng-repeat="val in list" value="{{val._id}}">{{val.country}}</option>
+
+
+                                                          
+                                                           
+                                          </select>
+                                                    
+                                    </div>
 
 
 

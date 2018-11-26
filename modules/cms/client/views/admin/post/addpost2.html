@@ -1,0 +1,770 @@
+<style>.btn23{
+    float: right;
+    }
+.page-wrapper{
+   padding-top: 0px;
+     
+}
+
+.file_input_hidden {
+            font-size: 20px;
+            position: absolute;
+            /* right: 0px; */
+            width: 100%;
+            top: 0px;
+            bottom: 0;
+            cursor: pointer;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            -ms-filter: "alpha(opacity=0)";
+            -khtml-opacity: 0;
+            -moz-opacity: 0;
+        }
+        .file_wrap .iconw {
+            border-radius: 0 5px 5px 0;
+            border-right: 1px solid #01bdd6;
+            bottom: -1px;
+            right: -1px;
+            position: absolute;
+            top: -1px;
+            width: 100px;
+            padding: 10px 0 10px 0;
+            background: #01bdd6;
+            text-align: center;
+            cursor: pointer;
+            color: #fff;
+        }
+        .file_wrap .write_textbox {
+            bottom: 0;
+            left: 0;
+            position: absolute;
+            right: 102px;
+            top: 0;
+        }
+        .file_wrap input[type="text"] {
+            background: none repeat scroll 0 0 transparent;
+            border: medium none;
+            color: #333333;
+            font-size: 16px;
+            height: 29px;
+            line-height: 28px;
+            outline: medium none;
+            padding: 4px;
+            width: 98%;
+        }
+        .file_wrap {
+            border: 1px solid #CCC;
+            border-radius: 4px;
+            height: 37px;
+            position: relative;
+        }
+            
+         
+         /* .lgs1{
+         width: 28%;
+    float: left;
+} */
+         .lblfor
+         {
+                /* margin-right: 40%; */
+    width: 65%;
+         }
+         .lblval
+         {margin-left: 70%;
+    width: 55%;
+         }
+         
+		 .img-wrap{
+			
+    		 height: 125px;
+			 }
+		 .img-wrap img{
+			 width: 115px;
+    		 border-radius: 58px;
+			 }
+		  .user-dtls{
+			 
+			  float:left;
+			  }
+		  .user-dtls h5{
+			  padding: 11px 16px;
+			  }
+		  .clear{
+			  clear:both !important;
+			  }
+		  .floating-labels .form-control{
+			  border:1px solid #ddd !important;
+			  }
+		  .floating-labels label{
+			  color: #67757c;
+    		  position: absolute;
+    		  cursor: auto;
+    		  top: 13px;
+    		  -o-transition: 0.2s ease all;
+    		  transition: 0.2s ease all;
+    		  -moz-transition: 0.2s ease all;
+    		  -webkit-transition: 0.2s ease all;
+    		  font-size: 12px;		
+    		  padding-left: 5px;
+			  }
+
+
+
+
+              .imgup
+    {    border: 1px solid #e9ecef;
+       width: 100%;
+       /* margin-bottom: 35px; */
+    } 
+    
+.el-card-item .el-overlay-1 {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            text-align: center;
+            cursor: default;
+        }
+       .el-card-item .el-overlay-1:hover .el-overlay {
+    opacity: 1;
+    filter: alpha(opacity=100);
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+     .el-card-item {
+    position: relative;
+    /* padding-bottom: 25px; 
+    margin-bottom: 15px;*/
+}
+.el-card-item .el-overlay-1 .el-info > li a:hover {
+    background: #398bf7;
+    border-color: #398bf7;
+}
+ .el-card-item .el-overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    -webkit-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+ .el-card-item .el-overlay-1:hover img {
+    -ms-transform: scale(1.2) translateZ(0);
+    -webkit-transform: scale(1.2) translateZ(0);
+    /* transform: scale(1.2) translateZ(0); */
+}
+
+ .el-card-item .el-overlay-1 .el-info {
+    text-decoration: none;
+    display: inline-block;
+    text-transform: uppercase;
+    color: #ffffff;
+    background-color: transparent;
+    filter: alpha(opacity=0);
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    padding: 0;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%) translateZ(0);
+    -webkit-transform: translateY(-50%) translateZ(0);
+    -ms-transform: translateY(-50%) translateZ(0);
+}
+.el-card-item .el-overlay-1 .el-info > li {
+    list-style: none;
+    display: inline-block;
+    margin: 0 3px;
+}
+.detailreview{display: none;}
+
+        .tblimg{
+width: 70px;
+    height: 52px;
+}
+</style>
+
+
+<style type="text/css" id="treeview4-style"> .treeview .list-group-item{cursor:pointer}.treeview span.indent{margin-left:10px;margin-right:10px}.treeview span.icon{width:12px;margin-right:5px}.treeview .node-disabled{color:silver;cursor:not-allowed}.node-treeview4{color:#428bca;}.node-treeview4:not(.node-disabled):hover{background-color:rgba(0, 0, 0, 0.05);} </style>
+
+<script src="/admin/assets/plugins/bootstrap-treeview-master/dist/bootstrap-treeview.min.js"></script>
+    <script src="/admin/assets/plugins/bootstrap-treeview-master/dist/bootstrap-treeview-init.js"></script>
+
+    <link href="/admin/assets/plugins/multiselect/css/multi-select.css" rel="stylesheet" type="text/css" />
+    <link href="/admin/assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet"/>
+<!-- 
+                ///////////////////////////////////////////////////////////////////////////////////// -->
+
+
+    <div class="page-wrapper" >
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <!-- <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                        <h4 class="text-themecolor">Dashboard 1</h4>
+                    </div>
+                    <div class="col-md-7 align-self-center text-right">
+                        <div class="d-flex justify-content-end align-items-center">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                                <li class="breadcrumb-item active">Dashboard 1</li>
+                            </ol>
+                            
+                        </div>
+                    </div>
+                </div> -->
+                
+          
+          <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Post</h4>
+                                <div class="col-lg-12">
+                     
+                                <!-- <h4 class="card-title">Vertical Tab</h4>
+                                <h6 class="card-subtitle">Use default tab with class <code>vtabs &amp; tabs-vertical</code></h6> -->
+                                <!-- Nav tabs -->
+
+                                  <form class="">  
+                                 
+                                   <div class="form-group m-b-10 btn23 btn-top">
+                                    <button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
+                                
+                                        <a href="/cms/post"><button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm btn-default"> Cancel </button> </a>
+                                     </div> 
+                                 
+                              
+                                <div class="vtabs">
+                                    <ul class="nav nav-tabs tabs-vertical" role="tablist">
+                                        <li class="nav-item"> <a class="nav-link tcat" data-toggle="tab" href="#home" role="tab" aria-selected="true"><span class="hidden-xs-down">Language : default</span> </a> </li>
+                                        <li class="nav-item"> <a class="nav-link active show" data-toggle="tab" href="#content" role="tab" aria-selected="false"> <span class="hidden-xs-down">Content</span></a> </li>
+                                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#category" role="tab" aria-selected="false"> <span class="hidden-xs-down">Category</span></a> </li>
+                                         <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#meta" role="tab" aria-selected="false"> <span class="hidden-xs-down">Meta Data</span></a> </li>
+                                          <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#navigation" role="tab" aria-selected="false"> <span class="hidden-xs-down">Navigation</span></a> </li>
+                                          <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#reviews" role="tab" aria-selected="false"> <span class="hidden-xs-down">Reviews</span></a> </li>
+                                          <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#tags" role="tab" aria-selected="false"> <span class="hidden-xs-down">Tags</span></a> </li>
+                                          <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#display" role="tab" aria-selected="false"> <span class="hidden-xs-down">Display settings</span></a> </li>
+                                          <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#logs" role="tab" aria-selected="false"> <span class="hidden-xs-down">Logs</span></a> </li>
+                                    </ul>
+                                    
+                                    <!-- Tab panes -->
+                                    
+                                    <div class="tab-content col-lg-12">
+                                        
+                                        <div class="tab-pane active show" id="content" role="tabpanel">
+                                            <div class="p-20">
+                                               
+                                                    <div class="form-group m-b-10">
+                                                        <span class="bar"></span>
+                                                        <label for="input1"> Title</label>
+                                                        <input type="text" class="form-control cat" id="name" >
+                                                      
+                                                        
+                                                    </div> 
+
+                                            <div class="form-group m-b-10">
+                                                    <span class="bar"></span>
+                                                    <label for="input1"> Content</label>
+                                                    <textarea class="form-control cat" id="editor1" type="text" ng-model="formdata.wer" ></textarea>
+                                                        
+                                                    </div> 
+
+ 										 <div class="form-group m-b-10">
+                                                <div class="form-group m-b-0">
+                                            <span class="bar"></span>
+                                            <label for="input1"> Type</label>
+                                            </div>
+                    <!--<label class="custom-control custom-radio" for="radio1">
+                    <input id="radio1" name="radio" type="radio" class="custom-control-input">-->
+                     <input name="group1" type="radio" id="radio_1" value="1" ng-model="check" checked />
+                     <label for="radio_1">Images</label>
+                     <input name="group1" type="radio" id="radio_2" value="2" ng-model="check" />
+                     <label for="radio_2">Videos</label>
+                     <input name="group1" type="radio" id="radio_3" value="3" ng-model="check" />
+                     <label for="radio_3">Text</label>
+                
+              
+                                                        <span class="bar"></span>
+                                                         
+  </div> 
+
+<div class="mimgs" ng-if="check==1">
+<div class="rd_vid2"  data-ng-repeat="choice in choices">
+        <div class="form_group">
+                <div class="row">
+                   <div class="col-lg-9 col-sm-8">
+                   <label for="first_name" id="labelimg">Post Images</label>
+                   
+                   <div class="fluid left_c_input file_wrap m-b-10">
+                        <div class="write_textbox"> 
+                             <input  type="text" readonly placeholder="No file selected" class="txtFilepath" style="border:none !important;"  name="name{{$index}}">                                       
+                         </div>
+                        <div class="iconw" ng-click="iconw()"><i class="fa fa-download"></i>Upload</div>
+                        <input  type="file" id="imgfile" data-value="imgup_{{$index}}" name="imgfile{{$index}}"  class="file_input_hidden img imgupfile" ng-model="imgss" ngf-select  />                        
+                            </div>       
+                   </div>
+                   <div class="col-lg-3 col-sm-4" style="margin-top: 28px;">
+                        <button class="add" type="button"  ng-click="addNewChoice($index)" style="width: 36px;
+                  margin-top: 0px;color: #fff; padding: 6px 2px; background: #00bcd4 ; border: 1px solid #E5E5E5;">
+                  <i class="fa fa-plus">
+                     
+                      </i>
+                     </button>
+                        
+                       <button class="remove" type="button"  ng-click="removeChoice($index)" style="width: 36px;
+                  margin-top: 0px;color: #fff; padding: 6px 2px; background: #00bcd4 ; border: 1px solid #E5E5E5;">
+                  <i class="fa fa-minus">
+                     
+                      </i>
+                     </button>
+                    </div>
+                    <div class="col-lg-4  imgprev">
+                            <div class="card">
+                                <div class="el-card-item">
+                                    <div class="el-card-avatar el-overlay-1 imageup"> <img src="/uploads/dummy.jpg" alt="user" id="imgup_{{$index}}" class="imgup imgup_{{$index}}">
+                                        <div class="el-overlay">
+                                            <ul class="el-info">
+                                                <li><a id="imgfiles2" class="btn default btn-outline image-popup-vertical-fit " href="/uploads/dummy.jpg"><i class="icon-magnifier"></i></a></li>
+                                                <!-- <li><a class="btn default btn-outline" href="javascript:void(0);"><i class="icon-link"></i></a></li> -->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="el-card-content">
+                                        <h3 class="box-title">Project title</h3> <small>subtitle of project</small>
+                                        <br> </div> -->
+                                </div>
+                            </div>
+                        </div>
+                 </div>
+             
+                 </div>
+     
+     </div>
+     </div>
+
+     <div class="mvideos" ng-if="check==2" >
+                                                          <div  class="rd_vid" data-ng-repeat="vdo in postvideos">
+                                                                <div class="form_group">
+                                                             <div class="row">
+                                                                <div class="col-lg-9 col-sm-8">
+                                                                <label for="first_name" id="labelimg">Post Videos</label>
+                                                               <input type="text" class="form-control" name="">
+                                                                    
+                                                                </div>
+                                                                <div class="col-lg-3 col-sm-4" style="margin-top: 28px;">
+                                                                        <button class="add" type="button"  ng-click="addNewVdo($index)" style="width: 36px;
+                                                                  margin-top: 0px;color: #fff; padding: 6px 2px; background: #00bcd4 ; border: 1px solid #E5E5E5;">
+                                                                  <i class="fa fa-plus">
+                                                                     
+                                                                      </i>
+                                                                     </button>
+                                                                        
+                                                                       <button class="remove" type="button"  ng-click="removeVdo($index)" style="width: 36px;
+                                                                  margin-top: 0px;color: #fff; padding: 6px 2px; background: #00bcd4 ; border: 1px solid #E5E5E5;">
+                                                                  <i class="fa fa-minus">
+                                                                     
+                                                                      </i>
+                                                                     </button>
+                                                                    </div>
+                                                              </div>
+                                                          
+                                                              </div>
+                                                            </div>
+                            </div>
+
+
+                            <div class="mtext" ng-if="check==3" >
+                                    <div  class="rd_vid" data-ng-repeat="choice in choices">
+                                          <div class="form_group">
+                                       <label for="first_name" id="labelimg">Post Text</label>
+                                            <textarea class="form-control cat" id="editor1" type="text" ng-model="formdata.wer" ></textarea>
+                                          <!-- <div class="col-lg-9 col-sm-8">
+                                          
+                                          <br><br>
+                                          <div class="fluid left_c_input file_wrap m-b-40">
+                                               <div class="write_textbox"> 
+                                                    <input  type="text" readonly placeholder="No file selected" class="txtFilepath" style="border:none !important;"  name="name{{$index}}">                                       
+                                                </div>
+                                               <div class="iconw" ng-click="iconw()"><i class="fa fa-download"></i>Upload Video</div>
+                                               <input  type="file" id="imgfile"  name="imgfile{{$index}}"  class="file_input_hidden img" ng-model="imgss" ngf-select  />                        
+                                                   </div>       
+                                          </div>
+                                          <div class="col-lg-3 col-sm-4" style="margin-top: 47px;">
+                                                  <button class="add" type="button"  ng-click="addNewChoice($index)" style="width: 36px;
+                                            margin-top: 0px;color: #fff; padding: 6px 2px; background: #00bcd4 ; border: 1px solid #E5E5E5;">
+                                            <i class="fa fa-plus">
+                                               
+                                                </i>
+                                               </button>
+                                                  
+                                                 <button class="remove" type="button"  ng-click="removeChoice($index)" style="width: 36px;
+                                            margin-top: 0px;color: #fff; padding: 6px 2px; background: #00bcd4 ; border: 1px solid #E5E5E5;">
+                                            <i class="fa fa-minus">
+                                               
+                                                </i>
+                                               </button>
+                                              </div> -->
+
+
+                                       
+                                    
+                                        </div>
+                                      </div>
+      </div>
+<div class="clearfix"></div>
+                                                          <div class="form-group m-b-40">
+                                                                <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >--> <span class="bar"></span>
+                                                  <label for="status">Status</label>
+                                                                       <select class="form-control filter-option" name="status" id="status" ng-model="formdata.status">
+                                                                       <option class="filter-option-inner" value="0">choose</option>
+
+                                                                                          <option value="1" class="filter-option-inner">Disable</option>
+                                                                                          <option value="2">Enable</option>
+                                                                                          </select>
+                                                                                           
+                                                           </div>
+
+                                                    
+                                                  
+                                
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        <div class="tab-pane" id="category" role="tabpanel">
+                                            <div class="p-20">
+                                               
+                                                    <div class="form-group m-b-10">
+                                                      <label for="input1">Category</label>    
+                                                         <div id="treeview2" class=""></div>
+                                            
+                                          </div>
+                                
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                         <div class="tab-pane" id="meta_data" role="tabpanel">
+                                            <div class="p-20">
+                                               
+                                                    <div class="form-group m-b-40">
+                                                        <textarea class="form-control cat" id="name" type="text" ng-model="formdata.wer" ></textarea>
+                                                      
+                                                        <span class="bar"></span>
+                                                        <label for="input1"> Meta description</label>
+                                                    </div>
+
+                                                    <div class="form-group m-b-40">
+                                                        <textarea class="form-control cat" id="name" type="text" ng-model="formdata.asd" ></textarea>
+                                                      
+                                                        <span class="bar"></span>
+                                                        <label for="input1"> Meta keywords</label>
+                                                    </div> 
+                                
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane p-20" id="meta" role="tabpanel">
+                                            
+                                                <div class="form-group m-b-40">
+                                                    <label>Meta Description</label>
+                                    				<textarea class="form-control" rows="5"></textarea>      
+                                                </div>
+
+                                                <div class="form-group m-b-40">
+                                                    <label>Meta Keywords</label>
+                                    				<textarea class="form-control" rows="5"></textarea>        
+                                                </div>
+
+                                        </div>
+                                        <div class="tab-pane p-20" id="navigation" role="tabpanel">
+                                            <div class="form-group m-b-40">
+                                                         <span class="bar"></span>
+                                                        <label for="input1">Slug</label>
+                                                        <input type="text" class="form-control cat" id="name" >
+                                                      
+                                                       
+                                                    </div>
+                                                <div class="form-group m-b-40">
+                                                         <span class="bar"></span>
+                                                        <label for="input1"> URL KEY</label>
+                                                        <input type="text" class="form-control cat" id="name" >
+                                                      
+                                                       
+                                                    </div>
+
+                                                    <div class="form-group m-b-40">
+                                                            <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >--> <span class="bar"></span>
+                                             <label for="status">Display in Menu</label>
+                                                                   <select class="form-control filter-option" name="status" id="status" ng-model="formdata.status">
+                                                                   <option class="filter-option-inner" value="0">choose</option>
+
+                                                                                      <option value="1" class="filter-option-inner">Yes</option>
+                                                                                      <option value="2">No</option>
+                                                                                      </select>
+                                                                                       
+                                                       </div>
+
+
+
+                                        </div>
+
+
+                                        <div class="tab-pane p-20" id="reviews" role="tabpanel">
+        
+                                            <div class="form-group m-b-10 treview" id="treview">
+                                                    <div class="row">
+                                
+                                
+                                                            <div class="col-lg-12">
+                                                                   
+                                                                               <div class="table-responsive m-t-20">
+                                       
+                                       
+                                       
+                                                               <table id="example24" class="example24 display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                                                   <thead>
+                                                                        <tr><th><input type="checkbox" id="checkAll" class="checkAll" ng-model="checkalltxt" ng-click="chkall()"   />
+                                                                            <label for="checkAll"></label></th>
+                                                                                            
+                                                                                                <th>User<br> Image</th>
+                                                                                                <th>User<br> Name </th>
+                                                                                                <th>Created<br> Date</th>
+                                                                                                <th>Status</th>
+                                                                                                <th>Action</th>
+                                                                                                
+                                                                                            </tr>
+                                                                                        </thead>
+                                                                                        
+                                                                                        <tbody>
+                                                                                           <tr >
+                                                                                             <td> <input type="checkbox" id="basic_checkbox_{{$index+1}}"  class="rowtxtchk" value="{{$index+1}}" ng-click="addchkval(val.cat_id)" />
+                                                                            <label for="basic_checkbox_{{$index+1}}"></label></td>
+                                                                                             <td><img class="tblimg" src="/uploads/dummy.jpg"></td>
+                                                                                                <td>Shihab UP</td>
+                                                                                                <td>18-08-2018</td>
+                                                                                                <td>Approved</td>
+                                                                                                <td>
+                                                                                              <a class="btn waves-effect waves-light btn-sm btn-info" href="#" ng-click="showreview()">
+                                                                                            Edit
+                                                                                          </a>
+                                                                                                                                      
+                                                                                        <button class="btn waves-effect waves-light btn-sm btn-danger"  ng-click="deletez(1)" rel=""  >
+                                                                                            Delete
+                                                                                        </button>   
+                                                                                                
+                                                                                                
+                                                                                               </td>
+                                                                                            </tr>
+                                                                      
+                                                                       
+                                                                   </tbody>
+                                                               </table>
+                                                                               </div>
+                                                                         
+                                                           </div>
+                                                       </div>  
+                                             
+                                                </div>
+                                                <div class="detailreview" id="detailreview">
+                                                <div class="form-group m-b-40">
+                                                        <h2>Reviews modification</h2>
+                                                        <div class="img-wrap" style="float:left;">
+                                                          <img src="/assets/images/user.jpg" alt="zshoper">
+                                                        </div>
+                                                          <div class="user-dtls">
+                                                            <h5>Aneesh Ramachandran</h5> 
+                                                          </div>
+                                                        <div class="user-dtls">
+                                                            <h5>Reviews Date: Wednesday, July 15th 2018 </h5> 
+                                                          </div>     
+                                                    </div>
+                                                    <div class="clear"></div>
+                                
+                                                    <div class="form-group m-b-40">
+                                                        <label>Comments</label>
+                                                        <textarea class="form-control" rows="5">This is a dummy text</textarea>           
+                                                    </div>
+                                                    <div class="form-group m-b-40">
+                                                       <label>Status</label>
+                                                       <select class="form-control filter-option" name="status" id="status" >
+                                                         <option class="filter-option-inner" value="0">Select</option>
+                                
+                                                         <option selected value="1" class="filter-option-inner">Approved</option>
+                                                         <option value="2">Rejected</option>
+                                                       </select> 
+                                                    </div>
+                                                    <div class="form-group m-b-40 btn23"> 
+                                                        <button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
+                                
+                                           
+                                           <button type="button" ng-click="viewrev()" class="btn waves-effect waves-light btn-sm btn-default"> Cancel </button> 
+                                            <button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm btn-danger"> Delete </button> 
+                                        </div>
+                                </div>
+                                                
+                                    </div>
+                                        <!-- <div class="tab-pane p-20" id="reviews" role="tabpanel">
+                                            
+                                                <div class="form-group m-b-40">
+                                                    <div class="img-wrap col-lg-4 p-0 " style="float:left;">
+                                                      <img src="/assets/images/user.jpg" alt="zshoper">
+                                                    </div>
+                                                  	<div class="col-lg-8 user-dtls p-0 ">
+                                                    	<h5>Aneesh Ramachandrann</h5> 
+                                                  	</div>
+                                                    <div class="col-lg-8 user-dtls p-0 ">
+                                                    	<h5>Reviews Date: Wednesday, July 15th 2018 </h5> 
+                                                  	</div>     
+                                                </div><div class="clear"></div>
+
+                                                <div class="form-group m-b-40">
+                                                    <label>Comments</label>
+                                    				<textarea class="form-control" rows="5"></textarea>           
+                                                </div>
+												<div class="form-group m-b-40">
+                                                   <label>Status</label>
+                                                   <select class="form-control filter-option" name="status" id="status" ng-model="formdata.status">
+                                                     <option class="filter-option-inner" value="0">Select</option>
+
+                                                     <option value="1" class="filter-option-inner">Approve</option>
+                                                     <option value="2">Reject</option>
+                                                   </select> 
+                                                </div>
+                                                <div class="form-group m-b-40 btn23">
+                                        <button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm btn-danger"> Delete </button> 
+                                        
+                                        <a href="/post"><button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm btn-default"> Cancel </button> </a>
+                                        <button type="button" ng-click="insCategory()" class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
+                                  </div>
+
+                                        </div> -->
+                                        
+                                        
+                                        <div class="tab-pane" id="tags" role="tabpanel">
+                                            <div class="p-20">
+                                               <span class="bar"></span>
+                                                        <label for="tags">Tags</label>
+                                                    <div class="form-group m-b-40">
+                                                        <textarea class="form-control cat" id="tags" name="tags" type="text" ng-model="formdata.tags" rows="5" ></textarea>
+                                                    </div>
+                                                </div>
+                                        </div>
+
+                                        <div class="tab-pane p-20" id="display" role="tabpanel">
+                                                <div class="form-group m-b-10">
+                                                 <label for="input1"> Display in</label>
+                                              <select class="selectpicker form-control" multiple data-style="form-control btn-info">
+                                            <option value="0" selected>Choose</option>
+                                                 <option value="1">Global</option>
+                                                 <option value="2">India</option>
+                                            <option value="3">UAE</option>
+                                            </select></div></div>
+
+
+                                        <div class="tab-pane p-20" id="logs" role="tabpanel">
+                                            
+                                            <div class="row  m-b-40 ">
+                                                <div class="col-lg-6">     
+                                                    <label class="" for="cd">Created date :</label>
+                                                </div>  <div class="col-lg-6">
+                                                  <label class="" name="cd" id="cd">4 may 2019</label>                                                   </div> 
+                                               
+                                            </div>
+                                                
+                                     <div class="row m-b-40 lgs">
+                                      <div class="col-lg-6">     
+                                                <label class="" for="cd">Created date :</label>
+                                            </div>  
+                                             <div class="col-lg-6">
+                                                  <label class="" name="cd" id="cd">4 may 2019</label>        </div> 
+                                           
+</div> 
+                                             <div class="row m-b-40 lgs">
+                             <div class="col-lg-6">     
+                                                <label class="" for="cd">Created date :</label>
+                                            </div>  
+                                             <div class="col-lg-6">
+                                                  <label class="" name="cd" id="cd">4 may 2019</label>         </div> 
+                                           
+                                             </div>                                  
+                                         <div class="row m-b-40 lgs">
+                                           <div class="col-lg-6">
+                                            <label for="input1"> modified By :</label>
+                                           </div>  
+                                           <div class="col-lg-6">
+                                            <label class="" name="mb" id="cb">4 may 2018</label>
+                                           </div>
+                                        </div>           
+                                                   
+
+                                    </div>
+                                    </div>
+</div>
+                            </form>
+                            
+                    </div>
+                              <!-- 
+                                <form class="floating-labels m-t-40">
+                                    <div class="form-group m-b-40">
+                                        <input type="text" class="form-control cat" id="name" type="text" >
+                                      
+                                        <span class="bar"></span>
+                                        <label for="input1"> category</label>
+                                    </div> <div class="form-group m-b-40 btn23">
+                                    <button type="button" ng-click="insCategory()" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Submit </button>
+                               </div>
+                                </form> -->
+                            </div>
+                        </div>
+                        
+                    </div>
+                   
+                     
+                </div>   
+                </div>
+            </div>
+
+            <!-- modal -->
+            <script>
+ $(document).ready(function() {
+
+
+
+
+$('#myTable').DataTable();
+
+
+$('.example24').DataTable({
+responsive: true
+
+});
+});
+
+               CKEDITOR.replace( 'editor1', {
+                fullPage: true,
+                allowedContent: true,
+                extraPlugins: 'wysiwygarea'
+        });
+                    setTimeout(function(){
+                    $('.selectpicker').selectpicker({style: 'btn-default',
+                                 size: 4}); }, 1000)</script>
+  <!-- modal -->

@@ -54,6 +54,8 @@
 	      })
 	  
 	  $scope.addpost = function(){
+		  console.log(100);
+		  console.log($scope.postform.$valid);
 		  if($scope.postform.$valid){
 			  $scope.postformdata.post_content = CKEDITOR.instances.editor1.getData().replace(/^.*?<body[^>]*>(.*?)<\/body>.*?$/i,"$1");
 			  if($scope.currentLan != 'en'){
@@ -137,7 +139,7 @@
 	 }
 	 else{
    
-	   $scope.editpage[0].setAttribute("href", "/cms/editpost/"+linkid);
+	   $scope.editpage[0].setAttribute("href", "/cms/post/edit/"+linkid);
 	 }
    
    }

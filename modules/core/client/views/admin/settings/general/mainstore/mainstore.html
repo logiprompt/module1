@@ -787,34 +787,37 @@ width:60%;
  														  
                                                        </select>
                                                     </div>
-                                            
+                                            {{formdata.chkBox}}
                                                   <label for="tags">Week end days </label>
                                                     <div class="form-group">
+                                                    <div ng-repeat="wlist in weekdayslist">
                                                          <div class="col-md-3"></div>
                                                     	 <div class="col-md-9">
                                                        		<div class="form-group has-danger" style="margin-bottom: 0px !important;">
-                                                         		<input type="checkbox" name="chkBox1" id="chkBox1" class="filled-in chk-col-light-blue" ng-model="chkBox">
-                                                         		<label class="lbl" for="chkBox1">Sunday</label>
+                                                        
+                                                         		<input type="checkbox" name="chkBox1" id="{{wlist.name}}" class="filled-in chk-col-light-blue" value="{{wlist.value}}" ng-checked="weekend.indexOf(wlist.value)!=-1" ng-model="wlist.model" ng-change="addweekdays(wlist.value,wlist.model)">
+                                                         		<label class="lbl" for="{{wlist.name}}">{{wlist.name}}</label>
                                                        		</div>
                                                 		 </div> 
-                                                		  <div class="col-md-3"></div>
+                                                         </div>
+                                                <!--		  <div class="col-md-3"></div>
                                                 		  <div class="col-md-9">
                                                        		<div class="form-group has-danger" style="margin-bottom: 0px !important;">
-                                                         		<input type="checkbox" name="chkBox2" id="chkBox2" class="filled-in chk-col-light-blue" ng-model="chkBox">
+                                                         		<input type="checkbox" name="chkBox2" id="chkBox2" class="filled-in chk-col-light-blue"  value="mon" ng-model="formdata.chkBox">
                                                          		<label class="lbl" for="chkBox2">Monday</label>
                                                        		</div>
                                                 		 </div> 
                                                 		 <div class="col-md-3"></div>
                                                 		  <div class="col-md-9">
                                                        		<div class="form-group has-danger" style="margin-bottom: 0px !important;">
-                                                         		<input type="checkbox" name="chkBox3" id="chkBox3" class="filled-in chk-col-light-blue" ng-model="chkBox">
+                                                         		<input type="checkbox" name="chkBox3" id="chkBox3" class="filled-in chk-col-light-blue"  value="tue" ng-model="formdata.chkBox">
                                                          		<label class="lbl" for="chkBox3">Thuesday</label>
                                                        		</div>
                                                 		 </div> 
                                                 		  <div class="col-md-3"></div>
                                                 		  <div class="col-md-9">
                                                        		<div class="form-group has-danger" style="margin-bottom: 0px !important;">
-                                                         		<input type="checkbox" name="chkBox4" id="chkBox4" class="filled-in chk-col-light-blue" ng-model="chkBox">
+                                                         		<input type="checkbox" name="chkBox4" id="chkBox4" class="filled-in chk-col-light-blue"  value="wed" ng-model="chkBox">
                                                          		<label class="lbl" for="chkBox4">Wednesday</label>
                                                        		</div>
                                                 		 </div> 
@@ -835,11 +838,11 @@ width:60%;
                                                 		 <div class="col-md-3"></div>
                                                 		  <div class="col-md-9">
                                                        		<div class="form-group has-danger" style="margin-bottom: 0px !important;">
-                                                         		<!-- <input type="checkbox" name="chkBox7" id="chkBox7" class="filled-in chk-col-light-blue"> -->
+                                                         		
                                                          		<input type="checkbox" name="chknew" id="chknew" class="filled-in chk-col-light-blue" ng-model="chkBox">
                                                          		<label class="lbl" for="chknew">Satarday</label>
                                                        		</div>
-                                                		 </div> 
+                                                		 </div> -->
                                                     </div>
                                             </div>  
  										

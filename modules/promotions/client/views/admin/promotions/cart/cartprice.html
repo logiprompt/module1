@@ -113,30 +113,30 @@ width: 70px;
                                         </thead>
                                        
                                         <tbody>
-                                       
-                                            <tr >
-                                                <td><input type="checkbox" id="basic_checkbox_{{$index+1}}"  class="rowtxtchk" value="{{$index+1}}" ng-click="addchkval(1)" />
-                                    <label for="basic_checkbox_{{$index+1}}"></label>{{$index+1}}</td>
-                                   
-                                    
-                                                
-                                                <td>Test</td>
-                                                <td>Aug 16 2018 7:40:01 AM</td>
-                                                <td>Sept 16 2018 7:40:01 AM</td>
-                                                <td>India</td>
-                                                
-                                                  <td>Active</td>
-                                                  <td> 
-                                                     <a class="btn waves-effect waves-light btn-sm btn-info" href="/promotions/editcartprice/1">
-                                                        Edit</a>
-                                                        <button class="btn waves-effect waves-light btn-sm btn-danger"  ng-click="del(1)" rel=""  >
-                                                         Delete
-                                                        </button>
-                                                        </td>
-                                                  
 
+                                            <tr ng-repeat="item in ProductCartList">
+                                                <td>
+                                                    <input type="checkbox" id="basic_checkbox_{{$index+1}}" class="rowtxtchk" value="{{item._id}}"
+                                                        ng-click="addchkval(item._id)" />
+                                                    <label for="basic_checkbox_{{$index+1}}"></label>{{$index+1}}</td>
+        
+        
+                                                <td>{{item.oLang[currentLan].ruleName ? item.oLang[currentLan].ruleName :item.ruleName}}</td>
+                                                <td>{{item.startDate}}</td>
+                                                <td>{{item.endDate}}</td>
+                                                <td><span ng-repeat="displayIn in item.displayIn">{{displayIn.country}} ,</span></td>
+                                                <td>{{item.status}}</td>
+                                                <td>
+                                                    <a class="btn waves-effect waves-light btn-sm btn-info" href="/promotions/editcartprice/{{item._id}}">
+                                                        Edit</a>
+                                                    <button class="btn waves-effect waves-light btn-sm btn-danger" ng-click="deleteProductCart(item._id)" rel="">
+                                                        Delete
+                                                    </button>
+                                                </td>
+        
+        
                                             </tr>
-                                            
+        
                                         </tbody>
                                     </table>
                                 </div>

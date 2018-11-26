@@ -11,7 +11,7 @@ module.exports = function (app) {
 
     app.route('/api/productcategory/updateCategory').post(productcategory.updateCategory);
 
-    app.route('/api/productcategory/addSubCategory').post(productcategory.addSubCategory);
+    app.route('/api/productcategory/addSubCategorys').post(productcategory.addSubCategory);
 
     app.route('/api/productcategory/deleteCategory/:categoryId').put(productcategory.deleteCategory);
 

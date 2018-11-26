@@ -10,6 +10,7 @@
     Mainstore.$inject = ['$scope','$http','$state','$stateParams', 'Upload', 'mainstoreService'];
 
   function Mainstore ($scope, $http, $state, $stateParams, Upload, mainstoreService) {
+$scope.weekdayslist = [{value:'sun',name:'Sunday',model:"m_sun"},{value:'mon',name:'Monday',model:"m_mon"},{value:'tue',name:'Tuesday',model:"m_tue"},{value:'wed',name:'Wednesday',model:"m_wed"},{value:'thu',name:'Thursday',model:"m_thu"},{value:"fri",name:'Friday',model:"m_fri"},{value:"sat",name:'Saturday',model:"m_sat"}];
 
   $scope.formdata = {};
   $scope.formdata.status ='0';
@@ -27,17 +28,92 @@
      $scope.district ='0';
   $scope.mainstoreService=mainstoreService;
  
- $scope.currentLang= localStorage.getItem('currentLang');
+$scope.currentLan=localStorage.getItem('currentLang').toString();
   console.log($scope.currentLan)
   
+   $scope.currentLan=localStorage.getItem('currentLang').toString();
+  $scope.defaultLang=localStorage.getItem('defaultLang').toString();
+  $scope.chkBoxs=[];
+  $scope.addweekdays=function(wday,model){
+	 
+	 
+	  if(model && $scope.chkBoxs.indexOf(wday)==-1){
+	  $scope.chkBoxs.push(wday);
+	  }
+	  else{
+	  $scope.chkBoxs.splice($scope.chkBoxs.indexOf(wday),1);
+	  }
+	   console.log( $scope.chkBoxs);
+	  }
   
   
    $scope.insertMainstore = function(){
-    console.log($scope.sunfrom);
+	
+  
+	
+	
+	console.log($scope.chkBoxs)
+	
     if($scope.formdata.$valid && $scope.status!=0){
+		
+		if (localStorage.getItem("currentLang") == 'en') {
+		
     var data = {
+		"rowId": $scope.rowid,
+         "contactperson":$scope.contactperson,
         "name":$scope.name,
-        "contactperson":$scope.contactperson,
+        "email":$scope.email,
+        "telephone":$scope.telephone,
+        "mobile" :$scope.mobile,
+		"fax" :$scope.fax,
+		"country" :$scope.country,
+		"state" :$scope.state,
+		"district" :$scope.district,
+		"postalcode" :$scope.postal,
+		"address" :$scope.txtAddr,
+		"lattitude" :$scope.txtlat,
+		"longitude" :$scope.txtlong,
+		"timezone" :$scope.seltime,
+		"workingday" :$scope.selWorking,
+		"weekend" :$scope.chkBoxs,
+		"timing":
+		{
+		"sunday":		
+		{"shift":$scope.selSunday,"mrng":{"frm":$scope.sunfrom,"to":$scope.sunto},"eve":{"frm":$scope.sunevefrom,"to":$scope.suneveto}
+		},	
+		"monday":
+		
+		{"shift":$scope.selMonday,"mrng":{"frm":$scope.monfrom,"to":$scope.monto},"eve":{"frm":$scope.monevefrom,"to":$scope.moneveto}
+		}
+		,
+		"tuesday":		
+		{"shift":$scope.selTuesday,"mrng":{"frm":$scope.tuefrom,"to":$scope.tueto},"eve":{"frm":$scope.tueevefrom,"to":$scope.tueeveto}
+		},
+		"wednesday":		
+		{"shift":$scope.selWednesday,"mrng":{"frm":$scope.wedfrom,"to":$scope.wedto},"eve":{"frm":$scope.wedevefrom,"to":$scope.wedeveto}
+		},
+		"thursday":		
+		{"shift":$scope.selThursday,"mrng":{"frm":$scope.thufrom,"to":$scope.thuto},"eve":{"frm":$scope.thuevefrom,"to":$scope.thueveto}
+		},
+		"friday":		
+		{"shift":$scope.selFriday,"mrng":{"frm":$scope.frifrom,"to":$scope.frito},"eve":{"frm":$scope.frievefrom,"to":$scope.frieveto}
+		},
+		"saturday":		
+		{"shift":$scope.selSaturday,"mrng":{"frm":$scope.satfrom,"to":$scope.satto},"eve":{"frm":$scope.satevefrom,"to":$scope.sateveto},
+		
+		},
+		
+		},
+		"isDefaultLang" : true
+	}
+	}
+	
+	else{
+			
+    var data = {
+		"rowId": $scope.rowid,
+         "contactperson":$scope.contactperson,
+        "name":$scope.name,
         "email":$scope.email,
         "telephone":$scope.telephone,
         "mobile" :$scope.mobile,
@@ -75,14 +151,21 @@
 		{"shift":$scope.selFriday,"mrng":{"frm":$scope.frifrom,"to":$scope.frito},"eve":{"frm":$scope.frievefrom,"to":$scope.frieveto}
 		},
 		"saturday":		
-		{"shift":$scope.selSaturday,"mrng":{"frm":$scope.satfrom,"to":$scope.satto},"eve":{"frm":$scope.satevefrom,"to":$scope.sateveto}
-		},
-		}
+		{"shift":$scope.selSaturday,"mrng":{"frm":$scope.satfrom,"to":$scope.satto},"eve":{"frm":$scope.satevefrom,"to":$scope.sateveto},
 		
+		},
+		
+		},
+		"isDefaultLang" : true ,
+		"defaultLang":localStorage.getItem("defaultLang"),
+        "userSelectedLang":localStorage.getItem("currentLang")
 	}
+		
+ }
+	
     console.log($scope.mainstoreService);
       $scope.mainstoreService.insertMainstore(data).then(function(result){
-
+console.log(result);
         if(result.statusText = "OK"){
           swal("Success!", "Successfully added!", "success");  
           //$state.go('settingsmainstore');
@@ -92,6 +175,7 @@
         
       })
     }
+  
       
     }
 	
@@ -154,9 +238,11 @@ console.log(stateId);
       $scope.mainstoreService.getMainstoreDetails().then(function (result) {
          console.log(result);
          var details=result.data;
+		 
         if (result.statusText = "OK") {
         console.log(details);
          $scope.userdetails = result.data;
+		 $scope.rowid= $scope.userdetails._id;
 		  $scope.email = $scope.userdetails.email;
           $scope.telephone = $scope.userdetails.telephone;
 		  $scope.mobile = $scope.userdetails.mobile;
@@ -177,16 +263,52 @@ console.log(stateId);
 			$scope.selFriday = $scope.userdetails.timing.friday.shift;
 			$scope.selSaturday = $scope.userdetails.timing.saturday.shift;
 			
-			$scope.sunfrom = $scope.userdetails.timing.saturday.mrng.frm;
-			$scope.sunto = $scope.userdetails.timing.saturday.mrng.to;
-			$scope.sunevefrom = $scope.userdetails.timing.saturday.eve.frm;
-			$scope.suneveto = $scope.userdetails.timing.saturday.eve.to;
+			$scope.sunfrom = $scope.userdetails.timing.sunday.mrng.frm;
+			$scope.sunto = $scope.userdetails.timing.sunday.mrng.to;
+			$scope.sunevefrom = $scope.userdetails.timing.sunday.eve.frm;
+			$scope.suneveto = $scope.userdetails.timing.sunday.eve.to;
+			
+			
+			$scope.monfrom = $scope.userdetails.timing.monday.mrng.frm;
+			$scope.monto = $scope.userdetails.timing.monday.mrng.to;
+			$scope.monevefrom = $scope.userdetails.timing.monday.eve.frm;
+			$scope.moneveto = $scope.userdetails.timing.monday.eve.to;
+			
 			
 			$scope.tuefrom = $scope.userdetails.timing.tuesday.mrng.frm;
 			$scope.tueto = $scope.userdetails.timing.tuesday.mrng.to;
 			$scope.tueevefrom = $scope.userdetails.timing.tuesday.eve.frm;
 			$scope.tueeveto = $scope.userdetails.timing.tuesday.eve.to;
 			
+			$scope.wedfrom = $scope.userdetails.timing.wednesday.mrng.frm;
+			$scope.wedto = $scope.userdetails.timing.wednesday.mrng.to;
+			$scope.wedevefrom = $scope.userdetails.timing.wednesday.eve.frm;
+			$scope.wedeveto = $scope.userdetails.timing.wednesday.eve.to;
+			
+			$scope.thufrom = $scope.userdetails.timing.thursday.mrng.frm;
+			$scope.thuto = $scope.userdetails.timing.thursday.mrng.to;
+			$scope.thuevefrom = $scope.userdetails.timing.thursday.eve.frm;
+			$scope.thueveto = $scope.userdetails.timing.thursday.eve.to;
+			
+			$scope.frifrom = $scope.userdetails.timing.friday.mrng.frm;
+			$scope.frito = $scope.userdetails.timing.friday.mrng.to;
+			$scope.frievefrom = $scope.userdetails.timing.friday.eve.frm;
+			$scope.frieveto = $scope.userdetails.timing.friday.eve.to;
+			
+			$scope.satfrom = $scope.userdetails.timing.saturday.mrng.frm;
+			$scope.satto = $scope.userdetails.timing.saturday.mrng.to;
+			$scope.satevefrom = $scope.userdetails.timing.saturday.eve.frm;
+			$scope.sateveto = $scope.userdetails.timing.saturday.eve.to;
+			
+			 $scope.weekend= $scope.userdetails.weekend;
+			 
+			$scope.sunday();
+			$scope.monday();
+			$scope.tuesday();
+			$scope.wednesday();
+			$scope.thursday();
+			$scope.friday();
+			$scope.saturday();
 		  console.log($scope.userdetails.timing.tuesday.mrng.frm);
           if(angular.equals($scope.currentLan, $scope.defaultLang)){
 		 
@@ -194,7 +316,7 @@ console.log(stateId);
           $scope.contactperson = $scope.userdetails.contactperson;
 		  $scope.txtAddr = $scope.userdetails.address;
 		  
-		 
+		
 		  
 		  
         }
@@ -202,10 +324,11 @@ console.log(stateId);
                      
          $scope.userdetails = result.data;
           $scope.name =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].name : details.name;
-          $scope.subject = $scope.currentLan in details.oLang  ?details.oLang[ $scope.currentLan].subject :  details.subject;
-          $scope.content =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].content:details.content ;
-          $scope.custom =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].custom :details.custom;
+          $scope.contactperson = $scope.currentLan in details.oLang  ?details.oLang[ $scope.currentLan].contactperson :  details.contactperson;
+          $scope.txtAddr =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].address:details.address ;
+        
         }
+		
         }
         else {
 
@@ -256,6 +379,7 @@ $scope.choices = [{id: 'choice1'}];
  };
 $scope.sunEve=0;	
 $scope.sunMrng=0;
+
 $scope.sunday=function(){
 	console.log($scope.selSunday);
 	if($scope.selSunday==2){
@@ -273,8 +397,10 @@ $scope.sunday=function(){
 		}
 	
 	}
+	$scope.sunday();
 $scope.monEve=0;	
 $scope.monMrng=0;
+
 $scope.monday=function(){
 	console.log($scope.selMonday);
 	if($scope.selMonday==2){
@@ -292,9 +418,10 @@ $scope.monday=function(){
 		}
 	
 	}
-	
+	$scope.monday();
 $scope.tueEve=0;	
 $scope.tueMrng=0;
+
 $scope.tuesday=function(){
 	console.log($scope.selTuesday);
 	if($scope.selTuesday==2){
@@ -312,9 +439,10 @@ $scope.tuesday=function(){
 		}
 	
 	}
-	
+	$scope.tuesday();
 $scope.wedEve=0;	
 $scope.wedMrng=0;
+
 $scope.wednesday=function(){
 	console.log($scope.selWednesday);
 	if($scope.selWednesday==2){
@@ -332,9 +460,10 @@ $scope.wednesday=function(){
 		}
 	
 	}
-	
+	$scope.wednesday();
 	$scope.thuEve=0;	
 $scope.thuMrng=0;
+
 $scope.thursday=function(){
 	console.log($scope.selThursday);
 	if($scope.selThursday==2){
@@ -352,9 +481,10 @@ $scope.thursday=function(){
 		}
 	
 	}
-	
+	$scope.thursday();
 	$scope.friEve=0;	
 $scope.friMrng=0;
+
 $scope.friday=function(){
 	console.log($scope.selFriday);
 	if($scope.selFriday==2){
@@ -372,8 +502,10 @@ $scope.friday=function(){
 		}
 	
 	}
+	
 	$scope.satEve=0;	
 $scope.satMrng=0;
+
 $scope.saturday=function(){
 	console.log($scope.selSaturday);
 	if($scope.selSaturday==2){
@@ -391,7 +523,7 @@ $scope.saturday=function(){
 		}
 	
 	}
-      
+   $scope.saturday();   
 
 
  }

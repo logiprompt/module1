@@ -7,6 +7,11 @@ var promotionsPolicy = require('../policies/promotions.server.policy'),
     shippingPrice = require('../controllers/shippingprice.server.controller');
 
 module.exports = function (app) {
+
+     // //get  countries
+     app.route('/api/promotion/getShippingCountryList')
+     .get(shippingPrice.getShippingCountryList);
+ 
     // //add shipping price rule
     app.route('/api/promotion/addshippingPrice')
     .post(shippingPrice.addshippingPrice);

@@ -127,6 +127,7 @@ exports.userByID = function(request, response) {
                  else {
                    
                      var obj = {};
+                     data.status = reqBody.status;
                      obj.name = reqBody.name;
                      obj.subject = reqBody.subject;
                      obj.content = reqBody.content;

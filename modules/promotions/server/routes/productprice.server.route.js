@@ -26,6 +26,9 @@ module.exports = function (app) {
     app.route('/api/promotions/getProductCatDetails').get(productPrice.getProductCatDetails);
     
     //get product price rule list
+    app.route('/api/promotions/getProductCountries').get(productPrice.getProductCountries);
+    
+    //get product price rule list
     app.route('/api/promotions/getProductsItemstDetails').get(productPrice.getProductsItemstDetails);
 
     //get product price rule

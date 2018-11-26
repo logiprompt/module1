@@ -24,6 +24,8 @@ module.exports = function(app) {
 
   app.route('/api/cms/category/deleteCategory/:categoryId').put(cms.deleteCategory);
 
+app.route('/api/cms/category/delCheckedCmscategory').put(cms.delCheckedCmscategory);
+
   app.route('/api/cms/category/getCategoryItems').get(cms.getCategoryItems);
 
   app.route('/api/cms/category/getCategoryDetails/:categoryId').get(cms.getCategoryDetails);

@@ -24,7 +24,7 @@ var adminfooter={
         template: '<ui-view/>'
       })
        .state('category', {
-        url: '/settings/cmscategory',
+        url: '/cms/category',
         views:{
           header:adminheader,
 
@@ -66,12 +66,12 @@ var adminfooter={
       /////////////////////////////////////////
 
       .state('addcmspost', {
-        url: '/settings/addcmspost',
+        url: '/cms/postcreation',
        // controllerAs: 'vm',
         views:{
           header:adminheader,
           content: { 
-           templateUrl: '/modules/cms/client/views/admin/post/addpost1.html',
+           templateUrl: '/modules/cms/client/views/admin/post/addpost.html',
           controller: 'PostController',
           controllerAs: 'vm',
           },
@@ -81,12 +81,12 @@ var adminfooter={
 
 
       .state('post', {
-        url: '/settings/cmspost',
+        url: '/cms/post',
        // controllerAs: 'vm',
         views:{
           header:adminheader,
           content: { 
-           templateUrl: '/modules/cms/client/views/admin/post/post1.html',
+           templateUrl: '/modules/cms/client/views/admin/post/post.html',
           controller: 'PostController',
           controllerAs: 'vm',
           },
@@ -95,12 +95,12 @@ var adminfooter={
       })
       
       .state('editpost', {
-        url: '/cms/editpost/:id',
+        url: '/cms/post/edit/:id',
        // controllerAs: 'vm',
         views:{
           header:adminheader,
           content: { 
-           templateUrl: '/modules/cms/client/views/admin/post/addpost1.html',
+           templateUrl: '/modules/cms/client/views/admin/post/edit.html',
           controller: 'PostController',
           controllerAs: 'vm',
           },

@@ -6,8 +6,8 @@
     .module('cms')
     .factory('CmsService', CmsService);
 
-  CmsService.$inject = ['$resource','$http'];
-  function CmsService($resource,$http) {
+  CmsService.$inject = ['$resource','$http','Upload'];
+  function CmsService($resource,$http,Upload) {
   var cms = {};
   
 	 /*
@@ -15,17 +15,20 @@
 	  * Description : add new post
 	  * owner : prabin
 	  */
-cms.addPost = function(data){
-		  
-		return $http({
-	           url: '/api/cms/post',
-	           method: "POST",
-	           data:data
-	       });
+cms.addPost = function(data){		  
+		// return $http({
+	    //        url: '/api/cms/post',
+	    //        method: "POST",
+	    //        data:data
+        //    });
+        return Upload.upload({
+            url: '/api/cms/post',
+            method: "POST",
+            data: data
+        });
 	   }
 
-cms.listPost = function(){
-	  
+cms.listPost = function(){	  
 	return $http({
            url: '/api/cms/post',
            method: "GET"
@@ -62,11 +65,18 @@ cms.updatePostById = function(id,data){
  */
 
 cms.addCategory = function (data) {
-    return $http({
+
+    return Upload.upload({
         url: '/api/cms/category/addCategory',
         method: "POST",
         data: data
     });
+
+    // return $http({
+    //     url: '/api/cms/category/addCategory',
+    //     method: "POST",
+    //     data: data
+    // });
 }
 
 /*
@@ -75,7 +85,12 @@ cms.addCategory = function (data) {
  */
 
 cms.addSubCategory = function (data) {
-    return $http({
+    // return $http({
+    //     url: '/api/cms/category/addSubCategory',
+    //     method: "POST",
+    //     data: data
+    // });
+    return Upload.upload({
         url: '/api/cms/category/addSubCategory',
         method: "POST",
         data: data
@@ -101,6 +116,14 @@ cms.deleteCategory = function (categoryId) {
     });
 }
 
+cms.delCheckedCmscategory = function (categoryId) {
+    return $http({
+        url: '/api/cms/category/delCheckedCmscategory',
+        method: "PUT",
+        params:{'categoryId':categoryId}
+    });
+}
+
 cms.getCategoryDetails = function (categoryId) {
     return $http({
         url: '/api/cms/category/getCategoryDetails/' + categoryId,
@@ -110,11 +133,19 @@ cms.getCategoryDetails = function (categoryId) {
 
 
 cms.updateCategory = function (data) {
-    return $http({
+    // return $http({
+    //     url: '/api/cms/category/updateCategory',
+    //     method: "POST",
+    //     data: data
+    // });
+console.log(data);
+    return Upload.upload({
         url: '/api/cms/category/updateCategory',
         method: "POST",
         data: data
     });
+
+
 }
 
 

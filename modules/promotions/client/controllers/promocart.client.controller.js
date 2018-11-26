@@ -3,198 +3,271 @@
   angular
     .module('promotions')
     .controller('PromocartController', PromocartController);
-  PromocartController.$inject = ['$scope', '$http', '$state', '$stateParams','$location', 'productcartService'];
-  function PromocartController($scope, $http, $state, $stateParams,$location, productcartService) {
+    PromocartController.$inject = ['$scope', '$http', '$state', '$stateParams', '$location', 'productcartService'];
+  function PromocartController($scope, $http, $state, $stateParams, $location, productcartService) {
 
     $scope.formdata = {};
     $scope.productcartService = productcartService;
+    $scope.currentLan=localStorage.getItem('currentLang').toString();
+    $scope.defaultLang=localStorage.getItem('defaultLang').toString();
+   
+    /* shipping prod rule */
 
-    /******** Edit Product price rule - arun */
+    // $scope.formdata.values ='0';
+    // //$scope.choices.length	
+    // // console.log($scope.choices.length);
+    // $scope.addNewValues = function () {
+    //   var newItemNo1 = $scope.formdata.values.length + 1;
+    //   $scope.formdata.values.push({ 'id': 'values' + newItemNo1 });
+    //  // console.log($scope.choices.length);
+    // };
 
-    //Function : ProductPricedetails
-
-  //  $scope.getProductPriceDetails = function () {
-//      $scope.productpriceService.getProductPriceDetails($stateParams.id).then(function (result) {
-//        $scope.formdata = result['data'];
-//        $scope.formdata.startDate = $scope.formdata.startDate.split("T")[0];
-//        $scope.formdata.endDate = $scope.formdata.endDate.split("T")[0];
-//      })
-//    }
-//
-//    $scope.getProductPriceDetails();
-//
-//    $scope.updateProductPrice = function(){
-//      $scope.productpriceService.updateProductPrice($scope.formdata).then(function (result) {
-//        $location.path('/promotions/productrules');
-//      })
-//    }
-    /******** Edit Product price rule ends */
-
-
-
-
-
-    //alert(2324);
-    /////////////////////defaultLang//////////
-    $http({
-      url: '/api/admin/getdefaultLang',
-      method: "POST",
+    // $scope.removeValues = function (val) {
+    //   if ($scope.formdata.values.length > 1) {
+    //     $scope.formdata.values.splice(val, 1);
+    //   }
+    //   //console.log($scope.choices.length);
+    // };
+   
+  $scope.getCartCountryList = function () {
+    //console.log(110);
+    $scope.productcartService.getCartCountryList().then(function (result) {
+      $scope.list=result.data;
+  // console.log($scope.list);
+   
     })
-      .then(function (response) {
+  }
+  $scope.getCartCountryList();
 
-        $scope.formdata.defaultlang = response.data.data;
+    $scope.values = [{}]; 
+    $scope.addNewValuesEdit = function () { 
+     
+      var newItemNo1 = $scope.values.length + 1; 
+     
+      $scope.values.push({ 'id': 'values' + newItemNo1 }); 
+      $scope.formdata.values[newItemNo1-1]='';
+    };
 
-      },
-      function (response) { // optional
-        // failed
-      });
-    $scope.formdata.sale = '1';
-    //$scope.formdata.category='0';
-    $scope.formdata.con = '1';
-    $scope.formdata.status = '0';
-    $http({
-      url: '/api/admin/getallLanguages',
-      method: "POST",
-
-    })
-      .then(function (response) {
-        $scope.listlang = response.data.data;
-
-
-
-      },
-      function (response) { // optional
-        // failed
-      });
-
-
-    $scope.values1 = [{ id: 'choice1' }];
-    //$scope.choices.length	
-    // console.log($scope.choices.length);
-    $scope.addNewValues = function () {
-      var newItemNo1 = $scope.values1.length + 1;
-      $scope.values1.push({ 'id': 'values1' + newItemNo1 });
-      //console.log($scope.choices.length);
+    $scope.addNewValues = function () 
+    {    
+      var newItemNo1 = $scope.values.length + 1; 
+      $scope.values.push({ 'id': 'values' + newItemNo1 }); 
     };
 
     $scope.removeValues = function (val) {
-      if ($scope.values1.length > 1) {
-        $scope.values1.splice(val, 1);
+      if ($scope.values.length > 1) {
+        $scope.values.splice(val, 1);
       }
-      //console.log($scope.choices.length);
     };
 
-    /////////////////////select/////////////////////////////
-
-
-    ///////////////////////insert////////////////////////////
-    $scope.insCategory = function () {
-      if ($scope.validation() == 0) {
-        $http({
-          url: '/api/admin/insCategory',
-          method: "POST",
-          data: $scope.formdata
-        })
-          .then(function (response) {
-            $state.reload();
-            // success
-          },
-          function (response) { // optional
-            // failed
-          });
-      }
-    }
-
-
-
-    $scope.del = function (id) {
-      var val = { 'id': id };
-      $http({
-        url: '/api/admin/delcate',
-        method: "POST",
-        data: val
+    //get Item List
+    $scope.getProductCartList = function () {
+      $scope.productcartService.getProductCartList().then(function (result) {
+        $scope.ProductCartList = result['data'];
+       // console.log( $scope.ProductCartList);
+        $scope.ProductCartList.forEach(function (element) {
+          element.startDate = element.startDate.split("T")[0];
+          element.endDate = element.endDate.split("T")[0];
+        }, this);
       })
-        .then(function (response) {
-          $state.reload();
-        },
-        function (response) { // optional
-          // failed
-        });
     }
-    $scope.rmerrorclass = function () {
-      angular.element(document.querySelectorAll('.validationErr')).removeClass('validationErr');
-      angular.element(document.querySelectorAll('.tabvalidationErr')).removeClass('tabvalidationErr');
-    }
-    $scope.adderrorclass = function (cls) {
-      angular.element(document.querySelector(cls)).addClass('validationErr');
-    }
-    $scope.taberrorclass = function (cls) {
-      angular.element(document.querySelector(cls)).addClass('tabvalidationErr');
+    if ($stateParams.id == undefined) {
+      $scope.getProductCartList();
     }
 
-    $scope.validation = function () {
-      var error = 0;
-      $scope.rmerrorclass();
-      if ($scope.formdata.category == '' || angular.isUndefined($scope.formdata.category)) {
-        $scope.adderrorclass(".cat");
-        $scope.taberrorclass(".tcat");
-        error = 1;
+    //Add Shipping price rule
+    $scope.addProductCart = function () {
+      if($scope.formData.$valid && $scope.formdata.status!=0){
+     // var data=$scope.formdata;
+      var data = {
+        "ruleName": $scope.formdata.ruleName,
+         "description": $scope.formdata.description,
+        "image": $scope.imgss,
+        "displayIn": $scope.formdata.displayIn,
+        "startDate": $scope.formdata.startDate,
+        "endDate": $scope.formdata.endDate,
+        "status": $scope.formdata.status,
+        "applyTo": $scope.formdata.applyTo,
+        "conditions": $scope.formdata.conditions,
+        "values": $scope.formdata.values,
+        "conditionsStatus": $scope.formdata.conditionsStatus,
+        "actionApplyTo": $scope.formdata.actionApplyTo,
+        "discountAmount": $scope.formdata.discountedShippingAmount,
+        "stopRuleProcess": $scope.formdata.stopRuleProcess
       }
 
-      return error;
-    }
-
-    ///////////////////////////////////////////////////////////////////////
-    $scope.addCategory = function () {
-
-
-      $http({
-        url: '/api/admin/addCategory',
-        method: "POST",
-        data: $scope.formdata
+    // console.log(data);
+      $scope.productcartService.addProductCart(data).then(function (result) {
+      //  console.log(result);
+        //$location.path('/promotions/shipping');
+        if(result.statusText = "OK"){
+				  swal("Success!", "Successfully added!", "success");  
+			 $state.go('promocartlist');
+			  }else{
+				  swal("error!", "Already exist!", "error");
+			  }
       })
-        .then(function (response) {
+    }
+    }
 
-          // success
-        },
-        function (response) { // optional
-          // failed
-        });
-    }
-    $scope.validation2 = function () {
-      var error = 0;
-      $scope.rmerrorclass();
-      if ($scope.formdata.categorylang == '' || angular.isUndefined($scope.formdata.categorylang)) {
-        $scope.adderrorclass(".categorylang");
-        error = 1;
-      }
-      if ($scope.formdata.catlang == '0' || angular.isUndefined($scope.formdata.catlang)) {
-        $scope.adderrorclass(".catlang");
-        error = 1;
-      }
-      return error;
-    }
-    $scope.openLangModel = function (id) {
+    //Delete Shipping price rule
+    $scope.deleteProductCart = function (itemId) {
 
-      $scope.formdata.id = id;
-    }
-    $scope.insCategoryLang = function () {
-      if ($scope.validation2() == 0) {
-        $('#myModal').modal('hide');
-        $http({
-          url: '/api/admin/insCategoryLang',
-          method: "POST",
-          data: $scope.formdata
-        })
-          .then(function (response) {
-            $state.reload();
-            // success
-          },
-          function (response) { // optional
-            // failed
-          });
+
+      swal({
+        title: 'Are you sure?',
+        text: "You want to delete this item!",
+        type: 'warning',
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if(result){
+        $scope.productcartService.deleteProductCart(itemId).then(function (result) {
+        if(result.statusText = "OK"){
+        swal(
+                      'Deleted!',
+                      'Item has been deleted.',
+                      'success'
+                    )
+                    $state.reload();
+                   // $scope.getProductCartList();
+         }else{
+           
+         }
+      })
       }
+      })
+    
     }
+
+    //get shipping price rule details
+   // console.log($stateParams.id);
+    $scope.getProductCartDetails = function (itemId) {
+     // console.log(itemId);
+      $scope.productcartService.getProductCartDetails(itemId).then(function (result) {
+      //  console.log(result);
+      // $scope.shipping=result.data; 
+        //$scope.formdata = result['data'];
+       // $scope.formdata.startDate = $scope.formdata.startDate.split("T")[0];
+       // $scope.formdata.endDate = $scope.formdata.endDate.split("T")[0];
+
+       var details=result.data;
+        if (result.statusText = "OK")
+        {     
+          $scope.status =details.status.toString();    
+          if(angular.equals($scope.currentLan, $scope.defaultLang))
+          {
+            $scope.userdetails = result.data;
+            $scope.formdata.ruleName = $scope.userdetails.ruleName;
+            $scope.formdata.description = $scope.userdetails.description;
+          }
+          else
+          {           
+            $scope.userdetails = result.data;
+            $scope.formdata.ruleName =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].ruleName : details.ruleName;
+            $scope.formdata.description = $scope.currentLan in details.oLang  ?details.oLang[ $scope.currentLan].description :  details.description;
+          }
+
+        $scope.formdata.startDate = $scope.userdetails.startDate;
+        $scope.formdata.endDate = $scope.userdetails.endDate;
+        $scope.formdata.status = $scope.userdetails.status;
+        $scope.formdata.applyTo = $scope.userdetails.applyTo;
+        $scope.formdata.conditions = $scope.userdetails.conditions;
+        $scope.formdata.actionApplyTo = $scope.userdetails.actionApplyTo;
+        $scope.formdata.discountAmount = $scope.userdetails.discountAmount;
+        $scope.formdata.stopRuleProcess = $scope.userdetails.stopRuleProcess;
+        $scope.formdata.displayIn = $scope.userdetails.displayIn;
+        $scope.formdata.actionApplyTo = $scope.userdetails.actionApplyTo;  
+        $scope.formdata.conditionsStatus = $scope.userdetails.conditionsStatus;
+          $scope.values = $scope.userdetails.values;  
+       // $scope.vallen=$scope.values.length;
+       // for(var i=1;i<=$scope.vallen;$i++){
+        $scope.formdata.values= $scope.userdetails.values; 
+       // console.log($scope.formdata.values[i]);
+        //}
+        
+        }
+          else
+          {            
+          }
+
+
+
+
+      })
+    }
+    if ($stateParams.id != undefined) {
+      $scope.getProductCartDetails($stateParams.id);
+    }
+
+    $scope.updateProductCartRule = function(){
+    //  console.log(436);
+      if($scope.formData.$valid && $scope.formdata.status!=0){
+        // var data=$scope.formdata;
+      // console.log(657);
+     if (localStorage.getItem("currentLang") == 'en') {
+         var data = {
+           "ruleName": $scope.formdata.ruleName,
+            "description": $scope.formdata.description,
+           "image": $scope.imgss,
+           "displayIn": $scope.formdata.displayIn,
+           "startDate": $scope.formdata.startDate,
+           "endDate": $scope.formdata.endDate,
+           "status": $scope.formdata.status,
+           "applyTo": $scope.formdata.applyTo,
+           "conditions": $scope.formdata.conditions,
+           "values": $scope.formdata.values,
+           "conditionsStatus": $scope.formdata.conditionsStatus,
+           "actionApplyTo": $scope.formdata.actionApplyTo,
+           "discountAmount": $scope.formdata.discountAmount,
+           "stopRuleProcess": $scope.formdata.stopRuleProcess,
+           "id":$stateParams.id,
+           "isDefaultLang" : true
+         }
+        }
+        else{
+
+          var data = {
+            "ruleName": $scope.formdata.ruleName,
+             "description": $scope.formdata.description,
+            "image": $scope.imgss,
+            "displayIn": $scope.formdata.displayIn,
+            "startDate": $scope.formdata.startDate,
+            "endDate": $scope.formdata.endDate,
+            "status": $scope.formdata.status,
+            "applyTo": $scope.formdata.applyTo,
+            "conditions": $scope.formdata.conditions,
+            "values": $scope.formdata.values,
+            "conditionsStatus": $scope.formdata.conditionsStatus,
+            "actionApplyTo": $scope.formdata.actionApplyTo,
+            "discountAmount": $scope.formdata.discountAmount,
+            "stopRuleProcess": $scope.formdata.stopRuleProcess,
+            "id":$stateParams.id,
+            "isDefaultLang" : false,
+            "defaultLang":localStorage.getItem("defaultLang"),
+            "userSelectedLang":localStorage.getItem("currentLang")
+          }
+
+        }
+        // console.log(data);
+
+      $scope.productcartService.updateProductCartRule(data).then(function (result) {
+       // console.log(result);
+        if (result.statusText = "OK") {
+          swal("Success!", "Successfully updated ", "success");
+         // $scope.getProductCartList();
+          $state.go('promocartlist');
+        }
+       // $location.path('/promotions/shipping');
+      })
+    }
+    }
+
+
+    /* shipping prod rule */
+
 
 
 
@@ -220,14 +293,14 @@
     }
     $scope.addchkval = function (linkid) {
       var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-      console.log(linkid)
-      console.log(checkedValue[0])
+      //console.log(linkid)
+     // console.log(checkedValue[0])
       if (checkedValue.length > 1) {
         $scope.editpage[0].removeAttribute("href");
       }
       else {
 
-        $scope.editpage[0].setAttribute("href", "/promotions/editproductprice/" + linkid);
+        $scope.editpage[0].setAttribute("href", "/promotions/editcartprice/" + linkid);
       }
 
     }
@@ -255,10 +328,39 @@
 
       //$state.go('addlanguage');
       var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-      console.log(checkedValue)
+     // console.log(checkedValue)
       for (var i = 0; i < checkedValue.length; i++) {
         $scope.chkValue.push(checkedValue[i].value);
       }
+
+      var itemId=$scope.chkValue;
+     // console.log(itemId);
+        swal({
+          title: 'Are you sure?',
+          text: "You want to delete checked items!",
+          type: 'warning',
+          showCancelButton: false,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if(result){
+          $scope.productcartService.delChecked(itemId).then(function(result){
+          if(result.statusText = "OK"){
+          swal(
+                        'Deleted!',
+                        'Items have been deleted.',
+                        'success'
+                      )
+                      $state.reload();
+           // $scope.getProductCartList();
+           }else{
+             
+           }
+        })
+        }
+        })
+      
 
     }
     setTimeout(getActionBtns, 2000);
@@ -272,7 +374,7 @@
         var FR = new FileReader();
         FR.onload = function (e) {
           document.getElementById("imgfiles").src = e.target.result;
-          ev.target.parentNode.parentNode.parentNode.childNodes[3].childNodes[1].childNodes[1] = e.target.result;
+         // ev.target.parentNode.parentNode.parentNode.childNodes[3].childNodes[1].childNodes[1] = e.target.result;
           //document.getElementById("b64").innerHTML = e.target.result;
         };
         FR.readAsDataURL(this.files[0]);

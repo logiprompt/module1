@@ -8,20 +8,22 @@ var path = require('path'),
     mongoose = require('mongoose'),
     productPrice = require('../models/productprice.server.model.js'),
     productCat = mongoose.model('productcategory'),
+    Prdcountry = mongoose.model('Sys_country'),
     Products = mongoose.model('Product'),
     errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
 /* add promotion product price rule*/
 exports.addProductPrice = function (req, res, next) {
     var picpath = "";
+     var today = Date.now();
     var storage = multer.diskStorage({
         destination: function (req, file, callback) {
             callback(null, './public/uploads');
         },
         filename: function (req, file, callback) {
             var ext = file.originalname.substr(file.originalname.length - 3); // => "Tabs1"
-            callback(null, file.fieldname + '-' + Date.now() + '.' + ext); // => "Tabs1");
-            picpath = "uploads/" + file.fieldname + '-' + Date.now() + '.' + ext;
+            callback(null, file.fieldname + '-' + today + '.' + ext); // => "Tabs1");
+            picpath = "uploads/" + file.fieldname + '-' + today + '.' + ext;
         }
     });
 
@@ -49,8 +51,22 @@ exports.addProductPrice = function (req, res, next) {
 }
 
 // get list of all product price rules
+// exports.getProductPriceList = function (req, res, next) {
+//     productPrice.find().populate({ path : 'displayIn' , select : 'country' , model : 'Sys_country'}).exec(function (err, data) {
+//         if (err) {
+//             return res.status(400).send({
+//                 message: errorHandler.getErrorMessage(err)
+//             });
+//         } else {
+//             res.json(data);
+//            // console.log(data);
+//         }
+//     })
+// }
+
+// get list of all product price rules
 exports.getProductPriceList = function (req, res, next) {
-    productPrice.find().exec(function (err, data) {
+    productPrice.find().populate({ path: 'displayIn', select: 'country', model:'Sys_country', populate: { path: 'country', model: 'Sys_country' }}).exec(function (err, data) {
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
@@ -61,8 +77,22 @@ exports.getProductPriceList = function (req, res, next) {
     })
 }
 
+
+
 exports.getProductCatDetails = function (req, res, next) {
     productCat.find().exec(function (err, data) {
+        if (err) {
+            return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+            res.json(data);
+        }
+    })
+}
+
+exports.getProductCountries = function (req, res, next) {
+    Prdcountry.find().exec(function (err, data) {
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)

@@ -95,8 +95,8 @@ var MainstoreSchema = new Schema({
   },
   
   weekend: {
-    type: String,
-    default: '',
+    type: Array,
+    default: [],
     required: 'Please select Week end days',
     trim: true
   },

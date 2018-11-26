@@ -389,24 +389,26 @@
                                                     <div class="form-group m-b-10">
                                                         <span class="bar"></span>
                                                         <label for="input1"> Rule name </label>
-                                                        <input type="text" class="form-control" id="name" name="name" ng-model="formdata.ruleName" ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.name.$valid}">
+                                                        <input type="text" class="form-control" id="name" name="name" ng-model="formdata.ruleName" ng-required="true" 
+                                                        ng-class="{ 'validationErr' : formData.$submitted && !formData.name.$valid}" ng-readonly="check1">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group has-danger defcheck">
-                                                        <input name="shortchk" type="checkbox" id="chk1" class="filled-in chk-col-light-blue">
+                                                        <input name="shortchk" type="checkbox" id="chk1" ng-model="check1"  ng-change="stateChanged()" class="filled-in chk-col-light-blue">
                                                         <label class="lbl" for="chk1">Default</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-9">
                                                     <div class="form-group m-b-10">
                                                         <label> Description</label>
-                                                        <textarea class="form-control" rows="5" id="description" name="description" ng-model="formdata.description" ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.description.$valid}"></textarea>
+                                                        <textarea class="form-control" rows="5" id="description" name="description" ng-readonly="check2"
+                                                        ng-model="formdata.description" ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.description.$valid}"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group has-danger defcheck">
-                                                        <input name="shortchk" type="checkbox" id="chk2" class="filled-in chk-col-light-blue">
+                                                        <input name="shortchk" type="checkbox" id="chk2" ng-model="check2"  ng-change="stateChanged()" class="filled-in chk-col-light-blue">
                                                         <label class="lbl" for="chk2">Default</label>
                                                     </div>
                                                 </div>
@@ -422,7 +424,7 @@
 
                                                                     <div class="fluid left_c_input file_wrap m-b-10">
                                                                         <div class="write_textbox">
-                                                                            <input type="text" readonly placeholder="No file selected" class="txtFilepath" style="border:none !important;" name="name{{$index}}">
+                                                                            <input type="text" readonly placeholder="No file selected" ng-readonly="check3" class="txtFilepath" style="border:none !important;" name="name{{$index}}">
                                                                         </div>
                                                                         <div class="iconw" ng-click="iconw()">
                                                                             <i class="fa fa-download"></i>Upload Image</div>
@@ -459,7 +461,7 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group has-danger defcheck">
-                                                        <input name="shortchk" type="checkbox" id="chk3" class="filled-in chk-col-light-blue">
+                                                        <input name="shortchk" type="checkbox" id="chk3" class="filled-in chk-col-light-blue" ng-model="check3"  ng-change="stateChanged()">
                                                         <label class="lbl" for="chk3">Default</label>
                                                     </div>
                                                 </div>
@@ -468,18 +470,27 @@
                                                         <label for="input1">Display in</label>
                                                         <!-- <textarea class="form-control cat" id="extra" type="text" ng-model="formdata.desc" rows="5"></textarea>-->
 
-                                                        <select class="selectpicker form-control" multiple data-style="form-control btn-info" ng-model="formdata.displayIn" id="displayIn" name="displayIn" ng-required="true"
+                                                        <!-- <select class="selectpicker form-control" multiple data-style="form-control btn-info" ng-model="formdata.displayIn" id="displayIn" name="displayIn" ng-required="true"
                                                         ng-class="{ 'validationErr' : formData.$submitted && !formData.displayIn.$valid}">
                                                             <option value="Global">Global</option>
                                                             <option value="India">India</option>
                                                             <option value="UAE">UAE</option>
-                                                        </select>
+                                                        </select> -->
+                                                        <select class="selectpicker form-control" multiple data-style="form-control btn-info" id="displayIn" name="displayIn" ng-model="formdata.displayIn" ng-required="true"
+                                                        ng-class="{ 'validationErr' : formData.$submitted && !formData.displayIn.$valid}" ng-readonly="check4">
+                                                                   <option class="filter-option-inner" value="0">choose</option>
+                                                                  <option  class="filter-option-inner" ng-repeat="vall in list" value="{{vall._id}}">{{vall.country}}</option>
+    
+    
+                                                              
+                                                               
+                                              </select>
 
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group has-danger defcheck">
-                                                        <input name="shortchk" type="checkbox" id="chk4" class="filled-in chk-col-light-blue">
+                                                        <input name="shortchk" type="checkbox" id="chk4" class="filled-in chk-col-light-blue" ng-model="check4"  ng-change="stateChanged()">
                                                         <label class="lbl" for="chk4">Default</label>
                                                     </div>
                                                 </div>
@@ -492,7 +503,7 @@
                                                         <div class=" example ">
                                                             <div class="input-group">
                                                                 <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy" ng-model="formdata.startDate" id="startDate" name="startDate" ng-required="true"
-                                                                ng-class="{ 'validationErr' : formData.$submitted && !formData.startDate.$valid}">
+                                                                ng-class="{ 'validationErr' : formData.$submitted && !formData.startDate.$valid}" ng-readonly="check5">
                                                                 <div class="input-group-append">
                                                                     <span class="input-group-text">
                                                                         <i class="icon-calender"></i>
@@ -504,7 +515,7 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group has-danger defcheck">
-                                                        <input name="shortchk" type="checkbox" id="chk5" class="filled-in chk-col-light-blue">
+                                                        <input name="shortchk" type="checkbox" id="chk5" class="filled-in chk-col-light-blue" ng-model="check5"  ng-change="stateChanged()">
                                                         <label class="lbl" for="chk5">Default</label>
                                                     </div>
                                                 </div>
@@ -529,7 +540,7 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group has-danger defcheck">
-                                                        <input name="shortchk" type="checkbox" id="chk6" class="filled-in chk-col-light-blue">
+                                                        <input name="shortchk" type="checkbox" id="chk6" class="filled-in chk-col-light-blue" ng-model="check6"  ng-change="stateChanged()">
                                                         <label class="lbl" for="chk6">Default</label>
                                                     </div>
                                                 </div>
@@ -538,7 +549,8 @@
                                                         <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
                                                         <span class="bar"></span>
                                                         <label for="status">Status</label>
-                                                        <select class="form-control filter-option" name="status" id="status" ng-model="formdata.status"ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.status.$valid}">
+                                                        <select class="form-control filter-option" name="status" id="status" ng-model="formdata.status"ng-required="true" 
+                                                        ng-class="{ 'validationErr' : formData.$submitted && !formData.status.$valid}" ng-readonly="check7">
                                                             <option class="filter-option-inner" value="0">choose</option>
 
                                                             <option value="disable" class="filter-option-inner">Disable</option>
@@ -549,7 +561,7 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group has-danger defcheck">
-                                                        <input name="shortchk" type="checkbox" id="chk7" class="filled-in chk-col-light-blue">
+                                                        <input name="shortchk" type="checkbox" id="chk7" class="filled-in chk-col-light-blue" ng-model="check7"  ng-change="stateChanged()">
                                                         <label class="lbl" for="chk7">Default</label>
                                                     </div>
                                                 </div>
@@ -571,7 +583,8 @@
                                                     <div class="form-group m-b-10">
                                                         <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
                                                         <label for="status">Apply to</label>
-                                                        <select class="form-control filter-option" name="applyTo" id="applyTo" ng-model="formdata.applyTo" ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.applyTo.$valid}">
+                                                        <select class="form-control filter-option" name="applyTo" id="applyTo" ng-model="formdata.applyTo" 
+                                                        ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.applyTo.$valid}" ng-readonly="check8">
                                                             <option class="filter-option-inner" value="0">select</option>
                                                             <option value="subtotal" class="filter-option-inner">Subtotal</option>
                                                             <option value="total items quantity">Total Items Quantity</option>
@@ -589,7 +602,7 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group has-danger defcheck">
-                                                        <input name="shortchk" type="checkbox" id="chk8" class="filled-in chk-col-light-blue">
+                                                        <input name="shortchk" type="checkbox" id="chk8" class="filled-in chk-col-light-blue" ng-model="check8"  ng-change="stateChanged()">
                                                         <label class="lbl" for="chk8">Default</label>
                                                     </div>
                                                 </div>
@@ -598,7 +611,7 @@
                                                     <div class="form-group m-b-10">
                                                         <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
                                                         <label for="con">Conditions</label>
-                                                        <select class="form-control filter-option" name="conditions" id="conditions" 
+                                                        <select class="form-control filter-option" name="conditions" id="conditions" ng-readonly="check9"
                                                         ng-model="formdata.conditions" ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.conditions.$valid}">
                                                             <option class="filter-option-inner" value="0">select</option>
                                                             <option value="is" class="filter-option-inner">is</option>
@@ -617,20 +630,20 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group has-danger defcheck">
-                                                        <input name="shortchk" type="checkbox" id="chk9" class="filled-in chk-col-light-blue">
+                                                        <input name="shortchk" type="checkbox" id="chk9" class="filled-in chk-col-light-blue" ng-model="check9"  ng-change="stateChanged()">
                                                         <label class="lbl" for="chk9">Default</label>
                                                     </div>
                                                 </div>
 
 
                                                 <label for="name">Values</label>
-                                                <div data-ng-repeat="val in values">
+                                                <div data-ng-repeat="val in values track by $index">
                                                     <div class="form-group m-b-10 col-md-9">
 
                                                         <span class="bar"></span>
 
                                                         <input type="text" class="form-control cat col-lg-10 col-sm-8 " id="values" name="values" ng-model="formdata.values[$index]"
-                                                        ng-required="true"
+                                                        ng-required="true" ng-readonly="check10"
                                                         ng-class="{ 'validationErr' : formData.$submitted && !formData.values.$valid}">
 
                                                         <div class="col-lg-2 m-b-10 col-sm-4">
@@ -649,7 +662,7 @@
 
                                                     <div class="col-md-3">
                                                         <div class="form-group has-danger defcheck">
-                                                            <input name="shortchk" type="checkbox" id="chk10" class="filled-in chk-col-light-blue">
+                                                            <input name="shortchk" type="checkbox" id="chk10" class="filled-in chk-col-light-blue" ng-model="check10"  ng-change="stateChanged()">
                                                             <label class="lbl" for="chk10">Default</label>
                                                         </div>
                                                     </div>
@@ -662,7 +675,7 @@
                                                     <div class="form-group m-b-10">
                                                         <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
                                                         <label for="conditionsStatus">These conditions are</label>
-                                                        <select class="form-control filter-option" name="conditionsStatus" id="conditionsStatus" 
+                                                        <select class="form-control filter-option" name="conditionsStatus" id="conditionsStatus" ng-readonly="check11"
                                                         ng-model="formdata.conditionsStatus" ng-required="true"
                                                         ng-class="{ 'validationErr' : formData.$submitted && !formData.conditionsStatus.$valid}">
                                                             <option class="filter-option-inner" value="0">choose</option>
@@ -676,7 +689,7 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group has-danger defcheck">
-                                                        <input name="shortchk" type="checkbox" id="chk11" class="filled-in chk-col-light-blue">
+                                                        <input name="shortchk" type="checkbox" id="chk11" class="filled-in chk-col-light-blue" ng-model="check11"  ng-change="stateChanged()">
                                                         <label class="lbl" for="chk11">Default</label>
                                                     </div>
                                                 </div>
@@ -694,7 +707,7 @@
                                                     <div class="form-group m-b-10">
                                                         <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
                                                         <label for="status">Apply to</label>
-                                                        <select class="form-control filter-option" name="actionApplyTo" id="actionApplyTo" 
+                                                        <select class="form-control filter-option" name="actionApplyTo" id="actionApplyTo" ng-readonly="check12"
                                                         ng-model="formdata.actionApplyTo"  ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.actionApplyTo.$valid}">
                                                             <option class="filter-option-inner" value="0">select</option>
 
@@ -707,7 +720,7 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group has-danger defcheck">
-                                                        <input name="shortchk" type="checkbox" id="chk12" class="filled-in chk-col-light-blue">
+                                                        <input name="shortchk" type="checkbox" id="chk12" class="filled-in chk-col-light-blue" ng-model="check12"  ng-change="stateChanged()">
                                                         <label class="lbl" for="chk12">Default</label>
                                                     </div>
                                                 </div>
@@ -718,13 +731,13 @@
                                                         <label for="con">Discounted Shipping Amount </label>
 
                                                         <span class="bar"></span>
-                                                        <input type="text" class="form-control" id="discountedShippingAmount"  name="discountedShippingAmount" 
+                                                        <input type="text" class="form-control" id="discountedShippingAmount"  name="discountedShippingAmount" ng-readonly="check13"
                                                         ng-model="formdata.discountAmount" ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.discountedShippingAmount.$valid}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group has-danger defcheck">
-                                                        <input name="shortchk" type="checkbox" id="chk13" class="filled-in chk-col-light-blue">
+                                                        <input name="shortchk" type="checkbox" id="chk13" class="filled-in chk-col-light-blue" ng-model="check13"  ng-change="stateChanged()">
                                                         <label class="lbl" for="chk13">Default</label>
                                                     </div>
                                                 </div>
@@ -739,7 +752,7 @@
                                                         <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
                                                         <label for="status">Stop Further Rule Processing</label>
                                                         <select class="form-control filter-option" name="ruleProcessing" id="ruleProcessing" ng-model="formdata.stopRuleProcess" ng-required="true"
-                                                        ng-class="{ 'validationErr' : formData.$submitted && !formData.ruleProcessing.$valid}">
+                                                        ng-class="{ 'validationErr' : formData.$submitted && !formData.ruleProcessing.$valid}" ng-readonly="check14">
                                                             <option class="filter-option-inner" value="0">choose</option>
 
                                                             <option value="yes" class="filter-option-inner">Yes</option>
@@ -751,7 +764,7 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group has-danger defcheck">
-                                                        <input name="shortchk" type="checkbox" id="chk14" class="filled-in chk-col-light-blue">
+                                                        <input name="shortchk" type="checkbox" id="chk14" class="filled-in chk-col-light-blue" ng-model="check14"  ng-change="stateChanged()">
                                                         <label class="lbl" for="chk14">Default</label>
                                                     </div>
                                                 </div>

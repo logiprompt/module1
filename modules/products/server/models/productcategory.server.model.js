@@ -28,8 +28,11 @@ var ProductCategorySchema = new Schema({
   urlKey: { type: String, default: '' },
   displayInMenu: { type: String, default: '' },
   displayInSidebar: { type: String, default: '' },
-  OLang: {}
+  imgfile: { type: String, default: '' },
+  oLang :{	  
+    type: Schema.Types.Mixed, 
+    default: {}
+  }
 
-});
-
+}, { minimize: false });
 module.exports = mongoose.model('productcategory', ProductCategorySchema);

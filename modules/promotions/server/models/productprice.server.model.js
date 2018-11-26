@@ -13,7 +13,8 @@ var ProductPriceSchema = new Schema({
 
   ruleName: { type: String, default: '' },
   description: { type: String, default: '' },
-  displayIn: { type: [String], default: '' },
+  displayIn: [{ type: Schema.Types.ObjectId, ref: 'Sys_country' }],
+  //displayIn: [{ type: Schema.Types.ObjectId, ref: 'Sys_country' }],
   startDate: { type: Date, default: Date.now },
   endDate: { type: Date, default: Date.now },
   createdDate: { type: Date, default: Date.now },

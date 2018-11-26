@@ -10,13 +10,25 @@
     $scope.productcategoryService = productcategoryService;
     $scope.productpriceService = productpriceService;
 
-    /******** Product price rule - arun */
+    /******** Product price rule - ck */
+
+    ///////////////////////////////////////////////////////////////////////////
+    $scope.getProductCountries = function () 
+    {
+      $scope.productpriceService.getProductCountries().then(function (result) 
+      {
+        $scope.country = result['data']; 
+      })
+    }
+    $scope.getProductCountries();
+/////////////////////////////////////////////////////////////////////////
 
     $scope.getProductPriceList = function () 
     {
       $scope.productpriceService.getProductPriceList().then(function (result) 
       {
-        $scope.productPriceList = result['data']
+        $scope.productPriceList = result['data'];
+        console.log( $scope.productPriceList);
         $scope.productPriceList.forEach(function (element) 
         {
           element.startDate = element.startDate.split("T")[0];
@@ -59,6 +71,8 @@ $scope.defaultLang=localStorage.getItem('defaultLang').toString();
         $scope.formdata.applyTo = $scope.userdetails.applyTo;
         $scope.formdata.conditions = $scope.userdetails.conditions;
         $scope.formdata.actionApplyTo = $scope.userdetails.actionApplyTo;
+
+        $scope.products=$scope.userdetails.product;
         $scope.formdata.discountAmount = $scope.userdetails.discountAmount;
         $scope.formdata.stopRuleProcess = $scope.userdetails.stopRuleProcess;
         $scope.formdata.displayIn = $scope.userdetails.displayIn;
@@ -88,6 +102,8 @@ $scope.defaultLang=localStorage.getItem('defaultLang').toString();
       })
     }
     $scope.getCategoryItems();
+    console.log(4657890);
+
 // console.log(98799);
     $scope.treeOptions = {
       nodeChildren: "childIDs",
@@ -104,14 +120,10 @@ $scope.defaultLang=localStorage.getItem('defaultLang').toString();
       }
     }
 
-
-
       $scope.showSelected = function(node){
      //console.log(node);
       $scope.stypename=node._id;
-
       }
-
 
     $scope.getProductsItems = function () 
     {
@@ -132,6 +144,16 @@ $scope.defaultLang=localStorage.getItem('defaultLang').toString();
 
     $scope.AddProductPrice = function () 
     {
+
+      $scope.chkValue=[];
+     if($scope.formdata.applyTo=='product')
+     {
+      var checkedValue = document.querySelectorAll('.rowtxtchks:checked');
+      for(var i=0;i<checkedValue.length;i++)
+      {
+        $scope.chkValue.push(checkedValue[i].value);
+      }
+    }
       if($scope.formData.$valid)
       {     
         var data = {
@@ -140,7 +162,7 @@ $scope.defaultLang=localStorage.getItem('defaultLang').toString();
                       "startDate": $scope.formdata.startDate,
                       "endDate": $scope.formdata.endDate,
                       "status": $scope.formdata.status,
-                      //"product": $scope.formdata.status,
+                      "product": $scope.chkValue,
                       "applyTo": $scope.formdata.applyTo,
                       "conditions": $scope.formdata.conditions,
                       "actionApplyTo": $scope.formdata.actionApplyTo,
@@ -149,6 +171,7 @@ $scope.defaultLang=localStorage.getItem('defaultLang').toString();
                       "displayIn": $scope.formdata.displayIn,
                       "image": $scope.imgss   
                     }
+                    
         $scope.productpriceService.addProductPrice(data).then(function (result) 
         {
             if(result.statusText = "OK")
@@ -163,7 +186,17 @@ $scope.defaultLang=localStorage.getItem('defaultLang').toString();
     }
 
     $scope.updateProductPrice = function(){
+      $scope.chkValue=[];
+      if($scope.formdata.applyTo=='product')
+      {
+      var checkedValue = document.querySelectorAll('.rowtxtchks:checked');
+      for(var i=0;i<checkedValue.length;i++)
+      {
+        $scope.chkValue.push(checkedValue[i].value);
+      }
+    }
       if($scope.formData.$valid && $scope.formdata.status!=0){
+        
         if (localStorage.getItem("currentLang") == 'en') {
         var data = {
           "ruleName": $scope.formdata.ruleName,
@@ -171,6 +204,7 @@ $scope.defaultLang=localStorage.getItem('defaultLang').toString();
           "startDate": $scope.formdata.startDate,
           "endDate": $scope.formdata.endDate,
           "status": $scope.formdata.status,
+          "product": $scope.chkValue,
           "applyTo": $scope.formdata.applyTo,
           "conditions": $scope.formdata.conditions,
           "actionApplyTo": $scope.formdata.actionApplyTo,
@@ -189,6 +223,7 @@ $scope.defaultLang=localStorage.getItem('defaultLang').toString();
           "startDate": $scope.formdata.startDate,
           "endDate": $scope.formdata.endDate,
           "status": $scope.formdata.status,
+          "product": $scope.chkValue,
           "applyTo": $scope.formdata.applyTo,
           "conditions": $scope.formdata.conditions,
           "actionApplyTo": $scope.formdata.actionApplyTo,

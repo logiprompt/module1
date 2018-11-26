@@ -28,11 +28,24 @@
     //   }
     //   //console.log($scope.choices.length);
     // };
+   
+  $scope.getShippingCountryList = function () {
+    //console.log(110);
+    $scope.shippingpriceService.getShippingCountryList().then(function (result) {
+      $scope.list=result.data;
+  // console.log($scope.list);
+   
+    })
+  }
+  $scope.getShippingCountryList();
 
     $scope.values = [{}]; 
-    $scope.addNewValuesEdit = function () {
+    $scope.addNewValuesEdit = function () { 
+     
       var newItemNo1 = $scope.values.length + 1; 
-      $scope.values.push({ 'id': 'values' + newItemNo1 });
+     
+      $scope.values.push({ 'id': 'values' + newItemNo1 }); 
+      $scope.formdata.values[newItemNo1-1]='';
     };
 
     $scope.addNewValues = function () 
@@ -50,7 +63,8 @@
     //get Item List
     $scope.getShippingPriceList = function () {
       $scope.shippingpriceService.getShippingPriceList().then(function (result) {
-        $scope.ShippingPriceList = result['data']
+        $scope.ShippingPriceList = result['data'];
+        //console.log( $scope.ShippingPriceList);
         $scope.ShippingPriceList.forEach(function (element) {
           element.startDate = element.startDate.split("T")[0];
           element.endDate = element.endDate.split("T")[0];
@@ -142,7 +156,9 @@
        var details=result.data;
         if (result.statusText = "OK")
         {     
+
           $scope.status =details.status.toString();    
+          $scope.userdetails1 = result.data; 
           if(angular.equals($scope.currentLan, $scope.defaultLang))
           {
             $scope.userdetails = result.data;
@@ -166,9 +182,14 @@
         $scope.formdata.stopRuleProcess = $scope.userdetails.stopRuleProcess;
         $scope.formdata.displayIn = $scope.userdetails.displayIn;
         $scope.formdata.actionApplyTo = $scope.userdetails.actionApplyTo;  
-        $scope.formdata.conditionsStatus = $scope.userdetails.conditionsStatus;  
-        $scope.formdata.values = $scope.userdetails.values; 
-        $scope.values = $scope.userdetails.values;  
+        $scope.formdata.conditionsStatus = $scope.userdetails.conditionsStatus;
+          $scope.values = $scope.userdetails.values;  
+       // $scope.vallen=$scope.values.length;
+       // for(var i=1;i<=$scope.vallen;$i++){
+        $scope.formdata.values= $scope.userdetails.values; 
+       // console.log($scope.formdata.values[i]);
+        //}
+        
         }
           else
           {            
@@ -184,10 +205,10 @@
     }
 
     $scope.updateShippingPriceRule = function(){
-      console.log(436);
+     // console.log(436);
       if($scope.formData.$valid && $scope.formdata.status!=0){
         // var data=$scope.formdata;
-       console.log(657);
+     //  console.log(657);
      if (localStorage.getItem("currentLang") == 'en') {
          var data = {
            "ruleName": $scope.formdata.ruleName,
@@ -232,7 +253,7 @@
           }
 
         }
-         console.log(data);
+       //  console.log(data);
 
       $scope.shippingpriceService.updateShippingPriceRule(data).then(function (result) {
        // console.log(result);
@@ -347,6 +368,60 @@
     setTimeout(getActionBtns, 2000);
 
 
+
+    $scope.stateChanged=function(){
+      var details= $scope.userdetails1;
+     
+    if($scope.check1){
+      $scope.formdata.ruleName = $scope.userdetails1.ruleName;
+    }
+    else{
+      $scope.formdata.ruleName =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].ruleName : details.ruleName;
+    
+    }
+    
+    if($scope.check2){
+      $scope.formdata.description = $scope.userdetails1.description;
+    }
+    else{
+      $scope.formdata.description = $scope.currentLan in details.oLang  ?details.oLang[ $scope.currentLan].description :  details.description;
+    
+    }
+    
+    if($scope.check3){
+    
+      console.log($scope.userdetails1);
+     var defimg=[];
+     defimg='/'+ $scope.userdetails1.image;
+      document.getElementById("imgfiles").src =defimg;
+      $scope.imgss=$scope.userdetails1.image;
+    
+    }
+    else{
+      $scope.imgss =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].$scope.imgss:details.image ;
+    }
+    
+    
+    
+    
+    if($scope.check4){
+          $scope.custom = $scope.userdetails.custom;
+    
+    }
+    else{
+      $scope.custom =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].custom :details.custom;
+    
+    }
+    if($scope.check5){
+      $scope.status =details.status.toString(); 
+    
+    }
+    else{
+    //$scope.status =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].status :details.status;
+    
+    }
+    
+    }
 
 
     function readFile(ev) {

@@ -5,8 +5,10 @@
  */
 var path = require('path'),
 multer = require('multer'),
-    shippingPrice = require('../models/shippingprice.server.model.js'),
-    errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
+mongoose = require('mongoose'),
+shippingPrice = require('../models/shippingprice.server.model.js'),
+Country= mongoose.model('Sys_country'),
+errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
 /* add promotion product price rule*/
 exports.addshippingPrice = function (req, res, next) {
@@ -59,9 +61,22 @@ exports.addshippingPrice = function (req, res, next) {
     // });
 }
 
+// get list of all countries
+exports.getShippingCountryList = function (req, res, next) {
+    Country.find().exec(function (err, data) {
+        if (err) {
+            return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+            res.json(data);
+        }
+    })
+}
+
 // get list of all shipping price rules
 exports.getShippingPriceList = function (req, res, next) {
-    shippingPrice.find().exec(function (err, data) {
+    shippingPrice.find().populate({ path: 'displayIn', select: 'country', model:'Sys_country' }).exec(function (err, data) {
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
@@ -94,7 +109,7 @@ exports.deleteShippingPrice = function (req, res, next) {
 exports.delChecked = function (request, response) {
 
     var arr = request.query.itemId;
-    //console.log(arr);
+console.log(arr);
     shippingPrice.deleteMany({ _id: { '$in': arr } }).exec(function (err, data) {
         if (err) throw err;
         response.json({

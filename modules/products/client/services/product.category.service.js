@@ -30,8 +30,9 @@
          */
 
         productcategory.addSubCategory = function (data) {
+            console.log(111111);
             return $http({
-                url: '/api/productcategory/addSubCategory',
+                url: '/api/productcategory/addSubCategorys',
                 method: "POST",
                 data: data
             });

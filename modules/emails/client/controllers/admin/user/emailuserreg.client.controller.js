@@ -201,7 +201,7 @@ $scope.delpage=function(){
   }
 
   var userId=$scope.chkValue;
-console.log(userId);
+//console.log(userId);
   swal({
     title: 'Are you sure?',
     text: "You want to delete checked items!",

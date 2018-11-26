@@ -6,7 +6,7 @@
   CategoryController.$inject = ['$scope', '$http', '$state', '$location', 'CmsService'];
   function CategoryController($scope, $http, $state, $location, CmsService) {
     $scope.formdata = {};
-    $scope.productcategoryService = CmsService;
+    $scope.CmsService = CmsService;
   
     $scope.generateSlgURL = function(){
    	 var replaceSpacesText = $scope.formdata.category;
@@ -20,7 +20,7 @@
          * description : Get all category items for the list
          */
     $scope.getCategoryItems = function () {
-      $scope.productcategoryService.getCategoryItems().then(function (result) {
+      $scope.CmsService.getCategoryItems().then(function (result) {
         $scope.categoryItems = result['data'];
         $scope.categoryItems.forEach(function (element) {
           element.created = element.created.split("T")[0];
@@ -33,47 +33,103 @@
          * Function : insCategory
          * description : Add new category
          */
-    $scope.insCategory = function () {
-      if ($scope.category == 1) {
+    $scope.insCategory = function () 
+    {
+      if ($scope.category == 1) 
+      {
         $scope.addNewCategory();
-      } else {
+      } 
+      else 
+      {
         $scope.addSubCategory();
       }
     }
 
+
     $scope.addNewCategory = function () {
     	if($scope.catform.$valid){
-      $scope.formdata.level = $scope.category;
-      $scope.productcategoryService.addCategory($scope.formdata).then(function (result) {
-        $location.path('/settings/cmscategory');
+
+      //$scope.formdata.level = $scope.category;
+
+      var data = {
+        "category": $scope.formdata.category,
+        "level":  $scope.category,
+        "description": $scope.formdata.description,
+        "category_url": $scope.formdata.category_url,
+        "category_metadesc": $scope.formdata.desc,
+        "category_metakey": $scope.formdata.key,
+        "menu": $scope.formdata.dispmenu,
+        "sidebar": $scope.formdata.sidebar,
+        "status": $scope.formdata.status,
+        "image": $scope.imgss   
+      }
+
+      $scope.CmsService.addCategory(data).then(function (result) {
+        $location.path('cms/category');
       })
     	}
     }
 
     $scope.addSubCategory = function () {
     	if($scope.catform.$valid){
-      $scope.formdata.category = $scope.formdata.subcategory
+      //$scope.formdata.category = $scope.formdata.subcategory;
       $scope.formdata.parentId = $scope.selectedCategoryId;
-      $scope.formdata.level = $scope.category;
-      $scope.formdata.extrafieldGroup = $scope.selectedExtrafieldGroup;
-      $scope.productcategoryService.addSubCategory($scope.formdata).then(function (result) {
-        $location.path('/settings/cmscategory');
+      //$scope.formdata.level = $scope.category;
+      
+      var data = {
+        "category": $scope.selectedCategoryId,
+        "level": $scope.category,
+        "parentId": $scope.selectedCategory,
+        "description": $scope.formdata.description,
+        "category_url": $scope.formdata.category_url,
+        "category_metadesc": $scope.formdata.desc,
+        "category_metakey": $scope.formdata.key,
+        "menu": $scope.formdata.dispmenu,
+        "sidebar": $scope.formdata.sidebar,
+        "status": $scope.formdata.status,
+        "image": $scope.imgss   
+      }
+
+
+     // $scope.formdata.extrafieldGroup = $scope.selectedExtrafieldGroup;
+      $scope.CmsService.addSubCategory(data).then(function (result) {
+        $location.path('cms/category');
       })
     	}
     }
-
-  
 
     /*
         * Function : deleteCategory
         * description : delete a category
         */
     $scope.deleteCategory = function (categoryId) {
-      $scope.productcategoryService.deleteCategory(categoryId).then(function (result) {
+      swal({
+        title: 'Are you sure?',
+        text: "You want to delete this !",
+        type: 'warning',
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result) {
+
+      $scope.CmsService.deleteCategory(categoryId).then(function (result) {
+        if (result.statusText = "OK") {
+          swal(
+            'Deleted!',
+            'Category has been deleted.',
+            'success'
+          )
+          //$state.reload();
         $scope.getCategoryItems();
+      } else {
+
+      }
       })
     }
-
+  })
+}
     /*
         * Function : selectionChange
         * description : radio button change
@@ -90,14 +146,6 @@
       $scope.selectedCategoryId = selectedCategory;
     }
 
-
-
-
-
-
-
-
-
     /////////////////////defaultLang//////////
     $http({
       url: '/api/admin/getdefaultLang',
@@ -113,11 +161,8 @@
       });
     $scope.formdata.catlang = '0';
     $scope.formdata.extra = '0';
-    $scope.formdata.menu = '0';
-    $scope.formdata.sidebar = '0';
-
-
-
+    //$scope.formdata.menu = '0';
+    //$scope.formdata.sidebar = '0';
 
     $scope.iconw = function () {
       document.getElementById('imgfile').click();
@@ -156,85 +201,84 @@
     $scope.validation = function () {
       var error = 0;
       $scope.rmerrorclass();
-      if ($scope.formdata.category == '' || angular.isUndefined($scope.formdata.category)) {
+      if ($scope.formdata.category == '' || angular.isUndefined($scope.formdata.category)) 
+      {
         $scope.adderrorclass(".cat");
         $scope.taberrorclass(".tcat");
         error = 1;
       }
-
       return error;
     }
 
-
-    $scope.openLangModel = function (id) {
-
-      $scope.formdata.id = id;
+    $scope.openLangModel = function (id) 
+    {
+     $scope.formdata.id = id;
     }
 
-
-
-
-
     function getActionBtns() {
-
-
       $scope.addpage = document.querySelectorAll(".add-action");
       $scope.addpage[0].addEventListener("click", $scope.newpage, false);
-
       $scope.editpage = document.querySelectorAll(".edit-action");
       $scope.editpage[0].addEventListener("click", $scope.editpages, false);
-
       var delpage = document.querySelectorAll(".delete-action");
       delpage[0].addEventListener("click", $scope.delpage, false);
-
-
-
     }
     $scope.chkall = function () {
       $scope.editpage[0].removeAttribute("href");
-
     }
     $scope.addchkval = function (linkid) {
       var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
-      console.log(linkid)
-      console.log(checkedValue[0])
       if (checkedValue.length > 1) {
         $scope.editpage[0].removeAttribute("href");
       }
       else {
-
         $scope.editpage[0].setAttribute("href", "/cms/editcat/" + linkid);
       }
-
     }
     $scope.chk = {};
-
     $scope.newpage = function () {
       $state.go('addcategory');
     }
     $scope.editpages = function () {
-
       var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
       if (checkedValue.length > 0) {
         if ($scope.editpage[0].getAttribute("href")) {
           document.location = $scope.editpage[0].getAttribute("href");
         }
       }
-
-
     }
     $scope.chkValue = [];
 
 
     $scope.delpage = function () {
       $scope.chkValue = [];
-
-      //$state.go('addlanguage');
       var checkedValue = document.querySelectorAll('.rowtxtchk:checked');
       for (var i = 0; i < checkedValue.length; i++) {
         $scope.chkValue.push(checkedValue[i].value);
       }
-
+      var categoryId = $scope.chkValue;
+      swal({
+        title: 'Are you sure?',
+        text: "You want to delete checked items!",
+        type: 'warning',
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result) {
+          $scope.CmsService.delCheckedCmscategory(categoryId).then(function (result) {
+            if (result.statusText = "OK") {
+              swal('Deleted!',
+                    'Cms Category has been deleted.',
+                    'success');
+              $state.reload();
+              //  $scope.getUser();
+            } else {
+            }
+          })
+        }
+      })
     }
     setTimeout(getActionBtns, 1500);
   }
