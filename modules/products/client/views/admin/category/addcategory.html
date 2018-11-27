@@ -514,7 +514,7 @@
                                             <div class="form-group m-b-10">
                                                 <label for="input1">Extra field group</label>
                                                 <!-- <textarea class="form-control cat" id="extra" type="text" ng-model="formdata.desc" rows="5"></textarea>-->
-                                                <select multiselectDropdown class="selectpicker form-control" multiple data-style="form-control btn-info" ng-model="selectedExtrafieldGroup" ng-options="item._id as item.groupname for item in extrafieldGroupItems">
+                                                <select multiselectDropdown class="selectpicker form-control" multiple data-style="form-control btn-info" ng-model="selectedExtrafieldGroup" ng-options="item._id as item.groupname for item in extrafieldGroupItems" name="selectedExtrafieldGroup" id="selectedExtrafieldGroup" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.selectedExtrafieldGroup.$valid}">
                                                 </select>
 
                                             </div>

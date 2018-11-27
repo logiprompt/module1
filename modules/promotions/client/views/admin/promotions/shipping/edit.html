@@ -641,7 +641,7 @@
                                                     <div class="form-group m-b-10 col-md-9">
 
                                                         <span class="bar"></span>
-
+                              
                                                         <input type="text" class="form-control cat col-lg-10 col-sm-8 " id="values" name="values" ng-model="formdata.values[$index]"
                                                         ng-required="true" ng-readonly="check10"
                                                         ng-class="{ 'validationErr' : formData.$submitted && !formData.values.$valid}">
@@ -662,8 +662,8 @@
 
                                                     <div class="col-md-3">
                                                         <div class="form-group has-danger defcheck">
-                                                            <input name="shortchk" type="checkbox" id="chk10" class="filled-in chk-col-light-blue" ng-model="check10"  ng-change="stateChanged()">
-                                                            <label class="lbl" for="chk10">Default</label>
+                                                            <input name="shortchk" type="checkbox" id="chk10_{{$index}}"  class="filled-in chk-col-light-blue" ng-model="check10"  ng-change="stateValueDefault($index)">
+                                                            <label class="lbl" for="chk10_{{$index}}">Default</label>
                                                         </div>
                                                     </div>
                                                 </div>

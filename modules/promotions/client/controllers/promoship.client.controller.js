@@ -7,10 +7,11 @@
   function PromoshipController($scope, $http, $state, $stateParams, $location, shippingpriceService) {
 
     $scope.formdata = {};
+   
     $scope.shippingpriceService = shippingpriceService;
     $scope.currentLan=localStorage.getItem('currentLang').toString();
     $scope.defaultLang=localStorage.getItem('defaultLang').toString();
-   
+  // var hidden={};
     /* shipping prod rule */
 
     // $scope.formdata.values ='0';
@@ -152,13 +153,15 @@
         //$scope.formdata = result['data'];
        // $scope.formdata.startDate = $scope.formdata.startDate.split("T")[0];
        // $scope.formdata.endDate = $scope.formdata.endDate.split("T")[0];
-
+    //  hidden= result.data.values;console.log(hidden);
        var details=result.data;
+      
         if (result.statusText = "OK")
         {     
 
           $scope.status =details.status.toString();    
           $scope.userdetails1 = result.data; 
+          $scope.hidden= $scope.userdetails1.values;
           if(angular.equals($scope.currentLan, $scope.defaultLang))
           {
             $scope.userdetails = result.data;
@@ -187,6 +190,7 @@
        // $scope.vallen=$scope.values.length;
        // for(var i=1;i<=$scope.vallen;$i++){
         $scope.formdata.values= $scope.userdetails.values; 
+        
        // console.log($scope.formdata.values[i]);
         //}
         
@@ -390,39 +394,135 @@
     
     if($scope.check3){
     
-      console.log($scope.userdetails1);
+     // console.log($scope.userdetails1);
      var defimg=[];
      defimg='/'+ $scope.userdetails1.image;
       document.getElementById("imgfiles").src =defimg;
       $scope.imgss=$scope.userdetails1.image;
     
     }
-    else{
-      $scope.imgss =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].$scope.imgss:details.image ;
-    }
+    
     
     
     
     
     if($scope.check4){
-          $scope.custom = $scope.userdetails.custom;
-    
+     
+      //$scope.formdata.displayIn = $scope.userdetails.displayIn;
+     // $scope.formdata.displayIn =details.displayIn.toString(); 
+  //   $scope.formdata.displayIn = $scope.userdetails.displayIn;
+   
+   $('.selectpicker').selectpicker('val',  $scope.userdetails1.displayIn); 
+   $('.selectpicker').selectpicker('render');
+
+   // $scope.formdata.displayIn = $scope.userdetails.displayIn;
+    //
+
+     // console.log( $scope.formdata.displayIn );
     }
     else{
-      $scope.custom =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].custom :details.custom;
-    
+    //  $scope.formdata.displayIn =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].displayIn :details.displayIn;
+    $scope.formdata.displayIn =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].displayIn :details.displayIn;
     }
     if($scope.check5){
-      $scope.status =details.status.toString(); 
+     // $scope.status =details.status.toString(); 
+     $scope.formdata.startDate = $scope.userdetails1.startDate;
     
     }
     else{
     //$scope.status =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].status :details.status;
-    
-    }
-    
+    $scope.formdata.startDate=$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].startDate :details.startDate;
     }
 
+    if($scope.check6){
+      
+      $scope.formdata.endDate = $scope.userdetails1.endDate;
+     
+     }
+     else{
+   
+     $scope.formdata.endDate=$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].endDate :details.endDate;
+     }
+
+     if($scope.check7){
+       $scope.formdata.status =details.status.toString(); 
+     // $scope.formdata.endDate = $scope.userdetails.endDate;
+     
+     }
+     else{
+    $scope.formdata.status =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].status :details.status;
+    // $scope.formdata.endDatev=$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].endDate :details.endDate;
+     }
+     if($scope.check8){
+      $scope.formdata.applyTo =details.applyTo.toString(); 
+    // $scope.formdata.endDate = $scope.userdetails.endDate;
+    
+    }
+    else{
+   $scope.formdata.applyTo =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].applyTo :details.applyTo;
+   // $scope.formdata.endDatev=$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].endDate :details.endDate;
+    }
+    if($scope.check9){
+      $scope.formdata.conditions =details.conditions.toString(); 
+    // $scope.formdata.endDate = $scope.userdetails.endDate;
+    
+    }
+    else{
+   $scope.formdata.conditions =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].conditions :details.conditions;
+   // $scope.formdata.endDatev=$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].endDate :details.endDate;
+    }
+  //   if($scope.check10){
+  //   //  $scope.formdata.values =details.values.toString(); 
+  //  // $scope.formdata.values = $scope.userdetails.values;
+  //  //$scope.hidden= $scope.userdetails.values; 
+
+    
+  //   }
+  //   else{
+  // // $scope.formdata.conditions =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].conditions :details.conditions;
+  //   $scope.formdata.values=$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].values :details.values;
+  //   }
+
+    if($scope.check11){
+      $scope.formdata.conditionsStatus =details.conditionsStatus.toString(); 
+    // $scope.formdata.endDate = $scope.userdetails.endDate;
+    
+    }
+    else{
+   $scope.formdata.conditionsStatus =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].conditionsStatus :details.conditionsStatus;
+   // $scope.formdata.endDatev=$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].endDate :details.endDate;
+    }
+    if($scope.check12){
+      $scope.formdata.actionApplyTo =details.actionApplyTo.toString(); 
+    // $scope.formdata.endDate = $scope.userdetails.endDate;
+    
+    }
+    else{
+   $scope.formdata.actionApplyTo =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].actionApplyTo :details.actionApplyTo;
+   // $scope.formdata.endDatev=$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].endDate :details.endDate;
+    }
+    if($scope.check13){
+     // $scope.formdata.actionApplyTo =details.actionApplyTo.toString(); 
+   $scope.formdata.discountAmount = $scope.userdetails1.discountAmount;
+    
+    }
+    else{
+  // $scope.formdata.actionApplyTo =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].actionApplyTo :details.actionApplyTo;
+   $scope.formdata.discountAmount=$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].discountAmount :details.discountAmount;
+    }
+
+    if($scope.check14){
+       $scope.formdata.stopRuleProcess =details.stopRuleProcess.toString(); 
+    //$scope.formdata.discountAmount = $scope.userdetails.discountAmount;
+     
+     }
+     else{
+      $scope.formdata.stopRuleProcess =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].stopRuleProcess :details.stopRuleProcess;
+      //$scope.formdata.discountAmount=$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].discountAmount :details.discountAmount;
+     }
+    
+    }
+   
 
     function readFile(ev) {
 
@@ -445,6 +545,11 @@
 
     }
 
-
+    $scope.stateValueDefault=function(pos){
+      console.log(pos);
+      $scope.values[pos]=$scope.hidden[pos];
+      console.log($scope.values[pos]);
+    
+    }
   }
 }());

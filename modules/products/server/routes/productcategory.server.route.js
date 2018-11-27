@@ -17,6 +17,7 @@ module.exports = function (app) {
 
     app.route('/api/productcategory/getCategoryItems').get(productcategory.getCategoryItems);
 
-    app.route('/api/productcategory/getCategoryDetails/:categoryId').get(productcategory.getCategoryDetails);
-
+   // app.route('/api/productcategory/getCategoryDetails').all().get(productcategory.getCategoryDetails);
+    app.route('/api/productcategory/getCategoryDetails').all()
+    .get(productcategory.getCategoryDetails);
 };

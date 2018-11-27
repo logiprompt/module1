@@ -9,8 +9,8 @@ var cmsPolicy = require('../policies/cms.server.policy'),
 module.exports = function(app) {
   // Cms Routes
   app.route('/api/cms/post').all(/*cmsPolicy.isAllowed*/)
-    .get(cms.list)
-    .post(cms.create);
+  .get(cms.list)
+  .post(cms.create);
   app.route('/api/cms/post/:id').all(/*cmsPolicy.isAllowed*/).delete(cms.deletepost);
   app.route('/api/cms/post/:id').all(/*cmsPolicy.isAllowed*/).get(cms.getpostById);
   app.route('/api/cms/post/:id').all(/*cmsPolicy.isAllowed*/).put(cms.updatepostById);

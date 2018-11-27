@@ -59,7 +59,6 @@ exports.addProductPrice = function (req, res, next) {
 //             });
 //         } else {
 //             res.json(data);
-//            // console.log(data);
 //         }
 //     })
 // }

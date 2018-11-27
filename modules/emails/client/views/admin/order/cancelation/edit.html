@@ -204,7 +204,7 @@ width:60%;
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Cancelation template (Edit) ID 1</h4>
+                                <h4 class="card-title">Cancelation template (Edit)</h4>
                                 <div class="col-lg-12">
                      
                                 <!-- <h4 class="card-title">Vertical Tab</h4>
@@ -314,13 +314,13 @@ width:60%;
                                                              <input name="shortchk" type="checkbox" id="chk5" class="filled-in chk-col-light-blue" ng-model="chk5"  ng-change="stateChanged()"><label class="lbl" for="chk5">Default</label>
                                                      </div>
                                                  </div>
-                                                 
+                                                 <input type="hidden" ng-model="status" name="status" >
                                                  <div class="col-md-9">
                                                      <div class="form-group m-b-10">
                                                          <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
                                                          <label for="input1"> Status</label>
                                                          <select class="form-control filter-option" name="status" id="status"
-                                                         ng-model="status" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && (!formdata.status.$valid || status==0 )}"  ng-readonly="chk8">
+                                                         ng-model="status" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && (!formdata.status.$valid || status=='' )}"  ng-disabled="chk8">
                                                                 <option class="filter-option-inner" value="0">choose</option>
          
                                                             <option value="1" class="">Active</option>  

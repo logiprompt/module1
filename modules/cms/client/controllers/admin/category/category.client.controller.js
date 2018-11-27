@@ -14,7 +14,8 @@
    	 $scope.formdata.category_url = "product/"+$scope.formdata.category_slug+"_"+Number(new Date())+".html"
     }
     
-    
+    $scope.currentLan=localStorage.getItem('currentLang').toString();
+$scope.defaultLang=localStorage.getItem('defaultLang').toString();
     /*
          * Function : getCategoryItems
          * description : Get all category items for the list

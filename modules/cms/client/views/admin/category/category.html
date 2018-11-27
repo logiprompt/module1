@@ -74,8 +74,7 @@
                                             <input type="checkbox" id="checkAll" class="checkAll" ng-model="checkalltxt" ng-click="chkall()"
                                             />
                                             <label for="checkAll"></label>
-                                        </th>
-                                        <th>Sl</th>
+                                        Sl</th>
                                         <th>Category Image</th>
                                         <th>Category </th>
                                         <th>Created By </th>
@@ -92,12 +91,11 @@
                                             <!-- {{$index+1}} -->
                                             <input type="checkbox" id="basic_checkbox_{{$index+1}}" class="rowtxtchk" value="{{item._id}}" ng-click="addchkval(item._id)" />
                                             <label for="basic_checkbox_{{$index+1}}"></label>
-                                        </td>
-                                        <td>{{$index+1}}</td>
+                                        {{$index+1}}</td>
                                         <td>
                                             <img class="cntimg" ng-src="/{{item.image}}">
                                         </td>
-                                        <td>{{item.category}}</td>
+                                        <td>{{item.oLang[currentLan].category ? item.oLang[currentLan].category :item.category}}</td>
                                         <td>{{item.created_user}}</td>
                                         <td>{{item.created}}</td>
                                         <td>{{item.status}}</td>

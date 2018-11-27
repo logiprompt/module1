@@ -59,8 +59,9 @@
 
         productcategory.getCategoryDetails = function (categoryId) {
             return $http({
-                url: '/api/productcategory/getCategoryDetails/' + categoryId,
-                method: "GET"
+                url: '/api/productcategory/getCategoryDetails',
+                method: "GET",
+				params:{'categoryId':categoryId}
             });
         }
 

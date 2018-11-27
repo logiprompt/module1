@@ -108,6 +108,7 @@
     $scope.getPrdReviewSubById = function (userId) {
       $scope.prdReviewSubService.getPrdReviewSubById(userId).then(function (result) {
         var details = result.data;
+        $scope.userdetails1 = result.data;
         if (result.statusText = "OK") {
           $scope.status = details.status.toString();
           if (angular.equals($scope.currentLan, $scope.defaultLang)) {
@@ -179,6 +180,47 @@
     }
 
     ///////////////////////////////////////////////////////////////////////
+    $scope.stateChanged = function () {
+      var details = $scope.userdetails1;
+      if ($scope.check1) {
+        if ($scope.check1) {
+          $scope.name = $scope.userdetails1.name;
+        }
+        else {
+          $scope.name = $scope.currentLan in details.oLang ? details.oLang[$scope.currentLan].name : details.name;
+        }
+      }
+      if ($scope.check2) {
+        if ($scope.check2) {
+          $scope.subject = $scope.userdetails1.subject;
+        }
+        else {
+          $scope.subject = $scope.currentLan in details.oLang ? details.oLang[$scope.currentLan].subject : details.subject;
+        }
+      }
+      if ($scope.check3) {
+        if ($scope.check3) {
+          $scope.content = $scope.userdetails1.content;
+        }
+        else {
+          $scope.content = $scope.currentLan in details.oLang ? details.oLang[$scope.currentLan].content : details.content;
+        }
+      }
+      if ($scope.check4) {
+        if ($scope.check4) {
+          $scope.custom = $scope.userdetails.custom;
+        }
+        else {
+          $scope.custom = $scope.currentLan in details.oLang ? details.oLang[$scope.currentLan].custom : details.custom;
+        }
+      }
+      if ($scope.chk8) {
+        $scope.status = $scope.userdetails.status.toString();
 
+      }
+      // else {
+      //   //$scope.status =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].status :details.status;
+      // }
+    }
   }
 }());

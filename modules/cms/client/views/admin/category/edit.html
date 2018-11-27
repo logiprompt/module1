@@ -304,25 +304,6 @@
                                                 <span class="hidden-xs-down">Navigation</span>
                                             </a>
                                         </li>
-
-
-                                        <!-- <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#extrafieldgroup" role="tab" aria-selected="false">
-                                                <span class="hidden-xs-down">Extra field group</span>
-                                            </a>
-                                        </li>
-
-                                        <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#products" role="tab" aria-selected="false">
-                                                <span class="hidden-xs-down">Products</span>
-                                            </a>
-                                        </li>
-
-                                        <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#display" role="tab" aria-selected="false">
-                                                <span class="hidden-xs-down">Display settings</span>
-                                            </a>
-                                        </li> -->
                                         <li class="nav-item">
                                             <a class="nav-link" data-toggle="tab" href="#logs" role="tab" aria-selected="false">
                                                 <span class="hidden-xs-down">Logs</span>
@@ -334,50 +315,30 @@
                                     <div class="tab-content col-lg-12">
 
                                         <div class="tab-pane active show" id="content" role="tabpanel">
-                                            <!--   <div class="form-group">
-                                                    <label class="control-label">First Name</label>
-                                                    <input type="text" id="firstName" class="form-control" placeholder="John doe">
-                                                    <small class="form-control-feedback"> This is inline help </small> </div> -->
                                             <div class="row p-20">
                                                 <div class="col-md-9">
                                                     <div class="form-group m-b-10">
                                                         <label for="input1"> category</label>
                                                         <input type="text" class="form-control category" id="category" ng-change="generateSlgURL()"  ng-required="true"
-                                                        ng-model="formdata.category" name="category" ng-change="generateSlgURL()" ng-class="{ 'validationErr' : catform.$submitted && !catform.category.$valid}">
+                                                        ng-model="formdata.category" name="category"  ng-readonly="check1" ng-class="{ 'validationErr' : catform.$submitted && !catform.category.$valid}">
 
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-3">
                                                     <div class="form-group has-danger defcheck">
-                                                        <input name="shortchk" type="checkbox" id="chk1" class="filled-in chk-col-light-blue">
+                                                        <input name="shortchk" type="checkbox" id="chk1" class="filled-in chk-col-light-blue" ng-model="check1"  ng-change="stateChanged()">
                                                         <label class="lbl" for="chk1">Default</label>
                                                     </div>
                                                 </div>
-                                                <!-- <div class="col-md-9">
-                                                    <div class="form-group m-b-10">
-                                                        <label for="input1"> Sub category</label>
-                                                        <div id="treeview2" class=""></div>
-
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group has-danger defcheck">
-                                                        <input name="shortchk" type="checkbox" id="chk2" class="filled-in chk-col-light-blue">
-                                                        <label class="lbl" for="chk2">Default</label>
-                                                    </div>
-                                                </div> -->
-
-
                                                 <div class="col-md-9">
                                                     <div class="form_group m-b-10">
-
 
                                                         <label for="first_name" id="labelimg">Category image</label>
 
                                                         <div class="fluid left_c_input file_wrap m-b-10">
                                                             <div class="write_textbox">
-                                                                <input type="text" readonly placeholder="" class="txtFilepath" style="border:none !important;" name="name{{$index}}">
+                                                                <input type="text" ng-readonly="check2" placeholder="" class="txtFilepath" style="border:none !important;" name="name{{$index}}">
                                                             </div>
                                                             <div class="iconw" ng-click="iconw()">
                                                                 <i class="fa fa-download"></i>Upload</div>
@@ -396,13 +357,9 @@
                                                                                         <i class="icon-magnifier"></i>
                                                                                     </a>
                                                                                 </li>
-                                                                                <!-- <li><a class="btn default btn-outline" href="javascript:void(0);"><i class="icon-link"></i></a></li> -->
                                                                             </ul>
                                                                         </div>
                                                                     </div>
-                                                                    <!-- <div class="el-card-content">
-                                                                                        <h3 class="box-title">Project title</h3> <small>subtitle of project</small>
-                                                                                        <br> </div> -->
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -415,7 +372,7 @@
 
                                                 <div class="col-md-3">
                                                     <div class="form-group has-danger defcheck">
-                                                        <input name="shortchk" type="checkbox" id="chk3" class="filled-in chk-col-light-blue">
+                                                        <input name="shortchk" type="checkbox" id="chk3" class="filled-in chk-col-light-blue" ng-model="check2"  ng-change="stateChanged()">
                                                         <label class="lbl" for="chk3">Default</label>
                                                     </div>
                                                 </div>
@@ -423,7 +380,8 @@
                                                 <div class="col-md-9">
                                                     <div class="form-group m-b-10">
                                                         <label for="input1">Description</label>
-                                                        <textarea class="form-control cat" id="name" type="text" ng-model="formdata.description"></textarea>
+                                                        <textarea class="form-control description" ng-readonly="check3" id="desc" type="text" ng-model="formdata.description"  name="description" ng-class="{ 'validationErr' : catform.$submitted && !catform.description.$valid}"
+                                                        ng-required="true"></textarea>
 
 
                                                     </div>
@@ -432,7 +390,7 @@
 
                                                 <div class="col-md-3">
                                                     <div class="form-group has-danger defcheck">
-                                                        <input name="shortchk" type="checkbox" id="chk4" class="filled-in chk-col-light-blue">
+                                                        <input name="shortchk" type="checkbox" id="chk4" class="filled-in chk-col-light-blue" ng-model="check3"  ng-change="stateChanged()">
                                                         <label class="lbl" for="chk4">Default</label>
                                                     </div>
                                                 </div>
@@ -442,10 +400,12 @@
                                                     <div class="form-group m-b-10">
                                                         <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
                                                         <label for="input1"> Status</label>
-                                                        <select class="form-control filter-option" name="status" id="status" ng-model="formdata.status">
-                                                            <option value="enabled" class="">Enabled</option>
-                                                            <option value="disabled" class="">Disabled</option>
-                                                        </select>
+                                                        <select class="form-control filter-option" ng-readonly="check4" name="status" id="status"
+													 ng-model="formdata.status" ng-class="{ 'validationErr' : catform.$submitted && !catform.status.$valid}"
+													 ng-required="true">
+														<option value="enabled" class="">Enabled</option>
+														<option value="disabled" class="">Disabled</option>
+													</select>
                                                     </div>
 
 
@@ -453,7 +413,7 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group has-danger defcheck">
-                                                        <input name="shortchk" type="checkbox" id="chk5" class="filled-in chk-col-light-blue">
+                                                        <input name="shortchk" type="checkbox" id="chk5" class="filled-in chk-col-light-blue" ng-model="check4"  ng-change="stateChanged()">
                                                         <label class="lbl" for="chk5">Default</label>
                                                     </div>
                                                 </div>
@@ -461,53 +421,94 @@
                                         </div>
                                         <div class="tab-pane" id="meta_data" role="tabpanel">
                                             <div class="p-20">
-
+                                                <div class="col-md-9">
                                                 <div class="form-group m-b-10">
                                                     <label for="input1"> Meta description</label>
-                                                    <textarea class="form-control cat" id="name" type="text" ng-model="formdata.desc"></textarea>
+                                                    <textarea class="form-control desc" id="desc" ng-readonly="check5" type="text" ng-model="formdata.desc" ng-class="{ 'validationErr' : catform.$submitted && !catform.desc.$valid}"
+													ng-required="true"></textarea>
 
-
+</div>
                                                 </div>
-
+                                                <div class="col-md-3">
+                                                    <div class="form-group has-danger defcheck">
+                                                        <input name="shortchk" type="checkbox" id="chk6" class="filled-in chk-col-light-blue" ng-model="check5"  ng-change="stateChanged()">
+                                                        <label class="lbl" for="chk6">Default</label>
+                                                    </div>
+                                                </div>
+                                                
+  <div class="col-md-9">
                                                 <div class="form-group m-b-10">
                                                     <label for="input1"> Meta keywords</label>
-                                                    <textarea class="form-control cat" id="name" type="text" ng-model="formdata.key"></textarea>
+                                                    <textarea class="form-control key" id="key" type="text" ng-readonly="check6" ng-model="formdata.key" ng-class="{ 'validationErr' : catform.$submitted && !catform.key.$valid}"
+													ng-required="true"></textarea>
 
+                                                </div></div>
+
+                                                <div class="col-md-3">
+                                                    <div class="form-group has-danger defcheck">
+                                                        <input name="shortchk" type="checkbox" id="chk7" class="filled-in chk-col-light-blue" ng-model="check6"  ng-change="stateChanged()">
+                                                        <label class="lbl" for="chk7">Default</label>
+                                                    </div>
                                                 </div>
-
                                             </div>
                                         </div>
                                         <div class="tab-pane p-20" id="navigation" role="tabpanel">
-
+<div class="col-md-9">
                                             <div class="form-group m-b-10">
                                                 <label for="input1"> URL KEY</label>
-                                                <input type="text" class="form-control cat" id="name" ng-model="formdata.category_url">
+                                                <input type="text" class="form-control category_url" ng-readonly="check7" id="category_url" name="category_url"
+                                                ng-model="formdata.category_url" ng-class="{ 'validationErr' : catform.$submitted && !catform.category_url.$valid}"
+                                               ng-required="true">
 
+</div>
                                             </div>
-
+                                            <div class="col-md-3">
+                                                <div class="form-group has-danger defcheck">
+                                                    <input name="shortchk" type="checkbox" id="chk8" class="filled-in chk-col-light-blue" ng-model="check7"  ng-change="stateChanged()">
+                                                    <label class="lbl" for="chk8">Default</label>
+                                                </div>
+                                            </div>
+<div class="col-md-9">
                                             <div class="form-group m-b-10">
                                                 <label for="input1"> Display in menu link</label>
 
 
-                                                <select class="form-control filter-option" name="menu" id="menu" ng-model="formdata.dispmenu">
-                                                    <option class="filter-option-inner" value="0">choose</option>
-                                                    <option class="filter-option-inner" value="1">Yes</option>
-                                                    <option class="filter-option-inner" value="2">No</option>
-                                                </select>
+                                                <select class="form-control filter-option dispmenu" ng-readonly="check8" name="dispmenu" id="dispmenu"
+                                                ng-model="formdata.dispmenu" ng-class="{ 'validationErr' : catform.$submitted && !catform.dispmenu.$valid}"
+                                                ng-required="true">
+                                                   <option class="filter-option-inner" value="0">choose</option>
+                                                   <option class="filter-option-inner" value="1">Yes</option>
+                                                   <option class="filter-option-inner" value="2">No</option>
+                                               </select>
+                                            </div></div>
+                                            <div class="col-md-3">
+                                                <div class="form-group has-danger defcheck">
+                                                    <input name="shortchk" type="checkbox" id="chk9" ng-model="check8"  ng-change="stateChanged()" class="filled-in chk-col-light-blue">
+                                                    <label class="lbl" for="chk9">Default</label>
+                                                </div>
                                             </div>
 
-                                            <div class="form-group m-b-10">
+                                         <div class="col-md-9">  
+                                         <div class="form-group m-b-10">
                                                 <label for="input1"> Display in sidebar</label>
 
 
-                                                <select class="form-control filter-option" name="sidebar" id="sidebar" ng-model="formdata.sidebar">
-                                                    <option class="filter-option-inner" value="0">choose</option>
-                                                    <option class="filter-option-inner" value="1">Yes</option>
-                                                    <option class="filter-option-inner" value="2">No</option>
-                                                </select>
+                                                <select class="form-control filter-option sidebar" ng-readonly="check9" name="sidebar"
+                                                id="sidebar" ng-model="formdata.sidebar" ng-class="{ 'validationErr' : catform.$submitted && !catform.sidebar.$valid}"
+                                                ng-required="true">
+                                                   <option class="filter-option-inner" value="0">choose</option>
+                                                   <option class="filter-option-inner" value="1">Yes</option>
+                                                   <option class="filter-option-inner" value="2">No</option>
+                                               </select>
 
                                             </div>
-
+</div>  
+<div class="col-md-3">
+    <div class="form-group has-danger defcheck">
+        <input name="shortchk" type="checkbox" id="chk10" class="filled-in chk-col-light-blue" ng-model="check9"  ng-change="stateChanged()">
+        <label class="lbl" for="chk10">Default</label>
+    </div>
+</div>
 
 
                                         </div>

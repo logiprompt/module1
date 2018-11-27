@@ -253,11 +253,11 @@
                                 <h6 class="card-subtitle">Use default tab with class <code>vtabs &amp; tabs-vertical</code></h6> -->
                             <!-- Nav tabs -->
 
-                            <form class="">
+                            <form class=""  name="formdata"  ng-submit="updateCategory()" novalidate>
 
                                 <div class="form-group m-b-10 btn23">
 
-                                    <button type="button" ng-click="updateCategory()" class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
+                                    <button type="submit" class="btn waves-effect waves-light btn-sm btn-info"> Save </button>
                                     <a href="/product/category">
                                         <button type="button" class="btn waves-effect waves-light btn-sm btn-default"> Cancel </button>
                                     </a>
@@ -342,14 +342,14 @@
                                                 <div class="col-md-9">
                                                     <div class="form-group m-b-10">
                                                         <label for="input1"> category</label>
-                                                        <input type="text" class="form-control cat" id="name" ng-model="formdata.category">
+                                                        <input type="text" class="form-control cat" id="categoryname" name="categoryname" ng-model="categoryname" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.categoryname.$valid}">
 
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-3">
                                                     <div class="form-group has-danger defcheck">
-                                                        <input name="shortchk" type="checkbox" id="chk1" class="filled-in chk-col-light-blue">
+                                                        <input name="chk1" type="checkbox" id="chk1" ng-model="chk1" class="filled-in chk-col-light-blue">
                                                         <label class="lbl" for="chk1">Default</label>
                                                     </div>
                                                 </div>
@@ -380,18 +380,18 @@
                                                             </div>
                                                             <div class="iconw" ng-click="iconw()">
                                                                 <i class="fa fa-download"></i>Upload</div>
-                                                            <input type="file" id="imgfile" name="imgfile{{$index}}" class="file_input_hidden img" ng-model="imgss" ngf-select />
-                                                        </div>
+                                                                <input type="file" id="imgfile" name="imgfile" class="file_input_hidden img" ng-model="imgfile" ngf-select ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.imgfile.$valid}" />
+                                                            </div>
 
                                                         <div class="col-lg-3 col-md-6 imgprev">
                                                             <div class="card">
                                                                 <div class="el-card-item">
                                                                     <div class="el-card-avatar el-overlay-1 imageup">
-                                                                        <img src="/uploads/dummy.jpg" alt="user" id="imgfiles" class="imgup">
+                                                                        <img ng-src="/{{userdetails.imgfile}}" alt="user" id="imgfiles" class="imgup">
                                                                         <div class="el-overlay">
                                                                             <ul class="el-info">
                                                                                 <li>
-                                                                                    <a id="imgfiles2" class="btn default btn-outline image-popup-vertical-fit" href="/uploads/dummy.jpg">
+                                                                                    <a id="imgfiles2" class="btn default btn-outline image-popup-vertical-fit" href="/{{userdetails.imgfile}}">
                                                                                         <i class="icon-magnifier"></i>
                                                                                     </a>
                                                                                 </li>
@@ -422,7 +422,7 @@
                                                 <div class="col-md-9">
                                                     <div class="form-group m-b-10">
                                                         <label for="input1">Description</label>
-                                                        <textarea class="form-control cat" id="name" type="text" ng-model="formdata.description"></textarea>
+                                                        <textarea class="form-control cat" id="desc" name="desc" type="text" ng-model="desc" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.desc.$valid}"></textarea>
 
 
                                                     </div>
@@ -441,7 +441,7 @@
                                                     <div class="form-group m-b-10">
                                                         <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
                                                         <label for="input1"> Status</label>
-                                                        <select class="form-control filter-option" name="status" id="status" ng-model="formdata.status">
+                                                        <select class="form-control filter-option" name="status" id="status" ng-model="status" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.status.$valid}">
                                                             <option value="enabled" class="">Enabled</option>
                                                             <option value="disabled" class="">Disabled</option>
                                                         </select>
@@ -463,14 +463,14 @@
 
                                                 <div class="form-group m-b-10">
                                                     <label for="input1"> Meta description</label>
-                                                    <textarea class="form-control cat" id="name" type="text" ng-model="formdata.metaDescription"></textarea>
+                                                    <textarea class="form-control cat" id="metaDescription" name="metaDescription" type="text" ng-model="metaDescription" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.metaDescription.$valid}"></textarea>
 
 
                                                 </div>
 
                                                 <div class="form-group m-b-10">
                                                     <label for="input1"> Meta keywords</label>
-                                                    <textarea class="form-control cat" id="name" type="text" ng-model="formdata.metaKeywords"></textarea>
+                                                    <textarea class="form-control cat" id="metaKeywords" name="metaKeywords" type="text" ng-model="metaKeywords" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.metaKeywords.$valid}"></textarea>
 
                                                 </div>
 
@@ -480,7 +480,7 @@
 
                                             <div class="form-group m-b-10">
                                                 <label for="input1"> URL KEY</label>
-                                                <input type="text" class="form-control cat" id="name" ng-model="formdata.urlKey">
+                                                <input type="text" class="form-control cat" id="urlKey" name="urlKey" ng-model="urlKey" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.urlKey.$valid}">
 
                                             </div>
 
@@ -488,7 +488,7 @@
                                                 <label for="input1"> Display in menu link</label>
 
 
-                                                <select class="form-control filter-option" name="menu" id="menu" ng-model="formdata.displayInMenu">
+                                                <select class="form-control filter-option" name="menu" id="menu" ng-model="menu"  ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.menu.$valid}">
                                                     <option class="filter-option-inner" value="0">choose</option>
                                                     <option class="filter-option-inner" value="yes">Yes</option>
                                                     <option class="filter-option-inner" value="no">No</option>
@@ -499,7 +499,7 @@
                                                 <label for="input1"> Display in sidebar</label>
 
 
-                                                <select class="form-control filter-option" name="sidebar" id="sidebar" ng-model="formdata.displayInSidebar">
+                                                <select class="form-control filter-option" name="sidebar" id="sidebar" ng-model="sidebar"  ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.sidebar.$valid}">
                                                     <option class="filter-option-inner" value="0">choose</option>
                                                     <option class="filter-option-inner" value="yes">Yes</option>
                                                     <option class="filter-option-inner" value="no">No</option>
@@ -519,7 +519,7 @@
                                             <div class="form-group m-b-10">
                                                 <label for="input1">Extra field group</label>
                                                 <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
-                                                <select multiselectDropdown class="selectpicker form-control" multiple data-style="form-control btn-info" ng-model="selectedExtrafieldGroup" ng-options="item._id as item.groupname for item in extrafieldGroupItems">
+                                                <select multiselectDropdown class="selectpicker form-control" multiple data-style="form-control btn-info" ng-model="selectedExtrafieldGroup" ng-options="item._id as item.groupname for item in extrafieldGroupItems" name="selectedExtrafieldGroup" id="selectedExtrafieldGroup" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.selectedExtrafieldGroup.$valid}">
                                                 </select>
 
                                             </div>

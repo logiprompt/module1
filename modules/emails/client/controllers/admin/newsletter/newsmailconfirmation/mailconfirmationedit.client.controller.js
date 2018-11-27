@@ -80,8 +80,7 @@
         //console.log(result);
         var details = result.data;
         if (result.statusText = "OK") {
-
-
+          $scope.userdetails1 = result.data;
           $scope.userdetails = result.data;
           $scope.mailer = $scope.userdetails.mailer;
           $scope.smtpauthen = $scope.userdetails.smtpauthen;
@@ -90,8 +89,6 @@
           $scope.smtppass = $scope.userdetails.smtppass;
           $scope.smtpuname = $scope.userdetails.smtpuname;
           $scope.smtphost = $scope.userdetails.smtphost;
-
-
         }
         else {
 
@@ -112,8 +109,8 @@
     $scope.updateMailConfirmation = function () {
 
       console.log($scope.mailer);
- console.log($scope.formdata.$valid);
-      if ($scope.formdata.$valid && $scope.mailer!=0 && $scope.smtpsecur!=0) {
+      console.log($scope.formdata.$valid);
+      if ($scope.formdata.$valid && $scope.mailer != 0 && $scope.smtpsecur != 0) {
 
         var data = {
           "mailer": $scope.mailer,
@@ -138,6 +135,29 @@
     }
 
     ///////////////////////////////////////////////////////////////////////
-
+    $scope.stateChanged = function () {
+      var details = $scope.userdetails1;
+      if ($scope.check1) {
+        $scope.mailer = $scope.userdetails1.mailer;
+      }
+      if ($scope.check2) {
+        $scope.smtpauthen = $scope.userdetails1.smtpauthen;
+      }
+      if ($scope.check3) {
+        $scope.smtpsecur = $scope.userdetails1.smtpsecur;
+      }
+      if ($scope.check4) {
+        $scope.smtpport = $scope.userdetails1.smtpport;
+      }
+      if ($scope.check5) {
+        $scope.smtppass = $scope.userdetails1.smtppass;
+      }
+      if ($scope.check6) {
+        $scope.smtpuname = $scope.userdetails1.smtpuname;
+      }
+      if ($scope.check7) {
+        $scope.smtphost = $scope.userdetails1.smtphost;
+      }
+    }
   }
 }());

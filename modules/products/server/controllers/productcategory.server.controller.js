@@ -153,7 +153,7 @@ exports.getCategoryItems = function (req, res, next) {
 
 /* get category details */
 exports.getCategoryDetails = function (req, res, next) {
-    productCategory.findById(req.params.categoryId).populate({ 'path': 'extrafieldGroup', model: 'extrafieldGroup' }).populate({ path: 'childIDs', model: 'productcategory', populate: { path: 'extrafieldGroup', model: 'extrafieldGroup' } }).exec(function (err, data) {
+    productCategory.findById(req.query.categoryId).populate({ 'path': 'extrafieldGroup', model: 'extrafieldGroup' }).populate({ path: 'childIDs', model: 'productcategory', populate: { path: 'extrafieldGroup', model: 'extrafieldGroup' } }).exec(function (err, data) {
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)

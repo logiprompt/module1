@@ -12,7 +12,7 @@
   function EmailinvoicecreationController ($scope, $http, $state, $stateParams, Upload,invoicecreationService) {
 
   $scope.formdata = {};
-  $scope.formdata.status ='0';
+  $scope.status ='0';
   $scope.invoicecreationService = invoicecreationService;
  /////////////////////select/////////////////////////////
 

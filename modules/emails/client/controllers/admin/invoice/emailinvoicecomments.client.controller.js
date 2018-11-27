@@ -10,7 +10,7 @@
   function EmailinvoicecommentsController ($scope, $http, $state, $stateParams, Upload,invoicecommentsService) {
 
   $scope.formdata = {};
-  $scope.formdata.status ='0';
+  $scope.status ='0';
   $scope.invoicecommentsService = invoicecommentsService;
  /////////////////////select/////////////////////////////
 

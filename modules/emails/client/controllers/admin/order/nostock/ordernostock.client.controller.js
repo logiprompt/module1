@@ -12,7 +12,7 @@
   function OrdernostockController ($scope, $http, $state, $stateParams, Upload,nostockService) {
 
   $scope.formdata = {};
-  $scope.formdata.status ='0';
+  $scope.status ='0';
   $scope.nostockService = nostockService;
  /////////////////////select/////////////////////////////
 

@@ -7,11 +7,15 @@ module.exports = {
     lib: {
       css: [
         // bower:css
-        'public/lib/bootstrap/dist/css/bootstrap.css',
-        'public/lib/bootstrap/dist/css/bootstrap-theme.css',
-        'public/lib/angular-ui-notification/dist/angular-ui-notification.css',
+        // 'public/lib/bootstrap/dist/css/bootstrap.css',
+        // 'public/lib/bootstrap/dist/css/bootstrap-theme.css',
+        // 'public/lib/angular-ui-notification/dist/angular-ui-notification.css',
         'public/lib/angular-tree-control/css/tree-control.css',
-        'public/lib/angular-tree-control/css/tree-control-attribute.css'
+        'public/lib/angular-tree-control/css/tree-control-attribute.css',
+        'public/admin/css/jquery.dataTables.min.css',
+        'public/admin/css/buttons.dataTables.min.css',
+        'public/admin/css/responsive.dataTables.min.css'
+
         
         // endbower
       ],

@@ -97,7 +97,7 @@ function EmailuserforgotController($scope, $http, $state, $stateParams, Upload, 
 
         if (result.statusText = "OK") {
           swal("Success!", "Successfully added user!", "success");
-         // $state.go('emailforgetpass');
+          $state.go('emailforgetpass');
         } else {
           swal("error!", "User already exist!", "error");
         }

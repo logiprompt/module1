@@ -12,7 +12,7 @@
   function OrdercancelationController ($scope, $http, $state, $stateParams, Upload,cancelationService) {
 
   $scope.formdata = {};
-  $scope.formdata.status ='0';
+  $scope.status ='0';
   $scope.cancelationService = cancelationService;
  /////////////////////select/////////////////////////////
 

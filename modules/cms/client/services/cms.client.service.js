@@ -16,11 +16,6 @@
 	  * owner : prabin
 	  */
 cms.addPost = function(data){		  
-		// return $http({
-	    //        url: '/api/cms/post',
-	    //        method: "POST",
-	    //        data:data
-        //    });
         return Upload.upload({
             url: '/api/cms/post',
             method: "POST",
@@ -71,12 +66,6 @@ cms.addCategory = function (data) {
         method: "POST",
         data: data
     });
-
-    // return $http({
-    //     url: '/api/cms/category/addCategory',
-    //     method: "POST",
-    //     data: data
-    // });
 }
 
 /*
@@ -85,11 +74,6 @@ cms.addCategory = function (data) {
  */
 
 cms.addSubCategory = function (data) {
-    // return $http({
-    //     url: '/api/cms/category/addSubCategory',
-    //     method: "POST",
-    //     data: data
-    // });
     return Upload.upload({
         url: '/api/cms/category/addSubCategory',
         method: "POST",
@@ -133,27 +117,12 @@ cms.getCategoryDetails = function (categoryId) {
 
 
 cms.updateCategory = function (data) {
-    // return $http({
-    //     url: '/api/cms/category/updateCategory',
-    //     method: "POST",
-    //     data: data
-    // });
-console.log(data);
     return Upload.upload({
         url: '/api/cms/category/updateCategory',
         method: "POST",
         data: data
     });
-
-
 }
-
-
-
-
-
-
-
 
 
 /*
@@ -204,11 +173,6 @@ cms.updatePage = function (pageId,data) {
         data: data
     });
 }
-
-
-
-
-
 
 return cms;
   }

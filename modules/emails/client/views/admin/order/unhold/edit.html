@@ -204,7 +204,7 @@ width:60%;
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Un hold template (Edit) ID 1</h4>
+                                <h4 class="card-title">Un hold template (Edit)</h4>
                                 <div class="col-lg-12">
                      
                                 <!-- <h4 class="card-title">Vertical Tab</h4>
@@ -258,27 +258,27 @@ width:60%;
                                                              <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
                                                              <label for="input1"> Name</label>
                                                              <input type="text" class="form-control name" id="name" name="name" ng-model="name"
-                                                             ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.name.$valid}">
+                                                             ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.name.$valid}" ng-readonly="chk1">
                                              </div>
                                                              </div> 
          
                                                       <div class="col-md-3">
                                                          <div class="form-group has-danger defcheck">
-                                                             <input name="shortchk" type="checkbox" id="chk1" class="filled-in chk-col-light-blue" ><label class="lbl" for="chk1">Default</label>
+                                                             <input name="shortchk" type="checkbox" id="chk1" class="filled-in chk-col-light-blue"   ng-model="chk1"  ng-change="stateChanged()"><label class="lbl" for="chk1">Default</label>
                                                      </div>
                                                  </div>
                                                   <div class="col-md-9">
                                                      <div class="form-group m-b-10"> 
                                                          <label for="input1"> Subject</label>
                                                          <input type="text" class="form-control subject" name="subject" id="subject"
-                                                         ng-model="subject" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.subject.$valid}">
+                                                         ng-model="subject" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.subject.$valid}" ng-readonly="chk2">
                                                           
                                                         </div> 
          
                                                </div>
                                                 <div class="col-md-3">
                                                          <div class="form-group has-danger defcheck">
-                                                             <input name="shortchk" type="checkbox" id="chk2" class="filled-in chk-col-light-blue" ><label class="lbl" for="chk2">Default</label>
+                                                             <input name="shortchk" type="checkbox" id="chk2" class="filled-in chk-col-light-blue"   ng-model="chk2"  ng-change="stateChanged()"><label class="lbl" for="chk2">Default</label>
                                                      </div>
                                                  </div>
          
@@ -287,7 +287,7 @@ width:60%;
                                                      <div class="form-group m-b-10"> 
                                                          <label for="input1"> Content</label>
                                                          <textarea class="form-control content" id="content" name="content" ng-model="content"
-                                                         ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.content.$valid}"></textarea>
+                                                         ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.content.$valid}" ng-readonly="chk3"></textarea>
                                                           
                                                         </div> 
                                                                  
@@ -295,7 +295,7 @@ width:60%;
                                                                                      
                                                  <div class="col-md-3">
                                                          <div class="form-group has-danger defcheck">
-                                                             <input name="shortchk" type="checkbox" id="chk3" class="filled-in chk-col-light-blue" ><label class="lbl" for="chk3">Default</label>
+                                                             <input name="shortchk" type="checkbox" id="chk3" class="filled-in chk-col-light-blue"   ng-model="chk3"  ng-change="stateChanged()"><label class="lbl" for="chk3">Default</label>
                                                      </div>
                                                  </div>  
                                                  
@@ -304,23 +304,24 @@ width:60%;
                                                      <div class="form-group m-b-10"> 
                                                          <label for="input1"> Custom styles</label>
                                                          <textarea class="form-control custom" id="custom" name="custom"
-                                                         ng-model="custom" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.custom.$valid}"></textarea>
+                                                         ng-model="custom" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && !formdata.custom.$valid}" ng-readonly="chk5"></textarea>
                                                           
                                                         </div>   
                                                            
                                                          </div>
                                          <div class="col-md-3">
                                                          <div class="form-group has-danger defcheck">
-                                                             <input name="shortchk" type="checkbox" id="chk5" class="filled-in chk-col-light-blue" ><label class="lbl" for="chk5">Default</label>
+                                                             <input name="shortchk" type="checkbox" id="chk5" class="filled-in chk-col-light-blue"   ng-model="chk5"  ng-change="stateChanged()"><label class="lbl" for="chk5">Default</label>
                                                      </div>
                                                  </div>
                                                  
                                                  <div class="col-md-9">
                                                      <div class="form-group m-b-10">
+                                                     <input type="hidden" ng-model="status" name="status" >
                                                          <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
                                                          <label for="input1"> Status</label>
                                                          <select class="form-control filter-option" name="status" id="status"
-                                                         ng-model="status" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && (!formdata.status.$valid || status==0 )}">
+                                                         ng-model="status" ng-required="true" ng-class="{ 'validationErr' : formdata.$submitted && (!formdata.status.$valid || status=='' )}" ng-disabled="chk8">
                                                                 <option class="filter-option-inner" value="0">choose</option>
          
                                                             <option value="1" class="">Active</option>  
@@ -332,7 +333,7 @@ width:60%;
                                                          </div>
                                          <div class="col-md-3">
                                                          <div class="form-group has-danger defcheck">
-                                                             <input name="shortchk" type="checkbox" id="chk8" class="filled-in chk-col-light-blue" ><label class="lbl" for="chk8">Default</label>
+                                                             <input name="shortchk" type="checkbox" id="chk8" class="filled-in chk-col-light-blue"   ng-model="chk8"  ng-change="stateChanged()"><label class="lbl" for="chk8">Default</label>
                                                      </div>
                                                  </div>
                                                      </div>

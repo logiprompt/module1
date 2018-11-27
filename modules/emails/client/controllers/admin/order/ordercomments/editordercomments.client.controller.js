@@ -33,6 +33,7 @@
         console.log(userId);
          console.log(result);
          var details=result.data;
+		  $scope.userdetails1=result.data;
         if (result.statusText = "OK") {
         
          
@@ -241,7 +242,60 @@ console.log(checkedValue)
 }
 setTimeout(getActionBtns, 1500);         
 
+$scope.stateChanged=function(){
+	
+var details= $scope.userdetails1;
+ //console.log(details);
+ if($scope.chk1){
+if($scope.chk1){
+  $scope.name = $scope.userdetails1.name;
+}
+else{
+  $scope.name =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].name : details.name;
 
+}
+ }
+if($scope.chk2){
+if($scope.chk2){
+  $scope.subject = $scope.userdetails1.subject;
+}
+else{
+  $scope.subject = $scope.currentLan in details.oLang  ?details.oLang[ $scope.currentLan].subject :  details.subject;
+
+}
+}
+if($scope.chk3){
+if($scope.chk3){
+  $scope.content = $scope.userdetails1.content;
+}
+else{
+  $scope.content =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].content:details.content ;
+}
+}
+
+
+
+if($scope.chk5){
+
+if($scope.chk5){
+      $scope.custom = $scope.userdetails.custom;
+
+}
+else{
+  $scope.custom =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].custom :details.custom;
+
+}
+}
+if($scope.chk8){
+  $scope.status =details.status.toString(); 
+
+}
+else{
+//$scope.status =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].status :details.status;
+
+}
+
+}
  }
 
 

@@ -314,19 +314,19 @@ width: 70px;
                                                         <div class="form-group m-b-10">
                                                             <span class="bar"></span>
                                                             <label for="input1"> Rule name </label>
-                                                            <input type="text" class="form-control" id="name" name="name" ng-model="formdata.ruleName" ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.name.$valid}">
+                                                            <input type="text" class="form-control" id="name" name="name" ng-model="formdata.ruleName" ng-readonly="check1" ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.name.$valid}">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group has-danger defcheck">
-                                                            <input name="shortchk" type="checkbox" id="chk1" class="filled-in chk-col-light-blue">
+                                                            <input name="shortchk" type="checkbox" id="chk1" ng-model="check1" ng-change="stateChanged()" class="filled-in chk-col-light-blue">
                                                             <label class="lbl" for="chk1">Default</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-9">
                                                         <div class="form-group m-b-10">
                                                             <label> Description</label>
-                                                            <textarea class="form-control" rows="5" id="description" name="description" ng-model="formdata.description" ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.description.$valid}"></textarea>
+                                                            <textarea class="form-control" rows="5" id="description" name="description" ng-readonly="check2" ng-model="formdata.description" ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.description.$valid}"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -347,7 +347,7 @@ width: 70px;
     
                                                                         <div class="fluid left_c_input file_wrap m-b-10">
                                                                             <div class="write_textbox">
-                                                                                <input type="text" readonly placeholder="No file selected" class="txtFilepath" style="border:none !important;" name="name{{$index}}">
+                                                                                <input type="text" readonly placeholder="No file selected" class="txtFilepath" ng-readonly="check3" style="border:none !important;" name="name{{$index}}">
                                                                             </div>
                                                                             <div class="iconw" ng-click="iconw()">
                                                                                 <i class="fa fa-download"></i>Upload Image</div>
@@ -399,7 +399,7 @@ width: 70px;
                                                                 <option value="India">India</option>
                                                                 <option value="UAE">UAE</option>
                                                             </select> -->
-                                                            <select class="selectpicker form-control" multiple data-style="form-control btn-info" id="displayIn" name="displayIn" ng-model="formdata.displayIn" ng-required="true"
+                                                            <select class="selectpicker form-control" multiple data-style="form-control btn-info" id="displayIn" name="displayIn" ng-readonly="check4" ng-model="formdata.displayIn" ng-required="true"
                                                             ng-class="{ 'validationErr' : formData.$submitted && !formData.displayIn.$valid}">
                                                                        <option class="filter-option-inner" value="0">choose</option>
                                                                       <option  class="filter-option-inner" ng-repeat="vall in list" value="{{vall._id}}">{{vall.country}}</option>
@@ -426,7 +426,7 @@ width: 70px;
                                                             <div class=" example ">
                                                                 <div class="input-group">
                                                                     <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy" ng-model="formdata.startDate" id="startDate" name="startDate" ng-required="true"
-                                                                    ng-class="{ 'validationErr' : formData.$submitted && !formData.startDate.$valid}">
+                                                                    ng-class="{ 'validationErr' : formData.$submitted && !formData.startDate.$valid}" ng-readonly="check5">
                                                                     <div class="input-group-append">
                                                                         <span class="input-group-text">
                                                                             <i class="icon-calender"></i>
@@ -451,7 +451,7 @@ width: 70px;
                                                             <div class=" example ">
                                                                 <div class="input-group">
                                                                     <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy" ng-model="formdata.endDate" id="endDate" name="endDate" ng-required="true"
-                                                                    ng-class="{ 'validationErr' : formData.$submitted && !formData.endDate.$valid}">
+                                                                    ng-class="{ 'validationErr' : formData.$submitted && !formData.endDate.$valid}" ng-readonly="check1=6">
                                                                     <div class="input-group-append">
                                                                         <span class="input-group-text">
                                                                             <i class="icon-calender"></i>
@@ -472,7 +472,8 @@ width: 70px;
                                                             <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
                                                             <span class="bar"></span>
                                                             <label for="status">Status</label>
-                                                            <select class="form-control filter-option" name="status" id="status" ng-model="formdata.status"ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.status.$valid}">
+                                                            <select class="form-control filter-option" name="status" id="status" ng-model="formdata.status"
+                                                            ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.status.$valid}" ng-readonly="check7">
                                                                 <option class="filter-option-inner" value="0">choose</option>
     
                                                                 <option value="disable" class="filter-option-inner">Disable</option>
@@ -505,7 +506,8 @@ width: 70px;
                                                         <div class="form-group m-b-10">
                                                             <!-- <input type="text" class="form-control cat" id="status"  ng-model="formdata.status" >-->
                                                             <label for="status">Apply to</label>
-                                                            <select class="form-control filter-option" name="applyTo" id="applyTo" ng-model="formdata.applyTo" ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.applyTo.$valid}">
+                                                            <select class="form-control filter-option" name="applyTo" id="applyTo" ng-model="formdata.applyTo" ng-readonly="check8" 
+                                                            ng-required="true" ng-class="{ 'validationErr' : formData.$submitted && !formData.applyTo.$valid}">
                                                                 <option class="filter-option-inner" value="0">select</option>
                                                                 <option value="subtotal" class="filter-option-inner">Subtotal</option>
                                                                 <option value="total items quantity">Total Items Quantity</option>

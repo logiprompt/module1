@@ -5,8 +5,6 @@
     .module('core')
     .controller('EditCategoryController', EditCategoryController);
 
-
-
   EditCategoryController.$inject = ['$scope', '$http', '$state', '$stateParams', '$location', 'CmsService'];
 
   function EditCategoryController($scope, $http, $state, $stateParams, $location, CmsService) {
@@ -26,14 +24,12 @@
        */
       $scope.currentLan=localStorage.getItem('currentLang').toString();
       $scope.defaultLang=localStorage.getItem('defaultLang').toString();
-
     $scope.getCategoryDetails = function () {
       $scope.CmsService.getCategoryDetails($stateParams.id).then(function (result) {
-
-
         var details=result.data;
         if (result.statusText = "OK")
-        {     
+        {   
+          $scope.userdetails1 = result.data; 
           $scope.status =details.status.toString();    
           if(angular.equals($scope.currentLan, $scope.defaultLang))
           {
@@ -49,17 +45,11 @@
             $scope.formdata.description = $scope.currentLan in details.oLang  ?details.oLang[ $scope.currentLan].description :  details.description;
             $scope.formdata.category_url = $scope.currentLan in details.oLang  ?details.oLang[ $scope.currentLan].category_url :  details.category_url;
           }
-
-
-           
            $scope.formdata.desc=$scope.userdetails.category_metadesc,
            $scope.formdata.key=$scope.userdetails.category_metakey,
            $scope.formdata.dispmenu=$scope.userdetails.menu,
            $scope.formdata.sidebar=$scope.userdetails.sidebar,
            $scope.formdata.status=$scope.userdetails.status
-        //console.log(result.data);
-        //$scope.formdata = result.data;
-        //$scope.selectedExtrafieldGroup = result['data']['_id']
       }
       else
       {            
@@ -71,13 +61,10 @@
     /*
        * Function : updateCategory
        */
-
     $scope.updateCategory = function () {
-    console.log(876876);
      // console.log($scope.selectedExtrafieldGroup)
       //$scope.formdata.extrafieldGroup = $scope.selectedExtrafieldGroup;
       if (localStorage.getItem("currentLang") == 'en') {
-console.log(9888);
       var data = {
         "category": $scope.formdata.category,
         "description": $scope.formdata.description,
@@ -108,18 +95,16 @@ console.log(9888);
         "userSelectedLang":localStorage.getItem("currentLang")
       }
     }
-console.log(data);
       $scope.CmsService.updateCategory(data).then(function (result) {
         if (result.statusText = "OK") {
           swal("Success!", "Successfully updated ", "success");
 
-         // $location.path('/cms/category');
+         $location.path('/cms/category');
           //$state.go('productpromotions');
         }
        // $location.path('/cms/category');
       })
     }
-
 
     /*
        * Function : updateCategory
@@ -130,68 +115,6 @@ console.log(data);
         $location.path('/cms/category');
       })
     }
-
-  
-
-    // ///////////////////select 0ne/////////////////////////////////
-    // if ($stateParams.id) {
-
-    //   var val = { 'id': $stateParams.id };
-
-    //   $http({
-    //     url: '/api/admin/editcat',
-    //     method: "POST",
-    //     data: val
-    //   })
-    //     .then(function (response) {
-
-    //       $scope.formdata.category = response.data.data.category;
-    //       $scope.formdata.id = response.data.data.cat_id;
-
-    //     },
-    //     function (response) { // optional
-    //       // failed
-    //     });
-
-    // }
-
-
-    // /////////////////////select/////////////////////////////
-    // $http({
-    //   url: '/api/admin/selectCategory',
-    //   method: "POST",
-
-    // })
-    //   .then(function (response) {
-    //     $scope.list = response.data.data;
-    //     // success
-    //   },
-    //   function (response) { // optional
-    //     // failed
-    //   });
-
-    // ///////////////////////insert////////////////////////////
-    // $scope.updatecat = function () {
-    //   // $scope.formdata.id=$stateParams.id;
-    //   if ($scope.validation() == 0) {
-
-
-    //     $http({
-    //       url: '/api/admin/updatecat',
-    //       method: "POST",
-    //       data: $scope.formdata
-    //     })
-    //       .then(function (response) {
-
-    //         $state.go('category');
-    //         // success
-    //       },
-
-    //       function (response) { // optional
-    //         // failed
-    //       });
-    //   }
-    // }
 
     $scope.iconw = function () {
       document.getElementById('imgfile').click();
@@ -215,44 +138,77 @@ console.log(data);
       document.getElementById("imgfile").addEventListener("change", readFile, false);
     }
 
-    // $scope.del = function (id) {
-
-    //   var val = { 'id': id };
-    //   $http({
-    //     url: '/api/admin/delcate',
-    //     method: "POST",
-    //     data: val
-    //   })
-    //     .then(function (response) {
-    //       $state.go('category');
-
-    //     },
-    //     function (response) { // optional
-    //       // failed
-    //     });
-
-    // }
 
 
-    // $scope.rmerrorclass = function () {
-    //   angular.element(document.querySelectorAll('.validationErr')).removeClass('validationErr');
-    // }
-    // $scope.adderrorclass = function (cls) {
-    //   angular.element(document.querySelector(cls)).addClass('validationErr');
-    // }
 
-    // $scope.validation = function () {
-    //   var error = 0;
-    //   $scope.rmerrorclass();
 
-    //   if ($scope.formdata.category == '' || angular.isUndefined($scope.formdata.category)) {
-    //     $scope.adderrorclass(".cat");
-    //     error = 1;
 
-    //   }
+$scope.stateChanged=function(){
+  var details= $scope.userdetails1;
+ 
+if($scope.check1){
+  $scope.formdata.category = $scope.userdetails1.category;
+}
+else{
+  $scope.formdata.category =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].category : details.category;
+}
 
-    //   return error;
-    // }
+if($scope.check2){
+ var defimg=[];
+ defimg='/'+ $scope.userdetails1.image;
+  document.getElementById("imgfiles").src =defimg;
+  $scope.imgss=$scope.userdetails1.image;
+}
+// else{
+//   $scope.imgss =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].$scope.imgss:details.image ;
+// }
+
+if($scope.check3){
+  $scope.formdata.description = $scope.userdetails1.description;
+}
+else{
+  $scope.formdata.description = $scope.currentLan in details.oLang  ?details.oLang[ $scope.currentLan].description :  details.description;
+}
+
+if($scope.check4){
+  $scope.formdata.status = $scope.userdetails1.status;
+}
+// else{
+//   $scope.content =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].content:details.content ;
+// }$scope.formdata.desc=$scope.userdetails.category_metadesc,
+
+
+if($scope.check5){
+  $scope.formdata.desc = $scope.userdetails1.category_metadesc;
+}
+// else{
+//   $scope.custom =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].custom :details.custom;
+// }
+if($scope.check6){
+  $scope.formdata.key=$scope.userdetails1.category_metakey;
+
+}
+if($scope.check7){
+  $scope.formdata.key=$scope.userdetails1.sidebar;
+
+}
+if($scope.check8){
+  $scope.formdata.category_url=$scope.userdetails.category_url;
+}
+else{
+  $scope.formdata.category_url = $scope.currentLan in details.oLang  ?details.oLang[ $scope.currentLan].category_url :  details.category_url;
+}
+
+}
+
+
+
+
+
+
+
+
+
 
 
 

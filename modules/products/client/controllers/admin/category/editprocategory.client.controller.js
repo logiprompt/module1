@@ -21,14 +21,50 @@
        * description : Get category items
        */
 
-    $scope.getCategoryDetails = function () {
-      $scope.productcategoryService.getCategoryDetails($stateParams.id).then(function (result) {
-        $scope.formdata = result.data;
-        $scope.selectedExtrafieldGroup = result['data']['_id']
+     $scope.currentLan=localStorage.getItem('currentLang').toString();
+     $scope.defaultLang=localStorage.getItem('defaultLang').toString();
+    $scope.getCategoryDetails = function (categoryid) {
+      $scope.productcategoryService.getCategoryDetails(categoryid).then(function (result) {
+        var details=result.data;
+       // console.log(details);
+   // $scope.formdata = result.data;
+      //  $scope.selectedExtrafieldGroup = result.data.selectedExtrafieldGroup;
+        if (result.statusText = "OK") {
+      
+          $scope.status =details.status;
+         // console.log(details);    
+       if(angular.equals($scope.currentLan, $scope.defaultLang)){
+        console.log(details);  
+       $scope.userdetails = result.data;
+       $scope.categoryname = $scope.userdetails.category;
+       $scope.desc = $scope.userdetails.description;
+       $scope.metaDescription =  $scope.userdetails.metaDescription;
+       $scope.metaKeywords = $scope.userdetails.metaKeywords;
+       $scope.urlKey =  $scope.userdetails.urlKey;
+       $scope.menu = $scope.userdetails.displayInMenu;
+       $scope.sidebar =  $scope.userdetails.displayInSidebar;
+       $scope.selectedExtrafieldGroup = $scope.userdetails.extrafieldGroup;
+     }
+     else{
+      
+       $scope.userdetails = result.data;
+       console.log($scope.userdetails);
+        $scope.categoryname =$scope.currentLan in details.oLang ?details.oLang[ $scope.currentLan].category:details.category;
+        $scope.desc =$scope.currentLan in details.oLang ?details.oLang[ $scope.currentLan].description :details.description;
+        $scope.metaDescription =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].metaDescription:details.metaDescription ;
+        $scope.metaKeywords = $scope.currentLan in details.oLang ?details.oLang[ $scope.currentLan].metaKeywords:details.metaKeywords ; 
+
+        $scope.urlKey =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].urlKey:details.urlKey ;
+        $scope.menu =$scope.currentLan in details.oLang ? details.oLang[ $scope.currentLan].displayInMenu:details.displayInMenu ;
+        $scope.sidebar =$scope.currentLan in details.oLang ?details.oLang[ $scope.currentLan].displayInSidebar:details.displayInSidebar ;
+        $scope.selectedExtrafieldGroup = $scope.currentLan in details.oLang ?details.oLang[ $scope.currentLan].extrafieldGroup:details.extrafieldGroup ; 
+
+     }
+     }
       })
     }
 
-    $scope.getCategoryDetails();
+    $scope.getCategoryDetails($stateParams.id);
 
     /*
        * Function : updateCategory
