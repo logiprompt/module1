@@ -65,7 +65,7 @@ $scope.deletePage = function (pageId) {
         title: 'Are you sure?',
         text: "You want to delete this Product!",
         type: 'warning',
-        showCancelButton: false,
+        showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Yes, delete it!'

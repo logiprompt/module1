@@ -218,7 +218,7 @@
         title: 'Are you sure?',
         text: "You want to delete checked items!",
         type: 'warning',
-        showCancelButton: false,
+        showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Yes, delete it!'
@@ -242,6 +242,7 @@
     setTimeout(getActionBtns, 1500);
 
     $scope.stateChanged = function () {
+      
       var details = $scope.userdetails1;
       if ($scope.check1) {
         if ($scope.check1) {

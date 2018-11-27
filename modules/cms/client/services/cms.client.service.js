@@ -13,7 +13,7 @@
 	 /*
 	  * Function : addPost
 	  * Description : add new post
-	  * owner : prabin
+	  * owner : ck
 	  */
 cms.addPost = function(data){		  
         return Upload.upload({
@@ -36,6 +36,16 @@ cms.delete_post = function(id){
         method: "DELETE"
     });
 }
+
+
+cms.delCheckedCmspost = function (postId) {
+    return $http({
+        url: '/api/cms/post/delCheckedCmspost',
+        method: "DELETE",
+        params:{'postId':postId}
+    });
+}
+
 
 cms.getPostById = function(id){
 	return $http({

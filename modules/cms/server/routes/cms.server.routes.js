@@ -11,6 +11,9 @@ module.exports = function(app) {
   app.route('/api/cms/post').all(/*cmsPolicy.isAllowed*/)
   .get(cms.list)
   .post(cms.create);
+
+  app.route('/api/cms/post/delCheckedCmspost').delete(cms.delCheckedCmspost);
+
   app.route('/api/cms/post/:id').all(/*cmsPolicy.isAllowed*/).delete(cms.deletepost);
   app.route('/api/cms/post/:id').all(/*cmsPolicy.isAllowed*/).get(cms.getpostById);
   app.route('/api/cms/post/:id').all(/*cmsPolicy.isAllowed*/).put(cms.updatepostById);

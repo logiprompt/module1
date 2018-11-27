@@ -15,20 +15,66 @@ var path = require('path'),
 /**
  * Create a Cm
  */
-exports.create = function (req, res) {
-    var cm = new Cm(req.body);
-    cm.user = req.user;
+// exports.create = function (req, res) {
+//     var cm = new Cm(req.body);
+//     cm.user = req.user;
 
-    cm.save(function (err) {
-        if (err) {
-            return res.status(400).send({
-                message: errorHandler.getErrorMessage(err)
-            });
-        } else {
-            res.jsonp(cm);
+//     cm.save(function (err) {
+//         if (err) {
+//             return res.status(400).send({
+//                 message: errorHandler.getErrorMessage(err)
+//             });
+//         } else {
+//             res.jsonp(cm);
+//         }
+//     });
+// };
+
+
+
+exports.create = function (req, res, next) {
+
+    var today = Date.now();
+    var picpath = "";
+    var storage = multer.diskStorage({
+        destination: function (req, file, callback) {
+            callback(null, './public/uploads');
+        },
+        filename: function (req, file, callback) {
+            var ext = file.originalname.substr(file.originalname.length - 3); // => "Tabs1"
+            callback(null, file.fieldname + '-' + today + '.' + ext); // => "Tabs1");
+            picpath = "uploads/" + file.fieldname + '-' + today + '.' + ext;
         }
     });
-};
+
+    var upload = multer({ storage: storage }).single('image');
+
+    upload(req, res, function (err) {
+        var reqBody = req.body;
+        if (err) {
+            return res.end("Error uploading file.");
+        }
+        else {
+            reqBody['image'] = picpath;
+
+            Cm.create(reqBody, function (err, post) {
+
+
+                if (err) {
+                    return res.status(400).send({
+                        message: errorHandler.getErrorMessage(err)
+                    });
+                } else {
+
+                    res.json("Post added");
+                }
+            });
+        }
+    });
+}
+
+
+
 
 /*
  * Get post by id
@@ -80,17 +126,13 @@ exports.updatepostById = function (req, res) {
 
 exports.deletepost = function (req, res) {
     var id = req.params.id;
-
     Cm.findById(id).exec(function (error, item) {
-
         if (error) {
             response.status(500).send(error);
             return;
         }
-
         if (item) {
             // var cm = item;
-
             item.remove(function (err) {
                 if (err) {
                     return res.status(400).send({
@@ -100,10 +142,31 @@ exports.deletepost = function (req, res) {
                     res.jsonp(item);
                 }
             });
-
         }
     });
 }
+
+
+exports.delCheckedCmspost = function(request, response) 
+{      
+    var arr = request.query.postId;
+   // console.log(arr);
+   Cm.deleteMany({_id:{'$in':arr}}).exec(function (err, data) {
+                         if (err) throw err;
+                         response.json({
+                                        status: 1,
+                            });	
+                
+            
+                });
+
+
+};
+
+
+
+
+
 /**
  * Show the current Cm
  */

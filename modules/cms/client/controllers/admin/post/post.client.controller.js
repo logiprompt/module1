@@ -21,11 +21,9 @@
 	//  $scope.currentLan = 'mal';
 	  if($stateParams.id){
 		  CmsService.getPostById($stateParams.id).then(function(result){
-			  if(result.statusText = "OK"){
-				  
+			  if(result.statusText = "OK"){				  
 				  $scope.postformdataOrg = result.data;
-				  if( $scope.currentLan != 'en'){
-					  
+				  if( $scope.currentLan != 'en'){				  
 					  $scope.postformdata = JSON.parse( result.data.oLang[$scope.currentLan]);
 				  }else{
 				  $scope.postformdata = result.data
@@ -54,39 +52,58 @@
 	      })
 	  
 	  $scope.addpost = function(){
-		  console.log(100);
-		  console.log($scope.postform.$valid);
 		  if($scope.postform.$valid){
-			  $scope.postformdata.post_content = CKEDITOR.instances.editor1.getData().replace(/^.*?<body[^>]*>(.*?)<\/body>.*?$/i,"$1");
-			  if($scope.currentLan != 'en'){
-					if(!$scope.postformdataOrg.oLang){
-						$scope.postformdataOrg.oLang = {};
-					}
-					$scope.postformdataOrg.oLang[$scope.currentLan] = JSON.stringify( $scope.postformdata);
-				  }else{
-					  $scope.postformdataOrg =   $scope.postformdata;
-				  }
+			  $scope.post_content = CKEDITOR.instances.editor1.getData().replace(/^.*?<body[^>]*>(.*?)<\/body>.*?$/i,"$1");
+			
+			  //$scope.postformdata.image=$scope.imgss;
+
+			var data = {
+				"post_title": $scope.postformdata.post_title,
+				"post_content": $scope.post_content,	
+				"image": $scope.imgss,
+				"post_video":  $scope.postformdata.post_video,
+				"post_text": $scope.postformdata.post_text,
+				"post_status": $scope.postformdata.post_status,
+				"post_category": $scope.postformdata.post_category,
+				"post_metadesc": $scope.postformdata.post_metadesc,
+				"post_metakey": $scope.postformdata.post_metakey,
+				"post_slug": $scope.postformdata.post_slug,
+				"post_urlkey": $scope.postformdata.post_urlkey,
+				"post_displayinmenu": $scope.postformdata.post_displayinmenu
+
+			  }
+
+			//   if($scope.currentLan != 'en'){
+			// 		if(!$scope.postformdataOrg.oLang){
+			// 			$scope.postformdataOrg.oLang = {};
+			// 		}
+			// 		$scope.postformdataOrg.oLang[$scope.currentLan] = JSON.stringify( $scope.postformdata);
+			// 	  }else{
+			// 		  $scope.postformdataOrg =   $scope.postformdata;
+			// 	  }
+
+
 			  
-		  if($stateParams.id){
-			  //$scope.postformdata.post_content = CKEDITOR.instances.editor1.getData().replace(/^.*?<body[^>]*>(.*?)<\/body>.*?$/i,"$1");;
-		  CmsService.updatePostById($stateParams.id,$scope.postformdataOrg).then(function(result){
-			  if(result.statusText = "OK"){
+		//   if($stateParams.id){
+		// 	  //$scope.postformdata.post_content = CKEDITOR.instances.editor1.getData().replace(/^.*?<body[^>]*>(.*?)<\/body>.*?$/i,"$1");;
+		//   CmsService.updatePostById($stateParams.id,$scope.postformdataOrg).then(function(result){
+		// 	  if(result.statusText = "OK"){
 				   
-	   				 swal( 'Updated!',
-	   	                     'Post Updated sucessfully',
-	   	                     'success'
-	   	                   )
-	   				$state.go('post');
-	   				  }else{
-	   					swal( 'error!',
-		      	                   'Error while creating new post ! Please try again later.',
-		      	                   'error'
-		      	                )
-	   				  }
-			  })
-		  }else{
+	   	// 			 swal( 'Updated!',
+	   	//                      'Post Updated sucessfully',
+	   	//                      'success'
+	   	//                    )
+	   	// 			$state.go('post');
+	   	// 			  }else{
+	   	// 				swal( 'error!',
+		//       	                   'Error while creating new post ! Please try again later.',
+		//       	                   'error'
+		//       	                )
+	   	// 			  }
+		// 	  })
+		//   }else{
 			  
-		  CmsService.addPost($scope.postformdataOrg).then(function(result){
+		  CmsService.addPost(data).then(function(result){
 			  if(result.statusText = "OK"){
 				   
    				 swal( 'Created!',
@@ -101,7 +118,7 @@
 	      	                )
    				  }
 		  })
-	  }
+	 // }
 		  }
 	  }
 
@@ -187,6 +204,45 @@
 	   $scope.chkValue.push(checkedValue[i].value);
 	 }
 	
+
+
+
+	 var postId = $scope.chkValue;
+	 swal({
+	   title: 'Are you sure?',
+	   text: "You want to delete checked post",
+	   type: 'warning',
+	   showCancelButton: true,
+	   confirmButtonColor: '#3085d6',
+	   cancelButtonColor: '#d33',
+	   confirmButtonText: 'Yes, delete it!'
+	 }).then((result) => {
+	   if (result) {
+		 $scope.CmsService.delCheckedCmspost(postId).then(function (result) {
+		   if (result.statusText = "OK") {
+			 swal('Deleted!',
+				   'Cms Category has been deleted.',
+				   'success');
+			 $state.reload();
+			 //  $scope.getUser();
+		   } else {
+		   }
+		 })
+	   }
+	 })
+
+
+
+
+
+
+
+
+
+
+
+
+
    }
    setTimeout(getActionBtns, 1500);
    
@@ -206,7 +262,7 @@
               title: 'Are you sure?',
               text: "You want to delete this Product!",
               type: 'warning',
-              showCancelButton: false,
+              showCancelButton: true,
               confirmButtonColor: '#3085d6',
               cancelButtonColor: '#d33',
               confirmButtonText: 'Yes, delete it!'

@@ -29,29 +29,26 @@
       $scope.languages = localStorage.getItem("currentLang").toString();
     }
     $scope.setLang = function () {
-      var r = confirm("Do you really want to change the language?");
+  //     var r = confirm("Do you really want to change the language?");
+  //     if (r == true) {
+  // localStorage.setItem("currentLang", $scope.languages);
+  // location.reload();
+  //     }
+      swal({
+        title: 'Are you sure?',
+        text: "Do you really want to change the language?",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, change it!'
+      }).then((result) => {
+        if (result) {
+           localStorage.setItem("currentLang", $scope.languages);
+        location.reload();
      
-      // swal({
-      //   title: 'Are you sure?',
-      //   text: "Do you really want to change the language?",
-      //   type: 'warning',
-      //   showCancelButton: true,
-      //   confirmButtonColor: '#3085d6',
-      //   cancelButtonColor: '#d33',
-      //   confirmButtonText: 'Yes, change it!'
-      // }).then((result) => {
-      //   if (result) {
-      //      localStorage.setItem("currentLang", $scope.languages);
-      //   location.reload();
-     
-      //   }
-      // })
-
- if (r == true) {
-  localStorage.setItem("currentLang", $scope.languages);
-  location.reload();
-      }
-
+        }
+      })
 
      
     }

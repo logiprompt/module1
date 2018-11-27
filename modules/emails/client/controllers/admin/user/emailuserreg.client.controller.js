@@ -117,7 +117,7 @@ $scope.choices = [{id: 'choice1'}];
               title: 'Are you sure?',
               text: "You want to delete this user!",
               type: 'warning',
-              showCancelButton: false,
+              showCancelButton: true,
               confirmButtonColor: '#3085d6',
               cancelButtonColor: '#d33',
               confirmButtonText: 'Yes, delete it!'
@@ -206,7 +206,7 @@ $scope.delpage=function(){
     title: 'Are you sure?',
     text: "You want to delete checked items!",
     type: 'warning',
-    showCancelButton: false,
+    showCancelButton: true,
     confirmButtonColor: '#3085d6',
     cancelButtonColor: '#d33',
     confirmButtonText: 'Yes, delete it!'

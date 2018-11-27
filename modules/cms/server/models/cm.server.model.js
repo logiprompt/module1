@@ -42,7 +42,8 @@ var CmSchema = new Schema({
   },
   post_displayinmenu:{
 	  type: String  
-  },
+	},
+	image: {type: String,default:''},
   post_tags:{
 	  type: String
   },

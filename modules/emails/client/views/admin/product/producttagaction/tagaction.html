@@ -196,43 +196,45 @@
     });
 
 
-    $(document).ready(function () {
+       $(document).ready(function() {
+        function gettable() {   
+    $('#example23').DataTable({
+        responsive: true,
+        dom: 'Bfrtip',
+        lengthMenu: [
+            [ 10, 25, 50, -1 ],
+            [ '10 rows', '25 rows', '50 rows', 'Show all' ]
+        ],
+         buttons: [
+		 'pageLength',
+         'csv',
+            {
+                text: 'Add',
+                 className: 'add-action',
+               
+            },
+            {
+                text: 'Edit',
+                 className: 'edit-action',
+                // action: function ( e, dt, node, config ) {
+                //     alert( 'Button activated' );
+                // }
+            },
+             {
+                text: 'Delete',
+                 className: 'delete-action',
+                // action: function ( e, dt, node, config ) {
+                //     alert( 'Button activated' );
+                // }
+            },
+            
 
-        $('#example23').DataTable({
-            responsive: true,
-            dom: 'Bfrtip',
-            lengthMenu: [
-                [10, 25, 50, -1],
-                ['10 rows', '25 rows', '50 rows', 'Show all']
-            ],
-            buttons: [
-                'pageLength',
-                'csv',
-                {
-                    text: 'Add',
-                    className: 'add-action',
-
-                },
-                {
-                    text: 'Edit',
-                    className: 'edit-action',
-                    // action: function ( e, dt, node, config ) {
-                    //     alert( 'Button activated' );
-                    // }
-                },
-                {
-                    text: 'Delete',
-                    className: 'delete-action',
-                    // action: function ( e, dt, node, config ) {
-                    //     alert( 'Button activated' );
-                    // }
-                },
-
-
-            ]
-        });
-
+        ]
     });
+}
+setTimeout(gettable, 500);
+
+     });
 
 
 </script>

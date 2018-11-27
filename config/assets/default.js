@@ -14,8 +14,8 @@ module.exports = {
         'public/lib/angular-tree-control/css/tree-control-attribute.css',
         'public/admin/css/jquery.dataTables.min.css',
         'public/admin/css/buttons.dataTables.min.css',
-        'public/admin/css/responsive.dataTables.min.css'
-
+        'public/admin/css/responsive.dataTables.min.css',
+        'public/lib/sweetalert/sweetalert2.min.css'
         
         // endbower
       ],
@@ -32,9 +32,17 @@ module.exports = {
         'public/lib/angular-ui-notification/dist/angular-ui-notification.js',
         'public/lib/angular-ui-router/release/angular-ui-router.js',
         'public/lib/owasp-password-strength-test/owasp-password-strength-test.js',
-        'public/lib/sweetalert/SweetAlert.min.js',
+        'public/lib/sweetalert/sweetalert2.min.js',
         'public/lib/angular-tree-control/angular-tree-control.js',
-        'public/lib/angular-tree-control/context-menu.js'
+        'public/lib/angular-tree-control/context-menu.js',
+        'public/admin/assets/plugins/datatables/datatables.min.js',
+        'public/admin/js/dataTables.buttons.min.js',
+        'public/admin/js/dataTables.responsive.min.js',
+        'public/admin/cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js',
+        'public/admin/cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js',
+        'public/admin/cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js'
+
+
         // endbower
       ],
       tests: ['public/lib/angular-mocks/angular-mocks.js']
